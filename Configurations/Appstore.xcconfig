@@ -1,0 +1,9 @@
+//
+//  Appstore.xcconfig
+//  Scout
+//
+//
+
+SCOUT_NETWORK_URL = https:/\/\example/api
+
+#include "Generator.xcconfig"

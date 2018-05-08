@@ -1,0 +1,14 @@
+//
+//  Generator.xcconfig
+//  Scout
+//
+//
+
+// ===============
+// Just for support xconfig syntax ( escaping strings )
+
+STRING_SCOUT_NETWORK_URL=\@\"${SCOUT_NETWORK_URL}\"
+
+// ===============
+// GCC Preprocessor definitions ( to provide ability use this variables values in code. You shouldn`t change this )
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) SCOUT_NETWORK_URL=$(STRING_SCOUT_NETWORK_URL)
