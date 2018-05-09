@@ -9,6 +9,26 @@
 /* Begin PBXBuildFile section */
 		2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */; };
 		5637D28E20A2FD2D00112F1F /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D28D20A2FD2D00112F1F /* Design.swift */; };
+		5637D29120A3142400112F1F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29020A3142400112F1F /* MainTabBarViewController.swift */; };
+		5637D2B020A3257800112F1F /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29420A3257800112F1F /* SettingsAssembly.swift */; };
+		5637D2B120A3257800112F1F /* SettingsAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29520A3257800112F1F /* SettingsAssemblyProtocol.swift */; };
+		5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29720A3257800112F1F /* SettingsRouter.swift */; };
+		5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29820A3257800112F1F /* SettingsRoutingProtocol.swift */; };
+		5637D2B420A3257800112F1F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5637D29A20A3257800112F1F /* Settings.storyboard */; };
+		5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29E20A3257800112F1F /* HelpAssembly.swift */; };
+		5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29F20A3257800112F1F /* HelpAssemblyProtocol.swift */; };
+		5637D2B720A3257800112F1F /* HelpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2A120A3257800112F1F /* HelpRouter.swift */; };
+		5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2A220A3257800112F1F /* HelpRoutingProtocol.swift */; };
+		5637D2B920A3257800112F1F /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5637D2A420A3257800112F1F /* Help.storyboard */; };
+		5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2A820A3257800112F1F /* MyListAssembly.swift */; };
+		5637D2BB20A3257800112F1F /* MyListAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2A920A3257800112F1F /* MyListAssemblyProtocol.swift */; };
+		5637D2BC20A3257800112F1F /* MyListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2AB20A3257800112F1F /* MyListRouter.swift */; };
+		5637D2BD20A3257800112F1F /* MyListRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2AC20A3257800112F1F /* MyListRoutingProtocol.swift */; };
+		5637D2BE20A3257800112F1F /* MyList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5637D2AE20A3257800112F1F /* MyList.storyboard */; };
+		5637D2C120A3410100112F1F /* PlayMyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2C020A3410100112F1F /* PlayMyListViewController.swift */; };
+		5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2C320A3426200112F1F /* HelpInformationViewController.swift */; };
+		5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2C620A343AE00112F1F /* SettingsViewController.swift */; };
+		5637D2CA20A34A4B00112F1F /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2C920A34A4B00112F1F /* GradientButton.swift */; };
 		F4511799208899AD00A159B5 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4511798208899AD00A159B5 /* SpeechService.swift */; };
 		F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F451179A20891AA800A159B5 /* SpeechServiceProtocol.swift */; };
 		F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CDE20849B370055585C /* MainAssemblyProtocol.swift */; };
@@ -27,7 +47,6 @@
 		F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CD442080D969007D0C14 /* AppDelegate.swift */; };
 		F482CD5C2080D969007D0C14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F482CD522080D969007D0C14 /* LaunchScreen.storyboard */; };
 		F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F482CD572080D969007D0C14 /* Main.storyboard */; };
-		F482CD5E2080D969007D0C14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CD582080D969007D0C14 /* ViewController.swift */; };
 		F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CD622080DBBA007D0C14 /* HTTPClientError.swift */; };
 		F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CD642080DBE5007D0C14 /* HTTPClientProtocol.swift */; };
 		F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = F482CD692080E006007D0C14 /* AppConfigurationBridge.m */; };
@@ -42,6 +61,26 @@
 
 /* Begin PBXFileReference section */
 		5637D28D20A2FD2D00112F1F /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		5637D29020A3142400112F1F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		5637D29420A3257800112F1F /* SettingsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
+		5637D29520A3257800112F1F /* SettingsAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAssemblyProtocol.swift; sourceTree = "<group>"; };
+		5637D29720A3257800112F1F /* SettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		5637D29820A3257800112F1F /* SettingsRoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRoutingProtocol.swift; sourceTree = "<group>"; };
+		5637D29A20A3257800112F1F /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		5637D29E20A3257800112F1F /* HelpAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpAssembly.swift; sourceTree = "<group>"; };
+		5637D29F20A3257800112F1F /* HelpAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpAssemblyProtocol.swift; sourceTree = "<group>"; };
+		5637D2A120A3257800112F1F /* HelpRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRouter.swift; sourceTree = "<group>"; };
+		5637D2A220A3257800112F1F /* HelpRoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRoutingProtocol.swift; sourceTree = "<group>"; };
+		5637D2A420A3257800112F1F /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
+		5637D2A820A3257800112F1F /* MyListAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyListAssembly.swift; sourceTree = "<group>"; };
+		5637D2A920A3257800112F1F /* MyListAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyListAssemblyProtocol.swift; sourceTree = "<group>"; };
+		5637D2AB20A3257800112F1F /* MyListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyListRouter.swift; sourceTree = "<group>"; };
+		5637D2AC20A3257800112F1F /* MyListRoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyListRoutingProtocol.swift; sourceTree = "<group>"; };
+		5637D2AE20A3257800112F1F /* MyList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyList.storyboard; sourceTree = "<group>"; };
+		5637D2C020A3410100112F1F /* PlayMyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMyListViewController.swift; sourceTree = "<group>"; };
+		5637D2C320A3426200112F1F /* HelpInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpInformationViewController.swift; sourceTree = "<group>"; };
+		5637D2C620A343AE00112F1F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5637D2C920A34A4B00112F1F /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		84B360F975895554FF0AD747 /* Pods-Scout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.release.xcconfig"; sourceTree = "<group>"; };
 		B08A7F94017D00A1DB1E7D1B /* Pods-Scout.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.appstore.xcconfig"; sourceTree = "<group>"; };
 		E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +104,6 @@
 		F482CD442080D969007D0C14 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F482CD522080D969007D0C14 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F482CD572080D969007D0C14 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F482CD582080D969007D0C14 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F482CD622080DBBA007D0C14 /* HTTPClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientError.swift; sourceTree = "<group>"; };
 		F482CD642080DBE5007D0C14 /* HTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientProtocol.swift; sourceTree = "<group>"; };
 		F482CD662080DF55007D0C14 /* AppConfigurationBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfigurationBridge.h; sourceTree = "<group>"; };
@@ -109,8 +147,184 @@
 			isa = PBXGroup;
 			children = (
 				5637D28D20A2FD2D00112F1F /* Design.swift */,
+				5637D2C820A34A4100112F1F /* GradientButton */,
 			);
 			path = Design;
+			sourceTree = "<group>";
+		};
+		5637D28F20A313F600112F1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5637D29020A3142400112F1F /* MainTabBarViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5637D29220A3257800112F1F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5637D29320A3257800112F1F /* Assembly */,
+				5637D29620A3257800112F1F /* Router */,
+				5637D29920A3257800112F1F /* Storyboard */,
+				5637D29B20A3257800112F1F /* ViewControllers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5637D29320A3257800112F1F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				5637D29420A3257800112F1F /* SettingsAssembly.swift */,
+				5637D29520A3257800112F1F /* SettingsAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		5637D29620A3257800112F1F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				5637D29720A3257800112F1F /* SettingsRouter.swift */,
+				5637D29820A3257800112F1F /* SettingsRoutingProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		5637D29920A3257800112F1F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5637D29A20A3257800112F1F /* Settings.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		5637D29B20A3257800112F1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2C520A343A400112F1F /* SettingsViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5637D29C20A3257800112F1F /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				5637D29D20A3257800112F1F /* Assembly */,
+				5637D2A020A3257800112F1F /* Router */,
+				5637D2A320A3257800112F1F /* Storyboard */,
+				5637D2A520A3257800112F1F /* ViewControllers */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		5637D29D20A3257800112F1F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				5637D29E20A3257800112F1F /* HelpAssembly.swift */,
+				5637D29F20A3257800112F1F /* HelpAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		5637D2A020A3257800112F1F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2A120A3257800112F1F /* HelpRouter.swift */,
+				5637D2A220A3257800112F1F /* HelpRoutingProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		5637D2A320A3257800112F1F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2A420A3257800112F1F /* Help.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		5637D2A520A3257800112F1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2C220A3425A00112F1F /* HelpInformationViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5637D2A620A3257800112F1F /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2A720A3257800112F1F /* Assembly */,
+				5637D2AA20A3257800112F1F /* Router */,
+				5637D2AD20A3257800112F1F /* Storyboard */,
+				5637D2AF20A3257800112F1F /* ViewControllers */,
+			);
+			path = MyList;
+			sourceTree = "<group>";
+		};
+		5637D2A720A3257800112F1F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2A820A3257800112F1F /* MyListAssembly.swift */,
+				5637D2A920A3257800112F1F /* MyListAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		5637D2AA20A3257800112F1F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2AB20A3257800112F1F /* MyListRouter.swift */,
+				5637D2AC20A3257800112F1F /* MyListRoutingProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		5637D2AD20A3257800112F1F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2AE20A3257800112F1F /* MyList.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		5637D2AF20A3257800112F1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2BF20A340FA00112F1F /* PlayMyListViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5637D2BF20A340FA00112F1F /* PlayMyListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2C020A3410100112F1F /* PlayMyListViewController.swift */,
+			);
+			path = PlayMyListViewController;
+			sourceTree = "<group>";
+		};
+		5637D2C220A3425A00112F1F /* HelpInformationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2C320A3426200112F1F /* HelpInformationViewController.swift */,
+			);
+			path = HelpInformationViewController;
+			sourceTree = "<group>";
+		};
+		5637D2C520A343A400112F1F /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2C620A343AE00112F1F /* SettingsViewController.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		5637D2C820A34A4100112F1F /* GradientButton */ = {
+			isa = PBXGroup;
+			children = (
+				5637D2C920A34A4B00112F1F /* GradientButton.swift */,
+			);
+			path = GradientButton;
 			sourceTree = "<group>";
 		};
 		CD9158217DD3454E7A83BCF1 /* Pods */ = {
@@ -347,7 +561,6 @@
 			children = (
 				F482CD4F2080D969007D0C14 /* Base */,
 				F482CD502080D969007D0C14 /* Stories */,
-				F482CD582080D969007D0C14 /* ViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -366,6 +579,9 @@
 				F47B7CE22084A3AD0055585C /* Profile */,
 				F482CD512080D969007D0C14 /* Launch */,
 				F482CD532080D969007D0C14 /* Main */,
+				5637D2A620A3257800112F1F /* MyList */,
+				5637D29C20A3257800112F1F /* Help */,
+				5637D29220A3257800112F1F /* Settings */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -384,6 +600,7 @@
 				F482CD542080D969007D0C14 /* Assembly */,
 				F482CD552080D969007D0C14 /* Router */,
 				F482CD562080D969007D0C14 /* Storyboard */,
+				5637D28F20A313F600112F1F /* ViewControllers */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -490,7 +707,10 @@
 			files = (
 				F482CD5C2080D969007D0C14 /* LaunchScreen.storyboard in Resources */,
 				F482CD592080D969007D0C14 /* Images.xcassets in Resources */,
+				5637D2BE20A3257800112F1F /* MyList.storyboard in Resources */,
+				5637D2B920A3257800112F1F /* Help.storyboard in Resources */,
 				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
+				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,27 +786,43 @@
 				F4A23BB420810D5E006EC9E3 /* ApplicationAssembly.swift in Sources */,
 				F4A23BB82081120D006EC9E3 /* ApplicationRouter.swift in Sources */,
 				F47B7CE120849B3F0055585C /* MainAssembly.swift in Sources */,
+				5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */,
+				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
+				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
+				5637D2CA20A34A4B00112F1F /* GradientButton.swift in Sources */,
+				5637D2B020A3257800112F1F /* SettingsAssembly.swift in Sources */,
 				F4A23BBC20811369006EC9E3 /* MainRoutingProtocol.swift in Sources */,
+				5637D2B720A3257800112F1F /* HelpRouter.swift in Sources */,
+				5637D2BD20A3257800112F1F /* MyListRoutingProtocol.swift in Sources */,
 				F47B7CEF2084D7970055585C /* BaseHTTPClient.swift in Sources */,
 				F47B7CF12084D7DC0055585C /* ScoutHTTPClient.swift in Sources */,
 				F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */,
 				F47B7CFB2084F6700055585C /* KeychainService.swift in Sources */,
 				5637D28E20A2FD2D00112F1F /* Design.swift in Sources */,
+				5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */,
 				F47B7CF42084E57F0055585C /* Utils.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
-				F482CD5E2080D969007D0C14 /* ViewController.swift in Sources */,
 				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
+				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
+				5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */,
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
+				5637D29120A3142400112F1F /* MainTabBarViewController.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
+				5637D2C120A3410100112F1F /* PlayMyListViewController.swift in Sources */,
+				5637D2BC20A3257800112F1F /* MyListRouter.swift in Sources */,
+				5637D2B120A3257800112F1F /* SettingsAssemblyProtocol.swift in Sources */,
+				5637D2BB20A3257800112F1F /* MyListAssemblyProtocol.swift in Sources */,
 				F4A23BB62081113E006EC9E3 /* ApplicationAssemblyProtocol.swift in Sources */,
+				5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */,
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
 				F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */,
 				F47B7CF62084E8890055585C /* AuthManager.swift in Sources */,
+				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,
 				F4A23BBA20811280006EC9E3 /* ApplicationRouterProtocol.swift in Sources */,
 				F47B7CE62084B47B0055585C /* NetworkRequestBuilder.swift in Sources */,

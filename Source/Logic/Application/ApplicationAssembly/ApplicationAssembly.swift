@@ -12,11 +12,14 @@ class ApplicationAssembly {
     let configuration: AppConfiguration
     
     fileprivate lazy var mainRouter: MainRoutingProtocol = self.createMainRouter()
+    fileprivate lazy var myListRouter: MyListRoutingProtocol = self.createMyListRouter()
+    fileprivate lazy var helpRouter: HelpRoutingProtocol = self.createHelpRouter()
+    fileprivate lazy var settingsRouter: SettingsRoutingProtocol = self.createSettingsRouter()
+
     fileprivate lazy var networkClient: HTTPClientProtocol = self.createNetworkClient()
     fileprivate lazy var networkManager: SessionManager = self.createSessionManager()
     fileprivate lazy var keychainService: KeychainServiceProtocol = self.createKeychainService()
 
-    
     // MARK: Init
     required init(with configuration: AppConfiguration) {
         
@@ -29,9 +32,12 @@ class ApplicationAssembly {
 extension ApplicationAssembly: ApplicationAssemblyProtocol {
     
     func assemblyMainRouter() -> MainRoutingProtocol { return self.mainRouter }
+    func assemblyMyListRouter() -> MyListRoutingProtocol { return self.myListRouter }
+    func assemblyHelpRouter() -> HelpRoutingProtocol { return self.helpRouter }
+    func assemblySettingsRouter() -> SettingsRoutingProtocol { return self.settingsRouter }
+    
     func assemblyNetworkClient() -> HTTPClientProtocol { return self.networkClient }
     func assemblyKeychainService() -> KeychainServiceProtocol { return self.keychainService }
-
 }
 
 // MARK: -
@@ -56,10 +62,29 @@ fileprivate extension ApplicationAssembly {
     func createMainRouter() -> MainRoutingProtocol {
         
         let mainAssembly = MainAssembly(withAssembly: self)
-        let mainRouter = MainUIRouter(with: mainAssembly)
+        let mainRouter = MainUIRouter(withApplicationAssembly: self, assembly: mainAssembly)
+        
         return mainRouter
     }
 
+    func createMyListRouter() -> MyListRoutingProtocol {
+        
+        let myListAssembly = MyListAssembly(withAssembly: self)
+        return MyListRouter(with: myListAssembly)
+    }
+    
+    func createHelpRouter() -> HelpRoutingProtocol {
+        
+        let helpAssembly = HelpAssembly(withAssembly: self)
+        return HelpRouter(with: helpAssembly)
+    }
+    
+    func createSettingsRouter() -> SettingsRoutingProtocol {
+        
+        let settingsAssembly = SettingsAssembly(withAssembly: self)
+        return SettingsRouter(with: settingsAssembly)
+    }
+    
     // MARK: Services
     func createNetworkClient() -> HTTPClientProtocol {
         

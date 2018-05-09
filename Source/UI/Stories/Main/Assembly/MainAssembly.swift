@@ -15,11 +15,16 @@ class MainAssembly: MainAssemblyProtocol {
         
         self.applicationAssembly = assembly
     }
-
-    func assemblyMainViewController() -> ViewController {
+    
+    func assemblyMainTabBarViewController(viewControllers: [UIViewController]) -> MainTabBarViewController {
+     
+        let tabbarVC = self.storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+        tabbarVC.setViewControllers(viewControllers, animated: false)
         
-        let vc = self.storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        return vc
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : Design.Color.black], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : Design.Color.purple], for: .selected)
+        
+        return tabbarVC
     }
 }
 

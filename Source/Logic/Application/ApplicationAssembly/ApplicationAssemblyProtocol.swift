@@ -11,6 +11,9 @@ protocol ApplicationAssemblyProtocol {
     
     // MARK: Routers
     func assemblyMainRouter() -> MainRoutingProtocol
+    func assemblyMyListRouter() -> MyListRoutingProtocol
+    func assemblyHelpRouter() -> HelpRoutingProtocol
+    func assemblySettingsRouter() -> SettingsRoutingProtocol
     
     // MARK: Services
     func assemblyNetworkClient() -> HTTPClientProtocol

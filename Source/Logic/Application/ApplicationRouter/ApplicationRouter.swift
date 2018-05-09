@@ -11,7 +11,6 @@ class ApplicationRouter: NSObject {
     let applicationAssembly: ApplicationAssemblyProtocol
     
     fileprivate var navigationController: UINavigationController!
-    
     fileprivate var mainRouter: MainRoutingProtocol
 
     required init(with applicationAssembly: ApplicationAssemblyProtocol) {
@@ -62,7 +61,8 @@ private extension ApplicationRouter {
 
     func showMainStory(animated: Bool, completion: VoidBlock? = nil) {
         
-        self.mainRouter.show(from: self.navigationController, animated: false)
+        self.mainRouter.showMainUIInterface(fromViewController: self.navigationController, animated: false)
+        self.mainRouter.showMainUITab(tab: .myList, animated: false)
         if let requiredCompletion = completion { requiredCompletion() }
     }
 }

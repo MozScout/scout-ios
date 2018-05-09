@@ -5,8 +5,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MainAssemblyProtocol {
     
-    func assemblyMainViewController() -> ViewController
+    func assemblyMainTabBarViewController(viewControllers: [UIViewController]) -> MainTabBarViewController
 }
