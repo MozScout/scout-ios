@@ -11,4 +11,7 @@ target 'Scout' do
   pod 'SwiftyJSON', '~> 4.0.0'
   pod 'KeychainAccess', '~> 3.1.1'
   
+  # UI components
+  pod 'HexColors'
+  
 end
