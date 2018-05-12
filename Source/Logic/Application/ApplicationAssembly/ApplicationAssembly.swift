@@ -89,8 +89,10 @@ fileprivate extension ApplicationAssembly {
     func createNetworkClient() -> HTTPClientProtocol {
         
         let networkMapper = NetworkMapper()
-        let requestBuilder = NetworkRequestBuilder(baseURL: configuration.network.baseURL,
-                                                   manager: self.networkManager)
+        let requestBuilder = NetworkRequestBuilder(withBaseURL: configuration.network.baseURL,
+                                                        mapper: networkMapper)
+        requestBuilder.manager = self.networkManager
+        
         let networkClient = ScoutHTTPClient(with: networkMapper,
                                   requestBuilder: requestBuilder,
                                          manager: self.networkManager)

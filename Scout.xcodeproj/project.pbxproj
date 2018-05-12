@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */; };
+		5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3620A6CE230074A4BC /* AuthAssembly.swift */; };
+		5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */; };
+		5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3920A6CE230074A4BC /* AuthRouter.swift */; };
+		5622AB4120A6CE230074A4BC /* AuthRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3A20A6CE230074A4BC /* AuthRoutingProtocol.swift */; };
+		5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5622AB3C20A6CE230074A4BC /* Auth.storyboard */; };
+		5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB4520A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift */; };
+		5622AB4820A6D4D70074A4BC /* AuthHTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB4720A6D4D70074A4BC /* AuthHTTPClientProtocol.swift */; };
+		5622AB4B20A6E5750074A4BC /* ScoutHTTPClient+ScoutTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB4A20A6E5750074A4BC /* ScoutHTTPClient+ScoutTitles.swift */; };
+		5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB4C20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift */; };
+		5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB4F20A6E68C0074A4BC /* ScoutArticle.swift */; };
 		5637D28E20A2FD2D00112F1F /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D28D20A2FD2D00112F1F /* Design.swift */; };
 		5637D29120A3142400112F1F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29020A3142400112F1F /* MainTabBarViewController.swift */; };
 		5637D2B020A3257800112F1F /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29420A3257800112F1F /* SettingsAssembly.swift */; };
@@ -60,6 +70,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5622AB3620A6CE230074A4BC /* AuthAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
+		5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssemblyProtocol.swift; sourceTree = "<group>"; };
+		5622AB3920A6CE230074A4BC /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		5622AB3A20A6CE230074A4BC /* AuthRoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRoutingProtocol.swift; sourceTree = "<group>"; };
+		5622AB3C20A6CE230074A4BC /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		5622AB4520A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScoutHTTPClient+Auth.swift"; sourceTree = "<group>"; };
+		5622AB4720A6D4D70074A4BC /* AuthHTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHTTPClientProtocol.swift; sourceTree = "<group>"; };
+		5622AB4A20A6E5750074A4BC /* ScoutHTTPClient+ScoutTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScoutHTTPClient+ScoutTitles.swift"; sourceTree = "<group>"; };
+		5622AB4C20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutTitlesHTTPClientProtocol.swift; sourceTree = "<group>"; };
+		5622AB4F20A6E68C0074A4BC /* ScoutArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutArticle.swift; sourceTree = "<group>"; };
 		5637D28D20A2FD2D00112F1F /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		5637D29020A3142400112F1F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		5637D29420A3257800112F1F /* SettingsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
@@ -141,6 +161,76 @@
 				E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5622AB3420A6CE230074A4BC /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5622AB3520A6CE230074A4BC /* Assembly */,
+				5622AB3820A6CE230074A4BC /* Router */,
+				5622AB3B20A6CE230074A4BC /* Storyboard */,
+				5622AB3D20A6CE230074A4BC /* ViewControllers */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5622AB3520A6CE230074A4BC /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				5622AB3620A6CE230074A4BC /* AuthAssembly.swift */,
+				5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		5622AB3820A6CE230074A4BC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				5622AB3920A6CE230074A4BC /* AuthRouter.swift */,
+				5622AB3A20A6CE230074A4BC /* AuthRoutingProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		5622AB3B20A6CE230074A4BC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5622AB3C20A6CE230074A4BC /* Auth.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		5622AB3D20A6CE230074A4BC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5622AB4420A6D4A30074A4BC /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5622AB4520A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift */,
+				5622AB4720A6D4D70074A4BC /* AuthHTTPClientProtocol.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5622AB4920A6E54E0074A4BC /* ScoutTitles */ = {
+			isa = PBXGroup;
+			children = (
+				5622AB4A20A6E5750074A4BC /* ScoutHTTPClient+ScoutTitles.swift */,
+				5622AB4C20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift */,
+			);
+			path = ScoutTitles;
+			sourceTree = "<group>";
+		};
+		5622AB4E20A6E6840074A4BC /* ScoutArticle */ = {
+			isa = PBXGroup;
+			children = (
+				5622AB4F20A6E68C0074A4BC /* ScoutArticle.swift */,
+			);
+			path = ScoutArticle;
 			sourceTree = "<group>";
 		};
 		5637D28A20A2FCE600112F1F /* Design */ = {
@@ -552,6 +642,7 @@
 		F482CD4D2080D969007D0C14 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5622AB4E20A6E6840074A4BC /* ScoutArticle */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -576,6 +667,7 @@
 		F482CD502080D969007D0C14 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				5622AB3420A6CE230074A4BC /* Auth */,
 				F47B7CE22084A3AD0055585C /* Profile */,
 				F482CD512080D969007D0C14 /* Launch */,
 				F482CD532080D969007D0C14 /* Main */,
@@ -634,6 +726,8 @@
 		F482CD5F2080DB80007D0C14 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				5622AB4920A6E54E0074A4BC /* ScoutTitles */,
+				5622AB4420A6D4A30074A4BC /* Auth */,
 				F47B7CEE2084D7970055585C /* BaseHTTPClient.swift */,
 				F482CD622080DBBA007D0C14 /* HTTPClientError.swift */,
 				F482CD642080DBE5007D0C14 /* HTTPClientProtocol.swift */,
@@ -711,6 +805,7 @@
 				5637D2B920A3257800112F1F /* Help.storyboard in Resources */,
 				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
 				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
+				5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,6 +885,7 @@
 				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
 				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
+				5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */,
 				5637D2CA20A34A4B00112F1F /* GradientButton.swift in Sources */,
 				5637D2B020A3257800112F1F /* SettingsAssembly.swift in Sources */,
 				F4A23BBC20811369006EC9E3 /* MainRoutingProtocol.swift in Sources */,
@@ -801,26 +897,34 @@
 				F47B7CFB2084F6700055585C /* KeychainService.swift in Sources */,
 				5637D28E20A2FD2D00112F1F /* Design.swift in Sources */,
 				5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */,
+				5622AB4820A6D4D70074A4BC /* AuthHTTPClientProtocol.swift in Sources */,
 				F47B7CF42084E57F0055585C /* Utils.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
 				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
+				5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */,
+				5622AB4120A6CE230074A4BC /* AuthRoutingProtocol.swift in Sources */,
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
 				5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */,
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
+				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,
+				5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */,
 				5637D29120A3142400112F1F /* MainTabBarViewController.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
+				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
 				5637D2C120A3410100112F1F /* PlayMyListViewController.swift in Sources */,
 				5637D2BC20A3257800112F1F /* MyListRouter.swift in Sources */,
 				5637D2B120A3257800112F1F /* SettingsAssemblyProtocol.swift in Sources */,
 				5637D2BB20A3257800112F1F /* MyListAssemblyProtocol.swift in Sources */,
+				5622AB4B20A6E5750074A4BC /* ScoutHTTPClient+ScoutTitles.swift in Sources */,
 				F4A23BB62081113E006EC9E3 /* ApplicationAssemblyProtocol.swift in Sources */,
 				5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */,
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
 				F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */,
+				5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */,
 				F47B7CF62084E8890055585C /* AuthManager.swift in Sources */,
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,
