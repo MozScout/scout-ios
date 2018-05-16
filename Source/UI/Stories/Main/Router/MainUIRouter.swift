@@ -109,18 +109,18 @@ fileprivate extension MainUIRouter {
         
         switch tab {
         case .myList:
-            return UITabBarItem(title: "Play My List",
-                                image: originalImageUsingImageName(imageName: "icn_play"),
-                        selectedImage: originalImageUsingImageName(imageName: "icn_play"))
+            return UITabBarItem(title: "Listen",
+                               image: originalImageUsingImageName(imageName: "icn_play"),
+                       selectedImage: originalImageUsingImageName(imageName: "icn_play_selected"))
             
         case .help:
             return UITabBarItem(title: "Help",
-                                image: originalImageUsingImageName(imageName: "icn_help"),
-                        selectedImage: originalImageUsingImageName(imageName: "icn_help"))
+                               image: originalImageUsingImageName(imageName: "icn_help"),
+                       selectedImage: originalImageUsingImageName(imageName: "icn_help_selected"))
         case .settings:
             return UITabBarItem(title: "Settings",
-                                image: originalImageUsingImageName(imageName: "icn_settings"),
-                        selectedImage: originalImageUsingImageName(imageName: "icn_settings"))
+                               image: originalImageUsingImageName(imageName: "icn_settings"),
+                       selectedImage: originalImageUsingImageName(imageName: "icn_settings"))
         case .audioAction:
             return UITabBarItem(title: "", image: nil, selectedImage: nil)
         }

@@ -10,4 +10,20 @@ import UIKit
 
 class HelpInformationViewController: UIViewController {
     
+    @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
+    @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate var gradientButton: GradientButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.configureUI()
+    }
+    
+    // MARK: Private
+    fileprivate func configureUI() {
+        
+        gradientButton.direction = .horizontally(centered: 0.1)
+    }
 }

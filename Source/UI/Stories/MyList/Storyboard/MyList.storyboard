@@ -21,19 +21,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAw-Ih-8ik">
-                                        <rect key="frame" x="157.5" y="12.5" width="61" height="25.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
+                                        <rect key="frame" x="162" y="15" width="52.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DP2-N7-xXC" customClass="GradientButton" customModule="Scout" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="375" height="4"/>
+                                        <rect key="frame" x="0.0" y="47" width="375" height="3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="4" id="DlR-wQ-wL5"/>
+                                            <constraint firstAttribute="height" constant="3" id="DlR-wQ-wL5"/>
                                         </constraints>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.98039215690000003" alpha="0.85121468320000004" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="WAw-Ih-8ik" firstAttribute="centerY" secondItem="B39-2y-1q6" secondAttribute="centerY" id="5hN-fb-Yuk"/>
                                     <constraint firstItem="DP2-N7-xXC" firstAttribute="leading" secondItem="B39-2y-1q6" secondAttribute="leading" id="FvL-jd-evd"/>

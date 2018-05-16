@@ -23,6 +23,7 @@ class MainAssembly: MainAssemblyProtocol {
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : Design.Color.black], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : Design.Color.purple], for: .selected)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -10)
         
         return tabbarVC
     }
