@@ -9,79 +9,81 @@ import Foundation
 
 func == (lhs: ScoutArticle, rhs: ScoutArticle) -> Bool {
     
-    let articleIDsAreEqual = (lhs.articleID == rhs.articleID)
-    let articleTitlesAreEqual = (lhs.articleTitle == rhs.articleTitle)
-    let articleAuthorsAreEqual = lhs.articleAuthor == rhs.articleAuthor
-    let articleLengthsAreEqual = lhs.articleLength == rhs.articleLength
-    let articleImageURLsAreEqual = lhs.articleImageURL == rhs.articleImageURL
-    let resolvedURLsAreEqual = lhs.resolvedURL == rhs.resolvedURL
+    let articleIDsAreEqual = (lhs.item_id == rhs.item_id)
+    let articleTitlesAreEqual = (lhs.title == rhs.title)
+    let articleAuthorsAreEqual = lhs.author == rhs.author
+    let articleLengthsAreEqual = lhs.lengthMinutes == rhs.lengthMinutes
+    let articleSortIDAreEqual = lhs.sort_id == rhs.sort_id
+    let resolvedURLsAreEqual = lhs.resolved_url == rhs.resolved_url
     
-    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleImageURLsAreEqual && resolvedURLsAreEqual
+    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleSortIDAreEqual && resolvedURLsAreEqual
 }
 
 class ScoutArticle: NSObject, NSCoding {
     
-    var articleID: String
-    var articleTitle: String
-    var articleAuthor: String
-    var articleLength: Int
-    var articleImageURL: URL?
-    var resolvedURL: URL?
+    var item_id: String
+    var title: String
+    var author: String
+    var lengthMinutes: Int
+    var sort_id: Int
+    var resolved_url: URL?
     
-    init(withArticleID articleID: String,
-                    articleTitle: String,
-                   articleAuthor: String,
-                   articleLength: Int,
-                 articleImageURL: URL?,
-                     resolvedURL: URL?) {
+    init(withArticleID item_id: String,
+                    title: String,
+                   author: String,
+                   lengthMinutes: Int,
+                 sort_id: Int,
+                     resolved_url: URL?) {
         
-        self.articleID = articleID
-        self.articleTitle = articleTitle
-        self.articleAuthor = articleAuthor
-        self.articleLength = articleLength
-        self.articleImageURL = articleImageURL
-        self.resolvedURL = resolvedURL
+        self.item_id = item_id
+        self.title = title
+        self.author = author
+        self.lengthMinutes = lengthMinutes
+        self.sort_id = sort_id
+        self.resolved_url = resolved_url
     }
     
     // MARK: NSCoding
     convenience required init?(coder aDecoder: NSCoder) {
         
         guard let objectDictionary = aDecoder.decodeObject(forKey: NSStringFromClass(ScoutArticle.self)) as? [String : Any],
-              let articleID = objectDictionary["articleID"] as? String,
-              let articleTitle = objectDictionary["articleTitle"] as? String,
-              let articleAuthor = objectDictionary["articleAuthor"] as? String,
-              let articleLength = objectDictionary["articleLength"] as? Int
-        else { return nil }
+              let item_id = objectDictionary["item_id"] as? String,
+              let title = objectDictionary["title"] as? String,
+              let author = objectDictionary["author"] as? String,
+              let lengthMinutes = objectDictionary["lengthMinutes"] as? Int,
+            let sort_id = objectDictionary["sort_id"] as? Int
+            else { return nil }
         
-        var articleImageURL: URL? = nil
+        /*var articleImageURL: URL? = nil
         if let requiredArticleImageURLString = objectDictionary["articleImageURL"] as? String {
             articleImageURL = URL(string: requiredArticleImageURLString)
-        }
+        }*/
         
         var resolvedURL: URL? = nil
-        if let requiredResolvedURLString = objectDictionary["resolvedURL"] as? String {
+        if let requiredResolvedURLString = objectDictionary["resolved_url"] as? String {
             resolvedURL = URL(string: requiredResolvedURLString)
         }
         
-        self.init(withArticleID: articleID,
-                   articleTitle: articleTitle,
-                  articleAuthor: articleAuthor,
-                  articleLength: articleLength,
-                articleImageURL: articleImageURL,
-                    resolvedURL: resolvedURL)
+        self.init(withArticleID: item_id,
+                  title: title,
+                  author: author,
+                  lengthMinutes: lengthMinutes,
+                  sort_id: sort_id,
+                  resolved_url: resolvedURL)
     }
     
     func encode(with aCoder: NSCoder) {
         
         let dictionary = NSMutableDictionary(dictionary: [
-                                                             "articleID" : articleID,
-                                                             "articleTitle"   : articleTitle,
-                                                             "articleAuthor" : articleAuthor,
-                                                             "articleLength" : articleLength
+                                                             "item_id" : item_id,
+                                                             "title"   : title,
+                                                             "author" : author,
+                                                             "lengthMinutes" : lengthMinutes,
+                                                             "sort_id" : sort_id
                                                          ])
         
-        if let requiredArticleImageURLString =  articleImageURL?.absoluteString { dictionary["articleImageURL"] = requiredArticleImageURLString }
-        if let requiredResolvedURLString =  resolvedURL?.absoluteString { dictionary["resolvedURL"] = requiredResolvedURLString }
+        /*if let requiredArticleImageURLString =  articleImageURL?.absoluteString { dictionary["articleImageURL"] = requiredArticleImageURLString }*/
+        if let requiredResolvedURLString =  resolved_url?.absoluteString { dictionary["resolved_url"] = requiredResolvedURLString }
         
         aCoder.encode(dictionary, forKey: NSStringFromClass(ScoutArticle.self))
     }

@@ -12,14 +12,15 @@ class ApplicationRouter: NSObject {
     
     fileprivate var navigationController: UINavigationController!
     fileprivate var mainRouter: MainRoutingProtocol
-
+    fileprivate var authRouter: AuthRoutingProtocol
+    
     required init(with applicationAssembly: ApplicationAssemblyProtocol) {
 
         self.applicationAssembly = applicationAssembly
         
         // Routers
         self.mainRouter = applicationAssembly.assemblyMainRouter()
-        
+        self.authRouter = applicationAssembly.assemblyAuthRouter()
         super.init()
     }
 }
@@ -30,7 +31,7 @@ extension ApplicationRouter: ApplicationRouterProtocol {
     
     func show(from window: UIWindow) {
         
-        self.showInitialUI(from: window)
+        self.showLogin(from: window)
     }
 }
 
@@ -48,7 +49,7 @@ extension ApplicationRouter {
 // MARK: Private
 private extension ApplicationRouter {
     
-    func showInitialUI(from window: UIWindow) {
+    func showLogin(from window: UIWindow) {
         
         let navVC = UINavigationController()
         navVC.isNavigationBarHidden = true
@@ -56,7 +57,8 @@ private extension ApplicationRouter {
         self.navigationController = navVC
         window.makeKeyAndVisible()
 
-        self.showMainStory(animated: true)
+        //self.showMainStory(animated: true)
+        self.showAuthStory(animated: true)
     }
 
     func showMainStory(animated: Bool, completion: VoidBlock? = nil) {
@@ -64,5 +66,16 @@ private extension ApplicationRouter {
         self.mainRouter.showMainUIInterface(fromViewController: self.navigationController, animated: false)
         self.mainRouter.showMainUITab(tab: .myList, animated: false)
         if let requiredCompletion = completion { requiredCompletion() }
+    }
+    
+    func showAuthStory(animated: Bool, completion: VoidBlock? = nil) {
+        
+        self.authRouter.show(from: self.navigationController, animated: true)
+        if let requiredCompletion = completion { requiredCompletion() }
+        self.authRouter.onSignInTap = { [self, mainRouter] controller in
+            mainRouter.showMainUIInterface(fromViewController: controller, animated: true)
+            mainRouter.showMainUITab(tab: .myList, animated: false)
+            if let requiredCompletion = completion { requiredCompletion() }
+        }
     }
 }

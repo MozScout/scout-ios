@@ -19,11 +19,15 @@ class PlayMyListViewController: UIViewController {
     fileprivate let maxHeaderHeight: CGFloat = 64
     fileprivate let minHeaderHeight: CGFloat = 24
     fileprivate var previousScrollOffset: CGFloat = 0
+    fileprivate let cellRowReuseId = "cellrow"
+    var scoutClient : ScoutHTTPClient? = nil
+    fileprivate var scoutTitles : [ScoutArticle]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureUI()
+        self.getScoutTitles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,8 +39,23 @@ class PlayMyListViewController: UIViewController {
     
     // MARK: Private
     fileprivate func configureUI() {
-        
         gradientButton.direction = .horizontally(centered: 0.1)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil), forCellReuseIdentifier: cellRowReuseId)
+        tableView.estimatedRowHeight = 100.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    fileprivate func getScoutTitles() {
+        scoutClient?.getScoutTitles(withCmd: "ScoutTitles", userid: "scout-mobile@mozilla.com", successBlock: { (titles) in
+            self.scoutTitles = titles
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }, failureBlock: { (failureResponse, error, response) in
+            
+        })
     }
 }
 
@@ -47,12 +66,19 @@ extension PlayMyListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        if self.scoutTitles != nil {
+            return self.scoutTitles!.count
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel!.text = "Cell \(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId, for: indexPath) as! PlayMyListTableViewCell
+        
+        cell.configureCell(withModel: self.scoutTitles![indexPath.row])
+        
         return cell
     }
 }

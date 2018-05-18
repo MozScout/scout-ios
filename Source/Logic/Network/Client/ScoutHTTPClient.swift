@@ -9,7 +9,6 @@ import Alamofire
 
 protocol NetworkClientObserverProtocol: class {
     
-
 }
 
 protocol NetworkClientObserverSubscriptionProtocol: class {

@@ -49,7 +49,7 @@ extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
         
         self.tabbar = tabbarVC
         
-        if let navigationController = viewController as? UINavigationController {
+        if let navigationController = viewController.navigationController {
             navigationController.viewControllers = [tabbarVC]
             parentNavigationController = navigationController
         }

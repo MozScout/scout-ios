@@ -20,7 +20,7 @@ extension ScoutHTTPClient: AuthHTTPClientProtocol {
         
         return self.execute(request: request,
                        successBlock: { (JSONObject, customObject, response) in
-            
+                        
                        },
                        failureBlock:  { (JSONObject, clientError, response) in
             

@@ -14,11 +14,13 @@ class MyListAssembly: MyListAssemblyProtocol {
     required init(withAssembly assembly: ApplicationAssemblyProtocol) {
         
         self.applicationAssembly = assembly
+        
     }
     
     func assemblyPlayMyListViewController() -> PlayMyListViewController {
      
         let vc = self.storyboard.instantiateViewController(withIdentifier: "PlayMyListViewController") as! PlayMyListViewController
+        vc.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         return vc
     }
 }

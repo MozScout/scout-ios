@@ -11,5 +11,8 @@ typealias ScoutTitlesSuccessBlock = (_ articles: [ScoutArticle]) -> ()
 typealias ScoutTitlesFailureBlock = HTTPClientFailureBlock
 
 protocol ScoutTitlesHTTPClientProtocol {
-    
+    func getScoutTitles(withCmd cmd: String,
+                        userid: String,
+                        successBlock: @escaping ScoutTitlesSuccessBlock,
+                        failureBlock: @escaping ScoutTitlesFailureBlock) -> HTTPClientConnectionResult
 }

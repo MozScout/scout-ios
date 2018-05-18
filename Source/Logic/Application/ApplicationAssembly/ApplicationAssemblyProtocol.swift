@@ -14,8 +14,10 @@ protocol ApplicationAssemblyProtocol {
     func assemblyMyListRouter() -> MyListRoutingProtocol
     func assemblyHelpRouter() -> HelpRoutingProtocol
     func assemblySettingsRouter() -> SettingsRoutingProtocol
+    func assemblyAuthRouter() -> AuthRoutingProtocol
     
     // MARK: Services
     func assemblyNetworkClient() -> HTTPClientProtocol
     func assemblyKeychainService() -> KeychainServiceProtocol
+    
 }

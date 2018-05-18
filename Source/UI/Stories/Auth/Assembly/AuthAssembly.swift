@@ -8,12 +8,19 @@ import Foundation
 import UIKit
 
 class AuthAssembly: AuthAssemblyProtocol {
-    
-    fileprivate let applicationAssembly: ApplicationAssemblyProtocol
+
+    let applicationAssembly: ApplicationAssemblyProtocol
     
     required init(withAssembly assembly: ApplicationAssemblyProtocol) {
         
         self.applicationAssembly = assembly
+    }
+    
+    func assemblyLoginViewController() -> LoginViewController {
+        
+        let loginVC = self.storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        
+        return loginVC
     }
 }
 
