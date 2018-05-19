@@ -35,7 +35,7 @@ public enum JSONMappingError: Error {
 class NetworkMapper: NetworkMappingProtocol {
     
     func scoutTitles(fromResource resource: JSON) -> [ScoutArticle]? {
-        var aaa = [ScoutArticle]()
+        var scoutArticlesArray = [ScoutArticle]()
     
         for (_ , value) in resource["articles"] {
             
@@ -45,10 +45,10 @@ class NetworkMapper: NetworkMappingProtocol {
             let lengthMinutes = value["lengthMinutes"].int ?? 0
             let resolved_url = value["resolved_url"].url ?? URL(string: "")
             let sort_id = value["sort_id"].int ?? 0
-            let a = ScoutArticle(withArticleID: item_id, title: title, author: author, lengthMinutes: lengthMinutes, sort_id: sort_id, resolved_url: resolved_url)
-            aaa.append(a)
+            let scoutArticle = ScoutArticle(withArticleID: item_id, title: title, author: author, lengthMinutes: lengthMinutes, sort_id: sort_id, resolved_url: resolved_url)
+            scoutArticlesArray.append(scoutArticle)
         }
-        return aaa
+        return scoutArticlesArray
     }
     
 }
