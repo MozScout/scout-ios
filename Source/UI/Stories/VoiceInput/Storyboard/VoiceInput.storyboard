@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Voice Input View Controller-->
+        <scene sceneID="RVg-40-H6M">
+            <objects>
+                <viewController storyboardIdentifier="VoiceInputViewController" id="4dy-6h-lQG" customClass="VoiceInputViewController" customModule="Scout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hxa-6h-Jk5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape" translatesAutoresizingMaskIntoConstraints="NO" id="P1m-Oy-URD">
+                                <rect key="frame" x="84.5" y="243.5" width="206" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="dUK-QQ-Zze"/>
+                                    <constraint firstAttribute="width" constant="206" id="p38-MP-Aka"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRJ-BC-iYx">
+                                <rect key="frame" x="10" y="40" width="355" height="203.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLl-WU-6Lh">
+                                <rect key="frame" x="10" y="547" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="HbB-EO-VDk"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="aob-kq-pYl"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="mGj-Bz-dKT"/>
+                                    <constraint firstAttribute="height" constant="100" id="zSC-0s-PCG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="microButtonTapped:" destination="4dy-6h-lQG" eventType="touchUpInside" id="1Vs-2Y-lUC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="P1m-Oy-URD" firstAttribute="top" secondItem="dRJ-BC-iYx" secondAttribute="bottom" id="4oL-JA-c4g"/>
+                            <constraint firstItem="vcL-Bw-2zj" firstAttribute="trailing" secondItem="dRJ-BC-iYx" secondAttribute="trailing" constant="10" id="FpX-gV-WhH"/>
+                            <constraint firstItem="P1m-Oy-URD" firstAttribute="centerX" secondItem="vcL-Bw-2zj" secondAttribute="centerX" id="HcQ-b7-NFy"/>
+                            <constraint firstItem="dRJ-BC-iYx" firstAttribute="top" secondItem="vcL-Bw-2zj" secondAttribute="top" constant="20" id="aSL-aB-dxd"/>
+                            <constraint firstItem="kLl-WU-6Lh" firstAttribute="leading" secondItem="vcL-Bw-2zj" secondAttribute="leading" constant="10" id="hOP-jf-WH3"/>
+                            <constraint firstItem="dRJ-BC-iYx" firstAttribute="leading" secondItem="vcL-Bw-2zj" secondAttribute="leading" constant="10" id="mI6-f8-ofb"/>
+                            <constraint firstItem="vcL-Bw-2zj" firstAttribute="bottom" secondItem="kLl-WU-6Lh" secondAttribute="bottom" constant="20" id="qAU-RN-q94"/>
+                            <constraint firstItem="P1m-Oy-URD" firstAttribute="centerY" secondItem="vcL-Bw-2zj" secondAttribute="centerY" id="vZC-B4-Yz9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vcL-Bw-2zj"/>
+                    </view>
+                    <connections>
+                        <outlet property="console" destination="dRJ-BC-iYx" id="jnA-Yl-UmK"/>
+                        <outlet property="micro" destination="kLl-WU-6Lh" id="vmN-vL-7DL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhJ-gh-oml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109.59999999999999" y="71.514242878560722"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="shape" width="207" height="200"/>
+    </resources>
+</document>

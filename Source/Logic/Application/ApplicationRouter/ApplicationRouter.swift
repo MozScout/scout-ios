@@ -13,6 +13,7 @@ class ApplicationRouter: NSObject {
     fileprivate var navigationController: UINavigationController!
     fileprivate var mainRouter: MainRoutingProtocol
     fileprivate var authRouter: AuthRoutingProtocol
+    fileprivate var voiceInputRouter: VoiceInputRoutingProtocol
     
     required init(with applicationAssembly: ApplicationAssemblyProtocol) {
 
@@ -21,6 +22,7 @@ class ApplicationRouter: NSObject {
         // Routers
         self.mainRouter = applicationAssembly.assemblyMainRouter()
         self.authRouter = applicationAssembly.assemblyAuthRouter()
+        self.voiceInputRouter = applicationAssembly.assemblyVoiceInputRouter()
         super.init()
     }
 }
@@ -61,21 +63,22 @@ private extension ApplicationRouter {
         self.showAuthStory(animated: true)
     }
 
-    func showMainStory(animated: Bool, completion: VoidBlock? = nil) {
+    func showMainStory(viewController: UIViewController, animated: Bool, completion: VoidBlock? = nil) {
         
-        self.mainRouter.showMainUIInterface(fromViewController: self.navigationController, animated: false)
+        self.mainRouter.showMainUIInterface(fromViewController: viewController, animated: false)
         self.mainRouter.showMainUITab(tab: .myList, animated: false)
-        if let requiredCompletion = completion { requiredCompletion() }
+        self.mainRouter.onMicrophoneButtonTap = { [] in
+            self.voiceInputRouter.show(from: self.navigationController, animated: true)
+            if let requiredCompletion = completion { requiredCompletion() }
+        }
     }
     
     func showAuthStory(animated: Bool, completion: VoidBlock? = nil) {
         
         self.authRouter.show(from: self.navigationController, animated: true)
         if let requiredCompletion = completion { requiredCompletion() }
-        self.authRouter.onSignInTap = { [self, mainRouter] controller in
-            mainRouter.showMainUIInterface(fromViewController: controller, animated: true)
-            mainRouter.showMainUITab(tab: .myList, animated: false)
-            if let requiredCompletion = completion { requiredCompletion() }
+        self.authRouter.onSignInTap = { [] controller in
+            self.showMainStory(viewController: controller, animated: true)
         }
     }
 }

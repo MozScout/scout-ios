@@ -13,7 +13,7 @@ class MainUIRouter: NSObject {
     fileprivate var tabbar: MainTabBarViewController!
     fileprivate let assembly: MainAssemblyProtocol
     fileprivate var selectedTab: MainTab = .myList
-    
+    var onMicrophoneButtonTap: (() -> Void)?
     // Routers
     fileprivate let myListRouter: MyListRoutingProtocol
     fileprivate var helpRouter: HelpRoutingProtocol
@@ -166,7 +166,7 @@ fileprivate extension MainUIRouter {
 extension MainUIRouter: MainTabBarViewControllerDelegate {
     
     func mainTabBarViewController(viewController: MainTabBarViewController, didTouchMicrophoneButton button: UIButton) {
-        
+        self.onMicrophoneButtonTap!()
         print("Did touch Microphone Button")
     }
 }

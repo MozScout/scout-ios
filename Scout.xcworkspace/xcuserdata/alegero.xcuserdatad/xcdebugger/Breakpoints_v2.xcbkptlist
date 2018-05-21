@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Source/Logic/Network/Client/Auth/ScoutHTTPClient+Auth.swift"
-            timestampString = "548414071.200397"
+            timestampString = "548493381.301748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
             landmarkName = "createUser(withUserName:email:password:successBlock:failureBlock:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Source/Logic/Network/Client/ScoutVoiceInput/ScoutHTTPClient+ScoutVoiceInput.swift"
+            timestampString = "548582671.652527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "getAudioFileURL(withCmd:userid:searchTerms:successBlock:failureBlock:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

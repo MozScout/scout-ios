@@ -20,6 +20,7 @@ class ApplicationAssembly {
     fileprivate lazy var networkClient: HTTPClientProtocol = self.createNetworkClient()
     fileprivate lazy var networkManager: SessionManager = self.createSessionManager()
     fileprivate lazy var keychainService: KeychainServiceProtocol = self.createKeychainService()
+    fileprivate lazy var voiceInputRouter: VoiceInputRoutingProtocol = self.createVoiceInputRouter()
 
     // MARK: Init
     required init(with configuration: AppConfiguration) {
@@ -36,6 +37,7 @@ extension ApplicationAssembly: ApplicationAssemblyProtocol {
     func assemblyMyListRouter() -> MyListRoutingProtocol { return self.myListRouter }
     func assemblyHelpRouter() -> HelpRoutingProtocol { return self.helpRouter }
     func assemblySettingsRouter() -> SettingsRoutingProtocol { return self.settingsRouter }
+    func assemblyVoiceInputRouter() -> VoiceInputRoutingProtocol { return self.voiceInputRouter }
     
     func assemblyNetworkClient() -> HTTPClientProtocol { return self.networkClient }
     func assemblyKeychainService() -> KeychainServiceProtocol { return self.keychainService }
@@ -90,6 +92,12 @@ fileprivate extension ApplicationAssembly {
         
         let settingsAssembly = SettingsAssembly(withAssembly: self)
         return SettingsRouter(with: settingsAssembly)
+    }
+    
+    func createVoiceInputRouter() -> VoiceInputRoutingProtocol {
+        
+        let voiceInputAssembly = VoiceInputAssemly(withAssembly: self)
+        return VoiceInputRouter(with: voiceInputAssembly)
     }
     
     // MARK: Services

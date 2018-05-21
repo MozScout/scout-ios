@@ -16,7 +16,7 @@ enum MainTab: Int {
 }
 
 protocol MainRoutingProtocol {
-    
+    var onMicrophoneButtonTap: (() -> Void)? { get set }
     // MARK: Routing
     func showMainUIInterface(fromViewController viewController: UIViewController, animated: Bool)
     func showMainUITab(tab: MainTab, animated: Bool)

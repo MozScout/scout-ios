@@ -13,4 +13,5 @@ protocol NetworkRequestBuilderProtocol {
     // MARK: Auth
     func buildPostRegistrationRequest(withUserName userName: String, email: String, password: String) -> URLRequest?
     func buildPostScoutTitlesRequest(withCmd cmd: String, userid: String) -> URLRequest?
+    func buildPostScoutVoiceInputRequest(withCmd cmd: String, userid: String, searchTerms: String) -> URLRequest?
 }

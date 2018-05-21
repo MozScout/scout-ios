@@ -51,4 +51,8 @@ class NetworkMapper: NetworkMappingProtocol {
         return scoutArticlesArray
     }
     
+    func scoutAudioFileURL(fromResource resource: JSON) -> String {
+       
+        return resource["url"].string!
+    }
 }
