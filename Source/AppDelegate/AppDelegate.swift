@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return result
     }
     
-    func application(_ application: UIApplication, open url: URL,
-                     sourceApplication: String?, annotation: Any) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         var mainRouter = self.applicationAssembly.assemblyMainRouter()
         mainRouter.userID = url.lastPathComponent
         
