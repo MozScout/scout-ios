@@ -35,6 +35,11 @@ extension ApplicationRouter: ApplicationRouterProtocol {
         
         self.showLogin(from: window)
     }
+    
+    func showMain(from window: UIWindow) {
+        
+        self.showMainScreen(from: window)
+    }
 }
 
 // MARK: -
@@ -59,11 +64,21 @@ private extension ApplicationRouter {
         self.navigationController = navVC
         window.makeKeyAndVisible()
 
-        //self.showMainStory(animated: true)
         self.showAuthStory(animated: true)
     }
+    
+    func showMainScreen(from window: UIWindow) {
+        
+        let navVC = UINavigationController()
+        navVC.isNavigationBarHidden = true
+        window.rootViewController = navVC
+        self.navigationController = navVC
+        window.makeKeyAndVisible()
+        
+        self.showMainStory(viewController: self.navigationController, animated: true)
+    }
 
-    func showMainStory(viewController: UIViewController, animated: Bool, completion: VoidBlock? = nil) {
+    func showMainStory(viewController: UINavigationController, animated: Bool, completion: VoidBlock? = nil) {
         
         self.mainRouter.showMainUIInterface(fromViewController: viewController, animated: false)
         self.mainRouter.showMainUITab(tab: .myList, animated: false)
@@ -77,8 +92,5 @@ private extension ApplicationRouter {
         
         self.authRouter.show(from: self.navigationController, animated: true)
         if let requiredCompletion = completion { requiredCompletion() }
-        self.authRouter.onSignInTap = { [] controller in
-            self.showMainStory(viewController: controller, animated: true)
         }
-    }
 }

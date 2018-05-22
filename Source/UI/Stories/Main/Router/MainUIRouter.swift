@@ -14,6 +14,7 @@ class MainUIRouter: NSObject {
     fileprivate let assembly: MainAssemblyProtocol
     fileprivate var selectedTab: MainTab = .myList
     var onMicrophoneButtonTap: (() -> Void)?
+    var userID: String = ""
     // Routers
     fileprivate let myListRouter: MyListRoutingProtocol
     fileprivate var helpRouter: HelpRoutingProtocol
@@ -32,7 +33,7 @@ class MainUIRouter: NSObject {
 
 extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
     
-    func showMainUIInterface(fromViewController viewController: UIViewController, animated: Bool) {
+    func showMainUIInterface(fromViewController viewController: UINavigationController, animated: Bool) {
         
         let tabs: [MainTab] = [.myList, .help, .settings, .audioAction]
         var tabViewControllers: [UIViewController] = []
@@ -49,13 +50,9 @@ extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
         
         self.tabbar = tabbarVC
         
-        if let navigationController = viewController.navigationController {
-            navigationController.viewControllers = [tabbarVC]
-            parentNavigationController = navigationController
-        }
-        else {
-            print("Unsupported navigation")
-        }
+        viewController.viewControllers = [tabbarVC]
+        parentNavigationController = viewController
+        
     }
     
     func showMainUITab(tab: MainTab, animated:Bool) {
@@ -76,7 +73,7 @@ fileprivate extension MainUIRouter {
         
         switch tab {
         case .myList:
-            myListRouter.show(from: navigationController, animated: animated)
+            myListRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
         case .help:
             helpRouter.show(from: navigationController, animated: animated)
         case .settings:

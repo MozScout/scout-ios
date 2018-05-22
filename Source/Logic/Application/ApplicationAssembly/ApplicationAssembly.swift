@@ -10,7 +10,6 @@ class ApplicationAssembly {
     
     // MARK: Properties
     let configuration: AppConfiguration
-    
     fileprivate lazy var authRouter: AuthRoutingProtocol = self.createAuthRouter()
     fileprivate lazy var mainRouter: MainRoutingProtocol = self.createMainRouter()
     fileprivate lazy var myListRouter: MyListRoutingProtocol = self.createMyListRouter()

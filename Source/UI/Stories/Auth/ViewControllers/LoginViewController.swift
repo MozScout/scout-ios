@@ -34,14 +34,20 @@ class LoginViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     @IBAction func signInButtonTapped(_ sender: Any) {
-        safariVC = SFSafariViewController(url: URL(string:"http://moz-scout.herokuapp.com/api/auth/mobile/login")!)
-        safariVC?.delegate = self
-        self.present(safariVC!, animated: true, completion: nil)
+        guard let url = URL(string: "http://moz-scout.herokuapp.com/api/auth/mobile/login") else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    /*func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         guard let requiredDelegate = safariDoneButtonDelegate else { return }
         requiredDelegate.safariViewControllerDidFinish(viewController: self)
         dismiss(animated: true)
-    }
+    }*/
 }

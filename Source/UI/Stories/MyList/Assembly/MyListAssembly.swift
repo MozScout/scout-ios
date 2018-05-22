@@ -14,7 +14,6 @@ class MyListAssembly: MyListAssemblyProtocol {
     required init(withAssembly assembly: ApplicationAssemblyProtocol) {
         
         self.applicationAssembly = assembly
-        
     }
     
     func assemblyPlayMyListViewController() -> PlayMyListViewController {

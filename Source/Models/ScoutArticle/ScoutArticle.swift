@@ -15,8 +15,8 @@ func == (lhs: ScoutArticle, rhs: ScoutArticle) -> Bool {
     let articleLengthsAreEqual = lhs.lengthMinutes == rhs.lengthMinutes
     let articleSortIDAreEqual = lhs.sort_id == rhs.sort_id
     let resolvedURLsAreEqual = lhs.resolved_url == rhs.resolved_url
-    
-    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleSortIDAreEqual && resolvedURLsAreEqual
+    let articleImageURL = lhs.articleImageURL == rhs.articleImageURL
+    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleSortIDAreEqual && resolvedURLsAreEqual && articleImageURL
 }
 
 class ScoutArticle: NSObject, NSCoding {
@@ -27,13 +27,15 @@ class ScoutArticle: NSObject, NSCoding {
     var lengthMinutes: Int
     var sort_id: Int
     var resolved_url: URL?
+    var articleImageURL : URL?
     
     init(withArticleID item_id: String,
-                    title: String,
-                   author: String,
-                   lengthMinutes: Int,
-                 sort_id: Int,
-                     resolved_url: URL?) {
+                        title: String,
+                        author: String,
+                        lengthMinutes: Int,
+                        sort_id: Int,
+                        resolved_url: URL?,
+                        articleImageURL: URL?) {
         
         self.item_id = item_id
         self.title = title
@@ -41,6 +43,7 @@ class ScoutArticle: NSObject, NSCoding {
         self.lengthMinutes = lengthMinutes
         self.sort_id = sort_id
         self.resolved_url = resolved_url
+        self.articleImageURL = articleImageURL
     }
     
     // MARK: NSCoding
@@ -51,13 +54,13 @@ class ScoutArticle: NSObject, NSCoding {
               let title = objectDictionary["title"] as? String,
               let author = objectDictionary["author"] as? String,
               let lengthMinutes = objectDictionary["lengthMinutes"] as? Int,
-            let sort_id = objectDictionary["sort_id"] as? Int
+              let sort_id = objectDictionary["sort_id"] as? Int
             else { return nil }
         
-        /*var articleImageURL: URL? = nil
-        if let requiredArticleImageURLString = objectDictionary["articleImageURL"] as? String {
+        var articleImageURL: URL? = nil
+        if let requiredArticleImageURLString = objectDictionary["imageURL"] as? String {
             articleImageURL = URL(string: requiredArticleImageURLString)
-        }*/
+        }
         
         var resolvedURL: URL? = nil
         if let requiredResolvedURLString = objectDictionary["resolved_url"] as? String {
@@ -69,7 +72,8 @@ class ScoutArticle: NSObject, NSCoding {
                   author: author,
                   lengthMinutes: lengthMinutes,
                   sort_id: sort_id,
-                  resolved_url: resolvedURL)
+                  resolved_url: resolvedURL,
+                  articleImageURL: articleImageURL)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -79,10 +83,10 @@ class ScoutArticle: NSObject, NSCoding {
                                                              "title"   : title,
                                                              "author" : author,
                                                              "lengthMinutes" : lengthMinutes,
-                                                             "sort_id" : sort_id
+                                                             "sort_id" : sort_id,
                                                          ])
         
-        /*if let requiredArticleImageURLString =  articleImageURL?.absoluteString { dictionary["articleImageURL"] = requiredArticleImageURLString }*/
+        if let requiredArticleImageURLString =  articleImageURL?.absoluteString { dictionary["imageURL"] = requiredArticleImageURLString }
         if let requiredResolvedURLString =  resolved_url?.absoluteString { dictionary["resolved_url"] = requiredResolvedURLString }
         
         aCoder.encode(dictionary, forKey: NSStringFromClass(ScoutArticle.self))

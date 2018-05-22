@@ -21,6 +21,7 @@ class PlayMyListViewController: UIViewController {
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate let cellRowReuseId = "cellrow"
     var scoutClient : ScoutHTTPClient? = nil
+    var userID : String = ""
     fileprivate var scoutTitles : [ScoutArticle]? = nil
     
     override func viewDidLoad() {
@@ -48,7 +49,7 @@ class PlayMyListViewController: UIViewController {
     }
     
     fileprivate func getScoutTitles() {
-        scoutClient?.getScoutTitles(withCmd: "ScoutTitles", userid: "scout-mobile@mozilla.com", successBlock: { (titles) in
+        scoutClient?.getScoutTitles(withCmd: "ScoutTitles", userid: userID, successBlock: { (titles) in
             self.scoutTitles = titles
             DispatchQueue.main.async {
                 self.tableView.reloadData()

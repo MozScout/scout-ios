@@ -31,5 +31,14 @@ class PlayMyListTableViewCell: UITableViewCell {
         resourceName.text = model.author
         title.text = model.title
         lengthMinutes.text = String(format: "%@ mins", String(describing: model.lengthMinutes))
+        if model.articleImageURL != URL(string: "") {
+            
+            if let data = try? Data(contentsOf: model.articleImageURL!)
+            {
+                let image: UIImage = UIImage(data: data)!
+                self.mainImage.image = image
+            }
+        }
+        
     }
 }

@@ -11,7 +11,7 @@ class MyListRouter {
     
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
-
+    
     required init(with assembly: MyListAssemblyProtocol) {
         
         self.assembly = assembly
@@ -20,10 +20,10 @@ class MyListRouter {
 
 extension MyListRouter: MyListRoutingProtocol {
     
-    func show(from viewController: UIViewController, animated: Bool) {
+    func show(from viewController: UIViewController, animated: Bool, withUserID: String) {
         
         let listVC = assembly.assemblyPlayMyListViewController()
-        
+        listVC.userID = withUserID
         self.showViewController(viewController: listVC, fromViewController: viewController, animated: animated)
     }
     

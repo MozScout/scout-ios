@@ -13,61 +13,45 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 16
     fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
     fileprivate var microphoneButton: GradientButton!
+    fileprivate var detectionTimer: Timer?
+    fileprivate var spinner:UIActivityIndicatorView?
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))!
-    
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     var scoutClient : ScoutHTTPClient? = nil
     
     @IBOutlet weak var console: UITextView!
-    @IBOutlet weak var micro: UIButton!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupMicButton()
-        
-        microphoneButton.isEnabled = false
-        
         speechRecognizer.delegate = self
-        
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in
-            
-            var isButtonEnabled = false
-            
-            switch authStatus {
-            case .authorized:
-                isButtonEnabled = true
-                
-            case .denied:
-                isButtonEnabled = false
-                print("User denied access to speech recognition")
-                
-            case .restricted:
-                isButtonEnabled = false
-                print("Speech recognition restricted on this device")
-                
-            case .notDetermined:
-                isButtonEnabled = false
-                print("Speech recognition not yet authorized")
-            }
-            
-            OperationQueue.main.addOperation() {
-                self.microphoneButton.isEnabled = isButtonEnabled
-            }
-        }
+        spinner = self.addSpinner()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startRecording()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    fileprivate func getURL() {
-        scoutClient?.getAudioFileURL(withCmd: "SearchAndPlayArticle", userid: "scout-mobile@mozilla.com", searchTerms: "facts", successBlock: { (link) in
-           
+    
+    fileprivate func getURL(withSearchTerm: String) {
+        showHUD()
+        self.cancelRecording()
+        scoutClient?.getAudioFileURL(withCmd: "SearchAndPlayArticle", userid: "scout-mobile@mozilla.com", searchTerms: withSearchTerm, successBlock: { (link) in
+            if link == "" {
+                self.hideHUD()
+                self.showAlert(errorMessage: "please try again")
+            }
+            else {
+                
+            }
         }, failureBlock: { (failureResponse, error, response) in
             
         })
@@ -90,36 +74,21 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         view.addSubview(microphoneButton)
         
-        // need image for mic button
-        //        microphoneButton.setImage(UIImage(named: ""), for: .normal)
-        //        microphoneButton.setImage(UIImage(named: ""), for: .highlighted)
         microphoneButton.addTarget(self, action: #selector(closeMicrophoneButtonAction(sender:)), for: .touchUpInside)
     }
     
     @objc fileprivate func closeMicrophoneButtonAction(sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    @IBAction func microButtonTapped(_ sender: Any) {
-        if audioEngine.isRunning {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            //micro.isEnabled = false
-            self.cancelRecording()
-            micro.setTitle("Start Recording", for: .normal)
-        } else {
-            startRecording()
-            micro.setTitle("Stop Recording", for: .normal)
-        }
-    }
     
     func startRecording() {
         
-        if recognitionTask != nil {  //1
+        if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
         
-        let audioSession = AVAudioSession.sharedInstance()  //2
+        let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
             try audioSession.setMode(AVAudioSessionModeMeasurement)
@@ -128,34 +97,47 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
             print("audioSession properties weren't set because of an error.")
         }
         
-        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()  //3
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         let inputNode = audioEngine.inputNode
         
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
-        } //5
+        }
         
-        recognitionRequest.shouldReportPartialResults = true  //6
+        recognitionRequest.shouldReportPartialResults = true
         
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in  //7
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
-            var isFinal = false  //8
+            var isFinal = false
             
             if result != nil {
                 
                 self.console.text = result?.bestTranscription.formattedString  //9
                 isFinal = (result?.isFinal)!
+                
+                if let timer = self.detectionTimer, timer.isValid {
+                    if isFinal {
+                        self.console.text = ""
+                        self.detectionTimer?.invalidate()
+                    }
+                } else {
+                    self.detectionTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
+                        if self.recognitionTask != nil {
+                            self.getURL(withSearchTerm: self.console.text)
+                        }
+                        isFinal = true
+                        timer.invalidate()
+                    })
+                }
             }
             
-            if error != nil || isFinal {  //10
+            if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                
-                self.microphoneButton.isEnabled = true
             }
         })
         
@@ -177,18 +159,56 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func cancelRecording() {
-        audioEngine.stop()
-        let node = audioEngine.inputNode
-        node.removeTap(onBus: 0)
-        
-        recognitionTask?.cancel()
+        DispatchQueue.main.async {
+            self.recognitionTask?.cancel()
+            self.audioEngine.stop()
+            let node = self.audioEngine.inputNode
+            node.removeTap(onBus: 0)
+        }
     }
     
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        if available {
-            microphoneButton.isEnabled = true
-        } else {
-            microphoneButton.isEnabled = false
+    private func showAlert(errorMessage: String) -> Void {
+        let alert = UIAlertController(title: "No records found", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                self.startRecording()
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+            }}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addSpinner() -> UIActivityIndicatorView {
+        // Adding spinner over launch screen
+        let spinner = UIActivityIndicatorView.init()
+        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        spinner.color = UIColor.black
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        self.view.addSubview(spinner)
+        
+        let xConstraint = NSLayoutConstraint(item: spinner, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
+        let yConstraint = NSLayoutConstraint(item: spinner, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
+        
+        NSLayoutConstraint.activate([xConstraint, yConstraint])
+        
+        self.view.bringSubview(toFront: spinner)
+        
+        return spinner
+    }
+    
+    func showHUD() {
+        spinner?.startAnimating()
+    }
+    
+    func hideHUD() {
+        DispatchQueue.main.async {
+            self.spinner?.stopAnimating()
         }
     }
 }
