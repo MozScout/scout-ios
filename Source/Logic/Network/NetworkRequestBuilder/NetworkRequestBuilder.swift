@@ -61,7 +61,7 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
             "searchTerms" : searchTerms
         ]
         
-        let headres = [headerTokenKey : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMyNzY3MGRlLThjODItNDBjZS05NWYzLWUwMzgzZmI4OGY5MSIsImlhdCI6MTUyNjM5NzIzNn0.QZa12Nq2hTEAJaqZMraWcGHUtVaN09m-Wk7S-KVohBI"]
+        let headres = [headerTokenKey : token]
         let URLString = String(format: "http://moz-scout.herokuapp.com/command/intent") // need set this value in baseURL property, could work with several servers
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
