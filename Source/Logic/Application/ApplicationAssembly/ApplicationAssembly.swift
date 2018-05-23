@@ -15,11 +15,13 @@ class ApplicationAssembly {
     fileprivate lazy var myListRouter: MyListRoutingProtocol = self.createMyListRouter()
     fileprivate lazy var helpRouter: HelpRoutingProtocol = self.createHelpRouter()
     fileprivate lazy var settingsRouter: SettingsRoutingProtocol = self.createSettingsRouter()
-
+    fileprivate lazy var voiceInputRouter: VoiceInputRoutingProtocol = self.createVoiceInputRouter()
+    fileprivate lazy var playerRouter: PlayerRoutingProtocol = self.createPlayerRouter()
+    
     fileprivate lazy var networkClient: HTTPClientProtocol = self.createNetworkClient()
     fileprivate lazy var networkManager: SessionManager = self.createSessionManager()
     fileprivate lazy var keychainService: KeychainServiceProtocol = self.createKeychainService()
-    fileprivate lazy var voiceInputRouter: VoiceInputRoutingProtocol = self.createVoiceInputRouter()
+    
 
     // MARK: Init
     required init(with configuration: AppConfiguration) {
@@ -37,6 +39,7 @@ extension ApplicationAssembly: ApplicationAssemblyProtocol {
     func assemblyHelpRouter() -> HelpRoutingProtocol { return self.helpRouter }
     func assemblySettingsRouter() -> SettingsRoutingProtocol { return self.settingsRouter }
     func assemblyVoiceInputRouter() -> VoiceInputRoutingProtocol { return self.voiceInputRouter }
+    func assemblyPlayerRouter() -> PlayerRoutingProtocol { return self.playerRouter }
     
     func assemblyNetworkClient() -> HTTPClientProtocol { return self.networkClient }
     func assemblyKeychainService() -> KeychainServiceProtocol { return self.keychainService }
@@ -97,6 +100,12 @@ fileprivate extension ApplicationAssembly {
         
         let voiceInputAssembly = VoiceInputAssemly(withAssembly: self)
         return VoiceInputRouter(with: voiceInputAssembly)
+    }
+    
+    func createPlayerRouter() -> PlayerRoutingProtocol {
+        
+        let voiceInputAssembly = PlayerAssemly(withAssembly: self)
+        return PlayerRouter(with: voiceInputAssembly)
     }
     
     // MARK: Services

@@ -8,8 +8,14 @@
 import UIKit
 import Speech
 
-class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
+protocol VoiceInputDelegate: class {
+    func openPlayer(withLink: String)
+}
 
+class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
+    
+    weak var playerDelegate: VoiceInputDelegate?
+    
     fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 16
     fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
     fileprivate var microphoneButton: GradientButton!
@@ -50,7 +56,10 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.showAlert(errorMessage: "please try again")
             }
             else {
-                
+                DispatchQueue.main.async {
+                    guard let requiredDelegate = self.playerDelegate else { return }
+                    requiredDelegate.openPlayer(withLink: link)
+                }
             }
         }, failureBlock: { (failureResponse, error, response) in
             
@@ -203,7 +212,9 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func showHUD() {
-        spinner?.startAnimating()
+        DispatchQueue.main.async {
+            self.spinner?.startAnimating()
+        }
     }
     
     func hideHUD() {

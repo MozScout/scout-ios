@@ -51,6 +51,12 @@
 		93A3114220B1400B0049DB67 /* VoiceInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114120B1400B0049DB67 /* VoiceInputViewController.swift */; };
 		93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114420B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift */; };
 		93A3114720B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114620B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift */; };
+		93FB827420B54B1B00A39A5C /* PlayerAssemly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827220B54B1B00A39A5C /* PlayerAssemly.swift */; };
+		93FB827520B54B1B00A39A5C /* PlayerAssemlyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827320B54B1B00A39A5C /* PlayerAssemlyProtocol.swift */; };
+		93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827620B54BA100A39A5C /* PlayerViewController.swift */; };
+		93FB827920B54BB100A39A5C /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FB827820B54BB100A39A5C /* Player.storyboard */; };
+		93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827A20B54BDF00A39A5C /* PlayerRoutingProtocol.swift */; };
+		93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */; };
 		F4511799208899AD00A159B5 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4511798208899AD00A159B5 /* SpeechService.swift */; };
 		F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F451179A20891AA800A159B5 /* SpeechServiceProtocol.swift */; };
 		F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CDE20849B370055585C /* MainAssemblyProtocol.swift */; };
@@ -126,6 +132,12 @@
 		93A3114120B1400B0049DB67 /* VoiceInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputViewController.swift; sourceTree = "<group>"; };
 		93A3114420B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutVoiceInputHTTPClientProtocol.swift; sourceTree = "<group>"; };
 		93A3114620B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScoutHTTPClient+ScoutVoiceInput.swift"; sourceTree = "<group>"; };
+		93FB827220B54B1B00A39A5C /* PlayerAssemly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssemly.swift; sourceTree = "<group>"; };
+		93FB827320B54B1B00A39A5C /* PlayerAssemlyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssemlyProtocol.swift; sourceTree = "<group>"; };
+		93FB827620B54BA100A39A5C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		93FB827820B54BB100A39A5C /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		93FB827A20B54BDF00A39A5C /* PlayerRoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRoutingProtocol.swift; sourceTree = "<group>"; };
+		93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRouter.swift; sourceTree = "<group>"; };
 		B08A7F94017D00A1DB1E7D1B /* Pods-Scout.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.appstore.xcconfig"; sourceTree = "<group>"; };
 		E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4511798208899AD00A159B5 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
@@ -515,6 +527,51 @@
 			path = ScoutVoiceInput;
 			sourceTree = "<group>";
 		};
+		93FB826D20B54A7400A39A5C /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				93FB826E20B54A8600A39A5C /* Assembly */,
+				93FB826F20B54A9000A39A5C /* Router */,
+				93FB827020B54A9800A39A5C /* Storyboard */,
+				93FB827120B54AA000A39A5C /* ViewController */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		93FB826E20B54A8600A39A5C /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				93FB827220B54B1B00A39A5C /* PlayerAssemly.swift */,
+				93FB827320B54B1B00A39A5C /* PlayerAssemlyProtocol.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		93FB826F20B54A9000A39A5C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */,
+				93FB827A20B54BDF00A39A5C /* PlayerRoutingProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		93FB827020B54A9800A39A5C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				93FB827820B54BB100A39A5C /* Player.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		93FB827120B54AA000A39A5C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				93FB827620B54BA100A39A5C /* PlayerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CD9158217DD3454E7A83BCF1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,14 +822,15 @@
 		F482CD502080D969007D0C14 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				93A3113220B13DD70049DB67 /* VoiceInput */,
 				5622AB3420A6CE230074A4BC /* Auth */,
-				F47B7CE22084A3AD0055585C /* Profile */,
+				5637D29C20A3257800112F1F /* Help */,
 				F482CD512080D969007D0C14 /* Launch */,
 				F482CD532080D969007D0C14 /* Main */,
 				5637D2A620A3257800112F1F /* MyList */,
-				5637D29C20A3257800112F1F /* Help */,
+				93FB826D20B54A7400A39A5C /* Player */,
+				F47B7CE22084A3AD0055585C /* Profile */,
 				5637D29220A3257800112F1F /* Settings */,
+				93A3113220B13DD70049DB67 /* VoiceInput */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -906,6 +964,7 @@
 				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
 				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
 				5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */,
+				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
 				9333B81D20AC6D070055C5B1 /* PlayMyListTableViewCell.xib in Resources */,
 			);
@@ -999,6 +1058,7 @@
 				F47B7CF12084D7DC0055585C /* ScoutHTTPClient.swift in Sources */,
 				F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */,
 				9333B81620AC2AD50055C5B1 /* GradientView.swift in Sources */,
+				93FB827520B54B1B00A39A5C /* PlayerAssemlyProtocol.swift in Sources */,
 				F47B7CFB2084F6700055585C /* KeychainService.swift in Sources */,
 				5637D28E20A2FD2D00112F1F /* Design.swift in Sources */,
 				5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */,
@@ -1015,6 +1075,7 @@
 				5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */,
 				5622AB4120A6CE230074A4BC /* AuthRoutingProtocol.swift in Sources */,
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
+				93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */,
 				5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */,
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
 				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,
@@ -1036,7 +1097,10 @@
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
 				F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */,
+				93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */,
 				5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */,
+				93FB827420B54B1B00A39A5C /* PlayerAssemly.swift in Sources */,
+				93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */,
 				F47B7CF62084E8890055585C /* AuthManager.swift in Sources */,
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,

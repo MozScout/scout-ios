@@ -87,35 +87,36 @@ extension PlayMyListViewController: UITableViewDataSource {
 extension PlayMyListViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        DispatchQueue.main.async {
+            let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
         
-        let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
+            let absoluteTop: CGFloat = 0
+            let absoluteBottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height;
         
-        let absoluteTop: CGFloat = 0
-        let absoluteBottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height;
+            let isScrollingDown = scrollDiff > 0 && scrollView.contentOffset.y > absoluteTop
+            let isScrollingUp = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom
         
-        let isScrollingDown = scrollDiff > 0 && scrollView.contentOffset.y > absoluteTop
-        let isScrollingUp = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom
-        
-        if canAnimateHeader(scrollView) {
+            if self.canAnimateHeader(scrollView) {
             
-            // Calculate new header height
-            var newHeight = self.headerHeightConstraint.constant
+                // Calculate new header height
+                var newHeight = self.headerHeightConstraint.constant
             
-            if isScrollingDown {
-                newHeight = max(self.minHeaderHeight, self.headerHeightConstraint.constant - abs(scrollDiff))
-            }
-            else if isScrollingUp {
-                newHeight = min(self.maxHeaderHeight, self.headerHeightConstraint.constant + abs(scrollDiff))
-            }
+                if isScrollingDown {
+                    newHeight = max(self.minHeaderHeight, self.headerHeightConstraint.constant - abs(scrollDiff))
+                }
+                else if isScrollingUp {
+                    newHeight = min(self.maxHeaderHeight, self.headerHeightConstraint.constant + abs(scrollDiff))
+                }
             
-            // Header needs to animate
-            if newHeight != self.headerHeightConstraint.constant {
-                self.headerHeightConstraint.constant = newHeight
-                self.updateHeader()
-                self.setScrollPosition(self.previousScrollOffset)
-            }
+                // Header needs to animate
+                if newHeight != self.headerHeightConstraint.constant {
+                    self.headerHeightConstraint.constant = newHeight
+                    self.updateHeader()
+                        self.setScrollPosition(self.previousScrollOffset)
+                }
             
-            self.previousScrollOffset = scrollView.contentOffset.y
+                self.previousScrollOffset = scrollView.contentOffset.y
+         }
         }
     }
     

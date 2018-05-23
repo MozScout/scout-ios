@@ -10,8 +10,7 @@ target 'Scout' do
   pod 'AsyncSwift', '~> 2.0.4'
   pod 'SwiftyJSON', '~> 4.0.0'
   pod 'KeychainAccess', '~> 3.1.1'
-  pod 'PortableAlertView'
-  
+
   # UI components
   pod 'HexColors'
   

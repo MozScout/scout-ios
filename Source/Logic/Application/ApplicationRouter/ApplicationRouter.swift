@@ -14,6 +14,7 @@ class ApplicationRouter: NSObject {
     fileprivate var mainRouter: MainRoutingProtocol
     fileprivate var authRouter: AuthRoutingProtocol
     fileprivate var voiceInputRouter: VoiceInputRoutingProtocol
+    fileprivate var playerRouter: PlayerRoutingProtocol
     
     required init(with applicationAssembly: ApplicationAssemblyProtocol) {
 
@@ -23,6 +24,7 @@ class ApplicationRouter: NSObject {
         self.mainRouter = applicationAssembly.assemblyMainRouter()
         self.authRouter = applicationAssembly.assemblyAuthRouter()
         self.voiceInputRouter = applicationAssembly.assemblyVoiceInputRouter()
+        self.playerRouter = applicationAssembly.assemblyPlayerRouter()
         super.init()
     }
 }
@@ -84,6 +86,9 @@ private extension ApplicationRouter {
         self.mainRouter.showMainUITab(tab: .myList, animated: false)
         self.mainRouter.onMicrophoneButtonTap = { [] in
             self.voiceInputRouter.show(from: self.navigationController, animated: true)
+            self.voiceInputRouter.linkIsFound = { [] link in
+                self.playerRouter.show(from: self.navigationController, animated: true, link: link)
+            }
             if let requiredCompletion = completion { requiredCompletion() }
         }
     }

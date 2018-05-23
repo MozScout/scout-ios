@@ -16,6 +16,7 @@ protocol ApplicationAssemblyProtocol {
     func assemblySettingsRouter() -> SettingsRoutingProtocol
     func assemblyAuthRouter() -> AuthRoutingProtocol
     func assemblyVoiceInputRouter() -> VoiceInputRoutingProtocol
+    func assemblyPlayerRouter() -> PlayerRoutingProtocol
     
     // MARK: Services
     func assemblyNetworkClient() -> HTTPClientProtocol

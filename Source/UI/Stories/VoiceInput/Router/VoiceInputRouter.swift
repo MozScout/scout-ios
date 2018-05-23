@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class VoiceInputRouter {
+    var linkIsFound: ((String) -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: VoiceInputAssemlyProtocol
     
@@ -23,6 +24,7 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol{
     func show(from viewController: UIViewController, animated: Bool) {
         
         let voiceInputVC = assembly.assemblyVoiceInputViewController()
+        voiceInputVC.playerDelegate = self
         self.showViewController(viewController: voiceInputVC, fromViewController: viewController, animated: animated)
     }
     
@@ -45,5 +47,12 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol{
                 print("Unsupported navigation")
             }
         }
+    }
+}
+
+extension VoiceInputRouter: VoiceInputDelegate {
+    
+    func openPlayer(withLink: String) {
+        self.linkIsFound!(withLink)
     }
 }
