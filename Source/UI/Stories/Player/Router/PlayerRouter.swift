@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class PlayerRouter {
+    
+    var onBackButtonTap: (() -> Void)?
+    var onMicrophoneButtonTap: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PlayerAssemlyProtocol
     
@@ -20,10 +23,12 @@ class PlayerRouter {
 
 extension PlayerRouter: PlayerRoutingProtocol{
 
-    func show(from viewController: UIViewController, animated: Bool, link: String) {
+    func show(from viewController: UIViewController, animated: Bool, fullLink: String) {
         
         let playerVC = assembly.assemblyPlayerViewController()
-        playerVC.link = link
+        playerVC.fullLink = fullLink
+        playerVC.backButtonDelegate = self
+        playerVC.microphoneButtonDelegate = self
         self.showViewController(viewController: playerVC, fromViewController: viewController, animated: animated)
     }
     
@@ -46,5 +51,16 @@ extension PlayerRouter: PlayerRoutingProtocol{
                 print("Unsupported navigation")
             }
         }
+    }
+}
+
+extension PlayerRouter: PlayerViewControllerDelegate  {
+    
+    func backButtonTapped() {
+        self.onBackButtonTap!()
+    }
+    
+    func microphoneButtonTapped() {
+        self.onMicrophoneButtonTap!()
     }
 }

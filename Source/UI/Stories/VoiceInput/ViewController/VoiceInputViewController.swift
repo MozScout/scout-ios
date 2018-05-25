@@ -27,6 +27,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     var scoutClient : ScoutHTTPClient? = nil
+    var userID : String = ""
     
     @IBOutlet weak var console: UITextView!
  
@@ -50,10 +51,10 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     fileprivate func getURL(withSearchTerm: String) {
         showHUD()
         self.cancelRecording()
-        scoutClient?.getAudioFileURL(withCmd: "SearchAndPlayArticle", userid: "scout-mobile@mozilla.com", searchTerms: withSearchTerm, successBlock: { (link) in
+        scoutClient?.getAudioFileURL(withCmd: "SearchAndPlayArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (link) in
             if link == "" {
                 self.hideHUD()
-                self.showAlert(errorMessage: "please try again")
+                self.showAlert(errorMessage: "Sorry, I couldn't find that.")
             }
             else {
                 DispatchQueue.main.async {
@@ -63,6 +64,24 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
         }, failureBlock: { (failureResponse, error, response) in
             
+        })
+    }
+    
+    fileprivate func getSkimURL(withSearchTerm: String) {
+        showHUD()
+        self.cancelRecording()
+        scoutClient?.getSkimAudioFileURL(withCmd: "SearchAndSummarizeArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (link) in
+            if link == "" {
+                self.hideHUD()
+                self.showAlert(errorMessage: "Sorry, I couldn't find that.")
+            }
+            else {
+                DispatchQueue.main.async {
+                    guard let requiredDelegate = self.playerDelegate else { return }
+                    requiredDelegate.openPlayer(withLink: link)
+                }
+            }
+        }, failureBlock: { (failureResponse, error, response) in
         })
     }
     // MARK: - Private methods
@@ -133,7 +152,17 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                 } else {
                     self.detectionTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
                         if self.recognitionTask != nil {
-                            self.getURL(withSearchTerm: self.console.text)
+                            if self.console.text.range(of: "Skim") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Skim")!)
+                                self.getSkimURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "skim") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "skim")!)
+                                self.getSkimURL(withSearchTerm: self.console.text)
+                            }
+                            else {
+                                self.getURL(withSearchTerm: self.console.text)
+                            }
                         }
                         isFinal = true
                         timer.invalidate()
@@ -177,7 +206,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     private func showAlert(errorMessage: String) -> Void {
-        let alert = UIAlertController(title: "No records found", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:

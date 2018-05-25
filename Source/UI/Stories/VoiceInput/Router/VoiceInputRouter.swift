@@ -21,10 +21,11 @@ class VoiceInputRouter {
 
 extension VoiceInputRouter: VoiceInputRoutingProtocol{
 
-    func show(from viewController: UIViewController, animated: Bool) {
+    func show(from viewController: UIViewController, animated: Bool, userID: String) {
         
         let voiceInputVC = assembly.assemblyVoiceInputViewController()
         voiceInputVC.playerDelegate = self
+        voiceInputVC.userID = userID
         self.showViewController(viewController: voiceInputVC, fromViewController: viewController, animated: animated)
     }
     

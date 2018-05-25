@@ -8,17 +8,34 @@
 import UIKit
 import AVFoundation
 
+protocol PlayerViewControllerDelegate: class {
+    // maybe need send also several button states
+    func backButtonTapped()
+    func microphoneButtonTapped()
+}
+
 class PlayerViewController: UIViewController {
     
+    weak var backButtonDelegate: PlayerViewControllerDelegate?
+    weak var microphoneButtonDelegate: PlayerViewControllerDelegate?
     var scoutClient : ScoutHTTPClient? = nil
-    var link: String? = nil
-    var player = AVPlayer()
+    var fullLink: String? = nil
+    fileprivate var player = AVPlayer()
     fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 16
     fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
     fileprivate var microphoneButton: GradientButton!
     fileprivate let seekDuration: Float64 = 30
+    fileprivate let yourAttributes : [NSAttributedStringKey: Any] = [
+        NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 10),
+        NSAttributedStringKey.foregroundColor : UIColor.black,
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
+    
+    fileprivate var attributedString = NSMutableAttributedString(string:"")
     
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var fullLenghtButton: UIButton!
+    @IBOutlet weak var skimButton: UIButton!
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -54,7 +71,7 @@ class PlayerViewController: UIViewController {
         
         view.addSubview(microphoneButton)
         
-        microphoneButton.addTarget(self, action: #selector(microphoneButtonAction(sender:)), for: .touchUpInside)
+        microphoneButton.addTarget(self, action: #selector(microphoneButtonTapped(sender:)), for: .touchUpInside)
     }
     
     fileprivate func configureView() {
@@ -64,7 +81,12 @@ class PlayerViewController: UIViewController {
         } catch {
             print(error)
         }
-        let urlString = link
+        let urlString = fullLink
+        let attributeString = NSMutableAttributedString(string: "Full Lenght",
+                                                        attributes: yourAttributes)
+        fullLenghtButton.setAttributedTitle(attributeString, for: .normal)
+        
+        
         guard let url = URL.init(string: urlString!)
             else {
                 return
@@ -125,4 +147,22 @@ class PlayerViewController: UIViewController {
         player.pause()
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        
+        guard let requiredDelegate = backButtonDelegate else { return }
+        requiredDelegate.backButtonTapped()
+    }
+    
+    @IBAction func skimButtonTapped(_ sender: Any) {
+        
+    }
+    
+    @objc fileprivate func microphoneButtonTapped(sender: UIButton) {
+        DispatchQueue.main.async {
+            self.pause()
+            self.pauseButton.isSelected = true
+            guard let requiredDelegate = self.microphoneButtonDelegate else { return }
+            requiredDelegate.microphoneButtonTapped()
+        }
+    }
 }

@@ -66,5 +66,32 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
     }
+    
+    func buildPostScoutSkimVoiceInputRequest(withCmd cmd: String, userid: String, searchTerms: String) -> URLRequest? {
+        
+        let parameters = [
+            "cmd" : cmd,
+            "userid" : userid,
+            "searchTerms" : searchTerms
+        ]
+        
+        let headres = [headerTokenKey : token]
+        let URLString = String(format: "http://moz-scout.herokuapp.com/command/intent") // need set this value in baseURL property, could work with several servers
+        
+        return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
+    }
+    
+    func buildPostSkimRequest(userid: String, url: String) -> URLRequest? {
+        
+        let parameters = [
+            "userid" : userid,
+            "url" : url
+        ]
+        
+        let headres = [headerTokenKey : token]
+        let URLString = String(format: "http://moz-scout.herokuapp.com/command/summary") // need set this value in baseURL property, could work with several servers
+        
+        return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
+    }
 }
 

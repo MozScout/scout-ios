@@ -26,5 +26,22 @@ extension ScoutHTTPClient: ScoutVoiceInputHTTPClientProtocol {
                                 
         })
     }
+    
+    func getSkimAudioFileURL(withCmd cmd: String,
+                         userid: String,
+                         searchTerms: String,
+                         successBlock: @escaping ScoutVoiceInputSuccessBlock,
+                         failureBlock: @escaping ScoutVoiceInputFailureBlock) -> HTTPClientConnectionResult {
+        
+        let request = self.requestBuilder.buildPostScoutSkimVoiceInputRequest(withCmd: cmd, userid: userid, searchTerms: searchTerms)
+        
+        return self.execute(request: request,
+                            successBlock: { (JSONObject, customObject, response) in
+                                successBlock (self.mapper.scoutAudioFileURL(fromResource: JSONObject))
+        },
+                            failureBlock:  { (JSONObject, clientError, response) in
+                                
+        })
+    }
 }
 

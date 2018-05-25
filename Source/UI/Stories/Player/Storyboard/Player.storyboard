@@ -19,6 +19,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="YzG-uX-kdY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="4JW-gl-dmX"/>
                                 </constraints>
@@ -63,10 +64,14 @@
                                             <constraint firstAttribute="height" constant="40" id="eHp-BV-jPX"/>
                                             <constraint firstAttribute="width" constant="46" id="imz-up-4gt"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Skim">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="skimButtonTapped:" destination="w9m-Wb-Fbx" eventType="touchUpInside" id="i9y-fv-P4l"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RvB-G2-SYb">
                                         <rect key="frame" x="243" y="0.0" width="66" height="40"/>
@@ -164,6 +169,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="backButton"/>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="w9m-Wb-Fbx" eventType="touchUpInside" id="AY5-d5-LNN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,7 +227,9 @@
                         <viewLayoutGuide key="safeArea" id="cj6-ba-wOv"/>
                     </view>
                     <connections>
+                        <outlet property="fullLenghtButton" destination="RvB-G2-SYb" id="ZbP-7L-Lfk"/>
                         <outlet property="pauseButton" destination="fR2-aS-7A4" id="0Cm-kZ-4zy"/>
+                        <outlet property="skimButton" destination="Auc-la-5qb" id="tg2-at-MPX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xo1-Le-jvp" userLabel="First Responder" sceneMemberID="firstResponder"/>

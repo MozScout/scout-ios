@@ -9,5 +9,7 @@ import Foundation
 import UIKit
 
 protocol PlayerRoutingProtocol {
-    func show(from viewController: UIViewController, animated: Bool, link: String)
+    var onBackButtonTap: (() -> Void)? { get set }
+    var onMicrophoneButtonTap: (() -> Void)? { get set }
+    func show(from viewController: UIViewController, animated: Bool, fullLink: String)
 }

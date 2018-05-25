@@ -43,6 +43,8 @@
 		9333B81820AC2D940055C5B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9333B81720AC2D940055C5B1 /* LoginViewController.swift */; };
 		9333B81C20AC6D070055C5B1 /* PlayMyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9333B81A20AC6D070055C5B1 /* PlayMyListTableViewCell.swift */; };
 		9333B81D20AC6D070055C5B1 /* PlayMyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9333B81B20AC6D070055C5B1 /* PlayMyListTableViewCell.xib */; };
+		9362FCAF20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362FCAD20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift */; };
+		9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362FCAE20B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift */; };
 		93A3113820B13EA70049DB67 /* VoiceInputAssemlyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3113720B13EA70049DB67 /* VoiceInputAssemlyProtocol.swift */; };
 		93A3113A20B13EE40049DB67 /* VoiceInputAssemly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3113920B13EE40049DB67 /* VoiceInputAssemly.swift */; };
 		93A3113C20B13F370049DB67 /* VoiceInputRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3113B20B13F370049DB67 /* VoiceInputRoutingProtocol.swift */; };
@@ -124,6 +126,8 @@
 		9333B81720AC2D940055C5B1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Source/UI/Stories/Auth/ViewControllers/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		9333B81A20AC6D070055C5B1 /* PlayMyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMyListTableViewCell.swift; sourceTree = "<group>"; };
 		9333B81B20AC6D070055C5B1 /* PlayMyListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayMyListTableViewCell.xib; sourceTree = "<group>"; };
+		9362FCAD20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutPlayerHTTPClientProtocol.swift; sourceTree = "<group>"; };
+		9362FCAE20B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScoutHTTPClient+ScoutPlayer.swift"; sourceTree = "<group>"; };
 		93A3113720B13EA70049DB67 /* VoiceInputAssemlyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputAssemlyProtocol.swift; sourceTree = "<group>"; };
 		93A3113920B13EE40049DB67 /* VoiceInputAssemly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputAssemly.swift; sourceTree = "<group>"; };
 		93A3113B20B13F370049DB67 /* VoiceInputRoutingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputRoutingProtocol.swift; sourceTree = "<group>"; };
@@ -471,6 +475,15 @@
 				9333B81B20AC6D070055C5B1 /* PlayMyListTableViewCell.xib */,
 			);
 			path = PlayMyListTableViewCell;
+			sourceTree = "<group>";
+		};
+		9362FCAC20B810160004930C /* ScoutPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				9362FCAE20B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift */,
+				9362FCAD20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift */,
+			);
+			path = ScoutPlayer;
 			sourceTree = "<group>";
 		};
 		93A3113220B13DD70049DB67 /* VoiceInput */ = {
@@ -883,6 +896,7 @@
 		F482CD5F2080DB80007D0C14 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				9362FCAC20B810160004930C /* ScoutPlayer */,
 				93A3114320B15FDB0049DB67 /* ScoutVoiceInput */,
 				5622AB4920A6E54E0074A4BC /* ScoutTitles */,
 				5622AB4420A6D4A30074A4BC /* Auth */,
@@ -1045,6 +1059,7 @@
 				F47B7CE120849B3F0055585C /* MainAssembly.swift in Sources */,
 				5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */,
 				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
+				9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */,
 				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
 				5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */,
@@ -1077,6 +1092,7 @@
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
 				93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */,
 				5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */,
+				9362FCAF20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift in Sources */,
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
 				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,
 				5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */,
@@ -1231,6 +1247,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = RJRT2UUKDY;
 				INFOPLIST_FILE = "${SRCROOT}/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.exalt.speechapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1253,6 +1270,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = RJRT2UUKDY;
 				INFOPLIST_FILE = "${SRCROOT}/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.exalt.speechapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1325,6 +1343,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = RJRT2UUKDY;
 				INFOPLIST_FILE = "${SRCROOT}/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.exalt.speechapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";

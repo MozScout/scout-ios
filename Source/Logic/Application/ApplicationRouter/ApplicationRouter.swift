@@ -85,9 +85,15 @@ private extension ApplicationRouter {
         self.mainRouter.showMainUIInterface(fromViewController: viewController, animated: false)
         self.mainRouter.showMainUITab(tab: .myList, animated: false)
         self.mainRouter.onMicrophoneButtonTap = { [] in
-            self.voiceInputRouter.show(from: self.navigationController, animated: true)
+            self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
             self.voiceInputRouter.linkIsFound = { [] link in
-                self.playerRouter.show(from: self.navigationController, animated: true, link: link)
+                self.playerRouter.show(from: self.navigationController, animated: true, fullLink: link)
+                self.playerRouter.onBackButtonTap = { [] in
+                    self.showMainStory(viewController: self.navigationController, animated: true)
+                }
+                self.playerRouter.onMicrophoneButtonTap = { [] in
+                    self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
+                }
             }
             if let requiredCompletion = completion { requiredCompletion() }
         }
