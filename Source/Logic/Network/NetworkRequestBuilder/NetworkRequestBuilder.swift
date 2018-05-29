@@ -35,7 +35,7 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
                              "password" : password
                          ]
         
-        let URLString = String(format: "http://moz-scout.herokuapp.com/api/auth/register") // need set this value in baseURL property, could work with several servers
+        let URLString = String(format: "%@api/auth/register", self.baseURLString)
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).request
     }
@@ -48,7 +48,7 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         ]
         
         let headres = [headerTokenKey : token]
-        let URLString = String(format: "http://moz-scout.herokuapp.com/command/intent") // need set this value in baseURL property, could work with several servers
+        let URLString = String(format: "%@command/intent", self.baseURLString)
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
     }
@@ -62,7 +62,7 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         ]
         
         let headres = [headerTokenKey : token]
-        let URLString = String(format: "http://moz-scout.herokuapp.com/command/intent") // need set this value in baseURL property, could work with several servers
+        let URLString = String(format: "%@command/intent", self.baseURLString)
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
     }
@@ -76,7 +76,7 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         ]
         
         let headres = [headerTokenKey : token]
-        let URLString = String(format: "http://moz-scout.herokuapp.com/command/intent") // need set this value in baseURL property, could work with several servers
+        let URLString = String(format: "%@command/intent", self.baseURLString)
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
     }
@@ -89,7 +89,7 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         ]
         
         let headres = [headerTokenKey : token]
-        let URLString = String(format: "http://moz-scout.herokuapp.com/command/summary") // need set this value in baseURL property, could work with several servers
+        let URLString = String(format: "%@command/summary", self.baseURLString)
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
     }

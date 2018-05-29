@@ -16,17 +16,6 @@ class PlayMyListTableViewCell: UITableViewCell {
     @IBOutlet weak var lengthMinutes: UILabel!
     @IBOutlet weak var skimMinutes: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func configureCell(withModel model: ScoutArticle) {
         resourceName.text = model.author
         title.text = model.title

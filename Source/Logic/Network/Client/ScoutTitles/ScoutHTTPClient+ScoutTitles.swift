@@ -22,7 +22,7 @@ extension ScoutHTTPClient: ScoutTitlesHTTPClientProtocol {
                                 successBlock (self.mapper.scoutTitles(fromResource: JSONObject)!)
                         },
                             failureBlock:  { (JSONObject, clientError, response) in
-                                
+                                failureBlock(JSONObject, clientError, response)
         })
     }
 }

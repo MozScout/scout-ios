@@ -22,7 +22,7 @@ extension ScoutHTTPClient: ScoutPlayerHTTPClientProtocol {
                                 successBlock (self.mapper.scoutAudioFileURL(fromResource: JSONObject))
         },
                             failureBlock:  { (JSONObject, clientError, response) in
-                                
+                                failureBlock(JSONObject, clientError, response)
         })
     }
 }

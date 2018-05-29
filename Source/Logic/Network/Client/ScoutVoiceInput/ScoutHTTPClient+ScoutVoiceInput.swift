@@ -23,7 +23,7 @@ extension ScoutHTTPClient: ScoutVoiceInputHTTPClientProtocol {
                                 successBlock (self.mapper.scoutAudioFileURL(fromResource: JSONObject))
         },
                             failureBlock:  { (JSONObject, clientError, response) in
-                                
+                                failureBlock(JSONObject, clientError, response)
         })
     }
     
@@ -40,7 +40,7 @@ extension ScoutHTTPClient: ScoutVoiceInputHTTPClientProtocol {
                                 successBlock (self.mapper.scoutAudioFileURL(fromResource: JSONObject))
         },
                             failureBlock:  { (JSONObject, clientError, response) in
-                                
+                                failureBlock(JSONObject, clientError, response)
         })
     }
 }

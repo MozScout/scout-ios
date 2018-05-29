@@ -44,10 +44,4 @@ class LoginViewController: UIViewController, SFSafariViewControllerDelegate {
             UIApplication.shared.openURL(url)
         }
     }
-    
-    /*func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        guard let requiredDelegate = safariDoneButtonDelegate else { return }
-        requiredDelegate.safariViewControllerDidFinish(viewController: self)
-        dismiss(animated: true)
-    }*/
 }

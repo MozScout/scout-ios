@@ -47,11 +47,6 @@ class PlayerViewController: UIViewController {
         configureView()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Private methods
     fileprivate func setupMicButton() {
@@ -82,7 +77,7 @@ class PlayerViewController: UIViewController {
             print(error)
         }
         let urlString = fullLink
-        let attributeString = NSMutableAttributedString(string: "Full Lenght",
+        let attributeString = NSMutableAttributedString(string: "Full Length",
                                                         attributes: yourAttributes)
         fullLenghtButton.setAttributedTitle(attributeString, for: .normal)
         

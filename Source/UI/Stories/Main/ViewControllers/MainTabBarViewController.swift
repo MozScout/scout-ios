@@ -62,9 +62,6 @@ class MainTabBarViewController: UITabBarController {
         
         view.addSubview(microphoneButton)
         
-        // need image for mic button
-//        microphoneButton.setImage(UIImage(named: ""), for: .normal)
-//        microphoneButton.setImage(UIImage(named: ""), for: .highlighted)
         microphoneButton.addTarget(self, action: #selector(microphoneButtonAction(sender:)), for: .touchUpInside)
     }
     

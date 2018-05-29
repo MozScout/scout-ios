@@ -39,14 +39,14 @@ class NetworkMapper: NetworkMappingProtocol {
     
         for (_ , value) in resource["articles"] {
             
-            let item_id = value["item_id"].string ?? ""
+            let itemID = value["item_id"].string ?? ""
             let author = value["author"].string ?? ""
             let title = value["title"].string ?? ""
             let lengthMinutes = value["lengthMinutes"].int ?? 0
-            let resolved_url = value["resolved_url"].url ?? URL(string: "")
-            let sort_id = value["sort_id"].int ?? 0
+            let resolvedURL = value["resolved_url"].url ?? URL(string: "")
+            let sortID = value["sort_id"].int ?? 0
             let articleImageURL = value["imageURL"].url ?? URL(string: "")
-            let scoutArticle = ScoutArticle(withArticleID: item_id, title: title, author: author, lengthMinutes: lengthMinutes, sort_id: sort_id, resolved_url: resolved_url, articleImageURL: articleImageURL)
+            let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL)
             scoutArticlesArray.append(scoutArticle)
         }
         return scoutArticlesArray
