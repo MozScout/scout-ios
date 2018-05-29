@@ -11,16 +11,20 @@ class ApplicationRouter: NSObject {
     let applicationAssembly: ApplicationAssemblyProtocol
     
     fileprivate var navigationController: UINavigationController!
-    
     fileprivate var mainRouter: MainRoutingProtocol
-
+    fileprivate var authRouter: AuthRoutingProtocol
+    fileprivate var voiceInputRouter: VoiceInputRoutingProtocol
+    fileprivate var playerRouter: PlayerRoutingProtocol
+    
     required init(with applicationAssembly: ApplicationAssemblyProtocol) {
 
         self.applicationAssembly = applicationAssembly
         
         // Routers
         self.mainRouter = applicationAssembly.assemblyMainRouter()
-        
+        self.authRouter = applicationAssembly.assemblyAuthRouter()
+        self.voiceInputRouter = applicationAssembly.assemblyVoiceInputRouter()
+        self.playerRouter = applicationAssembly.assemblyPlayerRouter()
         super.init()
     }
 }
@@ -31,7 +35,12 @@ extension ApplicationRouter: ApplicationRouterProtocol {
     
     func show(from window: UIWindow) {
         
-        self.showInitialUI(from: window)
+        self.showLogin(from: window)
+    }
+    
+    func showMain(from window: UIWindow) {
+        
+        self.showMainScreen(from: window)
     }
 }
 
@@ -49,7 +58,7 @@ extension ApplicationRouter {
 // MARK: Private
 private extension ApplicationRouter {
     
-    func showInitialUI(from window: UIWindow) {
+    func showLogin(from window: UIWindow) {
         
         let navVC = UINavigationController()
         navVC.isNavigationBarHidden = true
@@ -57,12 +66,42 @@ private extension ApplicationRouter {
         self.navigationController = navVC
         window.makeKeyAndVisible()
 
-        self.showMainStory(animated: true)
+        self.showAuthStory(animated: true)
+    }
+    
+    func showMainScreen(from window: UIWindow) {
+        
+        let navVC = UINavigationController()
+        navVC.isNavigationBarHidden = true
+        window.rootViewController = navVC
+        self.navigationController = navVC
+        window.makeKeyAndVisible()
+        
+        self.showMainStory(viewController: self.navigationController, animated: true)
     }
 
-    func showMainStory(animated: Bool, completion: VoidBlock? = nil) {
+    func showMainStory(viewController: UINavigationController, animated: Bool, completion: VoidBlock? = nil) {
         
-        self.mainRouter.show(from: self.navigationController, animated: false)
-        if let requiredCompletion = completion { requiredCompletion() }
+        self.mainRouter.showMainUIInterface(fromViewController: viewController, animated: false)
+        self.mainRouter.showMainUITab(tab: .myList, animated: false)
+        self.mainRouter.onMicrophoneButtonTap = { [] in
+            self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
+            self.voiceInputRouter.linkIsFound = { [] link in
+                self.playerRouter.show(from: self.navigationController, animated: true, fullLink: link)
+                self.playerRouter.onBackButtonTap = { [] in
+                    self.showMainStory(viewController: self.navigationController, animated: true)
+                }
+                self.playerRouter.onMicrophoneButtonTap = { [] in
+                    self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
+                }
+            }
+            if let requiredCompletion = completion { requiredCompletion() }
+        }
     }
+    
+    func showAuthStory(animated: Bool, completion: VoidBlock? = nil) {
+        
+        self.authRouter.show(from: self.navigationController, animated: true)
+        if let requiredCompletion = completion { requiredCompletion() }
+        }
 }

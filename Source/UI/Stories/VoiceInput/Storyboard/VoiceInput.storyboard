@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Voice Input View Controller-->
+        <scene sceneID="RVg-40-H6M">
+            <objects>
+                <viewController storyboardIdentifier="VoiceInputViewController" id="4dy-6h-lQG" customClass="VoiceInputViewController" customModule="Scout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hxa-6h-Jk5" customClass="GradientView" customModule="Scout" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape" translatesAutoresizingMaskIntoConstraints="NO" id="P1m-Oy-URD">
+                                <rect key="frame" x="84.5" y="243.5" width="206" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="dUK-QQ-Zze"/>
+                                    <constraint firstAttribute="width" constant="206" id="p38-MP-Aka"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRJ-BC-iYx">
+                                <rect key="frame" x="10" y="40" width="355" height="203.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="P1m-Oy-URD" firstAttribute="top" secondItem="dRJ-BC-iYx" secondAttribute="bottom" id="4oL-JA-c4g"/>
+                            <constraint firstItem="vcL-Bw-2zj" firstAttribute="trailing" secondItem="dRJ-BC-iYx" secondAttribute="trailing" constant="10" id="FpX-gV-WhH"/>
+                            <constraint firstItem="P1m-Oy-URD" firstAttribute="centerX" secondItem="vcL-Bw-2zj" secondAttribute="centerX" id="HcQ-b7-NFy"/>
+                            <constraint firstItem="dRJ-BC-iYx" firstAttribute="top" secondItem="vcL-Bw-2zj" secondAttribute="top" constant="20" id="aSL-aB-dxd"/>
+                            <constraint firstItem="dRJ-BC-iYx" firstAttribute="leading" secondItem="vcL-Bw-2zj" secondAttribute="leading" constant="10" id="mI6-f8-ofb"/>
+                            <constraint firstItem="P1m-Oy-URD" firstAttribute="centerY" secondItem="vcL-Bw-2zj" secondAttribute="centerY" id="vZC-B4-Yz9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vcL-Bw-2zj"/>
+                    </view>
+                    <connections>
+                        <outlet property="console" destination="dRJ-BC-iYx" id="jnA-Yl-UmK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhJ-gh-oml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109.59999999999999" y="71.514242878560722"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="shape" width="207" height="200"/>
+    </resources>
+</document>

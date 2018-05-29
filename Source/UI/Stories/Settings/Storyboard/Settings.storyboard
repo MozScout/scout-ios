@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="2pv-dR-XNh">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="9Bf-0F-jlh" customClass="SettingsViewController" customModule="Scout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RSX-Dh-7fY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gts-Se-Nt1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyV-RX-jKZ">
+                                        <rect key="frame" x="149.5" y="22" width="76" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0k-Kg-bhO" customClass="GradientButton" customModule="Scout" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="61" width="375" height="3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="JP9-aa-INX"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.98039215690000003" alpha="0.85121468320000004" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="2cA-IV-f8d"/>
+                                    <constraint firstItem="k0k-Kg-bhO" firstAttribute="leading" secondItem="Gts-Se-Nt1" secondAttribute="leading" id="4wO-ST-A8J"/>
+                                    <constraint firstItem="eyV-RX-jKZ" firstAttribute="centerX" secondItem="Gts-Se-Nt1" secondAttribute="centerX" id="ARX-xB-Nxd"/>
+                                    <constraint firstAttribute="bottom" secondItem="k0k-Kg-bhO" secondAttribute="bottom" id="EyH-QT-uYa"/>
+                                    <constraint firstAttribute="trailing" secondItem="k0k-Kg-bhO" secondAttribute="trailing" id="emt-ew-CrU"/>
+                                    <constraint firstItem="eyV-RX-jKZ" firstAttribute="centerY" secondItem="Gts-Se-Nt1" secondAttribute="centerY" id="xQT-Wv-UG6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-q4-rfr">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some application settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7o-Fg-ERY">
+                                        <rect key="frame" x="65" y="24" width="245" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="A7o-Fg-ERY" firstAttribute="centerX" secondItem="Uo7-q4-rfr" secondAttribute="centerX" id="l0P-Dc-wnV"/>
+                                    <constraint firstItem="A7o-Fg-ERY" firstAttribute="top" secondItem="Uo7-q4-rfr" secondAttribute="top" constant="24" id="uV4-pG-evY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dkV-9e-UQR" firstAttribute="trailing" secondItem="Uo7-q4-rfr" secondAttribute="trailing" id="3cY-zg-E2L"/>
+                            <constraint firstAttribute="trailing" secondItem="Gts-Se-Nt1" secondAttribute="trailing" id="8dQ-sX-Ee3"/>
+                            <constraint firstItem="dkV-9e-UQR" firstAttribute="bottom" secondItem="Uo7-q4-rfr" secondAttribute="bottom" id="GaV-UN-jqB"/>
+                            <constraint firstItem="Uo7-q4-rfr" firstAttribute="top" secondItem="Gts-Se-Nt1" secondAttribute="bottom" id="P0V-c6-nfU"/>
+                            <constraint firstItem="Gts-Se-Nt1" firstAttribute="leading" secondItem="dkV-9e-UQR" secondAttribute="leading" id="VhK-qu-tfH"/>
+                            <constraint firstItem="Gts-Se-Nt1" firstAttribute="top" secondItem="RSX-Dh-7fY" secondAttribute="top" id="Xmk-2N-ptQ"/>
+                            <constraint firstItem="Uo7-q4-rfr" firstAttribute="leading" secondItem="dkV-9e-UQR" secondAttribute="leading" id="e4C-BG-Std"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dkV-9e-UQR"/>
+                    </view>
+                    <connections>
+                        <outlet property="gradientButton" destination="k0k-Kg-bhO" id="hWA-RM-W12"/>
+                        <outlet property="headerHeightConstraint" destination="2cA-IV-f8d" id="EaS-lZ-rlp"/>
+                        <outlet property="mainTitleLabel" destination="eyV-RX-jKZ" id="Ccz-Wy-Ahw"/>
+                        <outlet property="titleTopConstraint" destination="xQT-Wv-UG6" id="Nyk-nF-Drz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wec-Ka-yCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="39" y="156"/>
+        </scene>
+    </scenes>
+</document>

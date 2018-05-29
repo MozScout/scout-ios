@@ -9,10 +9,16 @@ import UIKit
 
 enum MainTab: Int {
     
-    case profile = 0
+    case myList = 0
+    case help = 1
+    case settings = 2
+    case audioAction = 3
 }
 
 protocol MainRoutingProtocol {
-    
-    func show(from viewController: UIViewController, animated: Bool)
+    var onMicrophoneButtonTap: (() -> Void)? { get set }
+    var userID: String {get set}
+    // MARK: Routing
+    func showMainUIInterface(fromViewController viewController: UINavigationController, animated: Bool)
+    func showMainUITab(tab: MainTab, animated: Bool)
 }

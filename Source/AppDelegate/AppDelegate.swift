@@ -28,6 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.applicationAssembly.assemblyKeychainService()
         return result
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        var mainRouter = self.applicationAssembly.assemblyMainRouter()
+        mainRouter.userID = url.lastPathComponent
+        
+        self.setupMainScreen()
+        return true
+    }
 }
 
 // MARK: -
@@ -42,6 +50,17 @@ fileprivate extension AppDelegate {
         
         self.applicationRouter.show(from: window)
 
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
+    func setupMainScreen() {
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.backgroundColor = UIColor.white
+        self.window = window
+        
+        self.applicationRouter.showMain(from: window)
+        
         UIApplication.shared.statusBarStyle = .default
     }
 }
