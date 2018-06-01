@@ -9,7 +9,7 @@ import UIKit
 import Speech
 
 protocol VoiceInputDelegate: class {
-    func openPlayer(withLink: String)
+    func openPlayer(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
 class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
@@ -26,7 +26,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
-    var scoutClient : ScoutHTTPClient? = nil
+    var scoutClient : ScoutHTTPClient!
     var userID : String = ""
     
     @IBOutlet weak var console: UITextView!
@@ -51,15 +51,15 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     fileprivate func getURL(withSearchTerm: String) {
         showHUD()
         self.cancelRecording()
-        scoutClient?.getAudioFileURL(withCmd: "SearchAndPlayArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (link) in
-            if link == "" {
+        scoutClient.getAudioFileURL(withCmd: "SearchAndPlayArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (scoutArticle) in
+            if scoutArticle.url == "" {
                 self.hideHUD()
                 self.showAlert(errorMessage: "Sorry, I couldn't find that.")
             }
             else {
                 DispatchQueue.main.async {
                     guard let requiredDelegate = self.playerDelegate else { return }
-                    requiredDelegate.openPlayer(withLink: link)
+                    requiredDelegate.openPlayer(withModel: scoutArticle, isFullArticle: true)
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
@@ -70,15 +70,15 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     fileprivate func getSkimURL(withSearchTerm: String) {
         showHUD()
         self.cancelRecording()
-        scoutClient?.getSkimAudioFileURL(withCmd: "SearchAndSummarizeArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (link) in
-            if link == "" {
+        scoutClient.getSkimAudioFileURL(withCmd: "SearchAndSummarizeArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (scoutArticle) in
+            if scoutArticle.url == "" {
                 self.hideHUD()
                 self.showAlert(errorMessage: "Sorry, I couldn't find that.")
             }
             else {
                 DispatchQueue.main.async {
                     guard let requiredDelegate = self.playerDelegate else { return }
-                    requiredDelegate.openPlayer(withLink: link)
+                    requiredDelegate.openPlayer(withModel: scoutArticle, isFullArticle: false)
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
@@ -140,7 +140,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
             var isFinal = false
             
             if result != nil {
-                
+                self.microphoneButton.isEnabled = false
                 self.console.text = result?.bestTranscription.formattedString  //9
                 isFinal = (result?.isFinal)!
                 
@@ -156,12 +156,18 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                                 self.console.text.removeSubrange(self.console.text.range(of: "Skim")!)
                                 self.getSkimURL(withSearchTerm: self.console.text)
                             }
-                            else if self.console.text.range(of: "skim") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "skim")!)
+                            else if self.console.text.range(of: "Skim that article about") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Skim that article about")!)
                                 self.getSkimURL(withSearchTerm: self.console.text)
                             }
                             else {
-                                self.getURL(withSearchTerm: self.console.text)
+                                if self.console.text.range(of: "Scout that article about") != nil {
+                                     self.console.text.removeSubrange(self.console.text.range(of: "Scout that article about")!)
+                                     self.getURL(withSearchTerm: self.console.text)
+                                }
+                                else {
+                                    self.getURL(withSearchTerm: self.console.text)
+                                }
                             }
                         }
                         isFinal = true
@@ -248,6 +254,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func hideHUD() {
         DispatchQueue.main.async {
+            self.microphoneButton.isEnabled = true
             self.spinner?.stopAnimating()
         }
     }

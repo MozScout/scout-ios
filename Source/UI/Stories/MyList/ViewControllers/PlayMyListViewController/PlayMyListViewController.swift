@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-class PlayMyListViewController: UIViewController {
+protocol PlayListDelegate: class {
+    func openPlayer(withModel: ScoutArticle, isFullArticle: Bool)
+}
+
+class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegate {
     
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate weak var tableView: UITableView!
@@ -16,14 +20,19 @@ class PlayMyListViewController: UIViewController {
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var gradientButton: GradientButton!
     
+    weak var playerDelegate: PlayListDelegate?
     fileprivate let maxHeaderHeight: CGFloat = 64
     fileprivate let minHeaderHeight: CGFloat = 24
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate let cellRowReuseId = "cellrow"
-    var scoutClient : ScoutHTTPClient? = nil
+    fileprivate var spinner:UIActivityIndicatorView?
+    fileprivate var articleNumber: Int = 0
+    var scoutClient : ScoutHTTPClient!
+    var keychainService : KeychainService!
     var userID : String = ""
     fileprivate var scoutTitles : [ScoutArticle]? = nil
-    
+    var expandedRows = Set<Int>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +49,11 @@ class PlayMyListViewController: UIViewController {
     
     // MARK: Private
     fileprivate func configureUI() {
+        spinner = self.addSpinner()
+        self.showHUD()
+        if keychainService.value(for: "userID") == nil {
+            keychainService.save(value: userID, key: "userID")
+        }
         gradientButton.direction = .horizontally(centered: 0.1)
         tableView.delegate = self
         tableView.dataSource = self
@@ -49,13 +63,72 @@ class PlayMyListViewController: UIViewController {
     }
     
     fileprivate func getScoutTitles() {
-        scoutClient?.getScoutTitles(withCmd: "ScoutTitles", userid: userID, successBlock: { (titles) in
+        scoutClient.getScoutTitles(withCmd: "ScoutTitles", userid: userID, successBlock: { (titles) in
             self.scoutTitles = titles
             DispatchQueue.main.async {
+                self.hideHUD()
                 self.tableView.reloadData()
             }
         }, failureBlock: { (failureResponse, error, response) in
             
+        })
+    }
+    
+    
+    func addSpinner() -> UIActivityIndicatorView {
+        // Adding spinner over launch screen
+        let spinner = UIActivityIndicatorView.init()
+        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        spinner.color = UIColor.black
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        self.view.addSubview(spinner)
+        
+        let xConstraint = NSLayoutConstraint(item: spinner, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
+        let yConstraint = NSLayoutConstraint(item: spinner, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
+        
+        NSLayoutConstraint.activate([xConstraint, yConstraint])
+        
+        self.view.bringSubview(toFront: spinner)
+        
+        return spinner
+    }
+    
+    func showHUD() {
+        DispatchQueue.main.async {
+            self.spinner?.startAnimating()
+            self.tableView.isUserInteractionEnabled = false
+        }
+    }
+    
+    func hideHUD() {
+        DispatchQueue.main.async {
+            self.spinner?.stopAnimating()
+            self.tableView.isUserInteractionEnabled = true
+        }
+    }
+    
+    func playButtonTapped() {
+        showHUD()
+        self.scoutClient.getArticleLink(userid: userID, url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
+            DispatchQueue.main.async {
+                guard let requiredDelegate = self.playerDelegate else { return }
+                requiredDelegate.openPlayer(withModel: scoutArticle, isFullArticle: true)
+                self.hideHUD()
+            }
+        }, failureBlock: { (failureResponse, error, response) in
+        })
+    }
+    
+    func skimButtonTapped() {
+        showHUD()
+        self.scoutClient.getSummaryLink(userid: userID, url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
+            DispatchQueue.main.async {
+                guard let requiredDelegate = self.playerDelegate else { return }
+                requiredDelegate.openPlayer(withModel: scoutArticle, isFullArticle: false)
+                self.hideHUD()
+            }
+        }, failureBlock: { (failureResponse, error, response) in
         })
     }
 }
@@ -78,9 +151,43 @@ extension PlayMyListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId, for: indexPath) as! PlayMyListTableViewCell
         
+        cell.playButtonDelegate = self
+        cell.skimButtonDelegate = self
         cell.configureCell(withModel: self.scoutTitles![indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
+            
+            else { return }
+        
+        switch cell.isExpanded {
+        case true:
+            self.expandedRows.remove(indexPath.row)
+        case false:
+            self.expandedRows.insert(indexPath.row)
+            articleNumber = indexPath.row
+        }
+        
+        cell.isExpanded = !cell.isExpanded
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
+            else { return }
+        
+        self.expandedRows.remove(indexPath.row)
+        
+        cell.isExpanded = false
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
     }
 }
 

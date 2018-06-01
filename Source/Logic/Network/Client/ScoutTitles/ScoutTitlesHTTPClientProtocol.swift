@@ -7,6 +7,7 @@
 
 import Foundation
 
+typealias ScoutTitleSuccessBlock = (_ article: ScoutArticle) -> ()
 typealias ScoutTitlesSuccessBlock = (_ articles: [ScoutArticle]) -> ()
 typealias ScoutTitlesFailureBlock = HTTPClientFailureBlock
 
@@ -15,4 +16,14 @@ protocol ScoutTitlesHTTPClientProtocol {
                         userid: String,
                         successBlock: @escaping ScoutTitlesSuccessBlock,
                         failureBlock: @escaping ScoutTitlesFailureBlock) -> HTTPClientConnectionResult
+    
+    func getArticleLink(userid: String,
+                        url: String,
+                        successBlock: @escaping ScoutTitleSuccessBlock,
+                        failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult
+    
+    func getSummaryLink(userid: String,
+                        url: String,
+                        successBlock: @escaping ScoutTitleSuccessBlock,
+                        failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult
 }

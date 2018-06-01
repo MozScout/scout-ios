@@ -23,10 +23,11 @@ class PlayerRouter {
 
 extension PlayerRouter: PlayerRoutingProtocol{
 
-    func show(from viewController: UIViewController, animated: Bool, fullLink: String) {
+    func show(from viewController: UIViewController, animated: Bool, model: ScoutArticle, fullArticle: Bool) {
         
         let playerVC = assembly.assemblyPlayerViewController()
-        playerVC.fullLink = fullLink
+        playerVC.model = model
+        playerVC.isFullArticle = fullArticle
         playerVC.backButtonDelegate = self
         playerVC.microphoneButtonDelegate = self
         self.showViewController(viewController: playerVC, fromViewController: viewController, animated: animated)

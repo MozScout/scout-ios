@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias ScoutPlayerSuccessBlock = (_ link: String) -> ()
+typealias ScoutPlayerSuccessBlock = (_ scoutArticle: ScoutArticle) -> ()
 typealias ScoutPlayerFailureBlock = HTTPClientFailureBlock
 
 protocol ScoutPlayerHTTPClientProtocol {

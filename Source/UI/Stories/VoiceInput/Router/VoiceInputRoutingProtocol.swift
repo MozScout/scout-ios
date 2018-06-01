@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 
 protocol VoiceInputRoutingProtocol {
-    var linkIsFound: ((String) -> Void)? { get set }
+    var linkIsFound: ((ScoutArticle, Bool) -> Void)? { get set }
     func show(from viewController: UIViewController, animated: Bool, userID: String)
 }

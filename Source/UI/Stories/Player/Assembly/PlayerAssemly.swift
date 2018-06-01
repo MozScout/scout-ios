@@ -20,7 +20,8 @@ class PlayerAssemly: PlayerAssemlyProtocol {
     func assemblyPlayerViewController() -> PlayerViewController {
         
         let playerVC = self.storyboard.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
-        playerVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
+        playerVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as! ScoutHTTPClient
+        playerVC.keychainService = self.applicationAssembly.assemblyKeychainService() as! KeychainService
         
         return playerVC
     }

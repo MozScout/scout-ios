@@ -9,6 +9,7 @@ import UIKit
 
 class MyListRouter {
     
+    var linkIsFound: ((ScoutArticle, Bool) -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
     
@@ -24,6 +25,7 @@ extension MyListRouter: MyListRoutingProtocol {
         
         let listVC = assembly.assemblyPlayMyListViewController()
         listVC.userID = withUserID
+        listVC.playerDelegate = self
         self.showViewController(viewController: listVC, fromViewController: viewController, animated: animated)
     }
     
@@ -46,6 +48,13 @@ extension MyListRouter: MyListRoutingProtocol {
                 print("Unsupported navigation")
             }
         }
+    }
+}
+
+extension MyListRouter: PlayListDelegate {
+    
+    func openPlayer(withModel: ScoutArticle, isFullArticle: Bool) {
+        self.linkIsFound!(withModel, isFullArticle)
     }
 }
 

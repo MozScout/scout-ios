@@ -16,7 +16,8 @@ func == (lhs: ScoutArticle, rhs: ScoutArticle) -> Bool {
     let articleSortIDAreEqual = lhs.sortID == rhs.sortID
     let resolvedURLsAreEqual = lhs.resolvedURL == rhs.resolvedURL
     let articleImageURL = lhs.articleImageURL == rhs.articleImageURL
-    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleSortIDAreEqual && resolvedURLsAreEqual && articleImageURL
+    let url = lhs.url == rhs.url
+    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleSortIDAreEqual && resolvedURLsAreEqual && articleImageURL && url
 }
 
 class ScoutArticle: NSObject, NSCoding {
@@ -28,6 +29,7 @@ class ScoutArticle: NSObject, NSCoding {
     var sortID: Int
     var resolvedURL: URL?
     var articleImageURL : URL?
+    var url : String
     
     init(withArticleID itemID: String,
                         title: String,
@@ -35,7 +37,8 @@ class ScoutArticle: NSObject, NSCoding {
                         lengthMinutes: Int,
                         sortID: Int,
                         resolvedURL: URL?,
-                        articleImageURL: URL?) {
+                        articleImageURL: URL?,
+                        url: String) {
         
         self.itemID = itemID
         self.title = title
@@ -44,6 +47,7 @@ class ScoutArticle: NSObject, NSCoding {
         self.sortID = sortID
         self.resolvedURL = resolvedURL
         self.articleImageURL = articleImageURL
+        self.url = url
     }
     
     // MARK: NSCoding
@@ -54,7 +58,8 @@ class ScoutArticle: NSObject, NSCoding {
               let title = objectDictionary["title"] as? String,
               let author = objectDictionary["author"] as? String,
               let lengthMinutes = objectDictionary["lengthMinutes"] as? Int,
-              let sortID = objectDictionary["sortID"] as? Int
+              let sortID = objectDictionary["sortID"] as? Int,
+              let url = objectDictionary["url"] as? String
             else { return nil }
         
         var articleImageURL: URL? = nil
@@ -73,7 +78,8 @@ class ScoutArticle: NSObject, NSCoding {
                   lengthMinutes: lengthMinutes,
                   sortID: sortID,
                   resolvedURL: resolvedURL,
-                  articleImageURL: articleImageURL)
+                  articleImageURL: articleImageURL,
+                  url: url)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -84,6 +90,7 @@ class ScoutArticle: NSObject, NSCoding {
                                                              "author" : author,
                                                              "lengthMinutes" : lengthMinutes,
                                                              "sortID" : sortID,
+                                                             "url"   : url,
                                                          ])
         
         if let requiredArticleImageURLString =  articleImageURL?.absoluteString { dictionary["imageURL"] = requiredArticleImageURLString }

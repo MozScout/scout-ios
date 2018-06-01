@@ -19,7 +19,9 @@ class MyListAssembly: MyListAssemblyProtocol {
     func assemblyPlayMyListViewController() -> PlayMyListViewController {
      
         let vc = self.storyboard.instantiateViewController(withIdentifier: "PlayMyListViewController") as! PlayMyListViewController
-        vc.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
+        vc.scoutClient = self.applicationAssembly.assemblyNetworkClient() as! ScoutHTTPClient
+        vc.keychainService = self.applicationAssembly.assemblyKeychainService() as! KeychainService
+        
         return vc
     }
 }

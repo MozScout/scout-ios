@@ -12,6 +12,7 @@ class ApplicationRouter: NSObject {
     
     fileprivate var navigationController: UINavigationController!
     fileprivate var mainRouter: MainRoutingProtocol
+    fileprivate var myListRouter: MyListRoutingProtocol
     fileprivate var authRouter: AuthRoutingProtocol
     fileprivate var voiceInputRouter: VoiceInputRoutingProtocol
     fileprivate var playerRouter: PlayerRoutingProtocol
@@ -22,6 +23,7 @@ class ApplicationRouter: NSObject {
         
         // Routers
         self.mainRouter = applicationAssembly.assemblyMainRouter()
+        self.myListRouter = applicationAssembly.assemblyMyListRouter()
         self.authRouter = applicationAssembly.assemblyAuthRouter()
         self.voiceInputRouter = applicationAssembly.assemblyVoiceInputRouter()
         self.playerRouter = applicationAssembly.assemblyPlayerRouter()
@@ -84,10 +86,19 @@ private extension ApplicationRouter {
         
         self.mainRouter.showMainUIInterface(fromViewController: viewController, animated: false)
         self.mainRouter.showMainUITab(tab: .myList, animated: false)
+        self.myListRouter.linkIsFound = { [] scoutArticle, isFullArticle in
+            self.playerRouter.show(from: self.navigationController, animated: true, model: scoutArticle, fullArticle: isFullArticle)
+            self.playerRouter.onBackButtonTap = { [] in
+                self.showMainStory(viewController: self.navigationController, animated: true)
+            }
+            self.playerRouter.onMicrophoneButtonTap = { [] in
+                self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
+            }
+        }
         self.mainRouter.onMicrophoneButtonTap = { [] in
             self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
-            self.voiceInputRouter.linkIsFound = { [] link in
-                self.playerRouter.show(from: self.navigationController, animated: true, fullLink: link)
+            self.voiceInputRouter.linkIsFound = { [] scoutArticle, isFullArticle in
+                self.playerRouter.show(from: self.navigationController, animated: true, model: scoutArticle, fullArticle: isFullArticle)
                 self.playerRouter.onBackButtonTap = { [] in
                     self.showMainStory(viewController: self.navigationController, animated: true)
                 }

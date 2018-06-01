@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias ScoutVoiceInputSuccessBlock = (_ link: String) -> ()
+typealias ScoutVoiceInputSuccessBlock = (_ scoutArticle: ScoutArticle) -> ()
 typealias ScoutVoiceInputFailureBlock = HTTPClientFailureBlock
 
 protocol ScoutVoiceInputHTTPClientProtocol {

@@ -81,7 +81,20 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
     }
     
-    func buildPostSkimRequest(userid: String, url: String) -> URLRequest? {
+    func buildPostArticleRequest(userid: String, url: String) -> URLRequest? {
+        
+        let parameters = [
+            "userid" : userid,
+            "url" : url
+        ]
+        
+        let headres = [headerTokenKey : token]
+        let URLString = String(format: "%@command/article", self.baseURLString)
+        
+        return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
+    }
+    
+    func buildPostSummaryRequest(userid: String, url: String) -> URLRequest? {
         
         let parameters = [
             "userid" : userid,

@@ -9,6 +9,6 @@ import SwiftyJSON
 
 protocol NetworkMappingProtocol {
     func scoutTitles(fromResource resource: JSON) -> [ScoutArticle]?
-    func scoutAudioFileURL(fromResource resource: JSON) -> String
-    func scoutSkimAudioFileURL(fromResource resource: JSON) -> String
+    func scoutAudioFileURL(fromResource resource: JSON) -> ScoutArticle
+    func scoutSkimAudioFileURL(fromResource resource: JSON) -> ScoutArticle
 }

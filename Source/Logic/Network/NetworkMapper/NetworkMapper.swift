@@ -46,19 +46,40 @@ class NetworkMapper: NetworkMappingProtocol {
             let resolvedURL = value["resolved_url"].url ?? URL(string: "")
             let sortID = value["sort_id"].int ?? 0
             let articleImageURL = value["imageURL"].url ?? URL(string: "")
-            let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL)
+            let url = value["url"].string ?? ""
+            let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url)
             scoutArticlesArray.append(scoutArticle)
         }
         return scoutArticlesArray
     }
     
-    func scoutAudioFileURL(fromResource resource: JSON) -> String {
-       
-        return resource["url"].string ?? ""
+    func scoutAudioFileURL(fromResource resource: JSON) -> ScoutArticle {
+        
+        let itemID = resource["item_id"].string ?? ""
+        let author = resource["author"].string ?? ""
+        let title = resource["title"].string ?? ""
+        let lengthMinutes = resource["lengthMinutes"].int ?? 0
+        let resolvedURL = resource["resolved_url"].url ?? URL(string: "")
+        let sortID = resource["sort_id"].int ?? 0
+        let articleImageURL = resource["imageURL"].url ?? URL(string: "")
+        let url = resource["url"].string ?? ""
+        let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url)
+        
+        return scoutArticle
     }
     
-    func scoutSkimAudioFileURL(fromResource resource: JSON) -> String {
+    func scoutSkimAudioFileURL(fromResource resource: JSON) -> ScoutArticle {
         
-        return resource["url"].string ?? ""
+        let itemID = resource["item_id"].string ?? ""
+        let author = resource["author"].string ?? ""
+        let title = resource["title"].string ?? ""
+        let lengthMinutes = resource["lengthMinutes"].int ?? 0
+        let resolvedURL = resource["resolved_url"].url ?? URL(string: "")
+        let sortID = resource["sort_id"].int ?? 0
+        let articleImageURL = resource["imageURL"].url ?? URL(string: "")
+        let url = resource["url"].string ?? ""
+        let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url)
+        
+        return scoutArticle
     }
 }

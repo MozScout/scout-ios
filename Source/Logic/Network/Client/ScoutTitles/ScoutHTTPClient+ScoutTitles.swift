@@ -25,4 +25,36 @@ extension ScoutHTTPClient: ScoutTitlesHTTPClientProtocol {
                                 failureBlock(JSONObject, clientError, response)
         })
     }
+    
+    func getArticleLink(userid: String,
+                        url: String,
+                        successBlock: @escaping ScoutPlayerSuccessBlock,
+                        failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult {
+        
+        let request = self.requestBuilder.buildPostArticleRequest(userid: userid, url: url)
+        
+        return self.execute(request: request,
+                            successBlock: { (JSONObject, customObject, response) in
+                                successBlock (self.mapper.scoutAudioFileURL(fromResource: JSONObject))
+        },
+                            failureBlock:  { (JSONObject, clientError, response) in
+                                failureBlock(JSONObject, clientError, response)
+        })
+    }
+    
+    func getSummaryLink(userid: String,
+                        url: String,
+                        successBlock: @escaping ScoutPlayerSuccessBlock,
+                        failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult {
+        
+        let request = self.requestBuilder.buildPostSummaryRequest(userid: userid, url: url)
+        
+        return self.execute(request: request,
+                            successBlock: { (JSONObject, customObject, response) in
+                                successBlock (self.mapper.scoutAudioFileURL(fromResource: JSONObject))
+        },
+                            failureBlock:  { (JSONObject, clientError, response) in
+                                failureBlock(JSONObject, clientError, response)
+        })
+    }
 }

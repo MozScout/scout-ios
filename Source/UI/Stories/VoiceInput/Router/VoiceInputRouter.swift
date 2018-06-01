@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class VoiceInputRouter {
-    var linkIsFound: ((String) -> Void)?
+    var linkIsFound: ((ScoutArticle, Bool) -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: VoiceInputAssemlyProtocol
     
@@ -53,7 +53,7 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol{
 
 extension VoiceInputRouter: VoiceInputDelegate {
     
-    func openPlayer(withLink: String) {
-        self.linkIsFound!(withLink)
+    func openPlayer(withModel: ScoutArticle, isFullArticle: Bool) {
+        self.linkIsFound!(withModel, isFullArticle)
     }
 }
