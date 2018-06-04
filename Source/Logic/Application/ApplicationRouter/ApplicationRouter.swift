@@ -93,6 +93,8 @@ private extension ApplicationRouter {
             }
             self.playerRouter.onMicrophoneButtonTap = { [] in
                 self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
+                self.voiceInputRouter.linkIsFound = { [] scoutArticle, isFullArticle in
+                    self.playerRouter.show(from: self.navigationController, animated: true, model: scoutArticle, fullArticle: isFullArticle) }
             }
         }
         self.mainRouter.onMicrophoneButtonTap = { [] in

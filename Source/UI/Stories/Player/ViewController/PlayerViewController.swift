@@ -55,6 +55,16 @@ class PlayerViewController: UIViewController {
         spinner = self.addSpinner()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try audioSession.setActive(true)
+        } catch {
+            print(error)
+        }
+    }
     // MARK: - Private methods
     fileprivate func setupMicButton() {
         
@@ -84,12 +94,7 @@ class PlayerViewController: UIViewController {
             }
         }
         self.titleLabel.text = model.title
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print(error)
-        }
+      
         if isFullArticle {
             attributedString = NSMutableAttributedString(string: "Full Length",
                                                          attributes: yourAttributes)
@@ -154,10 +159,8 @@ class PlayerViewController: UIViewController {
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: destinationUrl)
-                guard let player = audioPlayer else { return }
                 
-                player.prepareToPlay()
-                player.play()
+                self.play()
             } catch let error {
                 print(error.localizedDescription)
             }
@@ -217,8 +220,9 @@ class PlayerViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: Any) {
         
-        guard let requiredDelegate = backButtonDelegate else { return }
-        requiredDelegate.backButtonTapped()
+        //guard let requiredDelegate = backButtonDelegate else { return }
+        //requiredDelegate.backButtonTapped()
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func skimButtonTapped(_ sender: Any) {
@@ -258,12 +262,12 @@ class PlayerViewController: UIViewController {
     }
     
     @objc fileprivate func microphoneButtonTapped(sender: UIButton) {
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             self.pause()
             self.pauseButton.isSelected = true
             guard let requiredDelegate = self.microphoneButtonDelegate else { return }
             requiredDelegate.microphoneButtonTapped()
-        }
+        //}
     }
     
     func addSpinner() -> UIActivityIndicatorView {

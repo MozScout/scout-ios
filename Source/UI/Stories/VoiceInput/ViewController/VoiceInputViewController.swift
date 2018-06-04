@@ -119,8 +119,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+            try audioSession.setActive(true)
         } catch {
             print("audioSession properties weren't set because of an error.")
         }

@@ -34,7 +34,7 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         tabBar.barTintColor = Design.Color.darkWhite
-        
+        tabBar.isTranslucent = false
         self.setupMicButton()
     }
     

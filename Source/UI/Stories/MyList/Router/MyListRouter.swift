@@ -25,7 +25,7 @@ extension MyListRouter: MyListRoutingProtocol {
         
         let listVC = assembly.assemblyPlayMyListViewController()
         listVC.userID = withUserID
-        listVC.playerDelegate = self
+        listVC.playerDelegateFromMain = self
         self.showViewController(viewController: listVC, fromViewController: viewController, animated: animated)
     }
     
@@ -53,8 +53,8 @@ extension MyListRouter: MyListRoutingProtocol {
 
 extension MyListRouter: PlayListDelegate {
     
-    func openPlayer(withModel: ScoutArticle, isFullArticle: Bool) {
-        self.linkIsFound!(withModel, isFullArticle)
+    func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool) {
+        self.linkIsFound?(withModel, isFullArticle)
     }
 }
 

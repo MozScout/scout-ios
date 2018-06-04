@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol PlayListDelegate: class {
-    func openPlayer(withModel: ScoutArticle, isFullArticle: Bool)
+    func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
 class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegate {
@@ -20,7 +20,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var gradientButton: GradientButton!
     
-    weak var playerDelegate: PlayListDelegate?
+    weak var playerDelegateFromMain: PlayListDelegate?
     fileprivate let maxHeaderHeight: CGFloat = 64
     fileprivate let minHeaderHeight: CGFloat = 24
     fileprivate var previousScrollOffset: CGFloat = 0
@@ -60,6 +60,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil), forCellReuseIdentifier: cellRowReuseId)
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, self.bottomLayoutGuide.length, 0);
     }
     
     fileprivate func getScoutTitles() {
@@ -112,8 +113,8 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         showHUD()
         self.scoutClient.getArticleLink(userid: userID, url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
             DispatchQueue.main.async {
-                guard let requiredDelegate = self.playerDelegate else { return }
-                requiredDelegate.openPlayer(withModel: scoutArticle, isFullArticle: true)
+                guard let requiredDelegate = self.playerDelegateFromMain else { return }
+                requiredDelegate.openPlayerFromMain(withModel: scoutArticle, isFullArticle: true)
                 self.hideHUD()
             }
         }, failureBlock: { (failureResponse, error, response) in
@@ -124,8 +125,8 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         showHUD()
         self.scoutClient.getSummaryLink(userid: userID, url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
             DispatchQueue.main.async {
-                guard let requiredDelegate = self.playerDelegate else { return }
-                requiredDelegate.openPlayer(withModel: scoutArticle, isFullArticle: false)
+                guard let requiredDelegate = self.playerDelegateFromMain else { return }
+                requiredDelegate.openPlayerFromMain(withModel: scoutArticle, isFullArticle: false)
                 self.hideHUD()
             }
         }, failureBlock: { (failureResponse, error, response) in
@@ -174,6 +175,9 @@ extension PlayMyListViewController: UITableViewDataSource {
         
         cell.isExpanded = !cell.isExpanded
         
+        if indexPath.row == (scoutTitles?.count)!-1 {
+            scrollToBottom()
+        }
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
     }
@@ -293,5 +297,12 @@ extension PlayMyListViewController: UITableViewDelegate {
         let percentage = openAmount / range
         
         self.mainTitleLabel.alpha = percentage
+    }
+    
+    func scrollToBottom(){
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: (self.scoutTitles?.count)!-1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 }
