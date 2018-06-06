@@ -117,7 +117,7 @@ fileprivate extension MainUIRouter {
         case .settings:
             return UITabBarItem(title: "Settings",
                                image: originalImageUsingImageName(imageName: "icn_settings"),
-                       selectedImage: originalImageUsingImageName(imageName: "icn_settings"))
+                       selectedImage: originalImageUsingImageName(imageName: "icn_settings_selected"))
         case .audioAction:
             return UITabBarItem(title: "", image: nil, selectedImage: nil)
         }

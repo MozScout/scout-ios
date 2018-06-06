@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,16 +46,40 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-q4-rfr">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some application settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7o-Fg-ERY">
-                                        <rect key="frame" x="65" y="24" width="245" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7o-Fg-ERY">
+                                        <rect key="frame" x="141.5" y="24" width="92.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mozilla strives to only collect what we need to provide and improve Scout for everyone. Learn More." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbg-Vk-kOf">
+                                        <rect key="frame" x="40" y="77" width="295" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-QY-xq7">
+                                        <rect key="frame" x="40" y="77" width="295" height="61"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="linkTapped:" destination="9Bf-0F-jlh" eventType="touchUpInside" id="r0m-tn-Jkc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Nbg-Vk-kOf" firstAttribute="top" secondItem="A7o-Fg-ERY" secondAttribute="bottom" constant="30" id="0gw-iL-YPI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nbg-Vk-kOf" secondAttribute="trailing" constant="40" id="2hF-3J-lEp"/>
+                                    <constraint firstItem="aBN-QY-xq7" firstAttribute="width" secondItem="Nbg-Vk-kOf" secondAttribute="width" id="9fP-Jz-Pff"/>
+                                    <constraint firstItem="aBN-QY-xq7" firstAttribute="trailing" secondItem="Nbg-Vk-kOf" secondAttribute="trailing" id="CSu-ad-XaT"/>
+                                    <constraint firstItem="aBN-QY-xq7" firstAttribute="top" secondItem="A7o-Fg-ERY" secondAttribute="bottom" constant="30" id="Ibi-Vx-lcj"/>
+                                    <constraint firstItem="aBN-QY-xq7" firstAttribute="leading" secondItem="Nbg-Vk-kOf" secondAttribute="leading" id="dYW-jz-OMH"/>
                                     <constraint firstItem="A7o-Fg-ERY" firstAttribute="centerX" secondItem="Uo7-q4-rfr" secondAttribute="centerX" id="l0P-Dc-wnV"/>
+                                    <constraint firstItem="Nbg-Vk-kOf" firstAttribute="leading" secondItem="Uo7-q4-rfr" secondAttribute="leading" constant="40" id="og1-17-O36"/>
+                                    <constraint firstItem="aBN-QY-xq7" firstAttribute="height" secondItem="Nbg-Vk-kOf" secondAttribute="height" id="qs5-OS-qqX"/>
                                     <constraint firstItem="A7o-Fg-ERY" firstAttribute="top" secondItem="Uo7-q4-rfr" secondAttribute="top" constant="24" id="uV4-pG-evY"/>
                                 </constraints>
                             </view>
@@ -75,13 +99,14 @@
                     <connections>
                         <outlet property="gradientButton" destination="k0k-Kg-bhO" id="hWA-RM-W12"/>
                         <outlet property="headerHeightConstraint" destination="2cA-IV-f8d" id="EaS-lZ-rlp"/>
+                        <outlet property="infoLabel" destination="Nbg-Vk-kOf" id="3R2-EU-xLz"/>
                         <outlet property="mainTitleLabel" destination="eyV-RX-jKZ" id="Ccz-Wy-Ahw"/>
                         <outlet property="titleTopConstraint" destination="xQT-Wv-UG6" id="Nyk-nF-Drz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wec-Ka-yCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="156"/>
+            <point key="canvasLocation" x="37.600000000000001" y="155.17241379310346"/>
         </scene>
     </scenes>
 </document>

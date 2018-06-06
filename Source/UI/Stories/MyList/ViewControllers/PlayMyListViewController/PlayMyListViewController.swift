@@ -32,7 +32,17 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     var userID : String = ""
     fileprivate var scoutTitles : [ScoutArticle]? = nil
     var expandedRows = Set<Int>()
-
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(self.handleRefresh(_:)),
+                                 for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor.black
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +60,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     // MARK: Private
     fileprivate func configureUI() {
         spinner = self.addSpinner()
+        tableView.addSubview(self.refreshControl)
         self.showHUD()
         if keychainService.value(for: "userID") == nil {
             keychainService.save(value: userID, key: "userID")
@@ -132,6 +143,12 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         }, failureBlock: { (failureResponse, error, response) in
         })
     }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        self.getScoutTitles()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
 }
 
 extension PlayMyListViewController: UITableViewDataSource {
@@ -175,11 +192,10 @@ extension PlayMyListViewController: UITableViewDataSource {
         
         cell.isExpanded = !cell.isExpanded
         
-        if indexPath.row == (scoutTitles?.count)!-1 {
-            scrollToBottom()
-        }
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
+        
+        tableView.scrollToRow(at: indexPath, at: .none, animated: false)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

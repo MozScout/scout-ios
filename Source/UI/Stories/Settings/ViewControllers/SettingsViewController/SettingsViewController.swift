@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var gradientButton: GradientButton!
     
+    @IBOutlet weak var infoLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,5 +26,24 @@ class SettingsViewController: UIViewController {
     fileprivate func configureUI() {
         
         gradientButton.direction = .horizontally(centered: 0.1)
+        
+        let rawCenterString: NSString = "Mozilla strives to only collect what we need to provide and improve Scout for everyone. Learn More."
+        let centerText = NSMutableAttributedString(string: rawCenterString as String)
+        
+        let policyText = "Learn More."
+        let policyRange = rawCenterString.range(of: policyText)
+        
+        
+        rawCenterString.enumerateSubstrings(in:policyRange, options: .byWords, using: {
+            (substring, substringRange, _, _) in
+            centerText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.blue, range: substringRange)
+            })
+      
+        
+        infoLabel.attributedText = centerText
+    }
+    @IBAction func linkTapped(_ sender: Any) {
+        let url = URL(string: "https://www.mozilla.org/en-US/privacy/")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
 }

@@ -40,7 +40,7 @@ class PlayMyListTableViewCell: UITableViewCell {
                 self.doneButton.isHidden = false
                 self.playButton.isHidden = false
                 self.skimButton.isHidden = false
-                self.expandedViewHeight.constant = 31.0
+                self.expandedViewHeight.constant = 45.0
             }
         }
     }
@@ -50,6 +50,7 @@ class PlayMyListTableViewCell: UITableViewCell {
         resourceName.text = model.author
         title.text = model.title
         lengthMinutes.text = String(format: "%@ mins", String(describing: model.lengthMinutes))
+        
         if model.articleImageURL != URL(string: "") {
             if let data = try? Data(contentsOf: model.articleImageURL!)
             {

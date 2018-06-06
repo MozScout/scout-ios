@@ -28,12 +28,9 @@ class PlayerViewController: UIViewController {
     fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
     fileprivate var microphoneButton: GradientButton!
     fileprivate var spinner:UIActivityIndicatorView?
-    fileprivate let yourAttributes : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 10),
-        NSAttributedStringKey.foregroundColor : UIColor.black,
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
-    
-    fileprivate var attributedString = NSMutableAttributedString(string:"")
+    fileprivate var timer : Timer!
+    fileprivate let loadingTextLabel = UILabel()
+  
     
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var fullLenghtButton: UIButton!
@@ -42,6 +39,10 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var backwardButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var startTime: UILabel!
+    @IBOutlet weak var endTime: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -57,6 +58,7 @@ class PlayerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayback)
@@ -65,6 +67,7 @@ class PlayerViewController: UIViewController {
             print(error)
         }
     }
+    
     // MARK: - Private methods
     fileprivate func setupMicButton() {
         
@@ -87,6 +90,8 @@ class PlayerViewController: UIViewController {
     }
     
     fileprivate func configureView() {
+        
+        slider.setThumbImage(UIImage(named: "knob"), for: .normal)
         if let url = model.articleImageURL {
             if let data = try? Data(contentsOf: url)
             {
@@ -96,16 +101,12 @@ class PlayerViewController: UIViewController {
         self.titleLabel.text = model.title
       
         if isFullArticle {
-            attributedString = NSMutableAttributedString(string: "Full Length",
-                                                         attributes: yourAttributes)
-        
-            fullLenghtButton.setAttributedTitle(attributedString, for: .normal)
+            fullLenghtButton.isSelected = true
+            skimButton.isSelected = false
         }
         else {
-            attributedString = NSMutableAttributedString(string: "Skim",
-                                                         attributes: yourAttributes)
-            
-            skimButton.setAttributedTitle(attributedString, for: .normal)
+            fullLenghtButton.isSelected = false
+            skimButton.isSelected = true
         }
         self.downloadfile(url: model.url)
     }
@@ -159,7 +160,11 @@ class PlayerViewController: UIViewController {
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: destinationUrl)
-                
+                DispatchQueue.main.async {
+                    self.slider.value = 0.0
+                    self.slider.maximumValue = Float(self.audioPlayer.duration)
+                    self.timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(self.updateSlider), userInfo: nil, repeats: true)
+                }
                 self.play()
             } catch let error {
                 print(error.localizedDescription)
@@ -190,7 +195,7 @@ class PlayerViewController: UIViewController {
     @IBAction func backwardButtonAction(_ sender: Any) {
         var time: TimeInterval = audioPlayer.currentTime
         time -= 30.0 // Go backward by 30 seconds
-        if time < audioPlayer.duration
+        if time < 0.0
         {
             audioPlayer.stop()
             audioPlayer.currentTime = 0.0
@@ -198,6 +203,15 @@ class PlayerViewController: UIViewController {
         }else
         {
             audioPlayer.currentTime = time
+        }
+    }
+    @IBAction func changeAudioTime(_ sender: Any) {
+        slider.maximumValue = Float(audioPlayer.duration)
+        audioPlayer.stop()
+        audioPlayer.currentTime = TimeInterval(slider.value)
+        
+        if self.pauseButton.isSelected == false {
+            audioPlayer.play()
         }
     }
     
@@ -217,24 +231,47 @@ class PlayerViewController: UIViewController {
     internal func pause() {
         audioPlayer.pause()
     }
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
+    @objc internal func updateSlider(){
+        slider.value = Float(audioPlayer.currentTime)
         
-        //guard let requiredDelegate = backButtonDelegate else { return }
-        //requiredDelegate.backButtonTapped()
-        navigationController?.popViewController(animated: true)
+        let currentTime = Int(audioPlayer.currentTime)
+        let duration = Int(audioPlayer.duration)
+        let total = duration - currentTime
+        
+        let minutes = currentTime/60
+        var seconds = currentTime - minutes / 60
+        
+        let minutesLeft = total/60
+        var secondsLeft = total - minutesLeft / 60
+
+        if minutes > 0 {
+            seconds = seconds - 60 * minutes
+        }
+        
+        if minutesLeft > 0 {
+            secondsLeft = secondsLeft - 60 * minutesLeft
+        }
+        
+        startTime.text = NSString(format: "%02d:%02d", minutes,seconds) as String
+        endTime.text = NSString(format: "%02d:%02d", minutesLeft,secondsLeft) as String
+    }
+
+    @IBAction func backButtonTapped(_ sender: Any) {
+        audioPlayer.stop()
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func skimButtonTapped(_ sender: Any) {
         audioPlayer.stop()
-        attributedString = NSMutableAttributedString(string: "Skim",
-                                                    attributes: yourAttributes)
-        skimButton.setAttributedTitle(attributedString, for: .normal)
-        fullLenghtButton.setAttributedTitle(nil, for: .normal)
+        fullLenghtButton.isSelected = false
+        skimButton.isSelected = true
         
         self.showHUD()
         self.scoutClient.getSummaryLink(userid: keychainService.value(for: "userID")!, url: (model.resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
                 self.downloadfile(url: scoutArticle.url)
+                DispatchQueue.main.async {
+                    self.pauseButton.isSelected = false
+                }
         }, failureBlock: { (failureResponse, error, response) in
         })
     }
@@ -244,47 +281,52 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func playFullArticle(_ sender: Any) {
-        
         audioPlayer.stop()
-        attributedString = NSMutableAttributedString(string: "Full Length",
-                                                    attributes: yourAttributes)
-        
-        fullLenghtButton.setAttributedTitle(attributedString, for: .normal)
-        attributedString = NSMutableAttributedString(string: "Skim",
-                                                     attributes: nil)
-        self.skimButton.setAttributedTitle(attributedString, for: .normal)
+        fullLenghtButton.isSelected = true
+        skimButton.isSelected = false
         
         self.showHUD()
         self.scoutClient.getArticleLink(userid: keychainService.value(for: "userID")!, url: (model.resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
-            self.downloadfile(url: scoutArticle.url)
+                self.downloadfile(url: scoutArticle.url)
+                DispatchQueue.main.async {
+                    self.pauseButton.isSelected = false
+                }
         }, failureBlock: { (failureResponse, error, response) in
         })
     }
     
     @objc fileprivate func microphoneButtonTapped(sender: UIButton) {
-        //DispatchQueue.main.async {
+        DispatchQueue.main.async {
             self.pause()
             self.pauseButton.isSelected = true
             guard let requiredDelegate = self.microphoneButtonDelegate else { return }
             requiredDelegate.microphoneButtonTapped()
-        //}
+        }
     }
     
     func addSpinner() -> UIActivityIndicatorView {
         // Adding spinner over launch screen
         let spinner = UIActivityIndicatorView.init()
-        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        spinner.color = UIColor.white
+        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
+        spinner.color = UIColor.black
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
         self.view.addSubview(spinner)
         
-        let xConstraint = NSLayoutConstraint(item: spinner, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
-        let yConstraint = NSLayoutConstraint(item: spinner, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
+        loadingTextLabel.textColor = UIColor.black
+        loadingTextLabel.text = "Prepearing your article..."
+        loadingTextLabel.font = UIFont(name: "Avenir Light", size: 14)
+        loadingTextLabel.sizeToFit()
+        loadingTextLabel.center = CGPoint(x: slider.center.x + 10, y: slider.center.y + 20)
+        self.view.addSubview(loadingTextLabel)
+        
+        let xConstraint = NSLayoutConstraint(item: spinner, attribute: .centerX, relatedBy: .equal, toItem: loadingTextLabel, attribute: .leading , multiplier: 1, constant: -20)
+        let yConstraint = NSLayoutConstraint(item: spinner, attribute: .centerY, relatedBy: .equal, toItem: loadingTextLabel, attribute: .centerY, multiplier: 1, constant: 0)
         
         NSLayoutConstraint.activate([xConstraint, yConstraint])
         
         self.view.bringSubview(toFront: spinner)
+        self.loadingTextLabel.isHidden = true
         
         return spinner
     }
@@ -293,19 +335,29 @@ class PlayerViewController: UIViewController {
         DispatchQueue.main.async {
             self.spinner?.startAnimating()
             self.microphoneButton.isEnabled = false
+            self.backButton.isEnabled = false
             self.pauseButton.isEnabled = false
             self.forwardButton.isEnabled = false
             self.backwardButton.isEnabled = false
+            self.loadingTextLabel.isHidden = false
+            self.slider.isHidden = true
+            self.startTime.isHidden = true
+            self.endTime.isHidden = true
         }
     }
     
     func hideHUD() {
         DispatchQueue.main.async {
             self.microphoneButton.isEnabled = true
+            self.backButton.isEnabled = true
             self.spinner?.stopAnimating()
             self.pauseButton.isEnabled = true
             self.forwardButton.isEnabled = true
             self.backwardButton.isEnabled = true
+            self.loadingTextLabel.isHidden = true
+            self.slider.isHidden = false
+            self.startTime.isHidden = false
+            self.endTime.isHidden = false
         }
     }
 }

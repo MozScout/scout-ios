@@ -151,17 +151,53 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                 } else {
                     self.detectionTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
                         if self.recognitionTask != nil {
-                            if self.console.text.range(of: "Skim") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Skim")!)
+                            if self.console.text.range(of: "Skim ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Skim ")!)
                                 self.getSkimURL(withSearchTerm: self.console.text)
                             }
-                            else if self.console.text.range(of: "Skim that article about") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Skim that article about")!)
+                            else if self.console.text.range(of: "Skim that article about ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Skim that article about ")!)
                                 self.getSkimURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Skim that article ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Skim that article ")!)
+                                self.getSkimURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Skim article about ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Skim article about ")!)
+                                self.getSkimURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Play that article about ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Play that article about ")!)
+                                self.getURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Play article about ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Play article about ")!)
+                                self.getURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Play that article ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Play that article  ")!)
+                                self.getURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Play ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Play ")!)
+                                self.getURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Scout that article about ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Scout that article about ")!)
+                                self.getURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Scout article about ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Scout article about ")!)
+                                self.getURL(withSearchTerm: self.console.text)
+                            }
+                            else if self.console.text.range(of: "Scout that article ") != nil {
+                                self.console.text.removeSubrange(self.console.text.range(of: "Scout that article ")!)
+                                self.getURL(withSearchTerm: self.console.text)
                             }
                             else {
-                                if self.console.text.range(of: "Scout that article about") != nil {
-                                     self.console.text.removeSubrange(self.console.text.range(of: "Scout that article about")!)
+                                if self.console.text.range(of: "Scout ") != nil {
+                                     self.console.text.removeSubrange(self.console.text.range(of: "Scout ")!)
                                      self.getURL(withSearchTerm: self.console.text)
                                 }
                                 else {
@@ -197,7 +233,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
             print("audioEngine couldn't start because of an error.")
         }
         
-        console.text = "Say something, I'm listening!"
+        console.text = "Scout that article about "
         
     }
     
