@@ -52,11 +52,7 @@ class PlayMyListTableViewCell: UITableViewCell {
         lengthMinutes.text = String(format: "%@ mins", String(describing: model.lengthMinutes))
         
         if model.articleImageURL != URL(string: "") {
-            if let data = try? Data(contentsOf: model.articleImageURL!)
-            {
-                let image: UIImage = UIImage(data: data)!
-                self.mainImage.image = image
-            }
+            self.mainImage.downloadImageFrom(link: (model.articleImageURL?.absoluteString)! , contentMode: .scaleAspectFit)
         }
         else {
             self.mainImage.image = UIImage(named: "mainImg")

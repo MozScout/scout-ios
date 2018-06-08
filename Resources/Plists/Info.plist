@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>9</string>
+	<string>12</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -44,6 +44,12 @@
 	<string>reading an article</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>commands</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF-Pro-Display-Heavy.ttf</string>
+		<string>ZillaSlab-Italic.ttf</string>
+		<string>ZillaSlab-BoldItalic.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -52,12 +58,6 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SF-Pro-Display-Heavy.ttf</string>
-		<string>ZillaSlab-Italic.ttf</string>
-		<string>ZillaSlab-BoldItalic.ttf</string>
-	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

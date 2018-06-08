@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Source/Logic/Application/ApplicationRouter/ApplicationRouter.swift"
-            timestampString = "549907361.937131"
+            filePath = "Source/UI/Stories/MyList/ViewControllers/PlayMyListViewController/PlayMyListViewController.swift"
+            timestampString = "550144304.509226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "showMainStory(viewController:animated:completion:)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "getScoutTitles()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

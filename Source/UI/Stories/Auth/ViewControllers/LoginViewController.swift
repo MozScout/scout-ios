@@ -34,7 +34,7 @@ class LoginViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     @IBAction func signInButtonTapped(_ sender: Any) {
-        guard let url = URL(string: "http://moz-scout.herokuapp.com/api/auth/mobile/login") else {
+        guard let url = URL(string: "http://scout-stage.herokuapp.com/api/auth/mobile/login") else {
             return //be safe
         }
         

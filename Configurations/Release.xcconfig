@@ -4,6 +4,6 @@
 //
 //
 
-SCOUT_NETWORK_URL = https:/\/\moz-scout.herokuapp.com/
+SCOUT_NETWORK_URL = https:/\/\scout-stage.herokuapp.com/
 
 #include "Generator.xcconfig"

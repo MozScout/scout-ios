@@ -82,7 +82,8 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
                 self.tableView.reloadData()
             }
         }, failureBlock: { (failureResponse, error, response) in
-            
+            self.showAlert(errorMessage: error.toString)
+            self.hideHUD()
         })
     }
     
@@ -129,6 +130,8 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
                 self.hideHUD()
             }
         }, failureBlock: { (failureResponse, error, response) in
+            self.showAlert(errorMessage: error.toString)
+            self.hideHUD()
         })
     }
     
@@ -136,11 +139,19 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         showHUD()
         self.scoutClient.getSummaryLink(userid: userID, url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
             DispatchQueue.main.async {
-                guard let requiredDelegate = self.playerDelegateFromMain else { return }
-                requiredDelegate.openPlayerFromMain(withModel: scoutArticle, isFullArticle: false)
-                self.hideHUD()
+                if scoutArticle.resolvedURL != nil {
+                    guard let requiredDelegate = self.playerDelegateFromMain else { return }
+                    requiredDelegate.openPlayerFromMain(withModel: scoutArticle, isFullArticle: false)
+                    self.hideHUD()
+                }
+                else {
+                    self.showAlert(errorMessage: "Skim version is not available")
+                    self.hideHUD()
+                }
             }
         }, failureBlock: { (failureResponse, error, response) in
+            self.showAlert(errorMessage: error.toString)
+            self.hideHUD()
         })
     }
     
@@ -315,10 +326,19 @@ extension PlayMyListViewController: UITableViewDelegate {
         self.mainTitleLabel.alpha = percentage
     }
     
-    func scrollToBottom(){
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(row: (self.scoutTitles?.count)!-1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
+    private func showAlert(errorMessage: String) -> Void {
+        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("ok")
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+            }}))
+        self.present(alert, animated: true, completion: nil)
     }
 }

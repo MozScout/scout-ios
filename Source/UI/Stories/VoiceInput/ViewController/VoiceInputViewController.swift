@@ -63,7 +63,8 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
-            
+            self.showAlert(errorMessage: error.toString)
+            self.hideHUD()
         })
     }
     
@@ -82,6 +83,8 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
+            self.showAlert(errorMessage: error.toString)
+            self.hideHUD()
         })
     }
     // MARK: - Private methods
@@ -176,7 +179,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                                 self.getURL(withSearchTerm: self.console.text)
                             }
                             else if self.console.text.range(of: "Play that article ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Play that article  ")!)
+                                self.console.text.removeSubrange(self.console.text.range(of: "Play that article ")!)
                                 self.getURL(withSearchTerm: self.console.text)
                             }
                             else if self.console.text.range(of: "Play ") != nil {

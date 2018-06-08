@@ -43,7 +43,11 @@ class SettingsViewController: UIViewController {
         infoLabel.attributedText = centerText
     }
     @IBAction func linkTapped(_ sender: Any) {
-        let url = URL(string: "https://www.mozilla.org/en-US/privacy/")
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        let url = URL(string: "https://www.mozilla.org/en-US/privacy/")!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 }

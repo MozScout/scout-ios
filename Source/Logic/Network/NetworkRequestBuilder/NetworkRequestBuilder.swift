@@ -17,7 +17,7 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     fileprivate let mapper: NetworkMappingProtocol
     fileprivate var baseURLString: String { return baseURL.absoluteString }
     fileprivate let headerTokenKey = "x-access-token"
-    fileprivate let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMyNzY3MGRlLThjODItNDBjZS05NWYzLWUwMzgzZmI4OGY5MSIsImlhdCI6MTUyNjM5NzIzNn0.QZa12Nq2hTEAJaqZMraWcGHUtVaN09m-Wk7S-KVohBI"
+    fileprivate let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhYTAyZTg4LTNkY2ItNGM3Yi1hNDMyLWQzOGFkN2NiNGYwNiIsImlhdCI6MTUyODMyODYxMn0.IfV2hmxD90qOfHBkhur6PRRI4PBBiXwA5pvAdt1AUHI"
     
     // MARK: Init
     init(withBaseURL baseURL: URL, mapper: NetworkMappingProtocol) {

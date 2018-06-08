@@ -22,9 +22,8 @@ class PlayerViewController: UIViewController {
     var model: ScoutArticle!
     var keychainService : KeychainService!
     var isFullArticle : Bool = true
-    fileprivate var player = AVPlayer()
     fileprivate var audioPlayer:AVAudioPlayer!
-    fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 16
+    fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 6
     fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
     fileprivate var microphoneButton: GradientButton!
     fileprivate var spinner:UIActivityIndicatorView?
@@ -55,19 +54,7 @@ class PlayerViewController: UIViewController {
         configureView()
         spinner = self.addSpinner()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
-            try audioSession.setActive(true)
-        } catch {
-            print(error)
-        }
-    }
-    
+
     // MARK: - Private methods
     fileprivate func setupMicButton() {
         
@@ -93,10 +80,7 @@ class PlayerViewController: UIViewController {
         
         slider.setThumbImage(UIImage(named: "knob"), for: .normal)
         if let url = model.articleImageURL {
-            if let data = try? Data(contentsOf: url)
-            {
-                self.mainImage.image = UIImage(data: data)!
-            }
+            self.mainImage.downloadImageFrom(link: (url.absoluteString) , contentMode: .scaleAspectFill)
         }
         self.titleLabel.text = model.title
       
@@ -160,13 +144,15 @@ class PlayerViewController: UIViewController {
             
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: destinationUrl)
+
                 DispatchQueue.main.async {
                     self.slider.value = 0.0
                     self.slider.maximumValue = Float(self.audioPlayer.duration)
                     self.timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(self.updateSlider), userInfo: nil, repeats: true)
                 }
                 self.play()
-            } catch let error {
+            }
+            catch let error {
                 print(error.localizedDescription)
             }
         }
@@ -225,6 +211,14 @@ class PlayerViewController: UIViewController {
     }
     
     internal func play() {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            print(error)
+        }
+        
         audioPlayer.play()
     }
     
@@ -257,8 +251,12 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
-        audioPlayer.stop()
-        navigationController?.popToRootViewController(animated: true)
+        DispatchQueue.main.async {
+            self.audioPlayer.stop()
+            DispatchQueue.main.async {
+                self.navigationController?.popToRootViewController(animated: false)
+            }
+        }
     }
     
     @IBAction func skimButtonTapped(_ sender: Any) {
@@ -268,16 +266,30 @@ class PlayerViewController: UIViewController {
         
         self.showHUD()
         self.scoutClient.getSummaryLink(userid: keychainService.value(for: "userID")!, url: (model.resolvedURL?.absoluteString)!, successBlock: { (scoutArticle) in
+            if scoutArticle.url != "" {
                 self.downloadfile(url: scoutArticle.url)
                 DispatchQueue.main.async {
                     self.pauseButton.isSelected = false
                 }
+            }
+            else {
+                DispatchQueue.main.async {
+                    self.showAlert(errorMessage: "Skim version is not available")
+                    self.playFullArticle(self)
+                }
+            }
         }, failureBlock: { (failureResponse, error, response) in
+            self.showAlert(errorMessage: error.toString)
+            self.hideHUD()
         })
     }
     
     @IBAction func readArticleButtonTapped(_ sender: Any) {
-        UIApplication.shared.open(model.resolvedURL!, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(model.resolvedURL!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(model.resolvedURL!)
+        }
     }
     
     @IBAction func playFullArticle(_ sender: Any) {
@@ -292,6 +304,8 @@ class PlayerViewController: UIViewController {
                     self.pauseButton.isSelected = false
                 }
         }, failureBlock: { (failureResponse, error, response) in
+            self.showAlert(errorMessage: error.toString)
+            self.hideHUD()
         })
     }
     
@@ -314,18 +328,23 @@ class PlayerViewController: UIViewController {
         self.view.addSubview(spinner)
         
         loadingTextLabel.textColor = UIColor.black
-        loadingTextLabel.text = "Prepearing your article..."
+        loadingTextLabel.text = "Preparing your article..."
         loadingTextLabel.font = UIFont(name: "Avenir Light", size: 14)
         loadingTextLabel.sizeToFit()
-        loadingTextLabel.center = CGPoint(x: slider.center.x + 10, y: slider.center.y + 20)
-        self.view.addSubview(loadingTextLabel)
+        loadingTextLabel.textAlignment = .center
         
-        let xConstraint = NSLayoutConstraint(item: spinner, attribute: .centerX, relatedBy: .equal, toItem: loadingTextLabel, attribute: .leading , multiplier: 1, constant: -20)
+        self.view.addSubview(loadingTextLabel)
+        loadingTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        loadingTextLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loadingTextLabel.widthAnchor.constraint(equalToConstant: 175).isActive = true
+        loadingTextLabel.centerXAnchor.constraint(equalTo: loadingTextLabel.superview!.centerXAnchor).isActive = true
+        loadingTextLabel.centerYAnchor.constraint(equalTo: slider.bottomAnchor).isActive = true
+        
+        let xConstraint = NSLayoutConstraint(item: spinner, attribute: .centerX, relatedBy: .equal, toItem: loadingTextLabel, attribute: .leading , multiplier: 1, constant: 0)
         let yConstraint = NSLayoutConstraint(item: spinner, attribute: .centerY, relatedBy: .equal, toItem: loadingTextLabel, attribute: .centerY, multiplier: 1, constant: 0)
         
         NSLayoutConstraint.activate([xConstraint, yConstraint])
         
-        self.view.bringSubview(toFront: spinner)
         self.loadingTextLabel.isHidden = true
         
         return spinner
@@ -340,6 +359,8 @@ class PlayerViewController: UIViewController {
             self.forwardButton.isEnabled = false
             self.backwardButton.isEnabled = false
             self.loadingTextLabel.isHidden = false
+            self.fullLenghtButton.isEnabled = false
+            self.skimButton.isEnabled = false
             self.slider.isHidden = true
             self.startTime.isHidden = true
             self.endTime.isHidden = true
@@ -354,38 +375,28 @@ class PlayerViewController: UIViewController {
             self.pauseButton.isEnabled = true
             self.forwardButton.isEnabled = true
             self.backwardButton.isEnabled = true
+            self.fullLenghtButton.isEnabled = true
+            self.skimButton.isEnabled = true
             self.loadingTextLabel.isHidden = true
             self.slider.isHidden = false
             self.startTime.isHidden = false
             self.endTime.isHidden = false
         }
     }
-}
-
-class Downloader {
-    class func load(url: URL, to localUrl: URL, completion: @escaping () -> ()) {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig)
-        let request = try! URLRequest(url: url, method: .get)
-        
-        let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
-            if let tempLocalUrl = tempLocalUrl, error == nil {
-                // Success
-                if let statusCode = (response as? HTTPURLResponse)?.statusCode {
-                    print("Success: \(statusCode)")
-                }
+    
+    private func showAlert(errorMessage: String) -> Void {
+        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("ok")
                 
-                do {
-                    try FileManager.default.copyItem(at: tempLocalUrl, to: localUrl)
-                    completion()
-                } catch (let writeError) {
-                    print("error writing file \(localUrl) : \(writeError)")
-                }
+            case .cancel:
+                print("cancel")
                 
-            } else {
-                print("Failure: %@", error?.localizedDescription ?? "");
-            }
-        }
-        task.resume()
+            case .destructive:
+                print("destructive")
+            }}))
+        self.present(alert, animated: true, completion: nil)
     }
 }
