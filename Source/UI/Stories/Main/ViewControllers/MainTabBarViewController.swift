@@ -20,8 +20,8 @@ class MainTabBarViewController: UITabBarController {
     fileprivate var microphoneButton: GradientButton!
     fileprivate lazy var defaultTabBarHeight = { tabBar.frame.size.height }()
     
-    fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 16
-    fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
+    fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 10
+    fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.8
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -35,6 +35,7 @@ class MainTabBarViewController: UITabBarController {
         
         tabBar.barTintColor = Design.Color.darkWhite
         tabBar.isTranslucent = false
+
         self.setupMicButton()
     }
     
@@ -48,7 +49,7 @@ class MainTabBarViewController: UITabBarController {
     fileprivate func setupMicButton() {
         
         // we need dynamic size of the mic button. should set after we will have design
-        microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
         microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
         microphoneButton.alphaComponent = defaultMicrophoneButtonAlpha
         

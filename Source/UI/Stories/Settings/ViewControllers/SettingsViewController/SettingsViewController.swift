@@ -28,15 +28,16 @@ class SettingsViewController: UIViewController {
         gradientButton.direction = .horizontally(centered: 0.1)
         
         let rawCenterString: NSString = "Mozilla strives to only collect what we need to provide and improve Scout for everyone. Learn More."
-        let centerText = NSMutableAttributedString(string: rawCenterString as String)
-        
+        let centerText = NSMutableAttributedString(string: rawCenterString as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0)])
+       
         let policyText = "Learn More."
+        
         let policyRange = rawCenterString.range(of: policyText)
         
         
         rawCenterString.enumerateSubstrings(in:policyRange, options: .byWords, using: {
             (substring, substringRange, _, _) in
-            centerText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.blue, range: substringRange)
+            centerText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(rgb: 0x0060DF), range: substringRange)
             })
       
         

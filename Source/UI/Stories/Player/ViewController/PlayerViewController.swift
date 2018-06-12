@@ -24,7 +24,7 @@ class PlayerViewController: UIViewController {
     var isFullArticle : Bool = true
     fileprivate var audioPlayer:AVAudioPlayer!
     fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 6
-    fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
+    fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.8
     fileprivate var microphoneButton: GradientButton!
     fileprivate var spinner:UIActivityIndicatorView?
     fileprivate var timer : Timer!
@@ -59,7 +59,7 @@ class PlayerViewController: UIViewController {
     fileprivate func setupMicButton() {
         
         // we need dynamic size of the mic button. should set after we will have design
-        microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
         microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
         microphoneButton.alphaComponent = defaultMicrophoneButtonAlpha
         
@@ -78,6 +78,8 @@ class PlayerViewController: UIViewController {
     
     fileprivate func configureView() {
         
+        slider.minimumTrackTintColor = UIColor(rgb: 0x6BB4FF)
+        slider.maximumTrackTintColor = UIColor(rgb: 0xD7D7DB)
         slider.setThumbImage(UIImage(named: "knob"), for: .normal)
         if let url = model.articleImageURL {
             self.mainImage.downloadImageFrom(link: (url.absoluteString) , contentMode: .scaleAspectFill)
@@ -279,7 +281,7 @@ class PlayerViewController: UIViewController {
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
-            self.showAlert(errorMessage: error.toString)
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
             self.hideHUD()
         })
     }
@@ -304,7 +306,7 @@ class PlayerViewController: UIViewController {
                     self.pauseButton.isSelected = false
                 }
         }, failureBlock: { (failureResponse, error, response) in
-            self.showAlert(errorMessage: error.toString)
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
             self.hideHUD()
         })
     }

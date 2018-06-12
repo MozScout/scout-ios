@@ -16,8 +16,8 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     weak var playerDelegate: VoiceInputDelegate?
     
-    fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 16
-    fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.95
+    fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 11
+    fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.8
     fileprivate var microphoneButton: GradientButton!
     fileprivate var detectionTimer: Timer?
     fileprivate var spinner:UIActivityIndicatorView?
@@ -63,7 +63,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
-            self.showAlert(errorMessage: error.toString)
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
             self.hideHUD()
         })
     }
@@ -83,7 +83,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
-            self.showAlert(errorMessage: error.toString)
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
             self.hideHUD()
         })
     }
@@ -91,7 +91,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     fileprivate func setupMicButton() {
         
         // we need dynamic size of the mic button. should set after we will have design
-        microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
         microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
         microphoneButton.alphaComponent = defaultMicrophoneButtonAlpha
         

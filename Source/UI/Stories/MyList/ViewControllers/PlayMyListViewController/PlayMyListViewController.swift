@@ -21,7 +21,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     @IBOutlet fileprivate var gradientButton: GradientButton!
     
     weak var playerDelegateFromMain: PlayListDelegate?
-    fileprivate let maxHeaderHeight: CGFloat = 64
+    fileprivate let maxHeaderHeight: CGFloat = 44
     fileprivate let minHeaderHeight: CGFloat = 24
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate let cellRowReuseId = "cellrow"
@@ -82,7 +82,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
                 self.tableView.reloadData()
             }
         }, failureBlock: { (failureResponse, error, response) in
-            self.showAlert(errorMessage: error.toString)
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
             self.hideHUD()
         })
     }
@@ -130,7 +130,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
                 self.hideHUD()
             }
         }, failureBlock: { (failureResponse, error, response) in
-            self.showAlert(errorMessage: error.toString)
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
             self.hideHUD()
         })
     }
@@ -150,7 +150,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
                 }
             }
         }, failureBlock: { (failureResponse, error, response) in
-            self.showAlert(errorMessage: error.toString)
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
             self.hideHUD()
         })
     }

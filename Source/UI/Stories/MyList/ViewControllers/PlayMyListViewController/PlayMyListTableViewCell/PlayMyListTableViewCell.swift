@@ -17,6 +17,9 @@ class PlayMyListTableViewCell: UITableViewCell {
     weak var playButtonDelegate: PlayMyListTableViewCellDelegate?
     weak var skimButtonDelegate: PlayMyListTableViewCellDelegate?
     
+    @IBOutlet weak var horizontalLine: UIView!
+    @IBOutlet weak var verticalLine: UIView!
+    @IBOutlet weak var expandedView: UIView!
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var resourceName: UILabel!
     @IBOutlet weak var title: UILabel!
@@ -47,12 +50,15 @@ class PlayMyListTableViewCell: UITableViewCell {
     
     func configureCell(withModel model: ScoutArticle) {
         self.isExpanded = false
+        horizontalLine.backgroundColor = UIColor(rgb: 0xEDEDF0)
+        verticalLine.backgroundColor = UIColor(rgb: 0xEDEDF0)
+        expandedView.backgroundColor = UIColor(rgb: 0x45A1FF)
         resourceName.text = model.author
         title.text = model.title
         lengthMinutes.text = String(format: "%@ mins", String(describing: model.lengthMinutes))
         
         if model.articleImageURL != URL(string: "") {
-            self.mainImage.downloadImageFrom(link: (model.articleImageURL?.absoluteString)! , contentMode: .scaleAspectFit)
+            self.mainImage.downloadImageFrom(link: (model.articleImageURL?.absoluteString)! , contentMode: .scaleAspectFill)
         }
         else {
             self.mainImage.image = UIImage(named: "mainImg")
