@@ -47,16 +47,6 @@
 		9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362FCAE20B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift */; };
 		93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F482CD3E2080D969007D0C14 /* Images.xcassets */; };
 		93782C7E20C7EEE800CE56A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93782C7D20C7EEE800CE56A4 /* LaunchScreen.storyboard */; };
-		93782CA220C7F44300CE56A4 /* ZillaSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9F20C7F38300CE56A4 /* ZillaSlab-Bold.ttf */; };
-		93782CA320C7F44500CE56A4 /* ZillaSlab-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9820C7F38200CE56A4 /* ZillaSlab-BoldItalic.ttf */; };
-		93782CA420C7F44700CE56A4 /* ZillaSlab-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782CA020C7F38300CE56A4 /* ZillaSlab-Italic.ttf */; };
-		93782CA520C7F44900CE56A4 /* ZillaSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9A20C7F38200CE56A4 /* ZillaSlab-Light.ttf */; };
-		93782CA620C7F44B00CE56A4 /* ZillaSlab-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9920C7F38200CE56A4 /* ZillaSlab-LightItalic.ttf */; };
-		93782CA720C7F44D00CE56A4 /* ZillaSlab-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9E20C7F38200CE56A4 /* ZillaSlab-Medium.ttf */; };
-		93782CA820C7F44F00CE56A4 /* ZillaSlab-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9B20C7F38200CE56A4 /* ZillaSlab-MediumItalic.ttf */; };
-		93782CA920C7F45100CE56A4 /* ZillaSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782CA120C7F38300CE56A4 /* ZillaSlab-Regular.ttf */; };
-		93782CAA20C7F45300CE56A4 /* ZillaSlab-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9D20C7F38200CE56A4 /* ZillaSlab-SemiBold.ttf */; };
-		93782CAB20C7F45500CE56A4 /* ZillaSlab-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93782C9C20C7F38200CE56A4 /* ZillaSlab-SemiBoldItalic.ttf */; };
 		93782CCB20C7F53100CE56A4 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93782CAD20C7F53100CE56A4 /* SF-Pro-Display-Thin.otf */; };
 		93782CCC20C7F53100CE56A4 /* SF-Pro-Display-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93782CAE20C7F53100CE56A4 /* SF-Pro-Display-SemiboldItalic.otf */; };
 		93782CCD20C7F53100CE56A4 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93782CAF20C7F53100CE56A4 /* SF-Pro-Text-Heavy.otf */; };
@@ -95,6 +85,17 @@
 		93A3114220B1400B0049DB67 /* VoiceInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114120B1400B0049DB67 /* VoiceInputViewController.swift */; };
 		93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114420B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift */; };
 		93A3114720B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114620B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift */; };
+		93AE234E20CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234320CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf */; };
+		93AE234F20CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234420CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf */; };
+		93AE235020CFCEF700A5D89D /* ZillaSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234520CFCEF700A5D89D /* ZillaSlab-Bold.ttf */; };
+		93AE235120CFCEF700A5D89D /* ZillaSlab-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234620CFCEF700A5D89D /* ZillaSlab-Italic.ttf */; };
+		93AE235220CFCEF700A5D89D /* ZillaSlab-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234720CFCEF700A5D89D /* ZillaSlab-BoldItalic.ttf */; };
+		93AE235320CFCEF700A5D89D /* ZillaSlab-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234820CFCEF700A5D89D /* ZillaSlab-Medium.ttf */; };
+		93AE235420CFCEF700A5D89D /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234920CFCEF700A5D89D /* OFL.txt */; };
+		93AE235520CFCEF700A5D89D /* ZillaSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234A20CFCEF700A5D89D /* ZillaSlab-Light.ttf */; };
+		93AE235620CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234B20CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf */; };
+		93AE235720CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234C20CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf */; };
+		93AE235820CFCEF700A5D89D /* ZillaSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234D20CFCEF700A5D89D /* ZillaSlab-Regular.ttf */; };
 		93FB827420B54B1B00A39A5C /* PlayerAssemly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827220B54B1B00A39A5C /* PlayerAssemly.swift */; };
 		93FB827520B54B1B00A39A5C /* PlayerAssemlyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827320B54B1B00A39A5C /* PlayerAssemlyProtocol.swift */; };
 		93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827620B54BA100A39A5C /* PlayerViewController.swift */; };
@@ -170,16 +171,6 @@
 		9362FCAD20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutPlayerHTTPClientProtocol.swift; sourceTree = "<group>"; };
 		9362FCAE20B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScoutHTTPClient+ScoutPlayer.swift"; sourceTree = "<group>"; };
 		93782C7D20C7EEE800CE56A4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		93782C9820C7F38200CE56A4 /* ZillaSlab-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-BoldItalic.ttf"; path = "../../.Trash/ZillaSlab-BoldItalic.ttf"; sourceTree = "<group>"; };
-		93782C9920C7F38200CE56A4 /* ZillaSlab-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-LightItalic.ttf"; path = "../../.Trash/ZillaSlab-LightItalic.ttf"; sourceTree = "<group>"; };
-		93782C9A20C7F38200CE56A4 /* ZillaSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-Light.ttf"; path = "../../.Trash/ZillaSlab-Light.ttf"; sourceTree = "<group>"; };
-		93782C9B20C7F38200CE56A4 /* ZillaSlab-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-MediumItalic.ttf"; path = "../../.Trash/ZillaSlab-MediumItalic.ttf"; sourceTree = "<group>"; };
-		93782C9C20C7F38200CE56A4 /* ZillaSlab-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-SemiBoldItalic.ttf"; path = "../../.Trash/ZillaSlab-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		93782C9D20C7F38200CE56A4 /* ZillaSlab-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-SemiBold.ttf"; path = "../../.Trash/ZillaSlab-SemiBold.ttf"; sourceTree = "<group>"; };
-		93782C9E20C7F38200CE56A4 /* ZillaSlab-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-Medium.ttf"; path = "../../.Trash/ZillaSlab-Medium.ttf"; sourceTree = "<group>"; };
-		93782C9F20C7F38300CE56A4 /* ZillaSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-Bold.ttf"; path = "../../.Trash/ZillaSlab-Bold.ttf"; sourceTree = "<group>"; };
-		93782CA020C7F38300CE56A4 /* ZillaSlab-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-Italic.ttf"; path = "../../.Trash/ZillaSlab-Italic.ttf"; sourceTree = "<group>"; };
-		93782CA120C7F38300CE56A4 /* ZillaSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-Regular.ttf"; path = "../../.Trash/ZillaSlab-Regular.ttf"; sourceTree = "<group>"; };
 		93782CAD20C7F53100CE56A4 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		93782CAE20C7F53100CE56A4 /* SF-Pro-Display-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		93782CAF20C7F53100CE56A4 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
@@ -218,6 +209,17 @@
 		93A3114120B1400B0049DB67 /* VoiceInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputViewController.swift; sourceTree = "<group>"; };
 		93A3114420B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutVoiceInputHTTPClientProtocol.swift; sourceTree = "<group>"; };
 		93A3114620B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScoutHTTPClient+ScoutVoiceInput.swift"; sourceTree = "<group>"; };
+		93AE234320CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-MediumItalic.ttf"; sourceTree = "<group>"; };
+		93AE234420CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-LightItalic.ttf"; sourceTree = "<group>"; };
+		93AE234520CFCEF700A5D89D /* ZillaSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-Bold.ttf"; sourceTree = "<group>"; };
+		93AE234620CFCEF700A5D89D /* ZillaSlab-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-Italic.ttf"; sourceTree = "<group>"; };
+		93AE234720CFCEF700A5D89D /* ZillaSlab-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-BoldItalic.ttf"; sourceTree = "<group>"; };
+		93AE234820CFCEF700A5D89D /* ZillaSlab-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-Medium.ttf"; sourceTree = "<group>"; };
+		93AE234920CFCEF700A5D89D /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		93AE234A20CFCEF700A5D89D /* ZillaSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-Light.ttf"; sourceTree = "<group>"; };
+		93AE234B20CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		93AE234C20CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-SemiBold.ttf"; sourceTree = "<group>"; };
+		93AE234D20CFCEF700A5D89D /* ZillaSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-Regular.ttf"; sourceTree = "<group>"; };
 		93FB827220B54B1B00A39A5C /* PlayerAssemly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssemly.swift; sourceTree = "<group>"; };
 		93FB827320B54B1B00A39A5C /* PlayerAssemlyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssemlyProtocol.swift; sourceTree = "<group>"; };
 		93FB827620B54BA100A39A5C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -572,27 +574,9 @@
 			isa = PBXGroup;
 			children = (
 				93782CAC20C7F53100CE56A4 /* SF Pro */,
-				93782C9720C7F36500CE56A4 /* Zilla_Slab */,
+				93AE234220CFCEF700A5D89D /* zilla-slab */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		93782C9720C7F36500CE56A4 /* Zilla_Slab */ = {
-			isa = PBXGroup;
-			children = (
-				93782C9F20C7F38300CE56A4 /* ZillaSlab-Bold.ttf */,
-				93782C9820C7F38200CE56A4 /* ZillaSlab-BoldItalic.ttf */,
-				93782CA020C7F38300CE56A4 /* ZillaSlab-Italic.ttf */,
-				93782C9A20C7F38200CE56A4 /* ZillaSlab-Light.ttf */,
-				93782C9920C7F38200CE56A4 /* ZillaSlab-LightItalic.ttf */,
-				93782C9E20C7F38200CE56A4 /* ZillaSlab-Medium.ttf */,
-				93782C9B20C7F38200CE56A4 /* ZillaSlab-MediumItalic.ttf */,
-				93782CA120C7F38300CE56A4 /* ZillaSlab-Regular.ttf */,
-				93782C9D20C7F38200CE56A4 /* ZillaSlab-SemiBold.ttf */,
-				93782C9C20C7F38200CE56A4 /* ZillaSlab-SemiBoldItalic.ttf */,
-			);
-			name = Zilla_Slab;
-			path = ../../../Downloads/Zilla_Slab;
 			sourceTree = "<group>";
 		};
 		93782CAC20C7F53100CE56A4 /* SF Pro */ = {
@@ -629,8 +613,7 @@
 				93782CC920C7F53100CE56A4 /* SF-Pro-Display-BoldItalic.otf */,
 				93782CCA20C7F53100CE56A4 /* SF-Pro-Text-SemiboldItalic.otf */,
 			);
-			name = "SF Pro";
-			path = "../../../Downloads/SF Pro";
+			path = "SF Pro";
 			sourceTree = "<group>";
 		};
 		93A3113220B13DD70049DB67 /* VoiceInput */ = {
@@ -685,6 +668,24 @@
 				93A3114420B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift */,
 			);
 			path = ScoutVoiceInput;
+			sourceTree = "<group>";
+		};
+		93AE234220CFCEF700A5D89D /* zilla-slab */ = {
+			isa = PBXGroup;
+			children = (
+				93AE234320CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf */,
+				93AE234420CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf */,
+				93AE234520CFCEF700A5D89D /* ZillaSlab-Bold.ttf */,
+				93AE234620CFCEF700A5D89D /* ZillaSlab-Italic.ttf */,
+				93AE234720CFCEF700A5D89D /* ZillaSlab-BoldItalic.ttf */,
+				93AE234820CFCEF700A5D89D /* ZillaSlab-Medium.ttf */,
+				93AE234920CFCEF700A5D89D /* OFL.txt */,
+				93AE234A20CFCEF700A5D89D /* ZillaSlab-Light.ttf */,
+				93AE234B20CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf */,
+				93AE234C20CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf */,
+				93AE234D20CFCEF700A5D89D /* ZillaSlab-Regular.ttf */,
+			);
+			path = "zilla-slab";
 			sourceTree = "<group>";
 		};
 		93FB826D20B54A7400A39A5C /* Player */ = {
@@ -1125,28 +1126,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93782CAB20C7F45500CE56A4 /* ZillaSlab-SemiBoldItalic.ttf in Resources */,
 				93782CD820C7F53100CE56A4 /* SF-Pro-Text-Bold.otf in Resources */,
 				93782CDD20C7F53100CE56A4 /* SF-Pro-Display-LightItalic.otf in Resources */,
-				93782CA820C7F44F00CE56A4 /* ZillaSlab-MediumItalic.ttf in Resources */,
+				93AE235820CFCEF700A5D89D /* ZillaSlab-Regular.ttf in Resources */,
 				F482CD5C2080D969007D0C14 /* LaunchScreen.storyboard in Resources */,
 				93782CE320C7F53100CE56A4 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				93782CD920C7F53100CE56A4 /* SF-Pro-Display-MediumItalic.otf in Resources */,
+				93AE235720CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf in Resources */,
 				93782CCC20C7F53100CE56A4 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				93AE235420CFCEF700A5D89D /* OFL.txt in Resources */,
 				93782CDC20C7F53100CE56A4 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				93782CCF20C7F53100CE56A4 /* SF-Pro-Display-Light.otf in Resources */,
 				93782CE820C7F53100CE56A4 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
-				93782CA420C7F44700CE56A4 /* ZillaSlab-Italic.ttf in Resources */,
 				93782CE120C7F53100CE56A4 /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				93AE235520CFCEF700A5D89D /* ZillaSlab-Light.ttf in Resources */,
 				5637D2BE20A3257800112F1F /* MyList.storyboard in Resources */,
-				93782CA920C7F45100CE56A4 /* ZillaSlab-Regular.ttf in Resources */,
 				93782CDE20C7F53100CE56A4 /* SF-Pro-Display-BlackItalic.otf in Resources */,
+				93AE234E20CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf in Resources */,
 				93782CE020C7F53100CE56A4 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				93782CD120C7F53100CE56A4 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				93782CD620C7F53100CE56A4 /* SF-Pro-Display-Semibold.otf in Resources */,
 				93782CCD20C7F53100CE56A4 /* SF-Pro-Text-Heavy.otf in Resources */,
-				93782CA220C7F44300CE56A4 /* ZillaSlab-Bold.ttf in Resources */,
 				5637D2B920A3257800112F1F /* Help.storyboard in Resources */,
+				93AE235320CFCEF700A5D89D /* ZillaSlab-Medium.ttf in Resources */,
 				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
 				93782CE520C7F53100CE56A4 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */,
@@ -1156,23 +1158,23 @@
 				93782CD020C7F53100CE56A4 /* SF-Pro-Display-Regular.otf in Resources */,
 				93782CDA20C7F53100CE56A4 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				93782CD220C7F53100CE56A4 /* SF-Pro-Display-Bold.otf in Resources */,
-				93782CA320C7F44500CE56A4 /* ZillaSlab-BoldItalic.ttf in Resources */,
 				5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */,
 				93782CDB20C7F53100CE56A4 /* SF-Pro-Display-Ultralight.otf in Resources */,
-				93782CA520C7F44900CE56A4 /* ZillaSlab-Light.ttf in Resources */,
 				93782CCE20C7F53100CE56A4 /* SF-Pro-Display-RegularItalic.otf in Resources */,
+				93AE235220CFCEF700A5D89D /* ZillaSlab-BoldItalic.ttf in Resources */,
 				93782CE420C7F53100CE56A4 /* SF-Pro-Display-ThinItalic.otf in Resources */,
+				93AE235120CFCEF700A5D89D /* ZillaSlab-Italic.ttf in Resources */,
 				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
 				93782CD320C7F53100CE56A4 /* SF-Pro-Display-Medium.otf in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
+				93AE235020CFCEF700A5D89D /* ZillaSlab-Bold.ttf in Resources */,
+				93AE235620CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf in Resources */,
+				93AE234F20CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf in Resources */,
 				93782CD520C7F53100CE56A4 /* SF-Pro-Text-Light.otf in Resources */,
 				93782CE720C7F53100CE56A4 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				93782CE620C7F53100CE56A4 /* SF-Pro-Text-Medium.otf in Resources */,
 				93782CDF20C7F53100CE56A4 /* SF-Pro-Display-Black.otf in Resources */,
-				93782CAA20C7F45300CE56A4 /* ZillaSlab-SemiBold.ttf in Resources */,
-				93782CA720C7F44D00CE56A4 /* ZillaSlab-Medium.ttf in Resources */,
 				93782CD720C7F53100CE56A4 /* SF-Pro-Text-Regular.otf in Resources */,
-				93782CA620C7F44B00CE56A4 /* ZillaSlab-LightItalic.ttf in Resources */,
 				93782CE220C7F53100CE56A4 /* SF-Pro-Text-Semibold.otf in Resources */,
 				93782CD420C7F53100CE56A4 /* SF-Pro-Display-Heavy.otf in Resources */,
 				9333B81D20AC6D070055C5B1 /* PlayMyListTableViewCell.xib in Resources */,
