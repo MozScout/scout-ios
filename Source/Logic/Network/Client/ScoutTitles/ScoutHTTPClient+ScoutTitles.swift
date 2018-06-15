@@ -57,4 +57,21 @@ extension ScoutHTTPClient: ScoutTitlesHTTPClientProtocol {
                                 failureBlock(JSONObject, clientError, response)
         })
     }
+    
+    func archiveScoutTitle(withCmd cmd: String,
+                        userid: String,
+                        itemid: String,
+                        successBlock: @escaping ArchiveSuccessBlock,
+                        failureBlock: @escaping ScoutTitlesFailureBlock) -> HTTPClientConnectionResult {
+        
+        let request = self.requestBuilder.buildPostScoutTitleArchive(withCmd: cmd, userid: userid, itemid: itemid)
+        
+        return self.execute(request: request,
+                            successBlock: { (JSONObject, customObject, response) in
+                                successBlock()
+        },
+                            failureBlock:  { (JSONObject, clientError, response) in
+                                failureBlock(JSONObject, clientError, response)
+        })
+    }
 }

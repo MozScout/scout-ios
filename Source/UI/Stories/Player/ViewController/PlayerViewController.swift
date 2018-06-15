@@ -31,6 +31,7 @@ class PlayerViewController: UIViewController {
     fileprivate let loadingTextLabel = UILabel()
   
     
+    @IBOutlet weak var faviconImage: UIImageView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var fullLenghtButton: UIButton!
     @IBOutlet weak var skimButton: UIButton!
@@ -83,6 +84,9 @@ class PlayerViewController: UIViewController {
         slider.setThumbImage(UIImage(named: "knob"), for: .normal)
         if let url = model.articleImageURL {
             self.mainImage.downloadImageFrom(link: (url.absoluteString) , contentMode: .scaleAspectFill)
+        }
+        if let url = model.icon_url {
+            self.faviconImage.downloadImageFrom(link: (url.absoluteString) , contentMode: .scaleToFill)
         }
         self.titleLabel.text = model.title
       

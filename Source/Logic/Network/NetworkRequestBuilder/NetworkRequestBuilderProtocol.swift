@@ -17,4 +17,5 @@ protocol NetworkRequestBuilderProtocol {
     func buildPostScoutSkimVoiceInputRequest(withCmd cmd: String, userid: String, searchTerms: String) -> URLRequest?
     func buildPostArticleRequest(userid: String, url: String) -> URLRequest?
     func buildPostSummaryRequest(userid: String, url: String) -> URLRequest?
+    func buildPostScoutTitleArchive(withCmd cmd: String, userid: String, itemid: String) -> URLRequest?
 }

@@ -17,7 +17,9 @@ func == (lhs: ScoutArticle, rhs: ScoutArticle) -> Bool {
     let resolvedURLsAreEqual = lhs.resolvedURL == rhs.resolvedURL
     let articleImageURL = lhs.articleImageURL == rhs.articleImageURL
     let url = lhs.url == rhs.url
-    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleSortIDAreEqual && resolvedURLsAreEqual && articleImageURL && url
+    let publisher = lhs.publisher == rhs.publisher
+    let icon_url = lhs.icon_url == rhs.icon_url
+    return articleIDsAreEqual && articleTitlesAreEqual && articleAuthorsAreEqual  && articleLengthsAreEqual && articleSortIDAreEqual && resolvedURLsAreEqual && articleImageURL && url && publisher && icon_url
 }
 
 class ScoutArticle: NSObject, NSCoding {
@@ -30,6 +32,8 @@ class ScoutArticle: NSObject, NSCoding {
     var resolvedURL: URL?
     var articleImageURL : URL?
     var url : String
+    var publisher : String
+    var icon_url : URL?
     
     init(withArticleID itemID: String,
                         title: String,
@@ -38,7 +42,9 @@ class ScoutArticle: NSObject, NSCoding {
                         sortID: Int,
                         resolvedURL: URL?,
                         articleImageURL: URL?,
-                        url: String) {
+                        url: String,
+                        publisher: String,
+                        icon_url: URL?) {
         
         self.itemID = itemID
         self.title = title
@@ -48,6 +54,8 @@ class ScoutArticle: NSObject, NSCoding {
         self.resolvedURL = resolvedURL
         self.articleImageURL = articleImageURL
         self.url = url
+        self.publisher = publisher
+        self.icon_url = icon_url
     }
     
     // MARK: NSCoding
@@ -59,7 +67,8 @@ class ScoutArticle: NSObject, NSCoding {
               let author = objectDictionary["author"] as? String,
               let lengthMinutes = objectDictionary["lengthMinutes"] as? Int,
               let sortID = objectDictionary["sortID"] as? Int,
-              let url = objectDictionary["url"] as? String
+              let url = objectDictionary["url"] as? String,
+              let publisher = objectDictionary["publisher"] as? String
             else { return nil }
         
         var articleImageURL: URL? = nil
@@ -72,6 +81,11 @@ class ScoutArticle: NSObject, NSCoding {
             resolvedURL = URL(string: requiredResolvedURLString)
         }
         
+        var icon_url: URL? = nil
+        if let requiredResolvedURLString = objectDictionary["icon_url"] as? String {
+            icon_url = URL(string: requiredResolvedURLString)
+        }
+        
         self.init(withArticleID: itemID,
                   title: title,
                   author: author,
@@ -79,7 +93,9 @@ class ScoutArticle: NSObject, NSCoding {
                   sortID: sortID,
                   resolvedURL: resolvedURL,
                   articleImageURL: articleImageURL,
-                  url: url)
+                  url: url,
+                  publisher: publisher,
+                  icon_url: icon_url)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -91,10 +107,12 @@ class ScoutArticle: NSObject, NSCoding {
                                                              "lengthMinutes" : lengthMinutes,
                                                              "sortID" : sortID,
                                                              "url"   : url,
+                                                             "publisher"   : publisher
                                                          ])
         
         if let requiredArticleImageURLString =  articleImageURL?.absoluteString { dictionary["imageURL"] = requiredArticleImageURLString }
         if let requiredResolvedURLString =  resolvedURL?.absoluteString { dictionary["resolvedURL"] = requiredResolvedURLString }
+        if let requiredResolvedURLString =  icon_url?.absoluteString { dictionary["icon_url"] = requiredResolvedURLString }
         
         aCoder.encode(dictionary, forKey: NSStringFromClass(ScoutArticle.self))
     }

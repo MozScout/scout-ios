@@ -10,13 +10,15 @@ protocol PlayMyListTableViewCellDelegate: class {
     // maybe need send also several button states
     func playButtonTapped()
     func skimButtonTapped()
+    func archiveButtonTapped()
 }
 
 class PlayMyListTableViewCell: UITableViewCell {
     
     weak var playButtonDelegate: PlayMyListTableViewCellDelegate?
     weak var skimButtonDelegate: PlayMyListTableViewCellDelegate?
-    
+    weak var archiveButtonDelegate : PlayMyListTableViewCellDelegate?
+    @IBOutlet weak var publisherImage: UIImageView!
     @IBOutlet weak var horizontalLine: UIView!
     @IBOutlet weak var verticalLine: UIView!
     @IBOutlet weak var expandedView: UIView!
@@ -53,7 +55,7 @@ class PlayMyListTableViewCell: UITableViewCell {
         horizontalLine.backgroundColor = UIColor(rgb: 0xEDEDF0)
         verticalLine.backgroundColor = UIColor(rgb: 0xEDEDF0)
         expandedView.backgroundColor = UIColor(rgb: 0x45A1FF)
-        resourceName.text = model.author
+        resourceName.text = model.publisher
         title.text = model.title
         lengthMinutes.text = String(format: "%@ mins", String(describing: model.lengthMinutes))
         
@@ -62,6 +64,10 @@ class PlayMyListTableViewCell: UITableViewCell {
         }
         else {
             self.mainImage.image = UIImage(named: "mainImg")
+        }
+        
+        if model.icon_url != URL(string: "") {
+            self.publisherImage.downloadImageFrom(link: (model.icon_url?.absoluteString)! , contentMode: .scaleToFill)
         }
     }
     
@@ -72,5 +78,9 @@ class PlayMyListTableViewCell: UITableViewCell {
     @IBAction func skimButtonTapped(_ sender: Any) {
         guard let requiredDelegate = skimButtonDelegate else { return }
         requiredDelegate.skimButtonTapped()
+    }
+    @IBAction func archiveButtonTapped(_ sender: Any) {
+        guard let requiredDelegate = archiveButtonDelegate else { return }
+        requiredDelegate.archiveButtonTapped()
     }
 }

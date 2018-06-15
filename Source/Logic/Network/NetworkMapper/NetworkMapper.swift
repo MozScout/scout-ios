@@ -47,7 +47,9 @@ class NetworkMapper: NetworkMappingProtocol {
             let sortID = value["sort_id"].int ?? 0
             let articleImageURL = value["imageURL"].url ?? URL(string: "")
             let url = value["url"].string ?? ""
-            let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url)
+            let publisher = value["publisher"].string ?? ""
+            let icon_url = value["icon_url"].url ?? URL(string: "")
+            let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url, publisher: publisher, icon_url: icon_url)
             scoutArticlesArray.append(scoutArticle)
         }
         return scoutArticlesArray
@@ -63,7 +65,10 @@ class NetworkMapper: NetworkMappingProtocol {
         let sortID = resource["sort_id"].int ?? 0
         let articleImageURL = resource["imageURL"].url ?? URL(string: "")
         let url = resource["url"].string ?? ""
-        let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url)
+        let publisher = resource["publisher"].string ?? ""
+        let icon_url = resource["icon_url"].url ?? URL(string: "")
+        
+        let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url, publisher: publisher, icon_url: icon_url)
         
         return scoutArticle
     }
@@ -78,7 +83,9 @@ class NetworkMapper: NetworkMappingProtocol {
         let sortID = resource["sort_id"].int ?? 0
         let articleImageURL = resource["imageURL"].url ?? URL(string: "")
         let url = resource["url"].string ?? ""
-        let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url)
+        let publisher = resource["publisher"].string ?? ""
+        let icon_url = resource["icon_url"].url ?? URL(string: "")
+        let scoutArticle = ScoutArticle(withArticleID: itemID, title: title, author: author, lengthMinutes: lengthMinutes, sortID: sortID, resolvedURL: resolvedURL, articleImageURL: articleImageURL, url: url, publisher: publisher, icon_url: icon_url)
         
         return scoutArticle
     }

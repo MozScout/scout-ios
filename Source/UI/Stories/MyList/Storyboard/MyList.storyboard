@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAw-Ih-8ik">
-                                        <rect key="frame" x="166.5" y="11" width="43" height="22"/>
+                                        <rect key="frame" x="166" y="11" width="43" height="22"/>
                                         <fontDescription key="fontDescription" name="ZillaSlab-BoldItalic" family="Zilla Slab" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

@@ -27,6 +27,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     fileprivate let cellRowReuseId = "cellrow"
     fileprivate var spinner:UIActivityIndicatorView?
     fileprivate var articleNumber: Int = 0
+
     var scoutClient : ScoutHTTPClient!
     var keychainService : KeychainService!
     var userID : String = ""
@@ -155,6 +156,21 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         })
     }
     
+    func archiveButtonTapped() {
+        self.scoutClient.archiveScoutTitle(withCmd: "Archive", userid: userID, itemid: self.scoutTitles![articleNumber].itemID, successBlock: {
+            self.scoutTitles!.remove(at: self.articleNumber)
+            let indexPath = IndexPath(row: self.articleNumber, section: 0)
+            DispatchQueue.main.async {
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.endUpdates()
+            }
+        }, failureBlock: { (failureResponse, error, response) in
+            self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
+            self.hideHUD()
+        })
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.getScoutTitles()
         self.tableView.reloadData()
@@ -182,6 +198,7 @@ extension PlayMyListViewController: UITableViewDataSource {
         
         cell.playButtonDelegate = self
         cell.skimButtonDelegate = self
+        cell.archiveButtonDelegate = self
         cell.configureCell(withModel: self.scoutTitles![indexPath.row])
         
         return cell

@@ -40,20 +40,27 @@
                         <rect key="frame" x="100" y="0.0" width="220" height="100"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsH-0C-Kbp">
-                                <rect key="frame" x="9" y="42" width="204" height="17"/>
+                                <rect key="frame" x="9" y="41.5" width="204" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e68-69-ecK">
-                                <rect key="frame" x="9" y="19.5" width="41.5" height="14.5"/>
-                                <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whk-sn-vcJ">
+                                <rect key="frame" x="9" y="68.5" width="33" height="12"/>
+                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whk-sn-vcJ">
-                                <rect key="frame" x="9" y="69" width="33" height="12"/>
-                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="10"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UUA-U0-Bnt">
+                                <rect key="frame" x="9" y="21.5" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="PTD-WS-Z6F"/>
+                                    <constraint firstAttribute="height" constant="14" id="pRb-cj-GTa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e68-69-ecK">
+                                <rect key="frame" x="31" y="23.5" width="41.5" height="10"/>
+                                <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -63,10 +70,13 @@
                             <constraint firstItem="TsH-0C-Kbp" firstAttribute="centerY" secondItem="aCr-t0-quS" secondAttribute="centerY" id="Htm-SD-Jpi"/>
                             <constraint firstAttribute="height" constant="100" id="IC8-gY-ZKl"/>
                             <constraint firstItem="Whk-sn-vcJ" firstAttribute="leading" secondItem="TsH-0C-Kbp" secondAttribute="leading" id="Jet-Pn-Qd2"/>
+                            <constraint firstItem="TsH-0C-Kbp" firstAttribute="top" secondItem="UUA-U0-Bnt" secondAttribute="bottom" constant="6" id="LqS-se-1Pw"/>
                             <constraint firstItem="Whk-sn-vcJ" firstAttribute="top" secondItem="TsH-0C-Kbp" secondAttribute="bottom" constant="10" id="QwD-x3-vLe"/>
                             <constraint firstItem="TsH-0C-Kbp" firstAttribute="leading" secondItem="aCr-t0-quS" secondAttribute="leading" constant="9" id="R4Y-Nf-YkZ"/>
                             <constraint firstItem="TsH-0C-Kbp" firstAttribute="top" secondItem="e68-69-ecK" secondAttribute="bottom" constant="8" id="YxX-g3-Lvn"/>
-                            <constraint firstItem="e68-69-ecK" firstAttribute="leading" secondItem="TsH-0C-Kbp" secondAttribute="leading" id="cPX-jj-uHi"/>
+                            <constraint firstItem="e68-69-ecK" firstAttribute="leading" secondItem="UUA-U0-Bnt" secondAttribute="trailing" constant="8" id="Z1A-XX-8bY"/>
+                            <constraint firstItem="UUA-U0-Bnt" firstAttribute="leading" secondItem="TsH-0C-Kbp" secondAttribute="leading" id="n0E-lV-NKJ"/>
+                            <constraint firstItem="e68-69-ecK" firstAttribute="centerY" secondItem="UUA-U0-Bnt" secondAttribute="centerY" id="nmF-bk-fFf"/>
                             <constraint firstAttribute="trailing" secondItem="TsH-0C-Kbp" secondAttribute="trailing" constant="7" id="xXE-ef-qBF"/>
                         </constraints>
                     </view>
@@ -102,6 +112,9 @@
                                 <state key="normal" image="doneButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="archiveButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ain-Mh-9Nq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTr-aN-Njo">
                                 <rect key="frame" x="275" y="1.5" width="35" height="44"/>
@@ -163,6 +176,7 @@
                 <outlet property="lengthMinutes" destination="Whk-sn-vcJ" id="pbp-bW-H69"/>
                 <outlet property="mainImage" destination="Ok0-IO-cEg" id="Ck5-ey-5pd"/>
                 <outlet property="playButton" destination="LJ3-il-2lQ" id="Y1g-T2-SEt"/>
+                <outlet property="publisherImage" destination="UUA-U0-Bnt" id="bPc-OR-S2x"/>
                 <outlet property="resourceName" destination="e68-69-ecK" id="h9K-TK-rD7"/>
                 <outlet property="skimButton" destination="jTr-aN-Njo" id="0Mh-Hg-QSl"/>
                 <outlet property="title" destination="TsH-0C-Kbp" id="9Ke-zE-T69"/>

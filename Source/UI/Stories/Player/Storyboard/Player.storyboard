@@ -288,6 +288,7 @@
                         <outlet property="backButton" destination="Pdp-dz-SSX" id="pJn-Vh-e5y"/>
                         <outlet property="backwardButton" destination="NUX-TB-09j" id="pAP-0J-TKN"/>
                         <outlet property="endTime" destination="Hwo-Ns-5K3" id="Rnx-yq-q2Q"/>
+                        <outlet property="faviconImage" destination="tpb-zz-5wA" id="BSJ-DT-ZEN"/>
                         <outlet property="forwardButton" destination="Wqe-r0-bjo" id="Afb-d8-as8"/>
                         <outlet property="fullLenghtButton" destination="wPS-HG-Hl7" id="nv4-Zg-RqJ"/>
                         <outlet property="mainImage" destination="YzG-uX-kdY" id="qfe-Bq-Bxj"/>

@@ -21,5 +21,5 @@ protocol ApplicationAssemblyProtocol {
     // MARK: Services
     func assemblyNetworkClient() -> HTTPClientProtocol
     func assemblyKeychainService() -> KeychainServiceProtocol
-    
+    func assemblySpeechService() -> SpeechServiceProtocol
 }

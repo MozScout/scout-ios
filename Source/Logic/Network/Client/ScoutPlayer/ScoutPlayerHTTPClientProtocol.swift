@@ -15,4 +15,9 @@ protocol ScoutPlayerHTTPClientProtocol {
                                        url: String,
                                        successBlock: @escaping ScoutPlayerSuccessBlock,
                                        failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult
+    
+    func getFullAudioFileURLFromPlayer(userid: String,
+                                       url: String,
+                                       successBlock: @escaping ScoutPlayerSuccessBlock,
+                                       failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult
 }

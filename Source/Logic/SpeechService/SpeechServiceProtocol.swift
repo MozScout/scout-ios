@@ -20,17 +20,11 @@ enum SpeechServiceFinalRecognitionResult {
 
 protocol SpeechServiceProtocol {
     
-    func authorizeSpeechRecognition()
     func startRecording()
     func stopRecording()
 }
 
-protocol SpeechServiceDelegate: class {
-    
-    
-    func speechService(_ service: SpeechService, didReceiveAuthorizationStatus status: SpeechServiceAuthorizationStatus)
-    func speechService(_ service: SpeechService, recognitionAvailabilityDidChange available: Bool)
-    
-    func speechService(_ service: SpeechService, didFinishRecognitionWithResult result: SpeechServiceFinalRecognitionResult)
-    func speechService(_ service: SpeechService, didRecognizePartialResult partialText: String)
+protocol SBSpeechRecognizerDelegate: class {
+    func speechRecognitionFinished(transcription:String)
+    func speechRecognitionPartialResult(transcription:String)
 }

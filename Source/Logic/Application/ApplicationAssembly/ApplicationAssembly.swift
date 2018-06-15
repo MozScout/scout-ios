@@ -22,6 +22,7 @@ class ApplicationAssembly {
     fileprivate lazy var networkClient: HTTPClientProtocol = self.createNetworkClient()
     fileprivate lazy var networkManager: SessionManager = self.createSessionManager()
     fileprivate lazy var keychainService: KeychainServiceProtocol = self.createKeychainService()
+    fileprivate lazy var speechService: SpeechServiceProtocol = self.createSpeechService()
     
 
     // MARK: Init
@@ -42,6 +43,7 @@ extension ApplicationAssembly: ApplicationAssemblyProtocol {
     func assemblyVoiceInputRouter() -> VoiceInputRoutingProtocol { return self.voiceInputRouter }
     func assemblyPlayerRouter() -> PlayerRoutingProtocol { return self.playerRouter }
     
+    func assemblySpeechService() -> SpeechServiceProtocol { return self.speechService }
     func assemblyNetworkClient() -> HTTPClientProtocol { return self.networkClient }
     func assemblyKeychainService() -> KeychainServiceProtocol { return self.keychainService }
 }
@@ -129,5 +131,11 @@ fileprivate extension ApplicationAssembly {
         let bundleID = Bundle.main.bundleIdentifier ?? ""
         let keychainService = KeychainService(with: bundleID)
         return keychainService
+    }
+    
+    func createSpeechService() -> SpeechServiceProtocol {
+        
+        let speechService = SpeechService(with: Locale.init(identifier: "en-US"))
+        return speechService!
     }
 }

@@ -21,6 +21,7 @@ class VoiceInputAssemly: VoiceInputAssemlyProtocol {
         
         let voiceInputVC = self.storyboard.instantiateViewController(withIdentifier: "VoiceInputViewController") as! VoiceInputViewController
         voiceInputVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as! ScoutHTTPClient
+        voiceInputVC.speechService = self.applicationAssembly.assemblySpeechService() as! SpeechService
         
         return voiceInputVC
     }

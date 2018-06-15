@@ -12,8 +12,8 @@ protocol VoiceInputDelegate: class {
     func openPlayer(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
-class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
-    
+class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
+
     weak var playerDelegate: VoiceInputDelegate?
     
     fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 11
@@ -22,11 +22,8 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     fileprivate var detectionTimer: Timer?
     fileprivate var spinner:UIActivityIndicatorView?
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))!
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    private var recognitionTask: SFSpeechRecognitionTask?
-    private let audioEngine = AVAudioEngine()
     var scoutClient : ScoutHTTPClient!
+    var speechService : SpeechService!
     var userID : String = ""
     
     @IBOutlet weak var console: UITextView!
@@ -34,23 +31,19 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupMicButton()
-        speechRecognizer.delegate = self
+        self.configureUI()
+        speechService.startRecording()
+    }
+    
+    fileprivate func configureUI() {
         spinner = self.addSpinner()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        startRecording()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        speechService.delegate = self
+        console.text = "Scout that article about "
     }
     
     fileprivate func getURL(withSearchTerm: String) {
         showHUD()
-        self.cancelRecording()
+        speechService.stopRecording()
         scoutClient.getAudioFileURL(withCmd: "SearchAndPlayArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (scoutArticle) in
             if scoutArticle.url == "" {
                 self.hideHUD()
@@ -70,7 +63,7 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     fileprivate func getSkimURL(withSearchTerm: String) {
         showHUD()
-        self.cancelRecording()
+        speechService.stopRecording()
         scoutClient.getSkimAudioFileURL(withCmd: "SearchAndSummarizeArticle", userid: self.userID, searchTerms: withSearchTerm, successBlock: { (scoutArticle) in
             if scoutArticle.url == "" {
                 self.hideHUD()
@@ -109,144 +102,8 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     @objc fileprivate func closeMicrophoneButtonAction(sender: UIButton) {
+        speechService.stopRecording()
         navigationController?.popViewController(animated: true)
-    }
-    
-    func startRecording() {
-        
-        if recognitionTask != nil {
-            recognitionTask?.cancel()
-            recognitionTask = nil
-        }
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setActive(true)
-        } catch {
-            print("audioSession properties weren't set because of an error.")
-        }
-        
-        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
-        let inputNode = audioEngine.inputNode
-        
-        guard let recognitionRequest = recognitionRequest else {
-            fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
-        }
-        
-        recognitionRequest.shouldReportPartialResults = true
-        
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-            
-            var isFinal = false
-            
-            if result != nil {
-                self.microphoneButton.isEnabled = false
-                self.console.text = result?.bestTranscription.formattedString  //9
-                isFinal = (result?.isFinal)!
-                
-                if let timer = self.detectionTimer, timer.isValid {
-                    if isFinal {
-                        self.console.text = ""
-                        self.detectionTimer?.invalidate()
-                    }
-                } else {
-                    self.detectionTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
-                        if self.recognitionTask != nil {
-                            if self.console.text.range(of: "Skim ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Skim ")!)
-                                self.getSkimURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Skim that article about ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Skim that article about ")!)
-                                self.getSkimURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Skim that article ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Skim that article ")!)
-                                self.getSkimURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Skim article about ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Skim article about ")!)
-                                self.getSkimURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Play that article about ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Play that article about ")!)
-                                self.getURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Play article about ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Play article about ")!)
-                                self.getURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Play that article ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Play that article ")!)
-                                self.getURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Play ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Play ")!)
-                                self.getURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Scout that article about ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Scout that article about ")!)
-                                self.getURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Scout article about ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Scout article about ")!)
-                                self.getURL(withSearchTerm: self.console.text)
-                            }
-                            else if self.console.text.range(of: "Scout that article ") != nil {
-                                self.console.text.removeSubrange(self.console.text.range(of: "Scout that article ")!)
-                                self.getURL(withSearchTerm: self.console.text)
-                            }
-                            else {
-                                if self.console.text.range(of: "Scout ") != nil {
-                                     self.console.text.removeSubrange(self.console.text.range(of: "Scout ")!)
-                                     self.getURL(withSearchTerm: self.console.text)
-                                }
-                                else {
-                                    self.getURL(withSearchTerm: self.console.text)
-                                }
-                            }
-                        }
-                        isFinal = true
-                        timer.invalidate()
-                    })
-                }
-            }
-            
-            if error != nil || isFinal {
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
-                
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
-            }
-        })
-        
-        let recordingFormat = inputNode.outputFormat(forBus: 0)  //11
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
-            self.recognitionRequest?.append(buffer)
-        }
-        
-        audioEngine.prepare()  //12
-        
-        do {
-            try audioEngine.start()
-        } catch {
-            print("audioEngine couldn't start because of an error.")
-        }
-        
-        console.text = "Scout that article about "
-        
-    }
-    
-    func cancelRecording() {
-        DispatchQueue.main.async {
-            self.recognitionTask?.cancel()
-            self.audioEngine.stop()
-            let node = self.audioEngine.inputNode
-            node.removeTap(onBus: 0)
-        }
     }
     
     private func showAlert(errorMessage: String) -> Void {
@@ -254,7 +111,8 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
-                self.startRecording()
+                self.console.text = "Scout that article about "
+                self.speechService.startRecording()
                 
             case .cancel:
                 print("cancel")
@@ -295,5 +153,66 @@ class VoiceInputViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.microphoneButton.isEnabled = true
             self.spinner?.stopAnimating()
         }
+    }
+    
+    func speechRecognitionFinished(transcription: String) {
+        if self.console.text.range(of: "Skim ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Skim ")!)
+            self.getSkimURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Skim that article about ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Skim that article about ")!)
+            self.getSkimURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Skim that article ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Skim that article ")!)
+            self.getSkimURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Skim article about ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Skim article about ")!)
+            self.getSkimURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Play that article about ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Play that article about ")!)
+            self.getURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Play article about ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Play article about ")!)
+            self.getURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Play that article ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Play that article ")!)
+            self.getURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Play ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Play ")!)
+            self.getURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Scout that article about ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Scout that article about ")!)
+            self.getURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Scout article about ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Scout article about ")!)
+            self.getURL(withSearchTerm: self.console.text)
+        }
+        else if self.console.text.range(of: "Scout that article ") != nil {
+            self.console.text.removeSubrange(self.console.text.range(of: "Scout that article ")!)
+            self.getURL(withSearchTerm: self.console.text)
+        }
+        else {
+            if self.console.text.range(of: "Scout ") != nil {
+                self.console.text.removeSubrange(self.console.text.range(of: "Scout ")!)
+                self.getURL(withSearchTerm: self.console.text)
+            }
+            else {
+                self.getURL(withSearchTerm: self.console.text)
+            }
+        }
+    }
+    
+    func speechRecognitionPartialResult(transcription: String) {
+        self.console.text = transcription
+        self.microphoneButton.isEnabled = false
     }
 }

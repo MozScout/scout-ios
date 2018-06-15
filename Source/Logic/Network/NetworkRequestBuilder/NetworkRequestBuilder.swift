@@ -44,7 +44,8 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         
         let parameters = [
             "cmd" : cmd,
-            "userid" : userid
+            "userid" : userid,
+            "extendedData" : "1"
         ]
         
         let headres = [headerTokenKey : token]
@@ -58,7 +59,8 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         let parameters = [
             "cmd" : cmd,
             "userid" : userid,
-            "searchTerms" : searchTerms
+            "searchTerms" : searchTerms,
+            "extendedData" : "1"
         ]
         
         let headres = [headerTokenKey : token]
@@ -72,7 +74,8 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         let parameters = [
             "cmd" : cmd,
             "userid" : userid,
-            "searchTerms" : searchTerms
+            "searchTerms" : searchTerms,
+            "extendedData" : "1"
         ]
         
         let headres = [headerTokenKey : token]
@@ -85,7 +88,8 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         
         let parameters = [
             "userid" : userid,
-            "url" : url
+            "url" : url,
+            "extendedData" : "1"
         ]
         
         let headres = [headerTokenKey : token]
@@ -98,11 +102,26 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
         
         let parameters = [
             "userid" : userid,
-            "url" : url
+            "url" : url,
+            "extendedData" : "1"
         ]
         
         let headres = [headerTokenKey : token]
         let URLString = String(format: "%@command/summary", self.baseURLString)
+        
+        return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
+    }
+    
+    func buildPostScoutTitleArchive(withCmd cmd: String, userid: String, itemid: String) -> URLRequest? {
+        
+        let parameters = [
+            "cmd" : cmd,
+            "userid" : userid,
+            "itemid" : itemid
+        ]
+        
+        let headres = [headerTokenKey : token]
+        let URLString = String(format: "%@command/intent", self.baseURLString)
         
         return manager.request(URLString, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headres).request
     }
