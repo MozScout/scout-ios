@@ -28,6 +28,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     fileprivate var spinner:UIActivityIndicatorView?
     fileprivate var articleNumber: Int = 0
 
+    var selectedIndex = IndexPath()
     var scoutClient : ScoutHTTPClient!
     var keychainService : KeychainService!
     var userID : String = ""
@@ -163,7 +164,9 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
             DispatchQueue.main.async {
                 self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.selectedIndex = []
                 self.tableView.endUpdates()
+                
             }
         }, failureBlock: { (failureResponse, error, response) in
             self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
@@ -196,6 +199,7 @@ extension PlayMyListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId, for: indexPath) as! PlayMyListTableViewCell
         
+        self.selectedIndex = []
         cell.playButtonDelegate = self
         cell.skimButtonDelegate = self
         cell.archiveButtonDelegate = self
@@ -213,29 +217,26 @@ extension PlayMyListViewController: UITableViewDataSource {
         switch cell.isExpanded {
         case true:
             self.expandedRows.remove(indexPath.row)
+            selectedIndex = []
         case false:
             self.expandedRows.insert(indexPath.row)
             articleNumber = indexPath.row
+            selectedIndex = indexPath
         }
         
         cell.isExpanded = !cell.isExpanded
         
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
-        
-        tableView.scrollToRow(at: indexPath, at: .none, animated: false)
+        self.tableView.scrollToRow(at: indexPath, at: .none, animated: false)
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
-            else { return }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        self.expandedRows.remove(indexPath.row)
-        
-        cell.isExpanded = false
-        
-        self.tableView.beginUpdates()
-        self.tableView.endUpdates()
+        if indexPath == selectedIndex {
+            return 145.0
+        }
+        return 100.0
     }
 }
 
