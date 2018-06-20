@@ -29,7 +29,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="146.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ok0-IO-cEg">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ok0-IO-cEg">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="47N-bU-EPS"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e68-69-ecK">
-                                <rect key="frame" x="31" y="23.5" width="41.5" height="10"/>
+                                <rect key="frame" x="31" y="21.5" width="41.5" height="14"/>
                                 <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                             <constraint firstItem="TsH-0C-Kbp" firstAttribute="top" secondItem="UUA-U0-Bnt" secondAttribute="bottom" constant="6" id="LqS-se-1Pw"/>
                             <constraint firstItem="Whk-sn-vcJ" firstAttribute="top" secondItem="TsH-0C-Kbp" secondAttribute="bottom" constant="10" id="QwD-x3-vLe"/>
                             <constraint firstItem="TsH-0C-Kbp" firstAttribute="leading" secondItem="aCr-t0-quS" secondAttribute="leading" constant="9" id="R4Y-Nf-YkZ"/>
-                            <constraint firstItem="TsH-0C-Kbp" firstAttribute="top" secondItem="e68-69-ecK" secondAttribute="bottom" constant="8" id="YxX-g3-Lvn"/>
+                            <constraint firstItem="TsH-0C-Kbp" firstAttribute="top" secondItem="e68-69-ecK" secondAttribute="bottom" constant="6" id="YxX-g3-Lvn"/>
                             <constraint firstItem="e68-69-ecK" firstAttribute="leading" secondItem="UUA-U0-Bnt" secondAttribute="trailing" constant="8" id="Z1A-XX-8bY"/>
                             <constraint firstItem="UUA-U0-Bnt" firstAttribute="leading" secondItem="TsH-0C-Kbp" secondAttribute="leading" id="n0E-lV-NKJ"/>
                             <constraint firstItem="e68-69-ecK" firstAttribute="centerY" secondItem="UUA-U0-Bnt" secondAttribute="centerY" id="nmF-bk-fFf"/>
@@ -134,7 +134,7 @@
                         <constraints>
                             <constraint firstItem="52R-YU-bKX" firstAttribute="centerY" secondItem="QNO-du-Amm" secondAttribute="centerY" id="AUC-Qu-jpi"/>
                             <constraint firstAttribute="trailing" secondItem="jTr-aN-Njo" secondAttribute="trailing" constant="10" id="JQ6-a2-yOm"/>
-                            <constraint firstAttribute="height" priority="750" constant="45" id="QLz-kh-emg"/>
+                            <constraint firstAttribute="height" priority="999" constant="45" id="QLz-kh-emg"/>
                             <constraint firstItem="jTr-aN-Njo" firstAttribute="centerY" secondItem="QNO-du-Amm" secondAttribute="centerY" id="T1Y-iQ-GSg"/>
                             <constraint firstItem="LJ3-il-2lQ" firstAttribute="centerX" secondItem="QNO-du-Amm" secondAttribute="centerX" id="Zud-yD-ATJ"/>
                             <constraint firstItem="52R-YU-bKX" firstAttribute="leading" secondItem="QNO-du-Amm" secondAttribute="leading" constant="10" id="bFc-gA-f6o"/>

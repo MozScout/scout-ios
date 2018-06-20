@@ -7,13 +7,16 @@
 
 import Foundation
 import UIKit
+import SafariServices
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
     
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var gradientButton: GradientButton!
+    
+    private var safariVC: SFSafariViewController?
     
     @IBOutlet weak var infoLabel: UILabel!
     override func viewDidLoad() {
@@ -44,11 +47,13 @@ class SettingsViewController: UIViewController {
         infoLabel.attributedText = centerText
     }
     @IBAction func linkTapped(_ sender: Any) {
-        let url = URL(string: "https://www.mozilla.org/en-US/privacy/")!
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
+
+        guard let privacyURL = URL(string: "https://www.mozilla.org/en-US/privacy/") else {
+            return //be safe
         }
+        
+        safariVC = SFSafariViewController(url: privacyURL)
+        safariVC!.delegate = self
+        self.present(safariVC!, animated: true, completion: nil)
     }
 }

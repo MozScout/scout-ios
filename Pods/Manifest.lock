@@ -3,6 +3,7 @@ PODS:
   - AsyncSwift (2.0.4)
   - HexColors (6.0.0)
   - KeychainAccess (3.1.1)
+  - Kingfisher (4.8.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
@@ -10,6 +11,7 @@ DEPENDENCIES:
   - AsyncSwift (~> 2.0.4)
   - HexColors
   - KeychainAccess (~> 3.1.1)
+  - Kingfisher (~> 4.0)
   - SwiftyJSON (~> 4.0.0)
 
 SPEC CHECKSUMS:
@@ -17,8 +19,9 @@ SPEC CHECKSUMS:
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   HexColors: f8c66339541a74bb08905bfe7cd4f8cc85e9e173
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 862d6242a1c53ca4145648b3c38f37ee213dd24b
+PODFILE CHECKSUM: ae301a9774f08de2d68a6b1d277d691a42a9800a
 
 COCOAPODS: 1.4.0

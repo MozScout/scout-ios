@@ -15,7 +15,7 @@ protocol safariDoneButtonDelegate: class {
 class LoginViewController: UIViewController, SFSafariViewControllerDelegate {
    
     weak var safariDoneButtonDelegate: safariDoneButtonDelegate?
-    var safariVC: SFSafariViewController?
+    private var safariVC: SFSafariViewController?
     
     @IBOutlet weak var signInButton: UIButton!
     
@@ -34,14 +34,22 @@ class LoginViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     @IBAction func signInButtonTapped(_ sender: Any) {
-        guard let url = URL(string: "http://scout-stage.herokuapp.com/api/auth/mobile/login") else {
+        guard let authURL = URL(string: "http://scout-stage.herokuapp.com/api/auth/mobile/login") else {
             return //be safe
         }
-        
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
+       
+        safariVC = SFSafariViewController(url: authURL)
+        safariVC!.delegate = self
+        self.present(safariVC!, animated: true, completion: nil)
+    }
+    
+    private func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        controller.dismiss(animated: true) { () -> Void in
+            print("You just dismissed the login view.")
         }
+    }
+    
+    private func safariViewController(controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
+        print("didLoadSuccessfully: \(didLoadSuccessfully)")
     }
 }

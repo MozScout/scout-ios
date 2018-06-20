@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 protocol PlayMyListTableViewCellDelegate: class {
     // maybe need send also several button states
     func playButtonTapped()
@@ -60,14 +62,14 @@ class PlayMyListTableViewCell: UITableViewCell {
         lengthMinutes.text = String(format: "%@ mins", String(describing: model.lengthMinutes))
         
         if model.articleImageURL != URL(string: "") {
-            self.mainImage.downloadImageFrom(link: (model.articleImageURL?.absoluteString)! , contentMode: .scaleAspectFill)
+            mainImage.kf.setImage(with: model.articleImageURL)
         }
         else {
             self.mainImage.image = UIImage(named: "mainImg")
         }
         
         if model.icon_url != URL(string: "") {
-            self.publisherImage.downloadImageFrom(link: (model.icon_url?.absoluteString)! , contentMode: .scaleToFill)
+            publisherImage.kf.setImage(with: model.icon_url)
         }
     }
     
