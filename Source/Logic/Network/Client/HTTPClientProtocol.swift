@@ -23,8 +23,8 @@ protocol HTTPClientProtocol: class {
     
     @discardableResult
     func execute(request: URLRequest?,
-                 successBlock: @escaping HTTPClientSuccessBlock,
-                 failureBlock: @escaping HTTPClientFailureBlock ) -> HTTPClientConnectionResult
+            successBlock: @escaping HTTPClientSuccessBlock,
+            failureBlock: @escaping HTTPClientFailureBlock ) -> HTTPClientConnectionResult
     
     func cancelAllRequests()
 }

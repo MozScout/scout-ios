@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ZillaSlab-BoldItalic.ttf">
+            <string>ZillaSlab-BoldItalic</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Play My List View Controller-->
+        <scene sceneID="6PL-u2-MVO">
+            <objects>
+                <viewController storyboardIdentifier="PlayMyListViewController" id="pSR-8O-w7r" customClass="PlayMyListViewController" customModule="Scout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hzk-D0-Wlj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B39-2y-1q6">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAw-Ih-8ik">
+                                        <rect key="frame" x="166" y="11" width="43" height="22"/>
+                                        <fontDescription key="fontDescription" name="ZillaSlab-BoldItalic" family="Zilla Slab" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DP2-N7-xXC" customClass="GradientButton" customModule="Scout" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="41" width="375" height="3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="DlR-wQ-wL5"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="WAw-Ih-8ik" firstAttribute="centerY" secondItem="B39-2y-1q6" secondAttribute="centerY" id="5hN-fb-Yuk"/>
+                                    <constraint firstItem="DP2-N7-xXC" firstAttribute="leading" secondItem="B39-2y-1q6" secondAttribute="leading" id="FvL-jd-evd"/>
+                                    <constraint firstAttribute="trailing" secondItem="DP2-N7-xXC" secondAttribute="trailing" id="Zil-wY-ggb"/>
+                                    <constraint firstAttribute="bottom" secondItem="DP2-N7-xXC" secondAttribute="bottom" id="a6Q-QK-YAs"/>
+                                    <constraint firstItem="WAw-Ih-8ik" firstAttribute="centerX" secondItem="B39-2y-1q6" secondAttribute="centerX" id="e2K-nx-qoW"/>
+                                    <constraint firstAttribute="height" constant="44" id="iXB-iv-5L4"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="1" estimatedSectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iie-qi-7P3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="pSR-8O-w7r" id="ohF-tE-5PJ"/>
+                                    <outlet property="delegate" destination="pSR-8O-w7r" id="8TP-IX-0nC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Iie-qi-7P3" firstAttribute="leading" secondItem="Ivf-it-q5C" secondAttribute="leading" id="4Os-ys-3SQ"/>
+                            <constraint firstItem="B39-2y-1q6" firstAttribute="top" secondItem="Ivf-it-q5C" secondAttribute="top" id="7nc-Nk-ODT"/>
+                            <constraint firstItem="Ivf-it-q5C" firstAttribute="trailing" secondItem="Iie-qi-7P3" secondAttribute="trailing" id="DXZ-rV-ltY"/>
+                            <constraint firstItem="Iie-qi-7P3" firstAttribute="top" secondItem="B39-2y-1q6" secondAttribute="bottom" id="K2t-jW-KjQ"/>
+                            <constraint firstItem="Ivf-it-q5C" firstAttribute="trailing" secondItem="B39-2y-1q6" secondAttribute="trailing" id="OQF-qR-ZsL"/>
+                            <constraint firstItem="Ivf-it-q5C" firstAttribute="bottom" secondItem="Iie-qi-7P3" secondAttribute="bottom" id="fFZ-ps-e7G"/>
+                            <constraint firstItem="B39-2y-1q6" firstAttribute="leading" secondItem="Ivf-it-q5C" secondAttribute="leading" id="qdH-Pz-zXP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ivf-it-q5C"/>
+                    </view>
+                    <connections>
+                        <outlet property="gradientButton" destination="DP2-N7-xXC" id="9wC-MR-Rh4"/>
+                        <outlet property="headerHeightConstraint" destination="iXB-iv-5L4" id="c29-0S-gZj"/>
+                        <outlet property="mainTitleLabel" destination="WAw-Ih-8ik" id="NkW-0z-G0c"/>
+                        <outlet property="tableView" destination="Iie-qi-7P3" id="X7z-Vq-69A"/>
+                        <outlet property="titleTopConstraint" destination="5hN-fb-Yuk" id="iv6-Fb-rbG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gD1-J8-Dn3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="155.17241379310346"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ZillaSlab-BoldItalic.ttf">
+            <string>ZillaSlab-BoldItalic</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Help Information View Controller-->
+        <scene sceneID="2mx-ss-GZi">
+            <objects>
+                <viewController storyboardIdentifier="HelpInformationViewController" id="lXN-vb-w8L" customClass="HelpInformationViewController" customModule="Scout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P1W-Lq-Q8h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYp-Mi-WH0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2A-E4-9HO">
+                                        <rect key="frame" x="170" y="11.5" width="35" height="22"/>
+                                        <fontDescription key="fontDescription" name="ZillaSlab-BoldItalic" family="Zilla Slab" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kne-5i-M8r" customClass="GradientButton" customModule="Scout" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="41" width="375" height="3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="xga-ud-GEh"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="k2A-E4-9HO" firstAttribute="centerY" secondItem="wYp-Mi-WH0" secondAttribute="centerY" id="G3A-st-cyh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kne-5i-M8r" secondAttribute="trailing" id="KlI-xG-rde"/>
+                                    <constraint firstItem="k2A-E4-9HO" firstAttribute="centerX" secondItem="wYp-Mi-WH0" secondAttribute="centerX" id="YdM-Sp-H1X"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kne-5i-M8r" secondAttribute="bottom" id="Ylh-Gg-2cm"/>
+                                    <constraint firstItem="Kne-5i-M8r" firstAttribute="leading" secondItem="wYp-Mi-WH0" secondAttribute="leading" id="heo-Sq-I3B"/>
+                                    <constraint firstAttribute="height" constant="44" id="rQR-oK-t0r"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7w-dg-YWA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uc-IB-WRY">
+                                        <rect key="frame" x="8" y="24" width="359" height="91"/>
+                                        <string key="text">Scout is an experimental way to listen to the web.
+
+Brought to you by.</string>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8uc-IB-WRY" secondAttribute="trailing" constant="8" id="Dxo-Nm-y20"/>
+                                    <constraint firstItem="8uc-IB-WRY" firstAttribute="leading" secondItem="h7w-dg-YWA" secondAttribute="leading" constant="8" id="bFj-Sh-tf1"/>
+                                    <constraint firstItem="8uc-IB-WRY" firstAttribute="top" secondItem="h7w-dg-YWA" secondAttribute="top" constant="24" id="unu-Gq-RUU"/>
+                                    <constraint firstItem="8uc-IB-WRY" firstAttribute="centerX" secondItem="h7w-dg-YWA" secondAttribute="centerX" id="wqs-rd-juH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h7w-dg-YWA" firstAttribute="top" secondItem="wYp-Mi-WH0" secondAttribute="bottom" id="5I5-3W-Wut"/>
+                            <constraint firstItem="h7w-dg-YWA" firstAttribute="trailing" secondItem="EkJ-2f-FeS" secondAttribute="trailing" id="BwY-rr-uOz"/>
+                            <constraint firstItem="EkJ-2f-FeS" firstAttribute="trailing" secondItem="wYp-Mi-WH0" secondAttribute="trailing" id="NLe-Im-e5x"/>
+                            <constraint firstItem="wYp-Mi-WH0" firstAttribute="top" secondItem="EkJ-2f-FeS" secondAttribute="top" id="Nph-B4-Qu5"/>
+                            <constraint firstItem="h7w-dg-YWA" firstAttribute="leading" secondItem="EkJ-2f-FeS" secondAttribute="leading" id="Vfb-sO-nW6"/>
+                            <constraint firstItem="wYp-Mi-WH0" firstAttribute="leading" secondItem="P1W-Lq-Q8h" secondAttribute="leading" id="b00-bh-6L4"/>
+                            <constraint firstItem="EkJ-2f-FeS" firstAttribute="bottom" secondItem="h7w-dg-YWA" secondAttribute="bottom" id="cEK-fg-Dr2"/>
+                            <constraint firstItem="EkJ-2f-FeS" firstAttribute="trailing" secondItem="h7w-dg-YWA" secondAttribute="trailing" id="gaj-8d-0lx"/>
+                            <constraint firstItem="h7w-dg-YWA" firstAttribute="leading" secondItem="EkJ-2f-FeS" secondAttribute="leading" id="znd-Ar-Kdp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EkJ-2f-FeS"/>
+                    </view>
+                    <connections>
+                        <outlet property="gradientButton" destination="Kne-5i-M8r" id="Jxg-w3-d0K"/>
+                        <outlet property="headerHeightConstraint" destination="rQR-oK-t0r" id="0uI-RB-Ev9"/>
+                        <outlet property="mainTitleLabel" destination="k2A-E4-9HO" id="eL0-L6-UlS"/>
+                        <outlet property="titleTopConstraint" destination="G3A-st-cyh" id="vpA-d6-m0S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DnE-MU-v55" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="155.17241379310346"/>
+        </scene>
+    </scenes>
+</document>

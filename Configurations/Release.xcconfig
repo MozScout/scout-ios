@@ -4,6 +4,6 @@
 //
 //
 
-SCOUT_NETWORK_URL = https:/\/\example/api
+SCOUT_NETWORK_URL = https:/\/\scout-stage.herokuapp.com/
 
 #include "Generator.xcconfig"

@@ -9,7 +9,6 @@ import Alamofire
 
 protocol NetworkClientObserverProtocol: class {
     
-
 }
 
 protocol NetworkClientObserverSubscriptionProtocol: class {
@@ -26,9 +25,9 @@ class ScoutHTTPClient: BaseHTTPClient {
     fileprivate let observers: WeakPointerArray<NetworkClientObserverProtocol>!
 
     required init(with mapper: NetworkMappingProtocol,
-                  requestBuilder: NetworkRequestBuilderProtocol,
-                         manager: SessionManager,
-                        adapters: [RequestAdapter]? = nil) {
+               requestBuilder: NetworkRequestBuilderProtocol,
+                      manager: SessionManager,
+                     adapters: [RequestAdapter]? = nil) {
         
         self.mapper = mapper
         self.requestBuilder = requestBuilder

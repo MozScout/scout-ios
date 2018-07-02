@@ -8,166 +8,125 @@ import Foundation
 import Speech
 import Async
 
-class SpeechService: NSObject {
+import UIKit
+import Speech
+
+class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate {
+
+    public weak var delegate: SBSpeechRecognizerDelegate?
     
-    weak var delegate: SpeechServiceDelegate?
+    private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     
-    fileprivate let recognizer: SFSpeechRecognizer
-    fileprivate var recognitionTask: SFSpeechRecognitionTask?
-    fileprivate var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    fileprivate let audioEngine: AVAudioEngine
-    fileprivate var finalRecognizedText: String = ""
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    
+    private var recognitionTask: SFSpeechRecognitionTask?
+    
+    private var audioEngine = AVAudioEngine()
     
     init?(with locale: Locale) {
-     
+        
         guard let requiredRecognizer = SFSpeechRecognizer(locale: locale) else { return nil }
-        self.recognizer = requiredRecognizer
+        self.speechRecognizer = requiredRecognizer
         self.audioEngine = AVAudioEngine()
         
         super.init()
         
-        self.recognizer.delegate = self
+        self.speechRecognizer.delegate = self
     }
-}
-
-// MARK: -
-// MARK: SpeechServiceProtocol
-extension SpeechService: SpeechServiceProtocol {
     
-    func authorizeSpeechRecognition() {
-        
-        SFSpeechRecognizer.requestAuthorization { [weak self] (authorizationStatus) in
-        
-            guard let strongSelf = self,
-                  let requiredDelegate = strongSelf.delegate
-            else { return }
-            
-            Async.main({
-                
-                switch authorizationStatus {
-                case .authorized:    requiredDelegate.speechService(strongSelf, didReceiveAuthorizationStatus: .authorized)
-                case .denied:        requiredDelegate.speechService(strongSelf, didReceiveAuthorizationStatus: .denied)
-                case .restricted:    requiredDelegate.speechService(strongSelf, didReceiveAuthorizationStatus: .denied)
-                case .notDetermined: strongSelf.authorizeSpeechRecognition()
-                }
-            })
+    private var speechRecognitionTimeout: Timer?
+    
+    var speechTimeoutInterval: TimeInterval = 2 {
+        didSet {
+            restartSpeechTimeout()
         }
     }
     
-    func startRecording() {
+    private func restartSpeechTimeout() {
+        if speechTimeoutInterval != 0 {
+            speechRecognitionTimeout?.invalidate()
         
-        if let requiredRecognitionTask = self.recognitionTask {
-            requiredRecognitionTask.cancel()
+            speechRecognitionTimeout = Timer.scheduledTimer(timeInterval:speechTimeoutInterval, target: self, selector: #selector(timedOut), userInfo: nil, repeats: false)
+        }
+    }
+    
+    func startRecording(){
+        if let recognitionTask = recognitionTask {
+            recognitionTask.cancel()
+            self.audioEngine.stop()
+            self.audioEngine.inputNode.removeTap(onBus: 0)
+            self.recognitionTask = nil
+            self.recognitionRequest = nil
             self.recognitionTask = nil
         }
-
-        guard self.recognizer.isAvailable else {
-            print("SpeechService | StartRecording Failed -> recognizer is unavailable")
-            return
-        }
-        
-        self.recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         let audioSession = AVAudioSession.sharedInstance()
-        
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
-        }
-        catch let error {
-            print("SpeechService | StartRecording Failed -> \(error.localizedDescription)")
-            return
+        } catch {}
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode
+        guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
+        
+        // Configure request so that results are returned before audio recording is finished
+        recognitionRequest.shouldReportPartialResults = true
+        
+        // A recognition task represents a speech recognition session.
+        // We keep a reference to the task so that it can be cancelled.
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            var isFinal = false
+            if let result = result {
+                isFinal = result.isFinal
+                self.delegate?.speechRecognitionPartialResult(transcription: result.bestTranscription.formattedString)
+            }
+            
+            if error != nil {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+            }
+            
+            if isFinal {
+                self.delegate?.speechRecognitionFinished(transcription: result!.bestTranscription.formattedString)
+                self.stopRecording()
+            }
+            else {
+                if error == nil {
+                    self.restartSpeechTimeout()
+                }
+                else {
+                    // cancel voice recognition
+                }
+            }
         }
         
-        guard let requiredRecognitionRequest = recognitionRequest else {
-            print("SpeechService | StartRecording Failed -> Unable to created a SFSpeechAudioBufferRecognitionRequest object")
-            return
-        }
-
-        requiredRecognitionRequest.shouldReportPartialResults = true
-        self.recognitionTask = self.recognizer.recognitionTask(with: requiredRecognitionRequest, delegate: self)
-        
-        let recordingFormat = self.audioEngine.inputNode.outputFormat(forBus: 0)
-        self.audioEngine.inputNode.installTap(onBus: 0,
-                                         bufferSize: 1024,
-                                             format: recordingFormat) { [weak self] (buffer: AVAudioPCMBuffer, _) in
-                                                
-                                                guard let strongSelf = self,
-                                                      let requiredRecognitionRequest = strongSelf.recognitionRequest
-                                                else { return }
-
-                                                requiredRecognitionRequest.append(buffer)
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.recognitionRequest?.append(buffer)
         }
         
-        self.audioEngine.prepare()
-        
+        audioEngine.prepare()
         do {
-            try self.audioEngine.start()
-        }
-        catch let error {
-            print("SpeechService | StartRecording Failed -> \(error.localizedDescription)")
-            return
-        }
+            try audioEngine.start()
+        } catch {}
+    }
+    
+    @objc private func timedOut() {
+        stopRecording()
     }
     
     func stopRecording() {
+        audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0) // Remove tap on bus when stopping recording.
         
-        self.audioEngine.stop()
-        self.audioEngine.inputNode.removeTap(onBus: 0)
+        recognitionRequest?.endAudio()
         
-        if let requiredRecognitionRequest = self.recognitionRequest {
-            requiredRecognitionRequest.endAudio()
-            self.recognitionRequest = nil
-        }
-        
-        if let requiredRecognitionTask = self.recognitionTask {
-            
-            requiredRecognitionTask.finish()
-            self.recognitionTask = nil
-        }
-    }
-}
-
-// MARK: -
-// MARK: SFSpeechRecognizerDelegate
-extension SpeechService: SFSpeechRecognizerDelegate {
-    
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        
-        guard let ruquiredDelegate = self.delegate else { return }
-        ruquiredDelegate.speechService(self, recognitionAvailabilityDidChange: available)
-    }
-}
-
-// MARK: -
-// MARK: SFSpeechRecognitionTaskDelegate
-extension SpeechService: SFSpeechRecognitionTaskDelegate {
-    
-    func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didHypothesizeTranscription transcription: SFTranscription) {
-        
-        guard let requiredDelegate = self.delegate else { return }
-        requiredDelegate.speechService(self, didRecognizePartialResult: transcription.formattedString)
-    }
-    
-    func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishRecognition recognitionResult: SFSpeechRecognitionResult) {
-        
-        self.finalRecognizedText = recognitionResult.bestTranscription.formattedString
-    }
-    
-    func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishSuccessfully successfully: Bool) {
-
-        guard let requiredDelegate = self.delegate else { return }
-        
-        let result: SpeechServiceFinalRecognitionResult
-        
-        if successfully {
-            result = .success(text: self.finalRecognizedText)
-        }
-        else {
-            result = .failure(reason: task.error.debugDescription)
-        }
-        
-        requiredDelegate.speechService(self, didFinishRecognitionWithResult: result)
+        speechRecognitionTimeout?.invalidate()
+        speechRecognitionTimeout = nil
     }
 }
 
