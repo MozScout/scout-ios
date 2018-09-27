@@ -142,7 +142,7 @@
                                         </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR2-aS-7A4">
-                                        <rect key="frame" x="100.5" y="133" width="22" height="28"/>
+                                        <rect key="frame" x="176.5" y="133" width="22" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="fZd-k3-5pJ"/>
                                             <constraint firstAttribute="height" constant="28" id="sqT-3i-VLN"/>
@@ -154,7 +154,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUX-TB-09j">
-                                        <rect key="frame" x="25.5" y="127" width="24" height="42"/>
+                                        <rect key="frame" x="101.5" y="127" width="24" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="kXX-RU-4C1"/>
                                             <constraint firstAttribute="height" constant="42" id="x9R-EL-st1"/>
@@ -198,7 +198,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqe-r0-bjo">
-                                        <rect key="frame" x="173.5" y="127" width="24" height="42"/>
+                                        <rect key="frame" x="249.5" y="127" width="24" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="4nZ-wC-6us"/>
                                             <constraint firstAttribute="height" constant="42" id="VuH-1a-mRT"/>
@@ -228,11 +228,11 @@
                                     <constraint firstItem="Hwo-Ns-5K3" firstAttribute="trailing" secondItem="TME-Cu-Ure" secondAttribute="trailing" id="FAE-ek-5D8"/>
                                     <constraint firstItem="fR2-aS-7A4" firstAttribute="leading" secondItem="NUX-TB-09j" secondAttribute="trailing" constant="51" id="MIE-TI-hFR"/>
                                     <constraint firstItem="TME-Cu-Ure" firstAttribute="leading" secondItem="SYm-ws-D1o" secondAttribute="leading" constant="20" id="NFq-kN-CJX"/>
-                                    <constraint firstItem="NUX-TB-09j" firstAttribute="centerX" secondItem="SYm-ws-D1o" secondAttribute="centerX" multiplier="0.2" id="V2e-3Q-W3g"/>
                                     <constraint firstItem="ICT-Vm-vNE" firstAttribute="leading" secondItem="TME-Cu-Ure" secondAttribute="leading" id="aQQ-VA-MMv"/>
                                     <constraint firstAttribute="height" constant="200" id="acd-7s-OVW"/>
                                     <constraint firstItem="c0N-3A-Uuy" firstAttribute="top" secondItem="SYm-ws-D1o" secondAttribute="top" id="bbx-5n-oZ1"/>
                                     <constraint firstAttribute="bottom" secondItem="fR2-aS-7A4" secondAttribute="bottom" constant="39" id="bsA-Rs-RC2"/>
+                                    <constraint firstItem="fR2-aS-7A4" firstAttribute="centerX" secondItem="SYm-ws-D1o" secondAttribute="centerX" id="mJd-s1-1Ge"/>
                                     <constraint firstItem="TME-Cu-Ure" firstAttribute="top" secondItem="Auc-la-5qb" secondAttribute="bottom" constant="1" id="rvz-pU-pGJ"/>
                                     <constraint firstItem="3Ml-Ma-Tvn" firstAttribute="centerX" secondItem="SYm-ws-D1o" secondAttribute="centerX" id="t5g-t1-p4q"/>
                                 </constraints>
