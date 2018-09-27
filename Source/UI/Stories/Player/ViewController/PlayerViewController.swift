@@ -25,6 +25,7 @@ class PlayerViewController: UIViewController {
     fileprivate var audioPlayer:AVAudioPlayer!
     fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 6
     fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.8
+    fileprivate var audioRate: Float = 1.0
     fileprivate var microphoneButton: GradientButton!
     fileprivate var spinner:UIActivityIndicatorView?
     fileprivate var timer : Timer!
@@ -43,6 +44,9 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var audioRateButton: UIButton!
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var gradientButton: GradientButton!
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -51,13 +55,13 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.setupMicButton()
+        //self.setupMicButton()
         configureView()
         spinner = self.addSpinner()
     }
 
     // MARK: - Private methods
-    fileprivate func setupMicButton() {
+    /*fileprivate func setupMicButton() {
         
         // we need dynamic size of the mic button. should set after we will have design
         microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
@@ -75,16 +79,18 @@ class PlayerViewController: UIViewController {
         view.addSubview(microphoneButton)
         
         microphoneButton.addTarget(self, action: #selector(microphoneButtonTapped(sender:)), for: .touchUpInside)
-    }
+    }*/
     
     fileprivate func configureView() {
         
         slider.minimumTrackTintColor = UIColor(rgb: 0x6BB4FF)
         slider.maximumTrackTintColor = UIColor(rgb: 0xD7D7DB)
         slider.setThumbImage(UIImage(named: "knob"), for: .normal)
+        gradientButton.direction = .horizontally(centered: 0.1)
         if let url = model.articleImageURL {
             self.mainImage.downloadImageFrom(link: (url.absoluteString) , contentMode: .scaleAspectFill)
         }
+        self.author.text = model.author
         if let url = model.icon_url {
             self.faviconImage.downloadImageFrom(link: (url.absoluteString) , contentMode: .scaleToFill)
         }
@@ -209,10 +215,10 @@ class PlayerViewController: UIViewController {
     
     internal func updatePausePlayButton() {
         if self.pauseButton.isSelected {
-            pause()
+            audioPlayer.pause()
         }
         else {
-            play()
+            audioPlayer.play()
         }
     }
     
@@ -224,7 +230,7 @@ class PlayerViewController: UIViewController {
         } catch {
             print(error)
         }
-        
+        audioPlayer.enableRate = true
         audioPlayer.play()
     }
     
@@ -290,14 +296,6 @@ class PlayerViewController: UIViewController {
         })
     }
     
-    @IBAction func readArticleButtonTapped(_ sender: Any) {
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(model.resolvedURL!, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(model.resolvedURL!)
-        }
-    }
-    
     @IBAction func playFullArticle(_ sender: Any) {
         audioPlayer.stop()
         fullLenghtButton.isSelected = true
@@ -315,6 +313,15 @@ class PlayerViewController: UIViewController {
         })
     }
     
+    @IBAction func audioRateButtonTapped(_ sender: Any) {
+        audioRate = audioRate + 0.5
+        if audioRate > 3.0 {
+            audioRate = 1.0
+        }
+        self.audioRateButton.setTitle(String(format: "%.1fX", audioRate), for: .normal)
+        audioPlayer.rate = audioRate
+    }
+    
     @objc fileprivate func microphoneButtonTapped(sender: UIButton) {
         DispatchQueue.main.async {
             self.pause()
@@ -324,6 +331,13 @@ class PlayerViewController: UIViewController {
         }
     }
     
+    @IBAction func readArticleButtonTapped(_ sender: Any) {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(model.resolvedURL!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(model.resolvedURL!)
+        }
+    }
     func addSpinner() -> UIActivityIndicatorView {
         // Adding spinner over launch screen
         let spinner = UIActivityIndicatorView.init()
@@ -359,7 +373,7 @@ class PlayerViewController: UIViewController {
     func showHUD() {
         DispatchQueue.main.async {
             self.spinner?.startAnimating()
-            self.microphoneButton.isEnabled = false
+            //self.microphoneButton.isEnabled = false
             self.backButton.isEnabled = false
             self.pauseButton.isEnabled = false
             self.forwardButton.isEnabled = false
@@ -375,7 +389,7 @@ class PlayerViewController: UIViewController {
     
     func hideHUD() {
         DispatchQueue.main.async {
-            self.microphoneButton.isEnabled = true
+            //self.microphoneButton.isEnabled = true
             self.backButton.isEnabled = true
             self.spinner?.stopAnimating()
             self.pauseButton.isEnabled = true

@@ -85,7 +85,7 @@ private extension ApplicationRouter {
     func showMainStory(viewController: UINavigationController, animated: Bool, completion: VoidBlock? = nil) {
         
         self.mainRouter.showMainUIInterface(fromViewController: viewController, animated: false)
-        self.mainRouter.showMainUITab(tab: .myList, animated: false)
+        self.mainRouter.showMainUITab(tab: .articles, animated: false)
         self.myListRouter.linkIsFound = { [] scoutArticle, isFullArticle in
             self.playerRouter.show(from: self.navigationController, animated: true, model: scoutArticle, fullArticle: isFullArticle)
             self.playerRouter.onBackButtonTap = { [] in

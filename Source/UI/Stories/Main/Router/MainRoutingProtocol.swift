@@ -9,10 +9,10 @@ import UIKit
 
 enum MainTab: Int {
     
-    case myList = 0
-    case help = 1
+    case podcasts = 0
+    case articles = 1
     case settings = 2
-    case audioAction = 3
+    //case audioAction = 3
 }
 
 protocol MainRoutingProtocol {

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icn_help_selected.png",
+      "filename" : "iconPodcastsActive.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icn_help_selected@2x.png",
+      "filename" : "iconPodcastsActive@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icn_help_selected@3x.png",
+      "filename" : "iconPodcastsActive@3x.png",
       "scale" : "3x"
     }
   ],

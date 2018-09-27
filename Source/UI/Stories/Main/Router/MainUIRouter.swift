@@ -12,7 +12,7 @@ class MainUIRouter: NSObject {
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate var tabbar: MainTabBarViewController!
     fileprivate let assembly: MainAssemblyProtocol
-    fileprivate var selectedTab: MainTab = .myList
+    fileprivate var selectedTab: MainTab = .articles
     var onMicrophoneButtonTap: (() -> Void)?
     var userID: String = ""
     // Routers
@@ -35,7 +35,7 @@ extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
     
     func showMainUIInterface(fromViewController viewController: UINavigationController, animated: Bool) {
         
-        let tabs: [MainTab] = [.myList, .help, .settings, .audioAction]
+        let tabs: [MainTab] = [.podcasts, .articles, .settings]
         var tabViewControllers: [UIViewController] = []
         
         for curTab in tabs {
@@ -72,14 +72,14 @@ fileprivate extension MainUIRouter {
                                   animated: Bool) {
         
         switch tab {
-        case .myList:
+        case .podcasts:
             myListRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
-        case .help:
-            helpRouter.show(from: navigationController, animated: animated)
+        case .articles:
+            myListRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
         case .settings:
             settingsRouter.show(from: navigationController, animated: animated)
-        case .audioAction:
-            print("touch action button")
+       // case .audioAction:
+           // print("touch action button")
         }
     }
     
@@ -105,21 +105,19 @@ fileprivate extension MainUIRouter {
         }
         
         switch tab {
-        case .myList:
-            return UITabBarItem(title: "Listen",
-                               image: originalImageUsingImageName(imageName: "icn_play"),
-                       selectedImage: originalImageUsingImageName(imageName: "icn_play_selected"))
+        case .podcasts:
+            return UITabBarItem(title: "Podacts",
+                               image: originalImageUsingImageName(imageName: "icn_podcasts"),
+                       selectedImage: originalImageUsingImageName(imageName: "icn_podcasts_selected"))
             
-        case .help:
-            return UITabBarItem(title: "Help",
-                               image: originalImageUsingImageName(imageName: "icn_help"),
-                       selectedImage: originalImageUsingImageName(imageName: "icn_help_selected"))
+        case .articles:
+            return UITabBarItem(title: "Articles",
+                                image: originalImageUsingImageName(imageName: "icn_play"),
+                                selectedImage: originalImageUsingImageName(imageName: "icn_play_selected"))
         case .settings:
             return UITabBarItem(title: "Settings",
                                image: originalImageUsingImageName(imageName: "icn_settings"),
                        selectedImage: originalImageUsingImageName(imageName: "icn_settings_selected"))
-        case .audioAction:
-            return UITabBarItem(title: "", image: nil, selectedImage: nil)
         }
     }
     
@@ -149,13 +147,6 @@ fileprivate extension MainUIRouter {
     
     // MARK: UITabBarControllerDelegate
     internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        
-        if viewController == self.currentSelectedNavigationController() || viewController.tabBarItem.tag == MainTab.audioAction.rawValue {
-            // disabled for twice selection and for last vc
-            print("MainUIRouter: Special disable tab item selection!")
-            return false
-        }
-        
         return true
     }
 }
