@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_image" translatesAutoresizingMaskIntoConstraints="NO" id="YzG-uX-kdY">
-                                <rect key="frame" x="0.0" y="44" width="375" height="423"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="403"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYm-ws-D1o" userLabel="MainView">
@@ -238,7 +238,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ar4-1a-n9z">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY8-TY-o24">
                                         <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
@@ -337,7 +337,7 @@
                             <constraint firstItem="SYm-ws-D1o" firstAttribute="top" secondItem="YzG-uX-kdY" secondAttribute="bottom" id="iwd-qJ-HAw"/>
                             <constraint firstItem="Ar4-1a-n9z" firstAttribute="leading" secondItem="cj6-ba-wOv" secondAttribute="leading" id="oGp-Sn-3lP"/>
                             <constraint firstItem="SYm-ws-D1o" firstAttribute="leading" secondItem="cj6-ba-wOv" secondAttribute="leading" id="pjx-kg-tz7"/>
-                            <constraint firstItem="Ar4-1a-n9z" firstAttribute="top" secondItem="Lh0-rc-Nzs" secondAttribute="top" id="rfB-CX-gia"/>
+                            <constraint firstItem="Ar4-1a-n9z" firstAttribute="top" secondItem="cj6-ba-wOv" secondAttribute="top" id="rfB-CX-gia"/>
                             <constraint firstItem="YzG-uX-kdY" firstAttribute="top" secondItem="Ar4-1a-n9z" secondAttribute="bottom" id="vOS-kk-ZqS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cj6-ba-wOv"/>

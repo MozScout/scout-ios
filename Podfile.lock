@@ -14,6 +14,15 @@ DEPENDENCIES:
   - Kingfisher (~> 4.0)
   - SwiftyJSON (~> 4.0.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AsyncSwift
+    - HexColors
+    - KeychainAccess
+    - Kingfisher
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
@@ -24,4 +33,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ae301a9774f08de2d68a6b1d277d691a42a9800a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2

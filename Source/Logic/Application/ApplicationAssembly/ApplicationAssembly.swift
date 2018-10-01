@@ -18,6 +18,7 @@ class ApplicationAssembly {
     fileprivate lazy var settingsRouter: SettingsRoutingProtocol = self.createSettingsRouter()
     fileprivate lazy var voiceInputRouter: VoiceInputRoutingProtocol = self.createVoiceInputRouter()
     fileprivate lazy var playerRouter: PlayerRoutingProtocol = self.createPlayerRouter()
+    fileprivate lazy var podcastsRouter: PodcastsRoutingProtocol = self.createPodcastsRouter()
     
     fileprivate lazy var networkClient: HTTPClientProtocol = self.createNetworkClient()
     fileprivate lazy var networkManager: SessionManager = self.createSessionManager()
@@ -42,6 +43,7 @@ extension ApplicationAssembly: ApplicationAssemblyProtocol {
     func assemblySettingsRouter() -> SettingsRoutingProtocol { return self.settingsRouter }
     func assemblyVoiceInputRouter() -> VoiceInputRoutingProtocol { return self.voiceInputRouter }
     func assemblyPlayerRouter() -> PlayerRoutingProtocol { return self.playerRouter }
+    func assemblyPodcastsRouter() -> PodcastsRoutingProtocol { return self.podcastsRouter }
     
     func assemblySpeechService() -> SpeechServiceProtocol { return self.speechService }
     func assemblyNetworkClient() -> HTTPClientProtocol { return self.networkClient }
@@ -109,6 +111,12 @@ fileprivate extension ApplicationAssembly {
         
         let voiceInputAssembly = PlayerAssemly(withAssembly: self)
         return PlayerRouter(with: voiceInputAssembly)
+    }
+
+    func createPodcastsRouter() -> PodcastsRoutingProtocol {
+
+        let podcastsAssembly = PodcastsAssembly(withAssembly: self)
+        return PodcastsRouter(with: podcastsAssembly)
     }
     
     // MARK: Services

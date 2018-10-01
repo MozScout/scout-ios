@@ -17,6 +17,7 @@ class MainUIRouter: NSObject {
     var userID: String = ""
     // Routers
     fileprivate let myListRouter: MyListRoutingProtocol
+    fileprivate let podcastsRouter: PodcastsRoutingProtocol
     fileprivate var helpRouter: HelpRoutingProtocol
     fileprivate var settingsRouter: SettingsRoutingProtocol
 
@@ -28,6 +29,7 @@ class MainUIRouter: NSObject {
         self.myListRouter = applicationAssembly.assemblyMyListRouter()
         self.helpRouter = applicationAssembly.assemblyHelpRouter()
         self.settingsRouter = applicationAssembly.assemblySettingsRouter()
+        self.podcastsRouter = applicationAssembly.assemblyPodcastsRouter()
     }
 }
 
@@ -73,7 +75,7 @@ fileprivate extension MainUIRouter {
         
         switch tab {
         case .podcasts:
-            myListRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
+            podcastsRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
         case .articles:
             myListRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
         case .settings:
