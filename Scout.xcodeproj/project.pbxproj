@@ -92,6 +92,15 @@
 		93A3114220B1400B0049DB67 /* VoiceInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114120B1400B0049DB67 /* VoiceInputViewController.swift */; };
 		93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114420B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift */; };
 		93A3114720B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3114620B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift */; };
+		93A718AF2164B63100BC77D9 /* PodcastDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A718AE2164B63100BC77D9 /* PodcastDetails.storyboard */; };
+		93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A718B02164B66200BC77D9 /* PodcastDetailsViewController.swift */; };
+		93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A718B32164B8D400BC77D9 /* PodcastDetailsViewModel.swift */; };
+		93A718B62164B9DC00BC77D9 /* PodcastDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A718B52164B9DC00BC77D9 /* PodcastDetailsModel.swift */; };
+		93A718B82164BAD400BC77D9 /* ServerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93A718B72164BAD400BC77D9 /* ServerData.json */; };
+		93A718C82164BC7C00BC77D9 /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A718BE2164BC7C00BC77D9 /* AboutCell.swift */; };
+		93A718C92164BC7C00BC77D9 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A718BF2164BC7C00BC77D9 /* HeaderView.xib */; };
+		93A718CA2164BC7C00BC77D9 /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A718C02164BC7C00BC77D9 /* AboutCell.xib */; };
+		93A718CC2164BC7C00BC77D9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A718C22164BC7C00BC77D9 /* HeaderView.swift */; };
 		93AE234E20CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234320CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf */; };
 		93AE234F20CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234420CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf */; };
 		93AE235020CFCEF700A5D89D /* ZillaSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234520CFCEF700A5D89D /* ZillaSlab-Bold.ttf */; };
@@ -103,6 +112,10 @@
 		93AE235620CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234B20CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf */; };
 		93AE235720CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234C20CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf */; };
 		93AE235820CFCEF700A5D89D /* ZillaSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93AE234D20CFCEF700A5D89D /* ZillaSlab-Regular.ttf */; };
+		93C55D61216CB08C0023C8AD /* AddPodcasts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C55D60216CB08C0023C8AD /* AddPodcasts.storyboard */; };
+		93C55D63216CB0A10023C8AD /* AddPodcastsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C55D62216CB0A10023C8AD /* AddPodcastsViewController.swift */; };
+		93C55D67216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C55D65216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift */; };
+		93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C55D66216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib */; };
 		93FB827420B54B1B00A39A5C /* PlayerAssemly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827220B54B1B00A39A5C /* PlayerAssemly.swift */; };
 		93FB827520B54B1B00A39A5C /* PlayerAssemlyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827320B54B1B00A39A5C /* PlayerAssemlyProtocol.swift */; };
 		93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827620B54BA100A39A5C /* PlayerViewController.swift */; };
@@ -224,6 +237,15 @@
 		93A3114120B1400B0049DB67 /* VoiceInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputViewController.swift; sourceTree = "<group>"; };
 		93A3114420B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutVoiceInputHTTPClientProtocol.swift; sourceTree = "<group>"; };
 		93A3114620B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScoutHTTPClient+ScoutVoiceInput.swift"; sourceTree = "<group>"; };
+		93A718AE2164B63100BC77D9 /* PodcastDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PodcastDetails.storyboard; sourceTree = "<group>"; };
+		93A718B02164B66200BC77D9 /* PodcastDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailsViewController.swift; sourceTree = "<group>"; };
+		93A718B32164B8D400BC77D9 /* PodcastDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastDetailsViewModel.swift; sourceTree = "<group>"; };
+		93A718B52164B9DC00BC77D9 /* PodcastDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastDetailsModel.swift; sourceTree = "<group>"; };
+		93A718B72164BAD400BC77D9 /* ServerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServerData.json; sourceTree = "<group>"; };
+		93A718BE2164BC7C00BC77D9 /* AboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
+		93A718BF2164BC7C00BC77D9 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		93A718C02164BC7C00BC77D9 /* AboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
+		93A718C22164BC7C00BC77D9 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		93AE234320CFCEF700A5D89D /* ZillaSlab-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-MediumItalic.ttf"; sourceTree = "<group>"; };
 		93AE234420CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-LightItalic.ttf"; sourceTree = "<group>"; };
 		93AE234520CFCEF700A5D89D /* ZillaSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-Bold.ttf"; sourceTree = "<group>"; };
@@ -235,6 +257,10 @@
 		93AE234B20CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		93AE234C20CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-SemiBold.ttf"; sourceTree = "<group>"; };
 		93AE234D20CFCEF700A5D89D /* ZillaSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZillaSlab-Regular.ttf"; sourceTree = "<group>"; };
+		93C55D60216CB08C0023C8AD /* AddPodcasts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPodcasts.storyboard; sourceTree = "<group>"; };
+		93C55D62216CB0A10023C8AD /* AddPodcastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPodcastsViewController.swift; sourceTree = "<group>"; };
+		93C55D65216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPodcastsCollectionViewCell.swift; sourceTree = "<group>"; };
+		93C55D66216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPodcastsCollectionViewCell.xib; sourceTree = "<group>"; };
 		93FB827220B54B1B00A39A5C /* PlayerAssemly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssemly.swift; sourceTree = "<group>"; };
 		93FB827320B54B1B00A39A5C /* PlayerAssemlyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssemlyProtocol.swift; sourceTree = "<group>"; };
 		93FB827620B54BA100A39A5C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -592,6 +618,8 @@
 			isa = PBXGroup;
 			children = (
 				8637E7F0215CFC71008563E9 /* Podcasts.storyboard */,
+				93A718AE2164B63100BC77D9 /* PodcastDetails.storyboard */,
+				93C55D60216CB08C0023C8AD /* AddPodcasts.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -599,8 +627,12 @@
 		8637E7ED215CFB9E008563E9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				93C55D64216CB0C00023C8AD /* AddPodcastsCollectionViewCell */,
+				93A718B92164BC7C00BC77D9 /* PodcastDetailsTableViewCells */,
 				8637E7FA215D1953008563E9 /* PodcastsCollectionViewCell */,
+				93C55D62216CB0A10023C8AD /* AddPodcastsViewController.swift */,
 				8637E7EE215CFBF9008563E9 /* PodcastsViewController.swift */,
+				93A718B02164B66200BC77D9 /* PodcastDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -740,6 +772,26 @@
 			path = ScoutVoiceInput;
 			sourceTree = "<group>";
 		};
+		93A718B22164B8D400BC77D9 /* PodcastDetails */ = {
+			isa = PBXGroup;
+			children = (
+				93A718B52164B9DC00BC77D9 /* PodcastDetailsModel.swift */,
+				93A718B32164B8D400BC77D9 /* PodcastDetailsViewModel.swift */,
+			);
+			path = PodcastDetails;
+			sourceTree = "<group>";
+		};
+		93A718B92164BC7C00BC77D9 /* PodcastDetailsTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				93A718C02164BC7C00BC77D9 /* AboutCell.xib */,
+				93A718BE2164BC7C00BC77D9 /* AboutCell.swift */,
+				93A718BF2164BC7C00BC77D9 /* HeaderView.xib */,
+				93A718C22164BC7C00BC77D9 /* HeaderView.swift */,
+			);
+			path = PodcastDetailsTableViewCells;
+			sourceTree = "<group>";
+		};
 		93AE234220CFCEF700A5D89D /* zilla-slab */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +808,15 @@
 				93AE234D20CFCEF700A5D89D /* ZillaSlab-Regular.ttf */,
 			);
 			path = "zilla-slab";
+			sourceTree = "<group>";
+		};
+		93C55D64216CB0C00023C8AD /* AddPodcastsCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				93C55D65216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift */,
+				93C55D66216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib */,
+			);
+			path = AddPodcastsCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		93FB826D20B54A7400A39A5C /* Player */ = {
@@ -895,6 +956,7 @@
 		F482CD3C2080D969007D0C14 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93A718B72164BAD400BC77D9 /* ServerData.json */,
 				93782C7F20C7F1E700CE56A4 /* Fonts */,
 				F482CD3D2080D969007D0C14 /* Images */,
 				F482CD3F2080D969007D0C14 /* Plists */,
@@ -1030,6 +1092,7 @@
 		F482CD4D2080D969007D0C14 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				93A718B22164B8D400BC77D9 /* PodcastDetails */,
 				5622AB4E20A6E6840074A4BC /* ScoutArticle */,
 			);
 			path = Models;
@@ -1222,11 +1285,13 @@
 				93AE235320CFCEF700A5D89D /* ZillaSlab-Medium.ttf in Resources */,
 				8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */,
 				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
+				93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */,
 				93782CE520C7F53100CE56A4 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */,
 				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
 				93782CCB20C7F53100CE56A4 /* SF-Pro-Display-Thin.otf in Resources */,
 				93782CD020C7F53100CE56A4 /* SF-Pro-Display-Regular.otf in Resources */,
+				93A718CA2164BC7C00BC77D9 /* AboutCell.xib in Resources */,
 				93782CDA20C7F53100CE56A4 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				93782CD220C7F53100CE56A4 /* SF-Pro-Display-Bold.otf in Resources */,
 				5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */,
@@ -1237,9 +1302,13 @@
 				93AE235120CFCEF700A5D89D /* ZillaSlab-Italic.ttf in Resources */,
 				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
 				93782CD320C7F53100CE56A4 /* SF-Pro-Display-Medium.otf in Resources */,
+				93A718C92164BC7C00BC77D9 /* HeaderView.xib in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
 				93AE235020CFCEF700A5D89D /* ZillaSlab-Bold.ttf in Resources */,
+				93A718B82164BAD400BC77D9 /* ServerData.json in Resources */,
 				93AE235620CFCEF700A5D89D /* ZillaSlab-SemiBoldItalic.ttf in Resources */,
+				93C55D61216CB08C0023C8AD /* AddPodcasts.storyboard in Resources */,
+				93A718AF2164B63100BC77D9 /* PodcastDetails.storyboard in Resources */,
 				93AE234F20CFCEF700A5D89D /* ZillaSlab-LightItalic.ttf in Resources */,
 				93782CD520C7F53100CE56A4 /* SF-Pro-Text-Light.otf in Resources */,
 				93782CE720C7F53100CE56A4 /* SF-Pro-Display-BoldItalic.otf in Resources */,
@@ -1329,22 +1398,29 @@
 				F47B7CF12084D7DC0055585C /* ScoutHTTPClient.swift in Sources */,
 				F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */,
 				9333B81620AC2AD50055C5B1 /* GradientView.swift in Sources */,
+				93C55D67216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift in Sources */,
 				93FB827520B54B1B00A39A5C /* PlayerAssemlyProtocol.swift in Sources */,
 				F47B7CFB2084F6700055585C /* KeychainService.swift in Sources */,
 				5637D28E20A2FD2D00112F1F /* Design.swift in Sources */,
 				8637E7EF215CFBF9008563E9 /* PodcastsViewController.swift in Sources */,
+				93C55D63216CB0A10023C8AD /* AddPodcastsViewController.swift in Sources */,
 				5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */,
 				5622AB4820A6D4D70074A4BC /* AuthHTTPClientProtocol.swift in Sources */,
 				9333B81C20AC6D070055C5B1 /* PlayMyListTableViewCell.swift in Sources */,
 				F47B7CF42084E57F0055585C /* Utils.swift in Sources */,
+				93A718B62164B9DC00BC77D9 /* PodcastDetailsModel.swift in Sources */,
 				93A3113E20B13F7C0049DB67 /* VoiceInputRouter.swift in Sources */,
 				93A3113820B13EA70049DB67 /* VoiceInputAssemlyProtocol.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
 				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
+				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
+				93A718C82164BC7C00BC77D9 /* AboutCell.swift in Sources */,
 				93A3113C20B13F370049DB67 /* VoiceInputRoutingProtocol.swift in Sources */,
+				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
 				5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */,
+				93A718CC2164BC7C00BC77D9 /* HeaderView.swift in Sources */,
 				5622AB4120A6CE230074A4BC /* AuthRoutingProtocol.swift in Sources */,
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
 				93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */,

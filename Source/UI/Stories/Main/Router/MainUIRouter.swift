@@ -148,7 +148,7 @@ fileprivate extension MainUIRouter {
     }
     
     // MARK: UITabBarControllerDelegate
-    internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    fileprivate func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return true
     }
 }

@@ -6,7 +6,8 @@
 import UIKit
 
 class PodcastsRouter {
-
+    var linkIsFound: (() -> Void)?
+    var addPodcasts: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PodcastsAssemblyProtocol
 
@@ -21,7 +22,21 @@ extension PodcastsRouter: PodcastsRoutingProtocol {
     func show(from viewController: UIViewController, animated: Bool, withUserID: String) {
 
         let podcastsVC = assembly.assemblyPodcastsViewController()
-
+        podcastsVC.podcastsDelegate = self
+        self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
+    }
+    
+    func showPodcastDetails(from viewController: UIViewController, animated: Bool, withUserID: String) {
+        
+        let podcastsVC = assembly.assemblyPodcastDetailsViewController()
+        
+        self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
+    }
+    
+    func showAddPodcasts(from viewController: UIViewController, animated: Bool, withUserID: String) {
+        
+        let podcastsVC = assembly.assemblyAddPodcastsViewController()
+        
         self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
     }
 
@@ -47,3 +62,12 @@ extension PodcastsRouter: PodcastsRoutingProtocol {
     }
 }
 
+extension PodcastsRouter: PodcastsDelegate {
+    
+    func openPodcastDetails() {
+        self.linkIsFound?()
+    }
+    func openAddPodcasts() {
+        self.addPodcasts?()
+    }
+}

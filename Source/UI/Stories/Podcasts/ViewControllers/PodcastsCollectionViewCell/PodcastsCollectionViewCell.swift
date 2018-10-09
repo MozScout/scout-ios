@@ -20,6 +20,9 @@ class PodcastsCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
 
     func configureCell(with model: PodcastModel) {
-       
+    }
+    func configureCell() {
+        imageView.layer.cornerRadius = 8.0
+        imageView.clipsToBounds = true
     }
 }

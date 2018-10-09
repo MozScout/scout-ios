@@ -27,28 +27,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="90" height="89"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxm-DL-ymG">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImages" translatesAutoresizingMaskIntoConstraints="NO" id="Jxm-DL-ymG">
                         <rect key="frame" x="15" y="0.0" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="Lf5-wc-62U"/>
                             <constraint firstAttribute="width" constant="60" id="yGa-Gn-9LX"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqU-M9-h9x">
-                        <rect key="frame" x="31.5" y="63" width="27.5" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aug 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqU-M9-h9x">
+                        <rect key="frame" x="27" y="63" width="36" height="12"/>
                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnG-Y5-rUO">
-                        <rect key="frame" x="32" y="77" width="26" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnG-Y5-rUO">
+                        <rect key="frame" x="14.5" y="77" width="61" height="12"/>
+                        <string key="text">321 - Double
+Standards</string>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="TnG-Y5-rUO" firstAttribute="top" secondItem="gqU-M9-h9x" secondAttribute="bottom" constant="2" id="6kk-44-mTs"/>
                 <constraint firstItem="gqU-M9-h9x" firstAttribute="top" secondItem="Jxm-DL-ymG" secondAttribute="bottom" constant="3" id="8aE-gq-lH0"/>
@@ -69,4 +71,7 @@
             <point key="canvasLocation" x="193.59999999999999" y="118.29085457271366"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="LaunchImages" width="320" height="568"/>
+    </resources>
 </document>

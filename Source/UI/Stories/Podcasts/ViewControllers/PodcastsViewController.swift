@@ -6,10 +6,16 @@
 
 import UIKit
 
+protocol PodcastsDelegate: class {
+    func openPodcastDetails()
+    func openAddPodcasts()
+}
+
 class PodcastsViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var gradientButton: GradientButton!
+    weak var podcastsDelegate: PodcastsDelegate?
     private var spinner : UIActivityIndicatorView?
     private let cellRowReuseId = "cellrow"
     private let collectionRowReuseId = "collectionCell"
@@ -18,7 +24,12 @@ class PodcastsViewController: UIViewController {
         ScoutArticle(withArticleID: "12", title: "Test2", author: "Test2", lengthMinutes: 5, sortID: 4, resolvedURL: nil, articleImageURL: nil, url: "", publisher: "", icon_url: nil)]
     var scoutClient : ScoutHTTPClient!
     var keychainService : KeychainService!
-
+    
+    var selectedIndex = IndexPath()
+    var userID : String = ""
+    var expandedRows = Set<Int>()
+    fileprivate var articleNumber: Int = 0
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -31,6 +42,8 @@ class PodcastsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         configureUI()
     }
 
@@ -90,9 +103,25 @@ class PodcastsViewController: UIViewController {
         self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
+    @IBAction func addPodcastsButtonTapped(_ sender: Any) {
+        guard let requiredDelegate = self.podcastsDelegate else { return }
+        requiredDelegate.openAddPodcasts()
+    }
 }
 
-extension PodcastsViewController: UITableViewDataSource {
+extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, PlayMyListTableViewCellDelegate {
+    func playButtonTapped() {
+        
+    }
+    
+    func skimButtonTapped() {
+        guard let requiredDelegate = self.podcastsDelegate else { return }
+        requiredDelegate.openPodcastDetails()
+    }
+    
+    func archiveButtonTapped() {
+        
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -109,10 +138,36 @@ extension PodcastsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId, for: indexPath) as! PlayMyListTableViewCell
-
+        
+        self.selectedIndex = []
+        cell.playButtonDelegate = self
+        cell.skimButtonDelegate = self
+        cell.archiveButtonDelegate = self
         cell.configureCell(withModel: self.scoutTitles![indexPath.row])
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
+            
+            else { return }
+        
+        switch cell.isExpanded {
+        case true:
+            self.expandedRows.remove(indexPath.row)
+            selectedIndex = []
+        case false:
+            self.expandedRows.insert(indexPath.row)
+            articleNumber = indexPath.row
+            selectedIndex = indexPath
+        }
+        
+        cell.isExpanded = !cell.isExpanded
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        self.tableView.scrollToRow(at: indexPath, at: .none, animated: false)
     }
 }
 
@@ -123,7 +178,7 @@ extension PodcastsViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionRowReuseId, for: indexPath) as! PodcastsCollectionViewCell
-
+        cell.configureCell()
         return cell
     }
 

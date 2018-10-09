@@ -243,7 +243,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY8-TY-o24">
                                         <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdp-dz-SSX">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdp-dz-SSX">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="backButton"/>
@@ -327,7 +327,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SYm-ws-D1o" firstAttribute="bottom" secondItem="cj6-ba-wOv" secondAttribute="bottom" id="0yP-Xa-MbK"/>
                             <constraint firstItem="YzG-uX-kdY" firstAttribute="leading" secondItem="cj6-ba-wOv" secondAttribute="leading" id="2zu-6q-V7B"/>

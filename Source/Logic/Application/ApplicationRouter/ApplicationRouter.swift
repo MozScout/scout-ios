@@ -12,6 +12,7 @@ class ApplicationRouter: NSObject {
     
     fileprivate var navigationController: UINavigationController!
     fileprivate var mainRouter: MainRoutingProtocol
+    fileprivate var podcastsRouter: PodcastsRoutingProtocol
     fileprivate var myListRouter: MyListRoutingProtocol
     fileprivate var authRouter: AuthRoutingProtocol
     fileprivate var voiceInputRouter: VoiceInputRoutingProtocol
@@ -27,6 +28,7 @@ class ApplicationRouter: NSObject {
         self.authRouter = applicationAssembly.assemblyAuthRouter()
         self.voiceInputRouter = applicationAssembly.assemblyVoiceInputRouter()
         self.playerRouter = applicationAssembly.assemblyPlayerRouter()
+        self.podcastsRouter = applicationAssembly.assemblyPodcastsRouter()
         super.init()
     }
 }
@@ -109,6 +111,12 @@ private extension ApplicationRouter {
                 }
             }
             if let requiredCompletion = completion { requiredCompletion() }
+        }
+        self.podcastsRouter.linkIsFound = { [] in
+            self.podcastsRouter.showPodcastDetails(from: self.navigationController, animated: true, withUserID: self.mainRouter.userID)
+        }
+        self.podcastsRouter.addPodcasts = { [] in
+            self.podcastsRouter.showAddPodcasts(from: self.navigationController, animated: true, withUserID: self.mainRouter.userID)
         }
     }
     

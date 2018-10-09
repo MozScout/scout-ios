@@ -71,6 +71,10 @@ class PlayMyListTableViewCell: UITableViewCell {
         if model.icon_url != URL(string: "") {
             publisherImage.kf.setImage(with: model.icon_url)
         }
+        if model.title == "Test" || model.title == "Test2" {
+            self.skimButton.setTitle("Episodes", for: .normal)
+            self.doneButton.setImage( UIImage(named: "deleteButton"), for: .normal)
+        }
     }
     
     @IBAction func playButtonTapped(_ sender: Any) {
@@ -84,5 +88,13 @@ class PlayMyListTableViewCell: UITableViewCell {
     @IBAction func archiveButtonTapped(_ sender: Any) {
         guard let requiredDelegate = archiveButtonDelegate else { return }
         requiredDelegate.archiveButtonTapped()
+    }
+    
+    static var nib:UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
     }
 }
