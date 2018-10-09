@@ -286,7 +286,7 @@
                                             <constraint firstAttribute="width" constant="46" id="dFR-Gg-8mm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="1.0X">
+                                        <state key="normal" title="1.00X">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>

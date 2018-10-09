@@ -314,11 +314,11 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func audioRateButtonTapped(_ sender: Any) {
-        audioRate = audioRate + 0.5
+        audioRate = audioRate + 0.25
         if audioRate > 3.0 {
             audioRate = 1.0
         }
-        self.audioRateButton.setTitle(String(format: "%.1fX", audioRate), for: .normal)
+        self.audioRateButton.setTitle(String(format: "%.2fX", audioRate), for: .normal)
         audioPlayer.rate = audioRate
     }
     
