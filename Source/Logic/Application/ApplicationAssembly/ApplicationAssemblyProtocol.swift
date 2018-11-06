@@ -6,9 +6,9 @@
 import Foundation
 
 protocol ApplicationAssemblyProtocol {
-    
+
     var configuration: AppConfiguration { get }
-    
+
     // MARK: Routers
     func assemblyMainRouter() -> MainRoutingProtocol
     func assemblyMyListRouter() -> MyListRoutingProtocol
@@ -18,7 +18,7 @@ protocol ApplicationAssemblyProtocol {
     func assemblyVoiceInputRouter() -> VoiceInputRoutingProtocol
     func assemblyPlayerRouter() -> PlayerRoutingProtocol
     func assemblyPodcastsRouter() -> PodcastsRoutingProtocol
-    
+
     // MARK: Services
     func assemblyNetworkClient() -> HTTPClientProtocol
     func assemblyKeychainService() -> KeychainServiceProtocol

@@ -7,6 +7,6 @@
 import Foundation
 
 protocol HelpAssemblyProtocol {
-    
+
     func assemblyHelpInformationViewController() -> HelpInformationViewController
 }

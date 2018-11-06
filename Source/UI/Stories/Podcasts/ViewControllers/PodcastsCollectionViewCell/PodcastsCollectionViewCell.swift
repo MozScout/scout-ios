@@ -4,8 +4,8 @@
 //
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 struct PodcastModel {
     var date: String

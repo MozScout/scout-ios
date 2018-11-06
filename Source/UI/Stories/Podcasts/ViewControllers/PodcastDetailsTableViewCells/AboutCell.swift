@@ -11,7 +11,7 @@ import UIKit
 class AboutCell: UITableViewCell {
 
     @IBOutlet weak var aboutLabel: UILabel?
-    
+
     var item: PodcastDetailsViewModelItem? {
         didSet {
             guard  let item = item as? PodcastDetailsViewModelAboutItem else {
@@ -20,11 +20,11 @@ class AboutCell: UITableViewCell {
             aboutLabel?.text = item.about
         }
     }
-    
-    static var nib:UINib {
+
+    static var nib: UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
-    
+
     static var identifier: String {
         return String(describing: self)
     }

@@ -17,21 +17,24 @@ class PodcastsAssembly: PodcastsAssemblyProtocol {
     }
 
     func assemblyPodcastsViewController() -> PodcastsViewController {
-        let podcastsVC = self.storyboard.instantiateViewController(withIdentifier: "PodcastsViewController") as! PodcastsViewController
+        let podcastsVC = self.storyboard.instantiateViewController(
+            withIdentifier: "PodcastsViewController") as! PodcastsViewController
         podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         podcastsVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
         return podcastsVC
     }
-    
+
     func assemblyPodcastDetailsViewController() -> PodcastDetailsViewController {
-        let podcastsVC = self.podacstDetailsStoryboard.instantiateViewController(withIdentifier: "PodcastDetailsViewController") as! PodcastDetailsViewController
+        let podcastsVC = self.podacstDetailsStoryboard.instantiateViewController(
+            withIdentifier: "PodcastDetailsViewController") as! PodcastDetailsViewController
         //podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         //podcastsVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
         return podcastsVC
     }
-    
+
     func assemblyAddPodcastsViewController() -> AddPodcastsViewController {
-        let addPodcastsVC = self.addPodacstsStoryboard.instantiateViewController(withIdentifier: "AddPodcastsViewController") as! AddPodcastsViewController
+        let addPodcastsVC = self.addPodacstsStoryboard.instantiateViewController(
+            withIdentifier: "AddPodcastsViewController") as! AddPodcastsViewController
         //podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         //podcastsVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
         return addPodcastsVC

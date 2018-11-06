@@ -17,14 +17,14 @@ class PodcastDetailsViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
-    
+
     private func configureUI() {
-        subscribeButton.backgroundColor = UIColor(red: 0/255, green: 96/255, blue:223/255, alpha: 1.0)
+        subscribeButton.backgroundColor = UIColor(red: 0 / 255, green: 96 / 255, blue: 223 / 255, alpha: 1.0)
         subscribeButton.layer.cornerRadius = 8.0
         subscribeButton.clipsToBounds = true
         viewModel.reloadSections = { [weak self] (section: Int) in
@@ -32,7 +32,7 @@ class PodcastDetailsViewController: UIViewController {
             self?.tableView?.reloadSections([section], with: .fade)
             self?.tableView?.endUpdates()
         }
-        
+
         tableView?.estimatedRowHeight = 500
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.sectionHeaderHeight = 30
@@ -40,7 +40,8 @@ class PodcastDetailsViewController: UIViewController {
         tableView?.dataSource = viewModel
         tableView?.delegate = viewModel
         tableView?.register(AboutCell.nib, forCellReuseIdentifier: AboutCell.identifier)
-        tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil), forCellReuseIdentifier: cellRowReuseId)
+        tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: cellRowReuseId)
         tableView?.register(HeaderView.nib, forHeaderFooterViewReuseIdentifier: HeaderView.identifier)
     }
     @IBAction func backButtonTapped(_ sender: Any) {

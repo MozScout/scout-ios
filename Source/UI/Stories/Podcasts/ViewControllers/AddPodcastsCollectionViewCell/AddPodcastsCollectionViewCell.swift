@@ -19,7 +19,7 @@ class AddPodcastsCollectionViewCell: UICollectionViewCell {
     @IBAction func indicatorButtonTapped(_ sender: Any) {
         if indicatorButton.isSelected == true {
             indicatorButton.isSelected = false
-        }else {
+        } else {
             indicatorButton.isSelected = true
         }
     }

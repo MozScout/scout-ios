@@ -25,37 +25,43 @@ extension PodcastsRouter: PodcastsRoutingProtocol {
         podcastsVC.podcastsDelegate = self
         self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
     }
-    
+
     func showPodcastDetails(from viewController: UIViewController, animated: Bool, withUserID: String) {
-        
+
         let podcastsVC = assembly.assemblyPodcastDetailsViewController()
-        
+
         self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
     }
-    
+
     func showAddPodcasts(from viewController: UIViewController, animated: Bool, withUserID: String) {
-        
+
         let podcastsVC = assembly.assemblyAddPodcastsViewController()
-        
+
         self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
     }
 
     // MARK: -
     // MARK: Private
-    private func showViewController(viewController: UIViewController, fromViewController: UIViewController, animated: Bool) {
+    private func showViewController(viewController: UIViewController,
+                                    fromViewController: UIViewController,
+                                    animated: Bool) {
 
         if let navigationVC = fromViewController as? UINavigationController {
 
-            if navigationVC.viewControllers.count == 0 { navigationVC.viewControllers = [viewController] }
-            else { navigationVC.pushViewController(viewController, animated: animated) }
-        }
-        else {
+            if navigationVC.viewControllers.count == 0 {
+                navigationVC.viewControllers = [viewController]
+            } else {
+                navigationVC.pushViewController(viewController, animated: animated)
+            }
+        } else {
             if let navigationVC = fromViewController.navigationController {
 
-                if navigationVC.viewControllers.count == 0 { navigationVC.viewControllers = [viewController] }
-                else { navigationVC.pushViewController(viewController, animated: animated) }
-            }
-            else {
+                if navigationVC.viewControllers.count == 0 {
+                    navigationVC.viewControllers = [viewController]
+                } else {
+                    navigationVC.pushViewController(viewController, animated: animated)
+                }
+            } else {
                 print("Unsupported navigation")
             }
         }
@@ -63,7 +69,7 @@ extension PodcastsRouter: PodcastsRoutingProtocol {
 }
 
 extension PodcastsRouter: PodcastsDelegate {
-    
+
     func openPodcastDetails() {
         self.linkIsFound?()
     }
