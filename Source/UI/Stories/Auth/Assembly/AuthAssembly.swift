@@ -19,6 +19,7 @@ class AuthAssembly: AuthAssemblyProtocol {
     func assemblyLoginViewController() -> LoginViewController {
 
         let loginVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "LoginViewController") as! LoginViewController
 
         return loginVC

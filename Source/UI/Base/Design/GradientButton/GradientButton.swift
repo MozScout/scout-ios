@@ -45,7 +45,10 @@ class GradientButton: UIButton {
         didSet { if isSelected != oldValue { self.reload() } }
     }
 
-    fileprivate var gradientLayer: CAGradientLayer { return self.layer as! CAGradientLayer }
+    fileprivate var gradientLayer: CAGradientLayer {
+        // swiftlint:disable:next force_cast
+        return self.layer as! CAGradientLayer
+    }
 
     // MARK: Init
     override public init(frame: CGRect) {
@@ -67,7 +70,7 @@ class GradientButton: UIButton {
 
         if isHighlighted || isSelected {
 
-            self.bringSubview(toFront: self.highlightView)
+            self.bringSubviewToFront(self.highlightView)
             self.highlightView.isHidden = false
         } else {
 
@@ -94,12 +97,12 @@ class GradientButton: UIButton {
         self.addSubview(view)
 
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
-                                                           options: NSLayoutFormatOptions(rawValue: 0),
+                                                           options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                            metrics: nil,
                                                            views: ["view": view]))
 
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
-                                                           options: NSLayoutFormatOptions(rawValue: 0),
+                                                           options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                            metrics: nil,
                                                            views: ["view": view]))
 

@@ -1,18 +1,17 @@
 # Uncomment the next line to define a global platform for your project
 
 platform :ios, '11.0'
+use_frameworks!
 
 target 'Scout' do
 
-  use_frameworks!
-
-  pod 'Alamofire', '~> 4.5.1'
-  pod 'AsyncSwift', '~> 2.0.4'
-  pod 'SwiftyJSON', '~> 4.0.0'
-  pod 'KeychainAccess', '~> 3.1.1'
-  pod 'Kingfisher', '~> 4.0'
+  pod 'Alamofire', '~> 4.7'
+  pod 'AsyncSwift', '~> 2.0'
+  pod 'SwiftyJSON', '~> 4.2'
+  pod 'KeychainAccess', '~> 3.1'
+  pod 'Kingfisher', '~> 4.10'
 
   # UI components
-  pod 'HexColors'
+  pod 'HexColors', '~> 6.0'
   
 end

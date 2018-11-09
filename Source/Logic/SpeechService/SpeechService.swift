@@ -65,8 +65,8 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         }
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(.record, mode: .default)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {}
 
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()

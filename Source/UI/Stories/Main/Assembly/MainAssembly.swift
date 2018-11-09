@@ -19,12 +19,13 @@ class MainAssembly: MainAssemblyProtocol {
     func assemblyMainTabBarViewController(viewControllers: [UIViewController]) -> MainTabBarViewController {
 
         let tabbarVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
         tabbarVC.setViewControllers(viewControllers, animated: false)
 
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Design.Color.black],
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Design.Color.black],
                                                          for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Design.Color.purple],
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Design.Color.purple],
                                                          for: .selected)
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -10)
 

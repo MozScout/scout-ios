@@ -19,6 +19,7 @@ class SettingsAssembly: SettingsAssemblyProtocol {
     func assemblySettingsViewController() -> SettingsViewController {
 
         let settingsVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "SettingsViewController") as! SettingsViewController
         return settingsVC
     }

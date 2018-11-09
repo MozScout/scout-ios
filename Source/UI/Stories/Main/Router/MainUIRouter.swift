@@ -104,7 +104,7 @@ fileprivate extension MainUIRouter {
         func originalImageUsingImageName(imageName name: String) -> UIImage? {
 
             guard let requiredOriginalImage = UIImage(named: name) else { return nil }
-            return requiredOriginalImage.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+            return requiredOriginalImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         }
 
         switch tab {
@@ -145,6 +145,7 @@ fileprivate extension MainUIRouter {
     private func navigationController(forMainUITab tab: MainTab) -> UINavigationController {
 
         let tabIndex = tab.rawValue
+        // swiftlint:disable:next force_cast
         return tabbar.viewControllers![tabIndex] as! UINavigationController
     }
 

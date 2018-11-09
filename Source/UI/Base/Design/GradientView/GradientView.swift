@@ -36,7 +36,10 @@ class GradientView: UIView {
         return CAGradientLayer.self
     }
 
-    fileprivate var gradientLayer: CAGradientLayer { return self.layer as! CAGradientLayer }
+    fileprivate var gradientLayer: CAGradientLayer {
+        // swiftlint:disable:next force_cast
+        return self.layer as! CAGradientLayer
+    }
 
     // MARK: Init
     override public init(frame: CGRect) {

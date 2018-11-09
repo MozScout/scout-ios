@@ -1226,7 +1226,7 @@
 				TargetAttributes = {
 					F482CD262080D225007D0C14 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1595,7 +1595,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Latest Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/BridgingHeaders/Application-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1616,7 +1616,7 @@
 				PROVISIONING_PROFILE = "2b55c1f0-d0a5-402e-811b-fe85240811c7";
 				PROVISIONING_PROFILE_SPECIFIER = "Latest Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/BridgingHeaders/Application-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1690,7 +1690,7 @@
 				PROVISIONING_PROFILE = "10eaed29-2d5b-4963-837f-a403bcb3034d";
 				PROVISIONING_PROFILE_SPECIFIER = "Latest AppStore";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/BridgingHeaders/Application-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = AppStore;

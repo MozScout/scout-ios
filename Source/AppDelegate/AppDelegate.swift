@@ -19,11 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AppConfiguration()
         self.applicationAssembly = ApplicationAssembly(with: configuration)
         self.applicationRouter = ApplicationRouter(with: self.applicationAssembly)
+        // swiftlint:disable:next force_cast
         self.keychainService = self.applicationAssembly.assemblyKeychainService() as! KeychainService
     }
 
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let result = self.applicationRouter.application!(application, didFinishLaunchingWithOptions: launchOptions)
         if keychainService.value(for: "userID") != nil {
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication,
                      open url: URL,
-                     options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         var mainRouter = self.applicationAssembly.assemblyMainRouter()
         mainRouter.userID = url.lastPathComponent
 
@@ -57,8 +58,6 @@ fileprivate extension AppDelegate {
         self.window = window
 
         self.applicationRouter.show(from: window)
-
-        UIApplication.shared.statusBarStyle = .default
     }
 
     func setupMainScreen() {
@@ -73,7 +72,5 @@ fileprivate extension AppDelegate {
         self.window = window
 
         self.applicationRouter.showMain(from: window)
-
-        UIApplication.shared.statusBarStyle = .default
     }
 }

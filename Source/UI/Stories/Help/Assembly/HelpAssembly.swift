@@ -19,6 +19,7 @@ class HelpAssembly: HelpAssemblyProtocol {
     func assemblyHelpInformationViewController() -> HelpInformationViewController {
 
         let helpInformationVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "HelpInformationViewController") as! HelpInformationViewController
         return helpInformationVC
     }

@@ -34,7 +34,7 @@ class PodcastDetailsViewController: UIViewController {
         }
 
         tableView?.estimatedRowHeight = 500
-        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.rowHeight = UITableView.automaticDimension
         tableView?.sectionHeaderHeight = 30
         tableView?.separatorStyle = .none
         tableView?.dataSource = viewModel

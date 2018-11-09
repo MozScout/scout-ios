@@ -18,6 +18,7 @@ class PodcastsAssembly: PodcastsAssemblyProtocol {
 
     func assemblyPodcastsViewController() -> PodcastsViewController {
         let podcastsVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "PodcastsViewController") as! PodcastsViewController
         podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         podcastsVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
@@ -26,6 +27,7 @@ class PodcastsAssembly: PodcastsAssemblyProtocol {
 
     func assemblyPodcastDetailsViewController() -> PodcastDetailsViewController {
         let podcastsVC = self.podacstDetailsStoryboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "PodcastDetailsViewController") as! PodcastDetailsViewController
         //podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         //podcastsVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
@@ -34,6 +36,7 @@ class PodcastsAssembly: PodcastsAssemblyProtocol {
 
     func assemblyAddPodcastsViewController() -> AddPodcastsViewController {
         let addPodcastsVC = self.addPodacstsStoryboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "AddPodcastsViewController") as! AddPodcastsViewController
         //podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         //podcastsVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService

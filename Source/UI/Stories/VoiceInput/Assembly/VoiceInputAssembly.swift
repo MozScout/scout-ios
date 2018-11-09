@@ -20,9 +20,10 @@ class VoiceInputAssembly: VoiceInputAssemblyProtocol {
     func assemblyVoiceInputViewController() -> VoiceInputViewController {
 
         let voiceInputVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "VoiceInputViewController") as! VoiceInputViewController
-        voiceInputVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as! ScoutHTTPClient
-        voiceInputVC.speechService = self.applicationAssembly.assemblySpeechService() as! SpeechService
+        voiceInputVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
+        voiceInputVC.speechService = self.applicationAssembly.assemblySpeechService() as? SpeechService
 
         return voiceInputVC
     }

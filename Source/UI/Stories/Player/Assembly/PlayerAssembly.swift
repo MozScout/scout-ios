@@ -20,9 +20,10 @@ class PlayerAssembly: PlayerAssemblyProtocol {
     func assemblyPlayerViewController() -> PlayerViewController {
 
         let playerVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "PlayerViewController") as! PlayerViewController
-        playerVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as! ScoutHTTPClient
-        playerVC.keychainService = self.applicationAssembly.assemblyKeychainService() as! KeychainService
+        playerVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
+        playerVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
 
         return playerVC
     }

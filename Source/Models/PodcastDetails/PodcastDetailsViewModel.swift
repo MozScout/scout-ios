@@ -94,18 +94,18 @@ extension PodcastDetailsViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.section]
         switch item.type {
-        case .About:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: AboutCell.identifier,
-                                                        for: indexPath) as? AboutCell {
-                cell.item = item
-                return cell
-            }
-        case .Season1:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "cellrow",
-                                                        for: indexPath) as? PlayMyListTableViewCell {
-                cell.configureCell(withModel: self.scoutTitles![indexPath.row])
-                return cell
-            }
+            case .About:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: AboutCell.identifier,
+                                                            for: indexPath) as? AboutCell {
+                    cell.item = item
+                    return cell
+                }
+            case .Season1:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "cellrow",
+                                                            for: indexPath) as? PlayMyListTableViewCell {
+                    cell.configureCell(withModel: self.scoutTitles![indexPath.row])
+                    return cell
+                }
         }
         return UITableViewCell()
     }

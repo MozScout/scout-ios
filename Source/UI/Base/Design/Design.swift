@@ -53,10 +53,10 @@ public struct Design {
                                         spacing: CGFloat) -> NSMutableAttributedString {
 
         let attributedString = NSMutableAttributedString(string: string)
-        attributedString.addAttribute(NSAttributedStringKey.font,
+        attributedString.addAttribute(NSAttributedString.Key.font,
                                       value: font,
                                       range: NSRange(location: 0, length: attributedString.length))
-        attributedString.addAttribute(NSAttributedStringKey.kern,
+        attributedString.addAttribute(NSAttributedString.Key.kern,
                                       value: spacing,
                                       range: NSRange(location: 0, length: attributedString.length))
 
@@ -71,10 +71,10 @@ public struct Design {
         paragraphStyle.lineSpacing = interlineage
 
         let attrString = NSMutableAttributedString(string: string)
-        attrString.addAttribute(NSAttributedStringKey.paragraphStyle,
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle,
                                 value: paragraphStyle,
                                 range: NSRange(location: 0, length: attrString.length))
-        attrString.addAttribute(NSAttributedStringKey.font,
+        attrString.addAttribute(NSAttributedString.Key.font,
                                 value: font,
                                 range: NSRange(location: 0, length: attrString.length))
 

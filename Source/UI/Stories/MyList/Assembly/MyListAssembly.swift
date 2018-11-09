@@ -19,9 +19,10 @@ class MyListAssembly: MyListAssemblyProtocol {
     func assemblyPlayMyListViewController() -> PlayMyListViewController {
 
         let playMyListVC = self.storyboard.instantiateViewController(
+            // swiftlint:disable:next force_cast
             withIdentifier: "PlayMyListViewController") as! PlayMyListViewController
-        playMyListVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as! ScoutHTTPClient
-        playMyListVC.keychainService = self.applicationAssembly.assemblyKeychainService() as! KeychainService
+        playMyListVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
+        playMyListVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
 
         return playMyListVC
     }
