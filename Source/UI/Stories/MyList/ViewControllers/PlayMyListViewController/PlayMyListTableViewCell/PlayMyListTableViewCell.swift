@@ -5,8 +5,8 @@
 //  Created by Shurupov Alex on 5/16/18.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 protocol PlayMyListTableViewCellDelegate: class {
     // maybe need send also several button states
@@ -16,10 +16,10 @@ protocol PlayMyListTableViewCellDelegate: class {
 }
 
 class PlayMyListTableViewCell: UITableViewCell {
-    
+
     weak var playButtonDelegate: PlayMyListTableViewCellDelegate?
     weak var skimButtonDelegate: PlayMyListTableViewCellDelegate?
-    weak var archiveButtonDelegate : PlayMyListTableViewCellDelegate?
+    weak var archiveButtonDelegate: PlayMyListTableViewCellDelegate?
     @IBOutlet weak var publisherImage: UIImageView!
     @IBOutlet weak var horizontalLine: UIView!
     @IBOutlet weak var verticalLine: UIView!
@@ -29,20 +29,18 @@ class PlayMyListTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var lengthMinutes: UILabel!
     @IBOutlet weak var expandedViewHeight: NSLayoutConstraint!
-    
+
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var skimButton: UIButton!
-    var isExpanded:Bool = false
-    {
-        didSet
-        {
+    var isExpanded: Bool = false {
+        didSet {
             if !isExpanded {
                 self.doneButton.isHidden = true
                 self.playButton.isHidden = true
                 self.skimButton.isHidden = true
                 self.expandedViewHeight.constant = 0.0
-                
+
             } else {
                 self.doneButton.isHidden = false
                 self.playButton.isHidden = false
@@ -51,7 +49,7 @@ class PlayMyListTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     func configureCell(withModel model: ScoutArticle) {
         self.isExpanded = false
         horizontalLine.backgroundColor = UIColor(rgb: 0xEDEDF0)
@@ -60,23 +58,22 @@ class PlayMyListTableViewCell: UITableViewCell {
         resourceName.text = model.publisher
         title.text = model.title
         lengthMinutes.text = String(format: "%@ mins", String(describing: model.lengthMinutes))
-        
+
         if model.articleImageURL != URL(string: "") {
             mainImage.kf.setImage(with: model.articleImageURL)
-        }
-        else {
+        } else {
             self.mainImage.image = UIImage(named: "mainImg")
         }
-        
-        if model.icon_url != URL(string: "") {
-            publisherImage.kf.setImage(with: model.icon_url)
+
+        if model.iconURL != URL(string: "") {
+            publisherImage.kf.setImage(with: model.iconURL)
         }
         if model.title == "Test" || model.title == "Test2" {
             self.skimButton.setTitle("Episodes", for: .normal)
             self.doneButton.setImage( UIImage(named: "deleteButton"), for: .normal)
         }
     }
-    
+
     @IBAction func playButtonTapped(_ sender: Any) {
         guard let requiredDelegate = playButtonDelegate else { return }
         requiredDelegate.playButtonTapped()
@@ -89,11 +86,11 @@ class PlayMyListTableViewCell: UITableViewCell {
         guard let requiredDelegate = archiveButtonDelegate else { return }
         requiredDelegate.archiveButtonTapped()
     }
-    
-    static var nib:UINib {
+
+    static var nib: UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
-    
+
     static var identifier: String {
         return String(describing: self)
     }

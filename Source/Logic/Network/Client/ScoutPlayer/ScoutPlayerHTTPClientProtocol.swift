@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias ScoutPlayerSuccessBlock = (_ scoutArticle: ScoutArticle) -> ()
+typealias ScoutPlayerSuccessBlock = (_ scoutArticle: ScoutArticle) -> Void
 typealias ScoutPlayerFailureBlock = HTTPClientFailureBlock
 
 protocol ScoutPlayerHTTPClientProtocol {
@@ -15,7 +15,7 @@ protocol ScoutPlayerHTTPClientProtocol {
                                        url: String,
                                        successBlock: @escaping ScoutPlayerSuccessBlock,
                                        failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult
-    
+
     func getFullAudioFileURLFromPlayer(userid: String,
                                        url: String,
                                        successBlock: @escaping ScoutPlayerSuccessBlock,

@@ -1,0 +1,30 @@
+included:
+  - Source
+
+excluded:
+  - Pods
+
+disabled_rules:
+  - cyclomatic_complexity
+  - file_length
+  - function_body_length
+  - switch_case_alignment
+  - type_body_length
+
+opt_in_rules:
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - explicit_self
+  - fatal_error_message
+  - function_default_parameter_at_end
+  - identical_operands
+  - literal_expression_end_indentation
+  - multiline_arguments
+  - multiline_parameters
+  - operator_usage_whitespace
+  - sorted_imports
+  - switch_case_on_newline
+  - unused_import
+  - vertical_parameter_alignment_on_call
+    # - force_unwrapping

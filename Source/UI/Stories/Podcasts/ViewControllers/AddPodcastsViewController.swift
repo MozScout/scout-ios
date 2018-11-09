@@ -13,18 +13,19 @@ class AddPodcastsViewController: UIViewController {
     @IBOutlet weak var gradientButton: GradientButton!
     @IBOutlet weak var collectionView: UICollectionView!
     private let collectionRowReuseId = "collectionCell"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
     private func configureUI() {
-        subscribeButton.backgroundColor = UIColor(red: 0/255, green: 96/255, blue:223/255, alpha: 1.0)
+        subscribeButton.backgroundColor = UIColor(red: 0 / 255, green: 96 / 255, blue: 223 / 255, alpha: 1.0)
         subscribeButton.layer.cornerRadius = 8.0
         gradientButton.direction = .horizontally(centered: 0.1)
-        
+
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "AddPodcastsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectionRowReuseId)
+        collectionView.register(UINib(nibName: "AddPodcastsCollectionViewCell", bundle: nil),
+                                forCellWithReuseIdentifier: collectionRowReuseId)
     }
     @IBAction func backButtonTapped(_ sender: Any) {
         DispatchQueue.main.async {
@@ -37,11 +38,13 @@ extension AddPodcastsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionRowReuseId, for: indexPath) as! AddPodcastsCollectionViewCell
-        
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionRowReuseId,
+                                                      for: indexPath) as! AddPodcastsCollectionViewCell
+
         return cell
     }
-    
+
 }

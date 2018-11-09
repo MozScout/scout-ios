@@ -7,9 +7,9 @@
 import Foundation
 
 protocol NetworkRequestBuilderProtocol {
-    
+
     var baseURL: URL { get }
-    
+
     // MARK: Auth
     func buildPostRegistrationRequest(withUserName userName: String, email: String, password: String) -> URLRequest?
     func buildPostScoutTitlesRequest(withCmd cmd: String, userid: String) -> URLRequest?

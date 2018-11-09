@@ -7,6 +7,6 @@
 import Foundation
 
 protocol MyListAssemblyProtocol {
-    
+
     func assemblyPlayMyListViewController() -> PlayMyListViewController
 }
