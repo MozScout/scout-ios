@@ -9,22 +9,18 @@ import Foundation
 import UIKit
 
 class PlayerRouter {
-
     var onBackButtonTap: (() -> Void)?
     var onMicrophoneButtonTap: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PlayerAssemblyProtocol
 
     required init(with assembly: PlayerAssemblyProtocol) {
-
         self.assembly = assembly
     }
 }
 
 extension PlayerRouter: PlayerRoutingProtocol {
-
     func show(from viewController: UIViewController, animated: Bool, model: ScoutArticle, fullArticle: Bool) {
-
         let playerVC = assembly.assemblyPlayerViewController()
         playerVC.model = model
         playerVC.isFullArticle = fullArticle
@@ -38,9 +34,7 @@ extension PlayerRouter: PlayerRoutingProtocol {
     private func showViewController(viewController: UIViewController,
                                     fromViewController: UIViewController,
                                     animated: Bool) {
-
         if let navigationVC = fromViewController as? UINavigationController {
-
             if navigationVC.viewControllers.count == 0 {
                 navigationVC.viewControllers = [viewController]
             } else {
@@ -48,7 +42,6 @@ extension PlayerRouter: PlayerRoutingProtocol {
             }
         } else {
             if let navigationVC = fromViewController.navigationController {
-
                 if navigationVC.viewControllers.count == 0 {
                     navigationVC.viewControllers = [viewController]
                 } else {
@@ -62,7 +55,6 @@ extension PlayerRouter: PlayerRoutingProtocol {
 }
 
 extension PlayerRouter: PlayerViewControllerDelegate {
-
     func backButtonTapped() {
         self.onBackButtonTap!()
     }

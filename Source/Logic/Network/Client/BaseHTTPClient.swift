@@ -11,7 +11,6 @@ import SwiftyJSON
 extension Request: HTTPClientConnectionStateControlProtocol {}
 
 class BaseHTTPClient: HTTPClientProtocol {
-
     var adapters: [RequestAdapter]?
 
     fileprivate var manager: SessionManager
@@ -19,7 +18,6 @@ class BaseHTTPClient: HTTPClientProtocol {
                                                            attributes: DispatchQueue.Attributes.concurrent)
 
     init(withManager manager: SessionManager, adapters: [RequestAdapter]? = nil) {
-
         self.manager = manager
         self.adapters = adapters
     }
@@ -27,9 +25,7 @@ class BaseHTTPClient: HTTPClientProtocol {
     func execute(request: URLRequest?,
                  successBlock: @escaping HTTPClientSuccessBlock,
                  failureBlock: @escaping HTTPClientFailureBlock ) -> HTTPClientConnectionResult {
-
         guard let requiredRequest = request else {
-
             failureBlock(nil, .invalidRequest, nil)
             return nil
         }
@@ -45,11 +41,8 @@ class BaseHTTPClient: HTTPClientProtocol {
             let error: NSError? = dataResponse.error as NSError?
 
             guard let validResponse = response else {
-
                 if let requiredError = error {
-
                     if let urlError = requiredError as? URLError {
-
                         var errorReason = ""
                         switch urlError {
                             case URLError.timedOut:
@@ -76,18 +69,15 @@ class BaseHTTPClient: HTTPClientProtocol {
             }
 
             guard let validData = dataResponse.data else {
-
                 failureBlock(nil, .badResponse, validResponse)
                 return
             }
 
             do {
-
                 let object: Any = try JSONSerialization.jsonObject(with: validData, options: .allowFragments)
                 let JSONObject = JSON(object)
                 successBlock(JSONObject, nil, validResponse)
             } catch let error {
-
                 print(error.localizedDescription)
 
                 failureBlock(nil, .jsonSerialization, validResponse)
@@ -98,7 +88,6 @@ class BaseHTTPClient: HTTPClientProtocol {
     }
 
     func cancelAllRequests() {
-
         self.manager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
             dataTasks.forEach { $0.cancel() }
             uploadTasks.forEach { $0.cancel() }
@@ -107,11 +96,9 @@ class BaseHTTPClient: HTTPClientProtocol {
     }
 
     private func adapted(request: URLRequest, usingAdapters adapters: [RequestAdapter]?) -> URLRequest {
-
         var modifiedRequest = request
 
         adapters?.forEach {
-
             if let adaptedRequest = try? $0.adapt(modifiedRequest) {
                 modifiedRequest = adaptedRequest
             }

@@ -15,7 +15,6 @@ protocol PlayerViewControllerDelegate: class {
 }
 
 class PlayerViewController: UIViewController {
-
     weak var backButtonDelegate: PlayerViewControllerDelegate?
     weak var microphoneButtonDelegate: PlayerViewControllerDelegate?
     var scoutClient: ScoutHTTPClient!
@@ -52,7 +51,6 @@ class PlayerViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
         //self.setupMicButton()
         configureView()
@@ -61,7 +59,6 @@ class PlayerViewController: UIViewController {
 
     // MARK: - Private methods
     /*fileprivate func setupMicButton() {
-
         // we need dynamic size of the mic button. should set after we will have design
         microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
         microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
@@ -83,7 +80,6 @@ class PlayerViewController: UIViewController {
     }*/
 
     fileprivate func configureView() {
-
         slider.minimumTrackTintColor = UIColor(rgb: 0x6BB4FF)
         slider.maximumTrackTintColor = UIColor(rgb: 0xD7D7DB)
         slider.setThumbImage(UIImage(named: "knob"), for: .normal)
@@ -111,7 +107,6 @@ class PlayerViewController: UIViewController {
         self.showHUD()
 
         if let audioUrl = URL(string: url) {
-
             // then lets create your document folder url
             let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
@@ -126,7 +121,6 @@ class PlayerViewController: UIViewController {
                 self.hideHUD()
                 // if the file doesn't exist
             } else {
-
                 // you can use NSURLSession.sharedSession to download the data asynchronously
                 URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, _, error) -> Void in
                     guard let location = location, error == nil else { return }
@@ -145,9 +139,7 @@ class PlayerViewController: UIViewController {
     }
 
     func playDownloadedFile(url: String) {
-
         if let audioUrl = URL(string: url) {
-
             // then lets create your document folder url
             let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
@@ -171,7 +163,6 @@ class PlayerViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-
     }
 
     @IBAction func pauseButtonTaped(_ sender: Any) {

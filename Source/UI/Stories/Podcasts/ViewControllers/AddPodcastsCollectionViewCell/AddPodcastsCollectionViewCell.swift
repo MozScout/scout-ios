@@ -9,7 +9,6 @@
 import UIKit
 
 class AddPodcastsCollectionViewCell: UICollectionViewCell {
-
     @IBOutlet weak var indicatorButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()

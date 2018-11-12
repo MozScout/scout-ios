@@ -8,7 +8,6 @@ import Foundation
 import SwiftyJSON
 
 protocol HTTPClientConnectionStateControlProtocol {
-
     func resume()
     func suspend()
     func cancel()
@@ -22,7 +21,6 @@ typealias HTTPClientFailureBlock = (_ failureResponse: JSON?,
                                     _ response: HTTPURLResponse?) -> Void
 
 protocol HTTPClientProtocol: class {
-
     @discardableResult
     func execute(request: URLRequest?,
                  successBlock: @escaping HTTPClientSuccessBlock,

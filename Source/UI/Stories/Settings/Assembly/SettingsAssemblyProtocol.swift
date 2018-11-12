@@ -7,6 +7,5 @@
 import Foundation
 
 protocol SettingsAssemblyProtocol {
-
     func assemblySettingsViewController() -> SettingsViewController
 }

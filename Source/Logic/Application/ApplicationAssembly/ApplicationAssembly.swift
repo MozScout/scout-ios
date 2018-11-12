@@ -8,7 +8,6 @@ import Alamofire
 import Foundation
 
 class ApplicationAssembly {
-
     // MARK: Properties
     let configuration: AppConfiguration
     fileprivate lazy var authRouter: AuthRoutingProtocol = self.createAuthRouter()
@@ -27,7 +26,6 @@ class ApplicationAssembly {
 
     // MARK: Init
     required init(with configuration: AppConfiguration) {
-
         self.configuration = configuration
     }
 }
@@ -52,9 +50,7 @@ extension ApplicationAssembly: ApplicationAssemblyProtocol {
 // MARK: -
 // MARK: Private
 fileprivate extension ApplicationAssembly {
-
     func createSessionManager() -> SessionManager {
-
         let networkRequestTimeOutInterval: TimeInterval = 30
 
         let configuration = URLSessionConfiguration.default
@@ -69,13 +65,11 @@ fileprivate extension ApplicationAssembly {
 
     // MARK: Routers
     func createAuthRouter() -> AuthRoutingProtocol {
-
         let authAssembly = AuthAssembly(withAssembly: self)
         return AuthRouter(with: authAssembly)
     }
 
     func createMainRouter() -> MainRoutingProtocol {
-
         let mainAssembly = MainAssembly(withAssembly: self)
         let mainRouter = MainUIRouter(withApplicationAssembly: self, assembly: mainAssembly)
 
@@ -83,44 +77,37 @@ fileprivate extension ApplicationAssembly {
     }
 
     func createMyListRouter() -> MyListRoutingProtocol {
-
         let myListAssembly = MyListAssembly(withAssembly: self)
         return MyListRouter(with: myListAssembly)
     }
 
     func createHelpRouter() -> HelpRoutingProtocol {
-
         let helpAssembly = HelpAssembly(withAssembly: self)
         return HelpRouter(with: helpAssembly)
     }
 
     func createSettingsRouter() -> SettingsRoutingProtocol {
-
         let settingsAssembly = SettingsAssembly(withAssembly: self)
         return SettingsRouter(with: settingsAssembly)
     }
 
     func createVoiceInputRouter() -> VoiceInputRoutingProtocol {
-
         let voiceInputAssembly = VoiceInputAssembly(withAssembly: self)
         return VoiceInputRouter(with: voiceInputAssembly)
     }
 
     func createPlayerRouter() -> PlayerRoutingProtocol {
-
         let voiceInputAssembly = PlayerAssembly(withAssembly: self)
         return PlayerRouter(with: voiceInputAssembly)
     }
 
     func createPodcastsRouter() -> PodcastsRoutingProtocol {
-
         let podcastsAssembly = PodcastsAssembly(withAssembly: self)
         return PodcastsRouter(with: podcastsAssembly)
     }
 
     // MARK: Services
     func createNetworkClient() -> HTTPClientProtocol {
-
         let networkMapper = NetworkMapper()
         let requestBuilder = NetworkRequestBuilder(withBaseURL: configuration.network.baseURL,
                                                    mapper: networkMapper)
@@ -134,14 +121,12 @@ fileprivate extension ApplicationAssembly {
     }
 
     func createKeychainService() -> KeychainServiceProtocol {
-
         let bundleID = Bundle.main.bundleIdentifier ?? ""
         let keychainService = KeychainService(with: bundleID)
         return keychainService
     }
 
     func createSpeechService() -> SpeechServiceProtocol {
-
         let speechService = SpeechService(with: Locale.init(identifier: "en-US"))
         return speechService!
     }

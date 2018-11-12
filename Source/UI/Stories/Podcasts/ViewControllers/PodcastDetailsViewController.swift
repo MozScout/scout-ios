@@ -9,7 +9,6 @@
 import UIKit
 
 class PodcastDetailsViewController: UIViewController {
-
     @IBOutlet weak var subscribeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     fileprivate let viewModel = PodcastDetailsViewModel()

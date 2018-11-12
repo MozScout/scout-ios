@@ -8,7 +8,6 @@ import Alamofire
 import Foundation
 
 class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
-
     let baseURL: URL
     var userAuthorizationHeader: String?
 
@@ -24,14 +23,12 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
 
     // MARK: Init
     init(withBaseURL baseURL: URL, mapper: NetworkMappingProtocol) {
-
         self.baseURL = baseURL
         self.mapper = mapper
     }
 
     // MARK: Auth
     func buildPostRegistrationRequest(withUserName userName: String, email: String, password: String) -> URLRequest? {
-
         let parameters = [
                              "name": userName,
                              "email": email,
@@ -48,7 +45,6 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     }
 
     func buildPostScoutTitlesRequest(withCmd cmd: String, userid: String) -> URLRequest? {
-
         let parameters = [
             "cmd": cmd,
             "userid": userid,
@@ -68,7 +64,6 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     func buildPostScoutVoiceInputRequest(withCmd cmd: String,
                                          userid: String,
                                          searchTerms: String) -> URLRequest? {
-
         let parameters = [
             "cmd": cmd,
             "userid": userid,
@@ -87,7 +82,6 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     }
 
     func buildPostScoutSkimVoiceInputRequest(withCmd cmd: String, userid: String, searchTerms: String) -> URLRequest? {
-
         let parameters = [
             "cmd": cmd,
             "userid": userid,
@@ -106,7 +100,6 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     }
 
     func buildPostArticleRequest(userid: String, url: String) -> URLRequest? {
-
         let parameters = [
             "userid": userid,
             "url": url,
@@ -124,7 +117,6 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     }
 
     func buildPostSummaryRequest(userid: String, url: String) -> URLRequest? {
-
         let parameters = [
             "userid": userid,
             "url": url,
@@ -142,7 +134,6 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     }
 
     func buildPostScoutTitleArchive(withCmd cmd: String, userid: String, itemid: String) -> URLRequest? {
-
         let parameters = [
             "cmd": cmd,
             "userid": userid,

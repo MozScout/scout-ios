@@ -8,14 +8,12 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     let applicationRouter: ApplicationRouterProtocol
     let applicationAssembly: ApplicationAssemblyProtocol
     let keychainService: KeychainService
 
     override init() {
-
         let configuration = AppConfiguration()
         self.applicationAssembly = ApplicationAssembly(with: configuration)
         self.applicationRouter = ApplicationRouter(with: self.applicationAssembly)
@@ -25,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
         let result = self.applicationRouter.application!(application, didFinishLaunchingWithOptions: launchOptions)
         if keychainService.value(for: "userID") != nil {
             self.setupMainScreen()
@@ -50,9 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: -
 // MARK: Private
 fileprivate extension AppDelegate {
-
     func setupWindow() {
-
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.backgroundColor = UIColor.white
         self.window = window
@@ -61,7 +56,6 @@ fileprivate extension AppDelegate {
     }
 
     func setupMainScreen() {
-
         if keychainService.value(for: "userID") != nil {
             var mainRouter = self.applicationAssembly.assemblyMainRouter()
             mainRouter.userID = keychainService.value(for: "userID")!

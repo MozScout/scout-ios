@@ -10,7 +10,6 @@ import SafariServices
 import UIKit
 
 class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
-
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!

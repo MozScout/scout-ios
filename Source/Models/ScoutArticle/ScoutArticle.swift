@@ -8,7 +8,6 @@
 import Foundation
 
 func == (lhs: ScoutArticle, rhs: ScoutArticle) -> Bool {
-
     let articleIDsAreEqual = (lhs.itemID == rhs.itemID)
     let articleTitlesAreEqual = (lhs.title == rhs.title)
     let articleAuthorsAreEqual = lhs.author == rhs.author
@@ -24,7 +23,6 @@ func == (lhs: ScoutArticle, rhs: ScoutArticle) -> Bool {
 }
 
 class ScoutArticle: NSObject, NSCoding {
-
     var itemID: String
     var title: String
     var author: String
@@ -46,7 +44,6 @@ class ScoutArticle: NSObject, NSCoding {
          url: String,
          publisher: String,
          iconURL: URL?) {
-
         self.itemID = itemID
         self.title = title
         self.author = author
@@ -61,7 +58,6 @@ class ScoutArticle: NSObject, NSCoding {
 
     // MARK: NSCoding
     convenience required init?(coder aDecoder: NSCoder) {
-
         guard let objectDictionary = aDecoder.decodeObject(
             forKey: NSStringFromClass(ScoutArticle.self)) as? [String: Any],
               let itemID = objectDictionary["itemID"] as? String,
@@ -101,7 +97,6 @@ class ScoutArticle: NSObject, NSCoding {
     }
 
     func encode(with aCoder: NSCoder) {
-
         let dictionary = NSMutableDictionary(dictionary: [
                                                              "itemID": itemID,
                                                              "title": title,
@@ -127,7 +122,6 @@ class ScoutArticle: NSObject, NSCoding {
 
     // MARK: Equal
     override func isEqual(_ object: Any?) -> Bool {
-
         guard let requiredObject = object,
               let comparableObject = requiredObject as? ScoutArticle
         else { return false }

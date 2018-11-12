@@ -144,7 +144,6 @@ class PodcastsViewController: UIViewController {
 
 extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, PlayMyListTableViewCellDelegate {
     func playButtonTapped() {
-
     }
 
     func skimButtonTapped() {
@@ -153,7 +152,6 @@ extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, Pl
     }
 
     func archiveButtonTapped() {
-
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -217,5 +215,4 @@ extension PodcastsViewController: UICollectionViewDataSource {
         cell.configureCell()
         return cell
     }
-
 }

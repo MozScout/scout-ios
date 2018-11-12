@@ -8,7 +8,6 @@
 import UIKit
 
 class GradientView: UIView {
-
     var direction: GradientDirectionForView = .horizontal {
         didSet {
             gradientLayer.startPoint = direction.startPoint
@@ -62,13 +61,11 @@ class GradientView: UIView {
 
     // MARK: - Private
     fileprivate func replace(startColor: UIColor, endColor: UIColor) {
-
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         gradientLayer.setNeedsDisplay()
     }
 
     fileprivate func configure() {
-
         self.gradientLayer.startPoint = self.direction.startPoint
         self.gradientLayer.endPoint = self.direction.endPoint
         self.gradientLayer.locations = [0.0, 1.5]
@@ -77,7 +74,6 @@ class GradientView: UIView {
 }
 
 enum GradientDirectionForView {
-
     static var horizontal: GradientDirectionForView { return .horizontally(centered: 1.0) }
     static var vertical: GradientDirectionForView { return .vertically(centered: 0.5) }
 
@@ -89,7 +85,6 @@ enum GradientDirectionForView {
     case custom(startPoint: CGPoint, endPoint: CGPoint)
 
     var startPoint: CGPoint {
-
         switch self {
             case .horizontally(let xCenter):
                 let normalizedCenter = min(1.0, max(0.0, xCenter))
@@ -103,7 +98,6 @@ enum GradientDirectionForView {
     }
 
     var endPoint: CGPoint {
-
         switch self {
             case .horizontally:
                 return CGPoint(x: 1.0, y: 0.0)

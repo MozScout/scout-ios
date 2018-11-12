@@ -7,7 +7,6 @@
 import Foundation
 
 protocol NetworkRequestBuilderProtocol {
-
     var baseURL: URL { get }
 
     // MARK: Auth

@@ -12,7 +12,6 @@ import Speech
 import UIKit
 
 class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate {
-
     public weak var delegate: SBSpeechRecognizerDelegate?
 
     private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
@@ -24,7 +23,6 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     private var audioEngine = AVAudioEngine()
 
     init?(with locale: Locale) {
-
         guard let requiredRecognizer = SFSpeechRecognizer(locale: locale) else { return nil }
         self.speechRecognizer = requiredRecognizer
         self.audioEngine = AVAudioEngine()

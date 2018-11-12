@@ -47,5 +47,4 @@ extension AddPodcastsViewController: UICollectionViewDataSource {
 
         return cell
     }
-
 }

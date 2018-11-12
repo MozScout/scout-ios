@@ -8,7 +8,6 @@ import Foundation
 import UIKit
 
 class MainUIRouter: NSObject {
-
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate var tabbar: MainTabBarViewController!
     fileprivate let assembly: MainAssemblyProtocol
@@ -23,7 +22,6 @@ class MainUIRouter: NSObject {
 
     required init(withApplicationAssembly applicationAssembly: ApplicationAssemblyProtocol,
                   assembly: MainAssemblyProtocol) {
-
         self.assembly = assembly
 
         // Routers init
@@ -35,14 +33,11 @@ class MainUIRouter: NSObject {
 }
 
 extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
-
     func showMainUIInterface(fromViewController viewController: UINavigationController, animated: Bool) {
-
         let tabs: [MainTab] = [.podcasts, .articles, .settings]
         var tabViewControllers: [UIViewController] = []
 
         for curTab in tabs {
-
             let currentTabViewController = self.assemblyNavigationController(forTab: curTab)
             tabViewControllers.append(currentTabViewController)
         }
@@ -55,11 +50,9 @@ extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
 
         viewController.viewControllers = [tabbarVC]
         parentNavigationController = viewController
-
     }
 
     func showMainUITab(tab: MainTab, animated: Bool) {
-
         if self.tabbar != nil {
             self.selectMainUITab(tab: tab)
         }
@@ -69,11 +62,9 @@ extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
 // MARK: -
 // MARK: Private
 fileprivate extension MainUIRouter {
-
     fileprivate func showInitialUI(for tab: MainTab,
                                    in navigationController: UINavigationController,
                                    animated: Bool) {
-
         switch tab {
             case .podcasts:
                 podcastsRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
@@ -87,7 +78,6 @@ fileprivate extension MainUIRouter {
     }
 
     private func assemblyNavigationController(forTab tab: MainTab) -> UINavigationController {
-
         let tabbarItem = self.tabbarItem(forTab: tab)
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
@@ -100,9 +90,7 @@ fileprivate extension MainUIRouter {
     }
 
     private func tabbarItem(forTab tab: MainTab) -> UITabBarItem {
-
         func originalImageUsingImageName(imageName name: String) -> UIImage? {
-
             guard let requiredOriginalImage = UIImage(named: name) else { return nil }
             return requiredOriginalImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         }
@@ -126,24 +114,20 @@ fileprivate extension MainUIRouter {
 
     // MARK: Tabbar
     private func selectedMainTab() -> MainTab {
-
         let selectedTabIndex = self.tabbar.selectedIndex
         let UITab = MainTab(rawValue: selectedTabIndex)!
         return UITab
     }
 
     private func selectMainUITab(tab: MainTab) {
-
         self.tabbar.selectedIndex = tab.rawValue
     }
 
     private func currentSelectedNavigationController() -> UINavigationController {
-
         return self.navigationController(forMainUITab: self.selectedMainTab())
     }
 
     private func navigationController(forMainUITab tab: MainTab) -> UINavigationController {
-
         let tabIndex = tab.rawValue
         // swiftlint:disable:next force_cast
         return tabbar.viewControllers![tabIndex] as! UINavigationController
@@ -157,7 +141,6 @@ fileprivate extension MainUIRouter {
 }
 
 extension MainUIRouter: MainTabBarViewControllerDelegate {
-
     func mainTabBarViewController(viewController: MainTabBarViewController, didTouchMicrophoneButton button: UIButton) {
         self.onMicrophoneButtonTap!()
         print("Did touch Microphone Button")

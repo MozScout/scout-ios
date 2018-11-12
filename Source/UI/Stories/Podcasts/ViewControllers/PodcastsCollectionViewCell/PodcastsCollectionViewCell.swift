@@ -14,7 +14,6 @@ struct PodcastModel {
 }
 
 class PodcastsCollectionViewCell: UICollectionViewCell {
-
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!

@@ -13,7 +13,6 @@ protocol HeaderViewDelegate: class {
 }
 
 class HeaderView: UITableViewHeaderFooterView {
-
     @IBOutlet weak var backChevronButton: UIButton!
     var item: PodcastDetailsViewModelItem? {
         didSet {

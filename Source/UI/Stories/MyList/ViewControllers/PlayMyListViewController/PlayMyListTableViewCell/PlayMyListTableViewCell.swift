@@ -16,7 +16,6 @@ protocol PlayMyListTableViewCellDelegate: class {
 }
 
 class PlayMyListTableViewCell: UITableViewCell {
-
     weak var playButtonDelegate: PlayMyListTableViewCellDelegate?
     weak var skimButtonDelegate: PlayMyListTableViewCellDelegate?
     weak var archiveButtonDelegate: PlayMyListTableViewCellDelegate?
@@ -40,7 +39,6 @@ class PlayMyListTableViewCell: UITableViewCell {
                 self.playButton.isHidden = true
                 self.skimButton.isHidden = true
                 self.expandedViewHeight.constant = 0.0
-
             } else {
                 self.doneButton.isHidden = false
                 self.playButton.isHidden = false

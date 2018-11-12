@@ -9,16 +9,13 @@ import Foundation
 import UIKit
 
 class PlayerAssembly: PlayerAssemblyProtocol {
-
     let applicationAssembly: ApplicationAssemblyProtocol
 
     required init(withAssembly assembly: ApplicationAssemblyProtocol) {
-
         self.applicationAssembly = assembly
     }
 
     func assemblyPlayerViewController() -> PlayerViewController {
-
         let playerVC = self.storyboard.instantiateViewController(
             // swiftlint:disable:next force_cast
             withIdentifier: "PlayerViewController") as! PlayerViewController
@@ -32,6 +29,5 @@ class PlayerAssembly: PlayerAssemblyProtocol {
 // MARK: -
 // MARK: Storyboard
 fileprivate extension PlayerAssembly {
-
     var storyboard: UIStoryboard { return UIStoryboard(name: "Player", bundle: nil) }
 }

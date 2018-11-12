@@ -9,9 +9,7 @@ import Foundation
 import HexColors
 
 public struct Design {
-
     public struct Color {
-
         public static let clear = UIColor.clear
         public static let white = UIColor.white
         public static let black = UIColor.black
@@ -31,7 +29,6 @@ public struct Design {
     }
 
     public enum Font {
-
         case regular(size: CGFloat)
         case heavy(size: CGFloat)
         case light(size: CGFloat)
@@ -51,7 +48,6 @@ public struct Design {
     public static func attributedString(from string: String,
                                         font: UIFont,
                                         spacing: CGFloat) -> NSMutableAttributedString {
-
         let attributedString = NSMutableAttributedString(string: string)
         attributedString.addAttribute(NSAttributedString.Key.font,
                                       value: font,
@@ -66,7 +62,6 @@ public struct Design {
     public static func attributedString(from string: String,
                                         font: UIFont,
                                         interlineage: CGFloat) -> NSMutableAttributedString {
-
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = interlineage
 
@@ -82,7 +77,6 @@ public struct Design {
     }
 
     public static func image(withColor color: UIColor) -> UIImage {
-
         let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
         UIGraphicsBeginImageContext(rect.size)
 

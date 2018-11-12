@@ -130,7 +130,6 @@ extension PodcastDetailsViewModel: HeaderViewDelegate {
     func toggleSection(header: HeaderView, section: Int) {
         var item = items[section]
         if item.isCollapsible {
-
             // Toggle collapse
             let collapsed = !item.isCollapsed
             item.isCollapsed = collapsed
@@ -143,7 +142,6 @@ extension PodcastDetailsViewModel: HeaderViewDelegate {
 }
 
 class PodcastDetailsViewModelAboutItem: PodcastDetailsViewModelItem {
-
     var type: PodcastDetailsViewModelItemType {
         return .About
     }
@@ -179,5 +177,4 @@ class PodcastDetailsViewModelSeason1Item: PodcastDetailsViewModelItem {
     var rowCount: Int {
         return 2
     }
-
 }

@@ -13,7 +13,6 @@ protocol PlayListDelegate: class {
 }
 
 class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegate {
-
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
@@ -201,7 +200,6 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
                                                        self.tableView.deleteRows(at: [indexPath], with: .fade)
                                                        self.selectedIndex = []
                                                        self.tableView.endUpdates()
-
                                                    }
                                                }, failureBlock: { (_, _, _) in
                                                    self.showAlert(errorMessage: """
@@ -220,7 +218,6 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
 }
 
 extension PlayMyListViewController: UITableViewDataSource {
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -248,7 +245,6 @@ extension PlayMyListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
 
             else { return }
@@ -270,7 +266,6 @@ extension PlayMyListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
         if indexPath == selectedIndex {
             return 145.0
         }
@@ -279,7 +274,6 @@ extension PlayMyListViewController: UITableViewDataSource {
 }
 
 extension PlayMyListViewController: UITableViewDelegate {
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         DispatchQueue.main.async {
             let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
@@ -291,7 +285,6 @@ extension PlayMyListViewController: UITableViewDelegate {
             let isScrollingUp = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom
 
             if self.canAnimateHeader(scrollView) {
-
                 // Calculate new header height
                 var newHeight = self.headerHeightConstraint.constant
 
@@ -324,7 +317,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func scrollViewDidStopScrolling() {
-
         let range = self.maxHeaderHeight - self.minHeaderHeight
         let midPoint = self.minHeaderHeight + (range / 2)
 
@@ -344,7 +336,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func collapseHeader() {
-
         self.view.layoutIfNeeded()
 
         UIView.animate(withDuration: 0.2,
@@ -356,7 +347,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func expandHeader() {
-
         self.view.layoutIfNeeded()
 
         UIView.animate(withDuration: 0.2,
@@ -372,7 +362,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func updateHeader() {
-
         let range = self.maxHeaderHeight - self.minHeaderHeight
         let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
         let percentage = openAmount / range

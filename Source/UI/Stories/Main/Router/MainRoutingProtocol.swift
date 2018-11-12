@@ -8,7 +8,6 @@ import Foundation
 import UIKit
 
 enum MainTab: Int {
-
     case podcasts = 0
     case articles = 1
     case settings = 2

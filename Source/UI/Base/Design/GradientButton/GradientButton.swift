@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class GradientButton: UIButton {
-
     var direction: GradientDirection = .horizontal {
         didSet {
             gradientLayer.startPoint = direction.startPoint
@@ -67,13 +66,10 @@ class GradientButton: UIButton {
 
     // MARK: - Public
     func reload() {
-
         if isHighlighted || isSelected {
-
             self.bringSubviewToFront(self.highlightView)
             self.highlightView.isHidden = false
         } else {
-
             self.highlightView.isHidden = true
         }
     }
@@ -85,7 +81,6 @@ class GradientButton: UIButton {
 
     // MARK: - Private
     fileprivate lazy var highlightView: UIView = {
-
         let view = UIView()
         self.addSubview(view)
         view.isUserInteractionEnabled = false
@@ -110,13 +105,11 @@ class GradientButton: UIButton {
     }()
 
     fileprivate func replace(startColor: UIColor, endColor: UIColor) {
-
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         gradientLayer.setNeedsDisplay()
     }
 
     fileprivate func configure() {
-
         self.gradientLayer.startPoint = self.direction.startPoint
         self.gradientLayer.endPoint = self.direction.endPoint
         self.gradientLayer.locations = [0.0, 0.80]
@@ -125,7 +118,6 @@ class GradientButton: UIButton {
 }
 
 enum GradientDirection {
-
     static var horizontal: GradientDirection { return .horizontally(centered: 0.5) }
     static var vertical: GradientDirection { return .vertically(centered: 0.5) }
 
@@ -137,7 +129,6 @@ enum GradientDirection {
     case custom(startPoint: CGPoint, endPoint: CGPoint)
 
     var startPoint: CGPoint {
-
         switch self {
             case .horizontally(let xCenter):
                 let normalizedCenter = min(1.0, max(0.0, xCenter))
@@ -151,7 +142,6 @@ enum GradientDirection {
     }
 
     var endPoint: CGPoint {
-
         switch self {
             case .horizontally:
                 return CGPoint(x: 1.0, y: 0.0)

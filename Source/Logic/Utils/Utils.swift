@@ -10,7 +10,6 @@ import UIKit
 typealias VoidBlock = () -> Void
 
 class WeakPointerArray<ObjectType> {
-
      var count: Int {
         return weakStorage.count
     }
@@ -37,9 +36,7 @@ class WeakPointerArray<ObjectType> {
 }
 
 extension WeakPointerArray: Sequence {
-
      func makeIterator() -> AnyIterator<ObjectType> {
-
         let enumerator = weakStorage.objectEnumerator()
 
         return AnyIterator {
