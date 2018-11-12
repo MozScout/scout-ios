@@ -16,8 +16,11 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
     @IBOutlet fileprivate var gradientButton: GradientButton!
 
     private var safariVC: SFSafariViewController?
+    
+    var keychainService: KeychainService!
 
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,6 +52,10 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
             })
 
         infoLabel.attributedText = centerText
+        
+        if let userID = keychainService.value(for: "userID") {
+            accountLabel.text = "Account (\(userID))"
+        }
     }
 
     @objc func tapFunction(sender: UITapGestureRecognizer) {
