@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "backButton.png",
+      "filename" : "backChevron.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "backButton@2x.png",
+      "filename" : "backChevron@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "backButton@3x.png",
+      "filename" : "backChevron@3x-1.png",
       "scale" : "3x"
     }
   ],

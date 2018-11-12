@@ -1,27 +1,36 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.7.3)
   - AsyncSwift (2.0.4)
   - HexColors (6.0.0)
-  - KeychainAccess (3.1.1)
-  - Kingfisher (4.8.0)
-  - SwiftyJSON (4.0.0)
+  - KeychainAccess (3.1.2)
+  - Kingfisher (4.10.1)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.5.1)
-  - AsyncSwift (~> 2.0.4)
-  - HexColors
-  - KeychainAccess (~> 3.1.1)
-  - Kingfisher (~> 4.0)
-  - SwiftyJSON (~> 4.0.0)
+  - Alamofire (~> 4.7)
+  - AsyncSwift (~> 2.0)
+  - HexColors (~> 6.0)
+  - KeychainAccess (~> 3.1)
+  - Kingfisher (~> 4.10)
+  - SwiftyJSON (~> 4.2)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AsyncSwift
+    - HexColors
+    - KeychainAccess
+    - Kingfisher
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   HexColors: f8c66339541a74bb08905bfe7cd4f8cc85e9e173
-  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
-  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: ae301a9774f08de2d68a6b1d277d691a42a9800a
+PODFILE CHECKSUM: 58858f6c08a7024cf08c4dacdb416513c2c5dde1
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
