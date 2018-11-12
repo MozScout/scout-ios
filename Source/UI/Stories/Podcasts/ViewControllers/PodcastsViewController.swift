@@ -53,7 +53,7 @@ class PodcastsViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self,
                                  action: #selector(self.handleRefresh(_:)),
-                                 for: UIControlEvents.valueChanged)
+                                 for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.black
 
         return refreshControl
@@ -83,14 +83,14 @@ class PodcastsViewController: UIViewController {
         collectionView.register(UINib(nibName: "PodcastsCollectionViewCell", bundle: nil),
                                 forCellWithReuseIdentifier: collectionRowReuseId)
         tableView.estimatedRowHeight = 100.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.bottomLayoutGuide.length, right: 0)
+        tableView.rowHeight = UITableView.automaticDimension
+        // tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.bottomLayoutGuide.length, right: 0)
     }
 
     func addSpinner() -> UIActivityIndicatorView {
         // Adding spinner over launch screen
         let spinner = UIActivityIndicatorView.init()
-        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        spinner.style = UIActivityIndicatorView.Style.whiteLarge
         spinner.color = UIColor.black
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
@@ -113,7 +113,7 @@ class PodcastsViewController: UIViewController {
 
         NSLayoutConstraint.activate([xConstraint, yConstraint])
 
-        self.view.bringSubview(toFront: spinner)
+        self.view.bringSubviewToFront(spinner)
 
         return spinner
     }
@@ -144,7 +144,6 @@ class PodcastsViewController: UIViewController {
 
 extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, PlayMyListTableViewCellDelegate {
     func playButtonTapped() {
-
     }
 
     func skimButtonTapped() {
@@ -153,7 +152,6 @@ extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, Pl
     }
 
     func archiveButtonTapped() {
-
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -170,6 +168,7 @@ extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, Pl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId,
+                                                 // swiftlint:disable:next force_cast
                                                  for: indexPath) as! PlayMyListTableViewCell
 
         self.selectedIndex = []
@@ -186,11 +185,10 @@ extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, Pl
 
             else { return }
 
-        switch cell.isExpanded {
-        case true:
+        if cell.isExpanded {
             self.expandedRows.remove(indexPath.row)
             selectedIndex = []
-        case false:
+        } else {
             self.expandedRows.insert(indexPath.row)
             articleNumber = indexPath.row
             selectedIndex = indexPath
@@ -212,9 +210,9 @@ extension PodcastsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionRowReuseId,
+                                                      // swiftlint:disable:next force_cast
                                                       for: indexPath) as! PodcastsCollectionViewCell
         cell.configureCell()
         return cell
     }
-
 }

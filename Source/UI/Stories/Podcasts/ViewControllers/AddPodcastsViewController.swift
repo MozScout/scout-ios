@@ -42,9 +42,9 @@ extension AddPodcastsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionRowReuseId,
+                                                      // swiftlint:disable:next force_cast
                                                       for: indexPath) as! AddPodcastsCollectionViewCell
 
         return cell
     }
-
 }

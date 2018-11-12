@@ -6,7 +6,6 @@
 import Foundation
 
 protocol ApplicationAssemblyProtocol {
-
     var configuration: AppConfiguration { get }
 
     // MARK: Routers

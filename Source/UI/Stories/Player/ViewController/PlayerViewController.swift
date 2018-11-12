@@ -15,7 +15,6 @@ protocol PlayerViewControllerDelegate: class {
 }
 
 class PlayerViewController: UIViewController {
-
     weak var backButtonDelegate: PlayerViewControllerDelegate?
     weak var microphoneButtonDelegate: PlayerViewControllerDelegate?
     var scoutClient: ScoutHTTPClient!
@@ -52,7 +51,6 @@ class PlayerViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
         //self.setupMicButton()
         configureView()
@@ -61,7 +59,6 @@ class PlayerViewController: UIViewController {
 
     // MARK: - Private methods
     /*fileprivate func setupMicButton() {
-
         // we need dynamic size of the mic button. should set after we will have design
         microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
         microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
@@ -83,7 +80,6 @@ class PlayerViewController: UIViewController {
     }*/
 
     fileprivate func configureView() {
-
         slider.minimumTrackTintColor = UIColor(rgb: 0x6BB4FF)
         slider.maximumTrackTintColor = UIColor(rgb: 0xD7D7DB)
         slider.setThumbImage(UIImage(named: "knob"), for: .normal)
@@ -111,7 +107,6 @@ class PlayerViewController: UIViewController {
         self.showHUD()
 
         if let audioUrl = URL(string: url) {
-
             // then lets create your document folder url
             let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
@@ -126,7 +121,6 @@ class PlayerViewController: UIViewController {
                 self.hideHUD()
                 // if the file doesn't exist
             } else {
-
                 // you can use NSURLSession.sharedSession to download the data asynchronously
                 URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, _, error) -> Void in
                     guard let location = location, error == nil else { return }
@@ -145,9 +139,7 @@ class PlayerViewController: UIViewController {
     }
 
     func playDownloadedFile(url: String) {
-
         if let audioUrl = URL(string: url) {
-
             // then lets create your document folder url
             let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
@@ -171,7 +163,6 @@ class PlayerViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-
     }
 
     @IBAction func pauseButtonTaped(_ sender: Any) {
@@ -223,8 +214,8 @@ class PlayerViewController: UIViewController {
     internal func play() {
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
-            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(.playback, mode: .spokenAudio)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print(error)
         }
@@ -275,27 +266,27 @@ class PlayerViewController: UIViewController {
         skimButton.isSelected = true
 
         self.showHUD()
-        self.scoutClient.getSummaryLink(userid: keychainService.value(for: "userID")!,
-                                        url: (model.resolvedURL?.absoluteString)!,
-                                        successBlock: { (scoutArticle) in
-                                            if scoutArticle.url != "" {
-                                                self.downloadfile(url: scoutArticle.url)
-                                                DispatchQueue.main.async {
-                                                    self.pauseButton.isSelected = false
-                                                }
-                                            } else {
-                                                DispatchQueue.main.async {
-                                                    self.showAlert(errorMessage: "Skim version is not available")
+        _ = self.scoutClient.getSummaryLink(userid: keychainService.value(for: "userID")!,
+                                            url: (model.resolvedURL?.absoluteString)!,
+                                            successBlock: { (scoutArticle) in
+                                                if scoutArticle.url != "" {
+                                                    self.downloadfile(url: scoutArticle.url)
+                                                    DispatchQueue.main.async {
+                                                        self.pauseButton.isSelected = false
+                                                    }
+                                                } else {
+                                                    DispatchQueue.main.async {
+                                                        self.showAlert(errorMessage: "Skim version is not available")
                                                     self.playFullArticle(self)
+                                                    }
                                                 }
-                                            }
-                                        }, failureBlock: { (_, _, _) in
-                                            self.showAlert(errorMessage: """
-                                                           Unable to get your articles at this time, please check \
-                                                           back later
-                                                           """)
-                                            self.hideHUD()
-                                        })
+                                            }, failureBlock: { (_, _, _) in
+                                                self.showAlert(errorMessage: """
+                                                               Unable to get your articles at this time, please check \
+                                                               back later
+                                                               """)
+                                                self.hideHUD()
+                                            })
     }
 
     @IBAction func playFullArticle(_ sender: Any) {
@@ -304,20 +295,20 @@ class PlayerViewController: UIViewController {
         skimButton.isSelected = false
 
         self.showHUD()
-        self.scoutClient.getArticleLink(userid: keychainService.value(for: "userID")!,
-                                        url: (model.resolvedURL?.absoluteString)!,
-                                        successBlock: { (scoutArticle) in
-                                            self.downloadfile(url: scoutArticle.url)
-                                            DispatchQueue.main.async {
-                                                self.pauseButton.isSelected = false
-                                            }
-                                        }, failureBlock: { (_, _, _) in
-                                            self.showAlert(errorMessage: """
-                                                           Unable to get your articles at this time, please check back \
-                                                           later
-                                                           """)
-                                            self.hideHUD()
-                                        })
+        _ = self.scoutClient.getArticleLink(userid: keychainService.value(for: "userID")!,
+                                            url: (model.resolvedURL?.absoluteString)!,
+                                            successBlock: { (scoutArticle) in
+                                                self.downloadfile(url: scoutArticle.url)
+                                                DispatchQueue.main.async {
+                                                    self.pauseButton.isSelected = false
+                                                }
+                                            }, failureBlock: { (_, _, _) in
+                                                self.showAlert(errorMessage: """
+                                                               Unable to get your articles at this time, please check \
+                                                               back later
+                                                               """)
+                                                self.hideHUD()
+                                            })
     }
 
     @IBAction func audioRateButtonTapped(_ sender: Any) {
@@ -340,7 +331,10 @@ class PlayerViewController: UIViewController {
 
     @IBAction func readArticleButtonTapped(_ sender: Any) {
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(model.resolvedURL!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(
+		model.resolvedURL!,
+		options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
+		completionHandler: nil)
         } else {
             UIApplication.shared.openURL(model.resolvedURL!)
         }
@@ -348,7 +342,7 @@ class PlayerViewController: UIViewController {
     func addSpinner() -> UIActivityIndicatorView {
         // Adding spinner over launch screen
         let spinner = UIActivityIndicatorView.init()
-        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
+        spinner.style = UIActivityIndicatorView.Style.white
         spinner.color = UIColor.black
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
@@ -424,18 +418,28 @@ class PlayerViewController: UIViewController {
     }
 
     private func showAlert(errorMessage: String) {
-        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style {
-            case .default:
-                print("ok")
+		case .default:
+		    print("ok")
 
-            case .cancel:
-                print("cancel")
+		case .cancel:
+		    print("cancel")
 
-            case .destructive:
-                print("destructive")
+		case .destructive:
+		    print("destructive")
             }}))
         self.present(alert, animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+private func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(
+    _ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+    return Dictionary(
+	uniqueKeysWithValues: input.map { key, value in
+	    (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)
+	}
+    )
 }

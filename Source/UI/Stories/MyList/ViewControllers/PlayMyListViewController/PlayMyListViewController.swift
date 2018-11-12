@@ -13,7 +13,6 @@ protocol PlayListDelegate: class {
 }
 
 class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegate {
-
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
@@ -39,7 +38,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self,
                                  action: #selector(self.handleRefresh(_:)),
-                                 for: UIControlEvents.valueChanged)
+                                 for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.black
 
         return refreshControl
@@ -65,7 +64,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         tableView.addSubview(self.refreshControl)
         self.showHUD()
         if keychainService.value(for: "userID") == nil {
-            keychainService.save(value: userID, key: "userID")
+            _ = keychainService.save(value: userID, key: "userID")
         }
         gradientButton.direction = .horizontally(centered: 0.1)
         tableView.delegate = self
@@ -73,8 +72,8 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil),
                            forCellReuseIdentifier: cellRowReuseId)
         tableView.estimatedRowHeight = 100.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.bottomLayoutGuide.length, right: 0)
+        tableView.rowHeight = UITableView.automaticDimension
+        // tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.bottomLayoutGuide.length, right: 0)
     }
 
     fileprivate func getScoutTitles() {
@@ -98,7 +97,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     func addSpinner() -> UIActivityIndicatorView {
         // Adding spinner over launch screen
         let spinner = UIActivityIndicatorView.init()
-        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        spinner.style = UIActivityIndicatorView.Style.whiteLarge
         spinner.color = UIColor.black
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
@@ -121,7 +120,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
 
         NSLayoutConstraint.activate([xConstraint, yConstraint])
 
-        self.view.bringSubview(toFront: spinner)
+        self.view.bringSubviewToFront(spinner)
 
         return spinner
     }
@@ -142,74 +141,73 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
 
     func playButtonTapped() {
         showHUD()
-        self.scoutClient.getArticleLink(userid: userID,
-                                        url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!,
-                                        successBlock: { (scoutArticle) in
-                                            DispatchQueue.main.async {
-                                                guard let requiredDelegate = self.playerDelegateFromMain else {
-                                                    return
-                                                }
-                                                requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
-                                                                                    isFullArticle: true)
-                                                self.hideHUD()
-                                            }
-                                        }, failureBlock: { (_, _, _) in
-                                            self.showAlert(errorMessage: """
-                                                           Unable to get your articles at this time, please check back \
-                                                           later
-                                                           """)
-                                            self.hideHUD()
-                                        })
-    }
-
-    func skimButtonTapped() {
-        showHUD()
-        self.scoutClient.getSummaryLink(userid: userID,
-                                        url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!,
-                                        successBlock: { (scoutArticle) in
-                                            DispatchQueue.main.async {
-                                                if scoutArticle.resolvedURL != nil {
+        _ = self.scoutClient.getArticleLink(userid: userID,
+                                            url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!,
+                                            successBlock: { (scoutArticle) in
+                                                DispatchQueue.main.async {
                                                     guard let requiredDelegate = self.playerDelegateFromMain else {
                                                         return
                                                     }
                                                     requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
-                                                                                        isFullArticle: false)
-                                                    self.hideHUD()
-                                                } else {
-                                                    self.showAlert(errorMessage: "Skim version is not available")
+                                                                                        isFullArticle: true)
                                                     self.hideHUD()
                                                 }
-                                            }
-                                        }, failureBlock: { (_, _, _) in
-                                            self.showAlert(errorMessage: """
-                                                           Unable to get your articles at this time, please check back \
-                                                           later
-                                                           """)
-                                            self.hideHUD()
-                                        })
+                                            }, failureBlock: { (_, _, _) in
+                                                self.showAlert(errorMessage: """
+                                                               Unable to get your articles at this time, please check \
+                                                               back later
+                                                               """)
+                                                self.hideHUD()
+                                            })
+    }
+
+    func skimButtonTapped() {
+        showHUD()
+        _ = self.scoutClient.getSummaryLink(userid: userID,
+                                            url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!,
+                                            successBlock: { (scoutArticle) in
+                                                DispatchQueue.main.async {
+                                                    if scoutArticle.resolvedURL != nil {
+                                                        guard let requiredDelegate = self.playerDelegateFromMain else {
+                                                            return
+                                                        }
+                                                        requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
+                                                                                            isFullArticle: false)
+                                                        self.hideHUD()
+                                                    } else {
+                                                        self.showAlert(errorMessage: "Skim version is not available")
+                                                        self.hideHUD()
+                                                    }
+                                                }
+                                            }, failureBlock: { (_, _, _) in
+                                                self.showAlert(errorMessage: """
+                                                               Unable to get your articles at this time, please check \
+                                                               back later
+                                                               """)
+                                                self.hideHUD()
+                                            })
     }
 
     func archiveButtonTapped() {
-        self.scoutClient.archiveScoutTitle(withCmd: "Archive",
-                                           userid: userID,
-                                           itemid: self.scoutTitles![articleNumber].itemID,
-                                           successBlock: {
-                                               self.scoutTitles!.remove(at: self.articleNumber)
-                                               let indexPath = IndexPath(row: self.articleNumber, section: 0)
-                                               DispatchQueue.main.async {
-                                                   self.tableView.beginUpdates()
-                                                   self.tableView.deleteRows(at: [indexPath], with: .fade)
-                                                   self.selectedIndex = []
-                                                   self.tableView.endUpdates()
-
-                                               }
-                                           }, failureBlock: { (_, _, _) in
-                                               self.showAlert(errorMessage: """
-                                                              Unable to get your articles at this time, please check \
-                                                              back later
-                                                              """)
-                                               self.hideHUD()
-                                           })
+        _ = self.scoutClient.archiveScoutTitle(withCmd: "Archive",
+                                               userid: userID,
+                                               itemid: self.scoutTitles![articleNumber].itemID,
+                                               successBlock: {
+                                                   self.scoutTitles!.remove(at: self.articleNumber)
+                                                   let indexPath = IndexPath(row: self.articleNumber, section: 0)
+                                                   DispatchQueue.main.async {
+                                                       self.tableView.beginUpdates()
+                                                       self.tableView.deleteRows(at: [indexPath], with: .fade)
+                                                       self.selectedIndex = []
+                                                       self.tableView.endUpdates()
+                                                   }
+                                               }, failureBlock: { (_, _, _) in
+                                                   self.showAlert(errorMessage: """
+                                                                  Unable to get your articles at this time, please \
+                                                                  check back later
+                                                                  """)
+                                                   self.hideHUD()
+                                               })
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -220,7 +218,6 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
 }
 
 extension PlayMyListViewController: UITableViewDataSource {
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -235,6 +232,7 @@ extension PlayMyListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId,
+                                                 // swiftlint:disable:next force_cast
                                                  for: indexPath) as! PlayMyListTableViewCell
 
         self.selectedIndex = []
@@ -247,16 +245,14 @@ extension PlayMyListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
 
             else { return }
 
-        switch cell.isExpanded {
-        case true:
+        if cell.isExpanded {
             self.expandedRows.remove(indexPath.row)
             selectedIndex = []
-        case false:
+        } else {
             self.expandedRows.insert(indexPath.row)
             articleNumber = indexPath.row
             selectedIndex = indexPath
@@ -270,7 +266,6 @@ extension PlayMyListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
         if indexPath == selectedIndex {
             return 145.0
         }
@@ -279,7 +274,6 @@ extension PlayMyListViewController: UITableViewDataSource {
 }
 
 extension PlayMyListViewController: UITableViewDelegate {
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         DispatchQueue.main.async {
             let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
@@ -291,7 +285,6 @@ extension PlayMyListViewController: UITableViewDelegate {
             let isScrollingUp = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom
 
             if self.canAnimateHeader(scrollView) {
-
                 // Calculate new header height
                 var newHeight = self.headerHeightConstraint.constant
 
@@ -324,7 +317,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func scrollViewDidStopScrolling() {
-
         let range = self.maxHeaderHeight - self.minHeaderHeight
         let midPoint = self.minHeaderHeight + (range / 2)
 
@@ -344,7 +336,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func collapseHeader() {
-
         self.view.layoutIfNeeded()
 
         UIView.animate(withDuration: 0.2,
@@ -356,7 +347,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func expandHeader() {
-
         self.view.layoutIfNeeded()
 
         UIView.animate(withDuration: 0.2,
@@ -372,7 +362,6 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     func updateHeader() {
-
         let range = self.maxHeaderHeight - self.minHeaderHeight
         let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
         let percentage = openAmount / range
@@ -381,17 +370,17 @@ extension PlayMyListViewController: UITableViewDelegate {
     }
 
     private func showAlert(errorMessage: String) {
-        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style {
-            case .default:
-                print("ok")
+                case .default:
+                    print("ok")
 
-            case .cancel:
-                print("cancel")
+                case .cancel:
+                    print("cancel")
 
-            case .destructive:
-                print("destructive")
+                case .destructive:
+                    print("destructive")
             }}))
         self.present(alert, animated: true, completion: nil)
     }

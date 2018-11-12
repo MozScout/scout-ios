@@ -13,7 +13,6 @@ protocol safariDoneButtonDelegate: class {
 }
 
 class LoginViewController: UIViewController, SFSafariViewControllerDelegate {
-
     weak var safariDoneButtonDelegate: safariDoneButtonDelegate?
     private var safariVC: SFSafariViewController?
 

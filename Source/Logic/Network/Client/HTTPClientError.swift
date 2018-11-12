@@ -7,7 +7,6 @@
 import Foundation
 
 enum HTTPClientError {
-
     case invalidRequest
     case badResponse
     case jsonSerialization
@@ -18,7 +17,6 @@ enum HTTPClientError {
      var description: String { return self.toString }
 
      var toString: String {
-
         switch self {
             case .invalidRequest:
                 return "InvalidRequest"
@@ -36,7 +34,6 @@ enum HTTPClientError {
     }
 
      static func from(string: String) -> HTTPClientError? {
-
         let components = string.components(separatedBy: "-")
 
         switch components.first ?? "" {

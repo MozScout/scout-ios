@@ -14,7 +14,6 @@ class AuthRouter {
     fileprivate let assembly: AuthAssemblyProtocol
 
     required init(with assembly: AuthAssemblyProtocol) {
-
         self.assembly = assembly
     }
 }
@@ -25,7 +24,6 @@ extension AuthRouter: AuthRoutingProtocol, safariDoneButtonDelegate {
     }
 
     func show(from viewController: UIViewController, animated: Bool) {
-
         let listVC = assembly.assemblyLoginViewController()
         listVC.safariDoneButtonDelegate = self
         self.showViewController(viewController: listVC, fromViewController: viewController, animated: animated)
@@ -36,9 +34,7 @@ extension AuthRouter: AuthRoutingProtocol, safariDoneButtonDelegate {
     private func showViewController(viewController: UIViewController,
                                     fromViewController: UIViewController,
                                     animated: Bool) {
-
         if let navigationVC = fromViewController as? UINavigationController {
-
             if navigationVC.viewControllers.count == 0 {
                 navigationVC.viewControllers = [viewController]
             } else {
@@ -46,7 +42,6 @@ extension AuthRouter: AuthRoutingProtocol, safariDoneButtonDelegate {
             }
         } else {
             if let navigationVC = fromViewController.navigationController {
-
                 if navigationVC.viewControllers.count == 0 {
                     navigationVC.viewControllers = [viewController]
                 } else {

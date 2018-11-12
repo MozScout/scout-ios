@@ -8,19 +8,16 @@ import Foundation
 import SwiftyJSON
 
 public enum JSONMappingResult {
-
     case successMapping(JSON)
     case failure(JSONMappingError)
 }
 
 public enum JSONCustomMappingResult {
-
     case success(Any)
     case failure
 }
 
 public enum JSONMappingError: Error {
-
     case invalidJSON
     case unknown
 
@@ -35,12 +32,10 @@ public enum JSONMappingError: Error {
 }
 
 class NetworkMapper: NetworkMappingProtocol {
-
     func scoutTitles(fromResource resource: JSON) -> [ScoutArticle]? {
         var scoutArticlesArray = [ScoutArticle]()
 
         for (_, value) in resource["articles"] {
-
             let itemID = value["item_id"].string ?? ""
             let author = value["author"].string ?? ""
             let title = value["title"].string ?? ""
@@ -67,7 +62,6 @@ class NetworkMapper: NetworkMappingProtocol {
     }
 
     func scoutAudioFileURL(fromResource resource: JSON) -> ScoutArticle {
-
         let itemID = resource["item_id"].string ?? ""
         let author = resource["author"].string ?? ""
         let title = resource["title"].string ?? ""
@@ -94,7 +88,6 @@ class NetworkMapper: NetworkMappingProtocol {
     }
 
     func scoutSkimAudioFileURL(fromResource resource: JSON) -> ScoutArticle {
-
         let itemID = resource["item_id"].string ?? ""
         let author = resource["author"].string ?? ""
         let title = resource["title"].string ?? ""

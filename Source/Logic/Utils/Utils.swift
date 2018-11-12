@@ -10,7 +10,6 @@ import UIKit
 typealias VoidBlock = () -> Void
 
 class WeakPointerArray<ObjectType> {
-
      var count: Int {
         return weakStorage.count
     }
@@ -37,19 +36,18 @@ class WeakPointerArray<ObjectType> {
 }
 
 extension WeakPointerArray: Sequence {
-
      func makeIterator() -> AnyIterator<ObjectType> {
-
         let enumerator = weakStorage.objectEnumerator()
 
         return AnyIterator {
+            // swiftlint:disable:next force_cast
             return enumerator.nextObject() as! ObjectType?
         }
     }
 }
 
 extension UIImageView {
-    func downloadImageFrom(link: String, contentMode: UIViewContentMode) {
+    func downloadImageFrom(link: String, contentMode: UIView.ContentMode) {
         URLSession.shared.dataTask( with: NSURL(string: link)! as URL, completionHandler: { (data, _, _) -> Void in
             DispatchQueue.main.async {
                 self.contentMode = contentMode

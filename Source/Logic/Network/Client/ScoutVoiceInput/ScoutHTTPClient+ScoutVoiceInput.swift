@@ -8,14 +8,12 @@
 import UIKit
 
 extension ScoutHTTPClient: ScoutVoiceInputHTTPClientProtocol {
-
     @discardableResult
     func getAudioFileURL(withCmd cmd: String,
                          userid: String,
                          searchTerms: String,
                          successBlock: @escaping ScoutVoiceInputSuccessBlock,
                          failureBlock: @escaping ScoutVoiceInputFailureBlock) -> HTTPClientConnectionResult {
-
         let request = self.requestBuilder.buildPostScoutVoiceInputRequest(withCmd: cmd,
                                                                           userid: userid,
                                                                           searchTerms: searchTerms)
@@ -34,7 +32,6 @@ extension ScoutHTTPClient: ScoutVoiceInputHTTPClientProtocol {
                              searchTerms: String,
                              successBlock: @escaping ScoutVoiceInputSuccessBlock,
                              failureBlock: @escaping ScoutVoiceInputFailureBlock) -> HTTPClientConnectionResult {
-
         let request = self.requestBuilder.buildPostScoutSkimVoiceInputRequest(withCmd: cmd,
                                                                               userid: userid,
                                                                               searchTerms: searchTerms)

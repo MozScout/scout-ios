@@ -11,5 +11,4 @@ typealias CreateNewUserSuccessBlock = (_ userToken: String) -> Void
 typealias CreateNewUserFailureBlock = HTTPClientFailureBlock
 
 protocol AuthHTTPClientProtocol {
-
 }

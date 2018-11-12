@@ -13,7 +13,6 @@ protocol VoiceInputDelegate: class {
 }
 
 class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
-
     weak var playerDelegate: VoiceInputDelegate?
 
     fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 11
@@ -70,31 +69,30 @@ class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
     fileprivate func getSkimURL(withSearchTerm: String) {
         showHUD()
         speechService.stopRecording()
-        scoutClient.getSkimAudioFileURL(withCmd: "SearchAndSummarizeArticle",
-                                        userid: self.userID,
-                                        searchTerms: withSearchTerm,
-                                        successBlock: { (scoutArticle) in
-                                            if scoutArticle.url == "" {
-                                                self.hideHUD()
-                                                self.showAlert(errorMessage: "Sorry, I couldn't find that.")
-                                            } else {
-                                                DispatchQueue.main.async {
-                                                    guard let requiredDelegate = self.playerDelegate else { return }
-                                                    requiredDelegate.openPlayer(withModel: scoutArticle,
-                                                                                isFullArticle: false)
+        _ = scoutClient.getSkimAudioFileURL(withCmd: "SearchAndSummarizeArticle",
+                                            userid: self.userID,
+                                            searchTerms: withSearchTerm,
+                                            successBlock: { (scoutArticle) in
+                                                if scoutArticle.url == "" {
+                                                    self.hideHUD()
+                                                    self.showAlert(errorMessage: "Sorry, I couldn't find that.")
+                                                } else {
+                                                    DispatchQueue.main.async {
+                                                        guard let requiredDelegate = self.playerDelegate else { return }
+                                                        requiredDelegate.openPlayer(withModel: scoutArticle,
+                                                                                    isFullArticle: false)
+                                                    }
                                                 }
-                                            }
-                                        }, failureBlock: { (_, _, _) in
-                                            self.showAlert(errorMessage: """
-                                                           Unable to get your articles at this time, please check back \
-                                                           later
-                                                           """)
-                                            self.hideHUD()
-                                        })
+                                            }, failureBlock: { (_, _, _) in
+                                                self.showAlert(errorMessage: """
+                                                               Unable to get your articles at this time, please check \
+                                                               back later
+                                                               """)
+                                                self.hideHUD()
+                                            })
     }
     // MARK: - Private methods
     fileprivate func setupMicButton() {
-
         // we need dynamic size of the mic button. should set after we will have design
         microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
         microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
@@ -121,18 +119,18 @@ class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
     }
 
     private func showAlert(errorMessage: String) {
-        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style {
-            case .default:
-                self.console.text = "Scout that article about "
-                self.speechService.startRecording()
+                case .default:
+                    self.console.text = "Scout that article about "
+                    self.speechService.startRecording()
 
-            case .cancel:
-                print("cancel")
+                case .cancel:
+                    print("cancel")
 
-            case .destructive:
-                print("destructive")
+                case .destructive:
+                    print("destructive")
             }}))
         self.present(alert, animated: true, completion: nil)
     }
@@ -140,7 +138,7 @@ class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
     func addSpinner() -> UIActivityIndicatorView {
         // Adding spinner over launch screen
         let spinner = UIActivityIndicatorView.init()
-        spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        spinner.style = UIActivityIndicatorView.Style.whiteLarge
         spinner.color = UIColor.black
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
@@ -163,7 +161,7 @@ class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
 
         NSLayoutConstraint.activate([xConstraint, yConstraint])
 
-        self.view.bringSubview(toFront: spinner)
+        self.view.bringSubviewToFront(spinner)
 
         return spinner
     }

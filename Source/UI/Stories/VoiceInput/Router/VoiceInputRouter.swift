@@ -14,15 +14,12 @@ class VoiceInputRouter {
     fileprivate let assembly: VoiceInputAssemblyProtocol
 
     required init(with assembly: VoiceInputAssemblyProtocol) {
-
         self.assembly = assembly
     }
 }
 
 extension VoiceInputRouter: VoiceInputRoutingProtocol {
-
     func show(from viewController: UIViewController, animated: Bool, userID: String) {
-
         let voiceInputVC = assembly.assemblyVoiceInputViewController()
         voiceInputVC.playerDelegate = self
         voiceInputVC.userID = userID
@@ -34,9 +31,7 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol {
     private func showViewController(viewController: UIViewController,
                                     fromViewController: UIViewController,
                                     animated: Bool) {
-
         if let navigationVC = fromViewController as? UINavigationController {
-
             if navigationVC.viewControllers.count == 0 {
                 navigationVC.viewControllers = [viewController]
             } else {
@@ -44,7 +39,6 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol {
             }
         } else {
             if let navigationVC = fromViewController.navigationController {
-
                 if navigationVC.viewControllers.count == 0 {
                     navigationVC.viewControllers = [viewController]
                 } else {
@@ -58,7 +52,6 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol {
 }
 
 extension VoiceInputRouter: VoiceInputDelegate {
-
     func openPlayer(withModel: ScoutArticle, isFullArticle: Bool) {
         self.linkIsFound!(withModel, isFullArticle)
     }

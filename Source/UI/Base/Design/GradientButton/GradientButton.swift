@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class GradientButton: UIButton {
-
     var direction: GradientDirection = .horizontal {
         didSet {
             gradientLayer.startPoint = direction.startPoint
@@ -45,7 +44,10 @@ class GradientButton: UIButton {
         didSet { if isSelected != oldValue { self.reload() } }
     }
 
-    fileprivate var gradientLayer: CAGradientLayer { return self.layer as! CAGradientLayer }
+    fileprivate var gradientLayer: CAGradientLayer {
+        // swiftlint:disable:next force_cast
+        return self.layer as! CAGradientLayer
+    }
 
     // MARK: Init
     override public init(frame: CGRect) {
@@ -64,13 +66,10 @@ class GradientButton: UIButton {
 
     // MARK: - Public
     func reload() {
-
         if isHighlighted || isSelected {
-
-            self.bringSubview(toFront: self.highlightView)
+            self.bringSubviewToFront(self.highlightView)
             self.highlightView.isHidden = false
         } else {
-
             self.highlightView.isHidden = true
         }
     }
@@ -82,7 +81,6 @@ class GradientButton: UIButton {
 
     // MARK: - Private
     fileprivate lazy var highlightView: UIView = {
-
         let view = UIView()
         self.addSubview(view)
         view.isUserInteractionEnabled = false
@@ -94,12 +92,12 @@ class GradientButton: UIButton {
         self.addSubview(view)
 
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
-                                                           options: NSLayoutFormatOptions(rawValue: 0),
+                                                           options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                            metrics: nil,
                                                            views: ["view": view]))
 
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
-                                                           options: NSLayoutFormatOptions(rawValue: 0),
+                                                           options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                            metrics: nil,
                                                            views: ["view": view]))
 
@@ -107,13 +105,11 @@ class GradientButton: UIButton {
     }()
 
     fileprivate func replace(startColor: UIColor, endColor: UIColor) {
-
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         gradientLayer.setNeedsDisplay()
     }
 
     fileprivate func configure() {
-
         self.gradientLayer.startPoint = self.direction.startPoint
         self.gradientLayer.endPoint = self.direction.endPoint
         self.gradientLayer.locations = [0.0, 0.80]
@@ -122,7 +118,6 @@ class GradientButton: UIButton {
 }
 
 enum GradientDirection {
-
     static var horizontal: GradientDirection { return .horizontally(centered: 0.5) }
     static var vertical: GradientDirection { return .vertically(centered: 0.5) }
 
@@ -134,7 +129,6 @@ enum GradientDirection {
     case custom(startPoint: CGPoint, endPoint: CGPoint)
 
     var startPoint: CGPoint {
-
         switch self {
             case .horizontally(let xCenter):
                 let normalizedCenter = min(1.0, max(0.0, xCenter))
@@ -148,7 +142,6 @@ enum GradientDirection {
     }
 
     var endPoint: CGPoint {
-
         switch self {
             case .horizontally:
                 return CGPoint(x: 1.0, y: 0.0)

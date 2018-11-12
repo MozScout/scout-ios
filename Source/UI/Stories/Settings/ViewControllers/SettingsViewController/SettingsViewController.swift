@@ -10,7 +10,6 @@ import SafariServices
 import UIKit
 
 class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
-
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
@@ -38,13 +37,13 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
         """
         let centerText = NSMutableAttributedString(string: rawCenterString as String,
                                                    attributes: [
-                                                       NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0)
+                                                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)
                                                    ])
 
         let policyText = "Learn More."
         let policyRange = rawCenterString.range(of: policyText)
         rawCenterString.enumerateSubstrings(in: policyRange, options: .byWords, using: { (_, substringRange, _, _) in
-            centerText.addAttribute(NSAttributedStringKey.foregroundColor,
+            centerText.addAttribute(NSAttributedString.Key.foregroundColor,
                                     value: UIColor(rgb: 0x0060DF),
                                     range: substringRange)
             })

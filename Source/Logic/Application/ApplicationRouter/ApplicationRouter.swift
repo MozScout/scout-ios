@@ -7,7 +7,6 @@
 import UIKit
 
 class ApplicationRouter: NSObject {
-
     let applicationAssembly: ApplicationAssemblyProtocol
 
     fileprivate var navigationController: UINavigationController!
@@ -19,7 +18,6 @@ class ApplicationRouter: NSObject {
     fileprivate var playerRouter: PlayerRoutingProtocol
 
     required init(with applicationAssembly: ApplicationAssemblyProtocol) {
-
         self.applicationAssembly = applicationAssembly
 
         // Routers
@@ -36,14 +34,11 @@ class ApplicationRouter: NSObject {
 // MARK: -
 // MARK: ApplicationRouter
 extension ApplicationRouter: ApplicationRouterProtocol {
-
     func show(from window: UIWindow) {
-
         self.showLogin(from: window)
     }
 
     func showMain(from window: UIWindow) {
-
         self.showMainScreen(from: window)
     }
 }
@@ -51,10 +46,8 @@ extension ApplicationRouter: ApplicationRouterProtocol {
 // MARK: -
 // MARK: UIApplicationDelegate
 extension ApplicationRouter {
-
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }
 }
@@ -62,9 +55,7 @@ extension ApplicationRouter {
 // MARK: -
 // MARK: Private
 private extension ApplicationRouter {
-
     func showLogin(from window: UIWindow) {
-
         let navVC = UINavigationController()
         navVC.isNavigationBarHidden = true
         window.rootViewController = navVC
@@ -75,7 +66,6 @@ private extension ApplicationRouter {
     }
 
     func showMainScreen(from window: UIWindow) {
-
         let navVC = UINavigationController()
         navVC.isNavigationBarHidden = true
         window.rootViewController = navVC
@@ -86,7 +76,6 @@ private extension ApplicationRouter {
     }
 
     func showMainStory(viewController: UINavigationController, animated: Bool, completion: VoidBlock? = nil) {
-
         self.mainRouter.showMainUIInterface(fromViewController: viewController, animated: false)
         self.mainRouter.showMainUITab(tab: .articles, animated: false)
         self.myListRouter.linkIsFound = { [] scoutArticle, isFullArticle in
@@ -139,7 +128,6 @@ private extension ApplicationRouter {
     }
 
     func showAuthStory(animated: Bool, completion: VoidBlock? = nil) {
-
         self.authRouter.show(from: self.navigationController, animated: true)
         if let requiredCompletion = completion { requiredCompletion() }
         }

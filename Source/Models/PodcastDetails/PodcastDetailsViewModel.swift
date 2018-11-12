@@ -94,18 +94,18 @@ extension PodcastDetailsViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.section]
         switch item.type {
-        case .About:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: AboutCell.identifier,
-                                                        for: indexPath) as? AboutCell {
-                cell.item = item
-                return cell
-            }
-        case .Season1:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "cellrow",
-                                                        for: indexPath) as? PlayMyListTableViewCell {
-                cell.configureCell(withModel: self.scoutTitles![indexPath.row])
-                return cell
-            }
+            case .About:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: AboutCell.identifier,
+                                                            for: indexPath) as? AboutCell {
+                    cell.item = item
+                    return cell
+                }
+            case .Season1:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "cellrow",
+                                                            for: indexPath) as? PlayMyListTableViewCell {
+                    cell.configureCell(withModel: self.scoutTitles![indexPath.row])
+                    return cell
+                }
         }
         return UITableViewCell()
     }
@@ -130,7 +130,6 @@ extension PodcastDetailsViewModel: HeaderViewDelegate {
     func toggleSection(header: HeaderView, section: Int) {
         var item = items[section]
         if item.isCollapsible {
-
             // Toggle collapse
             let collapsed = !item.isCollapsed
             item.isCollapsed = collapsed
@@ -143,7 +142,6 @@ extension PodcastDetailsViewModel: HeaderViewDelegate {
 }
 
 class PodcastDetailsViewModelAboutItem: PodcastDetailsViewModelItem {
-
     var type: PodcastDetailsViewModelItemType {
         return .About
     }
@@ -179,5 +177,4 @@ class PodcastDetailsViewModelSeason1Item: PodcastDetailsViewModelItem {
     var rowCount: Int {
         return 2
     }
-
 }

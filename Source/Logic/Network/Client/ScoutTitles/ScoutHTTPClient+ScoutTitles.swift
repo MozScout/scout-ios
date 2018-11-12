@@ -8,13 +8,11 @@
 import Foundation
 
 extension ScoutHTTPClient: ScoutTitlesHTTPClientProtocol {
-
     @discardableResult
     func getScoutTitles(withCmd cmd: String,
                         userid: String,
                         successBlock: @escaping ScoutTitlesSuccessBlock,
                         failureBlock: @escaping ScoutTitlesFailureBlock) -> HTTPClientConnectionResult {
-
         let request = self.requestBuilder.buildPostScoutTitlesRequest(withCmd: cmd, userid: userid)
 
         return self.execute(request: request,
@@ -30,7 +28,6 @@ extension ScoutHTTPClient: ScoutTitlesHTTPClientProtocol {
                         url: String,
                         successBlock: @escaping ScoutPlayerSuccessBlock,
                         failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult {
-
         let request = self.requestBuilder.buildPostArticleRequest(userid: userid, url: url)
 
         return self.execute(request: request,
@@ -46,7 +43,6 @@ extension ScoutHTTPClient: ScoutTitlesHTTPClientProtocol {
                         url: String,
                         successBlock: @escaping ScoutPlayerSuccessBlock,
                         failureBlock: @escaping ScoutPlayerFailureBlock) -> HTTPClientConnectionResult {
-
         let request = self.requestBuilder.buildPostSummaryRequest(userid: userid, url: url)
 
         return self.execute(request: request,
@@ -63,7 +59,6 @@ extension ScoutHTTPClient: ScoutTitlesHTTPClientProtocol {
                            itemid: String,
                            successBlock: @escaping ArchiveSuccessBlock,
                            failureBlock: @escaping ScoutTitlesFailureBlock) -> HTTPClientConnectionResult {
-
         let request = self.requestBuilder.buildPostScoutTitleArchive(withCmd: cmd, userid: userid, itemid: itemid)
 
         return self.execute(request: request,

@@ -14,7 +14,6 @@ protocol MainTabBarViewControllerDelegate: class {
 }
 
 class MainTabBarViewController: UITabBarController {
-
     weak var microphoneButtonDelegate: MainTabBarViewControllerDelegate?
 
     fileprivate var microphoneButton: GradientButton!
@@ -40,14 +39,12 @@ class MainTabBarViewController: UITabBarController {
     }
 
     @objc fileprivate func microphoneButtonAction(sender: UIButton) {
-
         guard let requiredDelegate = microphoneButtonDelegate else { return }
         requiredDelegate.mainTabBarViewController(viewController: self, didTouchMicrophoneButton: sender)
     }
 
     // MARK: - Private methods
     /*fileprivate func setupMicButton() {
-
         // we need dynamic size of the mic button. should set after we will have design
         microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
         microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
@@ -69,12 +66,10 @@ class MainTabBarViewController: UITabBarController {
     }
 
     fileprivate func bringmicrophoneButtonToFront() {
-
         self.view.bringSubview(toFront: self.microphoneButton)
     }*/
 
     fileprivate func configureTabBarHeight() {
-
         let newTabBarHeight = defaultTabBarHeight + defaultMicrophoneButtonSideDistance
 
         var newFrame = tabBar.frame
