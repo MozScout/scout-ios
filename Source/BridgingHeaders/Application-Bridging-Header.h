@@ -6,3 +6,4 @@
 
 
 #import "AppConfigurationBridge.h"
+#import "SnowboyWrapper.h"

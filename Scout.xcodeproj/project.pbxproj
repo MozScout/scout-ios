@@ -39,6 +39,12 @@
 		5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2C320A3426200112F1F /* HelpInformationViewController.swift */; };
 		5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2C620A343AE00112F1F /* SettingsViewController.swift */; };
 		5637D2CA20A34A4B00112F1F /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D2C920A34A4B00112F1F /* GradientButton.swift */; };
+		66254342219B54D000379011 /* libsnowboy-detect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6625433F219B54D000379011 /* libsnowboy-detect.a */; };
+		66254343219B54D000379011 /* SnowboyWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66254341219B54D000379011 /* SnowboyWrapper.mm */; };
+		6625434E219B575300379011 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6625434C219B575300379011 /* ding.wav */; };
+		6625434F219B575300379011 /* dong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6625434D219B575300379011 /* dong.wav */; };
+		66254351219B576300379011 /* jarvis.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 66254350219B576300379011 /* jarvis.umdl */; };
+		66254353219B57CE00379011 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 66254352219B57CE00379011 /* common.res */; };
 		8637E7EF215CFBF9008563E9 /* PodcastsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637E7EE215CFBF9008563E9 /* PodcastsViewController.swift */; };
 		8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8637E7F0215CFC71008563E9 /* Podcasts.storyboard */; };
 		8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637E7F2215CFCA4008563E9 /* PodcastsRouter.swift */; };
@@ -183,6 +189,14 @@
 		5637D2C320A3426200112F1F /* HelpInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpInformationViewController.swift; sourceTree = "<group>"; };
 		5637D2C620A343AE00112F1F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5637D2C920A34A4B00112F1F /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		6625433E219B54D000379011 /* SnowboyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowboyWrapper.h; sourceTree = "<group>"; };
+		6625433F219B54D000379011 /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libsnowboy-detect.a"; sourceTree = "<group>"; };
+		66254340219B54D000379011 /* snowboy-detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "snowboy-detect.h"; sourceTree = "<group>"; };
+		66254341219B54D000379011 /* SnowboyWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SnowboyWrapper.mm; sourceTree = "<group>"; };
+		6625434C219B575300379011 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
+		6625434D219B575300379011 /* dong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dong.wav; sourceTree = "<group>"; };
+		66254350219B576300379011 /* jarvis.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = jarvis.umdl; sourceTree = "<group>"; };
+		66254352219B57CE00379011 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		84B360F975895554FF0AD747 /* Pods-Scout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.release.xcconfig"; sourceTree = "<group>"; };
 		8637E7EE215CFBF9008563E9 /* PodcastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsViewController.swift; sourceTree = "<group>"; };
 		8637E7F0215CFC71008563E9 /* Podcasts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Podcasts.storyboard; sourceTree = "<group>"; };
@@ -313,6 +327,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66254342219B54D000379011 /* libsnowboy-detect.a in Frameworks */,
 				2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +598,35 @@
 				5637D2C920A34A4B00112F1F /* GradientButton.swift */,
 			);
 			path = GradientButton;
+			sourceTree = "<group>";
+		};
+		66254337219B542900379011 /* Snowboy */ = {
+			isa = PBXGroup;
+			children = (
+				6625433F219B54D000379011 /* libsnowboy-detect.a */,
+				66254340219B54D000379011 /* snowboy-detect.h */,
+				6625433E219B54D000379011 /* SnowboyWrapper.h */,
+				66254341219B54D000379011 /* SnowboyWrapper.mm */,
+			);
+			path = Snowboy;
+			sourceTree = "<group>";
+		};
+		66254344219B567F00379011 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				6625434C219B575300379011 /* ding.wav */,
+				6625434D219B575300379011 /* dong.wav */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		66254349219B569F00379011 /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				66254352219B57CE00379011 /* common.res */,
+				66254350219B576300379011 /* jarvis.umdl */,
+			);
+			path = Speech;
 			sourceTree = "<group>";
 		};
 		8637E7E9215CF74F008563E9 /* Podcasts */ = {
@@ -957,9 +1001,11 @@
 			isa = PBXGroup;
 			children = (
 				93A718B72164BAD400BC77D9 /* ServerData.json */,
+				66254344219B567F00379011 /* Audio */,
 				93782C7F20C7F1E700CE56A4 /* Fonts */,
 				F482CD3D2080D969007D0C14 /* Images */,
 				F482CD3F2080D969007D0C14 /* Plists */,
+				66254349219B569F00379011 /* Speech */,
 				93782C7D20C7EEE800CE56A4 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -999,6 +1045,7 @@
 				F482CD452080D969007D0C14 /* BridgingHeaders */,
 				F482CD462080D969007D0C14 /* Logic */,
 				F482CD4D2080D969007D0C14 /* Models */,
+				66254337219B542900379011 /* Snowboy */,
 				F482CD4E2080D969007D0C14 /* UI */,
 			);
 			path = Source;
@@ -1271,6 +1318,7 @@
 				93782CDC20C7F53100CE56A4 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				93782CCF20C7F53100CE56A4 /* SF-Pro-Display-Light.otf in Resources */,
 				93782CE820C7F53100CE56A4 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
+				66254351219B576300379011 /* jarvis.umdl in Resources */,
 				93782CE120C7F53100CE56A4 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				93AE235520CFCEF700A5D89D /* ZillaSlab-Light.ttf in Resources */,
 				5637D2BE20A3257800112F1F /* MyList.storyboard in Resources */,
@@ -1281,6 +1329,7 @@
 				93782CD120C7F53100CE56A4 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				93782CD620C7F53100CE56A4 /* SF-Pro-Display-Semibold.otf in Resources */,
 				93782CCD20C7F53100CE56A4 /* SF-Pro-Text-Heavy.otf in Resources */,
+				6625434E219B575300379011 /* ding.wav in Resources */,
 				5637D2B920A3257800112F1F /* Help.storyboard in Resources */,
 				93AE235320CFCEF700A5D89D /* ZillaSlab-Medium.ttf in Resources */,
 				8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */,
@@ -1289,6 +1338,7 @@
 				93782CE520C7F53100CE56A4 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */,
 				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
+				66254353219B57CE00379011 /* common.res in Resources */,
 				93782CCB20C7F53100CE56A4 /* SF-Pro-Display-Thin.otf in Resources */,
 				93782CD020C7F53100CE56A4 /* SF-Pro-Display-Regular.otf in Resources */,
 				93A718CA2164BC7C00BC77D9 /* AboutCell.xib in Resources */,
@@ -1301,6 +1351,7 @@
 				93782CE420C7F53100CE56A4 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				93AE235120CFCEF700A5D89D /* ZillaSlab-Italic.ttf in Resources */,
 				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
+				6625434F219B575300379011 /* dong.wav in Resources */,
 				93782CD320C7F53100CE56A4 /* SF-Pro-Display-Medium.otf in Resources */,
 				93A718C92164BC7C00BC77D9 /* HeaderView.xib in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
@@ -1406,6 +1457,7 @@
 				93C55D63216CB0A10023C8AD /* AddPodcastsViewController.swift in Sources */,
 				5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */,
 				5622AB4820A6D4D70074A4BC /* AuthHTTPClientProtocol.swift in Sources */,
+				66254343219B54D000379011 /* SnowboyWrapper.mm in Sources */,
 				9333B81C20AC6D070055C5B1 /* PlayMyListTableViewCell.swift in Sources */,
 				F47B7CF42084E57F0055585C /* Utils.swift in Sources */,
 				93A718B62164B9DC00BC77D9 /* PodcastDetailsModel.swift in Sources */,
@@ -1589,6 +1641,11 @@
 				DEVELOPMENT_TEAM = RJRT2UUKDY;
 				INFOPLIST_FILE = "${SRCROOT}/Resources/Plists/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Snowboy/Sources",
+					"$(PROJECT_DIR)/Source/Snowboy",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.exalt.speechapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2b55c1f0-d0a5-402e-811b-fe85240811c7";
@@ -1611,6 +1668,11 @@
 				DEVELOPMENT_TEAM = RJRT2UUKDY;
 				INFOPLIST_FILE = "${SRCROOT}/Resources/Plists/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Snowboy/Sources",
+					"$(PROJECT_DIR)/Source/Snowboy",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.exalt.speechapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2b55c1f0-d0a5-402e-811b-fe85240811c7";
@@ -1685,6 +1747,11 @@
 				DEVELOPMENT_TEAM = RJRT2UUKDY;
 				INFOPLIST_FILE = "${SRCROOT}/Resources/Plists/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Snowboy/Sources",
+					"$(PROJECT_DIR)/Source/Snowboy",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.exalt.speechapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "10eaed29-2d5b-4963-837f-a403bcb3034d";

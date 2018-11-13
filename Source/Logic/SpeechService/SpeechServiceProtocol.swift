@@ -17,6 +17,8 @@ enum SpeechServiceFinalRecognitionResult {
 }
 
 protocol SpeechServiceProtocol {
+    func beginWakeWordDetector()
+    func endWakeWordDetector()
     func startRecording()
     func stopRecording()
 }
@@ -24,4 +26,5 @@ protocol SpeechServiceProtocol {
 protocol SBSpeechRecognizerDelegate: class {
     func speechRecognitionFinished(transcription: String)
     func speechRecognitionPartialResult(transcription: String)
+    func wakeWordDetected()
 }

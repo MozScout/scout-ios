@@ -227,4 +227,8 @@ class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
         self.console.text = transcription
         self.microphoneButton.isEnabled = false
     }
+
+    func wakeWordDetected() {
+        print("Got wake word!")
+    }
 }
