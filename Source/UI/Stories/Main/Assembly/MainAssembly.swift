@@ -19,8 +19,6 @@ class MainAssembly: MainAssemblyProtocol {
             // swiftlint:disable:next force_cast
             withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
         tabbarVC.setViewControllers(viewControllers, animated: false)
-        tabbarVC.speechService = self.applicationAssembly.assemblySpeechService() as? SpeechService
-        tabbarVC.beginWakeWordDetector()
 
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Design.Color.black],
                                                          for: .normal)

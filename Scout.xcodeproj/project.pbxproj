@@ -632,10 +632,10 @@
 		8637E7E9215CF74F008563E9 /* Podcasts */ = {
 			isa = PBXGroup;
 			children = (
-				8637E7ED215CFB9E008563E9 /* ViewControllers */,
-				8637E7EC215CF780008563E9 /* Storyboard */,
-				8637E7EB215CF77A008563E9 /* Router */,
 				8637E7EA215CF772008563E9 /* Assembly */,
+				8637E7EB215CF77A008563E9 /* Router */,
+				8637E7EC215CF780008563E9 /* Storyboard */,
+				8637E7ED215CFB9E008563E9 /* ViewControllers */,
 			);
 			path = Podcasts;
 			sourceTree = "<group>";
@@ -768,7 +768,7 @@
 				93A3113320B13DF40049DB67 /* Assembly */,
 				93A3113420B13E010049DB67 /* Router */,
 				93A3113520B13E080049DB67 /* Storyboard */,
-				93A3113620B13E140049DB67 /* ViewController */,
+				93A3113620B13E140049DB67 /* ViewControllers */,
 			);
 			path = VoiceInput;
 			sourceTree = "<group>";
@@ -799,12 +799,12 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		93A3113620B13E140049DB67 /* ViewController */ = {
+		93A3113620B13E140049DB67 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				93A3114120B1400B0049DB67 /* VoiceInputViewController.swift */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		93A3114320B15FDB0049DB67 /* ScoutVoiceInput */ = {
@@ -869,7 +869,7 @@
 				93FB826E20B54A8600A39A5C /* Assembly */,
 				93FB826F20B54A9000A39A5C /* Router */,
 				93FB827020B54A9800A39A5C /* Storyboard */,
-				93FB827120B54AA000A39A5C /* ViewController */,
+				93FB827120B54AA000A39A5C /* ViewControllers */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -900,12 +900,12 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		93FB827120B54AA000A39A5C /* ViewController */ = {
+		93FB827120B54AA000A39A5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				93FB827620B54BA100A39A5C /* PlayerViewController.swift */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CD9158217DD3454E7A83BCF1 /* Pods */ = {
@@ -1001,12 +1001,12 @@
 			isa = PBXGroup;
 			children = (
 				93A718B72164BAD400BC77D9 /* ServerData.json */,
+				93782C7D20C7EEE800CE56A4 /* LaunchScreen.storyboard */,
 				66254344219B567F00379011 /* Audio */,
 				93782C7F20C7F1E700CE56A4 /* Fonts */,
 				F482CD3D2080D969007D0C14 /* Images */,
 				F482CD3F2080D969007D0C14 /* Plists */,
 				66254349219B569F00379011 /* Speech */,
-				93782C7D20C7EEE800CE56A4 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1070,12 +1070,12 @@
 		F482CD462080D969007D0C14 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				F45117972088995D00A159B5 /* SpeechService */,
-				F47B7CF92084F6580055585C /* KeyChainService */,
-				F47B7CF22084E5730055585C /* Utils */,
-				F47B7CED2084D4A90055585C /* Auth */,
 				F482CD472080D969007D0C14 /* Application */,
+				F47B7CED2084D4A90055585C /* Auth */,
+				F47B7CF92084F6580055585C /* KeyChainService */,
 				F482CD4C2080D969007D0C14 /* Network */,
+				F45117972088995D00A159B5 /* SpeechService */,
+				F47B7CF22084E5730055585C /* Utils */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -1129,9 +1129,9 @@
 		F482CD4C2080D969007D0C14 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F482CD5F2080DB80007D0C14 /* Client */,
 				F47B7CE42084B23C0055585C /* NetworkMapper */,
 				F47B7CE32084B2220055585C /* NetworkRequestBuilder */,
-				F482CD5F2080DB80007D0C14 /* Client */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1165,13 +1165,13 @@
 		F482CD502080D969007D0C14 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				8637E7E9215CF74F008563E9 /* Podcasts */,
 				5622AB3420A6CE230074A4BC /* Auth */,
 				5637D29C20A3257800112F1F /* Help */,
 				F482CD512080D969007D0C14 /* Launch */,
 				F482CD532080D969007D0C14 /* Main */,
 				5637D2A620A3257800112F1F /* MyList */,
 				93FB826D20B54A7400A39A5C /* Player */,
+				8637E7E9215CF74F008563E9 /* Podcasts */,
 				F47B7CE22084A3AD0055585C /* Profile */,
 				5637D29220A3257800112F1F /* Settings */,
 				93A3113220B13DD70049DB67 /* VoiceInput */,
@@ -1227,14 +1227,14 @@
 		F482CD5F2080DB80007D0C14 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				9362FCAC20B810160004930C /* ScoutPlayer */,
-				93A3114320B15FDB0049DB67 /* ScoutVoiceInput */,
-				5622AB4920A6E54E0074A4BC /* ScoutTitles */,
-				5622AB4420A6D4A30074A4BC /* Auth */,
 				F47B7CEE2084D7970055585C /* BaseHTTPClient.swift */,
 				F482CD622080DBBA007D0C14 /* HTTPClientError.swift */,
 				F482CD642080DBE5007D0C14 /* HTTPClientProtocol.swift */,
 				F47B7CF02084D7DC0055585C /* ScoutHTTPClient.swift */,
+				5622AB4420A6D4A30074A4BC /* Auth */,
+				9362FCAC20B810160004930C /* ScoutPlayer */,
+				5622AB4920A6E54E0074A4BC /* ScoutTitles */,
+				93A3114320B15FDB0049DB67 /* ScoutVoiceInput */,
 			);
 			path = Client;
 			sourceTree = "<group>";
