@@ -1,5 +1,8 @@
 # scout-ios
 
+[![Build Status](https://travis-ci.org/MozScout/scout-ios.svg?branch=master)](https://travis-ci.org/MozScout/scout-ios)
+[![license](https://img.shields.io/badge/license-MPL--2.0-blue.svg)](LICENSE)
+
 iOS App for Scout
 
 ## Building
