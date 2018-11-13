@@ -19,7 +19,7 @@ class SettingsAssembly: SettingsAssemblyProtocol {
             // swiftlint:disable:next force_cast
             withIdentifier: "SettingsViewController") as! SettingsViewController
         settingsVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
-        
+
         return settingsVC
     }
 }

@@ -7,11 +7,12 @@
 import Async
 import Foundation
 import Speech
-
-import Speech
 import UIKit
 
 class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate {
+    let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
+    let MODEL = Bundle.main.path(forResource: "jarvis", ofType: "umdl")
+
     public weak var delegate: SBSpeechRecognizerDelegate?
 
     private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
@@ -22,10 +23,27 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
 
     private var audioEngine = AVAudioEngine()
 
+    private var snowboyWrapper: SnowboyWrapper!
+    private var dingSound: AVAudioPlayer!
+    private var dongSound: AVAudioPlayer!
+
     init?(with locale: Locale) {
         guard let requiredRecognizer = SFSpeechRecognizer(locale: locale) else { return nil }
         self.speechRecognizer = requiredRecognizer
         self.audioEngine = AVAudioEngine()
+
+        self.snowboyWrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
+        self.snowboyWrapper.setSensitivity("0.8,0.80")
+        self.snowboyWrapper.setAudioGain(1.0)
+
+        do {
+            self.dingSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding",
+                                                                                                 ofType: "wav")!))
+            self.dongSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "dong",
+                                                                                                 ofType: "wav")!))
+        } catch {
+            print("Failed to load sounds: \(error)")
+        }
 
         super.init()
 
@@ -95,13 +113,15 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
             }
 
             if isFinal {
-                self.delegate?.speechRecognitionFinished(transcription: result!.bestTranscription.formattedString)
                 self.stopRecording()
+                self.dongSound.play()
+                self.delegate?.speechRecognitionFinished(transcription: result!.bestTranscription.formattedString)
             } else {
                 if error == nil {
                     self.restartSpeechTimeout()
                 } else {
-                    // cancel voice recognition
+                    self.stopRecording()
+                    self.dongSound.play()
                 }
             }
         }
@@ -115,6 +135,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
 
         audioEngine.prepare()
         do {
+            self.dingSound.play()
             try audioEngine.start()
         } catch {}
     }
@@ -131,5 +152,43 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
 
         speechRecognitionTimeout?.invalidate()
         speechRecognitionTimeout = nil
+    }
+
+    func beginWakeWordDetector() {
+        let inputFormat = audioEngine.inputNode.outputFormat(forBus: 1)
+        let recordingFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
+                                            sampleRate: 16000.0,
+                                            channels: 1,
+                                            interleaved: false)!
+        let converter = AVAudioConverter(from: inputFormat, to: recordingFormat)
+        let seconds = 2.0
+        let bufferSize = AVAudioFrameCount(inputFormat.sampleRate * seconds)
+        audioEngine.inputNode.installTap(
+            onBus: 1,
+            bufferSize: bufferSize,
+            format: inputFormat) { (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
+            let target = AVAudioPCMBuffer(pcmFormat: recordingFormat,
+                                          frameCapacity: AVAudioFrameCount(recordingFormat.sampleRate * seconds))!
+            var error: NSError?
+            converter?.convert(to: target, error: &error, withInputFrom: { (_, outStatus) -> AVAudioBuffer? in
+                outStatus.pointee = AVAudioConverterInputStatus.haveData
+                return buffer
+            })
+            let array = Array(UnsafeBufferPointer(start: target.floatChannelData![0], count: Int(target.frameLength)))
+            let result = self.snowboyWrapper.runDetection(array, length: Int32(buffer.frameLength))
+            if result == 1 {
+                self.endWakeWordDetector()
+                self.delegate?.wakeWordDetected()
+            }
+        }
+        do {
+            try audioEngine.start()
+        } catch {
+            print("Failed to start audioEngine: \(error)")
+        }
+    }
+
+    func endWakeWordDetector() {
+        audioEngine.inputNode.removeTap(onBus: 1)
     }
 }
