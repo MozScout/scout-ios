@@ -37,16 +37,14 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol {
             } else {
                 navigationVC.pushViewController(viewController, animated: animated)
             }
-        } else {
-            if let navigationVC = fromViewController.navigationController {
-                if navigationVC.viewControllers.count == 0 {
-                    navigationVC.viewControllers = [viewController]
-                } else {
-                    navigationVC.pushViewController(viewController, animated: animated)
-                }
+        } else if let navigationVC = fromViewController.navigationController {
+            if navigationVC.viewControllers.count == 0 {
+                navigationVC.viewControllers = [viewController]
             } else {
-                print("Unsupported navigation")
+                navigationVC.pushViewController(viewController, animated: animated)
             }
+        } else {
+            print("Unsupported navigation")
         }
     }
 }
