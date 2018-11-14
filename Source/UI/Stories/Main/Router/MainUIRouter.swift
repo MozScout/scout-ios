@@ -97,7 +97,7 @@ fileprivate extension MainUIRouter {
 
         switch tab {
             case .podcasts:
-                return UITabBarItem(title: "Podacts",
+                return UITabBarItem(title: "Podcasts",
                                     image: originalImageUsingImageName(imageName: "icn_podcasts"),
                                     selectedImage: originalImageUsingImageName(imageName: "icn_podcasts_selected"))
 

@@ -229,6 +229,5 @@ class VoiceInputViewController: UIViewController, SBSpeechRecognizerDelegate {
     }
 
     func wakeWordDetected() {
-        print("Got wake word!")
     }
 }

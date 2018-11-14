@@ -13,6 +13,7 @@ class PlayerRouter {
     var onMicrophoneButtonTap: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PlayerAssemblyProtocol
+    var playerVC: PlayerViewController?
 
     required init(with assembly: PlayerAssemblyProtocol) {
         self.assembly = assembly
@@ -21,12 +22,30 @@ class PlayerRouter {
 
 extension PlayerRouter: PlayerRoutingProtocol {
     func show(from viewController: UIViewController, animated: Bool, model: ScoutArticle, fullArticle: Bool) {
-        let playerVC = assembly.assemblyPlayerViewController()
-        playerVC.model = model
-        playerVC.isFullArticle = fullArticle
-        playerVC.backButtonDelegate = self
-        playerVC.microphoneButtonDelegate = self
-        self.showViewController(viewController: playerVC, fromViewController: viewController, animated: animated)
+        self.playerVC = assembly.assemblyPlayerViewController()
+        self.playerVC!.model = model
+        self.playerVC!.isFullArticle = fullArticle
+        self.playerVC!.backButtonDelegate = self
+        self.playerVC!.microphoneButtonDelegate = self
+        self.showViewController(viewController: self.playerVC!, fromViewController: viewController, animated: animated)
+    }
+
+    func pause() {
+        if self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil && self.playerVC!.playing {
+            self.playerVC!.pauseButtonTapped(0)
+        }
+    }
+
+    func stop() {
+        if self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil {
+            self.playerVC!.backButtonTapped(0)
+        }
+    }
+
+    func resume() {
+        if self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil && !self.playerVC!.playing {
+            self.playerVC!.pauseButtonTapped(0)
+        }
     }
 
     // MARK: -
