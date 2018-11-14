@@ -41,9 +41,9 @@
 		<true/>
 	</dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>reading an article</string>
+	<string>Hands-off player controls</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>commands</string>
+	<string>Hands-off player controls</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Display-Heavy.ttf</string>

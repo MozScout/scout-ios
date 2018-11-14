@@ -9,6 +9,10 @@ import UIKit
 
 class MyListRouter {
     var linkIsFound: ((ScoutArticle, Bool) -> Void)?
+    var playNext: (() -> Void)?
+    var pausePlayer: (() -> Void)?
+    var stopPlayer: (() -> Void)?
+    var resumePlayer: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
 
@@ -49,6 +53,18 @@ extension MyListRouter: MyListRoutingProtocol {
 }
 
 extension MyListRouter: PlayListDelegate {
+    func pause() {
+        self.pausePlayer?()
+    }
+
+    func stop() {
+        self.stopPlayer?()
+    }
+
+    func resume() {
+        self.resumePlayer?()
+    }
+
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool) {
         self.linkIsFound?(withModel, isFullArticle)
     }

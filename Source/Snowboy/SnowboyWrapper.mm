@@ -58,6 +58,11 @@
     return snowboy->SetAudioGain(audioGain);
 }
 
+-(void)applyFrontend:(bool)applyFrontend
+{
+    return snowboy->ApplyFrontend(applyFrontend);
+}
+
 -(int)sampleRate
 {
     return snowboy->SampleRate();

@@ -9,6 +9,12 @@ import Foundation
 import Speech
 import UIKit
 
+enum SpeechMode {
+    case disabled
+    case hotword
+    case recognition
+}
+
 class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate {
     let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
     let MODEL = Bundle.main.path(forResource: "jarvis", ofType: "umdl")
@@ -26,6 +32,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     private var snowboyWrapper: SnowboyWrapper!
     private var dingSound: AVAudioPlayer!
     private var dongSound: AVAudioPlayer!
+    private var speechMode: SpeechMode = .disabled
 
     init?(with locale: Locale) {
         guard let requiredRecognizer = SFSpeechRecognizer(locale: locale) else { return nil }
@@ -35,6 +42,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         self.snowboyWrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
         self.snowboyWrapper.setSensitivity("0.8,0.80")
         self.snowboyWrapper.setAudioGain(1.0)
+        self.snowboyWrapper.applyFrontend(true)
 
         do {
             self.dingSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding",
@@ -60,6 +68,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
 
     private func restartSpeechTimeout() {
         if speechTimeoutInterval != 0 {
+            self.speechMode = .recognition
             speechRecognitionTimeout?.invalidate()
 
             speechRecognitionTimeout = Timer.scheduledTimer(timeInterval: speechTimeoutInterval,
@@ -71,6 +80,11 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     }
 
     func startRecording() {
+        if self.speechMode == .recognition {
+            return
+        }
+
+        self.speechMode = .recognition
         if let recognitionTask = recognitionTask {
             recognitionTask.cancel()
             self.audioEngine.stop()
@@ -98,6 +112,10 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         // A recognition task represents a speech recognition session.
         // We keep a reference to the task so that it can be cancelled.
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            if self.speechMode == .hotword {
+                return
+            }
+
             var isFinal = false
             if let result = result {
                 isFinal = result.isFinal
@@ -116,13 +134,11 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
                 self.stopRecording()
                 self.dongSound.play()
                 self.delegate?.speechRecognitionFinished(transcription: result!.bestTranscription.formattedString)
+            } else if error == nil {
+                self.restartSpeechTimeout()
             } else {
-                if error == nil {
-                    self.restartSpeechTimeout()
-                } else {
-                    self.stopRecording()
-                    self.dongSound.play()
-                }
+                self.stopRecording()
+                self.dongSound.play()
             }
         }
 
@@ -133,18 +149,23 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
             self.recognitionRequest?.append(buffer)
         }
 
+        self.dingSound.play()
         audioEngine.prepare()
         do {
-            self.dingSound.play()
             try audioEngine.start()
-        } catch {}
+        } catch {
+            print("Failed to start audioEngine: \(error)")
+        }
     }
 
     @objc private func timedOut() {
-        stopRecording()
+        if self.speechMode == .recognition {
+            stopRecording()
+        }
     }
 
     func stopRecording() {
+        self.speechMode = .disabled
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0) // Remove tap on bus when stopping recording.
 
@@ -155,6 +176,11 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     }
 
     func beginWakeWordDetector() {
+        if self.speechMode == .hotword {
+            return
+        }
+
+        self.speechMode = .hotword
         let inputFormat = audioEngine.inputNode.outputFormat(forBus: 1)
         let recordingFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
                                             sampleRate: 16000.0,
@@ -176,7 +202,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
             })
             let array = Array(UnsafeBufferPointer(start: target.floatChannelData![0], count: Int(target.frameLength)))
             let result = self.snowboyWrapper.runDetection(array, length: Int32(buffer.frameLength))
-            if result == 1 {
+            if result > 0 && self.speechMode == .hotword {
                 self.endWakeWordDetector()
                 self.delegate?.wakeWordDetected()
             }
@@ -189,6 +215,8 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     }
 
     func endWakeWordDetector() {
+        self.speechMode = .disabled
+        audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 1)
     }
 }

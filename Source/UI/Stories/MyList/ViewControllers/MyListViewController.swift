@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 protocol PlayListDelegate: class {
+    func pause()
+    func stop()
+    func resume()
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
@@ -223,15 +226,14 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     func speechRecognitionFinished(transcription: String) {
+        print("speechRecognitionFinished(): \(transcription)")
         switch transcription {
-            case "Play":
-                self.play()
+            case "Play", "Resume":
+                self.resume()
             case "Pause":
                 self.pause()
             case "Stop":
                 self.stop()
-            case "Resume":
-                self.resume()
             default:
                 print("Unhandled command: \(transcription)")
         }
@@ -282,28 +284,39 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     func speechRecognitionPartialResult(transcription: String) {
-        // print("transcription partial result: \(transcription)")
+        // print("speechRecognitionPartialResult(): \(transcription)")
     }
 
     func wakeWordDetected() {
-        print("Got wake word!")
+        print("wakeWordDetected()")
         self.speechService.startRecording()
     }
 
-    private func play() {
-        print("play()")
-    }
-
     private func pause() {
-        print("pause()")
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.pause()
+        }
     }
 
     private func stop() {
-        print("stop()")
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.stop()
+        }
     }
 
     private func resume() {
-        print("resume()")
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.resume()
+        }
     }
 }
 

@@ -165,7 +165,11 @@ class PlayerViewController: UIViewController {
         }
     }
 
-    @IBAction func pauseButtonTaped(_ sender: Any) {
+    var playing: Bool {
+        return !self.pauseButton.isSelected
+    }
+
+    @IBAction func pauseButtonTapped(_ sender: Any) {
         self.pauseButton.isSelected = !pauseButton.isSelected
         updatePausePlayButton()
     }

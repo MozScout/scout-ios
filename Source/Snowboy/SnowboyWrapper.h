@@ -23,6 +23,7 @@
 -(void)setSensitivity:(NSString*)sensitivity;
 -(bool)reset;
 -(void)setAudioGain:(float)audioGain;
+-(void)applyFrontend:(bool)applyFrontend;
 -(int)sampleRate;
 -(int)numChannels;
 -(int)bitsPerSample;

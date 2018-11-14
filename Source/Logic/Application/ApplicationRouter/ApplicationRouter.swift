@@ -97,6 +97,15 @@ private extension ApplicationRouter {
                                            fullArticle: isFullArticle) }
             }
         }
+        self.myListRouter.pausePlayer = {
+            self.playerRouter.pause()
+        }
+        self.myListRouter.stopPlayer = {
+            self.playerRouter.stop()
+        }
+        self.myListRouter.resumePlayer = {
+            self.playerRouter.resume()
+        }
         self.mainRouter.onMicrophoneButtonTap = { [] in
             self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
             self.voiceInputRouter.linkIsFound = { [] scoutArticle, isFullArticle in
@@ -130,5 +139,5 @@ private extension ApplicationRouter {
     func showAuthStory(animated: Bool, completion: VoidBlock? = nil) {
         self.authRouter.show(from: self.navigationController, animated: true)
         if let requiredCompletion = completion { requiredCompletion() }
-        }
+    }
 }
