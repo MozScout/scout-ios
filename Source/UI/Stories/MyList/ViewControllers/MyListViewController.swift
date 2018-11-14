@@ -1,5 +1,5 @@
 //
-//  PlayMyListViewController.swift
+//  MyListViewController.swift
 //  Scout
 //
 //  Created by Victor Liubchenko on 5/9/18.
@@ -12,7 +12,7 @@ protocol PlayListDelegate: class {
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
-class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegate, SBSpeechRecognizerDelegate {
+class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpeechRecognizerDelegate {
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
@@ -70,7 +70,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         gradientButton.direction = .horizontally(centered: 0.1)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil),
+        tableView.register(UINib(nibName: "MyListTableViewCell", bundle: nil),
                            forCellReuseIdentifier: cellRowReuseId)
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -307,7 +307,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     }
 }
 
-extension PlayMyListViewController: UITableViewDataSource {
+extension MyListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -323,7 +323,7 @@ extension PlayMyListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId,
                                                  // swiftlint:disable:next force_cast
-                                                 for: indexPath) as! PlayMyListTableViewCell
+                                                 for: indexPath) as! MyListTableViewCell
 
         self.selectedIndex = []
         cell.playButtonDelegate = self
@@ -335,7 +335,7 @@ extension PlayMyListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? MyListTableViewCell
 
             else { return }
 
@@ -363,7 +363,7 @@ extension PlayMyListViewController: UITableViewDataSource {
     }
 }
 
-extension PlayMyListViewController: UITableViewDelegate {
+extension MyListViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         DispatchQueue.main.async {
             let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset

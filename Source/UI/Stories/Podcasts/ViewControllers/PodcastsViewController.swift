@@ -78,7 +78,7 @@ class PodcastsViewController: UIViewController {
         gradientButton.direction = .horizontally(centered: 0.1)
         tableView.dataSource = self
         collectionView.dataSource = self
-        tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil),
+        tableView.register(UINib(nibName: "MyListTableViewCell", bundle: nil),
                            forCellReuseIdentifier: cellRowReuseId)
         collectionView.register(UINib(nibName: "PodcastsCollectionViewCell", bundle: nil),
                                 forCellWithReuseIdentifier: collectionRowReuseId)
@@ -142,7 +142,7 @@ class PodcastsViewController: UIViewController {
     }
 }
 
-extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, PlayMyListTableViewCellDelegate {
+extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, MyListTableViewCellDelegate {
     func playButtonTapped() {
     }
 
@@ -169,7 +169,7 @@ extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, Pl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellRowReuseId,
                                                  // swiftlint:disable:next force_cast
-                                                 for: indexPath) as! PlayMyListTableViewCell
+                                                 for: indexPath) as! MyListTableViewCell
 
         self.selectedIndex = []
         cell.playButtonDelegate = self
@@ -181,7 +181,7 @@ extension PodcastsViewController: UITableViewDataSource, UITableViewDelegate, Pl
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? PlayMyListTableViewCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? MyListTableViewCell
 
             else { return }
 

@@ -39,7 +39,7 @@ class PodcastDetailsViewController: UIViewController {
         tableView?.dataSource = viewModel
         tableView?.delegate = viewModel
         tableView?.register(AboutCell.nib, forCellReuseIdentifier: AboutCell.identifier)
-        tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil),
+        tableView.register(UINib(nibName: "MyListTableViewCell", bundle: nil),
                            forCellReuseIdentifier: cellRowReuseId)
         tableView?.register(HeaderView.nib, forHeaderFooterViewReuseIdentifier: HeaderView.identifier)
     }

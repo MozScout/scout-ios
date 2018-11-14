@@ -19,7 +19,7 @@ class MyListRouter {
 
 extension MyListRouter: MyListRoutingProtocol {
     func show(from viewController: UIViewController, animated: Bool, withUserID: String) {
-        let listVC = assembly.assemblyPlayMyListViewController()
+        let listVC = assembly.assemblyMyListViewController()
         listVC.userID = withUserID
         listVC.playerDelegateFromMain = self
         self.showViewController(viewController: listVC, fromViewController: viewController, animated: animated)

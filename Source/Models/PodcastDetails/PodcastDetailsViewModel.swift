@@ -102,7 +102,7 @@ extension PodcastDetailsViewModel: UITableViewDataSource {
                 }
             case .Season1:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "cellrow",
-                                                            for: indexPath) as? PlayMyListTableViewCell {
+                                                            for: indexPath) as? MyListTableViewCell {
                     cell.configureCell(withModel: self.scoutTitles![indexPath.row])
                     return cell
                 }

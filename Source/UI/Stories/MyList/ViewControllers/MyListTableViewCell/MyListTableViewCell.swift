@@ -1,5 +1,5 @@
 //
-//  PlayMyListTableViewCell.swift
+//  MyListTableViewCell.swift
 //  Scout
 //
 //  Created by Shurupov Alex on 5/16/18.
@@ -8,17 +8,17 @@
 import Kingfisher
 import UIKit
 
-protocol PlayMyListTableViewCellDelegate: class {
+protocol MyListTableViewCellDelegate: class {
     // maybe need send also several button states
     func playButtonTapped()
     func skimButtonTapped()
     func archiveButtonTapped()
 }
 
-class PlayMyListTableViewCell: UITableViewCell {
-    weak var playButtonDelegate: PlayMyListTableViewCellDelegate?
-    weak var skimButtonDelegate: PlayMyListTableViewCellDelegate?
-    weak var archiveButtonDelegate: PlayMyListTableViewCellDelegate?
+class MyListTableViewCell: UITableViewCell {
+    weak var playButtonDelegate: MyListTableViewCellDelegate?
+    weak var skimButtonDelegate: MyListTableViewCellDelegate?
+    weak var archiveButtonDelegate: MyListTableViewCellDelegate?
     @IBOutlet weak var publisherImage: UIImageView!
     @IBOutlet weak var horizontalLine: UIView!
     @IBOutlet weak var verticalLine: UIView!
