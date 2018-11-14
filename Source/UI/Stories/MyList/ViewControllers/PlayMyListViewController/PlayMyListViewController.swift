@@ -12,7 +12,7 @@ protocol PlayListDelegate: class {
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
-class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegate {
+class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegate, SBSpeechRecognizerDelegate {
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
@@ -30,6 +30,7 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
     var selectedIndex = IndexPath()
     var scoutClient: ScoutHTTPClient!
     var keychainService: KeychainService!
+    var speechService: SpeechService!
     var userID: String = ""
     fileprivate var scoutTitles: [ScoutArticle]?
     var expandedRows = Set<Int>()
@@ -214,6 +215,95 @@ class PlayMyListViewController: UIViewController, PlayMyListTableViewCellDelegat
         self.getScoutTitles()
         self.tableView.reloadData()
         refreshControl.endRefreshing()
+    }
+
+    func beginWakeWordDetector() {
+        self.speechService.delegate = self
+        self.speechService.beginWakeWordDetector()
+    }
+
+    func speechRecognitionFinished(transcription: String) {
+        switch transcription {
+            case "Play":
+                self.play()
+            case "Pause":
+                self.pause()
+            case "Stop":
+                self.stop()
+            case "Resume":
+                self.resume()
+            default:
+                print("Unhandled command: \(transcription)")
+        }
+        /*
+         if self.console.text.range(of: "Skim ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Skim ")!)
+         self.getSkimURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Skim that article about ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Skim that article about ")!)
+         self.getSkimURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Skim that article ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Skim that article ")!)
+         self.getSkimURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Skim article about ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Skim article about ")!)
+         self.getSkimURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Play that article about ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Play that article about ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Play article about ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Play article about ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Play that article ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Play that article ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Play ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Play ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Scout that article about ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Scout that article about ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Scout article about ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Scout article about ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else if self.console.text.range(of: "Scout that article ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Scout that article ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else {
+         if self.console.text.range(of: "Scout ") != nil {
+         self.console.text.removeSubrange(self.console.text.range(of: "Scout ")!)
+         self.getURL(withSearchTerm: self.console.text)
+         } else {
+         self.getURL(withSearchTerm: self.console.text)
+         }
+         }
+         */
+        self.speechService.beginWakeWordDetector()
+    }
+
+    func speechRecognitionPartialResult(transcription: String) {
+        // print("transcription partial result: \(transcription)")
+    }
+
+    func wakeWordDetected() {
+        print("Got wake word!")
+        self.speechService.startRecording()
+    }
+
+    private func play() {
+        print("play()")
+    }
+
+    private func pause() {
+        print("pause()")
+    }
+
+    private func stop() {
+        print("stop()")
+    }
+
+    private func resume() {
+        print("resume()")
     }
 }
 

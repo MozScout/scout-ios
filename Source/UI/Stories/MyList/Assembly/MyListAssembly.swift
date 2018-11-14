@@ -20,6 +20,8 @@ class MyListAssembly: MyListAssemblyProtocol {
             withIdentifier: "PlayMyListViewController") as! PlayMyListViewController
         playMyListVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
         playMyListVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
+        playMyListVC.speechService = self.applicationAssembly.assemblySpeechService() as? SpeechService
+        playMyListVC.beginWakeWordDetector()
 
         return playMyListVC
     }
