@@ -13,6 +13,7 @@ class MyListRouter {
     var pausePlayer: (() -> Void)?
     var stopPlayer: (() -> Void)?
     var resumePlayer: (() -> Void)?
+    var isPlaying: (() -> Bool)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
 
@@ -63,6 +64,14 @@ extension MyListRouter: PlayListDelegate {
 
     func resume() {
         self.resumePlayer?()
+    }
+
+    func playing() -> Bool {
+        if self.isPlaying != nil {
+            return self.isPlaying!()
+        }
+
+        return false
     }
 
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool) {
