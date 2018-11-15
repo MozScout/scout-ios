@@ -12,6 +12,7 @@ protocol PlayListDelegate: class {
     func pause()
     func stop()
     func resume()
+    func playing() -> Bool
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
@@ -37,6 +38,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     var userID: String = ""
     fileprivate var scoutTitles: [ScoutArticle]?
     var expandedRows = Set<Int>()
+    var wasPlaying: Bool = false
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -236,6 +238,9 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 self.stop()
             default:
                 print("Unhandled command: \(transcription)")
+                if self.wasPlaying {
+                    self.resume()
+                }
         }
         /*
          if self.console.text.range(of: "Skim ") != nil {
@@ -289,7 +294,17 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
 
     func wakeWordDetected() {
         print("wakeWordDetected()")
-        self.speechService.startRecording()
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+
+            self.wasPlaying = requiredDelegate.playing()
+            if self.wasPlaying {
+                requiredDelegate.pause()
+            }
+            self.speechService.startRecording()
+        }
     }
 
     private func pause() {

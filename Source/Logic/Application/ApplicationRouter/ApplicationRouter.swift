@@ -106,6 +106,9 @@ private extension ApplicationRouter {
         self.myListRouter.resumePlayer = {
             self.playerRouter.resume()
         }
+        self.myListRouter.isPlaying = {
+            return self.playerRouter.playing()
+        }
         self.mainRouter.onMicrophoneButtonTap = { [] in
             self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
             self.voiceInputRouter.linkIsFound = { [] scoutArticle, isFullArticle in

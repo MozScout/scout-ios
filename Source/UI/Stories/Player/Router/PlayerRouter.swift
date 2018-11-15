@@ -48,6 +48,10 @@ extension PlayerRouter: PlayerRoutingProtocol {
         }
     }
 
+    func playing() -> Bool {
+        return self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil && self.playerVC!.playing
+    }
+
     // MARK: -
     // MARK: Private
     private func showViewController(viewController: UIViewController,

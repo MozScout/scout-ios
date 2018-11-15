@@ -15,4 +15,5 @@ protocol PlayerRoutingProtocol {
     func pause()
     func stop()
     func resume()
+    func playing() -> Bool
 }
