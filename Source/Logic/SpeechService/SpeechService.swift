@@ -201,7 +201,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
                 return buffer
             })
             let array = Array(UnsafeBufferPointer(start: target.floatChannelData![0], count: Int(target.frameLength)))
-            let result = self.snowboyWrapper.runDetection(array, length: Int32(buffer.frameLength))
+            let result = self.snowboyWrapper.runDetection(array, length: Int32(target.frameLength))
             if result > 0 && self.speechMode == .hotword {
                 self.endWakeWordDetector()
                 self.delegate?.wakeWordDetected()
