@@ -21,4 +21,5 @@ protocol PlayerRoutingProtocol {
     func setVolume(_ volume: Float) -> (Float, Float)?
     func increaseSpeed()
     func decreaseSpeed()
+    func skip(_ seconds: Int)
 }

@@ -175,28 +175,29 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func forwardButtonAction(_ sender: Any) {
-        var time: TimeInterval = audioPlayer.currentTime
-        time += 30.0 // Go forward by 30 seconds
-        if time > audioPlayer.duration {
-            audioPlayer.stop()
-            audioPlayer.currentTime = 0.0
-            self.pauseButton.isSelected = true
-        } else {
-            audioPlayer.currentTime = time
-        }
+        self.skip(30)
     }
 
     @IBAction func backwardButtonAction(_ sender: Any) {
-        var time: TimeInterval = audioPlayer.currentTime
-        time -= 30.0 // Go backward by 30 seconds
-        if time < 0.0 {
-            audioPlayer.stop()
-            audioPlayer.currentTime = 0.0
-            self.pauseButton.isSelected = true
+        self.skip(-30)
+    }
+
+    internal func skip(_ seconds: Int) {
+        var time: TimeInterval = self.audioPlayer.currentTime
+        time += TimeInterval(seconds)
+        time = max(time, 0.0)
+
+        if time >= self.audioPlayer.duration {
+            self.audioPlayer.stop()
+            self.audioPlayer.currentTime = 0.0
+            DispatchQueue.main.async {
+                self.pauseButton.isSelected = true
+            }
         } else {
-            audioPlayer.currentTime = time
+            self.audioPlayer.currentTime = time
         }
     }
+
     @IBAction func changeAudioTime(_ sender: Any) {
         slider.maximumValue = Float(audioPlayer.duration)
         audioPlayer.stop()

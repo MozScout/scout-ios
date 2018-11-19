@@ -84,6 +84,12 @@ extension PlayerRouter: PlayerRoutingProtocol {
         }
     }
 
+    func skip(_ seconds: Int) {
+        if self.playerVC != nil {
+            self.playerVC!.skip(seconds)
+        }
+    }
+
     // MARK: -
     // MARK: Private
     private func showViewController(viewController: UIViewController,

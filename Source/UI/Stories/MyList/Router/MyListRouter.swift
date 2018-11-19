@@ -19,6 +19,7 @@ class MyListRouter {
     var setPlayerVolume: ((Float) -> (Float, Float)?)?
     var increasePlayerSpeed: (() -> Void)?
     var decreasePlayerSpeed: (() -> Void)?
+    var skipPlayerTime: ((Int) -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
 
@@ -97,6 +98,10 @@ extension MyListRouter: PlayListDelegate {
 
     func decreaseSpeed() {
         self.decreasePlayerSpeed?()
+    }
+
+    func skip(_ seconds: Int) {
+        self.skipPlayerTime?(seconds)
     }
 
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool) {
