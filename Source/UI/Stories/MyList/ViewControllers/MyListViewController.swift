@@ -17,6 +17,8 @@ protocol PlayListDelegate: class {
     func increaseVolume()
     func decreaseVolume()
     func setVolume(_ volume: Float) -> (Float, Float)?
+    func increaseSpeed()
+    func decreaseSpeed()
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
@@ -201,7 +203,8 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                                                        options: .caseInsensitive)
 
         // swiftlint:disable:next force_try
-        let setVolumeRegex = try! NSRegularExpression(pattern: "^set (the )?volume (to )?(\\d+)%$", options: .caseInsensitive)
+        let setVolumeRegex = try! NSRegularExpression(pattern: "^set (the )?volume (to )?(\\d+)%$",
+                                                      options: .caseInsensitive)
 
         // swiftlint:disable:next force_try
         let aboutRegex = try! NSRegularExpression(
@@ -369,6 +372,20 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             if self.wasPlaying {
                 self.resume()
             }
+        } else if transcription == "Play faster" || transcription == "Read faster" ||
+                transcription == "Play more quickly" || transcription == "Read more quickly" ||
+                transcription == "Speed up" {
+            self.increaseSpeed()
+            if self.wasPlaying {
+                self.resume()
+            }
+        } else if transcription == "Play slower" || transcription == "Read slower" ||
+                transcription == "Play more slowly" || transcription == "Read more slowly" ||
+                transcription == "Slow down" {
+            self.decreaseSpeed()
+            if self.wasPlaying {
+                self.resume()
+            }
         } else {
             print("Unhandled command: \(transcription)")
             if self.wasPlaying {
@@ -453,6 +470,24 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             if result != nil {
                 self.lastVolume = result!.0
             }
+        }
+    }
+
+    private func increaseSpeed() {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.increaseSpeed()
+        }
+    }
+
+    private func decreaseSpeed() {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.decreaseSpeed()
         }
     }
 

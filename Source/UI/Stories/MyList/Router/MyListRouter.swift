@@ -17,6 +17,8 @@ class MyListRouter {
     var increasePlayerVolume: (() -> Void)?
     var decreasePlayerVolume: (() -> Void)?
     var setPlayerVolume: ((Float) -> (Float, Float)?)?
+    var increasePlayerSpeed: (() -> Void)?
+    var decreasePlayerSpeed: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
 
@@ -87,6 +89,14 @@ extension MyListRouter: PlayListDelegate {
 
     func setVolume(_ volume: Float) -> (Float, Float)? {
         return self.setPlayerVolume?(volume)
+    }
+
+    func increaseSpeed() {
+        self.increasePlayerSpeed?()
+    }
+
+    func decreaseSpeed() {
+        self.decreasePlayerSpeed?()
     }
 
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool) {
