@@ -124,6 +124,9 @@ private extension ApplicationRouter {
         self.myListRouter.decreasePlayerSpeed = {
             self.playerRouter.decreaseSpeed()
         }
+        self.myListRouter.skipPlayerTime = { (seconds) in
+            self.playerRouter.skip(seconds)
+        }
         self.mainRouter.onMicrophoneButtonTap = { [] in
             self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
             self.voiceInputRouter.linkIsFound = { [] scoutArticle, isFullArticle in

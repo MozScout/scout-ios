@@ -19,6 +19,7 @@ protocol PlayListDelegate: class {
     func setVolume(_ volume: Float) -> (Float, Float)?
     func increaseSpeed()
     func decreaseSpeed()
+    func skip(_ seconds: Int)
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
@@ -217,6 +218,18 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             pattern: "(the )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last|latest|next|previous)( (one|article|item|thing))?",
             options: .caseInsensitive)
 
+        // swiftlint:disable:next force_try
+        let skipBackRegex = try! NSRegularExpression(
+            // swiftlint:disable:next line_length
+            pattern: "((jump|skip|move|go) back|rewind)\\s*((\\w+) minutes? and (\\w+) seconds?|(\\w+) minutes?|(\\w+) seconds?)?",
+            options: .caseInsensitive)
+
+        // swiftlint:disable:next force_try
+        let skipAheadRegex = try! NSRegularExpression(
+            // swiftlint:disable:next line_length
+            pattern: "((jump|skip|move|go)( forward| ahead)?|fast forward)\\s*((\\w+) minutes? and (\\w+) seconds?|(\\w+) minutes?|(\\w+) seconds?)?",
+            options: .caseInsensitive)
+
         func ordinalToIndex(ordinal: String) -> Int {
             print("ordinalToIndex(\(ordinal))")
             switch ordinal {
@@ -268,6 +281,37 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                     }
                 default:
                     return -1
+            }
+        }
+
+        func stringToNumber(string: String) -> Int {
+            switch string {
+                case "zero":
+                    return 0
+                case "one":
+                    return 1
+                case "two":
+                    return 2
+                case "three":
+                    return 3
+                case "four":
+                    return 4
+                case "five":
+                    return 5
+                case "six":
+                    return 6
+                case "seven":
+                    return 7
+                case "eight":
+                    return 8
+                case "nine":
+                    return 9
+                default:
+                    if let result = Int(string) {
+                        return result
+                    } else {
+                        return -1
+                    }
             }
         }
 
@@ -359,14 +403,11 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             if self.wasPlaying {
                 self.resume()
             }
-        } else if transcription.contains(word: "volume") {
-            let match = setVolumeRegex.firstMatch(in: transcription, options: [], range: range)
-            if match != nil {
-                let volumeString = (transcription as NSString).substring(with: match!.range(at: 3))
-                let volume: Float? = Float(volumeString)
-                if volume != nil {
-                    self.setVolume(volume! / 100)
-                }
+        } else if let match = setVolumeRegex.firstMatch(in: transcription, options: [], range: range) {
+            let volumeString = (transcription as NSString).substring(with: match.range(at: 3))
+            let volume: Float? = Float(volumeString)
+            if volume != nil {
+                self.setVolume(volume! / 100)
             }
 
             if self.wasPlaying {
@@ -383,6 +424,70 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 transcription == "Play more slowly" || transcription == "Read more slowly" ||
                 transcription == "Slow down" {
             self.decreaseSpeed()
+            if self.wasPlaying {
+                self.resume()
+            }
+        } else if let match = skipBackRegex.firstMatch(in: transcription, options: [], range: range) {
+            var time = -1
+            if match.range(at: 4).location != NSNotFound && match.range(at: 5).location != NSNotFound {
+                print("here1")
+                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 4)))
+                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
+
+                if minutes > 0 && seconds > 0 {
+                    time = minutes * 60 + seconds
+                }
+            } else if match.range(at: 6).location != NSNotFound {
+                print("here2")
+                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 6)))
+                if minutes > 0 {
+                    time = minutes * 60
+                }
+            } else if match.range(at: 7).location != NSNotFound {
+                print("here3")
+                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 7)))
+                if seconds > 0 {
+                    time = seconds
+                }
+            } else {
+                print("here4")
+                time = 30
+            }
+
+            if time > 0 {
+                self.skip(-time)
+            }
+
+            if self.wasPlaying {
+                self.resume()
+            }
+        } else if let match = skipAheadRegex.firstMatch(in: transcription, options: [], range: range) {
+            var time = -1
+            if match.range(at: 5).location != NSNotFound && match.range(at: 6).location != NSNotFound {
+                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
+                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 6)))
+
+                if minutes > 0 && seconds > 0 {
+                    time = minutes * 60 + seconds
+                }
+            } else if match.range(at: 7).location != NSNotFound {
+                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 7)))
+                if minutes > 0 {
+                    time = minutes * 60
+                }
+            } else if match.range(at: 8).location != NSNotFound {
+                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 8)))
+                if seconds > 0 {
+                    time = seconds
+                }
+            } else {
+                time = 30
+            }
+
+            if time > 0 {
+                self.skip(time)
+            }
+
             if self.wasPlaying {
                 self.resume()
             }
@@ -488,6 +593,16 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 return
             }
             requiredDelegate.decreaseSpeed()
+        }
+    }
+
+    private func skip(_ seconds: Int) {
+        print("skip(\(seconds))")
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.skip(seconds)
         }
     }
 
