@@ -340,12 +340,27 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func audioRateButtonTapped(_ sender: Any) {
-        audioRate += 0.25
-        if audioRate > 3.0 {
-            audioRate = 1.0
+        if self.audioRate >= 3.0 {
+            self.setAudioRate(1.0)
+        } else {
+            self.setAudioRate(self.audioRate + 0.25)
         }
-        self.audioRateButton.setTitle(String(format: "%.2fX", audioRate), for: .normal)
-        audioPlayer.rate = audioRate
+    }
+
+    private func setAudioRate(_ rate: Float) {
+        self.audioRate = max(0.25, min(3.0, rate))
+        DispatchQueue.main.async {
+            self.audioRateButton.setTitle(String(format: "%.2fX", self.audioRate), for: .normal)
+            self.audioPlayer.rate = self.audioRate
+        }
+    }
+
+    internal func increaseSpeed() {
+        self.setAudioRate(self.audioRate + 0.25)
+    }
+
+    internal func decreaseSpeed() {
+        self.setAudioRate(self.audioRate - 0.25)
     }
 
     @objc fileprivate func microphoneButtonTapped(sender: UIButton) {

@@ -16,5 +16,7 @@ protocol MyListRoutingProtocol {
     var increasePlayerVolume: (() -> Void)? { get set }
     var decreasePlayerVolume: (() -> Void)? { get set }
     var setPlayerVolume: ((Float) -> (Float, Float)?)? { get set }
+    var increasePlayerSpeed: (() -> Void)? { get set }
+    var decreasePlayerSpeed: (() -> Void)? { get set }
     func show(from viewController: UIViewController, animated: Bool, withUserID: String)
 }

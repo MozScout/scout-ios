@@ -72,6 +72,18 @@ extension PlayerRouter: PlayerRoutingProtocol {
         }
     }
 
+    func increaseSpeed() {
+        if self.playerVC != nil {
+            self.playerVC!.increaseSpeed()
+        }
+    }
+
+    func decreaseSpeed() {
+        if self.playerVC != nil {
+            self.playerVC!.decreaseSpeed()
+        }
+    }
+
     // MARK: -
     // MARK: Private
     private func showViewController(viewController: UIViewController,
