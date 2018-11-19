@@ -31,25 +31,29 @@ extension PlayerRouter: PlayerRoutingProtocol {
     }
 
     func pause() {
-        if self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil && self.playerVC!.playing {
+        if self.playerVisible() && self.playerVC!.playing {
             self.playerVC!.pauseButtonTapped(0)
         }
     }
 
     func stop() {
-        if self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil {
+        if self.playerVisible() {
             self.playerVC!.backButtonTapped(0)
         }
     }
 
     func resume() {
-        if self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil && !self.playerVC!.playing {
+        if self.playerVisible() && !self.playerVC!.playing {
             self.playerVC!.pauseButtonTapped(0)
         }
     }
 
     func playing() -> Bool {
-        return self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil && self.playerVC!.playing
+        return self.playerVisible() && self.playerVC!.playing
+    }
+
+    func playerVisible() -> Bool {
+        return self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil
     }
 
     func increaseVolume() {
@@ -73,19 +77,19 @@ extension PlayerRouter: PlayerRoutingProtocol {
     }
 
     func increaseSpeed() {
-        if self.playerVC != nil {
+        if self.playerVisible() {
             self.playerVC!.increaseSpeed()
         }
     }
 
     func decreaseSpeed() {
-        if self.playerVC != nil {
+        if self.playerVisible() {
             self.playerVC!.decreaseSpeed()
         }
     }
 
     func skip(_ seconds: Int) {
-        if self.playerVC != nil {
+        if self.playerVisible() {
             self.playerVC!.skip(seconds)
         }
     }
