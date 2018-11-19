@@ -16,4 +16,7 @@ protocol PlayerRoutingProtocol {
     func stop()
     func resume()
     func playing() -> Bool
+    func increaseVolume()
+    func decreaseVolume()
+    func setVolume(_ volume: Float) -> (Float, Float)?
 }

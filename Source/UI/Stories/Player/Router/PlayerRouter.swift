@@ -52,6 +52,26 @@ extension PlayerRouter: PlayerRoutingProtocol {
         return self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil && self.playerVC!.playing
     }
 
+    func increaseVolume() {
+        if self.playerVC != nil {
+            self.playerVC!.increaseVolume()
+        }
+    }
+
+    func decreaseVolume() {
+        if self.playerVC != nil {
+            self.playerVC!.decreaseVolume()
+        }
+    }
+
+    func setVolume(_ volume: Float) -> (Float, Float)? {
+        if self.playerVC != nil {
+            return self.playerVC!.setVolume(volume)
+        } else {
+            return nil
+        }
+    }
+
     // MARK: -
     // MARK: Private
     private func showViewController(viewController: UIViewController,

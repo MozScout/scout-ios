@@ -219,7 +219,7 @@ class PlayerViewController: UIViewController {
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(.playAndRecord, mode: .voiceChat)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            try audioSession.setActive(true, options: [.notifyOthersOnDeactivation])
         } catch {
             print(error)
         }
@@ -230,6 +230,30 @@ class PlayerViewController: UIViewController {
     internal func pause() {
         audioPlayer.pause()
     }
+
+    internal func increaseVolume() {
+        if audioPlayer.volume <= 0.9 {
+            audioPlayer.volume += 0.1
+        } else {
+            audioPlayer.volume = 1
+        }
+    }
+
+    internal func decreaseVolume() {
+        if audioPlayer.volume >= 0.1 {
+            audioPlayer.volume -= 0.1
+        } else {
+            audioPlayer.volume = 0
+        }
+    }
+
+    internal func setVolume(_ volume: Float) -> (Float, Float)? {
+        let newVolume = max(0, min(volume, 1))
+        let oldVolume = audioPlayer.volume
+        audioPlayer.volume = newVolume
+        return (oldVolume, newVolume)
+    }
+
     @objc internal func updateSlider() {
         slider.value = Float(audioPlayer.currentTime)
 
