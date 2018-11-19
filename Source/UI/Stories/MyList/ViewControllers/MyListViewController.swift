@@ -146,52 +146,11 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     func playButtonTapped() {
-        showHUD()
-        _ = self.scoutClient.getArticleLink(userid: userID,
-                                            url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!,
-                                            successBlock: { (scoutArticle) in
-                                                DispatchQueue.main.async {
-                                                    guard let requiredDelegate = self.playerDelegateFromMain else {
-                                                        return
-                                                    }
-                                                    requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
-                                                                                        isFullArticle: true)
-                                                    self.hideHUD()
-                                                }
-                                            }, failureBlock: { (_, _, _) in
-                                                self.showAlert(errorMessage: """
-                                                               Unable to get your articles at this time, please check \
-                                                               back later
-                                                               """)
-                                                self.hideHUD()
-                                            })
+        self.playArticleAtIndex(index: articleNumber)
     }
 
     func skimButtonTapped() {
-        showHUD()
-        _ = self.scoutClient.getSummaryLink(userid: userID,
-                                            url: (self.scoutTitles![articleNumber].resolvedURL?.absoluteString)!,
-                                            successBlock: { (scoutArticle) in
-                                                DispatchQueue.main.async {
-                                                    if scoutArticle.resolvedURL != nil {
-                                                        guard let requiredDelegate = self.playerDelegateFromMain else {
-                                                            return
-                                                        }
-                                                        requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
-                                                                                            isFullArticle: false)
-                                                        self.hideHUD()
-                                                    } else {
-                                                        self.showAlert(errorMessage: "Skim version is not available")
-                                                        self.hideHUD()
-                                                    }
-                                                }
-                                            }, failureBlock: { (_, _, _) in
-                                                self.showAlert(errorMessage: """
-                                                               Unable to get your articles at this time, please check \
-                                                               back later
-                                                               """)
-                                                self.hideHUD()
-                                            })
+        self.skimArticleAtIndex(index: articleNumber)
     }
 
     func archiveButtonTapped() {
@@ -228,63 +187,86 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     func speechRecognitionFinished(transcription: String) {
-        print("speechRecognitionFinished(): \(transcription)")
-        switch transcription {
-            case "Play", "Resume":
-                self.resume()
-            case "Pause":
-                self.pause()
-            case "Stop":
-                self.stop()
-            default:
-                print("Unhandled command: \(transcription)")
-                if self.wasPlaying {
-                    self.resume()
-                }
+        // swiftlint:disable:next force_try
+        let ordinalRegex = try! NSRegularExpression(
+            // swiftlint:disable:next line_length
+            pattern: "(the )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last)( (one|article|item|thing))?",
+            options: .caseInsensitive)
+
+        func ordinalToIndex(ordinal: String) -> Int {
+            print("ordinalToIndex(\(ordinal))")
+            switch ordinal {
+                case "first":
+                    return 0
+                case "second":
+                    return 1
+                case "third":
+                    return 2
+                case "fourth":
+                    return 3
+                case "fifth":
+                    return 4
+                case "sixth":
+                    return 5
+                case "seventh":
+                    return 6
+                case "eighth":
+                    return 7
+                case "ninth":
+                    return 8
+                case "tenth":
+                    return 9
+                case "last":
+                    if self.scoutTitles != nil {
+                        return self.scoutTitles!.count - 1
+                    } else {
+                        return -1
+                    }
+                default:
+                    return -1
+            }
         }
-        /*
-         if self.console.text.range(of: "Skim ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Skim ")!)
-         self.getSkimURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Skim that article about ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Skim that article about ")!)
-         self.getSkimURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Skim that article ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Skim that article ")!)
-         self.getSkimURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Skim article about ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Skim article about ")!)
-         self.getSkimURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Play that article about ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Play that article about ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Play article about ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Play article about ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Play that article ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Play that article ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Play ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Play ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Scout that article about ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Scout that article about ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Scout article about ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Scout article about ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else if self.console.text.range(of: "Scout that article ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Scout that article ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else {
-         if self.console.text.range(of: "Scout ") != nil {
-         self.console.text.removeSubrange(self.console.text.range(of: "Scout ")!)
-         self.getURL(withSearchTerm: self.console.text)
-         } else {
-         self.getURL(withSearchTerm: self.console.text)
-         }
-         }
-         */
+
+        print("speechRecognitionFinished(): \(transcription)")
+        if transcription == "Play" || transcription == "Resume" {
+            self.resume()
+        } else if transcription == "Pause" {
+            self.pause()
+        } else if transcription == "Stop" {
+            self.stop()
+        } else if transcription.starts(with: "Play ") {
+            if transcription.range(of: " about ") != nil {
+                // self.getURL(withSearchTerm: self.console.text)
+            } else {
+                let match = ordinalRegex.firstMatch(in: transcription,
+                                                    options: [],
+                                                    range: NSRange(location: 0, length: transcription.count))
+                if match != nil {
+                    let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
+                    let index = ordinalToIndex(ordinal: ordinal)
+                    self.playArticleAtIndex(index: index)
+                }
+            }
+        } else if transcription.starts(with: "Skim ") {
+            if transcription.range(of: " about ") != nil {
+                // self.getSkimURL(withSearchTerm: self.console.text)
+            } else {
+                let match = ordinalRegex.firstMatch(in: transcription,
+                                                    options: [],
+                                                    range: NSRange(location: 0, length: transcription.count))
+                if match != nil {
+                    let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
+                    let index = ordinalToIndex(ordinal: ordinal)
+                    self.skimArticleAtIndex(index: index)
+                }
+            }
+        } else {
+            print("Unhandled command: \(transcription)")
+            if self.wasPlaying {
+                self.resume()
+            }
+        }
+
         self.speechService.beginWakeWordDetector()
     }
 
@@ -331,6 +313,73 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 return
             }
             requiredDelegate.resume()
+        }
+    }
+
+    private func playArticleAtIndex(index: Int) {
+        print("playArticleAtIndex(\(index))")
+        if index < 0 {
+            return
+        }
+
+        if let scoutTitles = self.scoutTitles {
+            if index >= scoutTitles.count {
+                return
+            }
+
+            showHUD()
+            _ = self.scoutClient.getArticleLink(userid: userID,
+                                                url: (self.scoutTitles![index].resolvedURL?.absoluteString)!,
+                                                successBlock: { (scoutArticle) in
+                                                    DispatchQueue.main.async {
+                                                        guard let requiredDelegate = self.playerDelegateFromMain else {
+                                                            return
+                                                        }
+                                                        requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
+                                                                                            isFullArticle: true)
+                                                        self.hideHUD()
+                                                    }
+            }, failureBlock: { (_, _, _) in
+                self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
+                self.hideHUD()
+            })
+        }
+    }
+
+    private func skimArticleAtIndex(index: Int) {
+        print("skimArticleAtIndex(\(index))")
+        if index < 0 {
+            return
+        }
+
+        if let scoutTitles = self.scoutTitles {
+            if index >= scoutTitles.count {
+                return
+            }
+
+            showHUD()
+            _ = self.scoutClient.getSummaryLink(userid: userID,
+                                                url: (self.scoutTitles![index].resolvedURL?.absoluteString)!,
+                                                successBlock: { (scoutArticle) in
+                                                    DispatchQueue.main.async {
+                                                        if scoutArticle.resolvedURL != nil {
+                                                            guard let requiredDelegate =
+                                                                self.playerDelegateFromMain else {
+                                                                    return
+                                                                }
+                                                            requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
+                                                                                                isFullArticle: false)
+                                                            self.hideHUD()
+                                                        } else {
+                                                            self.showAlert(
+                                                                errorMessage: "Skim version is not available")
+                                                            self.hideHUD()
+                                                        }
+                                                    }
+            }, failureBlock: { (_, _, _) in
+                self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
+                self.hideHUD()
+            })
         }
     }
 }
