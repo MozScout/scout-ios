@@ -188,6 +188,11 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
 
     func speechRecognitionFinished(transcription: String) {
         // swiftlint:disable:next force_try
+        let aboutRegex = try! NSRegularExpression(
+            pattern: "(the )?(one|article|item|thing )?about (.+)",
+            options: .caseInsensitive)
+
+        // swiftlint:disable:next force_try
         let ordinalRegex = try! NSRegularExpression(
             // swiftlint:disable:next line_length
             pattern: "(the )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last)( (one|article|item|thing))?",
@@ -235,12 +240,16 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         } else if transcription == "Stop" {
             self.stop()
         } else if transcription.starts(with: "Play ") {
-            if transcription.range(of: " about ") != nil {
-                // self.getURL(withSearchTerm: self.console.text)
+            let range = NSRange(location: 0, length: transcription.count)
+
+            var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
+            if match != nil {
+                let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
+                self.playArticleMatching(searchTerm: searchTerm)
             } else {
-                let match = ordinalRegex.firstMatch(in: transcription,
-                                                    options: [],
-                                                    range: NSRange(location: 0, length: transcription.count))
+                match = ordinalRegex.firstMatch(in: transcription,
+                                                options: [],
+                                                range: NSRange(location: 0, length: transcription.count))
                 if match != nil {
                     let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
                     let index = ordinalToIndex(ordinal: ordinal)
@@ -248,12 +257,16 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 }
             }
         } else if transcription.starts(with: "Skim ") {
-            if transcription.range(of: " about ") != nil {
-                // self.getSkimURL(withSearchTerm: self.console.text)
+            let range = NSRange(location: 0, length: transcription.count)
+
+            var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
+            if match != nil {
+                let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
+                self.skimArticleMatching(searchTerm: searchTerm)
             } else {
-                let match = ordinalRegex.firstMatch(in: transcription,
-                                                    options: [],
-                                                    range: NSRange(location: 0, length: transcription.count))
+                match = ordinalRegex.firstMatch(in: transcription,
+                                                options: [],
+                                                range: NSRange(location: 0, length: transcription.count))
                 if match != nil {
                     let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
                     let index = ordinalToIndex(ordinal: ordinal)
@@ -327,23 +340,55 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 return
             }
 
-            showHUD()
-            _ = self.scoutClient.getArticleLink(userid: userID,
+            self.showHUD()
+            _ = self.scoutClient.getArticleLink(userid: self.userID,
                                                 url: (self.scoutTitles![index].resolvedURL?.absoluteString)!,
                                                 successBlock: { (scoutArticle) in
                                                     DispatchQueue.main.async {
                                                         guard let requiredDelegate = self.playerDelegateFromMain else {
+                                                            self.hideHUD()
                                                             return
                                                         }
                                                         requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
                                                                                             isFullArticle: true)
                                                         self.hideHUD()
                                                     }
-            }, failureBlock: { (_, _, _) in
-                self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
-                self.hideHUD()
-            })
+                                                }, failureBlock: { (_, _, _) in
+                                                    self.showAlert(errorMessage: """
+                                                                   Unable to get your articles at this time, please \
+                                                                   check back later
+                                                                   """)
+                                                    self.hideHUD()
+                                                })
         }
+    }
+
+    private func playArticleMatching(searchTerm: String) {
+        self.showHUD()
+        self.scoutClient.getAudioFileURL(withCmd: "SearchAndPlayArticle",
+                                         userid: self.userID,
+                                         searchTerms: searchTerm,
+                                         successBlock: { (scoutArticle) in
+                                             if scoutArticle.url == "" {
+                                                 self.hideHUD()
+                                                 self.showAlert(errorMessage: "Sorry, I couldn't find that.")
+                                             } else {
+                                                 DispatchQueue.main.async {
+                                                     guard let requiredDelegate = self.playerDelegateFromMain else {
+                                                        return
+                                                     }
+                                                     requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
+                                                                                         isFullArticle: true)
+                                                     self.hideHUD()
+                                                 }
+                                             }
+                                         }, failureBlock: { (_, _, _) in
+                                             self.showAlert(errorMessage: """
+                                                            Unable to get your articles at this time, please check \
+                                                            back later
+                                                            """)
+                                             self.hideHUD()
+                                         })
     }
 
     private func skimArticleAtIndex(index: Int) {
@@ -357,14 +402,15 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 return
             }
 
-            showHUD()
-            _ = self.scoutClient.getSummaryLink(userid: userID,
+            self.showHUD()
+            _ = self.scoutClient.getSummaryLink(userid: self.userID,
                                                 url: (self.scoutTitles![index].resolvedURL?.absoluteString)!,
                                                 successBlock: { (scoutArticle) in
                                                     DispatchQueue.main.async {
                                                         if scoutArticle.resolvedURL != nil {
                                                             guard let requiredDelegate =
                                                                 self.playerDelegateFromMain else {
+                                                                    self.hideHUD()
                                                                     return
                                                                 }
                                                             requiredDelegate.openPlayerFromMain(withModel: scoutArticle,
@@ -376,11 +422,45 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                                                             self.hideHUD()
                                                         }
                                                     }
-            }, failureBlock: { (_, _, _) in
-                self.showAlert(errorMessage: "Unable to get your articles at this time, please check back later")
-                self.hideHUD()
-            })
+                                                }, failureBlock: { (_, _, _) in
+                                                    self.showAlert(errorMessage: """
+                                                                   Unable to get your articles at this time, please \
+                                                                   check back later
+                                                                   """)
+                                                    self.hideHUD()
+                                                })
         }
+    }
+
+    private func skimArticleMatching(searchTerm: String) {
+        self.showHUD()
+        _ = self.scoutClient.getSkimAudioFileURL(withCmd: "SearchAndSummarizeArticle",
+                                                 userid: self.userID,
+                                                 searchTerms: searchTerm,
+                                                 successBlock: { (scoutArticle) in
+                                                     if scoutArticle.url == "" {
+                                                         self.hideHUD()
+                                                         self.showAlert(errorMessage: "Sorry, I couldn't find that.")
+                                                     } else {
+                                                         DispatchQueue.main.async {
+                                                             guard let requiredDelegate =
+                                                                 self.playerDelegateFromMain else {
+                                                                     self.hideHUD()
+                                                                     return
+                                                                 }
+                                                             requiredDelegate.openPlayerFromMain(
+                                                                  withModel: scoutArticle,
+                                                                  isFullArticle: false)
+                                                             self.hideHUD()
+                                                         }
+                                                     }
+                                                 }, failureBlock: { (_, _, _) in
+                                                     self.showAlert(errorMessage: """
+                                                                    Unable to get your articles at this time, please \
+                                                                    check back later
+                                                                    """)
+                                                     self.hideHUD()
+                                                 })
     }
 }
 
