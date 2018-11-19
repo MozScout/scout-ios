@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import MediaPlayer
 import UIKit
 
 typealias VoidBlock = () -> Void

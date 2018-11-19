@@ -96,7 +96,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(.playAndRecord, mode: .voiceChat)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            try audioSession.setActive(true, options: [.notifyOthersOnDeactivation])
         } catch {}
 
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()

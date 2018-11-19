@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MediaPlayer
 import UIKit
 
 protocol PlayListDelegate: class {
@@ -13,6 +14,9 @@ protocol PlayListDelegate: class {
     func stop()
     func resume()
     func playing() -> Bool
+    func increaseVolume()
+    func decreaseVolume()
+    func setVolume(_ volume: Float) -> (Float, Float)?
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
@@ -30,6 +34,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     fileprivate let cellRowReuseId = "cellrow"
     fileprivate var spinner: UIActivityIndicatorView?
     fileprivate var articleNumber: Int = -1
+    fileprivate var lastVolume: Float = -1
 
     var selectedIndex = IndexPath()
     var scoutClient: ScoutHTTPClient!
@@ -188,6 +193,17 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
 
     func speechRecognitionFinished(transcription: String) {
         // swiftlint:disable:next force_try
+        let volumeUpRegex = try! NSRegularExpression(pattern: "^((turn (the ))?volume up|louder)$",
+                                                     options: .caseInsensitive)
+
+        // swiftlint:disable:next force_try
+        let volumeDownRegex = try! NSRegularExpression(pattern: "^((turn (the ))?volume down|quieter|softer)$",
+                                                       options: .caseInsensitive)
+
+        // swiftlint:disable:next force_try
+        let setVolumeRegex = try! NSRegularExpression(pattern: "^set (the )?volume (to )?(\\d+)%$", options: .caseInsensitive)
+
+        // swiftlint:disable:next force_try
         let aboutRegex = try! NSRegularExpression(
             pattern: "(the )?(one|article|item|thing )?about (.+)",
             options: .caseInsensitive)
@@ -252,6 +268,8 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             }
         }
 
+        let range = NSRange(location: 0, length: transcription.count)
+
         print("speechRecognitionFinished(): \(transcription)")
         if transcription == "Play" || transcription == "Resume" {
             self.resume()
@@ -286,8 +304,6 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
 
             self.playArticleAtIndex(index: index)
         } else if transcription.starts(with: "Play ") {
-            let range = NSRange(location: 0, length: transcription.count)
-
             var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
             if match != nil {
                 let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
@@ -303,8 +319,6 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 }
             }
         } else if transcription.starts(with: "Skim ") || transcription.starts(with: "Summarize ") {
-            let range = NSRange(location: 0, length: transcription.count)
-
             var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
             if match != nil {
                 let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
@@ -318,6 +332,42 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                     let index = ordinalToIndex(ordinal: ordinal)
                     self.skimArticleAtIndex(index: index)
                 }
+            }
+        } else if volumeUpRegex.firstMatch(in: transcription, options: [], range: range) != nil {
+            self.increaseVolume()
+            if self.wasPlaying {
+                self.resume()
+            }
+        } else if volumeDownRegex.firstMatch(in: transcription, options: [], range: range) != nil {
+            self.decreaseVolume()
+            if self.wasPlaying {
+                self.resume()
+            }
+        } else if transcription == "Mute" {
+            self.setVolume(0)
+            if self.wasPlaying {
+                self.resume()
+            }
+        } else if transcription == "Unmute" {
+            if self.lastVolume > 0 {
+                self.setVolume(self.lastVolume)
+            }
+
+            if self.wasPlaying {
+                self.resume()
+            }
+        } else if transcription.contains(word: "volume") {
+            let match = setVolumeRegex.firstMatch(in: transcription, options: [], range: range)
+            if match != nil {
+                let volumeString = (transcription as NSString).substring(with: match!.range(at: 3))
+                let volume: Float? = Float(volumeString)
+                if volume != nil {
+                    self.setVolume(volume! / 100)
+                }
+            }
+
+            if self.wasPlaying {
+                self.resume()
             }
         } else {
             print("Unhandled command: \(transcription)")
@@ -372,6 +422,37 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 return
             }
             requiredDelegate.resume()
+        }
+    }
+
+    private func increaseVolume() {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.increaseVolume()
+        }
+    }
+
+    private func decreaseVolume() {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+            requiredDelegate.decreaseVolume()
+        }
+    }
+
+    private func setVolume(_ volume: Float) {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.playerDelegateFromMain else {
+                return
+            }
+
+            let result = requiredDelegate.setVolume(volume)
+            if result != nil {
+                self.lastVolume = result!.0
+            }
         }
     }
 

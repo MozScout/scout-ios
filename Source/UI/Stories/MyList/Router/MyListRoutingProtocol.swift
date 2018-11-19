@@ -13,5 +13,8 @@ protocol MyListRoutingProtocol {
     var stopPlayer: (() -> Void)? { get set }
     var resumePlayer: (() -> Void)? { get set }
     var isPlaying: (() -> Bool)? { get set }
+    var increasePlayerVolume: (() -> Void)? { get set }
+    var decreasePlayerVolume: (() -> Void)? { get set }
+    var setPlayerVolume: ((Float) -> (Float, Float)?)? { get set }
     func show(from viewController: UIViewController, animated: Bool, withUserID: String)
 }
