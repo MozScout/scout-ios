@@ -29,7 +29,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate let cellRowReuseId = "cellrow"
     fileprivate var spinner: UIActivityIndicatorView?
-    fileprivate var articleNumber: Int = 0
+    fileprivate var articleNumber: Int = -1
 
     var selectedIndex = IndexPath()
     var scoutClient: ScoutHTTPClient!
@@ -195,7 +195,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         // swiftlint:disable:next force_try
         let ordinalRegex = try! NSRegularExpression(
             // swiftlint:disable:next line_length
-            pattern: "(the )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last|latest)( (one|article|item|thing))?",
+            pattern: "(the )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last|latest|next|previous)( (one|article|item|thing))?",
             options: .caseInsensitive)
 
         func ordinalToIndex(ordinal: String) -> Int {
@@ -227,6 +227,26 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                     } else {
                         return -1
                     }
+                case "next":
+                    if self.scoutTitles != nil {
+                        if self.articleNumber + 1 >= self.scoutTitles!.count {
+                            return 0
+                        } else {
+                            return self.articleNumber + 1
+                        }
+                    } else {
+                        return -1
+                    }
+                case "previous":
+                    if self.scoutTitles != nil {
+                        if self.articleNumber - 1 < 0 {
+                            return self.scoutTitles!.count - 1
+                        } else {
+                            return self.articleNumber - 1
+                        }
+                    } else {
+                        return -1
+                    }
                 default:
                     return -1
             }
@@ -239,6 +259,32 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             self.pause()
         } else if transcription == "Stop" {
             self.stop()
+        } else if transcription == "Next" {
+            var index: Int
+            if self.scoutTitles != nil {
+                if self.articleNumber + 1 >= self.scoutTitles!.count {
+                    index = 0
+                } else {
+                    index = self.articleNumber + 1
+                }
+            } else {
+                index = -1
+            }
+
+            self.playArticleAtIndex(index: index)
+        } else if transcription == "Previous" {
+            var index: Int
+            if self.scoutTitles != nil {
+                if self.articleNumber - 1 < 0 {
+                    index = self.scoutTitles!.count - 1
+                } else {
+                    index = self.articleNumber - 1
+                }
+            } else {
+                index = -1
+            }
+
+            self.playArticleAtIndex(index: index)
         } else if transcription.starts(with: "Play ") {
             let range = NSRange(location: 0, length: transcription.count)
 
@@ -332,11 +378,13 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     private func playArticleAtIndex(index: Int) {
         print("playArticleAtIndex(\(index))")
         if index < 0 {
+            self.stop()
             return
         }
 
         if let scoutTitles = self.scoutTitles {
             if index >= scoutTitles.count {
+                self.stop()
                 return
             }
 
@@ -344,6 +392,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             _ = self.scoutClient.getArticleLink(userid: self.userID,
                                                 url: (self.scoutTitles![index].resolvedURL?.absoluteString)!,
                                                 successBlock: { (scoutArticle) in
+                                                    self.articleNumber = index
                                                     DispatchQueue.main.async {
                                                         guard let requiredDelegate = self.playerDelegateFromMain else {
                                                             self.hideHUD()
@@ -394,11 +443,13 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     private func skimArticleAtIndex(index: Int) {
         print("skimArticleAtIndex(\(index))")
         if index < 0 {
+            self.stop()
             return
         }
 
         if let scoutTitles = self.scoutTitles {
             if index >= scoutTitles.count {
+                self.stop()
                 return
             }
 
@@ -408,6 +459,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                                                 successBlock: { (scoutArticle) in
                                                     DispatchQueue.main.async {
                                                         if scoutArticle.resolvedURL != nil {
+                                                            self.articleNumber = index
                                                             guard let requiredDelegate =
                                                                 self.playerDelegateFromMain else {
                                                                     self.hideHUD()
@@ -492,9 +544,7 @@ extension MyListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? MyListTableViewCell
-
-            else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? MyListTableViewCell else { return }
 
         if cell.isExpanded {
             self.expandedRows.remove(indexPath.row)
