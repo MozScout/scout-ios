@@ -195,13 +195,13 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         // swiftlint:disable:next force_try
         let ordinalRegex = try! NSRegularExpression(
             // swiftlint:disable:next line_length
-            pattern: "(the )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last)( (one|article|item|thing))?",
+            pattern: "(the )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last|latest)( (one|article|item|thing))?",
             options: .caseInsensitive)
 
         func ordinalToIndex(ordinal: String) -> Int {
             print("ordinalToIndex(\(ordinal))")
             switch ordinal {
-                case "first":
+                case "first", "latest":
                     return 0
                 case "second":
                     return 1
@@ -256,7 +256,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                     self.playArticleAtIndex(index: index)
                 }
             }
-        } else if transcription.starts(with: "Skim ") {
+        } else if transcription.starts(with: "Skim ") || transcription.starts(with: "Summarize ") {
             let range = NSRange(location: 0, length: transcription.count)
 
             var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
