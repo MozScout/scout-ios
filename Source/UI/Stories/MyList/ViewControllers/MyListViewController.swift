@@ -14,6 +14,7 @@ protocol PlayListDelegate: class {
     func stop()
     func resume()
     func playing() -> Bool
+    func playerVisible() -> Bool
     func increaseVolume()
     func decreaseVolume()
     func setVolume(_ volume: Float) -> (Float, Float)?
@@ -318,7 +319,13 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         let range = NSRange(location: 0, length: transcription.count)
 
         print("speechRecognitionFinished(): \(transcription)")
-        if transcription == "Play" || transcription == "Resume" {
+        if transcription == "Play" {
+            if self.playerVisible() {
+                self.resume()
+            } else {
+                self.playArticleAtIndex(index: 0)
+            }
+        } else if transcription == "Resume" {
             self.resume()
         } else if transcription == "Pause" {
             self.pause()
@@ -518,6 +525,14 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             }
             self.speechService.startRecording()
         }
+    }
+
+    private func playerVisible() -> Bool {
+        guard let requiredDelegate = self.playerDelegateFromMain else {
+            return false
+        }
+
+        return requiredDelegate.playerVisible()
     }
 
     private func pause() {

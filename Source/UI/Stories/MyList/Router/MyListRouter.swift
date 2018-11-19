@@ -14,6 +14,7 @@ class MyListRouter {
     var stopPlayer: (() -> Void)?
     var resumePlayer: (() -> Void)?
     var isPlaying: (() -> Bool)?
+    var isPlayerVisible: (() -> Bool)?
     var increasePlayerVolume: (() -> Void)?
     var decreasePlayerVolume: (() -> Void)?
     var setPlayerVolume: ((Float) -> (Float, Float)?)?
@@ -75,6 +76,14 @@ extension MyListRouter: PlayListDelegate {
     func playing() -> Bool {
         if self.isPlaying != nil {
             return self.isPlaying!()
+        }
+
+        return false
+    }
+
+    func playerVisible() -> Bool {
+        if self.isPlayerVisible != nil {
+            return self.isPlayerVisible!()
         }
 
         return false

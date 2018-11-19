@@ -109,6 +109,9 @@ private extension ApplicationRouter {
         self.myListRouter.isPlaying = {
             return self.playerRouter.playing()
         }
+        self.myListRouter.isPlayerVisible = {
+            return self.playerRouter.playerVisible()
+        }
         self.myListRouter.increasePlayerVolume = {
             self.playerRouter.increaseVolume()
         }
