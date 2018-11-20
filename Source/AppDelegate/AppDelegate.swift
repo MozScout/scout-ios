@@ -4,6 +4,7 @@
 //
 //
 
+import AVFoundation
 import UIKit
 
 @UIApplicationMain
@@ -15,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         let configuration = AppConfiguration()
+
+        // Set up audio session here, since it's used by both the player and the speech service.
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .voiceChat, options: .defaultToSpeaker)
+            try audioSession.setActive(true, options: [.notifyOthersOnDeactivation])
+        } catch {}
+
         self.applicationAssembly = ApplicationAssembly(with: configuration)
         self.applicationRouter = ApplicationRouter(with: self.applicationAssembly)
         // swiftlint:disable:next force_cast

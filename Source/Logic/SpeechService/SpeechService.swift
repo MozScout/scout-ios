@@ -22,13 +22,10 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     public weak var delegate: SBSpeechRecognizerDelegate?
 
     private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
-
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-
     private var recognitionTask: SFSpeechRecognitionTask?
-
+    private var recognitionTimeout: Timer?
     private var audioEngine = AVAudioEngine()
-
     private var snowboyWrapper: SnowboyWrapper!
     private var dingSound: AVAudioPlayer!
     private var dongSound: AVAudioPlayer!
@@ -58,8 +55,6 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         self.speechRecognizer.delegate = self
     }
 
-    private var speechRecognitionTimeout: Timer?
-
     var speechTimeoutInterval: TimeInterval = 2 {
         didSet {
             restartSpeechTimeout()
@@ -69,13 +64,12 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     private func restartSpeechTimeout() {
         if speechTimeoutInterval != 0 {
             self.speechMode = .recognition
-            speechRecognitionTimeout?.invalidate()
-
-            speechRecognitionTimeout = Timer.scheduledTimer(timeInterval: speechTimeoutInterval,
-                                                            target: self,
-                                                            selector: #selector(timedOut),
-                                                            userInfo: nil,
-                                                            repeats: false)
+            recognitionTimeout?.invalidate()
+            recognitionTimeout = Timer.scheduledTimer(timeInterval: speechTimeoutInterval,
+                                                      target: self,
+                                                      selector: #selector(timedOut),
+                                                      userInfo: nil,
+                                                      repeats: false)
         }
     }
 
@@ -93,11 +87,6 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
             self.recognitionRequest = nil
             self.recognitionTask = nil
         }
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(.playAndRecord, mode: .voiceChat)
-            try audioSession.setActive(true, options: [.notifyOthersOnDeactivation])
-        } catch {}
 
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
 
@@ -171,8 +160,8 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
 
         recognitionRequest?.endAudio()
 
-        speechRecognitionTimeout?.invalidate()
-        speechRecognitionTimeout = nil
+        recognitionTimeout?.invalidate()
+        recognitionTimeout = nil
     }
 
     func beginWakeWordDetector() {
@@ -181,20 +170,19 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         }
 
         self.speechMode = .hotword
-        let inputFormat = audioEngine.inputNode.outputFormat(forBus: 1)
-        let recordingFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
-                                            sampleRate: 16000.0,
-                                            channels: 1,
-                                            interleaved: false)!
-        let converter = AVAudioConverter(from: inputFormat, to: recordingFormat)
-        let seconds = 2.0
-        let bufferSize = AVAudioFrameCount(inputFormat.sampleRate * seconds)
+        let sourceFormat = audioEngine.inputNode.outputFormat(forBus: 1)
+        let targetFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
+                                         sampleRate: 16000.0,
+                                         channels: 1,
+                                         interleaved: false)!
+        let converter = AVAudioConverter(from: sourceFormat, to: targetFormat)
+        let bufferSize = AVAudioFrameCount(sourceFormat.sampleRate)
         audioEngine.inputNode.installTap(
             onBus: 1,
             bufferSize: bufferSize,
-            format: inputFormat) { (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
-            let target = AVAudioPCMBuffer(pcmFormat: recordingFormat,
-                                          frameCapacity: AVAudioFrameCount(recordingFormat.sampleRate * seconds))!
+            format: sourceFormat) { (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
+            let target = AVAudioPCMBuffer(pcmFormat: targetFormat,
+                                          frameCapacity: AVAudioFrameCount(targetFormat.sampleRate))!
             var error: NSError?
             converter?.convert(to: target, error: &error, withInputFrom: { (_, outStatus) -> AVAudioBuffer? in
                 outStatus.pointee = AVAudioConverterInputStatus.haveData
