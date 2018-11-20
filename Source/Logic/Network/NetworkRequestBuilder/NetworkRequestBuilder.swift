@@ -30,9 +30,9 @@ class NetworkRequestBuilder: NetworkRequestBuilderProtocol {
     // MARK: Auth
     func buildPostRegistrationRequest(withUserName userName: String, email: String, password: String) -> URLRequest? {
         let parameters = [
-                             "name": userName,
-                             "email": email,
-                             "password": password
+            "name": userName,
+            "email": email,
+            "password": password
         ]
 
         let URLString = String(format: "%@api/auth/register", self.baseURLString)

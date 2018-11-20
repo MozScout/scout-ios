@@ -78,3 +78,6 @@ fastlane/test_output
 /*.gcno
  
 # End of https://www.gitignore.io/api/swift,xcode
+
+.DS_Store
+._.DS_Store

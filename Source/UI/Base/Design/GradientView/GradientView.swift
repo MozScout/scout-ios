@@ -23,11 +23,11 @@ class GradientView: UIView {
         }
     }
 
-    var startColor = Design.Color.purple {
+    var startColor = Design.Color.red {
         didSet { self.replace(startColor: startColor, endColor: endColor) }
     }
 
-    var endColor = Design.Color.lightBlue {
+    var endColor = Design.Color.orange {
         didSet { self.replace(startColor: startColor, endColor: endColor) }
     }
 
