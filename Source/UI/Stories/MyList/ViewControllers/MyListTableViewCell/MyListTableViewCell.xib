@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,26 +41,26 @@
                         <rect key="frame" x="100" y="0.0" width="220" height="100"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsH-0C-Kbp">
-                                <rect key="frame" x="9" y="42" width="204" height="16.5"/>
+                                <rect key="frame" x="9" y="41.5" width="204" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whk-sn-vcJ">
-                                <rect key="frame" x="9" y="68.5" width="30.5" height="12"/>
+                                <rect key="frame" x="9" y="68.5" width="33" height="12"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UUA-U0-Bnt">
-                                <rect key="frame" x="9" y="22" width="14" height="14"/>
+                                <rect key="frame" x="9" y="21.5" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="PTD-WS-Z6F"/>
                                     <constraint firstAttribute="height" constant="14" id="pRb-cj-GTa"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e68-69-ecK">
-                                <rect key="frame" x="31" y="22" width="40" height="14"/>
+                                <rect key="frame" x="31" y="21.5" width="41.5" height="14"/>
                                 <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -119,7 +123,7 @@
                                     <constraint firstAttribute="height" constant="44" id="T8k-j4-Ruk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Skim">
+                                <state key="normal" title="Summarize">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

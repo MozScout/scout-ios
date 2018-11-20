@@ -36,7 +36,7 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
         gradientButton.direction = .horizontally(centered: 0.1)
 
         let rawCenterString: NSString = """
-        Mozilla strives to only collect what we need to provide and improve Scout for everyone. Learn More.
+        Mozilla strives to only collect what we need to provide and improve Firefox Listen for everyone. Learn More.
         """
         let centerText = NSMutableAttributedString(string: rawCenterString as String,
                                                    attributes: [
