@@ -217,13 +217,6 @@ class PlayerViewController: UIViewController {
     }
 
     internal func play() {
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(.playAndRecord, mode: .voiceChat)
-            try audioSession.setActive(true, options: [.notifyOthersOnDeactivation])
-        } catch {
-            print(error)
-        }
         audioPlayer.enableRate = true
         audioPlayer.play()
     }
