@@ -28,6 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.applicationRouter = ApplicationRouter(with: self.applicationAssembly)
         // swiftlint:disable:next force_cast
         self.keychainService = self.applicationAssembly.assemblyKeychainService() as! KeychainService
+
+        super.init()
+        self.setDefaultPreferences()
+    }
+
+    private func setDefaultPreferences() {
+        UserDefaults().register(defaults: [
+            "articlePlaybackSpeed": 1.0,
+            "podcastPlaybackSpeed": 1.0,
+            "showRecommendedArticles": true,
+            "sendUsageData": true
+        ])
     }
 
     func application(_ application: UIApplication,
