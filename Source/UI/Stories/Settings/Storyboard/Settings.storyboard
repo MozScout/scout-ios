@@ -106,7 +106,7 @@
                                             <constraint firstAttribute="height" constant="100" id="pVQ-7R-SNb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="26"/>
-                                        <state key="normal" title="1x">
+                                        <state key="normal" title="1.00x">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -114,6 +114,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="articleAudioRateButtonTapped:" destination="9Bf-0F-jlh" eventType="touchUpInside" id="4fv-p4-ciq"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVb-Ap-t6U">
                                         <rect key="frame" x="70" y="120.5" width="47.5" height="15"/>
@@ -132,6 +135,9 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="podcastAudioRateButtonTapped:" destination="9Bf-0F-jlh" eventType="touchUpInside" id="XYu-8n-vit"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Podcasts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQi-qK-1sN">
                                         <rect key="frame" x="253.5" y="120.5" width="56" height="15"/>
@@ -162,6 +168,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMI-34-Muz" userLabel="Show Recommended Articles Switch">
                                         <rect key="frame" x="302" y="165" width="51" height="31"/>
                                         <color key="onTintColor" red="0.08235294118" green="0.4941176471" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="showRecommendedArticlesValueChanged:" destination="9Bf-0F-jlh" eventType="valueChanged" id="f8v-Kt-m4X"/>
+                                        </connections>
                                     </switch>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQO-0o-2f2" userLabel="Show Recommended Articles Bottom Divider">
                                         <rect key="frame" x="0.0" y="202" width="375" height="1"/>
@@ -181,6 +190,9 @@
                                         <state key="normal" title="Enable Sharing" image="arrowNextGray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="enableSharingButtonTapped:" destination="9Bf-0F-jlh" eventType="touchUpInside" id="Svc-Jp-mSP"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htb-ch-8YX" userLabel="Privacy View">
                                         <rect key="frame" x="0.0" y="247" width="375" height="30"/>
@@ -228,6 +240,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRf-Oy-sPE" userLabel="Send Usage Switch">
                                         <rect key="frame" x="302" y="290" width="51" height="31"/>
                                         <color key="onTintColor" red="0.08235294118" green="0.4941176471" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="sendUsageDataValueChanged:" destination="9Bf-0F-jlh" eventType="valueChanged" id="vtF-kb-1Ev"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2B-ua-iey" userLabel="Send Usage Info">
                                         <rect key="frame" x="10" y="328" width="354" height="48"/>
@@ -287,6 +302,9 @@
                                         <state key="normal" title="Sign Out" image="arrowNextGray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signOutButtonTapped:" destination="9Bf-0F-jlh" eventType="touchUpInside" id="hbp-9x-oGl"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Djt-Gx-xsa" userLabel="Sign Out Bottom Divider">
                                         <rect key="frame" x="0.0" y="462" width="375" height="1"/>
@@ -333,6 +351,9 @@
                                         <state key="normal" title="Feedback" image="arrowNextGray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="feedbackButtonTapped:" destination="9Bf-0F-jlh" eventType="touchUpInside" id="VG6-jz-xpm"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-5J-DWM" userLabel="Feedback Bottom Divider">
                                         <rect key="frame" x="0.0" y="537" width="375" height="1"/>
@@ -352,6 +373,9 @@
                                         <state key="normal" title="Privacy Notice" image="arrowNextGray">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="privacyNoticeButtonTapped:" destination="9Bf-0F-jlh" eventType="touchUpInside" id="LoS-JW-LGF"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tei-Ku-AoZ" userLabel="Privacy Notice Bottom Divider">
                                         <rect key="frame" x="0.0" y="582" width="375" height="1"/>
@@ -464,8 +488,12 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="accountLabel" destination="hXm-ff-Kfp" id="miY-li-ozh"/>
+                        <outlet property="articleAudioRateButton" destination="Oxm-2i-jkF" id="GRT-4a-4ef"/>
                         <outlet property="gradientButton" destination="qWx-d4-N3Q" id="a9r-3u-5Ac"/>
                         <outlet property="infoLabel" destination="p2B-ua-iey" id="sQG-CS-1Pn"/>
+                        <outlet property="podcastAudioRateButton" destination="S9Z-Jw-upS" id="VtE-qG-8lQ"/>
+                        <outlet property="sendUsageDataSwitch" destination="SRf-Oy-sPE" id="YjO-4g-W8M"/>
+                        <outlet property="showRecommendedArticlesSwitch" destination="vMI-34-Muz" id="Yzb-dD-0Ze"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wec-Ka-yCu" userLabel="First Responder" sceneMemberID="firstResponder"/>

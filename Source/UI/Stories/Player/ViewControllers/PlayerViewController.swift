@@ -47,6 +47,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var gradientButton: GradientButton!
 
+    private var userDefaults = UserDefaults()
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -162,6 +164,8 @@ class PlayerViewController: UIViewController {
                                                       userInfo: nil,
                                                       repeats: true)
                 }
+
+                self.setAudioRate(self.userDefaults.float(forKey: "articlePlaybackSpeed"))
                 self.play()
             } catch let error {
                 print(error.localizedDescription)
@@ -356,7 +360,7 @@ class PlayerViewController: UIViewController {
     private func setAudioRate(_ rate: Float) {
         self.audioRate = max(0.5, min(3.0, rate))
         DispatchQueue.main.async {
-            self.audioRateButton.setTitle(String(format: "%.2fX", self.audioRate), for: .normal)
+            self.audioRateButton.setTitle(String(format: "%.2fx", self.audioRate), for: .normal)
             self.audioPlayer.rate = self.audioRate
         }
     }
