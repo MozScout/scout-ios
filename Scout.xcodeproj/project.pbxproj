@@ -472,7 +472,7 @@
 		5637D29B20A3257800112F1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5637D2C520A343A400112F1F /* SettingsViewController */,
+				5637D2C620A343AE00112F1F /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -574,14 +574,6 @@
 				5637D2C320A3426200112F1F /* HelpInformationViewController.swift */,
 			);
 			path = HelpInformationViewController;
-			sourceTree = "<group>";
-		};
-		5637D2C520A343A400112F1F /* SettingsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5637D2C620A343AE00112F1F /* SettingsViewController.swift */,
-			);
-			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
 		5637D2C820A34A4100112F1F /* GradientButton */ = {
