@@ -51,12 +51,6 @@
                                             <constraint firstAttribute="height" constant="24" id="yx0-Rx-LFD"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGe-JI-xah">
-                                        <rect key="frame" x="340" y="10" width="24" height="24"/>
-                                        <state key="normal" image="handsFree">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -64,8 +58,6 @@
                                     <constraint firstItem="6kf-dI-QlH" firstAttribute="centerY" secondItem="1F3-Jb-BZf" secondAttribute="centerY" id="JD3-D7-GPM"/>
                                     <constraint firstAttribute="bottom" secondItem="qWx-d4-N3Q" secondAttribute="bottom" id="Jbx-OF-WcH"/>
                                     <constraint firstAttribute="height" constant="44" id="QDI-2y-EPi"/>
-                                    <constraint firstItem="oGe-JI-xah" firstAttribute="centerY" secondItem="1F3-Jb-BZf" secondAttribute="centerY" id="VX0-QK-BnD"/>
-                                    <constraint firstAttribute="trailing" secondItem="oGe-JI-xah" secondAttribute="trailing" constant="11" id="Vzr-hq-8rH"/>
                                     <constraint firstItem="6kf-dI-QlH" firstAttribute="leading" secondItem="1F3-Jb-BZf" secondAttribute="leading" constant="14" id="W43-gu-N0S"/>
                                     <constraint firstItem="qWx-d4-N3Q" firstAttribute="leading" secondItem="1F3-Jb-BZf" secondAttribute="leading" id="aE8-4J-SO2"/>
                                     <constraint firstItem="w2I-I3-5Tk" firstAttribute="centerY" secondItem="1F3-Jb-BZf" secondAttribute="centerY" id="vLH-TV-oP2"/>
@@ -483,7 +475,6 @@
     </scenes>
     <resources>
         <image name="arrowNextGray" width="8" height="13"/>
-        <image name="handsFree" width="24" height="24"/>
         <image name="logo" width="100" height="112"/>
     </resources>
 </document>

@@ -31,9 +31,10 @@ class PlayerViewController: UIViewController {
     fileprivate let loadingTextLabel = UILabel()
 
     @IBOutlet weak var faviconImage: UIImageView!
+    @IBOutlet weak var playPauseView: UIView!
     @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var fullLenghtButton: UIButton!
-    @IBOutlet weak var skimButton: UIButton!
+    @IBOutlet weak var modeImage: UIImageView!
+    @IBOutlet weak var modeButton: UIButton!
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var backwardButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
@@ -55,6 +56,9 @@ class PlayerViewController: UIViewController {
         //self.setupMicButton()
         configureView()
         spinner = self.addSpinner()
+        playPauseView.layer.cornerRadius = CGFloat(30.0)
+        playPauseView.layer.borderWidth = 1
+        playPauseView.layer.borderColor = UIColor.black.cgColor
     }
 
     // MARK: - Private methods
@@ -94,11 +98,11 @@ class PlayerViewController: UIViewController {
         self.titleLabel.text = model.title
 
         if isFullArticle {
-            fullLenghtButton.isSelected = true
-            skimButton.isSelected = false
+            modeButton.setTitle("Summary", for: .normal)
+            modeImage.image = UIImage(named: "summary")!
         } else {
-            fullLenghtButton.isSelected = false
-            skimButton.isSelected = true
+            modeButton.setTitle("Full Article", for: .normal)
+            modeImage.image = UIImage(named: "reader")!
         }
         self.downloadfile(url: model.url)
     }
@@ -282,10 +286,19 @@ class PlayerViewController: UIViewController {
         }
     }
 
-    @IBAction func skimButtonTapped(_ sender: Any) {
+    @IBAction func modeButtonTapped(_ sender: Any) {
         audioPlayer.stop()
-        fullLenghtButton.isSelected = false
-        skimButton.isSelected = true
+
+        if modeButton.currentTitle == "Summary" {
+            self.playSummary()
+        } else {
+            self.playFullArticle()
+        }
+    }
+
+    private func playSummary() {
+        modeButton.setTitle("Full Article", for: .normal)
+        modeImage.image = UIImage(named: "reader")!
 
         self.showHUD()
         _ = self.scoutClient.getSummaryLink(userid: keychainService.value(for: "userID")!,
@@ -299,7 +312,7 @@ class PlayerViewController: UIViewController {
                                                 } else {
                                                     DispatchQueue.main.async {
                                                         self.showAlert(errorMessage: "Skim version is not available")
-                                                    self.playFullArticle(self)
+                                                        self.playFullArticle()
                                                     }
                                                 }
                                             }, failureBlock: { (_, _, _) in
@@ -311,10 +324,9 @@ class PlayerViewController: UIViewController {
                                             })
     }
 
-    @IBAction func playFullArticle(_ sender: Any) {
-        audioPlayer.stop()
-        fullLenghtButton.isSelected = true
-        skimButton.isSelected = false
+    private func playFullArticle() {
+        modeButton.setTitle("Summary", for: .normal)
+        modeImage.image = UIImage(named: "summary")!
 
         self.showHUD()
         _ = self.scoutClient.getArticleLink(userid: keychainService.value(for: "userID")!,
@@ -335,14 +347,14 @@ class PlayerViewController: UIViewController {
 
     @IBAction func audioRateButtonTapped(_ sender: Any) {
         if self.audioRate >= 3.0 {
-            self.setAudioRate(1.0)
+            self.setAudioRate(0.5)
         } else {
             self.setAudioRate(self.audioRate + 0.25)
         }
     }
 
     private func setAudioRate(_ rate: Float) {
-        self.audioRate = max(0.25, min(3.0, rate))
+        self.audioRate = max(0.5, min(3.0, rate))
         DispatchQueue.main.async {
             self.audioRateButton.setTitle(String(format: "%.2fX", self.audioRate), for: .normal)
             self.audioPlayer.rate = self.audioRate
@@ -369,9 +381,9 @@ class PlayerViewController: UIViewController {
     @IBAction func readArticleButtonTapped(_ sender: Any) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(
-		model.resolvedURL!,
-		options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
-		completionHandler: nil)
+                model.resolvedURL!,
+                options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
+                completionHandler: nil)
         } else {
             UIApplication.shared.openURL(model.resolvedURL!)
         }
@@ -429,8 +441,7 @@ class PlayerViewController: UIViewController {
             self.forwardButton.isEnabled = false
             self.backwardButton.isEnabled = false
             self.loadingTextLabel.isHidden = false
-            self.fullLenghtButton.isEnabled = false
-            self.skimButton.isEnabled = false
+            self.modeButton.isEnabled = false
             self.slider.isHidden = true
             self.startTime.isHidden = true
             self.endTime.isHidden = true
@@ -445,8 +456,7 @@ class PlayerViewController: UIViewController {
             self.pauseButton.isEnabled = true
             self.forwardButton.isEnabled = true
             self.backwardButton.isEnabled = true
-            self.fullLenghtButton.isEnabled = true
-            self.skimButton.isEnabled = true
+            self.modeButton.isEnabled = true
             self.loadingTextLabel.isHidden = true
             self.slider.isHidden = false
             self.startTime.isHidden = false

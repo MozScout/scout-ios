@@ -123,7 +123,7 @@
                                     <constraint firstAttribute="height" constant="44" id="T8k-j4-Ruk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Summarize">
+                                <state key="normal" title="Summary">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
