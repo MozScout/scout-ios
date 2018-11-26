@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -78,7 +78,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqG-05-Cyb">
-                                                <rect key="frame" x="10" y="7.5" width="74" height="15"/>
+                                                <rect key="frame" x="10" y="7.6666666666666714" width="74" height="15"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Oxm-2i-jkF" userLabel="Article Playback Speed">
-                                        <rect key="frame" x="0.0" y="58" width="187.5" height="100"/>
+                                        <rect key="frame" x="0.0" y="58" width="187.66666666666666" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="pVQ-7R-SNb"/>
                                         </constraints>
@@ -119,13 +119,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVb-Ap-t6U">
-                                        <rect key="frame" x="70" y="120.5" width="47.5" height="15"/>
+                                        <rect key="frame" x="70" y="120.66666666666666" width="47.666666666666657" height="15"/>
                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="S9Z-Jw-upS" userLabel="Podcast Playback Speed">
-                                        <rect key="frame" x="187.5" y="58" width="187.5" height="100"/>
+                                        <rect key="frame" x="187.66666666666663" y="58" width="187.33333333333337" height="100"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="26"/>
                                         <state key="normal" title="1.00x">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,7 +140,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Podcasts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQi-qK-1sN">
-                                        <rect key="frame" x="253.5" y="120.5" width="56" height="15"/>
+                                        <rect key="frame" x="253.33333333333337" y="120.66666666666666" width="56" height="15"/>
                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -160,7 +160,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Recommended Articles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuD-P2-ao5">
-                                        <rect key="frame" x="11" y="172" width="193.5" height="17"/>
+                                        <rect key="frame" x="11" y="172" width="193.66666666666666" height="17"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -212,7 +212,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50c-SA-rSV">
-                                                <rect key="frame" x="10" y="7.5" width="45" height="15"/>
+                                                <rect key="frame" x="10" y="7.6666666666666856" width="45" height="15"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -232,7 +232,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Usage Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjR-yP-FT6">
-                                        <rect key="frame" x="11" y="297" width="114.5" height="17"/>
+                                        <rect key="frame" x="11.000000000000007" y="297" width="114.66666666666669" height="17"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -271,7 +271,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not signed in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXm-ff-Kfp">
-                                                <rect key="frame" x="10" y="7.5" width="79.5" height="15"/>
+                                                <rect key="frame" x="10" y="7.6666666666666856" width="79.666666666666671" height="15"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -324,7 +324,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkz-Zw-ItB">
-                                                <rect key="frame" x="10" y="7.5" width="37" height="15"/>
+                                                <rect key="frame" x="10" y="7.6666666666666288" width="37" height="15"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -474,8 +474,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2an-7L-une" firstAttribute="leading" secondItem="dkV-9e-UQR" secondAttribute="leading" id="NNI-yl-cAl"/>
-                            <constraint firstItem="2an-7L-une" firstAttribute="trailing" secondItem="dkV-9e-UQR" secondAttribute="trailing" id="ZJx-aS-QDg"/>
+                            <constraint firstItem="2an-7L-une" firstAttribute="leading" secondItem="1F3-Jb-BZf" secondAttribute="leading" id="NNI-yl-cAl"/>
+                            <constraint firstItem="2an-7L-une" firstAttribute="trailing" secondItem="1F3-Jb-BZf" secondAttribute="trailing" id="ZJx-aS-QDg"/>
                             <constraint firstItem="1F3-Jb-BZf" firstAttribute="trailing" secondItem="dkV-9e-UQR" secondAttribute="trailing" id="ZfD-gZ-CJD"/>
                             <constraint firstItem="1F3-Jb-BZf" firstAttribute="leading" secondItem="dkV-9e-UQR" secondAttribute="leading" id="ixp-Ww-88l"/>
                             <constraint firstItem="2an-7L-une" firstAttribute="bottom" secondItem="dkV-9e-UQR" secondAttribute="bottom" id="rtZ-GA-VEh"/>

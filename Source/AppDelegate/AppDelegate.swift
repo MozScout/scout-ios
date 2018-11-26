@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "articlePlaybackSpeed": 1.0,
             "podcastPlaybackSpeed": 1.0,
             "showRecommendedArticles": true,
-            "sendUsageData": true
+            "sendUsageData": true,
+            "listenForWakeWord": true
         ])
     }
 

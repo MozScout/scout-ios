@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 protocol VoiceInputRoutingProtocol {
-    var linkIsFound: ((ScoutArticle, Bool) -> Void)? { get set }
-    func show(from viewController: UIViewController, animated: Bool, userID: String)
+    var onCloseButtonTap: (() -> Void)? { get set }
+    func show(from viewController: UIViewController, animated: Bool)
+    func addText(_ text: String, fromUser: Bool)
+    func setImage(_ image: UIImage)
 }

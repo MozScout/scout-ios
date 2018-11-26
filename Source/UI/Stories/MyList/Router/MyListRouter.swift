@@ -21,6 +21,10 @@ class MyListRouter {
     var increasePlayerSpeed: (() -> Void)?
     var decreasePlayerSpeed: (() -> Void)?
     var skipPlayerTime: ((Int) -> Void)?
+    var openVoiceInput: (() -> Void)?
+    var hideVoiceInput: (() -> Void)?
+    var addVoiceInputText: ((String, Bool) -> Void)?
+    var setVoiceInputImage: ((UIImage) -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
 
@@ -34,6 +38,7 @@ extension MyListRouter: MyListRoutingProtocol {
         let listVC = assembly.assemblyMyListViewController()
         listVC.userID = withUserID
         listVC.playerDelegateFromMain = self
+        listVC.voiceInputDelegateFromMain = self
         self.showViewController(viewController: listVC, fromViewController: viewController, animated: animated)
     }
 
@@ -115,5 +120,23 @@ extension MyListRouter: PlayListDelegate {
 
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool) {
         self.linkIsFound?(withModel, isFullArticle)
+    }
+}
+
+extension MyListRouter: VoiceInputDelegate {
+    func openVoiceInputFromMain() {
+        self.openVoiceInput?()
+    }
+
+    func hideVoiceInputFromMain() {
+        self.hideVoiceInput?()
+    }
+
+    func addVoiceInputTextFromMain(_ text: String, fromUser: Bool) {
+        self.addVoiceInputText?(text, fromUser)
+    }
+
+    func setVoiceInputImageFromMain(_ image: UIImage) {
+        self.setVoiceInputImage?(image)
     }
 }

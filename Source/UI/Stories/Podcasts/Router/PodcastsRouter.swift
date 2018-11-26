@@ -8,6 +8,10 @@ import UIKit
 class PodcastsRouter {
     var linkIsFound: (() -> Void)?
     var addPodcasts: (() -> Void)?
+    var openVoiceInput: (() -> Void)?
+    var hideVoiceInput: (() -> Void)?
+    var addVoiceInputText: ((String, Bool) -> Void)?
+    var setVoiceInputImage: ((UIImage) -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PodcastsAssemblyProtocol
 
@@ -20,6 +24,7 @@ extension PodcastsRouter: PodcastsRoutingProtocol {
     func show(from viewController: UIViewController, animated: Bool, withUserID: String) {
         let podcastsVC = assembly.assemblyPodcastsViewController()
         podcastsVC.podcastsDelegate = self
+        podcastsVC.voiceInputDelegateFromMain = self
         self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
     }
 
@@ -64,5 +69,23 @@ extension PodcastsRouter: PodcastsDelegate {
     }
     func openAddPodcasts() {
         self.addPodcasts?()
+    }
+}
+
+extension PodcastsRouter: VoiceInputDelegate {
+    func openVoiceInputFromMain() {
+        self.openVoiceInput?()
+    }
+
+    func hideVoiceInputFromMain() {
+        self.hideVoiceInput?()
+    }
+
+    func addVoiceInputTextFromMain(_ text: String, fromUser: Bool) {
+        self.addVoiceInputText?(text, fromUser)
+    }
+
+    func setVoiceInputImageFromMain(_ image: UIImage) {
+        self.setVoiceInputImage?(image)
     }
 }

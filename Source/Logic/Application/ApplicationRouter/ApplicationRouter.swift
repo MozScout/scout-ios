@@ -84,18 +84,23 @@ private extension ApplicationRouter {
                                    model: scoutArticle,
                                    fullArticle: isFullArticle)
             self.playerRouter.onBackButtonTap = { [] in
-                self.showMainStory(viewController: self.navigationController, animated: true)
+                self.removePlayerViewController()
             }
-            self.playerRouter.onMicrophoneButtonTap = { [] in
-                self.voiceInputRouter.show(from: self.navigationController,
-                                           animated: true,
-                                           userID: self.mainRouter.userID)
-                self.voiceInputRouter.linkIsFound = { [] scoutArticle, isFullArticle in
-                    self.playerRouter.show(from: self.navigationController,
-                                           animated: true,
-                                           model: scoutArticle,
-                                           fullArticle: isFullArticle) }
+        }
+        self.myListRouter.openVoiceInput = { () in
+            self.voiceInputRouter.show(from: self.navigationController, animated: true)
+            self.voiceInputRouter.onCloseButtonTap = { [] in
+                self.removeVoiceInputViewController()
             }
+        }
+        self.myListRouter.hideVoiceInput = { () in
+            self.removeVoiceInputViewController()
+        }
+        self.myListRouter.addVoiceInputText = { (text, fromUser) in
+            self.voiceInputRouter.addText(text, fromUser: fromUser)
+        }
+        self.myListRouter.setVoiceInputImage = { (image) in
+            self.voiceInputRouter.setImage(image)
         }
         self.myListRouter.pausePlayer = {
             self.playerRouter.pause()
@@ -130,24 +135,6 @@ private extension ApplicationRouter {
         self.myListRouter.skipPlayerTime = { (seconds) in
             self.playerRouter.skip(seconds)
         }
-        self.mainRouter.onMicrophoneButtonTap = { [] in
-            self.voiceInputRouter.show(from: self.navigationController, animated: true, userID: self.mainRouter.userID)
-            self.voiceInputRouter.linkIsFound = { [] scoutArticle, isFullArticle in
-                self.playerRouter.show(from: self.navigationController,
-                                       animated: true,
-                                       model: scoutArticle,
-                                       fullArticle: isFullArticle)
-                self.playerRouter.onBackButtonTap = { [] in
-                    self.showMainStory(viewController: self.navigationController, animated: true)
-                }
-                self.playerRouter.onMicrophoneButtonTap = { [] in
-                    self.voiceInputRouter.show(from: self.navigationController,
-                                               animated: true,
-                                               userID: self.mainRouter.userID)
-                }
-            }
-            if let requiredCompletion = completion { requiredCompletion() }
-        }
         self.podcastsRouter.linkIsFound = { [] in
             self.podcastsRouter.showPodcastDetails(from: self.navigationController,
                                                    animated: true,
@@ -158,10 +145,43 @@ private extension ApplicationRouter {
                                                 animated: true,
                                                 withUserID: self.mainRouter.userID)
         }
+        self.podcastsRouter.openVoiceInput = { () in
+            self.voiceInputRouter.show(from: self.navigationController, animated: true)
+            self.voiceInputRouter.onCloseButtonTap = { [] in
+                self.removeVoiceInputViewController()
+            }
+        }
+        self.podcastsRouter.hideVoiceInput = { () in
+            self.removeVoiceInputViewController()
+        }
+        self.podcastsRouter.addVoiceInputText = { (text, fromUser) in
+            self.voiceInputRouter.addText(text, fromUser: fromUser)
+        }
+        self.podcastsRouter.setVoiceInputImage = { (image) in
+            self.voiceInputRouter.setImage(image)
+        }
     }
 
     func showAuthStory(animated: Bool, completion: VoidBlock? = nil) {
         self.authRouter.show(from: self.navigationController, animated: true)
         if let requiredCompletion = completion { requiredCompletion() }
+    }
+
+    private func removeVoiceInputViewController() {
+        var viewControllers = self.navigationController.viewControllers
+        for (index, element) in viewControllers.enumerated() where element as? VoiceInputViewController != nil {
+            viewControllers.remove(at: index)
+            self.navigationController.setViewControllers(viewControllers, animated: true)
+            break
+        }
+    }
+
+    private func removePlayerViewController() {
+        var viewControllers = self.navigationController.viewControllers
+        for (index, element) in viewControllers.enumerated() where element as? PlayerViewController != nil {
+            viewControllers.remove(at: index)
+            self.navigationController.setViewControllers(viewControllers, animated: true)
+            break
+        }
     }
 }

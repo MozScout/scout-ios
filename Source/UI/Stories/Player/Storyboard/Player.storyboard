@@ -24,10 +24,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ar4-1a-n9z" userLabel="Header">
-                                <rect key="frame" x="0.0" y="44" width="414" height="47"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdp-dz-SSX">
-                                        <rect key="frame" x="10" y="0.0" width="50" height="47"/>
+                                        <rect key="frame" x="10" y="0.0" width="50" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="2y4-ni-DZf"/>
@@ -38,7 +38,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60Z-lA-7WE" userLabel="Open Article Button">
-                                        <rect key="frame" x="354" y="0.0" width="50" height="47"/>
+                                        <rect key="frame" x="354" y="0.0" width="50" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="krW-aP-BQe"/>
                                         </constraints>
@@ -48,7 +48,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLe-FN-PhK" customClass="GradientButton" customModule="Scout" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="3"/>
+                                        <rect key="frame" x="0.0" y="41" width="414" height="3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="3" id="L4G-S2-iva"/>
                                         </constraints>
@@ -58,20 +58,19 @@
                                 <constraints>
                                     <constraint firstItem="Pdp-dz-SSX" firstAttribute="top" secondItem="Ar4-1a-n9z" secondAttribute="top" id="25f-Hm-lc4"/>
                                     <constraint firstAttribute="bottom" secondItem="ZLe-FN-PhK" secondAttribute="bottom" id="5Du-07-5bp"/>
-                                    <constraint firstAttribute="height" constant="47" id="D2A-42-tMW"/>
+                                    <constraint firstAttribute="height" constant="44" id="D2A-42-tMW"/>
                                     <constraint firstItem="ZLe-FN-PhK" firstAttribute="bottom" secondItem="60Z-lA-7WE" secondAttribute="bottom" id="GAk-vD-0BV"/>
                                     <constraint firstAttribute="trailing" secondItem="60Z-lA-7WE" secondAttribute="trailing" constant="10" id="ZG1-U3-JiV"/>
                                     <constraint firstItem="Pdp-dz-SSX" firstAttribute="leading" secondItem="Ar4-1a-n9z" secondAttribute="leading" constant="10" id="ZKg-Un-SQ6"/>
                                     <constraint firstItem="Pdp-dz-SSX" firstAttribute="firstBaseline" secondItem="60Z-lA-7WE" secondAttribute="firstBaseline" id="fFM-DP-sFv"/>
                                     <constraint firstItem="ZLe-FN-PhK" firstAttribute="leading" secondItem="Ar4-1a-n9z" secondAttribute="leading" id="gYr-YV-heU"/>
                                     <constraint firstItem="Pdp-dz-SSX" firstAttribute="top" secondItem="60Z-lA-7WE" secondAttribute="top" id="jTd-CC-t2k"/>
-                                    <constraint firstItem="ZLe-FN-PhK" firstAttribute="top" secondItem="Ar4-1a-n9z" secondAttribute="top" constant="44" id="mLy-y7-T9B"/>
                                     <constraint firstAttribute="trailing" secondItem="ZLe-FN-PhK" secondAttribute="trailing" id="oE7-b3-oUc"/>
                                     <constraint firstItem="Pdp-dz-SSX" firstAttribute="baseline" secondItem="60Z-lA-7WE" secondAttribute="baseline" id="pbs-D0-izf"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter urges users to change..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ml-Ma-Tvn">
-                                <rect key="frame" x="10" y="91" width="394" height="40"/>
+                                <rect key="frame" x="10" y="88" width="394" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wIs-tv-eAH"/>
@@ -81,14 +80,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_image" translatesAutoresizingMaskIntoConstraints="NO" id="YzG-uX-kdY">
-                                <rect key="frame" x="0.0" y="131" width="414" height="363"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="363"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="363" id="Eka-mW-dus"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYm-ws-D1o" userLabel="Controls">
-                                <rect key="frame" x="0.0" y="494" width="414" height="368"/>
+                                <rect key="frame" x="0.0" y="491" width="414" height="371"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0N-3A-Uuy" userLabel="Article Info View">
                                         <rect key="frame" x="0.0" y="16" width="414" height="40"/>
@@ -155,15 +154,6 @@
                                             <constraint firstItem="ZUN-il-baT" firstAttribute="centerY" secondItem="c0N-3A-Uuy" secondAttribute="centerY" id="xzK-of-DOq"/>
                                         </constraints>
                                     </view>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TME-Cu-Ure" userLabel="Progress Slider">
-                                        <rect key="frame" x="18" y="81" width="383" height="11"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="0ek-BJ-7Ba"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="changeAudioTime:" destination="w9m-Wb-Fbx" eventType="valueChanged" id="6MT-6L-mlu"/>
-                                        </connections>
-                                    </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICT-Vm-vNE">
                                         <rect key="frame" x="20" y="62" width="0.0" height="25"/>
                                         <constraints>
@@ -179,15 +169,24 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TME-Cu-Ure" userLabel="Progress Slider">
+                                        <rect key="frame" x="18" y="92" width="383" height="11"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="0ek-BJ-7Ba"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="changeAudioTime:" destination="w9m-Wb-Fbx" eventType="valueChanged" id="6MT-6L-mlu"/>
+                                        </connections>
+                                    </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxo-dE-LK9" userLabel="Archive Button">
-                                        <rect key="frame" x="53" y="114" width="24" height="54"/>
+                                        <rect key="frame" x="53" y="125" width="24" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="8Gf-lQ-6a7"/>
                                         </constraints>
                                         <state key="normal" image="archive"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUX-TB-09j">
-                                        <rect key="frame" x="115" y="114" width="24" height="54"/>
+                                        <rect key="frame" x="115" y="125" width="24" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="Gh8-pc-hvR"/>
                                         </constraints>
@@ -202,7 +201,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVt-Ra-7aw" userLabel="Play/Pause View">
-                                        <rect key="frame" x="177" y="111" width="60" height="60"/>
+                                        <rect key="frame" x="177" y="122" width="60" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR2-aS-7A4">
                                                 <rect key="frame" x="11" y="16" width="38" height="28"/>
@@ -223,7 +222,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqe-r0-bjo">
-                                        <rect key="frame" x="275" y="114" width="24" height="54"/>
+                                        <rect key="frame" x="275" y="125" width="24" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="QgC-kl-AtA"/>
                                         </constraints>
@@ -238,7 +237,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-hV-D6N">
-                                        <rect key="frame" x="284" y="114" width="130" height="54"/>
+                                        <rect key="frame" x="284" y="125" width="130" height="54"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="1.00X">
@@ -267,7 +266,7 @@
                                     <constraint firstAttribute="trailing" secondItem="c0N-3A-Uuy" secondAttribute="trailing" id="Pmm-51-3fM"/>
                                     <constraint firstItem="c0N-3A-Uuy" firstAttribute="trailing" secondItem="YhW-hV-D6N" secondAttribute="trailing" id="Pox-Zw-X2w"/>
                                     <constraint firstItem="Bxo-dE-LK9" firstAttribute="top" secondItem="TME-Cu-Ure" secondAttribute="bottom" constant="23" id="RIh-kH-7Wk"/>
-                                    <constraint firstItem="TME-Cu-Ure" firstAttribute="top" secondItem="c0N-3A-Uuy" secondAttribute="bottom" constant="25" id="cO4-Y7-RkF"/>
+                                    <constraint firstItem="TME-Cu-Ure" firstAttribute="top" secondItem="c0N-3A-Uuy" secondAttribute="bottom" constant="36" id="cO4-Y7-RkF"/>
                                     <constraint firstItem="ICT-Vm-vNE" firstAttribute="baseline" secondItem="Hwo-Ns-5K3" secondAttribute="baseline" id="fcI-S3-1qE"/>
                                     <constraint firstItem="Wqe-r0-bjo" firstAttribute="top" secondItem="YhW-hV-D6N" secondAttribute="top" id="gEn-sp-ZYn"/>
                                     <constraint firstItem="IVt-Ra-7aw" firstAttribute="top" secondItem="TME-Cu-Ure" secondAttribute="bottom" constant="20" id="gP4-Wj-sbt"/>

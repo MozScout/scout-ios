@@ -11,21 +11,16 @@ import UIKit
 protocol PlayerViewControllerDelegate: class {
     // maybe need send also several button states
     func backButtonTapped()
-    func microphoneButtonTapped()
 }
 
 class PlayerViewController: UIViewController {
     weak var backButtonDelegate: PlayerViewControllerDelegate?
-    weak var microphoneButtonDelegate: PlayerViewControllerDelegate?
     var scoutClient: ScoutHTTPClient!
     var model: ScoutArticle!
     var keychainService: KeychainService!
     var isFullArticle: Bool = true
     fileprivate var audioPlayer: AVAudioPlayer!
-    fileprivate let defaultMicrophoneButtonSideDistance: CGFloat = 6
-    fileprivate let defaultMicrophoneButtonAlpha: CGFloat = 0.8
     fileprivate var audioRate: Float = 1.0
-    fileprivate var microphoneButton: GradientButton!
     fileprivate var spinner: UIActivityIndicatorView?
     fileprivate var timer: Timer!
     fileprivate let loadingTextLabel = UILabel()
@@ -55,35 +50,12 @@ class PlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.setupMicButton()
         configureView()
         spinner = self.addSpinner()
         playPauseView.layer.cornerRadius = CGFloat(30.0)
         playPauseView.layer.borderWidth = 1
         playPauseView.layer.borderColor = UIColor.black.cgColor
     }
-
-    // MARK: - Private methods
-    /*fileprivate func setupMicButton() {
-        // we need dynamic size of the mic button. should set after we will have design
-        microphoneButton = GradientButton(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
-        microphoneButton.direction = .custom(startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
-        microphoneButton.alphaComponent = defaultMicrophoneButtonAlpha
-
-        var microphoneButtonFrame = microphoneButton.frame
-        microphoneButtonFrame.origin.y =
-            view.bounds.height - microphoneButtonFrame.height - defaultMicrophoneButtonSideDistance
-        microphoneButtonFrame.origin.x =
-            view.bounds.width - microphoneButtonFrame.size.width - defaultMicrophoneButtonSideDistance
-        microphoneButton.frame = microphoneButtonFrame
-        microphoneButton.setImage(UIImage(named: "icn_microphone"), for: .normal)
-
-        microphoneButton.layer.cornerRadius = microphoneButtonFrame.height/2
-
-        view.addSubview(microphoneButton)
-
-        microphoneButton.addTarget(self, action: #selector(microphoneButtonTapped(sender:)), for: .touchUpInside)
-    }*/
 
     fileprivate func configureView() {
         slider.minimumTrackTintColor = UIColor(rgb: 0x6BB4FF)
@@ -282,10 +254,15 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
+        self.audioPlayer.stop()
         DispatchQueue.main.async {
-            self.audioPlayer.stop()
-            DispatchQueue.main.async {
-                self.navigationController?.popToRootViewController(animated: false)
+            if let navigationController = self.navigationController {
+                var viewControllers = navigationController.viewControllers
+                for (index, element) in viewControllers.enumerated() where element as? PlayerViewController != nil {
+                    viewControllers.remove(at: index)
+                    navigationController.setViewControllers(viewControllers, animated: true)
+                    break
+                }
             }
         }
     }
@@ -373,15 +350,6 @@ class PlayerViewController: UIViewController {
         self.setAudioRate(self.audioRate - 0.25)
     }
 
-    @objc fileprivate func microphoneButtonTapped(sender: UIButton) {
-        DispatchQueue.main.async {
-            self.pause()
-            self.pauseButton.isSelected = true
-            guard let requiredDelegate = self.microphoneButtonDelegate else { return }
-            requiredDelegate.microphoneButtonTapped()
-        }
-    }
-
     @IBAction func readArticleButtonTapped(_ sender: Any) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(
@@ -439,7 +407,6 @@ class PlayerViewController: UIViewController {
     func showHUD() {
         DispatchQueue.main.async {
             self.spinner?.startAnimating()
-            //self.microphoneButton.isEnabled = false
             self.backButton.isEnabled = false
             self.pauseButton.isEnabled = false
             self.forwardButton.isEnabled = false
@@ -454,7 +421,6 @@ class PlayerViewController: UIViewController {
 
     func hideHUD() {
         DispatchQueue.main.async {
-            //self.microphoneButton.isEnabled = true
             self.backButton.isEnabled = true
             self.spinner?.stopAnimating()
             self.pauseButton.isEnabled = true
@@ -489,8 +455,8 @@ class PlayerViewController: UIViewController {
 private func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(
     _ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
     return Dictionary(
-	uniqueKeysWithValues: input.map { key, value in
-	    (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)
-	}
+        uniqueKeysWithValues: input.map { key, value in
+            (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)
+        }
     )
 }

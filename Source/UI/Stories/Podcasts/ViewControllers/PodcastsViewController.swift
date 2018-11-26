@@ -15,7 +15,10 @@ class PodcastsViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var gradientButton: GradientButton!
+    @IBOutlet private weak var handsFreeButton: UIButton!
+
     weak var podcastsDelegate: PodcastsDelegate?
+    weak var voiceInputDelegateFromMain: VoiceInputDelegate?
     private var spinner: UIActivityIndicatorView?
     private let cellRowReuseId = "cellrow"
     private let collectionRowReuseId = "collectionCell"
@@ -214,5 +217,12 @@ extension PodcastsViewController: UICollectionViewDataSource {
                                                       for: indexPath) as! PodcastsCollectionViewCell
         cell.configureCell()
         return cell
+    }
+
+    @IBAction func handsFreeButtonTapped(_ sender: Any) {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.voiceInputDelegateFromMain else { return }
+            requiredDelegate.openVoiceInputFromMain()
+        }
     }
 }

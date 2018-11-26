@@ -12,7 +12,6 @@ class MainUIRouter: NSObject {
     fileprivate var tabbar: MainTabBarViewController!
     fileprivate let assembly: MainAssemblyProtocol
     fileprivate var selectedTab: MainTab = .articles
-    var onMicrophoneButtonTap: (() -> Void)?
     var userID: String = ""
     // Routers
     fileprivate let myListRouter: MyListRoutingProtocol
@@ -44,7 +43,6 @@ extension MainUIRouter: MainRoutingProtocol, UITabBarControllerDelegate {
 
         let tabbarVC = assembly.assemblyMainTabBarViewController(viewControllers: tabViewControllers)
         tabbarVC.delegate = self
-        tabbarVC.microphoneButtonDelegate = self
 
         self.tabbar = tabbarVC
 
@@ -72,13 +70,13 @@ fileprivate extension MainUIRouter {
                 myListRouter.show(from: navigationController, animated: animated, withUserID: self.userID)
             case .settings:
                 settingsRouter.show(from: navigationController, animated: animated)
-           // case .audioAction:
-               // print("touch action button")
         }
     }
 
     private func assemblyNavigationController(forTab tab: MainTab) -> UINavigationController {
         let tabbarItem = self.tabbarItem(forTab: tab)
+        tabbarItem.titlePositionAdjustment = UIOffset.init(horizontal: 0, vertical: 1)
+
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
         navigationController.tabBarItem = tabbarItem
@@ -137,12 +135,5 @@ fileprivate extension MainUIRouter {
     fileprivate func tabBarController(_ tabBarController: UITabBarController,
                                       shouldSelect viewController: UIViewController) -> Bool {
         return true
-    }
-}
-
-extension MainUIRouter: MainTabBarViewControllerDelegate {
-    func mainTabBarViewController(viewController: MainTabBarViewController, didTouchMicrophoneButton button: UIButton) {
-        self.onMicrophoneButtonTap!()
-        print("Did touch Microphone Button")
     }
 }

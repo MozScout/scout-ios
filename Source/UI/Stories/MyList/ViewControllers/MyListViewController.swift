@@ -30,8 +30,10 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var gradientButton: GradientButton!
+    @IBOutlet fileprivate weak var handsFreeButton: UIButton!
 
     weak var playerDelegateFromMain: PlayListDelegate?
+    weak var voiceInputDelegateFromMain: VoiceInputDelegate?
     fileprivate let maxHeaderHeight: CGFloat = 44
     fileprivate let minHeaderHeight: CGFloat = 24
     fileprivate var previousScrollOffset: CGFloat = 0
@@ -232,7 +234,6 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
             options: .caseInsensitive)
 
         func ordinalToIndex(ordinal: String) -> Int {
-            print("ordinalToIndex(\(ordinal))")
             switch ordinal {
                 case "first", "latest":
                     return 0
@@ -318,28 +319,37 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
 
         let range = NSRange(location: 0, length: transcription.count)
 
-        print("speechRecognitionFinished(): \(transcription)")
+        self.addVoiceInputText(transcription, fromUser: true)
+        self.setVoiceInputImage(UIImage.init(named: "processing")!)
+
         if transcription == "Play" {
             if self.playerVisible() {
+                self.addVoiceInputText("Resuming playback...", fromUser: false)
                 self.resume()
             } else {
+                self.addVoiceInputText("Preparing the first article...", fromUser: false)
                 self.playArticleAtIndex(index: 0)
             }
         } else if transcription == "Resume" {
+            self.addVoiceInputText("Resuming playback...", fromUser: false)
             self.resume()
         } else if transcription == "Pause" {
+            self.addVoiceInputText("Pausing playback...", fromUser: false)
             self.pause()
         } else if transcription == "Stop" {
+            self.addVoiceInputText("Stopping playback...", fromUser: false)
             self.stop()
         } else if transcription == "Next" {
             var index: Int
             if self.scoutTitles != nil {
+                self.addVoiceInputText("Preparing the next article", fromUser: false)
                 if self.articleNumber + 1 >= self.scoutTitles!.count {
                     index = 0
                 } else {
                     index = self.articleNumber + 1
                 }
             } else {
+                self.addVoiceInputText("Stopping playback...", fromUser: false)
                 index = -1
             }
 
@@ -347,12 +357,14 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         } else if transcription == "Previous" {
             var index: Int
             if self.scoutTitles != nil {
+                self.addVoiceInputText("Preparing the previous article...", fromUser: false)
                 if self.articleNumber - 1 < 0 {
                     index = self.scoutTitles!.count - 1
                 } else {
                     index = self.articleNumber - 1
                 }
             } else {
+                self.addVoiceInputText("Stopping playback...", fromUser: false)
                 index = -1
             }
 
@@ -360,6 +372,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         } else if transcription.starts(with: "Play ") {
             var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
             if match != nil {
+                self.addVoiceInputText("Preparing that article...", fromUser: false)
                 let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
                 self.playArticleMatching(searchTerm: searchTerm)
             } else {
@@ -369,12 +382,18 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 if match != nil {
                     let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
                     let index = ordinalToIndex(ordinal: ordinal)
+                    if index < self.scoutTitles!.count {
+                        self.addVoiceInputText("Preparing that article...", fromUser: false)
+                    } else {
+                        self.addVoiceInputText("Stopping playback...", fromUser: false)
+                    }
                     self.playArticleAtIndex(index: index)
                 }
             }
         } else if transcription.starts(with: "Skim ") || transcription.starts(with: "Summarize ") {
             var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
             if match != nil {
+                self.addVoiceInputText("Preparing that article...", fromUser: false)
                 let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
                 self.skimArticleMatching(searchTerm: searchTerm)
             } else {
@@ -384,25 +403,34 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 if match != nil {
                     let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
                     let index = ordinalToIndex(ordinal: ordinal)
+                    if index < self.scoutTitles!.count {
+                        self.addVoiceInputText("Preparing that article...", fromUser: false)
+                    } else {
+                        self.addVoiceInputText("Stopping playback...", fromUser: false)
+                    }
                     self.skimArticleAtIndex(index: index)
                 }
             }
         } else if volumeUpRegex.firstMatch(in: transcription, options: [], range: range) != nil {
+            self.addVoiceInputText("Increasing the volume...", fromUser: false)
             self.increaseVolume()
             if self.wasPlaying {
                 self.resume()
             }
         } else if volumeDownRegex.firstMatch(in: transcription, options: [], range: range) != nil {
+            self.addVoiceInputText("Decreasing the volume...", fromUser: false)
             self.decreaseVolume()
             if self.wasPlaying {
                 self.resume()
             }
         } else if transcription == "Mute" {
+            self.addVoiceInputText("Muting...", fromUser: false)
             self.setVolume(0)
             if self.wasPlaying {
                 self.resume()
             }
         } else if transcription == "Unmute" {
+            self.addVoiceInputText("Unmuting...", fromUser: false)
             if self.lastVolume > 0 {
                 self.setVolume(self.lastVolume)
             }
@@ -423,6 +451,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         } else if transcription == "Play faster" || transcription == "Read faster" ||
                 transcription == "Play more quickly" || transcription == "Read more quickly" ||
                 transcription == "Speed up" {
+            self.addVoiceInputText("Speeding up playback...", fromUser: false)
             self.increaseSpeed()
             if self.wasPlaying {
                 self.resume()
@@ -430,14 +459,15 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
         } else if transcription == "Play slower" || transcription == "Read slower" ||
                 transcription == "Play more slowly" || transcription == "Read more slowly" ||
                 transcription == "Slow down" {
+            self.addVoiceInputText("Slowing down playback...", fromUser: false)
             self.decreaseSpeed()
             if self.wasPlaying {
                 self.resume()
             }
         } else if let match = skipBackRegex.firstMatch(in: transcription, options: [], range: range) {
+            self.addVoiceInputText("Seeking...", fromUser: false)
             var time = -1
             if match.range(at: 4).location != NSNotFound && match.range(at: 5).location != NSNotFound {
-                print("here1")
                 let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 4)))
                 let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
 
@@ -445,19 +475,16 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                     time = minutes * 60 + seconds
                 }
             } else if match.range(at: 6).location != NSNotFound {
-                print("here2")
                 let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 6)))
                 if minutes > 0 {
                     time = minutes * 60
                 }
             } else if match.range(at: 7).location != NSNotFound {
-                print("here3")
                 let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 7)))
                 if seconds > 0 {
                     time = seconds
                 }
             } else {
-                print("here4")
                 time = 30
             }
 
@@ -469,6 +496,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 self.resume()
             }
         } else if let match = skipAheadRegex.firstMatch(in: transcription, options: [], range: range) {
+            self.addVoiceInputText("Seeking...", fromUser: false)
             var time = -1
             if match.range(at: 5).location != NSNotFound && match.range(at: 6).location != NSNotFound {
                 let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
@@ -499,12 +527,14 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                 self.resume()
             }
         } else {
-            print("Unhandled command: \(transcription)")
+            self.addVoiceInputText("Sorry, I didn't get that. Try rephrasing.", fromUser: false)
+            self.setVoiceInputImage(UIImage.init(named: "error")!)
             if self.wasPlaying {
                 self.resume()
             }
         }
 
+        self.hideVoiceInput(withDelay: 2)
         self.speechService.beginWakeWordDetector()
     }
 
@@ -513,18 +543,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     func wakeWordDetected() {
-        print("wakeWordDetected()")
-        DispatchQueue.main.async {
-            guard let requiredDelegate = self.playerDelegateFromMain else {
-                return
-            }
-
-            self.wasPlaying = requiredDelegate.playing()
-            if self.wasPlaying {
-                requiredDelegate.pause()
-            }
-            self.speechService.startRecording()
-        }
+        self.handsFreeButtonTapped([])
     }
 
     private func playerVisible() -> Bool {
@@ -612,7 +631,6 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     private func skip(_ seconds: Int) {
-        print("skip(\(seconds))")
         DispatchQueue.main.async {
             guard let requiredDelegate = self.playerDelegateFromMain else {
                 return
@@ -622,7 +640,6 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     private func playArticleAtIndex(index: Int) {
-        print("playArticleAtIndex(\(index))")
         if index < 0 {
             self.stop()
             return
@@ -687,7 +704,6 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     private func skimArticleAtIndex(index: Int) {
-        print("skimArticleAtIndex(\(index))")
         if index < 0 {
             self.stop()
             return
@@ -926,5 +942,50 @@ extension MyListViewController: UITableViewDelegate {
                     print("destructive")
             }}))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    @IBAction func handsFreeButtonTapped(_ sender: Any) {
+        DispatchQueue.main.async {
+            guard let voiceInputDelegate = self.voiceInputDelegateFromMain else { return }
+            guard let playerDelegate = self.playerDelegateFromMain else { return }
+
+            voiceInputDelegate.openVoiceInputFromMain()
+
+            self.wasPlaying = playerDelegate.playing()
+            if self.wasPlaying {
+                playerDelegate.pause()
+            }
+
+            self.speechService.endWakeWordDetector()
+            self.speechService.startRecording()
+        }
+    }
+
+    private func hideVoiceInput(withDelay: Double?) {
+        if withDelay != nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + withDelay!) {
+                guard let requiredDelegate = self.voiceInputDelegateFromMain else { return }
+                requiredDelegate.hideVoiceInputFromMain()
+            }
+        } else {
+            DispatchQueue.main.async {
+                guard let requiredDelegate = self.voiceInputDelegateFromMain else { return }
+                requiredDelegate.hideVoiceInputFromMain()
+            }
+        }
+    }
+
+    private func addVoiceInputText(_ text: String, fromUser: Bool) {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.voiceInputDelegateFromMain else { return }
+            requiredDelegate.addVoiceInputTextFromMain(text, fromUser: fromUser)
+        }
+    }
+
+    private func setVoiceInputImage(_ image: UIImage) {
+        DispatchQueue.main.async {
+            guard let requiredDelegate = self.voiceInputDelegateFromMain else { return }
+            requiredDelegate.setVoiceInputImageFromMain(image)
+        }
     }
 }

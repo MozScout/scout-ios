@@ -10,7 +10,6 @@ import UIKit
 
 class PlayerRouter {
     var onBackButtonTap: (() -> Void)?
-    var onMicrophoneButtonTap: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PlayerAssemblyProtocol
     var playerVC: PlayerViewController?
@@ -26,7 +25,6 @@ extension PlayerRouter: PlayerRoutingProtocol {
         self.playerVC!.model = model
         self.playerVC!.isFullArticle = fullArticle
         self.playerVC!.backButtonDelegate = self
-        self.playerVC!.microphoneButtonDelegate = self
         self.showViewController(viewController: self.playerVC!, fromViewController: viewController, animated: animated)
     }
 
@@ -120,9 +118,5 @@ extension PlayerRouter: PlayerRoutingProtocol {
 extension PlayerRouter: PlayerViewControllerDelegate {
     func backButtonTapped() {
         self.onBackButtonTap!()
-    }
-
-    func microphoneButtonTapped() {
-        self.onMicrophoneButtonTap!()
     }
 }
