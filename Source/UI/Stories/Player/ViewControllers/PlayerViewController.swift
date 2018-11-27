@@ -360,6 +360,7 @@ class PlayerViewController: UIViewController {
             UIApplication.shared.openURL(model.resolvedURL!)
         }
     }
+
     func addSpinner() -> UIActivityIndicatorView {
         // Adding spinner over launch screen
         let spinner = UIActivityIndicatorView.init()

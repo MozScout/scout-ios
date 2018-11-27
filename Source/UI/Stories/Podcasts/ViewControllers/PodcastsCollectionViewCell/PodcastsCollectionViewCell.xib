@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,13 +21,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="gTV-IL-0wX" customClass="PodcastsCollectionViewCell" customModule="Scout" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="90" height="89"/>
+            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="90" height="89"/>
+                <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImages" translatesAutoresizingMaskIntoConstraints="NO" id="Jxm-DL-ymG">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podcasts" translatesAutoresizingMaskIntoConstraints="NO" id="Jxm-DL-ymG">
                         <rect key="frame" x="15" y="0.0" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="Lf5-wc-62U"/>
@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnG-Y5-rUO">
-                        <rect key="frame" x="14.5" y="77" width="61" height="12"/>
+                        <rect key="frame" x="2" y="77" width="86" height="13"/>
                         <string key="text">321 - Double
 Standards</string>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
@@ -52,14 +52,15 @@ Standards</string>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="TnG-Y5-rUO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="36m-VP-pf7"/>
                 <constraint firstItem="TnG-Y5-rUO" firstAttribute="top" secondItem="gqU-M9-h9x" secondAttribute="bottom" constant="2" id="6kk-44-mTs"/>
                 <constraint firstItem="gqU-M9-h9x" firstAttribute="top" secondItem="Jxm-DL-ymG" secondAttribute="bottom" constant="3" id="8aE-gq-lH0"/>
                 <constraint firstItem="Jxm-DL-ymG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Jab-Rg-Nad"/>
                 <constraint firstItem="gqU-M9-h9x" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PS2-L0-8Ys"/>
-                <constraint firstAttribute="trailing" secondItem="Jxm-DL-ymG" secondAttribute="trailing" constant="15" id="bom-fJ-62X"/>
+                <constraint firstItem="Jxm-DL-ymG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="UIm-Kr-BeZ"/>
                 <constraint firstAttribute="bottom" secondItem="TnG-Y5-rUO" secondAttribute="bottom" id="fwu-0Q-Hcm"/>
                 <constraint firstItem="TnG-Y5-rUO" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="gnt-69-cVY"/>
-                <constraint firstItem="Jxm-DL-ymG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="rcw-Bh-8eB"/>
+                <constraint firstAttribute="trailing" secondItem="TnG-Y5-rUO" secondAttribute="trailing" constant="2" id="sMC-j7-l8S"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="338" height="323"/>
@@ -72,6 +73,6 @@ Standards</string>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="LaunchImages" width="320" height="568"/>
+        <image name="podcasts" width="101.23734283447266" height="101.23734283447266"/>
     </resources>
 </document>

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SF-Pro-Text-Bold.otf">
-            <string>SFProText-Bold</string>
-        </array>
         <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
@@ -19,15 +16,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="53" id="KGk-i7-Jjw" customClass="AboutCell" customModule="Scout" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="203" id="KGk-i7-Jjw" customClass="AboutCell" customModule="Scout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="203"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="52.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="202.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nW-0I-zHS">
-                        <rect key="frame" x="11" y="32" width="298" height="7"/>
+                        <rect key="frame" x="11" y="152" width="298" height="37"/>
                         <attributedString key="attributedText">
                             <fragment>
                                 <string key="content">Chris Lighty was a giant in hip-hop. He managed Foxy Brown, Fat Joe, Missy Elliott, Busta Rhymes, LL Cool J, 50 Cent—anyone who was anyone worked with Lighty. But in 2012 he was found dead at his home in the Bronx, a death that left the music world reeling. In this podcast miniseries from Gimlet Media and Loud Speakers Network, we tell the story of Chris Lighty, from the first breakbeat to the last heartbeat.</string>
@@ -40,39 +37,48 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1on-GD-aXk">
-                        <rect key="frame" x="12" y="1" width="40" height="29"/>
+                        <rect key="frame" x="12" y="111" width="40" height="29"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                         <state key="normal" title="Music"/>
+                        <connections>
+                            <action selector="categoryButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MQK-Uu-iCq"/>
+                        </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gimlt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db4-Pm-Z5L">
-                        <rect key="frame" x="141" y="7" width="38" height="17"/>
-                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yG-Xu-EaY">
-                        <rect key="frame" x="254" y="1" width="54" height="29"/>
+                        <rect key="frame" x="254" y="111" width="54" height="29"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                         <state key="normal" title="Website"/>
+                        <connections>
+                            <action selector="websiteButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1qg-n3-pqc"/>
+                        </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w1u-Cf-GHm">
+                        <rect key="frame" x="96" y="12" width="128" height="128"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="128" id="QJS-mN-tJy"/>
+                            <constraint firstAttribute="height" constant="128" id="pHj-YH-gsP"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2yG-Xu-EaY" firstAttribute="centerY" secondItem="db4-Pm-Z5L" secondAttribute="centerY" id="7oW-bw-kkC"/>
-                    <constraint firstItem="db4-Pm-Z5L" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Kos-b4-Jhk"/>
+                    <constraint firstItem="w1u-Cf-GHm" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="JBI-Uc-f4x"/>
                     <constraint firstAttribute="trailing" secondItem="9nW-0I-zHS" secondAttribute="trailing" constant="11" id="Ljn-a9-anO"/>
                     <constraint firstItem="1on-GD-aXk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Mh6-Pp-Rcy"/>
+                    <constraint firstItem="w1u-Cf-GHm" firstAttribute="bottom" secondItem="1on-GD-aXk" secondAttribute="bottom" id="SBa-vH-JZW"/>
                     <constraint firstItem="9nW-0I-zHS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="YjN-9J-UTd"/>
-                    <constraint firstItem="9nW-0I-zHS" firstAttribute="top" secondItem="db4-Pm-Z5L" secondAttribute="bottom" constant="8" id="Ynr-hu-eAm"/>
                     <constraint firstAttribute="bottomMargin" secondItem="9nW-0I-zHS" secondAttribute="bottom" constant="3" id="e6n-Ok-1CV"/>
-                    <constraint firstItem="db4-Pm-Z5L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="pQL-ZT-ZuS"/>
                     <constraint firstAttribute="trailing" secondItem="2yG-Xu-EaY" secondAttribute="trailing" constant="12" id="pfC-c8-3yr"/>
-                    <constraint firstItem="1on-GD-aXk" firstAttribute="centerY" secondItem="db4-Pm-Z5L" secondAttribute="centerY" id="rSU-CI-3qf"/>
+                    <constraint firstItem="9nW-0I-zHS" firstAttribute="top" secondItem="w1u-Cf-GHm" secondAttribute="bottom" constant="12" id="sgo-oZ-PRM"/>
+                    <constraint firstItem="w1u-Cf-GHm" firstAttribute="bottom" secondItem="2yG-Xu-EaY" secondAttribute="bottom" id="tYX-KN-xkJ"/>
+                    <constraint firstItem="w1u-Cf-GHm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="xg7-HQ-aze"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="aboutLabel" destination="9nW-0I-zHS" id="1qv-OV-g2L"/>
+                <outlet property="categoryButton" destination="1on-GD-aXk" id="T1z-P2-LTY"/>
+                <outlet property="icon" destination="w1u-Cf-GHm" id="Msb-oP-taB"/>
             </connections>
-            <point key="canvasLocation" x="33.600000000000001" y="13.043478260869566"/>
+            <point key="canvasLocation" x="33.600000000000001" y="80.50974512743629"/>
         </tableViewCell>
     </objects>
 </document>

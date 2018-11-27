@@ -135,10 +135,11 @@ private extension ApplicationRouter {
         self.myListRouter.skipPlayerTime = { (seconds) in
             self.playerRouter.skip(seconds)
         }
-        self.podcastsRouter.linkIsFound = { [] in
+        self.podcastsRouter.linkIsFound = { (article) in
             self.podcastsRouter.showPodcastDetails(from: self.navigationController,
                                                    animated: true,
-                                                   withUserID: self.mainRouter.userID)
+                                                   withUserID: self.mainRouter.userID,
+                                                   article: article)
         }
         self.podcastsRouter.addPodcasts = { [] in
             self.podcastsRouter.showAddPodcasts(from: self.navigationController,

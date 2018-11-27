@@ -66,7 +66,10 @@ class MyListTableViewCell: UITableViewCell {
         if model.iconURL != URL(string: "") {
             publisherImage.kf.setImage(with: model.iconURL)
         }
-        if model.title == "Test" || model.title == "Test2" {
+
+        if model.isPodcast {
+            self.publisherImage.isHidden = true
+            self.resourceName.isHidden = true
             self.skimButton.setTitle("Episodes", for: .normal)
             self.doneButton.setImage( UIImage(named: "deleteButton"), for: .normal)
         }

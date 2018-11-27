@@ -10,6 +10,8 @@ import UIKit
 
 class AddPodcastsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var indicatorButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +23,9 @@ class AddPodcastsCollectionViewCell: UICollectionViewCell {
         } else {
             indicatorButton.isSelected = true
         }
+    }
+
+    func configureCell(_ imageUrl: String) {
+        imageView.downloadImageFrom(link: imageUrl, contentMode: .scaleAspectFit)
     }
 }

@@ -33,6 +33,10 @@ class ScoutArticle: NSObject, NSCoding {
     var url: String
     var publisher: String
     var iconURL: URL?
+    var isPodcast: Bool
+    var podcastDescription: String
+    var podcastCategory: String
+    var latestEpisode: (String, String)?
 
     init(withArticleID itemID: String,
          title: String,
@@ -54,6 +58,40 @@ class ScoutArticle: NSObject, NSCoding {
         self.url = url
         self.publisher = publisher
         self.iconURL = iconURL
+        self.isPodcast = false
+        self.podcastDescription = ""
+        self.podcastCategory = ""
+        self.latestEpisode = nil
+    }
+
+    init(withArticleID itemID: String,
+         title: String,
+         author: String,
+         lengthMinutes: Int,
+         sortID: Int,
+         resolvedURL: URL?,
+         articleImageURL: URL?,
+         url: String,
+         publisher: String,
+         iconURL: URL?,
+         isPodcast: Bool,
+         description: String,
+         category: String,
+         latestEpisode: (String, String)) {
+        self.itemID = itemID
+        self.title = title
+        self.author = author
+        self.lengthMinutes = lengthMinutes
+        self.sortID = sortID
+        self.resolvedURL = resolvedURL
+        self.articleImageURL = articleImageURL
+        self.url = url
+        self.publisher = publisher
+        self.iconURL = iconURL
+        self.isPodcast = isPodcast
+        self.podcastDescription = description
+        self.podcastCategory = category
+        self.latestEpisode = latestEpisode
     }
 
     // MARK: NSCoding

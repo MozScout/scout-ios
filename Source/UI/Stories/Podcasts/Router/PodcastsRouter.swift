@@ -6,7 +6,7 @@
 import UIKit
 
 class PodcastsRouter {
-    var linkIsFound: (() -> Void)?
+    var linkIsFound: ((ScoutArticle?) -> Void)?
     var addPodcasts: (() -> Void)?
     var openVoiceInput: (() -> Void)?
     var hideVoiceInput: (() -> Void)?
@@ -28,8 +28,12 @@ extension PodcastsRouter: PodcastsRoutingProtocol {
         self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
     }
 
-    func showPodcastDetails(from viewController: UIViewController, animated: Bool, withUserID: String) {
+    func showPodcastDetails(from viewController: UIViewController,
+                            animated: Bool,
+                            withUserID: String,
+                            article: ScoutArticle?) {
         let podcastsVC = assembly.assemblyPodcastDetailsViewController()
+        podcastsVC.model = article
 
         self.showViewController(viewController: podcastsVC, fromViewController: viewController, animated: animated)
     }
@@ -64,8 +68,8 @@ extension PodcastsRouter: PodcastsRoutingProtocol {
 }
 
 extension PodcastsRouter: PodcastsDelegate {
-    func openPodcastDetails() {
-        self.linkIsFound?()
+    func openPodcastDetails(_ article: ScoutArticle?) {
+        self.linkIsFound?(article)
     }
     func openAddPodcasts() {
         self.addPodcasts?()

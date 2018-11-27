@@ -116,19 +116,19 @@
                                 <rect key="frame" x="0.0" y="211" width="375" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscriptions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oR-eF-Oop">
-                                        <rect key="frame" x="10" y="9" width="84" height="14"/>
+                                        <rect key="frame" x="10" y="8" width="84" height="14.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xj-w3-B7z">
-                                        <rect key="frame" x="304" y="8.5" width="60" height="15"/>
+                                        <rect key="frame" x="304" y="3" width="60" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="Xoj-nY-uNK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                        <inset key="titleEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="46" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="-16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="50" minY="7" maxX="0.0" maxY="7"/>
                                         <state key="normal" title="Name" image="dropdownArrow">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -138,10 +138,9 @@
                                 <constraints>
                                     <constraint firstItem="1oR-eF-Oop" firstAttribute="leading" secondItem="k5E-xL-xoG" secondAttribute="leading" constant="10" id="FkY-K4-Bg2"/>
                                     <constraint firstAttribute="trailing" secondItem="2Xj-w3-B7z" secondAttribute="trailing" constant="11" id="MzU-V8-7Cc"/>
-                                    <constraint firstItem="2Xj-w3-B7z" firstAttribute="centerY" secondItem="1oR-eF-Oop" secondAttribute="centerY" id="NXl-YS-F35"/>
-                                    <constraint firstAttribute="bottom" secondItem="1oR-eF-Oop" secondAttribute="bottom" constant="7" id="aiV-1Q-w5g"/>
                                     <constraint firstAttribute="height" constant="30" id="bxX-eG-QG8"/>
-                                    <constraint firstItem="1oR-eF-Oop" firstAttribute="top" secondItem="k5E-xL-xoG" secondAttribute="top" constant="9" id="nDq-bd-Jpx"/>
+                                    <constraint firstItem="2Xj-w3-B7z" firstAttribute="centerY" secondItem="k5E-xL-xoG" secondAttribute="centerY" id="qVI-7z-A0B"/>
+                                    <constraint firstItem="1oR-eF-Oop" firstAttribute="centerY" secondItem="k5E-xL-xoG" secondAttribute="centerY" id="wcI-Dd-m1a"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gSn-My-GD1">
@@ -188,7 +187,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dropdownArrow" width="10" height="6"/>
+        <image name="dropdownArrow" width="24" height="24"/>
         <image name="handsFree" width="24" height="24"/>
         <image name="iconPlus" width="16" height="16"/>
         <image name="logo" width="100" height="112"/>
