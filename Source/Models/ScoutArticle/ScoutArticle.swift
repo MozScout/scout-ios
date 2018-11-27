@@ -34,7 +34,7 @@ class ScoutArticle: NSObject, NSCoding {
     var publisher: String
     var iconURL: URL?
     var isPodcast: Bool
-    var podcastDescription: String
+    var excerpt: String
     var podcastCategory: String
     var latestEpisode: (String, String)?
 
@@ -47,7 +47,8 @@ class ScoutArticle: NSObject, NSCoding {
          articleImageURL: URL?,
          url: String,
          publisher: String,
-         iconURL: URL?) {
+         iconURL: URL?,
+         excerpt: String) {
         self.itemID = itemID
         self.title = title
         self.author = author
@@ -58,8 +59,8 @@ class ScoutArticle: NSObject, NSCoding {
         self.url = url
         self.publisher = publisher
         self.iconURL = iconURL
+        self.excerpt = excerpt
         self.isPodcast = false
-        self.podcastDescription = ""
         self.podcastCategory = ""
         self.latestEpisode = nil
     }
@@ -74,8 +75,8 @@ class ScoutArticle: NSObject, NSCoding {
          url: String,
          publisher: String,
          iconURL: URL?,
+         excerpt: String,
          isPodcast: Bool,
-         description: String,
          category: String,
          latestEpisode: (String, String)) {
         self.itemID = itemID
@@ -88,8 +89,8 @@ class ScoutArticle: NSObject, NSCoding {
         self.url = url
         self.publisher = publisher
         self.iconURL = iconURL
+        self.excerpt = excerpt
         self.isPodcast = isPodcast
-        self.podcastDescription = description
         self.podcastCategory = category
         self.latestEpisode = latestEpisode
     }
@@ -104,7 +105,8 @@ class ScoutArticle: NSObject, NSCoding {
               let lengthMinutes = objectDictionary["lengthMinutes"] as? Int,
               let sortID = objectDictionary["sortID"] as? Int,
               let url = objectDictionary["url"] as? String,
-              let publisher = objectDictionary["publisher"] as? String
+              let publisher = objectDictionary["publisher"] as? String,
+              let excerpt = objectDictionary["excerpt"] as? String
             else { return nil }
 
         var articleImageURL: URL?
@@ -131,7 +133,8 @@ class ScoutArticle: NSObject, NSCoding {
                   articleImageURL: articleImageURL,
                   url: url,
                   publisher: publisher,
-                  iconURL: iconURL)
+                  iconURL: iconURL,
+                  excerpt: excerpt)
     }
 
     func encode(with aCoder: NSCoder) {

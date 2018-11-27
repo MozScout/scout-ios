@@ -31,7 +31,7 @@ class PodcastDetailsViewController: UIViewController {
         subscribeButton.clipsToBounds = true
 
         if let item = viewModel.items[0] as? PodcastDetailsViewModelAboutItem {
-            item.about = self.model.podcastDescription
+            item.about = self.model.excerpt
             item.category = self.model.podcastCategory
             item.website = URL.init(string: self.model.url)
             do {

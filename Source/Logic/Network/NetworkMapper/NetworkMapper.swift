@@ -45,7 +45,9 @@ class NetworkMapper: NetworkMappingProtocol {
             let articleImageURL = value["imageURL"].url ?? URL(string: "")
             let url = value["url"].string ?? ""
             let publisher = value["publisher"].string ?? ""
-            let iconURL = value["iconURL"].url ?? URL(string: "")
+            let iconURL = value["icon_url"].url ?? URL(string: "")
+            let excerpt = value["excerpt"].string ?? ""
+
             let scoutArticle = ScoutArticle(withArticleID: itemID,
                                             title: title,
                                             author: author,
@@ -55,7 +57,8 @@ class NetworkMapper: NetworkMappingProtocol {
                                             articleImageURL: articleImageURL,
                                             url: url,
                                             publisher: publisher,
-                                            iconURL: iconURL)
+                                            iconURL: iconURL,
+                                            excerpt: excerpt)
             scoutArticlesArray.append(scoutArticle)
         }
         return scoutArticlesArray
@@ -71,7 +74,8 @@ class NetworkMapper: NetworkMappingProtocol {
         let articleImageURL = resource["imageURL"].url ?? URL(string: "")
         let url = resource["url"].string ?? ""
         let publisher = resource["publisher"].string ?? ""
-        let iconURL = resource["iconURL"].url ?? URL(string: "")
+        let iconURL = resource["icon_url"].url ?? URL(string: "")
+        let excerpt = resource["excerpt"].string ?? ""
 
         let scoutArticle = ScoutArticle(withArticleID: itemID,
                                         title: title,
@@ -82,7 +86,8 @@ class NetworkMapper: NetworkMappingProtocol {
                                         articleImageURL: articleImageURL,
                                         url: url,
                                         publisher: publisher,
-                                        iconURL: iconURL)
+                                        iconURL: iconURL,
+                                        excerpt: excerpt)
 
         return scoutArticle
     }
@@ -97,7 +102,9 @@ class NetworkMapper: NetworkMappingProtocol {
         let articleImageURL = resource["imageURL"].url ?? URL(string: "")
         let url = resource["url"].string ?? ""
         let publisher = resource["publisher"].string ?? ""
-        let iconURL = resource["iconURL"].url ?? URL(string: "")
+        let iconURL = resource["icon_url"].url ?? URL(string: "")
+        let excerpt = resource["excerpt"].string ?? ""
+
         let scoutArticle = ScoutArticle(withArticleID: itemID,
                                         title: title,
                                         author: author,
@@ -107,7 +114,8 @@ class NetworkMapper: NetworkMappingProtocol {
                                         articleImageURL: articleImageURL,
                                         url: url,
                                         publisher: publisher,
-                                        iconURL: iconURL)
+                                        iconURL: iconURL,
+                                        excerpt: excerpt)
 
         return scoutArticle
     }

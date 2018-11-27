@@ -25,10 +25,9 @@ class PlayerViewController: UIViewController {
     fileprivate var timer: Timer!
     fileprivate let loadingTextLabel = UILabel()
 
-    @IBOutlet weak var faviconImage: UIImageView!
+    @IBOutlet weak var faviconButton: UIButton!
     @IBOutlet weak var playPauseView: UIView!
     @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var modeImage: UIImageView!
     @IBOutlet weak var modeButton: UIButton!
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var backwardButton: UIButton!
@@ -40,7 +39,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var audioRateButton: UIButton!
     @IBOutlet weak var author: UILabel!
-    @IBOutlet weak var gradientButton: GradientButton!
+    @IBOutlet weak var excerpt: UITextView!
 
     private var userDefaults = UserDefaults()
 
@@ -58,25 +57,40 @@ class PlayerViewController: UIViewController {
     }
 
     fileprivate func configureView() {
+        /*
+        let width = self.mainImage.bounds.size.width
+        let constraint = NSLayoutConstraint.init(item: self.mainImage,
+                                                 attribute: .height,
+                                                 relatedBy: .equal,
+                                                 toItem: nil,
+                                                 attribute: .notAnAttribute,
+                                                 multiplier: 1,
+                                                 constant: width)
+        self.mainImage.addConstraint(constraint)
+         */
+
         slider.minimumTrackTintColor = UIColor(rgb: 0x6BB4FF)
         slider.maximumTrackTintColor = UIColor(rgb: 0xD7D7DB)
         slider.setThumbImage(UIImage(named: "knob"), for: .normal)
-        gradientButton.direction = .horizontally(centered: 0.1)
         if let url = model.articleImageURL {
             self.mainImage.downloadImageFrom(link: (url.absoluteString), contentMode: .scaleAspectFill)
         }
         self.author.text = model.author
         if let url = model.iconURL {
-            self.faviconImage.downloadImageFrom(link: (url.absoluteString), contentMode: .scaleToFill)
+            do {
+                try self.faviconButton.setImage(UIImage(data: Data(contentsOf: url)), for: .normal)
+            } catch {
+            }
         }
         self.titleLabel.text = model.title
+        self.excerpt.text = model.excerpt
 
         if isFullArticle {
             modeButton.setTitle("Summary", for: .normal)
-            modeImage.image = UIImage(named: "summary")!
+            modeButton.setImage(UIImage(named: "summary"), for: .normal)
         } else {
             modeButton.setTitle("Full Article", for: .normal)
-            modeImage.image = UIImage(named: "reader")!
+            modeButton.setImage(UIImage(named: "reader_blue"), for: .normal)
         }
         self.downloadfile(url: model.url)
     }
@@ -279,7 +293,7 @@ class PlayerViewController: UIViewController {
 
     private func playSummary() {
         modeButton.setTitle("Full Article", for: .normal)
-        modeImage.image = UIImage(named: "reader")!
+        modeButton.setImage(UIImage(named: "reader_blue"), for: .normal)
 
         self.showHUD()
         _ = self.scoutClient.getSummaryLink(userid: keychainService.value(for: "userID")!,
@@ -307,7 +321,7 @@ class PlayerViewController: UIViewController {
 
     private func playFullArticle() {
         modeButton.setTitle("Summary", for: .normal)
-        modeImage.image = UIImage(named: "summary")!
+        modeButton.setImage(UIImage(named: "summary"), for: .normal)
 
         self.showHUD()
         _ = self.scoutClient.getArticleLink(userid: keychainService.value(for: "userID")!,
@@ -350,7 +364,7 @@ class PlayerViewController: UIViewController {
         self.setAudioRate(self.audioRate - 0.25)
     }
 
-    @IBAction func readArticleButtonTapped(_ sender: Any) {
+    @IBAction func faviconButtonTapped(_ sender: Any) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(
                 model.resolvedURL!,

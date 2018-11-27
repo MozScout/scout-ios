@@ -45,8 +45,7 @@ class PodcastDetailsViewModel: NSObject {
                      url: "https://irlpodcast.org/",
                      publisher: "Mozilla",
                      iconURL: URL.init(string: "https://irlpodcast.org/images/favicon/favicon-196x196.png"),
-                     isPodcast: true,
-                     description: """
+                     excerpt: """
                      Our online life is real life. We walk, talk, work, LOL and even love on the Internet – but we \
                      don’t always treat it like real life. Host Manoush Zomorodi explores this disconnect with stories \
                      from the wilds of the Web and gets to the bottom of online issues that affect us all. Whether \
@@ -54,6 +53,7 @@ class PodcastDetailsViewModel: NSObject {
                      the power to change the course of the Internet, keeping it ethical, safe, weird, and wonderful \
                      for everyone. IRL is an original podcast from Mozilla.
                      """,
+                     isPodcast: true,
                      category: "Tech News",
                      latestEpisode: ("2018-11-26", "Checking Out Online Shopping")),
         ScoutArticle(withArticleID: "12",
@@ -68,13 +68,13 @@ class PodcastDetailsViewModel: NSObject {
                      publisher: "This American Life",
                      // swiftlint:disable:next line_length
                      iconURL: URL.init(string: "https://www.thisamericanlife.org/sites/all/themes/thislife/favicons/favicon-32x32.png"),
-                     isPodcast: true,
-                     description: """
+                     excerpt: """
                      This American Life is a weekly public radio show, heard by 2.2 million people on more than 500 \
                      stations. Another 2.5 million people download the weekly podcast. It is hosted by Ira Glass, \
                      produced in collaboration with Chicago Public Media, delivered to stations by PRX The Public \
                      Radio Exchange, and has won all of the major broadcasting awards.
                      """,
+                     isPodcast: true,
                      category: "Personal Journals",
                      latestEpisode: ("2018-11-25", "492: Dr. Gilmer and Mr. Hyde")),
         ScoutArticle(withArticleID: "12",
@@ -88,8 +88,7 @@ class PodcastDetailsViewModel: NSObject {
                      url: "https://serialpodcast.org/",
                      publisher: "This American Life",
                      iconURL: URL.init(string: "https://serialpodcast.org/favicon.ico"),
-                     isPodcast: true,
-                     description: """
+                     excerpt: """
                      Serial is a podcast from the creators of This American Life, hosted by Sarah Koenig. Serial \
                      unfolds one story - a true story - over the course of a whole season. The show follows the plot \
                      and characters wherever they lead, through many surprising twists and turns. Sarah won't know \
@@ -97,6 +96,7 @@ class PodcastDetailsViewModel: NSObject {
                      her. Each week she'll bring you the latest chapter, so it's important to listen in, starting with \
                      Episode 1. New episodes are released on Thursday mornings.
                      """,
+                     isPodcast: true,
                      category: "News & Politics",
                      latestEpisode: ("2018-11-15", "S03 Episode 09: Some Time When Everything Has Changed")),
         ScoutArticle(withArticleID: "12",
@@ -110,8 +110,7 @@ class PodcastDetailsViewModel: NSObject {
                      url: "https://www.wnycstudios.org/shows/radiolab",
                      publisher: "WNYC Studios",
                      iconURL: URL.init(string: "https://www.wnycstudios.org/favicon.ico"),
-                     isPodcast: true,
-                     description: """
+                     excerpt: """
                      A two-time Peabody Award-winner, Radiolab is an investigation told through sounds and stories, \
                      and centered around one big idea. In the Radiolab world, information sounds like music and \
                      science and culture collide. Hosted by Jad Abumrad and Robert Krulwich, the show is designed for \
@@ -119,6 +118,7 @@ class PodcastDetailsViewModel: NSObject {
                      producer of other leading podcasts including On the Media, Snap Judgment, Death, Sex & Money, \
                      Nancy and Here’s the Thing with Alec Baldwin. © WNYC Studios
                      """,
+                     isPodcast: true,
                      category: "Natural Sciences",
                      latestEpisode: ("2018-11-21", "UnErased: Dr. Davison and the Gay Cure")),
         ScoutArticle(withArticleID: "12",
@@ -132,11 +132,11 @@ class PodcastDetailsViewModel: NSObject {
                      url: "https://www.npr.org/podcasts/510289/planet-money",
                      publisher: "NPR",
                      iconURL: URL.init(string: "https://media.npr.org/templates/favicon/favicon-180x180.png"),
-                     isPodcast: true,
-                     description: """
+                     excerpt: """
                      The economy explained. Imagine you could call up a friend and say, "Meet me at the bar and tell \
                      me what's going on with the economy." Now imagine that's actually a fun evening.
                      """,
+                     isPodcast: true,
                      category: "Business",
                      latestEpisode: ("2018-11-23", "#878: Mugshots For Sale")),
         ScoutArticle(withArticleID: "12",
@@ -150,12 +150,12 @@ class PodcastDetailsViewModel: NSObject {
                      url: "https://www.npr.org/podcasts/510307/invisibilia",
                      publisher: "NPR",
                      iconURL: URL.init(string: "https://media.npr.org/templates/favicon/favicon-180x180.png"),
-                     isPodcast: true,
-                     description: """
+                     excerpt: """
                      Unseeable forces control human behavior and shape our ideas, beliefs, and assumptions. \
                      Invisibilia—Latin for invisible things—fuses narrative storytelling with science that will make \
                      you see your own life differently.
                      """,
+                     isPodcast: true,
                      category: "Science & Medicine",
                      latestEpisode: ("2018-10-16", "BONUS: Who Do You Let In?"))
 
