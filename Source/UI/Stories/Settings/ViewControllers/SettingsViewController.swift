@@ -11,9 +11,14 @@ import UIKit
 
 class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
+    @IBOutlet fileprivate weak var scrollView: UIScrollView!
+    @IBOutlet fileprivate weak var scrollViewInner: UIView!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var gradientButton: GradientButton!
+    fileprivate let maxHeaderHeight: CGFloat = 44
+    fileprivate let minHeaderHeight: CGFloat = 24
+    fileprivate var previousScrollOffset: CGFloat = 0
 
     private var safariVC: SFSafariViewController?
     private var userDefaults: UserDefaults = UserDefaults()
@@ -35,6 +40,8 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
 
     // MARK: Private
     fileprivate func configureUI() {
+        self.scrollView.delegate = self
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.tapFunction))
         infoLabel.isUserInteractionEnabled = true
         infoLabel.addGestureRecognizer(tap)
@@ -127,5 +134,102 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
     }
 
     @IBAction func privacyNoticeButtonTapped(_ sender: Any) {
+    }
+}
+
+extension SettingsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        DispatchQueue.main.async {
+            let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
+
+            let absoluteTop: CGFloat = 0
+            let absoluteBottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
+
+            let isScrollingDown = scrollDiff > 0 && scrollView.contentOffset.y > absoluteTop
+            let isScrollingUp = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom
+
+            if self.canAnimateHeader(scrollView) {
+                // Calculate new header height
+                var newHeight = self.headerHeightConstraint.constant
+
+                if isScrollingDown {
+                    newHeight = max(self.minHeaderHeight, self.headerHeightConstraint.constant - abs(scrollDiff))
+                } else if isScrollingUp {
+                    newHeight = min(self.maxHeaderHeight, self.headerHeightConstraint.constant + abs(scrollDiff))
+                }
+
+                // Header needs to animate
+                if newHeight != self.headerHeightConstraint.constant {
+                    self.headerHeightConstraint.constant = newHeight
+                    self.updateHeader()
+                    self.setScrollPosition(self.previousScrollOffset)
+                }
+
+                self.previousScrollOffset = scrollView.contentOffset.y
+            }
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.scrollViewDidStopScrolling()
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            self.scrollViewDidStopScrolling()
+        }
+    }
+
+    func scrollViewDidStopScrolling() {
+        let range = self.maxHeaderHeight - self.minHeaderHeight
+        let midPoint = self.minHeaderHeight + (range / 2)
+
+        if self.headerHeightConstraint.constant > midPoint {
+            self.expandHeader()
+        } else {
+            self.collapseHeader()
+        }
+    }
+
+    func canAnimateHeader(_ scrollView: UIScrollView) -> Bool {
+        // Calculate the size of the scrollView when header is collapsed
+        let scrollViewMaxHeight = scrollView.frame.height + self.headerHeightConstraint.constant - minHeaderHeight
+
+        // Make sure that when header is collapsed, there is still room to scroll
+        return scrollView.contentSize.height > scrollViewMaxHeight
+    }
+
+    func collapseHeader() {
+        self.view.layoutIfNeeded()
+
+        UIView.animate(withDuration: 0.2,
+                       animations: {
+                        self.headerHeightConstraint.constant = self.minHeaderHeight
+                        self.updateHeader()
+                        self.view.layoutIfNeeded()
+        })
+    }
+
+    func expandHeader() {
+        self.view.layoutIfNeeded()
+
+        UIView.animate(withDuration: 0.2,
+                       animations: {
+                        self.headerHeightConstraint.constant = self.maxHeaderHeight
+                        self.updateHeader()
+                        self.view.layoutIfNeeded()
+        })
+    }
+
+    func setScrollPosition(_ position: CGFloat) {
+        self.scrollView.contentOffset = CGPoint(x: self.scrollView.contentOffset.x, y: position)
+    }
+
+    func updateHeader() {
+        let range = self.maxHeaderHeight - self.minHeaderHeight
+        let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
+        let percentage = openAmount / range
+
+        self.mainTitleLabel.alpha = percentage
     }
 }

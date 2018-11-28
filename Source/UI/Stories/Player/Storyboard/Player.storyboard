@@ -143,14 +143,14 @@
                                         </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxo-dE-LK9" userLabel="Archive Button">
-                                        <rect key="frame" x="53" y="112" width="24" height="54"/>
+                                        <rect key="frame" x="63" y="112" width="24" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="8Gf-lQ-6a7"/>
                                         </constraints>
                                         <state key="normal" image="archive"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUX-TB-09j">
-                                        <rect key="frame" x="115" y="112" width="24" height="54"/>
+                                        <rect key="frame" x="120" y="112" width="24" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="Gh8-pc-hvR"/>
                                         </constraints>
@@ -186,7 +186,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqe-r0-bjo">
-                                        <rect key="frame" x="275" y="112" width="24" height="54"/>
+                                        <rect key="frame" x="270" y="112" width="24" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="QgC-kl-AtA"/>
                                         </constraints>
@@ -201,7 +201,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-hV-D6N">
-                                        <rect key="frame" x="328" y="112" width="42" height="54"/>
+                                        <rect key="frame" x="318" y="112" width="42" height="54"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="1.00X">
@@ -216,11 +216,11 @@
                                 <constraints>
                                     <constraint firstItem="Hwo-Ns-5K3" firstAttribute="trailing" secondItem="TME-Cu-Ure" secondAttribute="trailing" id="0Xg-AF-ueT"/>
                                     <constraint firstItem="TME-Cu-Ure" firstAttribute="top" secondItem="ICT-Vm-vNE" secondAttribute="bottom" constant="10" id="3em-j4-7kT"/>
-                                    <constraint firstItem="YhW-hV-D6N" firstAttribute="centerX" secondItem="Wqe-r0-bjo" secondAttribute="trailing" constant="50" id="5qW-4o-i1Y"/>
-                                    <constraint firstItem="NUX-TB-09j" firstAttribute="leading" secondItem="Bxo-dE-LK9" secondAttribute="centerX" constant="50" id="7cd-eu-QQA"/>
-                                    <constraint firstItem="IVt-Ra-7aw" firstAttribute="leading" secondItem="NUX-TB-09j" secondAttribute="centerX" constant="50" id="BAG-JI-jmD"/>
+                                    <constraint firstItem="YhW-hV-D6N" firstAttribute="centerX" secondItem="Wqe-r0-bjo" secondAttribute="trailing" constant="45" id="5qW-4o-i1Y"/>
+                                    <constraint firstItem="NUX-TB-09j" firstAttribute="leading" secondItem="Bxo-dE-LK9" secondAttribute="centerX" constant="45" id="7cd-eu-QQA"/>
+                                    <constraint firstItem="IVt-Ra-7aw" firstAttribute="leading" secondItem="NUX-TB-09j" secondAttribute="centerX" constant="45" id="BAG-JI-jmD"/>
                                     <constraint firstItem="ICT-Vm-vNE" firstAttribute="firstBaseline" secondItem="Hwo-Ns-5K3" secondAttribute="firstBaseline" id="Bu9-8s-qcg"/>
-                                    <constraint firstItem="Wqe-r0-bjo" firstAttribute="centerX" secondItem="IVt-Ra-7aw" secondAttribute="trailing" constant="50" id="HEY-yW-dTw"/>
+                                    <constraint firstItem="Wqe-r0-bjo" firstAttribute="centerX" secondItem="IVt-Ra-7aw" secondAttribute="trailing" constant="45" id="HEY-yW-dTw"/>
                                     <constraint firstItem="NUX-TB-09j" firstAttribute="top" secondItem="Wqe-r0-bjo" secondAttribute="top" id="JnU-d9-PqF"/>
                                     <constraint firstItem="NUX-TB-09j" firstAttribute="bottom" secondItem="Wqe-r0-bjo" secondAttribute="bottom" id="K3p-Rr-t7C"/>
                                     <constraint firstItem="ICT-Vm-vNE" firstAttribute="top" secondItem="Auc-la-5qb" secondAttribute="bottom" constant="10" id="NSL-qt-JMQ"/>
