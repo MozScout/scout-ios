@@ -64,6 +64,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setupMainScreen()
         return true
     }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        self.applicationRouter.applicationDidBecomeActive()
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        self.applicationRouter.applicationWillResignActive()
+    }
 }
 
 // MARK: -

@@ -23,6 +23,8 @@ class VoiceInputViewController: UIViewController {
     @IBOutlet weak var animation: UIImageView!
     @IBOutlet weak var textView: UITextView!
 
+    var speechService: SpeechService!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
@@ -36,6 +38,9 @@ class VoiceInputViewController: UIViewController {
     }
 
     @IBAction func closeButtonTapped(_ sender: Any) {
+        self.speechService.endWakeWordDetector()
+        self.speechService.stopRecording()
+
         DispatchQueue.main.async {
             self.navigationController?.popToRootViewController(animated: false)
         }

@@ -28,6 +28,8 @@ class MyListRouter {
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: MyListAssemblyProtocol
 
+    private var listVC: MyListViewController?
+
     required init(with assembly: MyListAssemblyProtocol) {
         self.assembly = assembly
     }
@@ -35,11 +37,11 @@ class MyListRouter {
 
 extension MyListRouter: MyListRoutingProtocol {
     func show(from viewController: UIViewController, animated: Bool, withUserID: String) {
-        let listVC = assembly.assemblyMyListViewController()
-        listVC.userID = withUserID
-        listVC.playerDelegateFromMain = self
-        listVC.voiceInputDelegateFromMain = self
-        self.showViewController(viewController: listVC, fromViewController: viewController, animated: animated)
+        self.listVC = assembly.assemblyMyListViewController()
+        self.listVC!.userID = withUserID
+        self.listVC!.playerDelegateFromMain = self
+        self.listVC!.voiceInputDelegateFromMain = self
+        self.showViewController(viewController: self.listVC!, fromViewController: viewController, animated: animated)
     }
 
     // MARK: -
@@ -61,6 +63,18 @@ extension MyListRouter: MyListRoutingProtocol {
             }
         } else {
             print("Unsupported navigation")
+        }
+    }
+
+    func applicationDidBecomeActive() {
+        if let listVC = self.listVC {
+            listVC.applicationDidBecomeActive()
+        }
+    }
+
+    func applicationWillResignActive() {
+        if let listVC = self.listVC {
+            listVC.applicationWillResignActive()
         }
     }
 }

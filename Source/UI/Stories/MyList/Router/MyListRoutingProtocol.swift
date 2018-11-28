@@ -25,4 +25,6 @@ protocol MyListRoutingProtocol {
     var addVoiceInputText: ((String, Bool) -> Void)? { get set }
     var setVoiceInputImage: ((UIImage) -> Void)? { get set }
     func show(from viewController: UIViewController, animated: Bool, withUserID: String)
+    func applicationDidBecomeActive()
+    func applicationWillResignActive()
 }

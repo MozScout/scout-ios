@@ -51,6 +51,8 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     var expandedRows = Set<Int>()
     var wasPlaying: Bool = false
 
+    private var userDefaults = UserDefaults()
+
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self,
@@ -73,6 +75,7 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
 
         self.headerHeightConstraint.constant = self.maxHeaderHeight
         updateHeader()
+        self.beginWakeWordDetector()
     }
 
     // MARK: Private
@@ -193,8 +196,12 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
     }
 
     func beginWakeWordDetector() {
+        // Always do this, otherwise we won't get STT results.
         self.speechService.delegate = self
-        self.speechService.beginWakeWordDetector()
+
+        if self.userDefaults.bool(forKey: "listenForWakeWord") {
+            self.speechService.beginWakeWordDetector()
+        }
     }
 
     func speechRecognitionFinished(transcription: String) {
@@ -775,6 +782,15 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                                                                     """)
                                                      self.hideHUD()
                                                  })
+    }
+
+    func applicationDidBecomeActive() {
+        self.beginWakeWordDetector()
+    }
+
+    func applicationWillResignActive() {
+        self.speechService.endWakeWordDetector()
+        self.speechService.stopRecording()
     }
 }
 

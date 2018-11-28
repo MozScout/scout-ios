@@ -11,4 +11,6 @@ protocol ApplicationRouterProtocol: UIApplicationDelegate {
 
     func show(from window: UIWindow)
     func showMain(from window: UIWindow)
+    func applicationDidBecomeActive()
+    func applicationWillResignActive()
 }

@@ -41,6 +41,14 @@ extension ApplicationRouter: ApplicationRouterProtocol {
     func showMain(from window: UIWindow) {
         self.showMainScreen(from: window)
     }
+
+    func applicationDidBecomeActive() {
+        self.myListRouter.applicationDidBecomeActive()
+    }
+
+    func applicationWillResignActive() {
+        self.myListRouter.applicationWillResignActive()
+    }
 }
 
 // MARK: -
