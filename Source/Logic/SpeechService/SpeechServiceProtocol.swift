@@ -21,6 +21,7 @@ protocol SpeechServiceProtocol {
     func endWakeWordDetector()
     func startRecording()
     func stopRecording()
+    func speak(_ text: String, callback: (() -> Void)?)
 }
 
 protocol SBSpeechRecognizerDelegate: class {

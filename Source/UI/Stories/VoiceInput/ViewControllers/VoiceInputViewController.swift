@@ -33,8 +33,6 @@ class VoiceInputViewController: UIViewController {
     fileprivate func configureUI() {
         self.listenForWakeWordSwitch.isOn = self.userDefaults.bool(forKey: "listenForWakeWord")
         self.textView.attributedText = NSMutableAttributedString.init(string: "")
-        self.addText("How can I help?", fromUser: false)
-        self.setImage(UIImage.init(named: "listening")!)
     }
 
     @IBAction func closeButtonTapped(_ sender: Any) {

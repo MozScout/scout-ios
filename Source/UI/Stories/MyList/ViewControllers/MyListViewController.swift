@@ -331,57 +331,67 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
 
         if transcription == "Play" {
             if self.playerVisible() {
-                self.addVoiceInputText("Resuming playback...", fromUser: false)
-                self.resume()
+                self.addVoiceInputText("Resuming playback...", fromUser: false) {
+                    self.resume()
+                }
             } else {
-                self.addVoiceInputText("Preparing the first article...", fromUser: false)
-                self.playArticleAtIndex(index: 0)
+                self.addVoiceInputText("Preparing the first article...", fromUser: false) {
+                    self.playArticleAtIndex(index: 0)
+                }
             }
         } else if transcription == "Resume" {
-            self.addVoiceInputText("Resuming playback...", fromUser: false)
-            self.resume()
+            self.addVoiceInputText("Resuming playback...", fromUser: false) {
+                self.resume()
+            }
         } else if transcription == "Pause" {
-            self.addVoiceInputText("Pausing playback...", fromUser: false)
-            self.pause()
+            self.addVoiceInputText("Pausing playback...", fromUser: false) {
+                self.pause()
+            }
         } else if transcription == "Stop" {
-            self.addVoiceInputText("Stopping playback...", fromUser: false)
-            self.stop()
+            self.addVoiceInputText("Stopping playback...", fromUser: false) {
+                self.stop()
+            }
         } else if transcription == "Next" {
-            var index: Int
             if self.scoutTitles != nil {
-                self.addVoiceInputText("Preparing the next article", fromUser: false)
-                if self.articleNumber + 1 >= self.scoutTitles!.count {
-                    index = 0
-                } else {
-                    index = self.articleNumber + 1
+                self.addVoiceInputText("Preparing the next article", fromUser: false) {
+                    var index: Int
+                    if self.articleNumber + 1 >= self.scoutTitles!.count {
+                        index = 0
+                    } else {
+                        index = self.articleNumber + 1
+                    }
+
+                    self.playArticleAtIndex(index: index)
                 }
             } else {
-                self.addVoiceInputText("Stopping playback...", fromUser: false)
-                index = -1
+                self.addVoiceInputText("Stopping playback...", fromUser: false) {
+                    self.stop()
+                }
             }
-
-            self.playArticleAtIndex(index: index)
         } else if transcription == "Previous" {
-            var index: Int
             if self.scoutTitles != nil {
-                self.addVoiceInputText("Preparing the previous article...", fromUser: false)
-                if self.articleNumber - 1 < 0 {
-                    index = self.scoutTitles!.count - 1
-                } else {
-                    index = self.articleNumber - 1
+                self.addVoiceInputText("Preparing the previous article...", fromUser: false) {
+                    var index: Int
+                    if self.articleNumber - 1 < 0 {
+                        index = self.scoutTitles!.count - 1
+                    } else {
+                        index = self.articleNumber - 1
+                    }
+
+                    self.playArticleAtIndex(index: index)
                 }
             } else {
-                self.addVoiceInputText("Stopping playback...", fromUser: false)
-                index = -1
+                self.addVoiceInputText("Stopping playback...", fromUser: false) {
+                    self.stop()
+                }
             }
-
-            self.playArticleAtIndex(index: index)
         } else if transcription.starts(with: "Play ") {
             var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
             if match != nil {
-                self.addVoiceInputText("Preparing that article...", fromUser: false)
-                let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
-                self.playArticleMatching(searchTerm: searchTerm)
+                self.addVoiceInputText("Preparing that article...", fromUser: false) {
+                    let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
+                    self.playArticleMatching(searchTerm: searchTerm)
+                }
             } else {
                 match = ordinalRegex.firstMatch(in: transcription,
                                                 options: [],
@@ -390,19 +400,23 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                     let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
                     let index = ordinalToIndex(ordinal: ordinal)
                     if index < self.scoutTitles!.count {
-                        self.addVoiceInputText("Preparing that article...", fromUser: false)
+                        self.addVoiceInputText("Preparing that article...", fromUser: false) {
+                            self.playArticleAtIndex(index: index)
+                        }
                     } else {
-                        self.addVoiceInputText("Stopping playback...", fromUser: false)
+                        self.addVoiceInputText("Stopping playback...", fromUser: false) {
+                            self.stop()
+                        }
                     }
-                    self.playArticleAtIndex(index: index)
                 }
             }
         } else if transcription.starts(with: "Skim ") || transcription.starts(with: "Summarize ") {
             var match = aboutRegex.firstMatch(in: transcription, options: [], range: range)
             if match != nil {
-                self.addVoiceInputText("Preparing that article...", fromUser: false)
-                let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
-                self.skimArticleMatching(searchTerm: searchTerm)
+                self.addVoiceInputText("Preparing that article...", fromUser: false) {
+                    let searchTerm = (transcription as NSString).substring(with: match!.range(at: 3))
+                    self.skimArticleMatching(searchTerm: searchTerm)
+                }
             } else {
                 match = ordinalRegex.firstMatch(in: transcription,
                                                 options: [],
@@ -411,133 +425,160 @@ class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpe
                     let ordinal = (transcription as NSString).substring(with: match!.range(at: 2))
                     let index = ordinalToIndex(ordinal: ordinal)
                     if index < self.scoutTitles!.count {
-                        self.addVoiceInputText("Preparing that article...", fromUser: false)
+                        self.addVoiceInputText("Preparing that article...", fromUser: false) {
+                            self.skimArticleAtIndex(index: index)
+                        }
+                        }
                     } else {
-                        self.addVoiceInputText("Stopping playback...", fromUser: false)
+                    self.addVoiceInputText("Stopping playback...", fromUser: false) {
+                        self.stop()
                     }
-                    self.skimArticleAtIndex(index: index)
                 }
             }
         } else if volumeUpRegex.firstMatch(in: transcription, options: [], range: range) != nil {
-            self.addVoiceInputText("Increasing the volume...", fromUser: false)
-            self.increaseVolume()
-            if self.wasPlaying {
-                self.resume()
+            self.addVoiceInputText("Increasing the volume...", fromUser: false) {
+                self.increaseVolume()
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else if volumeDownRegex.firstMatch(in: transcription, options: [], range: range) != nil {
-            self.addVoiceInputText("Decreasing the volume...", fromUser: false)
-            self.decreaseVolume()
-            if self.wasPlaying {
-                self.resume()
+            self.addVoiceInputText("Decreasing the volume...", fromUser: false) {
+                self.decreaseVolume()
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else if transcription == "Mute" {
-            self.addVoiceInputText("Muting...", fromUser: false)
-            self.setVolume(0)
-            if self.wasPlaying {
-                self.resume()
+            self.addVoiceInputText("Muting...", fromUser: false) {
+                self.setVolume(0)
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else if transcription == "Unmute" {
-            self.addVoiceInputText("Unmuting...", fromUser: false)
-            if self.lastVolume > 0 {
-                self.setVolume(self.lastVolume)
-            }
+            self.addVoiceInputText("Unmuting...", fromUser: false) {
+                if self.lastVolume > 0 {
+                    self.setVolume(self.lastVolume)
+                }
 
-            if self.wasPlaying {
-                self.resume()
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else if let match = setVolumeRegex.firstMatch(in: transcription, options: [], range: range) {
             let volumeString = (transcription as NSString).substring(with: match.range(at: 3))
             let volume: Float? = Float(volumeString)
             if volume != nil {
-                self.setVolume(volume! / 100)
-            }
-
-            if self.wasPlaying {
-                self.resume()
+                self.addVoiceInputText("Setting volume to \(volume!)%", fromUser: false) {
+                    self.setVolume(volume! / 100)
+                    if self.wasPlaying {
+                        self.resume()
+                    }
+                }
+            } else {
+                self.addVoiceInputText("Sorry, I didn't get that. Try rephrasing.", fromUser: false) {
+                    if self.wasPlaying {
+                        self.resume()
+                    }
+                }
             }
         } else if transcription == "Play faster" || transcription == "Read faster" ||
                 transcription == "Play more quickly" || transcription == "Read more quickly" ||
                 transcription == "Speed up" {
-            self.addVoiceInputText("Speeding up playback...", fromUser: false)
-            self.increaseSpeed()
-            if self.wasPlaying {
-                self.resume()
+            self.addVoiceInputText("Speeding up playback...", fromUser: false) {
+                self.increaseSpeed()
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else if transcription == "Play slower" || transcription == "Read slower" ||
                 transcription == "Play more slowly" || transcription == "Read more slowly" ||
                 transcription == "Slow down" {
-            self.addVoiceInputText("Slowing down playback...", fromUser: false)
-            self.decreaseSpeed()
-            if self.wasPlaying {
-                self.resume()
+            self.addVoiceInputText("Slowing down playback...", fromUser: false) {
+                self.decreaseSpeed()
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else if let match = skipBackRegex.firstMatch(in: transcription, options: [], range: range) {
-            self.addVoiceInputText("Seeking...", fromUser: false)
-            var time = -1
-            if match.range(at: 4).location != NSNotFound && match.range(at: 5).location != NSNotFound {
-                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 4)))
-                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
+            self.addVoiceInputText("Seeking...", fromUser: false) {
+                var time = -1
+                if match.range(at: 4).location != NSNotFound && match.range(at: 5).location != NSNotFound {
+                    let minutes =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 4)))
+                    let seconds =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
 
-                if minutes > 0 && seconds > 0 {
-                    time = minutes * 60 + seconds
+                    if minutes > 0 && seconds > 0 {
+                        time = minutes * 60 + seconds
+                    }
+                } else if match.range(at: 6).location != NSNotFound {
+                    let minutes =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 6)))
+                    if minutes > 0 {
+                        time = minutes * 60
+                    }
+                } else if match.range(at: 7).location != NSNotFound {
+                    let seconds =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 7)))
+                    if seconds > 0 {
+                        time = seconds
+                    }
+                } else {
+                    time = 30
                 }
-            } else if match.range(at: 6).location != NSNotFound {
-                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 6)))
-                if minutes > 0 {
-                    time = minutes * 60
-                }
-            } else if match.range(at: 7).location != NSNotFound {
-                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 7)))
-                if seconds > 0 {
-                    time = seconds
-                }
-            } else {
-                time = 30
-            }
 
-            if time > 0 {
-                self.skip(-time)
-            }
+                if time > 0 {
+                    self.skip(-time)
+                }
 
-            if self.wasPlaying {
-                self.resume()
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else if let match = skipAheadRegex.firstMatch(in: transcription, options: [], range: range) {
-            self.addVoiceInputText("Seeking...", fromUser: false)
-            var time = -1
-            if match.range(at: 5).location != NSNotFound && match.range(at: 6).location != NSNotFound {
-                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
-                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 6)))
+            self.addVoiceInputText("Seeking...", fromUser: false) {
+                var time = -1
+                if match.range(at: 5).location != NSNotFound && match.range(at: 6).location != NSNotFound {
+                    let minutes =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 5)))
+                    let seconds =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 6)))
 
-                if minutes > 0 && seconds > 0 {
-                    time = minutes * 60 + seconds
+                    if minutes > 0 && seconds > 0 {
+                        time = minutes * 60 + seconds
+                    }
+                } else if match.range(at: 7).location != NSNotFound {
+                    let minutes =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 7)))
+                    if minutes > 0 {
+                        time = minutes * 60
+                    }
+                } else if match.range(at: 8).location != NSNotFound {
+                    let seconds =
+                        stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 8)))
+                    if seconds > 0 {
+                        time = seconds
+                    }
+                } else {
+                    time = 30
                 }
-            } else if match.range(at: 7).location != NSNotFound {
-                let minutes = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 7)))
-                if minutes > 0 {
-                    time = minutes * 60
-                }
-            } else if match.range(at: 8).location != NSNotFound {
-                let seconds = stringToNumber(string: (transcription as NSString).substring(with: match.range(at: 8)))
-                if seconds > 0 {
-                    time = seconds
-                }
-            } else {
-                time = 30
-            }
 
-            if time > 0 {
-                self.skip(time)
-            }
+                if time > 0 {
+                    self.skip(time)
+                }
 
-            if self.wasPlaying {
-                self.resume()
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         } else {
-            self.addVoiceInputText("Sorry, I didn't get that. Try rephrasing.", fromUser: false)
-            self.setVoiceInputImage(UIImage.init(named: "error")!)
-            if self.wasPlaying {
-                self.resume()
+            self.addVoiceInputText("Sorry, I didn't get that. Try rephrasing.", fromUser: false) {
+                self.setVoiceInputImage(UIImage.init(named: "error")!)
+                if self.wasPlaying {
+                    self.resume()
+                }
             }
         }
 
@@ -973,7 +1014,11 @@ extension MyListViewController: UITableViewDelegate {
             }
 
             self.speechService.endWakeWordDetector()
-            self.speechService.startRecording()
+
+            self.setVoiceInputImage(UIImage.init(named: "listening")!)
+            self.addVoiceInputText("How can I help?", fromUser: false) {
+                self.speechService.startRecording()
+            }
         }
     }
 
@@ -991,10 +1036,14 @@ extension MyListViewController: UITableViewDelegate {
         }
     }
 
-    private func addVoiceInputText(_ text: String, fromUser: Bool) {
+    private func addVoiceInputText(_ text: String, fromUser: Bool, callback: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             guard let requiredDelegate = self.voiceInputDelegateFromMain else { return }
             requiredDelegate.addVoiceInputTextFromMain(text, fromUser: fromUser)
+
+            if !fromUser {
+                self.speechService.speak(text, callback: callback)
+            }
         }
     }
 

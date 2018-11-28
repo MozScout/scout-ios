@@ -15,7 +15,7 @@ enum SpeechMode {
     case recognition
 }
 
-class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate {
+class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
     let RESOURCE = Bundle.main.path(forResource: "common", ofType: "res")
     let MODEL = Bundle.main.path(forResource: "jarvis", ofType: "umdl")
 
@@ -30,11 +30,14 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
     private var dingSound: AVAudioPlayer!
     private var dongSound: AVAudioPlayer!
     private var speechMode: SpeechMode = .disabled
+    private var synthesizer: AVSpeechSynthesizer!
+    private var synthesizerCallbacks = [AVSpeechUtterance: (() -> Void)]()
 
     init?(with locale: Locale) {
         guard let requiredRecognizer = SFSpeechRecognizer(locale: locale) else { return nil }
         self.speechRecognizer = requiredRecognizer
         self.audioEngine = AVAudioEngine()
+        self.synthesizer = AVSpeechSynthesizer()
 
         self.snowboyWrapper = SnowboyWrapper(resources: RESOURCE, modelStr: MODEL)
         self.snowboyWrapper.setSensitivity("0.8,0.80")
@@ -53,6 +56,7 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         super.init()
 
         self.speechRecognizer.delegate = self
+        self.synthesizer.delegate = self
     }
 
     var speechTimeoutInterval: TimeInterval = 2 {
@@ -206,5 +210,22 @@ class SpeechService: NSObject, SpeechServiceProtocol, SFSpeechRecognizerDelegate
         self.speechMode = .disabled
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 1)
+    }
+
+    func speak(_ text: String, callback: (() -> Void)? = nil) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.rate = 0.55
+
+        if callback != nil {
+            self.synthesizerCallbacks[utterance] = callback!
+        }
+
+        self.synthesizer.speak(utterance)
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        if let callback = self.synthesizerCallbacks.removeValue(forKey: utterance) {
+            callback()
+        }
     }
 }

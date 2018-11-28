@@ -79,6 +79,10 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
     }
 
     @objc func tapFunction(sender: UITapGestureRecognizer) {
+        self.openPrivacyPolicy()
+    }
+
+    private func openPrivacyPolicy() {
         guard let privacyURL = URL(string: "https://www.mozilla.org/en-US/privacy/") else {
             return //be safe
         }
@@ -131,9 +135,14 @@ class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
     }
 
     @IBAction func feedbackButtonTapped(_ sender: Any) {
+        let recipient = "firefoxlisten@mozilla.com"
+        let subject = "Firefox Listen Feedback".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let url = URL(string: "mailto:\(recipient)?subject=\(subject)")!
+        UIApplication.shared.open(url)
     }
 
     @IBAction func privacyNoticeButtonTapped(_ sender: Any) {
+        self.openPrivacyPolicy()
     }
 }
 
