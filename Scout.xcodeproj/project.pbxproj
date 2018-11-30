@@ -45,6 +45,7 @@
 		6625434F219B575300379011 /* dong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6625434D219B575300379011 /* dong.wav */; };
 		66254351219B576300379011 /* jarvis.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 66254350219B576300379011 /* jarvis.umdl */; };
 		66254353219B57CE00379011 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 66254352219B57CE00379011 /* common.res */; };
+		6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651984421B17400007CB029 /* SwipeableTabViewController.swift */; };
 		8637E7EF215CFBF9008563E9 /* PodcastsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637E7EE215CFBF9008563E9 /* PodcastsViewController.swift */; };
 		8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8637E7F0215CFC71008563E9 /* Podcasts.storyboard */; };
 		8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637E7F2215CFCA4008563E9 /* PodcastsRouter.swift */; };
@@ -197,6 +198,7 @@
 		6625434D219B575300379011 /* dong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dong.wav; sourceTree = "<group>"; };
 		66254350219B576300379011 /* jarvis.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = jarvis.umdl; sourceTree = "<group>"; };
 		66254352219B57CE00379011 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
+		6651984421B17400007CB029 /* SwipeableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabViewController.swift; sourceTree = "<group>"; };
 		84B360F975895554FF0AD747 /* Pods-Scout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.release.xcconfig"; sourceTree = "<group>"; };
 		8637E7EE215CFBF9008563E9 /* PodcastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsViewController.swift; sourceTree = "<group>"; };
 		8637E7F0215CFC71008563E9 /* Podcasts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Podcasts.storyboard; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 		5637D28A20A2FCE600112F1F /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				6651984321B173DA007CB029 /* SwipeableTabViewController */,
 				5637D28D20A2FD2D00112F1F /* Design.swift */,
 				5637D2C820A34A4100112F1F /* GradientButton */,
 				9333B81420AC2AA70055C5B1 /* GradientView */,
@@ -611,6 +614,14 @@
 				66254350219B576300379011 /* jarvis.umdl */,
 			);
 			path = Speech;
+			sourceTree = "<group>";
+		};
+		6651984321B173DA007CB029 /* SwipeableTabViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6651984421B17400007CB029 /* SwipeableTabViewController.swift */,
+			);
+			path = SwipeableTabViewController;
 			sourceTree = "<group>";
 		};
 		8637E7E9215CF74F008563E9 /* Podcasts */ = {
@@ -1439,6 +1450,7 @@
 				93A718B62164B9DC00BC77D9 /* PodcastDetailsModel.swift in Sources */,
 				93A3113E20B13F7C0049DB67 /* VoiceInputRouter.swift in Sources */,
 				93A3113820B13EA70049DB67 /* VoiceInputAssemblyProtocol.swift in Sources */,
+				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
 				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,

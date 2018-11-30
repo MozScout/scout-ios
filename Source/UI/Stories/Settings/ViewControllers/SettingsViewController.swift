@@ -9,7 +9,7 @@ import Foundation
 import SafariServices
 import UIKit
 
-class SettingsViewController: UIViewController, SFSafariViewControllerDelegate {
+class SettingsViewController: SwipableTabViewController, SFSafariViewControllerDelegate {
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate weak var scrollView: UIScrollView!
     @IBOutlet fileprivate weak var scrollViewInner: UIView!

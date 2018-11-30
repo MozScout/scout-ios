@@ -24,7 +24,7 @@ protocol PlayListDelegate: class {
     func openPlayerFromMain(withModel: ScoutArticle, isFullArticle: Bool)
 }
 
-class MyListViewController: UIViewController, MyListTableViewCellDelegate, SBSpeechRecognizerDelegate {
+class MyListViewController: SwipableTabViewController, MyListTableViewCellDelegate, SBSpeechRecognizerDelegate {
     @IBOutlet fileprivate weak var mainTitleLabel: UILabel!
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate var headerHeightConstraint: NSLayoutConstraint!

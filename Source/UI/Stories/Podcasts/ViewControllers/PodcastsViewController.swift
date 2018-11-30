@@ -11,7 +11,7 @@ protocol PodcastsDelegate: class {
     func openAddPodcasts()
 }
 
-class PodcastsViewController: UIViewController {
+class PodcastsViewController: SwipableTabViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var gradientButton: GradientButton!
