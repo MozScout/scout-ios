@@ -123,7 +123,7 @@ private extension ApplicationRouter {
             return self.playerRouter.playing()
         }
         self.myListRouter.isPlayerVisible = {
-            return self.playerRouter.playerVisible()
+            return self.playerRouter.playerOpen
         }
         self.myListRouter.increasePlayerVolume = {
             self.playerRouter.increaseVolume()

@@ -13,14 +13,17 @@ class PlayerRouter {
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PlayerAssemblyProtocol
     var playerVC: PlayerViewController?
+    var playerOpen: Bool
 
     required init(with assembly: PlayerAssemblyProtocol) {
         self.assembly = assembly
+        self.playerOpen = false
     }
 }
 
 extension PlayerRouter: PlayerRoutingProtocol {
     func show(from viewController: UIViewController, animated: Bool, model: ScoutArticle, fullArticle: Bool) {
+        self.playerOpen = true
         self.playerVC = assembly.assemblyPlayerViewController()
         self.playerVC!.model = model
         self.playerVC!.isFullArticle = fullArticle
@@ -29,29 +32,25 @@ extension PlayerRouter: PlayerRoutingProtocol {
     }
 
     func pause() {
-        if self.playerVisible() && self.playerVC!.playing {
+        if self.playerOpen && self.playerVC!.playing {
             self.playerVC!.pauseButtonTapped(0)
         }
     }
 
     func stop() {
-        if self.playerVisible() {
-            self.playerVC!.backButtonTapped(0)
+        if self.playerOpen {
+            self.backButtonTapped()
         }
     }
 
     func resume() {
-        if self.playerVisible() && !self.playerVC!.playing {
+        if self.playerOpen && !self.playerVC!.playing {
             self.playerVC!.pauseButtonTapped(0)
         }
     }
 
     func playing() -> Bool {
-        return self.playerVisible() && self.playerVC!.playing
-    }
-
-    func playerVisible() -> Bool {
-        return self.playerVC != nil && self.playerVC!.viewIfLoaded?.window != nil
+        return self.playerOpen && self.playerVC!.playing
     }
 
     func increaseVolume() {
@@ -75,19 +74,19 @@ extension PlayerRouter: PlayerRoutingProtocol {
     }
 
     func increaseSpeed() {
-        if self.playerVisible() {
+        if self.playerOpen {
             self.playerVC!.increaseSpeed()
         }
     }
 
     func decreaseSpeed() {
-        if self.playerVisible() {
+        if self.playerOpen {
             self.playerVC!.decreaseSpeed()
         }
     }
 
     func skip(_ seconds: Int) {
-        if self.playerVisible() {
+        if self.playerOpen {
             self.playerVC!.skip(seconds)
         }
     }
@@ -117,6 +116,8 @@ extension PlayerRouter: PlayerRoutingProtocol {
 
 extension PlayerRouter: PlayerViewControllerDelegate {
     func backButtonTapped() {
+        self.playerOpen = false
+        self.playerVC!.stop()
         self.onBackButtonTap!()
     }
 }

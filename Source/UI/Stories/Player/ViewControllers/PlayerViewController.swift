@@ -242,6 +242,10 @@ class PlayerViewController: UIViewController {
         return (oldVolume, newVolume)
     }
 
+    internal func stop() {
+        self.audioPlayer.stop()
+    }
+
     @objc internal func updateSlider() {
         slider.value = Float(audioPlayer.currentTime)
 
@@ -268,16 +272,8 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
-        self.audioPlayer.stop()
-        DispatchQueue.main.async {
-            if let navigationController = self.navigationController {
-                var viewControllers = navigationController.viewControllers
-                for (index, element) in viewControllers.enumerated() where element as? PlayerViewController != nil {
-                    viewControllers.remove(at: index)
-                    navigationController.setViewControllers(viewControllers, animated: true)
-                    break
-                }
-            }
+        if let delegate = self.backButtonDelegate {
+            delegate.backButtonTapped()
         }
     }
 
