@@ -11,6 +11,7 @@ protocol APIClientReachabilityServiceProtocol {
 }
 
 extension ReachabilityService: APIClientReachabilityServiceProtocol {
+    
     var isReachable: Bool {
         return isNetworkAvailable
     }

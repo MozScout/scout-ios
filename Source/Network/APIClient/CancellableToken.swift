@@ -32,6 +32,7 @@ public class MoyaCancellableToken {
 }
 
 extension MoyaCancellableToken: CancellableToken {
+    
     public var isCancelled: Bool {
         return cancellable.isCancelled
     }
@@ -44,6 +45,7 @@ extension MoyaCancellableToken: CancellableToken {
 // MARK: - EmptyCancellableToken -
 
 public class EmptyCancellableToken: CancellableToken {
+
     var isCancelled: Bool { return true }
     func cancel() { }
 }

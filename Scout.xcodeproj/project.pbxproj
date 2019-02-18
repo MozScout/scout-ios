@@ -13,6 +13,9 @@
 		280FEEC8221B12C300223CB9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEBF221B12C300223CB9 /* APIClient.swift */; };
 		280FEEC9221B12C300223CB9 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEC0221B12C300223CB9 /* NetworkAdapter.swift */; };
 		280FEECA221B12C300223CB9 /* CancellableToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEC1221B12C300223CB9 /* CancellableToken.swift */; };
+		280FEED1221B14FD00223CB9 /* TopicsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEECD221B14FC00223CB9 /* TopicsApi.swift */; };
+		280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEECE221B14FC00223CB9 /* TopicsRequest.swift */; };
+		280FEED3221B14FD00223CB9 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEED0221B14FC00223CB9 /* Topic.swift */; };
 		2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */; };
 		5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3620A6CE230074A4BC /* AuthAssembly.swift */; };
 		5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */; };
@@ -171,6 +174,9 @@
 		280FEEBF221B12C300223CB9 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		280FEEC0221B12C300223CB9 /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		280FEEC1221B12C300223CB9 /* CancellableToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellableToken.swift; sourceTree = "<group>"; };
+		280FEECD221B14FC00223CB9 /* TopicsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsApi.swift; sourceTree = "<group>"; };
+		280FEECE221B14FC00223CB9 /* TopicsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsRequest.swift; sourceTree = "<group>"; };
+		280FEED0221B14FC00223CB9 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		5622AB3620A6CE230074A4BC /* AuthAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
 		5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssemblyProtocol.swift; sourceTree = "<group>"; };
 		5622AB3920A6CE230074A4BC /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -415,6 +421,24 @@
 				280FEEC0221B12C300223CB9 /* NetworkAdapter.swift */,
 			);
 			path = APIClient;
+			sourceTree = "<group>";
+		};
+		280FEECC221B14FC00223CB9 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				280FEECD221B14FC00223CB9 /* TopicsApi.swift */,
+				280FEECE221B14FC00223CB9 /* TopicsRequest.swift */,
+				280FEECF221B14FC00223CB9 /* Topics */,
+			);
+			path = Topics;
+			sourceTree = "<group>";
+		};
+		280FEECF221B14FC00223CB9 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				280FEED0221B14FC00223CB9 /* Topic.swift */,
+			);
+			path = Topics;
 			sourceTree = "<group>";
 		};
 		3D93A65149EFF87EF72B97AC /* Frameworks */ = {
@@ -1497,6 +1521,7 @@
 				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
 				9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */,
 				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
+				280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
 				5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */,
 				5637D2CA20A34A4B00112F1F /* GradientButton.swift in Sources */,
@@ -1536,6 +1561,7 @@
 				93A718C82164BC7C00BC77D9 /* AboutCell.swift in Sources */,
 				93A3113C20B13F370049DB67 /* VoiceInputRoutingProtocol.swift in Sources */,
 				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
+				280FEED3221B14FD00223CB9 /* Topic.swift in Sources */,
 				280FEEC7221B12C300223CB9 /* APIClientReachabilityServiceProtocol.swift in Sources */,
 				5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */,
 				93A718CC2164BC7C00BC77D9 /* HeaderView.swift in Sources */,
@@ -1577,6 +1603,7 @@
 				8637E7FD215D1982008563E9 /* PodcastsCollectionViewCell.swift in Sources */,
 				F4A23BBA20811280006EC9E3 /* ApplicationRouterProtocol.swift in Sources */,
 				8637E7F9215D037D008563E9 /* PodcastsAssemblyProtocol.swift in Sources */,
+				280FEED1221B14FD00223CB9 /* TopicsApi.swift in Sources */,
 				F47B7CE62084B47B0055585C /* NetworkRequestBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

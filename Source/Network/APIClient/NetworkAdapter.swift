@@ -8,6 +8,7 @@ import Foundation
 import Moya
 
 enum NetworkAdapter {
+    
     static private let networkAdapterQueue: DispatchQueue = DispatchQueue(
         label: "networkAdapterQueue",
         qos: .utility,
