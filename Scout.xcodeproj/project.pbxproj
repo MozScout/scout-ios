@@ -337,6 +337,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2803B343221B04F000A9B250 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				F482CD442080D969007D0C14 /* AppDelegate.swift */,
+				F482CD6B2080E09E007D0C14 /* Application-Bridging-Header.h */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
+		2803B346221B05CA00A9B250 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2803B347221B05D100A9B250 /* FlowCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FlowCoordinators;
+			sourceTree = "<group>";
+		};
+		2803B348221B05D800A9B250 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				280FEEB3221B05EA00223CB9 /* Extensions */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		280FEEB3221B05EA00223CB9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3D93A65149EFF87EF72B97AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1029,30 +1067,16 @@
 		F482CD422080D969007D0C14 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F482CD432080D969007D0C14 /* AppDelegate */,
-				F482CD452080D969007D0C14 /* BridgingHeaders */,
+				2803B343221B04F000A9B250 /* Default */,
+				2803B347221B05D100A9B250 /* FlowCoordinators */,
 				F482CD462080D969007D0C14 /* Logic */,
 				F482CD4D2080D969007D0C14 /* Models */,
+				2803B346221B05CA00A9B250 /* Scenes */,
+				2803B348221B05D800A9B250 /* Shared */,
 				66254337219B542900379011 /* Snowboy */,
 				F482CD4E2080D969007D0C14 /* UI */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		F482CD432080D969007D0C14 /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				F482CD442080D969007D0C14 /* AppDelegate.swift */,
-			);
-			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		F482CD452080D969007D0C14 /* BridgingHeaders */ = {
-			isa = PBXGroup;
-			children = (
-				F482CD6B2080E09E007D0C14 /* Application-Bridging-Header.h */,
-			);
-			path = BridgingHeaders;
 			sourceTree = "<group>";
 		};
 		F482CD462080D969007D0C14 /* Logic */ = {
@@ -1637,7 +1661,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "Scout Development";
-				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/BridgingHeaders/Application-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/Default/Application-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1663,7 +1687,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "Scout Development";
-				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/BridgingHeaders/Application-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/Default/Application-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1741,7 +1765,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = Automatic;
 				PROVISIONING_PROFILE_SPECIFIER = "Scout AppStore";
-				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/BridgingHeaders/Application-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Source/Default/Application-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
