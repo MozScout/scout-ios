@@ -10,11 +10,11 @@ import Moya
 class BaseApi {
 
     let baseUrl: URL
-    let apiClient: APIClient
+    let apiClient: ApiClient
 
     init(
         baseUrl: URL,
-        apiClient: APIClient
+        apiClient: ApiClient
         ) {
 
         self.baseUrl = baseUrl

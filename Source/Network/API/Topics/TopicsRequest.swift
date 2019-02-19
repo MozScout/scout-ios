@@ -1,5 +1,5 @@
 //
-//  OnboardingTarget.swift
+//  TopicsRequest.swift
 //  Scout
 //
 //
@@ -45,11 +45,14 @@ struct TopicsTarget: TargetType {
             return .requestPlain
 
         case .subtopicList(let topicId):
-            return .requestParameters(parameters: ["topicId": topicId], encoding: URLEncoding())
+            return .requestParameters(
+                parameters: ["topicId": topicId],
+                encoding: URLEncoding()
+            )
         }
     }
 
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return nil
     }
 }

@@ -1,15 +1,15 @@
 //
-//  API.swift
+//  Api.swift
 //  Scout
 //
 //
 
 import Foundation
 
-class API {
+class Api {
 
     private let url: URL
-    private let apiClient: APIClient
+    private let apiClient: ApiClient
 
     private(set) lazy var topicsApi: TopicsApi = {
         return createTopicsApi()
@@ -17,7 +17,7 @@ class API {
 
     init(
         url: URL,
-        apiClient: APIClient
+        apiClient: ApiClient
         ) {
 
         self.url = url

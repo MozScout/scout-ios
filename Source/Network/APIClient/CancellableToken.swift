@@ -10,10 +10,9 @@ import Moya
 // MARK: CancellableToken -
 
 protocol CancellableToken {
-    /// Checks if current task is cancelled
+
     var isCancelled: Bool { get }
 
-    /// Cancels current task
     func cancel()
 }
 
@@ -23,9 +22,7 @@ public class MoyaCancellableToken {
 
     private var cancellable: Cancellable
 
-    init(
-        cancellable: Cancellable
-        ) {
+    init(cancellable: Cancellable) {
 
         self.cancellable = cancellable
     }
@@ -46,6 +43,9 @@ extension MoyaCancellableToken: CancellableToken {
 
 public class EmptyCancellableToken: CancellableToken {
 
-    var isCancelled: Bool { return true }
+    var isCancelled: Bool {
+        return true
+    }
+
     func cancel() { }
 }

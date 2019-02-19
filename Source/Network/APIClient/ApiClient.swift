@@ -1,5 +1,5 @@
 //
-//  APIClient.swift
+//  ApiClient.swift
 //  Scout
 //
 //
@@ -13,13 +13,11 @@ enum CommonError: Error {
     case noInternetConnection
 }
 
-class APIClient {
+class ApiClient {
 
-    let reachabilityService: APIClientReachabilityServiceProtocol
+    let reachabilityService: ApiClientReachabilityServiceProtocol
 
-    init(
-        reachabilityService: APIClientReachabilityServiceProtocol
-        ) {
+    init(reachabilityService: ApiClientReachabilityServiceProtocol) {
 
         self.reachabilityService = reachabilityService
     }
@@ -103,11 +101,13 @@ class APIClient {
         ) { [weak self] (result) in
 
             switch result {
+
             case .success(let response):
                 if 200..<400 ~= response.statusCode {
                     successCallback(response.data)
                     return
                 }
+                
             case .failure(let error):
                 if let error = self?.errorFromMoyaError(error) {
                     errorCallback(error)
@@ -122,8 +122,10 @@ class APIClient {
     
     private func errorFromMoyaError(_ error: MoyaError) -> NSError? {
         switch error {
+
         case .underlying(let error, _):
             return error as NSError
+
         default:
             break
         }
