@@ -4,6 +4,13 @@ PODS:
   - HexColors (6.0.0)
   - KeychainAccess (3.1.2)
   - Kingfisher (4.10.1)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - ReachabilitySwift (4.3.0)
+  - Result (4.0.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -12,6 +19,8 @@ DEPENDENCIES:
   - HexColors (~> 6.0)
   - KeychainAccess (~> 3.1)
   - Kingfisher (~> 4.10)
+  - Moya (= 12.0.1)
+  - ReachabilitySwift (= 4.3.0)
   - SwiftyJSON (~> 4.2)
 
 SPEC REPOS:
@@ -21,6 +30,9 @@ SPEC REPOS:
     - HexColors
     - KeychainAccess
     - Kingfisher
+    - Moya
+    - ReachabilitySwift
+    - Result
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -29,8 +41,11 @@ SPEC CHECKSUMS:
   HexColors: f8c66339541a74bb08905bfe7cd4f8cc85e9e173
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 58858f6c08a7024cf08c4dacdb416513c2c5dde1
+PODFILE CHECKSUM: f87ee2daa5fb88e581bb6aa9e3854566f2166aa7
 
 COCOAPODS: 1.5.3
