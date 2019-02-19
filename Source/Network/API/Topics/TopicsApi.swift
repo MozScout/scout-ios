@@ -31,7 +31,7 @@ class TopicsApi: BaseApi {
             callbackQueue: nil,
             success: { (topics) in
                 completion(.success(topics))
-        }) {
+        }) { (_) in
             completion(.failure)
         }
     }
@@ -60,7 +60,7 @@ class TopicsApi: BaseApi {
             callbackQueue: nil,
             success: { (topics) in
                 completion(.success(topics))
-        }) {
+        }) { (_) in
             completion(.failure)
         }
     }
