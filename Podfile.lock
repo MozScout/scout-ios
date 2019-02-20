@@ -11,6 +11,7 @@ PODS:
     - Result (~> 4.0)
   - ReachabilitySwift (4.3.0)
   - Result (4.0.0)
+  - SnapKit (4.2.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - Kingfisher (~> 4.10)
   - Moya (= 12.0.1)
   - ReachabilitySwift (= 4.3.0)
+  - SnapKit (= 4.2.0)
   - SwiftyJSON (~> 4.2)
 
 SPEC REPOS:
@@ -33,6 +35,7 @@ SPEC REPOS:
     - Moya
     - ReachabilitySwift
     - Result
+    - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -44,8 +47,9 @@ SPEC CHECKSUMS:
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: f87ee2daa5fb88e581bb6aa9e3854566f2166aa7
+PODFILE CHECKSUM: 53da7276e2c0fbef14f6add1fbc5348c8dbc16f3
 
 COCOAPODS: 1.5.3

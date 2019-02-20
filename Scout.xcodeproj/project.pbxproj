@@ -19,6 +19,10 @@
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
+		28FDFB75221C285500C869E1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB74221C285500C869E1 /* AppCoordinator.swift */; };
+		28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */; };
+		28FDFB79221C2A2C00C869E1 /* BaseFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */; };
+		28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */; };
 		2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */; };
 		5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3620A6CE230074A4BC /* AuthAssembly.swift */; };
 		5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */; };
@@ -183,6 +187,10 @@
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
+		28FDFB74221C285500C869E1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
+		28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinator.swift; sourceTree = "<group>"; };
+		28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
 		5622AB3620A6CE230074A4BC /* AuthAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
 		5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssemblyProtocol.swift; sourceTree = "<group>"; };
 		5622AB3920A6CE230074A4BC /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -380,6 +388,9 @@
 		2803B347221B05D100A9B250 /* FlowCoordinators */ = {
 			isa = PBXGroup;
 			children = (
+				28FDFB74221C285500C869E1 /* AppCoordinator.swift */,
+				28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */,
+				28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */,
 			);
 			path = FlowCoordinators;
 			sourceTree = "<group>";
@@ -389,6 +400,7 @@
 			children = (
 				28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */,
 				280FEEB3221B05EA00223CB9 /* Extensions */,
+				28FDFB7A221C3AE900C869E1 /* ViewControllers */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -455,6 +467,14 @@
 				28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		28FDFB7A221C3AE900C869E1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		3D93A65149EFF87EF72B97AC /* Frameworks */ = {
@@ -1485,6 +1505,7 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1497,6 +1518,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1566,12 +1588,14 @@
 				28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */,
 				9333B81C20AC6D070055C5B1 /* MyListTableViewCell.swift in Sources */,
 				28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */,
+				28FDFB75221C285500C869E1 /* AppCoordinator.swift in Sources */,
 				280FEEC9221B12C300223CB9 /* NetworkAdapter.swift in Sources */,
 				F47B7CF42084E57F0055585C /* Utils.swift in Sources */,
 				93A718B62164B9DC00BC77D9 /* PodcastDetailsModel.swift in Sources */,
 				93A3113E20B13F7C0049DB67 /* VoiceInputRouter.swift in Sources */,
 				93A3113820B13EA70049DB67 /* VoiceInputAssemblyProtocol.swift in Sources */,
 				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
+				28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
 				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
@@ -1616,10 +1640,12 @@
 				93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */,
 				5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */,
 				93FB827420B54B1B00A39A5C /* PlayerAssembly.swift in Sources */,
+				28FDFB79221C2A2C00C869E1 /* BaseFlowCoordinator.swift in Sources */,
 				93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */,
 				F47B7CF62084E8890055585C /* AuthManager.swift in Sources */,
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,
+				28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */,
 				8637E7FD215D1982008563E9 /* PodcastsCollectionViewCell.swift in Sources */,
 				F4A23BBA20811280006EC9E3 /* ApplicationRouterProtocol.swift in Sources */,
 				8637E7F9215D037D008563E9 /* PodcastsAssemblyProtocol.swift in Sources */,
