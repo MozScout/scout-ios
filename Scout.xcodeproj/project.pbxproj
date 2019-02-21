@@ -23,6 +23,8 @@
 		28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */; };
 		28FDFB79221C2A2C00C869E1 /* BaseFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */; };
 		28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */; };
+		28FEBD06221DB91C00DAD907 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEBD05221DB91C00DAD907 /* AppAssembly.swift */; };
+		28FEBD0A221DBC2800DAD907 /* OnboardingFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEBD09221DBC2800DAD907 /* OnboardingFlowCoordinator.swift */; };
 		2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */; };
 		5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3620A6CE230074A4BC /* AuthAssembly.swift */; };
 		5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */; };
@@ -191,6 +193,8 @@
 		28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
 		28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinator.swift; sourceTree = "<group>"; };
 		28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
+		28FEBD05221DB91C00DAD907 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
+		28FEBD09221DBC2800DAD907 /* OnboardingFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowCoordinator.swift; sourceTree = "<group>"; };
 		5622AB3620A6CE230074A4BC /* AuthAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
 		5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssemblyProtocol.swift; sourceTree = "<group>"; };
 		5622AB3920A6CE230074A4BC /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 				28FDFB74221C285500C869E1 /* AppCoordinator.swift */,
 				28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */,
 				28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */,
+				28FEBD09221DBC2800DAD907 /* OnboardingFlowCoordinator.swift */,
 			);
 			path = FlowCoordinators;
 			sourceTree = "<group>";
@@ -475,6 +480,14 @@
 				28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		28FEBD08221DB92500DAD907 /* Assemblies */ = {
+			isa = PBXGroup;
+			children = (
+				28FEBD05221DB91C00DAD907 /* AppAssembly.swift */,
+			);
+			path = Assemblies;
 			sourceTree = "<group>";
 		};
 		3D93A65149EFF87EF72B97AC /* Frameworks */ = {
@@ -1169,6 +1182,7 @@
 		F482CD422080D969007D0C14 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				28FEBD08221DB92500DAD907 /* Assemblies */,
 				2803B343221B04F000A9B250 /* Default */,
 				2803B347221B05D100A9B250 /* FlowCoordinators */,
 				F482CD462080D969007D0C14 /* Logic */,
@@ -1558,6 +1572,7 @@
 				F47B7CE120849B3F0055585C /* MainAssembly.swift in Sources */,
 				5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */,
 				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
+				28FEBD0A221DBC2800DAD907 /* OnboardingFlowCoordinator.swift in Sources */,
 				9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */,
 				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
 				280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */,
@@ -1613,6 +1628,7 @@
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
 				93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */,
 				5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */,
+				28FEBD06221DB91C00DAD907 /* AppAssembly.swift in Sources */,
 				9362FCAF20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift in Sources */,
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
 				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,

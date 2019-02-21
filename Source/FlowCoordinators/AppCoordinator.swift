@@ -12,13 +12,19 @@ class AppCoordinator {
 
     private var currentFlowCoordinator: FlowCoordinator?
 
-    // MARK: - Public properties
-
+    private let appAssembly: AppAssembly
     private let rootNavigation: RootNavigationViewController
 
-    init(rootNavigation: RootNavigationViewController) {
+    // MARK: - Init
 
+    init(
+        url: URL,
+        rootNavigation: RootNavigationViewController
+        ) {
+
+        self.appAssembly = AppAssembly(with: url)
         self.rootNavigation = rootNavigation
+        
         rootNavigation.onRootWillAppear = { [weak self] in
             self?.runOnboardingFlow()
         }
@@ -27,6 +33,18 @@ class AppCoordinator {
     // MARK: - Private methods
 
     private func runOnboardingFlow() {
+        let assembly = appAssembly.assemblyOnboardingFlowCoordinatorAssembly()
+        let flow = OnboardingFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            onSignedUp: { [weak self] in
+                self?.runSignedInFlow()
+        })
+        currentFlowCoordinator = flow
+        flow.run()
+    }
+
+    private func runSignedInFlow() {
 
     }
 }

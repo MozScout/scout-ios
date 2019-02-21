@@ -8,7 +8,7 @@ import Foundation
 
 class BaseFlowCoordinator: FlowCoordinator {
 
-    var currentFlowController: FlowCoordinator?
+    var currentFlowCoordinator: FlowCoordinator?
 
     // MARK: - Public properties
 
@@ -22,18 +22,18 @@ class BaseFlowCoordinator: FlowCoordinator {
     // MARK: - FlowCoordinator
 
     func applicationDidBecomeActive() {
-        currentFlowController?.applicationDidBecomeActive()
+        currentFlowCoordinator?.applicationDidBecomeActive()
     }
 
     func applicationWillResignActive() {
-        currentFlowController?.applicationWillResignActive()
+        currentFlowCoordinator?.applicationWillResignActive()
     }
 
     func applicationDidEnterBackground() {
-        currentFlowController?.applicationDidEnterBackground()
+        currentFlowCoordinator?.applicationDidEnterBackground()
     }
 
     func applicationWillEnterForeground() {
-        currentFlowController?.applicationWillEnterForeground()
+        currentFlowCoordinator?.applicationWillEnterForeground()
     }
 }

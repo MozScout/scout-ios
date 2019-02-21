@@ -8,7 +8,7 @@ import Foundation
 
 protocol FlowCoordinator {
 
-    var currentFlowController: FlowCoordinator? { get set }
+    var currentFlowCoordinator: FlowCoordinator? { get set }
 
     // MARK: - App life cycle
 
