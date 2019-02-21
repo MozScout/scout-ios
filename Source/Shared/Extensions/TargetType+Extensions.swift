@@ -8,6 +8,7 @@ import Foundation
 import Moya
 
 extension TargetType {
+    
     /// Converts `Encodable` parameters to `Dictionary` and puts it to `.requestParameters` task with query string encoding.
     ///
     /// - Parameter parameters: Encodable parameters structure
@@ -27,6 +28,7 @@ private let urlQueryEncoder: JSONEncoder = {
 }()
 
 private extension Encodable {
+
     func toDictionary(using encoder: JSONEncoder = urlQueryEncoder) -> [String: Any] {
         guard let data: Data = try? encode(using: encoder),
             let optionalDictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
