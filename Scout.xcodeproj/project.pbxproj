@@ -24,6 +24,11 @@
 		280FEED3221B14FD00223CB9 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEED0221B14FC00223CB9 /* Topic.swift */; };
 		28123297221EC298001B99C7 /* TargetType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28123296221EC298001B99C7 /* TargetType+Extensions.swift */; };
 		28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28123298221EC40B001B99C7 /* TopicsRequestParameters.swift */; };
+		2812329B221EFE5E001B99C7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329A221EFE5E001B99C7 /* TabBarViewController.swift */; };
+		2812329E221EFE70001B99C7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329D221EFE70001B99C7 /* TabBarView.swift */; };
+		281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329F221EFE7F001B99C7 /* TabBarItemView.swift */; };
+		281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A1221F0B07001B99C7 /* TabBarItemView.xib */; };
+		281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A5221F1E85001B99C7 /* TabBarView.xib */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -208,6 +213,11 @@
 		280FEED0221B14FC00223CB9 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		28123296221EC298001B99C7 /* TargetType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+Extensions.swift"; sourceTree = "<group>"; };
 		28123298221EC40B001B99C7 /* TopicsRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsRequestParameters.swift; sourceTree = "<group>"; };
+		2812329A221EFE5E001B99C7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		2812329D221EFE70001B99C7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		2812329F221EFE7F001B99C7 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
+		281232A1221F0B07001B99C7 /* TabBarItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarItemView.xib; sourceTree = "<group>"; };
+		281232A5221F1E85001B99C7 /* TabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -513,6 +523,34 @@
 			path = Topics;
 			sourceTree = "<group>";
 		};
+		2812329C221EFE61001B99C7 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2812329A221EFE5E001B99C7 /* TabBarViewController.swift */,
+				281232A3221F0B12001B99C7 /* TabBarItemView */,
+				281232A4221F1E1A001B99C7 /* TabBarView */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		281232A3221F0B12001B99C7 /* TabBarItemView */ = {
+			isa = PBXGroup;
+			children = (
+				2812329F221EFE7F001B99C7 /* TabBarItemView.swift */,
+				281232A1221F0B07001B99C7 /* TabBarItemView.xib */,
+			);
+			path = TabBarItemView;
+			sourceTree = "<group>";
+		};
+		281232A4221F1E1A001B99C7 /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				2812329D221EFE70001B99C7 /* TabBarView.swift */,
+				281232A5221F1E85001B99C7 /* TabBarView.xib */,
+			);
+			path = TabBarView;
+			sourceTree = "<group>";
+		};
 		28FDFB6F221BF29A00C869E1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +564,7 @@
 			children = (
 				2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */,
 				28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */,
+				2812329C221EFE61001B99C7 /* TabBar */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1551,6 +1590,8 @@
 				77E1E075221D7E4C006B1084 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				77E1E07E221D7E4C006B1084 /* SF-Pro-Display-LightItalic.otf in Resources */,
 				77E1E079221D7E4C006B1084 /* SF-Pro-Display-Thin.otf in Resources */,
+				281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */,
+				93AE235320CFCEF700A5D89D /* ZillaSlab-Medium.ttf in Resources */,
 				8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */,
 				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
 				93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */,
@@ -1571,6 +1612,12 @@
 				77E1E072221D7E4C006B1084 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				77E1E051221D5496006B1084 /* SF-Pro-Text-Regular.otf in Resources */,
 				77E1E058221D5496006B1084 /* SF-Pro-Text-Semibold.otf in Resources */,
+				93782CDB20C7F53100CE56A4 /* SF-Pro-Display-Ultralight.otf in Resources */,
+				93782CCE20C7F53100CE56A4 /* SF-Pro-Display-RegularItalic.otf in Resources */,
+				281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */,
+				93AE235220CFCEF700A5D89D /* ZillaSlab-BoldItalic.ttf in Resources */,
+				93782CE420C7F53100CE56A4 /* SF-Pro-Display-ThinItalic.otf in Resources */,
+				93AE235120CFCEF700A5D89D /* ZillaSlab-Italic.ttf in Resources */,
 				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
 				6625434F219B575300379011 /* dong.wav in Resources */,
 				77E1E07D221D7E4C006B1084 /* SF-Pro-Display-Heavy.otf in Resources */,
@@ -1714,6 +1761,7 @@
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
 				2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */,
 				77F1D225221C496800E640C3 /* OnboardingModels.swift in Sources */,
+				2812329E221EFE70001B99C7 /* TabBarView.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
 				77F1D227221C496800E640C3 /* OnboardingInteractor.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
@@ -1738,6 +1786,7 @@
 				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,
 				5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */,
 				5637D29120A3142400112F1F /* MainTabBarViewController.swift in Sources */,
+				281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */,
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
@@ -1759,6 +1808,7 @@
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
 				8637E7F5215CFDED008563E9 /* PodcastsRoutingProtocol.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
+				2812329B221EFE5E001B99C7 /* TabBarViewController.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
 				2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */,
 				F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */,
