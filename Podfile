@@ -16,5 +16,6 @@ target 'Scout' do
 
   pod 'Moya', '12.0.1'
   pod 'ReachabilitySwift', '4.3.0'
+  pod 'SnapKit', '4.2.0'
 
 end
