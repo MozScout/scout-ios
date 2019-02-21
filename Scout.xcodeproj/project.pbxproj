@@ -16,6 +16,8 @@
 		280FEED1221B14FD00223CB9 /* TopicsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEECD221B14FC00223CB9 /* TopicsApi.swift */; };
 		280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEECE221B14FC00223CB9 /* TopicsRequest.swift */; };
 		280FEED3221B14FD00223CB9 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEED0221B14FC00223CB9 /* Topic.swift */; };
+		28123297221EC298001B99C7 /* TargetType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28123296221EC298001B99C7 /* TargetType+Extensions.swift */; };
+		28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28123298221EC40B001B99C7 /* TopicsRequestParameters.swift */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -186,6 +188,8 @@
 		280FEECD221B14FC00223CB9 /* TopicsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsApi.swift; sourceTree = "<group>"; };
 		280FEECE221B14FC00223CB9 /* TopicsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsRequest.swift; sourceTree = "<group>"; };
 		280FEED0221B14FC00223CB9 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		28123296221EC298001B99C7 /* TargetType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+Extensions.swift"; sourceTree = "<group>"; };
+		28123298221EC40B001B99C7 /* TopicsRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsRequestParameters.swift; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -414,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */,
+				28123296221EC298001B99C7 /* TargetType+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 			children = (
 				280FEECD221B14FC00223CB9 /* TopicsApi.swift */,
 				280FEECE221B14FC00223CB9 /* TopicsRequest.swift */,
+				28123298221EC40B001B99C7 /* TopicsRequestParameters.swift */,
 				280FEECF221B14FC00223CB9 /* Topics */,
 			);
 			path = Topics;
@@ -1586,6 +1592,7 @@
 				5637D2BD20A3257800112F1F /* MyListRoutingProtocol.swift in Sources */,
 				93A3113A20B13EE40049DB67 /* VoiceInputAssembly.swift in Sources */,
 				F47B7CEF2084D7970055585C /* BaseHTTPClient.swift in Sources */,
+				28123297221EC298001B99C7 /* TargetType+Extensions.swift in Sources */,
 				280FEEC2221B12C300223CB9 /* BaseApi.swift in Sources */,
 				F47B7CF12084D7DC0055585C /* ScoutHTTPClient.swift in Sources */,
 				F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */,
@@ -1637,6 +1644,7 @@
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
+				28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */,
 				5637D2C120A3410100112F1F /* MyListViewController.swift in Sources */,
 				5637D2BC20A3257800112F1F /* MyListRouter.swift in Sources */,
 				5637D2B120A3257800112F1F /* SettingsAssemblyProtocol.swift in Sources */,
