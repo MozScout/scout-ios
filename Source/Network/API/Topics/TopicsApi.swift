@@ -45,13 +45,13 @@ class TopicsApi: BaseApi {
 
     @discardableResult
     func requestSubtopicList(
-        for topicId: Int64,
+        with requestParameters: SubtopicListRequestParameters,
         completion: @escaping (RequestSubtopicListResult) -> Void
         ) -> CancellableToken {
 
         let target = TopicsTarget(
             baseURL: baseUrl,
-            request: .subtopicList(topicId: topicId)
+            request: .subtopicList(requestParameters)
         )
 
         return apiClient.requestObject(
