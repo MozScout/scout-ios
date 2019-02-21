@@ -31,6 +31,7 @@ class OnboardingFlowCoordinator: BaseFlowCoordinator {
 }
 
 extension OnboardingFlowCoordinator {
+    
     class Assembly {
 
         private let appAssembly: AppAssembly

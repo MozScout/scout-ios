@@ -8,10 +8,12 @@ import UIKit
 import SnapKit
 
 enum RootNavigationTransition {
+
     case fade
 }
 
 protocol RootNavigationProtocol {
+
     func setRootContent(
         _ rootContent: RootContentProtocol,
         transition: RootNavigationTransition,
@@ -26,6 +28,7 @@ protocol RootNavigationProtocol {
 }
 
 protocol RootContentProtocol {
+    
     func getRootContentViewController() -> UIViewController
 }
 
