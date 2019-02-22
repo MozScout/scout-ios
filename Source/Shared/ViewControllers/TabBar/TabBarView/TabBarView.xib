@@ -16,16 +16,32 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-6F-cBj">
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLm-7g-NgZ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
-                </stackView>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AKl-5z-JL7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-6F-cBj">
+                                <rect key="frame" x="16" y="0.0" width="343" height="252"/>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="WYz-6F-cBj" secondAttribute="bottom" id="2NI-bq-0H9"/>
+                            <constraint firstAttribute="trailing" secondItem="WYz-6F-cBj" secondAttribute="trailing" constant="16" id="5sk-65-i84"/>
+                            <constraint firstItem="WYz-6F-cBj" firstAttribute="top" secondItem="AKl-5z-JL7" secondAttribute="top" id="eGS-iN-CYM"/>
+                            <constraint firstItem="WYz-6F-cBj" firstAttribute="leading" secondItem="AKl-5z-JL7" secondAttribute="leading" constant="16" id="weA-LE-xZ8"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="prominent"/>
+                </visualEffectView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="WYz-6F-cBj" secondAttribute="bottom" id="8oG-Rc-p6d"/>
-                <constraint firstItem="WYz-6F-cBj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9oK-Du-us4"/>
-                <constraint firstItem="WYz-6F-cBj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PU3-l2-46n"/>
-                <constraint firstAttribute="trailing" secondItem="WYz-6F-cBj" secondAttribute="trailing" id="yVP-To-vbU"/>
+                <constraint firstItem="tLm-7g-NgZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K6d-Ch-499"/>
+                <constraint firstAttribute="trailing" secondItem="tLm-7g-NgZ" secondAttribute="trailing" id="UmR-H9-e3n"/>
+                <constraint firstAttribute="bottom" secondItem="tLm-7g-NgZ" secondAttribute="bottom" id="c7H-Cj-XoO"/>
+                <constraint firstItem="tLm-7g-NgZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i5h-7v-KKG"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

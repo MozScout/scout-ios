@@ -8,6 +8,8 @@ import UIKit
 
 class TabBarItemView: UIView {
 
+    typealias OnSelected = (TabBarItemView) -> Void
+
     struct Model {
         let title: String
         let icon: UIImage
@@ -22,6 +24,9 @@ class TabBarItemView: UIView {
     @IBOutlet private weak var iconView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
 
+    private let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer()
+    private let isEnabled: Bool = true
+
     // MARK: - Public properties
 
     public var isSelected: Bool = false {
@@ -29,6 +34,8 @@ class TabBarItemView: UIView {
             updateSelectedState()
         }
     }
+
+    public var onSelected: OnSelected = { (_) in }
 
     // MARK: - Overridden methods
 
@@ -41,6 +48,7 @@ class TabBarItemView: UIView {
     // MARK: - Private methods
 
     private func setup() {
+        setupTapGestureRecognizer()
         setupView()
         setupIconView()
         setupTitleLabel()
@@ -48,8 +56,18 @@ class TabBarItemView: UIView {
         updateSelectedState()
     }
 
-    private func setupView() {
+    private func setupTapGestureRecognizer() {
+        tapGestureRecognizer.addTarget(self, action: #selector(tapGestureRecognizerAction))
+    }
 
+    @objc private func tapGestureRecognizerAction() {
+        if isEnabled {
+            onSelected(self)
+        }
+    }
+
+    private func setupView() {
+        addGestureRecognizer(tapGestureRecognizer)
     }
 
     private func setupIconView() {

@@ -13,6 +13,8 @@
 		2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9992225AE6E00283F1B /* RegisterApi.swift */; };
 		2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F99E2225AF1500283F1B /* OnboardingRegisterWorker.swift */; };
 		2801F9A12225B82D00283F1B /* LoadingOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */; };
+		2801C72D221FF1B400E6C1F9 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */; };
+		2805F8F8222016A5006BA14F /* TabBarContainerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2805F8F7222016A5006BA14F /* TabBarContainerController.xib */; };
 		280FEEC2221B12C300223CB9 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEB6221B12C300223CB9 /* BaseApi.swift */; };
 		280FEEC3221B12C300223CB9 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEB7221B12C300223CB9 /* Api.swift */; };
 		280FEEC7221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEBE221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift */; };
@@ -24,7 +26,7 @@
 		280FEED3221B14FD00223CB9 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEED0221B14FC00223CB9 /* Topic.swift */; };
 		28123297221EC298001B99C7 /* TargetType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28123296221EC298001B99C7 /* TargetType+Extensions.swift */; };
 		28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28123298221EC40B001B99C7 /* TopicsRequestParameters.swift */; };
-		2812329B221EFE5E001B99C7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329A221EFE5E001B99C7 /* TabBarViewController.swift */; };
+		2812329B221EFE5E001B99C7 /* TabBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329A221EFE5E001B99C7 /* TabBarContainerViewController.swift */; };
 		2812329E221EFE70001B99C7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329D221EFE70001B99C7 /* TabBarView.swift */; };
 		281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329F221EFE7F001B99C7 /* TabBarItemView.swift */; };
 		281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A1221F0B07001B99C7 /* TabBarItemView.xib */; };
@@ -202,6 +204,8 @@
 		2801F9992225AE6E00283F1B /* RegisterApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApi.swift; sourceTree = "<group>"; };
 		2801F99E2225AF1500283F1B /* OnboardingRegisterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterWorker.swift; sourceTree = "<group>"; };
 		2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayViewController.swift; sourceTree = "<group>"; };
+		2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		2805F8F7222016A5006BA14F /* TabBarContainerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarContainerController.xib; sourceTree = "<group>"; };
 		280FEEB6221B12C300223CB9 /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		280FEEB7221B12C300223CB9 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		280FEEBE221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientReachabilityServiceProtocol.swift; sourceTree = "<group>"; };
@@ -213,7 +217,7 @@
 		280FEED0221B14FC00223CB9 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		28123296221EC298001B99C7 /* TargetType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+Extensions.swift"; sourceTree = "<group>"; };
 		28123298221EC40B001B99C7 /* TopicsRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsRequestParameters.swift; sourceTree = "<group>"; };
-		2812329A221EFE5E001B99C7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		2812329A221EFE5E001B99C7 /* TabBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainerViewController.swift; sourceTree = "<group>"; };
 		2812329D221EFE70001B99C7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		2812329F221EFE7F001B99C7 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		281232A1221F0B07001B99C7 /* TabBarItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarItemView.xib; sourceTree = "<group>"; };
@@ -460,6 +464,15 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		2805F8F62220168B006BA14F /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2812329A221EFE5E001B99C7 /* TabBarContainerViewController.swift */,
+				2805F8F7222016A5006BA14F /* TabBarContainerController.xib */,
+			);
+			path = TabBarViewController;
+			sourceTree = "<group>";
+		};
 		280FEEB3221B05EA00223CB9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +482,7 @@
 				77E1E05C221D718D006B1084 /* UIFont+Design.swift */,
 				776309CD2223E86300D69BA7 /* UIView+Fade.swift */,
 				28123296221EC298001B99C7 /* TargetType+Extensions.swift */,
+				2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -526,9 +540,9 @@
 		2812329C221EFE61001B99C7 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				2812329A221EFE5E001B99C7 /* TabBarViewController.swift */,
 				281232A3221F0B12001B99C7 /* TabBarItemView */,
 				281232A4221F1E1A001B99C7 /* TabBarView */,
+				2805F8F62220168B006BA14F /* TabBarViewController */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -1576,6 +1590,15 @@
 				77E1E074221D7E4C006B1084 /* SF-Pro-Display-Regular.otf in Resources */,
 				77E1E077221D7E4C006B1084 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				F482CD5C2080D969007D0C14 /* LaunchScreen.storyboard in Resources */,
+				2805F8F8222016A5006BA14F /* TabBarContainerController.xib in Resources */,
+				93782CE320C7F53100CE56A4 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
+				93782CD920C7F53100CE56A4 /* SF-Pro-Display-MediumItalic.otf in Resources */,
+				93AE235720CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf in Resources */,
+				93782CCC20C7F53100CE56A4 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				93AE235420CFCEF700A5D89D /* OFL.txt in Resources */,
+				93782CDC20C7F53100CE56A4 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
+				93782CCF20C7F53100CE56A4 /* SF-Pro-Display-Light.otf in Resources */,
+				93782CE820C7F53100CE56A4 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				66254351219B576300379011 /* jarvis.umdl in Resources */,
 				77F1D22A221C4E9E00E640C3 /* OnboardingViewControllerImp.xib in Resources */,
 				77E1E080221D7E4C006B1084 /* SF-Pro-Display-Ultralight.otf in Resources */,
@@ -1798,6 +1821,7 @@
 				5637D2B120A3257800112F1F /* SettingsAssemblyProtocol.swift in Sources */,
 				280FEECA221B12C300223CB9 /* CancellableToken.swift in Sources */,
 				93A3114720B160740049DB67 /* ScoutHTTPClient+ScoutVoiceInput.swift in Sources */,
+				2801C72D221FF1B400E6C1F9 /* UIStackView+Extensions.swift in Sources */,
 				8637E7F7215D036F008563E9 /* PodcastsAssembly.swift in Sources */,
 				5637D2BB20A3257800112F1F /* MyListAssemblyProtocol.swift in Sources */,
 				93A3114220B1400B0049DB67 /* VoiceInputViewController.swift in Sources */,
@@ -1808,7 +1832,7 @@
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
 				8637E7F5215CFDED008563E9 /* PodcastsRoutingProtocol.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
-				2812329B221EFE5E001B99C7 /* TabBarViewController.swift in Sources */,
+				2812329B221EFE5E001B99C7 /* TabBarContainerViewController.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
 				2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */,
 				F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */,
