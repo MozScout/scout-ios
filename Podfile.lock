@@ -1,6 +1,12 @@
 PODS:
   - Alamofire (4.7.3)
   - AsyncSwift (2.0.4)
+  - DifferenceKit (0.8.0):
+    - DifferenceKit/Core (= 0.8.0)
+    - DifferenceKit/UIKitExtension (= 0.8.0)
+  - DifferenceKit/Core (0.8.0)
+  - DifferenceKit/UIKitExtension (0.8.0):
+    - DifferenceKit/Core
   - HexColors (6.0.0)
   - KeychainAccess (3.1.2)
   - Kingfisher (4.10.1)
@@ -11,41 +17,48 @@ PODS:
     - Result (~> 4.0)
   - ReachabilitySwift (4.3.0)
   - Result (4.0.0)
+  - SnapKit (4.2.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AsyncSwift (~> 2.0)
+  - DifferenceKit
   - HexColors (~> 6.0)
   - KeychainAccess (~> 3.1)
   - Kingfisher (~> 4.10)
   - Moya (= 12.0.1)
   - ReachabilitySwift (= 4.3.0)
+  - SnapKit (= 4.2.0)
   - SwiftyJSON (~> 4.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AsyncSwift
+    - DifferenceKit
     - HexColors
     - KeychainAccess
     - Kingfisher
     - Moya
     - ReachabilitySwift
     - Result
+    - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
+  DifferenceKit: edcc9da33f545a49a70eefcf1a5327162cb72eb8
   HexColors: f8c66339541a74bb08905bfe7cd4f8cc85e9e173
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: f87ee2daa5fb88e581bb6aa9e3854566f2166aa7
+PODFILE CHECKSUM: 697fd23e370de3a79ebe657a7e4cd33d6947610b
 
 COCOAPODS: 1.5.3

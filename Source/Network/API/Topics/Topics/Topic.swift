@@ -8,7 +8,7 @@ import Foundation
 
 struct Topic: Decodable {
     
-    let topicId: String
+    let id: String
     let name: String
     let imageUrl: String
 }
