@@ -4,6 +4,6 @@
 //
 //
 
-SCOUT_NETWORK_URL = https:/\/\scout-stage.herokuapp.com/
+SCOUT_NETWORK_URL = https:/\/\api.fxlisten.com/
 
 #include "Generator.xcconfig"
