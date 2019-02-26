@@ -26,6 +26,7 @@ extension Onboarding {
         typealias PresenterDispatcher = Onboarding.PresenterDispatcher
         typealias ViewControllerImp = Onboarding.ViewControllerImp
         typealias TopicsFetcherImp = Onboarding.TopicsFetcherImp
+        typealias RegisterWorkerImp = Onboarding.RegisterWorkerImp
 
         private let appAssembly: AppAssembly
 
@@ -43,7 +44,12 @@ extension Onboarding.AssemblerImp: Onboarding.Assembler {
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
         let topicsFetcher = TopicsFetcherImp(topicsApi: appAssembly.assemblyApi().topicsApi)
-        let interactor = InteractorImp(presenter: presenter, topicsFetcher: topicsFetcher)
+        let registerWorker = RegisterWorkerImp(registerApi: appAssembly.assemblyApi().registerApi)
+        let interactor = InteractorImp(
+            presenter: presenter,
+            topicsFetcher: topicsFetcher,
+            registerWorker: registerWorker
+        )
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(
                 label: "\(NSStringFromClass(InteractorDispatcher.self))\(Interactor.self)".queueLabel,

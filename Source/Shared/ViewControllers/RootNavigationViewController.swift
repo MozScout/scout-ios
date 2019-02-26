@@ -25,6 +25,12 @@ protocol RootNavigationProtocol {
         animated: Bool,
         completion: (() -> Void)?
     )
+
+    func presentController(
+        _ viewController: UIViewController,
+        animated: Bool,
+        completion: (() -> Void)?
+    )
 }
 
 protocol RootContentProtocol {
@@ -75,6 +81,15 @@ class RootNavigationViewController: UIViewController, RootNavigationProtocol {
         ) {
 
         self.present(alertController, animated: animated, completion: completion)
+    }
+
+    func presentController(
+        _ viewController: UIViewController,
+        animated: Bool,
+        completion: (() -> Void)?
+        ) {
+
+        self.present(viewController, animated: animated, completion: completion)
     }
 
     // MARK: - Overridden

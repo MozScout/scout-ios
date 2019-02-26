@@ -33,7 +33,7 @@ extension Onboarding {
     }
 }
 
-extension Onboarding.TopicsFetcherImp: OnboardingTopicsFetcher {
+extension Onboarding.TopicsFetcherImp: Onboarding.TopicsFetcher {
 
     func fetchTopics(completion: @escaping (TopicsFetcherResult) -> Void) {
         topicsApi.requestTopicList { (result) in

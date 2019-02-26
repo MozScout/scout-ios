@@ -14,6 +14,9 @@ protocol OnboardingViewController: class, RootContentProtocol {
     func displayDidSelectTopic(viewModel: Event.DidSelectTopic.ViewModel)
     func displayTopicsDidDownload(viewModel: Event.TopicsDidDownload.ViewModel)
     func displaySubtopicsDidDownload(viewModel: Event.SubtopicsDidDownload.ViewModel)
+    func displayDidRegisterUser(viewModel: Event.DidRegisterUser.ViewModel)
+    func displayRegistrationProcessDidStart(viewModel: Event.RegistrationProcessDidStart.ViewModel)
+    func displayRegistrationProcessDidEnd(viewModel: Event.RegistrationProcessDidEnd.ViewModel)
 }
 
 // MARK: - Declaration
@@ -98,7 +101,7 @@ class OnboardingViewControllerImp: UIViewController {
     // MARK: Actions
 
     @IBAction func startAction(_ sender: Any) {
-
+        sendStartButtonDidPressRequest()
     }
 }
 
@@ -217,6 +220,18 @@ extension Onboarding.ViewControllerImp: Onboarding.ViewController {
 
     func displaySubtopicsDidDownload(viewModel: Event.SubtopicsDidDownload.ViewModel) {
         reloadCollectionView(with: viewModel.topics)
+    }
+
+    func displayDidRegisterUser(viewModel: Event.DidRegisterUser.ViewModel) {
+        output.onDidRegister(viewModel.userId, viewModel.token)
+    }
+
+    func displayRegistrationProcessDidStart(viewModel: Event.RegistrationProcessDidStart.ViewModel) {
+        output.onShowLoading()
+    }
+
+    func displayRegistrationProcessDidEnd(viewModel: Event.RegistrationProcessDidEnd.ViewModel) {
+        output.onHideLoading()
     }
 }
 

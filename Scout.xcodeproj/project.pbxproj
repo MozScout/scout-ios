@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9952225AE6E00283F1B /* RegisterRequest.swift */; };
+		2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9972225AE6E00283F1B /* RegisterResponse.swift */; };
+		2801F99C2225AE6E00283F1B /* RegisterPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9982225AE6E00283F1B /* RegisterPostModel.swift */; };
+		2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9992225AE6E00283F1B /* RegisterApi.swift */; };
+		2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F99E2225AF1500283F1B /* OnboardingRegisterWorker.swift */; };
+		2801F9A12225B82D00283F1B /* LoadingOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */; };
 		280FEEC2221B12C300223CB9 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEB6221B12C300223CB9 /* BaseApi.swift */; };
 		280FEEC3221B12C300223CB9 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEB7221B12C300223CB9 /* Api.swift */; };
 		280FEEC7221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FEEBE221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift */; };
@@ -185,6 +191,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2801F9952225AE6E00283F1B /* RegisterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
+		2801F9972225AE6E00283F1B /* RegisterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		2801F9982225AE6E00283F1B /* RegisterPostModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPostModel.swift; sourceTree = "<group>"; };
+		2801F9992225AE6E00283F1B /* RegisterApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApi.swift; sourceTree = "<group>"; };
+		2801F99E2225AF1500283F1B /* OnboardingRegisterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterWorker.swift; sourceTree = "<group>"; };
+		2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayViewController.swift; sourceTree = "<group>"; };
 		280FEEB6221B12C300223CB9 /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		280FEEB7221B12C300223CB9 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		280FEEBE221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientReachabilityServiceProtocol.swift; sourceTree = "<group>"; };
@@ -389,6 +401,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2801F9942225AE6E00283F1B /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2801F9992225AE6E00283F1B /* RegisterApi.swift */,
+				2801F9952225AE6E00283F1B /* RegisterRequest.swift */,
+				2801F9962225AE6E00283F1B /* Register */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		2801F9962225AE6E00283F1B /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2801F9982225AE6E00283F1B /* RegisterPostModel.swift */,
+				2801F9972225AE6E00283F1B /* RegisterResponse.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		2803B343221B04F000A9B250 /* Default */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +477,7 @@
 			children = (
 				280FEEB7221B12C300223CB9 /* Api.swift */,
 				280FEEB6221B12C300223CB9 /* BaseApi.swift */,
+				2801F9942225AE6E00283F1B /* Register */,
 				280FEECC221B14FC00223CB9 /* Topics */,
 			);
 			path = API;
@@ -492,6 +524,7 @@
 		28FDFB7A221C3AE900C869E1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */,
 				28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */,
 			);
 			path = ViewControllers;
@@ -794,6 +827,7 @@
 		773D173E222582D2003CAEE2 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				2801F99E2225AF1500283F1B /* OnboardingRegisterWorker.swift */,
 				773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */,
 			);
 			path = Workers;
@@ -882,15 +916,15 @@
 		77F1D21C221C493700E640C3 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				773D173E222582D2003CAEE2 /* Workers */,
-				77E1E087221D973F006B1084 /* Views */,
 				77F1D21D221C496800E640C3 /* OnboardingAssembler.swift */,
-				77F1D21E221C496800E640C3 /* OnboardingPresenter.swift */,
-				77F1D21F221C496800E640C3 /* OnboardingModels.swift */,
-				77F1D220221C496800E640C3 /* OnboardingViewController.swift */,
 				77F1D221221C496800E640C3 /* OnboardingInteractor.swift */,
+				77F1D21F221C496800E640C3 /* OnboardingModels.swift */,
 				77F1D222221C496800E640C3 /* OnboardingOutput.swift */,
+				77F1D21E221C496800E640C3 /* OnboardingPresenter.swift */,
+				77F1D220221C496800E640C3 /* OnboardingViewController.swift */,
 				77F1D229221C4E9E00E640C3 /* OnboardingViewControllerImp.xib */,
+				77E1E087221D973F006B1084 /* Views */,
+				773D173E222582D2003CAEE2 /* Workers */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1678,12 +1712,14 @@
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
 				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
+				2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */,
 				77F1D225221C496800E640C3 /* OnboardingModels.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
 				77F1D227221C496800E640C3 /* OnboardingInteractor.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
 				93A718C82164BC7C00BC77D9 /* AboutCell.swift in Sources */,
 				93A3113C20B13F370049DB67 /* VoiceInputRoutingProtocol.swift in Sources */,
+				2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */,
 				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
 				28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */,
 				280FEED3221B14FD00223CB9 /* Topic.swift in Sources */,
@@ -1719,10 +1755,12 @@
 				5622AB4B20A6E5750074A4BC /* ScoutHTTPClient+ScoutTitles.swift in Sources */,
 				F4A23BB62081113E006EC9E3 /* ApplicationAssemblyProtocol.swift in Sources */,
 				5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */,
+				2801F9A12225B82D00283F1B /* LoadingOverlayViewController.swift in Sources */,
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
 				8637E7F5215CFDED008563E9 /* PodcastsRoutingProtocol.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
+				2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */,
 				F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */,
 				93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */,
 				77F1D224221C496800E640C3 /* OnboardingPresenter.swift in Sources */,
@@ -1736,6 +1774,8 @@
 				77F1D233221C723D00E640C3 /* UIColor+Hex.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,
 				28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */,
+				2801F99C2225AE6E00283F1B /* RegisterPostModel.swift in Sources */,
+				2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */,
 				8637E7FD215D1982008563E9 /* PodcastsCollectionViewCell.swift in Sources */,
 				F4A23BBA20811280006EC9E3 /* ApplicationRouterProtocol.swift in Sources */,
 				8637E7F9215D037D008563E9 /* PodcastsAssemblyProtocol.swift in Sources */,

@@ -5,6 +5,10 @@ extension Onboarding {
     // MARK: - Declaration
     struct Output {
 
-        let onStartAction: () -> Void
+        typealias OnDidRegister = (_ userId: String, _ token: String) -> Void
+
+        let onDidRegister: OnDidRegister
+        let onShowLoading: () -> Void
+        let onHideLoading: () -> Void
     }
 }

@@ -94,13 +94,28 @@ extension Onboarding.Event {
 
     enum StartButtonDidPress {
 
-        struct Request {
-        }
+        struct Request { }
+    }
 
-        struct Response {
-        }
+    enum DidRegisterUser {
 
+        typealias Response = ViewModel
+        
         struct ViewModel {
+            let userId: String
+            let token: String
         }
+    }
+
+    enum RegistrationProcessDidStart {
+
+        struct Response { }
+        struct ViewModel { }
+    }
+
+    enum RegistrationProcessDidEnd {
+
+        struct Response { }
+        struct ViewModel { }
     }
 }

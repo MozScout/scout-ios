@@ -15,6 +15,10 @@ class Api {
         return createTopicsApi()
     }()
 
+    private(set) lazy var registerApi: RegisterApi = {
+        return createRegisterApi()
+    }()
+
     init(
         url: URL,
         apiClient: ApiClient
@@ -26,6 +30,13 @@ class Api {
 
     private func createTopicsApi() -> TopicsApi {
         return TopicsApi(
+            baseUrl: url,
+            apiClient: apiClient
+        )
+    }
+
+    private func createRegisterApi() -> RegisterApi {
+        return RegisterApi(
             baseUrl: url,
             apiClient: apiClient
         )

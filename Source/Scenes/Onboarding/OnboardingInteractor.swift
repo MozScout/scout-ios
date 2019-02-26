@@ -26,11 +26,18 @@ extension Onboarding {
 
         private let presenter: Presenter
         private var sceneModel: Model.SceneModel
-        private var topicsFetcher: TopicsFetcher
+        private let topicsFetcher: TopicsFetcher
+        private let registerWorker: RegisterWorker
         
-        init(presenter: Presenter, topicsFetcher: TopicsFetcher) {
+        init(
+            presenter: Presenter,
+            topicsFetcher: TopicsFetcher,
+            registerWorker: RegisterWorker
+            ) {
+
             self.presenter = presenter
             self.topicsFetcher = topicsFetcher
+            self.registerWorker = registerWorker
             self.sceneModel = Model.SceneModel(
                 numberForSelect: 3,
                 topics: [],
@@ -45,11 +52,11 @@ extension Onboarding {
 // MARK: - Private
 private extension Onboarding.InteractorImp {
     func fetchTopics() {
-        topicsFetcher.fetchTopics { (result) in
+        topicsFetcher.fetchTopics { [weak self] (result) in
             switch result {
             case .success(let topics):
-                self.sceneModel.topics = topics
-                self.topicsDidFetch()
+                self?.sceneModel.topics = topics
+                self?.topicsDidFetch()
 
             case .failure:
                 // FIXME: - Handle error
@@ -59,11 +66,11 @@ private extension Onboarding.InteractorImp {
     }
 
     func fetchSubtopics(with topicId: String) {
-        topicsFetcher.fetchSubtopics(with: topicId) { (result) in
+        topicsFetcher.fetchSubtopics(with: topicId) { [weak self] (result) in
             switch result {
             case .success(let topics):
-                self.sceneModel.subtopics.append((topicId, topics))
-                self.subtopicsDidFetch()
+                self?.sceneModel.subtopics.append((topicId, topics))
+                self?.subtopicsDidFetch()
 
             case .failure:
                 // FIXME: - Handle error
@@ -90,6 +97,32 @@ private extension Onboarding.InteractorImp {
                 selectedTopicsIds: sceneModel.selectedTopicsIds
             )
         )
+    }
+
+    func register() {
+        guard sceneModel.numberForSelect >= sceneModel.selectedTopicsIds.count else { return }
+
+        let response = Event.RegistrationProcessDidStart.Response()
+        presenter.presentRegistrationProcessDidStart(response: response)
+
+        registerWorker.register(with: sceneModel.selectedTopicsIds) { [weak self] (result) in
+            switch result {
+
+            case .success(let response):
+                let response = Event.DidRegisterUser.Response(
+                    userId: response.userId,
+                    token: response.token
+                )
+                self?.presenter.presentDidRegisterUser(response: response)
+
+            case .failure:
+                // FIXME: - Handle error
+                return
+            }
+
+            let response = Event.RegistrationProcessDidEnd.Response()
+            self?.presenter.presentRegistrationProcessDidEnd(response: response)
+        }
     }
 }
 
@@ -134,6 +167,6 @@ extension Onboarding.InteractorImp: Onboarding.Interactor {
     }
 
     func onStartButtonDidPress(request: Event.StartButtonDidPress.Request) {
-
+        register()
     }
 }

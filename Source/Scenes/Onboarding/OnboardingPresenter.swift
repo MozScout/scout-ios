@@ -13,6 +13,9 @@ protocol OnboardingPresenter {
     func presentSelectTopic(response: Event.DidSelectTopic.Response)
     func presentTopicsDidDownload(response: Event.TopicsDidDownload.Response)
     func presentSubtopicsDidDownload(response: Event.SubtopicsDidDownload.Response)
+    func presentDidRegisterUser(response: Event.DidRegisterUser.Response)
+    func presentRegistrationProcessDidStart(response: Event.RegistrationProcessDidStart.Response)
+    func presentRegistrationProcessDidEnd(response: Event.RegistrationProcessDidEnd.Response)
 }
 
 extension Onboarding {
@@ -128,6 +131,30 @@ extension Onboarding.PresenterImp: Onboarding.Presenter {
 
         presenterDispatcher.async { (viewController) in
             viewController.obj?.displaySubtopicsDidDownload(viewModel: viewModel)
+        }
+    }
+
+    func presentDidRegisterUser(response: Event.DidRegisterUser.Response) {
+        let viewModel = response
+
+        presenterDispatcher.async { (viewController) in
+            viewController.obj?.displayDidRegisterUser(viewModel: viewModel)
+        }
+    }
+
+    func presentRegistrationProcessDidStart(response: Event.RegistrationProcessDidStart.Response) {
+        let viewModel = Event.RegistrationProcessDidStart.ViewModel()
+
+        presenterDispatcher.async { (viewController) in
+            viewController.obj?.displayRegistrationProcessDidStart(viewModel: viewModel)
+        }
+    }
+
+    func presentRegistrationProcessDidEnd(response: Event.RegistrationProcessDidEnd.Response) {
+        let viewModel = Event.RegistrationProcessDidEnd.ViewModel()
+
+        presenterDispatcher.async { (viewController) in
+            viewController.obj?.displayRegistrationProcessDidEnd(viewModel: viewModel)
         }
     }
 }
