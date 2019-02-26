@@ -13,6 +13,7 @@ target 'Scout' do
 
   # UI components
   pod 'HexColors', '~> 6.0'
+  pod 'DifferenceKit'
 
   pod 'Moya', '12.0.1'
   pod 'ReachabilitySwift', '4.3.0'

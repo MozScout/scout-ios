@@ -19,7 +19,7 @@
         <scene sceneID="OXQ-eX-XWT">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="8gS-ga-2Tb" customClass="LoginViewController" customModule="Scout" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rHb-RQ-eJa" customClass="GradientView" customModule="Scout" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="rHb-RQ-eJa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
