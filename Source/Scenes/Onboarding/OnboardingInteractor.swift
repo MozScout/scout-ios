@@ -26,9 +26,11 @@ extension Onboarding {
 
         private let presenter: Presenter
         private var sceneModel: Model.SceneModel
+        private var topicsFetcher: TopicsFetcher
         
-        init(presenter: Presenter) {
+        init(presenter: Presenter, topicsFetcher: TopicsFetcher) {
             self.presenter = presenter
+            self.topicsFetcher = topicsFetcher
             self.sceneModel = Model.SceneModel(
                 numberForSelect: 3,
                 topics: [],
@@ -43,47 +45,30 @@ extension Onboarding {
 // MARK: - Private
 private extension Onboarding.InteractorImp {
     func fetchTopics() {
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.2) {
-            self.sceneModel.topics = [
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Lorem ipsum dolor", imageUrl: "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sit amet, consectetur", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsgKWaWvMfgSmQjJBETlectexGQ4qM_Yf4eiP44iWKUqBASfGvUA"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Adipiscing elit", imageUrl: "https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sed do eiusmod", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS56K-U4En-hLXTl1y1ZLG0aZ4ZaiJagJtkkHv1FA4kjst1k-iKgw"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Tempor incididunt", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKh5lAmjMOOXur3afxuBWCUtn9z8uNW3SH8EEmgPs0ANUikfaD"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Dolore magna aliqua", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ouJRTKivYp-IJF905P_GFgi7HU6Kt9qbDrSkPxCUZEbizo_Xyg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Lorem ipsum dolor", imageUrl: "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sit amet, consectetur", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsgKWaWvMfgSmQjJBETlectexGQ4qM_Yf4eiP44iWKUqBASfGvUA"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Adipiscing elit", imageUrl: "https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sed do eiusmod", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS56K-U4En-hLXTl1y1ZLG0aZ4ZaiJagJtkkHv1FA4kjst1k-iKgw"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Tempor incididunt", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKh5lAmjMOOXur3afxuBWCUtn9z8uNW3SH8EEmgPs0ANUikfaD"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Dolore magna aliqua", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ouJRTKivYp-IJF905P_GFgi7HU6Kt9qbDrSkPxCUZEbizo_Xyg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Lorem ipsum dolor", imageUrl: "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sit amet, consectetur", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsgKWaWvMfgSmQjJBETlectexGQ4qM_Yf4eiP44iWKUqBASfGvUA"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Adipiscing elit", imageUrl: "https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sed do eiusmod", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS56K-U4En-hLXTl1y1ZLG0aZ4ZaiJagJtkkHv1FA4kjst1k-iKgw"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Tempor incididunt", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKh5lAmjMOOXur3afxuBWCUtn9z8uNW3SH8EEmgPs0ANUikfaD"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Dolore magna aliqua", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ouJRTKivYp-IJF905P_GFgi7HU6Kt9qbDrSkPxCUZEbizo_Xyg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Lorem ipsum dolor", imageUrl: "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sit amet, consectetur", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsgKWaWvMfgSmQjJBETlectexGQ4qM_Yf4eiP44iWKUqBASfGvUA"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Adipiscing elit", imageUrl: "https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Sed do eiusmod", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS56K-U4En-hLXTl1y1ZLG0aZ4ZaiJagJtkkHv1FA4kjst1k-iKgw"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Tempor incididunt", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKh5lAmjMOOXur3afxuBWCUtn9z8uNW3SH8EEmgPs0ANUikfaD")
-            ].shuffled()
+        topicsFetcher.fetchTopics { (result) in
+            switch result {
+            case .success(let topics):
+                self.sceneModel.topics = topics
+                self.topicsDidFetch()
 
-            self.topicsDidFetch()
+            case .failure:
+                // FIXME: - Handle error
+                return
+            }
         }
     }
 
     func fetchSubtopics(with topicId: String) {
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.2) {
-            self.sceneModel.subtopics.append((topicId: topicId, subtopics: [
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Ut enim ad", imageUrl: "http://www.thinkstockphotos.com/ts-resources/images/home/TS_AnonHP_462882495_01.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Minim veniam", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9_JWAFA_Q8kQitjXBwRtNUw5xOSKC_SF_rbZOTriNOMncfrM0Ww"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Quis nostrud exercitation", imageUrl: "https://cdn.cnn.com/cnnnext/dam/assets/190121090951-04-blood-moon-global-01212019-exlarge-169.jpg"),
-                Topic(id: UInt.random(in: UInt.min...UInt.max).description, name: "Ullamco laboris", imageUrl: "https://media.mnn.com/assets/images/2016/11/closeup-baby-robin-beak-open.jpg.653x0_q80_crop-smart.jpg")
-                ].shuffled()))
+        topicsFetcher.fetchSubtopics(with: topicId) { (result) in
+            switch result {
+            case .success(let topics):
+                self.sceneModel.subtopics.append((topicId, topics))
+                self.subtopicsDidFetch()
 
-            self.subtopicsDidFetch()
+            case .failure:
+                // FIXME: - Handle error
+                return
+            }
         }
     }
 

@@ -66,6 +66,7 @@
 		66254351219B576300379011 /* jarvis.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 66254350219B576300379011 /* jarvis.umdl */; };
 		66254353219B57CE00379011 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 66254352219B57CE00379011 /* common.res */; };
 		6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651984421B17400007CB029 /* SwipeableTabViewController.swift */; };
+		773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */; };
 		776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309CD2223E86300D69BA7 /* UIView+Fade.swift */; };
 		77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */; };
 		77E1E051221D5496006B1084 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */; };
@@ -244,6 +245,7 @@
 		66254350219B576300379011 /* jarvis.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = jarvis.umdl; sourceTree = "<group>"; };
 		66254352219B57CE00379011 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		6651984421B17400007CB029 /* SwipeableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabViewController.swift; sourceTree = "<group>"; };
+		773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTopicsFetcher.swift; sourceTree = "<group>"; };
 		776309CD2223E86300D69BA7 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
 		77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
 		77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -789,6 +791,14 @@
 			path = SwipeableTabViewController;
 			sourceTree = "<group>";
 		};
+		773D173E222582D2003CAEE2 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
 		77E1E043221D5406006B1084 /* SfProText */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +882,7 @@
 		77F1D21C221C493700E640C3 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				773D173E222582D2003CAEE2 /* Workers */,
 				77E1E087221D973F006B1084 /* Views */,
 				77F1D21D221C496800E640C3 /* OnboardingAssembler.swift */,
 				77F1D21E221C496800E640C3 /* OnboardingPresenter.swift */,
@@ -1718,6 +1729,7 @@
 				5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */,
 				93FB827420B54B1B00A39A5C /* PlayerAssembly.swift in Sources */,
 				28FDFB79221C2A2C00C869E1 /* BaseFlowCoordinator.swift in Sources */,
+				773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */,
 				93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */,
 				F47B7CF62084E8890055585C /* AuthManager.swift in Sources */,
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,

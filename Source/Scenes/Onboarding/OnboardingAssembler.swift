@@ -18,12 +18,20 @@ extension Onboarding {
 
     // MARK: - Declaration
     class AssemblerImp {
+
         typealias Interactor = Onboarding.Interactor
         typealias InteractorImp = Onboarding.InteractorImp
         typealias InteractorDispatcher = Onboarding.InteractorDispatcher
         typealias PresenterImp = Onboarding.PresenterImp
         typealias PresenterDispatcher = Onboarding.PresenterDispatcher
         typealias ViewControllerImp = Onboarding.ViewControllerImp
+        typealias TopicsFetcherImp = Onboarding.TopicsFetcherImp
+
+        private let appAssembly: AppAssembly
+
+        init(appAssembly: AppAssembly) {
+            self.appAssembly = appAssembly
+        }
     }
 }
 
@@ -34,7 +42,8 @@ extension Onboarding.AssemblerImp: Onboarding.Assembler {
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
-        let interactor = InteractorImp(presenter: presenter)
+        let topicsFetcher = TopicsFetcherImp(topicsApi: appAssembly.assemblyApi().topicsApi)
+        let interactor = InteractorImp(presenter: presenter, topicsFetcher: topicsFetcher)
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(
                 label: "\(NSStringFromClass(InteractorDispatcher.self))\(Interactor.self)".queueLabel,

@@ -178,6 +178,12 @@ private extension Onboarding.ViewControllerImp {
             interactor.onStartButtonDidPress(request: request)
         }
     }
+
+    func reloadCollectionView(with topics: [OnboardingCollectionViewCell.ViewModel]) {
+        collectionView.reload(using: StagedChangeset(source: topicsViewModels, target: topics)) {
+            self.topicsViewModels = $0
+        }
+    }
 }
 
 // MARK: - ViewController
@@ -194,9 +200,7 @@ extension Onboarding.ViewControllerImp: Onboarding.ViewController {
     }
 
     func displayDidSelectTopic(viewModel: Event.DidSelectTopic.ViewModel) {
-        collectionView.reload(using: StagedChangeset(source: topicsViewModels, target: viewModel.topics)) {
-            self.topicsViewModels = $0
-        }
+        reloadCollectionView(with: viewModel.topics)
 
         let startButtonFadeAnimationDuration: TimeInterval = 0.2
 
@@ -208,15 +212,11 @@ extension Onboarding.ViewControllerImp: Onboarding.ViewController {
     }
 
     func displayTopicsDidDownload(viewModel: Event.TopicsDidDownload.ViewModel) {
-        collectionView.reload(using: StagedChangeset(source: topicsViewModels, target: viewModel.topics)) {
-            self.topicsViewModels = $0
-        }
+        reloadCollectionView(with: viewModel.topics)
     }
 
     func displaySubtopicsDidDownload(viewModel: Event.SubtopicsDidDownload.ViewModel) {
-        collectionView.reload(using: StagedChangeset(source: topicsViewModels, target: viewModel.topics)) {
-            self.topicsViewModels = $0
-        }
+        reloadCollectionView(with: viewModel.topics)
     }
 }
 

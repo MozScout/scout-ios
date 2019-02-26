@@ -34,9 +34,9 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
 
     // MARK: Private Properties
 
-    private weak var maskLayer: CAShapeLayer?
-    private weak var borderLayer: CAGradientLayer?
-    private weak var borderMaskLayer: CAShapeLayer?
+    private var maskLayer = CAShapeLayer()
+    private var borderLayer = CAGradientLayer()
+    private var borderMaskLayer = CAShapeLayer()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,12 +56,12 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         imageView.kf.indicatorType = .activity
 
         if state.isSelected {
-            borderMaskLayer?.lineWidth = 6
-            borderLayer?.colors = [UIColor.fxGreen.cgColor, UIColor.fxGreen.cgColor]
+            borderMaskLayer.lineWidth = 6
+            borderLayer.colors = [UIColor.fxGreen.cgColor, UIColor.fxGreen.cgColor]
             checkMarkImageView.isHidden = false
         } else {
-            borderMaskLayer?.lineWidth = 3
-            borderLayer?.colors = [UIColor.fxRadicalRed.cgColor, UIColor.fxYellowOrange.cgColor]
+            borderMaskLayer.lineWidth = 3
+            borderLayer.colors = [UIColor.fxRadicalRed.cgColor, UIColor.fxYellowOrange.cgColor]
             checkMarkImageView.isHidden = true
         }
     }
@@ -71,12 +71,8 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
 private extension OnboardingCollectionViewCell {
 
     var circlePath: CGPath? {
-        guard let circleShapeLayer = maskLayer else {
-            return nil
-        }
-
-        let arcCenter = circleShapeLayer.position
-        let radius = circleShapeLayer.bounds.size.width / 2
+        let arcCenter = maskLayer.position
+        let radius = maskLayer.bounds.size.width / 2
         let startAngle: CGFloat = 0
         let endAngle: CGFloat = 2 * .pi
         let clockwise = true
@@ -96,20 +92,14 @@ private extension OnboardingCollectionViewCell {
 
         checkMarkImageView.image = UIImage(named: "onboardingCheckMark")
 
-        let maskLayer = CAShapeLayer()
         maskLayer.fillColor = UIColor.black.cgColor
         imageView.layer.mask = maskLayer
         imageView.layer.masksToBounds = true
-        self.maskLayer = maskLayer
 
-        let borderMaskLayer = CAShapeLayer()
         borderMaskLayer.fillColor = nil
         borderMaskLayer.strokeColor = UIColor.black.cgColor
-        self.borderMaskLayer = borderMaskLayer
 
-        let borderLayer = CAGradientLayer()
         borderLayer.mask = borderMaskLayer
-        self.borderLayer = borderLayer
         imageView.layer.addSublayer(borderLayer)
     }
 
@@ -122,11 +112,11 @@ private extension OnboardingCollectionViewCell {
             )
         )
 
-        maskLayer?.frame = frame
-        borderLayer?.frame = frame
-        borderMaskLayer?.frame = frame
+        maskLayer.frame = frame
+        borderLayer.frame = frame
+        borderMaskLayer.frame = frame
 
-        maskLayer?.path = circlePath
-        borderMaskLayer?.path = circlePath
+        maskLayer.path = circlePath
+        borderMaskLayer.path = circlePath
     }
 }
