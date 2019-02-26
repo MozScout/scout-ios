@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private let rootNavigation: RootNavigationViewController = RootNavigationViewController()
     private let appCoordinator: AppCoordinator
-    private var window: UIWindow?
+    private let window = UIWindow(frame: UIScreen.main.bounds)
 
     override init() {
         let configuration = AppConfiguration()
@@ -48,9 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
         ) -> Bool {
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = rootNavigation
-        window?.makeKeyAndVisible()
+        window.rootViewController = rootNavigation
+        window.makeKeyAndVisible()
 
         return true
     }

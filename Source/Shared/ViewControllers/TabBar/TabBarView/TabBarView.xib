@@ -10,47 +10,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabBarView" customModule="Scout" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="nNr-VP-2bH"/>
+                <outlet property="separatorView" destination="HZ2-W3-JMT" id="OGL-DV-iiG"/>
+                <outlet property="stackView" destination="WYz-6F-cBj" id="rUO-o0-8cP"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TabBarView" customModule="Scout" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZ2-W3-JMT">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="BqH-w9-atS"/>
+                    </constraints>
+                </view>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLm-7g-NgZ">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AKl-5z-JL7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-6F-cBj">
-                                <rect key="frame" x="16" y="0.0" width="343" height="252"/>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="WYz-6F-cBj" secondAttribute="bottom" id="2NI-bq-0H9"/>
-                            <constraint firstAttribute="trailing" secondItem="WYz-6F-cBj" secondAttribute="trailing" constant="16" id="5sk-65-i84"/>
-                            <constraint firstItem="WYz-6F-cBj" firstAttribute="top" secondItem="AKl-5z-JL7" secondAttribute="top" id="eGS-iN-CYM"/>
-                            <constraint firstItem="WYz-6F-cBj" firstAttribute="leading" secondItem="AKl-5z-JL7" secondAttribute="leading" constant="16" id="weA-LE-xZ8"/>
-                        </constraints>
                     </view>
                     <blurEffect style="prominent"/>
                 </visualEffectView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-6F-cBj">
+                    <rect key="frame" x="16" y="0.0" width="343" height="61"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="61" id="cwA-2N-Num"/>
+                    </constraints>
+                </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="WYz-6F-cBj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="077-vc-x2C"/>
+                <constraint firstAttribute="trailing" secondItem="HZ2-W3-JMT" secondAttribute="trailing" id="3ea-bP-bkr"/>
+                <constraint firstAttribute="trailing" secondItem="WYz-6F-cBj" secondAttribute="trailing" constant="16" id="Ag9-va-Nsi"/>
+                <constraint firstItem="HZ2-W3-JMT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Jdd-FP-xV0"/>
                 <constraint firstItem="tLm-7g-NgZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K6d-Ch-499"/>
                 <constraint firstAttribute="trailing" secondItem="tLm-7g-NgZ" secondAttribute="trailing" id="UmR-H9-e3n"/>
                 <constraint firstAttribute="bottom" secondItem="tLm-7g-NgZ" secondAttribute="bottom" id="c7H-Cj-XoO"/>
+                <constraint firstItem="HZ2-W3-JMT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cLu-q5-xQ3"/>
                 <constraint firstItem="tLm-7g-NgZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i5h-7v-KKG"/>
+                <constraint firstItem="WYz-6F-cBj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="oTF-6r-V0j"/>
+                <constraint firstItem="WYz-6F-cBj" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="tLi-hP-LiH"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <connections>
-                <outlet property="stackView" destination="WYz-6F-cBj" id="Ma2-89-xjM"/>
-            </connections>
-            <point key="canvasLocation" x="138.40000000000001" y="340.92953523238384"/>
+            <point key="canvasLocation" x="138" y="624"/>
         </view>
     </objects>
 </document>

@@ -68,6 +68,7 @@ class TabBarItemView: UIView {
 
     private func setupView() {
         addGestureRecognizer(tapGestureRecognizer)
+        backgroundColor = UIColor.clear
     }
 
     private func setupIconView() {

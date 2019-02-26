@@ -10,39 +10,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="WNO-GJ-8wt" customClass="TabBarContainerController" customModule="Scout" customModuleProvider="target">
-            <view key="view" contentMode="scaleToFill" id="3DP-6b-itM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1R-p5-V07">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="61" translatesAutoresizingMaskIntoConstraints="NO" id="pAI-xC-WOe" customClass="TabBarView" customModule="Scout" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="606" width="375" height="61"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                <constraints>
-                    <constraint firstAttribute="bottom" secondItem="pAI-xC-WOe" secondAttribute="bottom" id="SBR-k1-Ucv"/>
-                    <constraint firstAttribute="trailing" secondItem="D1R-p5-V07" secondAttribute="trailing" id="ZhF-GI-kJ1"/>
-                    <constraint firstItem="D1R-p5-V07" firstAttribute="leading" secondItem="3DP-6b-itM" secondAttribute="leading" id="c5U-e0-uyb"/>
-                    <constraint firstAttribute="trailing" secondItem="pAI-xC-WOe" secondAttribute="trailing" id="een-Sc-uyY"/>
-                    <constraint firstAttribute="bottom" secondItem="D1R-p5-V07" secondAttribute="bottom" id="gYx-0j-vj5"/>
-                    <constraint firstItem="D1R-p5-V07" firstAttribute="top" secondItem="3DP-6b-itM" secondAttribute="top" id="m25-mr-fff"/>
-                    <constraint firstItem="pAI-xC-WOe" firstAttribute="leading" secondItem="3DP-6b-itM" secondAttribute="leading" id="und-pV-WHz"/>
-                </constraints>
-                <viewLayoutGuide key="safeArea" id="9LV-qt-fgc"/>
-            </view>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabBarContainerController" customModule="Scout" customModuleProvider="target">
             <connections>
-                <outlet property="containerView" destination="D1R-p5-V07" id="gU3-tK-MD2"/>
-                <outlet property="tabBarView" destination="pAI-xC-WOe" id="suq-p7-E9V"/>
+                <outlet property="containerView" destination="D1R-p5-V07" id="Iym-7J-di0"/>
+                <outlet property="tabBarView" destination="pAI-xC-WOe" id="GsS-6z-Ujc"/>
+                <outlet property="view" destination="3DP-6b-itM" id="GRP-2A-QrF"/>
             </connections>
-            <point key="canvasLocation" x="624.79999999999995" y="100.29985007496252"/>
-        </viewController>
+        </placeholder>
+        <view contentMode="scaleToFill" id="3DP-6b-itM">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1R-p5-V07">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAI-xC-WOe" customClass="TabBarView" customModule="Scout" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="606" width="375" height="61"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="61" placeholder="YES" id="IQ7-gk-Nf1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="pAI-xC-WOe" secondAttribute="bottom" id="SBR-k1-Ucv"/>
+                <constraint firstAttribute="trailing" secondItem="D1R-p5-V07" secondAttribute="trailing" id="ZhF-GI-kJ1"/>
+                <constraint firstItem="D1R-p5-V07" firstAttribute="leading" secondItem="3DP-6b-itM" secondAttribute="leading" id="c5U-e0-uyb"/>
+                <constraint firstAttribute="trailing" secondItem="pAI-xC-WOe" secondAttribute="trailing" id="een-Sc-uyY"/>
+                <constraint firstAttribute="bottom" secondItem="D1R-p5-V07" secondAttribute="bottom" id="gYx-0j-vj5"/>
+                <constraint firstItem="D1R-p5-V07" firstAttribute="top" secondItem="3DP-6b-itM" secondAttribute="top" id="m25-mr-fff"/>
+                <constraint firstItem="pAI-xC-WOe" firstAttribute="leading" secondItem="3DP-6b-itM" secondAttribute="leading" id="und-pV-WHz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="9LV-qt-fgc"/>
+        </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
 </document>

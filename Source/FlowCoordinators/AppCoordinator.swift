@@ -45,6 +45,12 @@ class AppCoordinator {
     }
 
     private func runSignedInFlow() {
-
+        let assembly = appAssembly.assemblyTabBarFlowCoordinatorAssembly()
+        let flow = TabBarFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly
+        )
+        currentFlowCoordinator = flow
+        flow.run()
     }
 }
