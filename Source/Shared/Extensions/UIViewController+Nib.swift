@@ -15,7 +15,7 @@ extension NSObject {
 }
 
 extension UIView {
-    class func loadFromNib(nibName: String? = nil) -> Self? {
+    class func loadFromNib(nibName: String? = nil) -> Self {
         return loadFromNibHelper(nibName: nibName)
     }
     
@@ -27,7 +27,7 @@ extension UIView {
     
     // MARK: - Private
     
-    fileprivate class func loadFromNibHelper<T>(nibName: String? = nil) -> T? {
+    fileprivate class func loadFromNibHelper<T>(nibName: String? = nil) -> T {
         let nibNameChecked = nibName != nil ? nibName! : self.defaultNibName()
         
         if let view = Bundle(for: AppDelegate.self).loadNibNamed(
@@ -38,7 +38,7 @@ extension UIView {
             return view
         }
         else {
-            return nil
+            fatalError("Cannot get view from nib named \(nibName ?? "Unknown name")")
         }
     }
 }

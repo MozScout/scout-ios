@@ -35,7 +35,7 @@ class TabBarItemView: UIView {
         }
     }
 
-    public var onSelected: OnSelected = { (_) in }
+    public var onSelected: OnSelected?
 
     // MARK: - Overridden methods
 
@@ -62,7 +62,7 @@ class TabBarItemView: UIView {
 
     @objc private func tapGestureRecognizerAction() {
         if isEnabled {
-            onSelected(self)
+            onSelected?(self)
         }
     }
 

@@ -17,7 +17,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
     private let assembly: Assembly
     private let tabBarController: TabBarContainerController = TabBarContainerController()
 
-    typealias TabItem = (Tab, TabBarContainerController.Item)
+    typealias TabItem = (tab: Tab, item: TabBarContainerController.Item)
     private var items: [TabItem] = []
     private var currentTab: Tab? = nil
 
@@ -54,9 +54,9 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         })
 
         items = [
-            (.myNotes, myNotesItem),
-            (.listen, listenItem),
-            (.subscriptions, subscriptionsItem)
+            (tab: .myNotes, item: myNotesItem),
+            (tab: .listen, item: listenItem),
+            (tab: .subscriptions, item: subscriptionsItem)
         ]
     }
 
@@ -95,7 +95,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
     }
 
     private func getIndex(for tab: Tab) -> Int {
-        return items.firstIndex { $0.0 == tab } ?? 0
+        return items.firstIndex { $0.tab == tab } ?? 0
     }
 }
 

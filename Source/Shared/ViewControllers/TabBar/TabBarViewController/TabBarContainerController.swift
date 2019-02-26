@@ -175,15 +175,13 @@ class TabBarContainerController: UIViewController {
         fromRight: Bool
         ) {
 
-        let container = self.containerView!
-
         let frameOnLeft = CGRect(
-            x: -container.bounds.width, y: 0.0,
-            width: container.bounds.width, height: container.bounds.height
+            x: -containerView.bounds.width, y: 0.0,
+            width: containerView.bounds.width, height: containerView.bounds.height
         )
         let frameOnRight = CGRect(
-            x: container.bounds.width, y: 0.0,
-            width: container.bounds.width, height: container.bounds.height
+            x: containerView.bounds.width, y: 0.0,
+            width: containerView.bounds.width, height: containerView.bounds.height
         )
 
         let setupInitialNewView: ((_ view: UIView?) -> Void) = { view in
@@ -197,7 +195,7 @@ class TabBarContainerController: UIViewController {
         }
         let setupTargetNewView: ((_ view: UIView?) -> Void) = { view in
             guard let view = view else { return }
-            view.frame = container.bounds
+            view.frame = self.containerView.bounds
         }
         let setupTargetPreviousView: ((_ view: UIView?) -> Void) = { view in
             guard let view = view else { return }

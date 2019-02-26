@@ -72,7 +72,9 @@ class TabBarView: UIView {
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
+            fatalError("Cannot get view from nib")
+        }
 
         return view
     }
@@ -89,7 +91,7 @@ class TabBarView: UIView {
                 icon: item.icon
             )
 
-            let view = TabBarItemView.loadFromNib()!
+            let view = TabBarItemView.loadFromNib()
             view.setup(with: model)
             view.onSelected = { [weak self] (_) in
                 self?.selectedItemIndex = index
