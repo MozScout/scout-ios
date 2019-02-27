@@ -16,8 +16,8 @@ class TabBarView: UIView {
 
     typealias OnSelectedItem = (Int) -> Void
 
-    private let background: UIColor = UIColor("F9F9FA")!.withAlphaComponent(0.95)
-    private let separator: UIColor = UIColor("D7D7DB")!
+    private let background: UIColor = UIColor.fxAthensGray.withAlphaComponent(0.95)
+    private let separator: UIColor = UIColor.fxMishka
 
     // MARK: - Private properties
 

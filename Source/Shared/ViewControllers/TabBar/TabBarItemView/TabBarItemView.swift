@@ -17,9 +17,9 @@ class TabBarItemView: UIView {
 
     // MARK: - Private properties
 
-    private let titleFont: UIFont = UIFont.systemFont(ofSize: 10, weight: .regular)
-    private let selectedColor: UIColor = UIColor("FF3858")!
-    private let notSelectedColor: UIColor = UIColor("737373")!
+    private let titleFont: UIFont = UIFont.sfProDisplay(.regular, ofSize: 10)
+    private let selectedColor: UIColor = UIColor.fxRadicalRed
+    private let notSelectedColor: UIColor = UIColor.fxDoveGray
 
     @IBOutlet private weak var iconView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
