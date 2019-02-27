@@ -51,6 +51,10 @@ extension Onboarding {
 
 // MARK: - Private
 private extension Onboarding.InteractorImp {
+    private var isEnoughTopicsSelected: Bool {
+        return sceneModel.numberForSelect <= sceneModel.selectedTopicsIds.count
+    }
+
     func fetchTopics() {
         topicsFetcher.fetchTopics { [weak self] (result) in
             switch result {
@@ -100,12 +104,16 @@ private extension Onboarding.InteractorImp {
     }
 
     func register() {
-        guard sceneModel.numberForSelect >= sceneModel.selectedTopicsIds.count else { return }
+        guard isEnoughTopicsSelected else { return }
 
         let response = Event.RegistrationProcessDidStart.Response()
         presenter.presentRegistrationProcessDidStart(response: response)
 
         registerWorker.register(with: sceneModel.selectedTopicsIds) { [weak self] (result) in
+
+            let response = Event.RegistrationProcessDidEnd.Response()
+            self?.presenter.presentRegistrationProcessDidEnd(response: response)
+
             switch result {
 
             case .success(let response):
@@ -119,9 +127,6 @@ private extension Onboarding.InteractorImp {
                 // FIXME: - Handle error
                 return
             }
-
-            let response = Event.RegistrationProcessDidEnd.Response()
-            self?.presenter.presentRegistrationProcessDidEnd(response: response)
         }
     }
 }
@@ -154,7 +159,7 @@ extension Onboarding.InteractorImp: Onboarding.Interactor {
             }
         }
 
-        sceneModel.isStartEnabled = sceneModel.selectedTopicsIds.count >= sceneModel.numberForSelect
+        sceneModel.isStartEnabled = isEnoughTopicsSelected
 
         presenter.presentSelectTopic(
             response: Event.DidSelectTopic.Response(

@@ -37,4 +37,8 @@ class AppAssembly {
     func assemblyOnboardingFlowCoordinatorAssembly() -> OnboardingFlowCoordinator.Assembly {
         return OnboardingFlowCoordinator.Assembly(appAssembly: self)
     }
+
+    func assemblyTabBarFlowCoordinatorAssembly() -> TabBarFlowCoordinator.Assembly {
+        return TabBarFlowCoordinator.Assembly(appAssembly: self)
+    }
 }
