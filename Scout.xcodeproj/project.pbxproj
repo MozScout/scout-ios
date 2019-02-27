@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2801C72D221FF1B400E6C1F9 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */; };
 		2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9952225AE6E00283F1B /* RegisterRequest.swift */; };
 		2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9972225AE6E00283F1B /* RegisterResponse.swift */; };
 		2801F99C2225AE6E00283F1B /* RegisterPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9982225AE6E00283F1B /* RegisterPostModel.swift */; };
 		2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9992225AE6E00283F1B /* RegisterApi.swift */; };
 		2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F99E2225AF1500283F1B /* OnboardingRegisterWorker.swift */; };
 		2801F9A12225B82D00283F1B /* LoadingOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */; };
-		2801C72D221FF1B400E6C1F9 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */; };
 		2805F8F8222016A5006BA14F /* TabBarContainerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2805F8F7222016A5006BA14F /* TabBarContainerController.xib */; };
 		2805F8FA2223EA9A006BA14F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805F8F92223EA9A006BA14F /* UIViewController+Extensions.swift */; };
 		2805F8FC2223FE90006BA14F /* TabBarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805F8FB2223FE90006BA14F /* TabBarFlowCoordinator.swift */; };
@@ -34,6 +34,10 @@
 		281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329F221EFE7F001B99C7 /* TabBarItemView.swift */; };
 		281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A1221F0B07001B99C7 /* TabBarItemView.xib */; };
 		281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A5221F1E85001B99C7 /* TabBarView.xib */; };
+		28CFCA252226EF2200D1E477 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA202226EF2200D1E477 /* NavigationBarView.xib */; };
+		28CFCA262226EF2200D1E477 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA212226EF2200D1E477 /* NavigationBarView.swift */; };
+		28CFCA272226EF2200D1E477 /* NavigationBarContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */; };
+		28CFCA282226EF2200D1E477 /* NavigationBarContainerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -43,7 +47,6 @@
 		28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */; };
 		28FEBD06221DB91C00DAD907 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEBD05221DB91C00DAD907 /* AppAssembly.swift */; };
 		28FEBD0A221DBC2800DAD907 /* OnboardingFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEBD09221DBC2800DAD907 /* OnboardingFlowCoordinator.swift */; };
-		2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */; };
 		5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3620A6CE230074A4BC /* AuthAssembly.swift */; };
 		5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */; };
 		5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB3920A6CE230074A4BC /* AuthRouter.swift */; };
@@ -171,6 +174,7 @@
 		93FB827920B54BB100A39A5C /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FB827820B54BB100A39A5C /* Player.storyboard */; };
 		93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827A20B54BDF00A39A5C /* PlayerRoutingProtocol.swift */; };
 		93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */; };
+		A5A91766B3C5D2F09E208877 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B2C43C400B5A659D25EA02 /* Pods_Scout.framework */; };
 		F4511799208899AD00A159B5 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4511798208899AD00A159B5 /* SpeechService.swift */; };
 		F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F451179A20891AA800A159B5 /* SpeechServiceProtocol.swift */; };
 		F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CDE20849B370055585C /* MainAssemblyProtocol.swift */; };
@@ -201,13 +205,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F534E7D6A643A49881FD742 /* Pods-Scout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.release.xcconfig"; sourceTree = "<group>"; };
+		2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		2801F9952225AE6E00283F1B /* RegisterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		2801F9972225AE6E00283F1B /* RegisterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		2801F9982225AE6E00283F1B /* RegisterPostModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPostModel.swift; sourceTree = "<group>"; };
 		2801F9992225AE6E00283F1B /* RegisterApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApi.swift; sourceTree = "<group>"; };
 		2801F99E2225AF1500283F1B /* OnboardingRegisterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterWorker.swift; sourceTree = "<group>"; };
 		2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayViewController.swift; sourceTree = "<group>"; };
-		2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		2805F8F7222016A5006BA14F /* TabBarContainerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarContainerController.xib; sourceTree = "<group>"; };
 		2805F8F92223EA9A006BA14F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		2805F8FB2223FE90006BA14F /* TabBarFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -228,6 +233,10 @@
 		2812329F221EFE7F001B99C7 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		281232A1221F0B07001B99C7 /* TabBarItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarItemView.xib; sourceTree = "<group>"; };
 		281232A5221F1E85001B99C7 /* TabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
+		28CFCA202226EF2200D1E477 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
+		28CFCA212226EF2200D1E477 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerController.swift; sourceTree = "<group>"; };
+		28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarContainerController.xib; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -237,6 +246,8 @@
 		28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
 		28FEBD05221DB91C00DAD907 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		28FEBD09221DBC2800DAD907 /* OnboardingFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowCoordinator.swift; sourceTree = "<group>"; };
+		2E383DFA24002683D51A121F /* Pods-Scout.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.appstore.xcconfig"; sourceTree = "<group>"; };
+		5385525389BF90C5027397F9 /* Pods-Scout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.debug.xcconfig"; sourceTree = "<group>"; };
 		5622AB3620A6CE230074A4BC /* AuthAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
 		5622AB3720A6CE230074A4BC /* AuthAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAssemblyProtocol.swift; sourceTree = "<group>"; };
 		5622AB3920A6CE230074A4BC /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -277,6 +288,7 @@
 		66254350219B576300379011 /* jarvis.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = jarvis.umdl; sourceTree = "<group>"; };
 		66254352219B57CE00379011 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		6651984421B17400007CB029 /* SwipeableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabViewController.swift; sourceTree = "<group>"; };
+		68B2C43C400B5A659D25EA02 /* Pods_Scout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTopicsFetcher.swift; sourceTree = "<group>"; };
 		776309CD2223E86300D69BA7 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
 		77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
@@ -325,7 +337,6 @@
 		77F1D229221C4E9E00E640C3 /* OnboardingViewControllerImp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewControllerImp.xib; sourceTree = "<group>"; };
 		77F1D22F221C5DB900E640C3 /* UIColor+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Design.swift"; sourceTree = "<group>"; };
 		77F1D232221C723D00E640C3 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
-		84B360F975895554FF0AD747 /* Pods-Scout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.release.xcconfig"; sourceTree = "<group>"; };
 		8637E7EE215CFBF9008563E9 /* PodcastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsViewController.swift; sourceTree = "<group>"; };
 		8637E7F0215CFC71008563E9 /* Podcasts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Podcasts.storyboard; sourceTree = "<group>"; };
 		8637E7F2215CFCA4008563E9 /* PodcastsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsRouter.swift; sourceTree = "<group>"; };
@@ -367,8 +378,6 @@
 		93FB827820B54BB100A39A5C /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		93FB827A20B54BDF00A39A5C /* PlayerRoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRoutingProtocol.swift; sourceTree = "<group>"; };
 		93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRouter.swift; sourceTree = "<group>"; };
-		B08A7F94017D00A1DB1E7D1B /* Pods-Scout.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.appstore.xcconfig"; sourceTree = "<group>"; };
-		E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4511798208899AD00A159B5 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		F451179A20891AA800A159B5 /* SpeechServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechServiceProtocol.swift; sourceTree = "<group>"; };
 		F47B7CDE20849B370055585C /* MainAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssemblyProtocol.swift; sourceTree = "<group>"; };
@@ -405,7 +414,6 @@
 		F4A23BB920811280006EC9E3 /* ApplicationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouterProtocol.swift; sourceTree = "<group>"; };
 		F4A23BBB20811369006EC9E3 /* MainRoutingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoutingProtocol.swift; sourceTree = "<group>"; };
 		F4A23BBD20811379006EC9E3 /* MainUIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIRouter.swift; sourceTree = "<group>"; };
-		FE18FBEC52D615FD47F6F471 /* Pods-Scout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scout/Pods-Scout.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,7 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66254342219B54D000379011 /* libsnowboy-detect.a in Frameworks */,
-				2EC3B133CEA8E460D6A05185 /* Pods_Scout.framework in Frameworks */,
+				A5A91766B3C5D2F09E208877 /* Pods_Scout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +582,33 @@
 			path = TabBarView;
 			sourceTree = "<group>";
 		};
+		28CFCA1E2226EF2200D1E477 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA1F2226EF2200D1E477 /* NavigationBarView */,
+				28CFCA222226EF2200D1E477 /* NavigationBarContainerController */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		28CFCA1F2226EF2200D1E477 /* NavigationBarView */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA212226EF2200D1E477 /* NavigationBarView.swift */,
+				28CFCA202226EF2200D1E477 /* NavigationBarView.xib */,
+			);
+			path = NavigationBarView;
+			sourceTree = "<group>";
+		};
+		28CFCA222226EF2200D1E477 /* NavigationBarContainerController */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */,
+				28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */,
+			);
+			path = NavigationBarContainerController;
+			sourceTree = "<group>";
+		};
 		28FDFB6F221BF29A00C869E1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +622,7 @@
 			children = (
 				2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */,
 				28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */,
+				28CFCA1E2226EF2200D1E477 /* NavigationBar */,
 				2812329C221EFE61001B99C7 /* TabBar */,
 			);
 			path = ViewControllers;
@@ -598,14 +634,6 @@
 				28FEBD05221DB91C00DAD907 /* AppAssembly.swift */,
 			);
 			path = Assemblies;
-			sourceTree = "<group>";
-		};
-		3D93A65149EFF87EF72B97AC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E71F0B9E817F2BF9859171D0 /* Pods_Scout.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5622AB3420A6CE230074A4BC /* Auth */ = {
@@ -1216,14 +1244,22 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		CD9158217DD3454E7A83BCF1 /* Pods */ = {
+		C12A1785D5392A7CBD7BC993 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FE18FBEC52D615FD47F6F471 /* Pods-Scout.debug.xcconfig */,
-				84B360F975895554FF0AD747 /* Pods-Scout.release.xcconfig */,
-				B08A7F94017D00A1DB1E7D1B /* Pods-Scout.appstore.xcconfig */,
+				5385525389BF90C5027397F9 /* Pods-Scout.debug.xcconfig */,
+				0F534E7D6A643A49881FD742 /* Pods-Scout.release.xcconfig */,
+				2E383DFA24002683D51A121F /* Pods-Scout.appstore.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CB7EFAB84D8FB19607FC04A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68B2C43C400B5A659D25EA02 /* Pods_Scout.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F45117972088995D00A159B5 /* SpeechService */ = {
@@ -1285,8 +1321,8 @@
 				F482CD422080D969007D0C14 /* Source */,
 				F482CD3C2080D969007D0C14 /* Resources */,
 				F482CD282080D225007D0C14 /* Products */,
-				CD9158217DD3454E7A83BCF1 /* Pods */,
-				3D93A65149EFF87EF72B97AC /* Frameworks */,
+				C12A1785D5392A7CBD7BC993 /* Pods */,
+				CB7EFAB84D8FB19607FC04A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1535,11 +1571,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F482CD392080D225007D0C14 /* Build configuration list for PBXNativeTarget "Scout" */;
 			buildPhases = (
-				FC683409930A826A1DADFF5D /* [CP] Check Pods Manifest.lock */,
+				3EB178EC1071C90F0B245823 /* [CP] Check Pods Manifest.lock */,
 				F482CD232080D225007D0C14 /* Sources */,
 				F482CD242080D225007D0C14 /* Frameworks */,
 				F482CD252080D225007D0C14 /* Resources */,
-				31867820528E6FF231694AAB /* [CP] Embed Pods Frameworks */,
+				10B7D04D27079D7933011380 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1600,14 +1636,6 @@
 				77E1E077221D7E4C006B1084 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				F482CD5C2080D969007D0C14 /* LaunchScreen.storyboard in Resources */,
 				2805F8F8222016A5006BA14F /* TabBarContainerController.xib in Resources */,
-				93782CE320C7F53100CE56A4 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
-				93782CD920C7F53100CE56A4 /* SF-Pro-Display-MediumItalic.otf in Resources */,
-				93AE235720CFCEF700A5D89D /* ZillaSlab-SemiBold.ttf in Resources */,
-				93782CCC20C7F53100CE56A4 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
-				93AE235420CFCEF700A5D89D /* OFL.txt in Resources */,
-				93782CDC20C7F53100CE56A4 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
-				93782CCF20C7F53100CE56A4 /* SF-Pro-Display-Light.otf in Resources */,
-				93782CE820C7F53100CE56A4 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				66254351219B576300379011 /* jarvis.umdl in Resources */,
 				77F1D22A221C4E9E00E640C3 /* OnboardingViewControllerImp.xib in Resources */,
 				77E1E080221D7E4C006B1084 /* SF-Pro-Display-Ultralight.otf in Resources */,
@@ -1617,13 +1645,13 @@
 				8637E7FE215D1982008563E9 /* PodcastsCollectionViewCell.xib in Resources */,
 				77E1E07B221D7E4C006B1084 /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				77E1E082221D7E4C006B1084 /* SF-Pro-Display-Medium.otf in Resources */,
+				28CFCA282226EF2200D1E477 /* NavigationBarContainerController.xib in Resources */,
 				6625434E219B575300379011 /* ding.wav in Resources */,
 				5637D2B920A3257800112F1F /* Help.storyboard in Resources */,
 				77E1E075221D7E4C006B1084 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				77E1E07E221D7E4C006B1084 /* SF-Pro-Display-LightItalic.otf in Resources */,
 				77E1E079221D7E4C006B1084 /* SF-Pro-Display-Thin.otf in Resources */,
 				281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */,
-				93AE235320CFCEF700A5D89D /* ZillaSlab-Medium.ttf in Resources */,
 				8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */,
 				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
 				93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */,
@@ -1644,17 +1672,13 @@
 				77E1E072221D7E4C006B1084 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				77E1E051221D5496006B1084 /* SF-Pro-Text-Regular.otf in Resources */,
 				77E1E058221D5496006B1084 /* SF-Pro-Text-Semibold.otf in Resources */,
-				93782CDB20C7F53100CE56A4 /* SF-Pro-Display-Ultralight.otf in Resources */,
-				93782CCE20C7F53100CE56A4 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */,
-				93AE235220CFCEF700A5D89D /* ZillaSlab-BoldItalic.ttf in Resources */,
-				93782CE420C7F53100CE56A4 /* SF-Pro-Display-ThinItalic.otf in Resources */,
-				93AE235120CFCEF700A5D89D /* ZillaSlab-Italic.ttf in Resources */,
 				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
 				6625434F219B575300379011 /* dong.wav in Resources */,
 				77E1E07D221D7E4C006B1084 /* SF-Pro-Display-Heavy.otf in Resources */,
 				77E1E057221D5496006B1084 /* SF-Pro-Text-Heavy.otf in Resources */,
 				93A718C92164BC7C00BC77D9 /* HeaderView.xib in Resources */,
+				28CFCA252226EF2200D1E477 /* NavigationBarView.xib in Resources */,
 				77E1E055221D5496006B1084 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				77E1E054221D5496006B1084 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
@@ -1672,10 +1696,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		31867820528E6FF231694AAB /* [CP] Embed Pods Frameworks */ = {
+		10B7D04D27079D7933011380 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Scout/Pods-Scout-frameworks.sh",
@@ -1692,6 +1718,8 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Async.framework",
@@ -1710,16 +1738,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Scout/Pods-Scout-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FC683409930A826A1DADFF5D /* [CP] Check Pods Manifest.lock */ = {
+		3EB178EC1071C90F0B245823 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Scout-checkManifestLockResult.txt",
 			);
@@ -1766,7 +1798,6 @@
 				280FEEC8221B12C300223CB9 /* ApiClient.swift in Sources */,
 				77F1D208221C47D300E640C3 /* String+QueueLabel.swift in Sources */,
 				776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */,
-				9333B81620AC2AD50055C5B1 /* GradientView.swift in Sources */,
 				2805F8FA2223EA9A006BA14F /* UIViewController+Extensions.swift in Sources */,
 				93C55D67216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift in Sources */,
 				93FB827520B54B1B00A39A5C /* PlayerAssemblyProtocol.swift in Sources */,
@@ -1789,6 +1820,7 @@
 				93A718B62164B9DC00BC77D9 /* PodcastDetailsModel.swift in Sources */,
 				93A3113E20B13F7C0049DB67 /* VoiceInputRouter.swift in Sources */,
 				93A3113820B13EA70049DB67 /* VoiceInputAssemblyProtocol.swift in Sources */,
+				28CFCA272226EF2200D1E477 /* NavigationBarContainerController.swift in Sources */,
 				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
 				28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
@@ -1825,6 +1857,7 @@
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
+				28CFCA262226EF2200D1E477 /* NavigationBarView.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,
 				28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */,
 				5637D2C120A3410100112F1F /* MyListViewController.swift in Sources */,
@@ -1989,7 +2022,7 @@
 		};
 		F482CD3A2080D225007D0C14 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE18FBEC52D615FD47F6F471 /* Pods-Scout.debug.xcconfig */;
+			baseConfigurationReference = 5385525389BF90C5027397F9 /* Pods-Scout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2015,7 +2048,7 @@
 		};
 		F482CD3B2080D225007D0C14 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84B360F975895554FF0AD747 /* Pods-Scout.release.xcconfig */;
+			baseConfigurationReference = 0F534E7D6A643A49881FD742 /* Pods-Scout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2093,7 +2126,7 @@
 		};
 		F482CD712080E9E1007D0C14 /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B08A7F94017D00A1DB1E7D1B /* Pods-Scout.appstore.xcconfig */;
+			baseConfigurationReference = 2E383DFA24002683D51A121F /* Pods-Scout.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

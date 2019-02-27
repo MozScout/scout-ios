@@ -29,18 +29,19 @@ class OnboardingFlowCoordinator: BaseFlowCoordinator {
     }
 
     func run() {
-        let output = Onboarding.Output(
-            onDidRegister: { [weak self] (userId, token) in
-            self?.onSignedUp()
-        },
-            onShowLoading: { [weak self] in
-                self?.showLoading()
-        },
-            onHideLoading: { [weak self] in
-                self?.hideLoading()
-        })
-        let viewController = assembly.assemblyOnboarding(output: output)
-        rootNavigation.setRootContent(viewController, transition: .fade, animated: false)
+        onSignedUp()
+//        let output = Onboarding.Output(
+//            onDidRegister: { [weak self] (userId, token) in
+//            self?.onSignedUp()
+//        },
+//            onShowLoading: { [weak self] in
+//                self?.showLoading()
+//        },
+//            onHideLoading: { [weak self] in
+//                self?.hideLoading()
+//        })
+//        let viewController = assembly.assemblyOnboarding(output: output)
+//        rootNavigation.setRootContent(viewController, transition: .fade, animated: false)
     }
 
     func showLoading() {

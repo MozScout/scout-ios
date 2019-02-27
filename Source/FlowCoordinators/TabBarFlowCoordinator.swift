@@ -75,11 +75,20 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 //        showContent(<#T##content: UIViewController##UIViewController#>, for: startTab, animated: false)
     }
 
-    private func showMyNotesScreen() { }
+    private func showMyNotesScreen() {
+        let navigationBar = NavigationBarContainerController()
+        showContent(navigationBar, for: .myNotes, animated: true)
+    }
 
-    private func showListenScreen() { }
+    private func showListenScreen() {
+        let navigationBar = NavigationBarContainerController()
+        showContent(navigationBar, for: .listen, animated: true)
+    }
 
-    private func showSubscriptionsScreen() { }
+    private func showSubscriptionsScreen() {
+        let navigationBar = NavigationBarContainerController()
+        showContent(navigationBar, for: .subscriptions, animated: true)
+    }
 
     private func showContent(
         _ content: UIViewController,
