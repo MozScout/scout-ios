@@ -20,11 +20,11 @@ class TabBarContainerController: UIViewController {
     @IBOutlet private weak var containerView: UIView!
 
     private var content: UIViewController?
-    private var selectedIndex: Int = -1
+    private var selectedIndex: Int? = nil
 
     // MARK: - Public properties
 
-    public var selectedItemIndex: Int {
+    public var selectedItemIndex: Int? {
         return tabBarView.selectedItemIndex
     }
 
@@ -36,7 +36,7 @@ class TabBarContainerController: UIViewController {
         super.viewDidLoad()
     }
 
-    public func setItems(_ items: [Item], selectedIndex: Int) {
+    public func setItems(_ items: [Item], selectedIndex: Int?) {
         let tabBarViewItems = items.map { (item) -> TabBarView.Item in
             return TabBarView.Item(
                 title: item.title,
@@ -50,7 +50,7 @@ class TabBarContainerController: UIViewController {
 
     public func transitionToContent(
         _ newContent: UIViewController?,
-        at index: Int,
+        at index: Int?,
         animated: Bool
         ) {
 
@@ -99,11 +99,11 @@ class TabBarContainerController: UIViewController {
         case fade
     }
     private func getDirection(
-        from: Int,
-        to: Int
+        from: Int?,
+        to: Int?
         ) -> TransitionDirection {
 
-        guard from >= 0, to >= 0 else {
+        guard let from = from, let to = to else {
             return .fade
         }
 

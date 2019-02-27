@@ -29,7 +29,7 @@ class TabBarView: UIView {
 
     // MARK: - Public properties
 
-    public private(set) var selectedItemIndex: Int = -1 {
+    public private(set) var selectedItemIndex: Int? {
         didSet {
             updateSelectedItem()
         }
@@ -81,7 +81,7 @@ class TabBarView: UIView {
 
     // MARK: - Public methods
 
-    public func setItems(_ items: [Item], selectedIndex: Int = 0) {
+    public func setItems(_ items: [Item], selectedIndex: Int?) {
         itemViews = items.enumerated().map { [weak self] (itemTuple) -> TabBarItemView in
             let item = itemTuple.element
             let index = itemTuple.offset
@@ -101,7 +101,7 @@ class TabBarView: UIView {
         }
         stackView.setArrangedSubviews(itemViews)
 
-        if 0..<itemViews.count ~= selectedIndex {
+        if 0..<itemViews.count ~= (selectedIndex ?? -1) {
             selectedItemIndex = selectedIndex
         }
     }
