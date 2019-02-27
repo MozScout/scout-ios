@@ -29,17 +29,19 @@ extension UIView {
     
     fileprivate class func loadFromNibHelper<T>(nibName: String? = nil) -> T {
         let nibNameChecked = nibName != nil ? nibName! : self.defaultNibName()
-        
-        if let view = Bundle(for: AppDelegate.self).loadNibNamed(
+
+        let bundle = Bundle(for: AppDelegate.self)
+        let nib = bundle.loadNibNamed(
             nibNameChecked,
             owner: nil,
-            options: nil)?.first as? T {
-            
-            return view
-        }
-        else {
+            options: nil
+        )
+
+        guard let view = nib?.first as? T else {
             fatalError("Cannot get view from nib named \(nibName ?? "Unknown name")")
         }
+
+        return view
     }
 }
 
