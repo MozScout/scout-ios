@@ -34,10 +34,13 @@
 		281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329F221EFE7F001B99C7 /* TabBarItemView.swift */; };
 		281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A1221F0B07001B99C7 /* TabBarItemView.xib */; };
 		281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A5221F1E85001B99C7 /* TabBarView.xib */; };
-		28CFCA252226EF2200D1E477 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA202226EF2200D1E477 /* NavigationBarView.xib */; };
-		28CFCA262226EF2200D1E477 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA212226EF2200D1E477 /* NavigationBarView.swift */; };
+		28CFCA252226EF2200D1E477 /* NavigationBarContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA202226EF2200D1E477 /* NavigationBarContainerView.xib */; };
+		28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */; };
 		28CFCA272226EF2200D1E477 /* NavigationBarContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */; };
 		28CFCA282226EF2200D1E477 /* NavigationBarContainerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */; };
+		28CFCA2A2228026600D1E477 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA292228026600D1E477 /* TestViewController.swift */; };
+		28CFCA2D222851EE00D1E477 /* DefaultNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA2C222851EE00D1E477 /* DefaultNavigationBar.swift */; };
+		28CFCA302228520300D1E477 /* DefaultNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -233,10 +236,13 @@
 		2812329F221EFE7F001B99C7 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		281232A1221F0B07001B99C7 /* TabBarItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarItemView.xib; sourceTree = "<group>"; };
 		281232A5221F1E85001B99C7 /* TabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
-		28CFCA202226EF2200D1E477 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
-		28CFCA212226EF2200D1E477 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		28CFCA202226EF2200D1E477 /* NavigationBarContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarContainerView.xib; sourceTree = "<group>"; };
+		28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerView.swift; sourceTree = "<group>"; };
 		28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerController.swift; sourceTree = "<group>"; };
 		28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarContainerController.xib; sourceTree = "<group>"; };
+		28CFCA292228026600D1E477 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		28CFCA2C222851EE00D1E477 /* DefaultNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationBar.swift; sourceTree = "<group>"; };
+		28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultNavigationBar.xib; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -585,19 +591,21 @@
 		28CFCA1E2226EF2200D1E477 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				28CFCA1F2226EF2200D1E477 /* NavigationBarView */,
+				28CFCA292228026600D1E477 /* TestViewController.swift */,
+				28CFCA2B222851B000D1E477 /* DefaultNavigationBar */,
 				28CFCA222226EF2200D1E477 /* NavigationBarContainerController */,
+				28CFCA1F2226EF2200D1E477 /* NavigationBarContainerView */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
-		28CFCA1F2226EF2200D1E477 /* NavigationBarView */ = {
+		28CFCA1F2226EF2200D1E477 /* NavigationBarContainerView */ = {
 			isa = PBXGroup;
 			children = (
-				28CFCA212226EF2200D1E477 /* NavigationBarView.swift */,
-				28CFCA202226EF2200D1E477 /* NavigationBarView.xib */,
+				28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */,
+				28CFCA202226EF2200D1E477 /* NavigationBarContainerView.xib */,
 			);
-			path = NavigationBarView;
+			path = NavigationBarContainerView;
 			sourceTree = "<group>";
 		};
 		28CFCA222226EF2200D1E477 /* NavigationBarContainerController */ = {
@@ -607,6 +615,15 @@
 				28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */,
 			);
 			path = NavigationBarContainerController;
+			sourceTree = "<group>";
+		};
+		28CFCA2B222851B000D1E477 /* DefaultNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA2C222851EE00D1E477 /* DefaultNavigationBar.swift */,
+				28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */,
+			);
+			path = DefaultNavigationBar;
 			sourceTree = "<group>";
 		};
 		28FDFB6F221BF29A00C869E1 /* Services */ = {
@@ -1666,6 +1683,7 @@
 				5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */,
 				77E1E07C221D7E4C006B1084 /* SF-Pro-Display-Light.otf in Resources */,
 				77E1E076221D7E4C006B1084 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				28CFCA302228520300D1E477 /* DefaultNavigationBar.xib in Resources */,
 				77E1E08C221D97B8006B1084 /* OnboardingCollectionViewCell.xib in Resources */,
 				77E1E053221D5496006B1084 /* SF-Pro-Text-Bold.otf in Resources */,
 				77E1E059221D5496006B1084 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
@@ -1678,7 +1696,7 @@
 				77E1E07D221D7E4C006B1084 /* SF-Pro-Display-Heavy.otf in Resources */,
 				77E1E057221D5496006B1084 /* SF-Pro-Text-Heavy.otf in Resources */,
 				93A718C92164BC7C00BC77D9 /* HeaderView.xib in Resources */,
-				28CFCA252226EF2200D1E477 /* NavigationBarView.xib in Resources */,
+				28CFCA252226EF2200D1E477 /* NavigationBarContainerView.xib in Resources */,
 				77E1E055221D5496006B1084 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				77E1E054221D5496006B1084 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
@@ -1830,6 +1848,7 @@
 				77F1D225221C496800E640C3 /* OnboardingModels.swift in Sources */,
 				2812329E221EFE70001B99C7 /* TabBarView.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
+				28CFCA2D222851EE00D1E477 /* DefaultNavigationBar.swift in Sources */,
 				77F1D227221C496800E640C3 /* OnboardingInteractor.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
 				93A718C82164BC7C00BC77D9 /* AboutCell.swift in Sources */,
@@ -1837,6 +1856,7 @@
 				2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */,
 				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
 				28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */,
+				28CFCA2A2228026600D1E477 /* TestViewController.swift in Sources */,
 				280FEED3221B14FD00223CB9 /* Topic.swift in Sources */,
 				280FEEC7221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift in Sources */,
 				5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */,
@@ -1857,7 +1877,7 @@
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
-				28CFCA262226EF2200D1E477 /* NavigationBarView.swift in Sources */,
+				28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,
 				28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */,
 				5637D2C120A3410100112F1F /* MyListViewController.swift in Sources */,

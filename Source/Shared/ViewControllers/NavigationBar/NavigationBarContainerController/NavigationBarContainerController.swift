@@ -6,53 +6,117 @@
 
 import UIKit
 
+protocol NavigationBarContainerContent {
+    typealias OnScrollViewDidScroll = (_ scrollView: UIScrollView) -> Void
+
+    var onScrollViewDidScroll: OnScrollViewDidScroll? { get set }
+}
+
 class NavigationBarContainerController: UIViewController {
+
+    typealias ContentController = UIViewController & NavigationBarContainerContent
 
     // MARK: - Private properties
     
-    @IBOutlet private weak var navigationBarView: NavigationBarView!
+    @IBOutlet private weak var navigationBarContainerView: NavigationBarContainerView!
     @IBOutlet private weak var containerView: UIView!
 
     private(set) var navigationBarHidden: Bool = false
-    private var content: UIViewController?
+    private var content: ContentController?
 
-    // MARK: - Overridden
+    private var contentInset: UIEdgeInsets = .zero
+    private var previousContentOffset: CGPoint = .zero
+    private var contentOffset: CGPoint = .zero {
+        didSet {
+            previousContentOffset = oldValue
+        }
+    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Public properties
 
-        navigationBarView.backgroundColor = UIColor.red
+    public var hidesNavigationBarOnScroll: Bool = false {
+        didSet {
+            updateHeaderLayout()
+        }
     }
 
     // MARK: - Public methods
 
     func navigationBarIntersectionRectIn(view: UIView) -> CGRect {
-        let converted = view.convert(navigationBarView.bounds, from: navigationBarView)
+        let converted = view.convert(navigationBarContainerView.bounds, from: navigationBarContainerView)
         let intersection = view.bounds.intersection(converted)
         return intersection.isNull ? CGRect.zero : intersection
     }
 
-    func setContent(_ newContent: UIViewController) {
+    func setContent(_ newContent: ContentController) {
         removePreviousContent(content)
         addNewContent(newContent)
         content = newContent
+
+        contentInset = .zero
+        contentOffset = .zero
+        previousContentOffset = .zero
+        updateHeaderLayout()
+
+        content?.onScrollViewDidScroll = { [weak self] (scrollView) in
+            self?.contentInset = scrollView.contentInset
+            self?.contentOffset = scrollView.contentOffset
+            self?.updateHeaderLayout()
+        }
+    }
+
+    func setNavigationBarContent(_ content: UIView) {
+        navigationBarContainerView.setContent(content)
     }
 
     // MARK: - Private methods
 
     private func addNewContent(_ content: UIViewController?) {
         guard let newContent = content else { return }
-        self.addChildViewController(newContent, to: containerView)
+        addChildViewController(newContent, to: containerView)
     }
 
     private func removePreviousContent(_ content: UIViewController?) {
         guard let prev = content else { return }
-        self.remove(childController: prev)
+        remove(childController: prev)
+    }
+
+    private func updateHeaderLayout() {
+        let currentConstant: CGFloat = navigationBarContainerView.transform.ty
+
+        let newConstant: CGFloat = {
+            if hidesNavigationBarOnScroll {
+                var contentOffset = self.contentOffset.y
+                var previousContentOffset = self.previousContentOffset.y
+
+                if contentOffset < -contentInset.top {
+                    contentOffset = -contentInset.top
+                }
+
+                if previousContentOffset < -contentInset.top {
+                    previousContentOffset = -contentInset.top
+                }
+
+                let offsetDifference = previousContentOffset - contentOffset
+                let constraintMinimum: CGFloat = 0
+                let constraintMaximum: CGFloat = navigationBarContainerView.collapsedHeight - navigationBarContainerView.frame.height
+
+                var newConstant: CGFloat = currentConstant + offsetDifference
+                newConstant = max(newConstant, constraintMaximum)
+                newConstant = min(newConstant, constraintMinimum)
+                return newConstant
+            } else {
+                return 0
+            }
+        }()
+
+        guard newConstant != currentConstant else { return }
+        navigationBarContainerView.transform = CGAffineTransform(translationX: 0, y: newConstant)
     }
 }
 
 extension UIViewController {
-    private var navigationBarContainer: NavigationBarContainerController? {
+    var navigationBarContainer: NavigationBarContainerController? {
         var currentParent: UIViewController? = self.parent
         while currentParent != nil {
             if let navigationBarContainer = currentParent as? NavigationBarContainerController {

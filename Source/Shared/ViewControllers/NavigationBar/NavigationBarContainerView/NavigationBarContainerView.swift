@@ -1,16 +1,26 @@
 //
-//  NavigationBarView.swift
+//  NavigationBarContainerView.swift
 //  Scout
 //
 //
 
 import UIKit
 
-class NavigationBarView: UIView {
+class NavigationBarContainerView: UIView {
+
+    // MARK: - Private properties
 
     @IBOutlet private var contentView: UIView!
-    @IBOutlet private weak var logoImageView: UIImageView!
     @IBOutlet private weak var gradientSeparator: GradientView!
+    @IBOutlet private weak var contentContainerView: UIView!
+
+    private var currentContent: UIView?
+
+    // MARK: - Public properties
+
+    public var collapsedHeight: CGFloat {
+        return 3
+    }
 
     // MARK: - Initializers
 
@@ -30,9 +40,22 @@ class NavigationBarView: UIView {
         super.awakeFromNib()
 
         setupView()
-        setupLogoImageView()
+        setupContentView()
         setupGradientSeparator()
     }
+
+    // MARK: - Public methods
+
+    public func setContent(_ content: UIView) {
+        currentContent?.removeFromSuperview()
+        contentContainerView.addSubview(content)
+        content.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        currentContent = content
+    }
+
+    // MARK: - Private methods
 
     private func setup() {
         contentView = loadViewFromNib()
@@ -53,15 +76,12 @@ class NavigationBarView: UIView {
         return view
     }
 
-    // MARK: - Private methods
-
     private func setupView() {
-
+        backgroundColor = UIColor.clear
     }
 
-    private func setupLogoImageView() {
-        logoImageView.contentMode = .scaleAspectFit
-        logoImageView.image = #imageLiteral(resourceName: "player_image")
+    private func setupContentView() {
+        contentView.backgroundColor = UIColor.clear
     }
 
     private func setupGradientSeparator() {

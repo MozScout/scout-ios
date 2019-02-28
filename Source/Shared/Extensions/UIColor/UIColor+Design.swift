@@ -7,6 +7,10 @@
 import UIKit
 
 extension UIColor {
+    class var fxWoodsmoke: UIColor {
+        return UIColor(rgb: 0x0C0C0D)
+    }
+
     class var fxYellowOrange: UIColor {
         return UIColor(rgb: 0xFF9C4A)
     }

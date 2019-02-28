@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationBarContainerController" customModule="Scout" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="PIQ-dt-uci" id="YT8-1H-fPp"/>
-                <outlet property="navigationBarView" destination="5yA-Hh-ppW" id="G2y-dS-k2E"/>
+                <outlet property="navigationBarContainerView" destination="5yA-Hh-ppW" id="3tl-0p-lbf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="SN9-NV-Y7C"/>
             </connections>
         </placeholder>
@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yA-Hh-ppW" customClass="NavigationBarView" customModule="Scout" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yA-Hh-ppW" customClass="NavigationBarContainerView" customModule="Scout" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
