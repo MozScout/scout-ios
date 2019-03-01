@@ -57,10 +57,12 @@ class DefaultNavigationBar: UIView {
     }
 
     private func setupFirstLeftItemContainer() {
-        let settingsButton = UIButton()
-        settingsButton.addTarget(self, action: #selector(settingsButtonAction), for: .touchUpInside)
-        settingsButton.setImage(#imageLiteral(resourceName: "I"), for: .normal)
-        settingsButton.tintColor = UIColor.fxWoodsmoke
+        let settingsButton = UIButton.settingsButton
+        settingsButton.addTarget(
+            self,
+            action: #selector(settingsButtonAction),
+            for: .touchUpInside
+        )
         setItem(settingsButton, to: firstLeftItemContainer)
 
         firstLeftItemContainer.backgroundColor = UIColor.clear
@@ -71,10 +73,12 @@ class DefaultNavigationBar: UIView {
     }
 
     private func setupSecondLeftItemContainer() {
-        let handsFreeButton = UIButton()
-        handsFreeButton.addTarget(self, action: #selector(handsFreeButtonAction), for: .touchUpInside)
-        handsFreeButton.setImage(#imageLiteral(resourceName: "Hands Free"), for: .normal)
-        handsFreeButton.tintColor = UIColor.fxWoodsmoke
+        let handsFreeButton = UIButton.handsFreeButton
+        handsFreeButton.addTarget(
+            self,
+            action: #selector(handsFreeButtonAction),
+            for: .touchUpInside
+        )
         setItem(handsFreeButton, to: secondLeftItemContainer)
 
         secondLeftItemContainer.backgroundColor = UIColor.clear
@@ -85,10 +89,12 @@ class DefaultNavigationBar: UIView {
     }
 
     private func setupSecondRightItemContainer() {
-        let searchButton = UIButton()
-        searchButton.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
-        searchButton.setImage(#imageLiteral(resourceName: "Search"), for: .normal)
-        searchButton.tintColor = UIColor.fxWoodsmoke
+        let searchButton = UIButton.searchButton
+        searchButton.addTarget(
+            self,
+            action: #selector(searchButtonAction),
+            for: .touchUpInside
+        )
         setItem(searchButton, to: secondRightItemContainer)
 
         secondRightItemContainer.backgroundColor = UIColor.clear
@@ -107,5 +113,31 @@ class DefaultNavigationBar: UIView {
         item.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+private extension UIButton {
+    class var settingsButton: UIButton {
+        let settingsButton = UIButton.navigationBarButton
+        settingsButton.setImage(#imageLiteral(resourceName: "I"), for: .normal)
+        return settingsButton
+    }
+
+    class var handsFreeButton: UIButton {
+        let handsFreeButton = UIButton.navigationBarButton
+        handsFreeButton.setImage(#imageLiteral(resourceName: "Hands Free"), for: .normal)
+        return handsFreeButton
+    }
+
+    class var searchButton: UIButton {
+        let searchButton = UIButton.navigationBarButton
+        searchButton.setImage(#imageLiteral(resourceName: "Search"), for: .normal)
+        return searchButton
+    }
+
+    private class var navigationBarButton: UIButton {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.fxWoodsmoke
+        return button
     }
 }

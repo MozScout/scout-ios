@@ -43,26 +43,30 @@ class NavigationBarContainerController: UIViewController {
     // MARK: - Public methods
 
     func navigationBarIntersectionRectIn(view: UIView) -> CGRect {
-        let converted = view.convert(navigationBarContainerView.bounds, from: navigationBarContainerView)
+        var bounds = navigationBarContainerView.bounds
+        bounds.origin.x += navigationBarContainerView.transform.tx
+        bounds.origin.y += navigationBarContainerView.transform.ty
+        let converted = view.convert(bounds, from: navigationBarContainerView)
         let intersection = view.bounds.intersection(converted)
         return intersection.isNull ? CGRect.zero : intersection
     }
 
     func setContent(_ newContent: ContentController) {
         removePreviousContent(content)
-        addNewContent(newContent)
+
         content = newContent
+        content?.onScrollViewDidScroll = { [weak self] (scrollView) in
+            self?.contentInset = scrollView.contentInset
+            self?.contentOffset = scrollView.contentOffset
+            self?.updateHeaderLayout()
+        }
 
         contentInset = .zero
         contentOffset = .zero
         previousContentOffset = .zero
         updateHeaderLayout()
 
-        content?.onScrollViewDidScroll = { [weak self] (scrollView) in
-            self?.contentInset = scrollView.contentInset
-            self?.contentOffset = scrollView.contentOffset
-            self?.updateHeaderLayout()
-        }
+        addNewContent(newContent)
     }
 
     func setNavigationBarContent(_ content: UIView) {

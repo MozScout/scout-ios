@@ -15,6 +15,7 @@
                 <outlet property="contentContainerView" destination="LvQ-1k-Ark" id="SPm-0o-PhL"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="nyx-pO-yw4"/>
                 <outlet property="gradientSeparator" destination="Ofx-jv-gYo" id="gUt-N7-TCY"/>
+                <outlet property="gradientSeparatorHeightConstraint" destination="511-4a-rvX" id="WwK-Sn-Q6R"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

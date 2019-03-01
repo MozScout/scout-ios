@@ -7,6 +7,10 @@
 import UIKit
 
 extension UIColor {
+    class var fxBlack: UIColor {
+        return UIColor(rgb: 0x000000)
+    }
+
     class var fxWoodsmoke: UIColor {
         return UIColor(rgb: 0x0C0C0D)
     }
@@ -37,5 +41,9 @@ extension UIColor {
 
     class var fxAthensGray: UIColor {
         return UIColor(rgb: 0xF9F9FA)
+    }
+
+    class var fxManatee: UIColor {
+        return UIColor(rgb: 0x8E8E93)
     }
 }

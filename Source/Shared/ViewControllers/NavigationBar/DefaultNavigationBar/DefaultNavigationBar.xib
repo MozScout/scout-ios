@@ -24,32 +24,32 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogo-YX-DNM">
-                    <rect key="frame" x="8" y="0.0" width="62" height="136"/>
+                    <rect key="frame" x="8" y="0.0" width="68" height="136"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gei-hh-URz">
-                    <rect key="frame" x="78" y="0.0" width="61.5" height="136"/>
+                    <rect key="frame" x="76" y="0.0" width="67.5" height="136"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iiU-ED-1TM">
-                    <rect key="frame" x="235.5" y="0.0" width="62" height="136"/>
+                    <rect key="frame" x="231.5" y="0.0" width="68" height="136"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpB-tk-1SW">
-                    <rect key="frame" x="305.5" y="0.0" width="61.5" height="136"/>
+                    <rect key="frame" x="299.5" y="0.0" width="67.5" height="136"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="adO-MU-Rie" firstAttribute="leading" secondItem="Gei-hh-URz" secondAttribute="trailing" constant="32" id="BJK-x5-HiO"/>
+                <constraint firstItem="adO-MU-Rie" firstAttribute="leading" secondItem="Gei-hh-URz" secondAttribute="trailing" constant="28" id="BJK-x5-HiO"/>
                 <constraint firstItem="adO-MU-Rie" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BtT-lp-1Uh"/>
                 <constraint firstItem="Gei-hh-URz" firstAttribute="width" secondItem="ogo-YX-DNM" secondAttribute="width" id="EdB-FE-SUM"/>
-                <constraint firstItem="iiU-ED-1TM" firstAttribute="leading" secondItem="adO-MU-Rie" secondAttribute="trailing" constant="32" id="GGR-Oy-lPa"/>
+                <constraint firstItem="iiU-ED-1TM" firstAttribute="leading" secondItem="adO-MU-Rie" secondAttribute="trailing" constant="28" id="GGR-Oy-lPa"/>
                 <constraint firstItem="Gei-hh-URz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L53-q8-twt"/>
-                <constraint firstItem="Gei-hh-URz" firstAttribute="leading" secondItem="ogo-YX-DNM" secondAttribute="trailing" constant="8" id="LjF-cs-li3"/>
+                <constraint firstItem="Gei-hh-URz" firstAttribute="leading" secondItem="ogo-YX-DNM" secondAttribute="trailing" id="LjF-cs-li3"/>
                 <constraint firstItem="ogo-YX-DNM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="LxY-bR-Hqu"/>
-                <constraint firstItem="EpB-tk-1SW" firstAttribute="leading" secondItem="iiU-ED-1TM" secondAttribute="trailing" constant="8" id="RR1-CE-KJh"/>
+                <constraint firstItem="EpB-tk-1SW" firstAttribute="leading" secondItem="iiU-ED-1TM" secondAttribute="trailing" id="RR1-CE-KJh"/>
                 <constraint firstItem="iiU-ED-1TM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Uua-k3-VGr"/>
                 <constraint firstItem="iiU-ED-1TM" firstAttribute="width" secondItem="ogo-YX-DNM" secondAttribute="width" id="UxN-hH-9wc"/>
                 <constraint firstItem="EpB-tk-1SW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="a9F-5T-IGg"/>

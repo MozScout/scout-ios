@@ -41,6 +41,11 @@
 		28CFCA2A2228026600D1E477 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA292228026600D1E477 /* TestViewController.swift */; };
 		28CFCA2D222851EE00D1E477 /* DefaultNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA2C222851EE00D1E477 /* DefaultNavigationBar.swift */; };
 		28CFCA302228520300D1E477 /* DefaultNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */; };
+		28CFCA3C2229325C00D1E477 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA35222930FE00D1E477 /* OpenSans-Regular.ttf */; };
+		28CFCA3F22293A3800D1E477 /* SearchNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA3E22293A3800D1E477 /* SearchNavigationBar.xib */; };
+		28CFCA4122293A3E00D1E477 /* SearchNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA4022293A3E00D1E477 /* SearchNavigationBar.swift */; };
+		28CFCA442229640200D1E477 /* BackNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA432229640200D1E477 /* BackNavigationBar.swift */; };
+		28CFCA462229640800D1E477 /* BackNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA452229640800D1E477 /* BackNavigationBar.xib */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -243,6 +248,11 @@
 		28CFCA292228026600D1E477 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		28CFCA2C222851EE00D1E477 /* DefaultNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationBar.swift; sourceTree = "<group>"; };
 		28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultNavigationBar.xib; sourceTree = "<group>"; };
+		28CFCA35222930FE00D1E477 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		28CFCA3E22293A3800D1E477 /* SearchNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchNavigationBar.xib; sourceTree = "<group>"; };
+		28CFCA4022293A3E00D1E477 /* SearchNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationBar.swift; sourceTree = "<group>"; };
+		28CFCA432229640200D1E477 /* BackNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationBar.swift; sourceTree = "<group>"; };
+		28CFCA452229640800D1E477 /* BackNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackNavigationBar.xib; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -592,9 +602,11 @@
 			isa = PBXGroup;
 			children = (
 				28CFCA292228026600D1E477 /* TestViewController.swift */,
+				28CFCA42222963F300D1E477 /* BackNavigationBar */,
 				28CFCA2B222851B000D1E477 /* DefaultNavigationBar */,
 				28CFCA222226EF2200D1E477 /* NavigationBarContainerController */,
 				28CFCA1F2226EF2200D1E477 /* NavigationBarContainerView */,
+				28CFCA3D22293A1A00D1E477 /* SearchNavigationBar */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -624,6 +636,32 @@
 				28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */,
 			);
 			path = DefaultNavigationBar;
+			sourceTree = "<group>";
+		};
+		28CFCA31222930ED00D1E477 /* OpenSans */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA35222930FE00D1E477 /* OpenSans-Regular.ttf */,
+			);
+			path = OpenSans;
+			sourceTree = "<group>";
+		};
+		28CFCA3D22293A1A00D1E477 /* SearchNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA4022293A3E00D1E477 /* SearchNavigationBar.swift */,
+				28CFCA3E22293A3800D1E477 /* SearchNavigationBar.xib */,
+			);
+			path = SearchNavigationBar;
+			sourceTree = "<group>";
+		};
+		28CFCA42222963F300D1E477 /* BackNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA432229640200D1E477 /* BackNavigationBar.swift */,
+				28CFCA452229640800D1E477 /* BackNavigationBar.xib */,
+			);
+			path = BackNavigationBar;
 			sourceTree = "<group>";
 		};
 		28FDFB6F221BF29A00C869E1 /* Services */ = {
@@ -1127,6 +1165,7 @@
 		93782C7F20C7F1E700CE56A4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				28CFCA31222930ED00D1E477 /* OpenSans */,
 				77E1E05E221D7E14006B1084 /* SFProDisplay */,
 				77E1E043221D5406006B1084 /* SfProText */,
 			);
@@ -1700,14 +1739,17 @@
 				77E1E055221D5496006B1084 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				77E1E054221D5496006B1084 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
+				28CFCA462229640800D1E477 /* BackNavigationBar.xib in Resources */,
 				93A718B82164BAD400BC77D9 /* ServerData.json in Resources */,
 				77E1E07A221D7E4C006B1084 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
+				28CFCA3C2229325C00D1E477 /* OpenSans-Regular.ttf in Resources */,
 				77E1E081221D7E4C006B1084 /* SF-Pro-Display-Bold.otf in Resources */,
 				77E1E05A221D5496006B1084 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				93C55D61216CB08C0023C8AD /* AddPodcasts.storyboard in Resources */,
 				77E1E05B221D5496006B1084 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				93A718AF2164B63100BC77D9 /* PodcastDetails.storyboard in Resources */,
 				9333B81D20AC6D070055C5B1 /* MyListTableViewCell.xib in Resources */,
+				28CFCA3F22293A3800D1E477 /* SearchNavigationBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1785,6 +1827,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CFCA442229640200D1E477 /* BackNavigationBar.swift in Sources */,
 				9333B81820AC2D940055C5B1 /* LoginViewController.swift in Sources */,
 				F4A23BB420810D5E006EC9E3 /* ApplicationAssembly.swift in Sources */,
 				8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */,
@@ -1876,6 +1919,7 @@
 				281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */,
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
+				28CFCA4122293A3E00D1E477 /* SearchNavigationBar.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
 				28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,

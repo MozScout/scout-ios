@@ -12,14 +12,17 @@ class NavigationBarContainerView: UIView {
 
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var gradientSeparator: GradientView!
+    @IBOutlet private weak var gradientSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var contentContainerView: UIView!
 
     private var currentContent: UIView?
 
+    private let gradientSeparatorHeight: CGFloat = 3
+
     // MARK: - Public properties
 
     public var collapsedHeight: CGFloat {
-        return 3
+        return gradientSeparatorHeight
     }
 
     // MARK: - Initializers
@@ -85,6 +88,7 @@ class NavigationBarContainerView: UIView {
     }
 
     private func setupGradientSeparator() {
+        gradientSeparatorHeightConstraint.constant = gradientSeparatorHeight
         gradientSeparator.gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientSeparator.gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         gradientSeparator.gradientLayer.colors = [
