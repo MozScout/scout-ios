@@ -72,30 +72,14 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             return item
         }
         tabBarController.setItems(items, selectedIndex: index)
-
-        let navigationBar = NavigationBarContainerController()
-        showContent(navigationBar, for: startTab, animated: true)
-        let viewController = TestViewController()
-        navigationBar.setContent(viewController)
 //        showContent(<#T##content: UIViewController##UIViewController#>, for: startTab, animated: false)
     }
 
-    private func showMyNotesScreen() {
-        let navigationBar = NavigationBarContainerController()
-        showContent(navigationBar, for: .myNotes, animated: true)
-        let viewController = TestViewController()
-        navigationBar.setContent(viewController)
-    }
+    private func showMyNotesScreen() { }
 
-    private func showListenScreen() {
-        let navigationBar = NavigationBarContainerController()
-        showContent(navigationBar, for: .listen, animated: true)
-    }
+    private func showListenScreen() { }
 
-    private func showSubscriptionsScreen() {
-        let navigationBar = NavigationBarContainerController()
-        showContent(navigationBar, for: .subscriptions, animated: true)
-    }
+    private func showSubscriptionsScreen() { }
 
     private func showContent(
         _ content: UIViewController,

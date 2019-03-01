@@ -38,7 +38,6 @@
 		28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */; };
 		28CFCA272226EF2200D1E477 /* NavigationBarContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */; };
 		28CFCA282226EF2200D1E477 /* NavigationBarContainerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */; };
-		28CFCA2A2228026600D1E477 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA292228026600D1E477 /* TestViewController.swift */; };
 		28CFCA2D222851EE00D1E477 /* DefaultNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA2C222851EE00D1E477 /* DefaultNavigationBar.swift */; };
 		28CFCA302228520300D1E477 /* DefaultNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */; };
 		28CFCA3C2229325C00D1E477 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA35222930FE00D1E477 /* OpenSans-Regular.ttf */; };
@@ -245,7 +244,6 @@
 		28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerView.swift; sourceTree = "<group>"; };
 		28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerController.swift; sourceTree = "<group>"; };
 		28CFCA242226EF2200D1E477 /* NavigationBarContainerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarContainerController.xib; sourceTree = "<group>"; };
-		28CFCA292228026600D1E477 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		28CFCA2C222851EE00D1E477 /* DefaultNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationBar.swift; sourceTree = "<group>"; };
 		28CFCA2F2228520300D1E477 /* DefaultNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultNavigationBar.xib; sourceTree = "<group>"; };
 		28CFCA35222930FE00D1E477 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -601,7 +599,6 @@
 		28CFCA1E2226EF2200D1E477 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				28CFCA292228026600D1E477 /* TestViewController.swift */,
 				28CFCA42222963F300D1E477 /* BackNavigationBar */,
 				28CFCA2B222851B000D1E477 /* DefaultNavigationBar */,
 				28CFCA222226EF2200D1E477 /* NavigationBarContainerController */,
@@ -1899,7 +1896,6 @@
 				2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */,
 				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
 				28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */,
-				28CFCA2A2228026600D1E477 /* TestViewController.swift in Sources */,
 				280FEED3221B14FD00223CB9 /* Topic.swift in Sources */,
 				280FEEC7221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift in Sources */,
 				5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */,
