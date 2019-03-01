@@ -52,7 +52,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
 
     func configure(_ state: ViewModel) {
         titleLabel.text = state.title
-        imageView.kf.setImage(with: state.imageUrl)
+        imageView.kf.setImage(with: state.imageUrl, placeholder: #imageLiteral(resourceName: "Placeholder"))
         imageView.kf.indicatorType = .activity
 
         if state.isSelected {
