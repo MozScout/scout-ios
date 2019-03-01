@@ -28,6 +28,8 @@ extension Onboarding {
         private var sceneModel: Model.SceneModel
         private let topicsFetcher: TopicsFetcher
         private let registerWorker: RegisterWorker
+
+        private var subtopicsCancellables: [String: CancellableToken] = [:]
         
         init(
             presenter: Presenter,
@@ -70,9 +72,10 @@ private extension Onboarding.InteractorImp {
     }
 
     func fetchSubtopics(with topicId: String) {
-        topicsFetcher.fetchSubtopics(with: topicId) { [weak self] (result) in
+        let cancellable = topicsFetcher.fetchSubtopics(with: topicId) { [weak self] (result) in
             switch result {
             case .success(let topics):
+                guard self?.sceneModel.selectedTopicsIds.contains(topicId) == true else { return }
                 self?.sceneModel.subtopics.append((topicId, topics))
                 self?.subtopicsDidFetch()
 
@@ -80,7 +83,9 @@ private extension Onboarding.InteractorImp {
                 // FIXME: - Handle error
                 return
             }
+            self?.subtopicsCancellables.removeValue(forKey: topicId)
         }
+        subtopicsCancellables[topicId] = cancellable
     }
 
     func topicsDidFetch() {
@@ -151,7 +156,8 @@ extension Onboarding.InteractorImp: Onboarding.Interactor {
                 }
             }
 
-            sceneModel.selectedTopicsIds.removeAll { $0 == request.topicId}
+            sceneModel.selectedTopicsIds.removeAll { $0 == request.topicId }
+            subtopicsCancellables[request.topicId]?.cancel()
         } else {
             sceneModel.selectedTopicsIds.append(request.topicId)
             if sceneModel.topics.contains(where: { $0.id == request.topicId }) {
