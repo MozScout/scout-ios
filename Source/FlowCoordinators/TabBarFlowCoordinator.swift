@@ -36,6 +36,19 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         return flowCoordinator
     }()
 
+    private lazy var subscriptionsFlow: SubscriptionsFlowCoordinator = {
+        let assembly = self.assembly.assemblySubscriptionsFlowCoordinatorAssembly()
+
+        let flowCoordinator = SubscriptionsFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .subscriptions, animated: animated)
+        })
+
+        return flowCoordinator
+    }()
+
     init(
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly
@@ -63,7 +76,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             title: "Subscriptions",
             icon: #imageLiteral(resourceName: "Podcasts"),
             onSelect: { [weak self] in
-                self?.showSubscriptionsScreen()
+                self?.showSubscriptionsFlow(animated: true)
         })
 
         items = [
@@ -95,7 +108,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
     private func showListenScreen() { }
 
-    private func showSubscriptionsScreen() { }
+    private func showSubscriptionsFlow(animated: Bool) {
+        subscriptionsFlow.showContent(animated: animated)
+        currentFlowCoordinator = subscriptionsFlow
+    }
 
     private func showContent(
         _ content: UIViewController,
@@ -128,6 +144,10 @@ extension TabBarFlowCoordinator {
 
         public func assemblyMyNotesFlowCoordinatorAssembly() -> MyNotesFlowCoordinator.Assembly {
             return MyNotesFlowCoordinator.Assembly()
+        }
+
+        public func assemblySubscriptionsFlowCoordinatorAssembly() -> SubscriptionsFlowCoordinator.Assembly {
+            return SubscriptionsFlowCoordinator.Assembly()
         }
     }
 }
