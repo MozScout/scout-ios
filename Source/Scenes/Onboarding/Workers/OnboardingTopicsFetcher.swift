@@ -11,7 +11,7 @@ protocol OnboardingTopicsFetcher {
     typealias TopicsFetcherResult = Onboarding.TopicsFetcherResult
 
     func fetchTopics(completion: @escaping (TopicsFetcherResult) -> Void)
-    func fetchSubtopics(with topicId: String, completion: @escaping (TopicsFetcherResult) -> Void)
+    func fetchSubtopics(with topicId: String, completion: @escaping (TopicsFetcherResult) -> Void) -> CancellableToken
 }
 
 extension Onboarding {
@@ -46,8 +46,8 @@ extension Onboarding.TopicsFetcherImp: Onboarding.TopicsFetcher {
         }
     }
 
-    func fetchSubtopics(with topicId: String, completion: @escaping (TopicsFetcherResult) -> Void) {
-        topicsApi.requestSubtopicList(with: SubtopicListRequestParameters(id: topicId)) { (result) in
+    func fetchSubtopics(with topicId: String, completion: @escaping (TopicsFetcherResult) -> Void) -> CancellableToken {
+        return topicsApi.requestSubtopicList(with: SubtopicListRequestParameters(id: topicId)) { (result) in
             switch result {
             case .success(let topics):
                 completion(.success(topics))
