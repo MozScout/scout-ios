@@ -12,16 +12,7 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
 
     private let assembly: Assembly
 
-    private lazy var navigationController: UINavigationController = {
-        let navigation = UINavigationController()
-        navigation.setNavigationBarHidden(true, animated: false)
-
-        let navigationBarController = createController()
-
-        navigation.setViewControllers([navigationBarController], animated: false)
-
-        return navigation
-    }()
+    private lazy var navigationController: UINavigationController = createNavigationController()
 
     private let show: ShowClosure
 
@@ -41,16 +32,47 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
         show(navigationController, animated)
     }
 
-    private func createController() -> UIViewController {
+    private func createNavigationController() -> UINavigationController {
+        let navigation = UINavigationController()
+        navigation.setNavigationBarHidden(true, animated: false)
+
+        let startController = createStartController()
+        navigation.setViewControllers([startController], animated: false)
+
+        return navigation
+    }
+
+    private func createStartController() -> UIViewController {
+        return createSubscriptionsScene()
+    }
+
+    private func createSubscriptionsScene() -> UIViewController {
+        let output = Subscriptions.Output()
+        let subscriptions = assembly.assemblySubscriptions(output: output)
+
+        return createNavigationBarContainer(with: subscriptions)
+    }
+
+    private func createNavigationBarContainer(
+        with content: NavigationBarContainerController.ContentController
+        ) -> UIViewController {
+
         let navigationBarController = NavigationBarContainerController()
         _ = navigationBarController.view
-        let navigationBar = DefaultNavigationBar.loadFromNib()
-        navigationBarController.setNavigationBarContent(navigationBar)
+
+        navigationBarController.setContent(content)
+
         return navigationBarController
     }
 }
 
 extension SubscriptionsFlowCoordinator {
 
-    class Assembly { }
+    class Assembly {
+
+        func assemblySubscriptions(output: Subscriptions.Output) -> Subscriptions.ViewControllerImp {
+            let assembler = Subscriptions.AssemblerImp()
+            return assembler.assembly(with: output)
+        }
+    }
 }
