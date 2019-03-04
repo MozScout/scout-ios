@@ -23,6 +23,19 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
     private let startTab: Tab = .listen
 
+    private lazy var myNotesFlow: MyNotesFlowCoordinator = {
+        let assembly = self.assembly.assemblyMyNotesFlowCoordinatorAssembly()
+
+        let flowCoordinator = MyNotesFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .myNotes, animated: animated)
+        })
+
+        return flowCoordinator
+    }()
+
     init(
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly
@@ -36,7 +49,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             title: "My Notes",
             icon: #imageLiteral(resourceName: "Notes"),
             onSelect: { [weak self] in
-                self?.showMyNotesScreen()
+                self?.showMyNotesFlow(animated: true)
         })
 
         let listenItem = TabBarContainerController.Item(
@@ -72,10 +85,13 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             return item
         }
         tabBarController.setItems(items, selectedIndex: index)
-//        showContent(<#T##content: UIViewController##UIViewController#>, for: startTab, animated: false)
+        showListenScreen()
     }
 
-    private func showMyNotesScreen() { }
+    private func showMyNotesFlow(animated: Bool) {
+        myNotesFlow.showContent(animated: animated)
+        currentFlowCoordinator = myNotesFlow
+    }
 
     private func showListenScreen() { }
 
@@ -108,6 +124,10 @@ extension TabBarFlowCoordinator {
         init(appAssembly: AppAssembly) {
 
             self.appAssembly = appAssembly
+        }
+
+        public func assemblyMyNotesFlowCoordinatorAssembly() -> MyNotesFlowCoordinator.Assembly {
+            return MyNotesFlowCoordinator.Assembly()
         }
     }
 }

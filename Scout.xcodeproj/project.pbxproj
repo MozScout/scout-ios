@@ -45,6 +45,7 @@
 		28CFCA4122293A3E00D1E477 /* SearchNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA4022293A3E00D1E477 /* SearchNavigationBar.swift */; };
 		28CFCA442229640200D1E477 /* BackNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA432229640200D1E477 /* BackNavigationBar.swift */; };
 		28CFCA462229640800D1E477 /* BackNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA452229640800D1E477 /* BackNavigationBar.xib */; };
+		28CFCA48222D575400D1E477 /* MyNotesFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA47222D575400D1E477 /* MyNotesFlowCoordinator.swift */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -244,6 +245,7 @@
 		28CFCA4022293A3E00D1E477 /* SearchNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationBar.swift; sourceTree = "<group>"; };
 		28CFCA432229640200D1E477 /* BackNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationBar.swift; sourceTree = "<group>"; };
 		28CFCA452229640800D1E477 /* BackNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackNavigationBar.xib; sourceTree = "<group>"; };
+		28CFCA47222D575400D1E477 /* MyNotesFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesFlowCoordinator.swift; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				28FDFB74221C285500C869E1 /* AppCoordinator.swift */,
 				28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */,
 				28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */,
+				28CFCA47222D575400D1E477 /* MyNotesFlowCoordinator.swift */,
 				28FEBD09221DBC2800DAD907 /* OnboardingFlowCoordinator.swift */,
 				2805F8FB2223FE90006BA14F /* TabBarFlowCoordinator.swift */,
 			);
@@ -1844,6 +1847,7 @@
 				28CFCA4122293A3E00D1E477 /* SearchNavigationBar.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
 				28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */,
+				28CFCA48222D575400D1E477 /* MyNotesFlowCoordinator.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,
 				28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */,
 				5637D2C120A3410100112F1F /* MyListViewController.swift in Sources */,
