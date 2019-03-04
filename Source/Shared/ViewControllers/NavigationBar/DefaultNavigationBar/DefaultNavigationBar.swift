@@ -119,7 +119,7 @@ class DefaultNavigationBar: UIView {
 private extension UIButton {
     class var settingsButton: UIButton {
         let settingsButton = UIButton.navigationBarButton
-        settingsButton.setImage(#imageLiteral(resourceName: "I"), for: .normal)
+        settingsButton.setImage(#imageLiteral(resourceName: "Settings"), for: .normal)
         return settingsButton
     }
 
