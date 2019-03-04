@@ -11,7 +11,6 @@ class ApplicationAssembly {
     // MARK: Properties
     let configuration: AppConfiguration
     fileprivate lazy var authRouter: AuthRoutingProtocol = self.createAuthRouter()
-    fileprivate lazy var mainRouter: MainRoutingProtocol = self.createMainRouter()
     fileprivate lazy var myListRouter: MyListRoutingProtocol = self.createMyListRouter()
     fileprivate lazy var helpRouter: HelpRoutingProtocol = self.createHelpRouter()
     fileprivate lazy var settingsRouter: SettingsRoutingProtocol = self.createSettingsRouter()
@@ -34,7 +33,6 @@ class ApplicationAssembly {
 // MARK: ApplicationAssemblyProtocol
 extension ApplicationAssembly: ApplicationAssemblyProtocol {
     func assemblyAuthRouter() -> AuthRoutingProtocol { return self.authRouter }
-    func assemblyMainRouter() -> MainRoutingProtocol { return self.mainRouter }
     func assemblyMyListRouter() -> MyListRoutingProtocol { return self.myListRouter }
     func assemblyHelpRouter() -> HelpRoutingProtocol { return self.helpRouter }
     func assemblySettingsRouter() -> SettingsRoutingProtocol { return self.settingsRouter }
@@ -67,13 +65,6 @@ fileprivate extension ApplicationAssembly {
     func createAuthRouter() -> AuthRoutingProtocol {
         let authAssembly = AuthAssembly(withAssembly: self)
         return AuthRouter(with: authAssembly)
-    }
-
-    func createMainRouter() -> MainRoutingProtocol {
-        let mainAssembly = MainAssembly(withAssembly: self)
-        let mainRouter = MainUIRouter(withApplicationAssembly: self, assembly: mainAssembly)
-
-        return mainRouter
     }
 
     func createMyListRouter() -> MyListRoutingProtocol {

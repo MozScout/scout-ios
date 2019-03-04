@@ -65,7 +65,6 @@
 		5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB4C20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift */; };
 		5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AB4F20A6E68C0074A4BC /* ScoutArticle.swift */; };
 		5637D28E20A2FD2D00112F1F /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D28D20A2FD2D00112F1F /* Design.swift */; };
-		5637D29120A3142400112F1F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29020A3142400112F1F /* MainTabBarViewController.swift */; };
 		5637D2B020A3257800112F1F /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29420A3257800112F1F /* SettingsAssembly.swift */; };
 		5637D2B120A3257800112F1F /* SettingsAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29520A3257800112F1F /* SettingsAssemblyProtocol.swift */; };
 		5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637D29720A3257800112F1F /* SettingsRouter.swift */; };
@@ -184,8 +183,6 @@
 		A5A91766B3C5D2F09E208877 /* Pods_Scout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B2C43C400B5A659D25EA02 /* Pods_Scout.framework */; };
 		F4511799208899AD00A159B5 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4511798208899AD00A159B5 /* SpeechService.swift */; };
 		F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F451179A20891AA800A159B5 /* SpeechServiceProtocol.swift */; };
-		F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CDE20849B370055585C /* MainAssemblyProtocol.swift */; };
-		F47B7CE120849B3F0055585C /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CE020849B3F0055585C /* MainAssembly.swift */; };
 		F47B7CE62084B47B0055585C /* NetworkRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CE52084B47B0055585C /* NetworkRequestBuilder.swift */; };
 		F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CE72084B48B0055585C /* NetworkRequestBuilderProtocol.swift */; };
 		F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CE92084CBB00055585C /* NetworkMappingProtocol.swift */; };
@@ -193,12 +190,10 @@
 		F47B7CEF2084D7970055585C /* BaseHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CEE2084D7970055585C /* BaseHTTPClient.swift */; };
 		F47B7CF12084D7DC0055585C /* ScoutHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CF02084D7DC0055585C /* ScoutHTTPClient.swift */; };
 		F47B7CF42084E57F0055585C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CF32084E57F0055585C /* Utils.swift */; };
-		F47B7CF62084E8890055585C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CF52084E8890055585C /* AuthManager.swift */; };
 		F47B7CFB2084F6700055585C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CFA2084F6700055585C /* KeychainService.swift */; };
 		F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B7CFC2085244D0055585C /* KeychainServiceProtocol.swift */; };
 		F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CD442080D969007D0C14 /* AppDelegate.swift */; };
 		F482CD5C2080D969007D0C14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F482CD522080D969007D0C14 /* LaunchScreen.storyboard */; };
-		F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F482CD572080D969007D0C14 /* Main.storyboard */; };
 		F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CD622080DBBA007D0C14 /* HTTPClientError.swift */; };
 		F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CD642080DBE5007D0C14 /* HTTPClientProtocol.swift */; };
 		F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = F482CD692080E006007D0C14 /* AppConfigurationBridge.m */; };
@@ -207,8 +202,6 @@
 		F4A23BB62081113E006EC9E3 /* ApplicationAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A23BB52081113E006EC9E3 /* ApplicationAssemblyProtocol.swift */; };
 		F4A23BB82081120D006EC9E3 /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A23BB72081120D006EC9E3 /* ApplicationRouter.swift */; };
 		F4A23BBA20811280006EC9E3 /* ApplicationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A23BB920811280006EC9E3 /* ApplicationRouterProtocol.swift */; };
-		F4A23BBC20811369006EC9E3 /* MainRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A23BBB20811369006EC9E3 /* MainRoutingProtocol.swift */; };
-		F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A23BBD20811379006EC9E3 /* MainUIRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -273,7 +266,6 @@
 		5622AB4C20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutTitlesHTTPClientProtocol.swift; sourceTree = "<group>"; };
 		5622AB4F20A6E68C0074A4BC /* ScoutArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutArticle.swift; sourceTree = "<group>"; };
 		5637D28D20A2FD2D00112F1F /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
-		5637D29020A3142400112F1F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		5637D29420A3257800112F1F /* SettingsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
 		5637D29520A3257800112F1F /* SettingsAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAssemblyProtocol.swift; sourceTree = "<group>"; };
 		5637D29720A3257800112F1F /* SettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
@@ -394,8 +386,6 @@
 		93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRouter.swift; sourceTree = "<group>"; };
 		F4511798208899AD00A159B5 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		F451179A20891AA800A159B5 /* SpeechServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechServiceProtocol.swift; sourceTree = "<group>"; };
-		F47B7CDE20849B370055585C /* MainAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssemblyProtocol.swift; sourceTree = "<group>"; };
-		F47B7CE020849B3F0055585C /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		F47B7CE52084B47B0055585C /* NetworkRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestBuilder.swift; sourceTree = "<group>"; };
 		F47B7CE72084B48B0055585C /* NetworkRequestBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestBuilderProtocol.swift; sourceTree = "<group>"; };
 		F47B7CE92084CBB00055585C /* NetworkMappingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMappingProtocol.swift; sourceTree = "<group>"; };
@@ -403,7 +393,6 @@
 		F47B7CEE2084D7970055585C /* BaseHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHTTPClient.swift; sourceTree = "<group>"; };
 		F47B7CF02084D7DC0055585C /* ScoutHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutHTTPClient.swift; sourceTree = "<group>"; };
 		F47B7CF32084E57F0055585C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		F47B7CF52084E8890055585C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		F47B7CFA2084F6700055585C /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		F47B7CFC2085244D0055585C /* KeychainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceProtocol.swift; sourceTree = "<group>"; };
 		F482CD272080D225007D0C14 /* Scout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -411,7 +400,6 @@
 		F482CD402080D969007D0C14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F482CD442080D969007D0C14 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F482CD522080D969007D0C14 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F482CD572080D969007D0C14 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F482CD622080DBBA007D0C14 /* HTTPClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientError.swift; sourceTree = "<group>"; };
 		F482CD642080DBE5007D0C14 /* HTTPClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientProtocol.swift; sourceTree = "<group>"; };
 		F482CD662080DF55007D0C14 /* AppConfigurationBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfigurationBridge.h; sourceTree = "<group>"; };
@@ -426,8 +414,6 @@
 		F4A23BB52081113E006EC9E3 /* ApplicationAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAssemblyProtocol.swift; sourceTree = "<group>"; };
 		F4A23BB72081120D006EC9E3 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		F4A23BB920811280006EC9E3 /* ApplicationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouterProtocol.swift; sourceTree = "<group>"; };
-		F4A23BBB20811369006EC9E3 /* MainRoutingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoutingProtocol.swift; sourceTree = "<group>"; };
-		F4A23BBD20811379006EC9E3 /* MainUIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -767,14 +753,6 @@
 				5637D2C820A34A4100112F1F /* GradientButton */,
 			);
 			path = Design;
-			sourceTree = "<group>";
-		};
-		5637D28F20A313F600112F1F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				5637D29020A3142400112F1F /* MainTabBarViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		5637D29220A3257800112F1F /* Settings */ = {
@@ -1342,14 +1320,6 @@
 			path = NetworkMapper;
 			sourceTree = "<group>";
 		};
-		F47B7CED2084D4A90055585C /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				F47B7CF52084E8890055585C /* AuthManager.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		F47B7CF22084E5730055585C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1450,7 +1420,6 @@
 			isa = PBXGroup;
 			children = (
 				F482CD472080D969007D0C14 /* Application */,
-				F47B7CED2084D4A90055585C /* Auth */,
 				F47B7CF92084F6580055585C /* KeyChainService */,
 				F482CD4C2080D969007D0C14 /* Network */,
 				F45117972088995D00A159B5 /* SpeechService */,
@@ -1547,7 +1516,6 @@
 				5622AB3420A6CE230074A4BC /* Auth */,
 				5637D29C20A3257800112F1F /* Help */,
 				F482CD512080D969007D0C14 /* Launch */,
-				F482CD532080D969007D0C14 /* Main */,
 				5637D2A620A3257800112F1F /* MyList */,
 				93FB826D20B54A7400A39A5C /* Player */,
 				8637E7E9215CF74F008563E9 /* Podcasts */,
@@ -1563,43 +1531,6 @@
 				F482CD522080D969007D0C14 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		F482CD532080D969007D0C14 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				F482CD542080D969007D0C14 /* Assembly */,
-				F482CD552080D969007D0C14 /* Router */,
-				F482CD562080D969007D0C14 /* Storyboard */,
-				5637D28F20A313F600112F1F /* ViewControllers */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		F482CD542080D969007D0C14 /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-				F47B7CDE20849B370055585C /* MainAssemblyProtocol.swift */,
-				F47B7CE020849B3F0055585C /* MainAssembly.swift */,
-			);
-			path = Assembly;
-			sourceTree = "<group>";
-		};
-		F482CD552080D969007D0C14 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				F4A23BBB20811369006EC9E3 /* MainRoutingProtocol.swift */,
-				F4A23BBD20811379006EC9E3 /* MainUIRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		F482CD562080D969007D0C14 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				F482CD572080D969007D0C14 /* Main.storyboard */,
-			);
-			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		F482CD5F2080DB80007D0C14 /* Client */ = {
@@ -1706,7 +1637,6 @@
 				77E1E079221D7E4C006B1084 /* SF-Pro-Display-Thin.otf in Resources */,
 				281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */,
 				8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */,
-				F482CD5D2080D969007D0C14 /* Main.storyboard in Resources */,
 				93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */,
 				93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */,
 				77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
@@ -1829,7 +1759,6 @@
 				F4A23BB420810D5E006EC9E3 /* ApplicationAssembly.swift in Sources */,
 				8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */,
 				F4A23BB82081120D006EC9E3 /* ApplicationRouter.swift in Sources */,
-				F47B7CE120849B3F0055585C /* MainAssembly.swift in Sources */,
 				5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */,
 				77F1D228221C496800E640C3 /* OnboardingOutput.swift in Sources */,
 				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
@@ -1843,7 +1772,6 @@
 				5637D2CA20A34A4B00112F1F /* GradientButton.swift in Sources */,
 				280FEEC3221B12C300223CB9 /* Api.swift in Sources */,
 				5637D2B020A3257800112F1F /* SettingsAssembly.swift in Sources */,
-				F4A23BBC20811369006EC9E3 /* MainRoutingProtocol.swift in Sources */,
 				5637D2B720A3257800112F1F /* HelpRouter.swift in Sources */,
 				5637D2BD20A3257800112F1F /* MyListRoutingProtocol.swift in Sources */,
 				93A3113A20B13EE40049DB67 /* VoiceInputAssembly.swift in Sources */,
@@ -1882,7 +1810,6 @@
 				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
 				28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
-				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
 				2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */,
 				77F1D225221C496800E640C3 /* OnboardingModels.swift in Sources */,
@@ -1911,7 +1838,6 @@
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
 				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,
 				5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */,
-				5637D29120A3142400112F1F /* MainTabBarViewController.swift in Sources */,
 				281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */,
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
@@ -1940,7 +1866,6 @@
 				2812329B221EFE5E001B99C7 /* TabBarContainerController.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
 				2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */,
-				F47B7CDF20849B370055585C /* MainAssemblyProtocol.swift in Sources */,
 				93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */,
 				77F1D224221C496800E640C3 /* OnboardingPresenter.swift in Sources */,
 				5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */,
@@ -1949,7 +1874,6 @@
 				773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */,
 				93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */,
 				2805F8FC2223FE90006BA14F /* TabBarFlowCoordinator.swift in Sources */,
-				F47B7CF62084E8890055585C /* AuthManager.swift in Sources */,
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				77F1D233221C723D00E640C3 /* UIColor+Hex.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,
