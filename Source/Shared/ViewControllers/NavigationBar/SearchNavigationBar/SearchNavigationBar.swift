@@ -13,10 +13,29 @@ class SearchNavigationBar: UIView {
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var closeButton: UIButton!
 
+    private lazy var placeholderAttributes: [NSAttributedString.Key: Any] = {
+        return [
+            .font: UIFont.sfProText(.regular, ofSize: 12),
+            .foregroundColor: UIColor.fxManatee
+        ]
+    }()
+
     // MARK: - Public properties
 
     public var onClose: (() -> Void)?
     public var onTextDidChange: ((String) -> Void)?
+
+    public var placeholder: String? = "Search by name or keywords" {
+        didSet {
+            setupPlaceholder()
+        }
+    }
+
+    public var closeButtonTitle: String? = "Close" {
+        didSet {
+            setupCloseButtonTitle()
+        }
+    }
 
     // MARK: -
 
@@ -37,16 +56,8 @@ class SearchNavigationBar: UIView {
     }
 
     private func setupSearchBar() {
-        let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.sfProText(.regular, ofSize: 12),
-            .foregroundColor: UIColor.fxManatee
-        ]
-        let attributedPlaceholder = NSAttributedString(
-            string: "Search by name or keywords",
-            attributes: placeholderAttributes
-        )
+        setupPlaceholder()
 
-        textField.attributedPlaceholder = attributedPlaceholder
         textField.textColor = UIColor.fxWoodsmoke
         textField.font = UIFont.sfProText(.regular, ofSize: 12)
         textField.returnKeyType = .search
@@ -76,8 +87,22 @@ class SearchNavigationBar: UIView {
         textField.leftView = searchImageView
     }
 
+    private func setupPlaceholder() {
+        guard let placeholder = placeholder else {
+            textField.attributedPlaceholder = nil
+            return
+        }
+
+        let attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: placeholderAttributes
+        )
+
+        textField.attributedPlaceholder = attributedPlaceholder
+    }
+
     private func setupCancelButton() {
-        closeButton.setTitle("Close", for: .normal)
+        setupCloseButtonTitle()
         closeButton.titleLabel?.font = UIFont.openSans(ofSize: 14)
         closeButton.setTitleColor(UIColor.fxScienceBlue, for: .normal)
         closeButton.addTarget(
@@ -85,6 +110,10 @@ class SearchNavigationBar: UIView {
             action: #selector(cancelButtonAction),
             for: .touchUpInside
         )
+    }
+
+    private func setupCloseButtonTitle() {
+        closeButton.setTitle(closeButtonTitle, for: .normal)
     }
 
     @objc private func cancelButtonAction() {
