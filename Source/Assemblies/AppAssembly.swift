@@ -8,7 +8,9 @@ import Foundation
 
 class AppAssembly {
 
-    private let url: URL
+    private lazy var url: URL = {
+        return AppConfiguration().network.baseURL
+    }()
 
     private lazy var reachabilityService: ReachabilityService = {
         return ReachabilityService()
@@ -18,20 +20,32 @@ class AppAssembly {
         return ApiClient(reachabilityService: reachabilityService)
     }()
 
+    private lazy var accessTokenManager: AccessTokenManager = {
+        return AccessTokenManager()
+    }()
+
+    private var accessTokenProvider: RequestAuthorizationTokenProvider {
+        return accessTokenManager
+    }
+
     private lazy var api: Api = {
         return Api(
             url: url,
-            apiClient: apiClient
+            apiClient: apiClient,
+            accessTokenProvider: accessTokenProvider
         )
     }()
 
-    init(with url: URL) {
-
-        self.url = url
-    }
-
     func assemblyApi() -> Api {
         return api
+    }
+
+    func assemblyAccessTokenManager() -> AccessTokenManager {
+        return accessTokenManager
+    }
+
+    func assemblyAccessTokenProvider() -> RequestAuthorizationTokenProvider {
+        return accessTokenProvider
     }
 
     func assemblyOnboardingFlowCoordinatorAssembly() -> OnboardingFlowCoordinator.Assembly {

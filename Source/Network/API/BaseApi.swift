@@ -5,19 +5,27 @@
 //
 
 import Foundation
-import Moya
 
 class BaseApi {
 
     let baseUrl: URL
     let apiClient: ApiClient
+    let accessTokenProvider: RequestAuthorizationTokenProvider
 
     init(
-        baseUrl: URL,
-        apiClient: ApiClient
+        stack: Stack
         ) {
 
-        self.baseUrl = baseUrl
-        self.apiClient = apiClient
+        self.baseUrl = stack.baseUrl
+        self.apiClient = stack.apiClient
+        self.accessTokenProvider = stack.accessTokenProvider
+    }
+}
+
+extension BaseApi {
+    struct Stack {
+        let baseUrl: URL
+        let apiClient: ApiClient
+        let accessTokenProvider: RequestAuthorizationTokenProvider
     }
 }

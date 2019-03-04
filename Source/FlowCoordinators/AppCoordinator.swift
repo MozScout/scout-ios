@@ -17,12 +17,9 @@ class AppCoordinator {
 
     // MARK: - Init
 
-    init(
-        url: URL,
-        rootNavigation: RootNavigationViewController
-        ) {
+    init(rootNavigation: RootNavigationViewController) {
 
-        self.appAssembly = AppAssembly(with: url)
+        self.appAssembly = AppAssembly()
         self.rootNavigation = rootNavigation
         
         rootNavigation.onRootWillAppear = { [weak self] in
