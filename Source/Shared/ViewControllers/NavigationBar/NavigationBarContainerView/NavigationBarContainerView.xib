@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationBarContainerView" customModule="Scout" customModuleProvider="target">
+            <connections>
+                <outlet property="contentContainerView" destination="LvQ-1k-Ark" id="SPm-0o-PhL"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="nyx-pO-yw4"/>
+                <outlet property="gradientSeparator" destination="Ofx-jv-gYo" id="gUt-N7-TCY"/>
+                <outlet property="gradientSeparatorHeightConstraint" destination="511-4a-rvX" id="WwK-Sn-Q6R"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftY-lU-2f3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="V4p-8x-QQV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="prominent"/>
+                </visualEffectView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvQ-1k-Ark">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="JVi-j7-wm3"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ofx-jv-gYo" customClass="GradientView" customModule="Scout" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="375" height="3"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="511-4a-rvX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ofx-jv-gYo" secondAttribute="trailing" id="2IT-Ht-XHP"/>
+                <constraint firstAttribute="trailing" secondItem="LvQ-1k-Ark" secondAttribute="trailing" id="58I-Hi-tVU"/>
+                <constraint firstItem="ftY-lU-2f3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BYB-Ut-qBF"/>
+                <constraint firstItem="ftY-lU-2f3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jqk-IB-DP1"/>
+                <constraint firstItem="Ofx-jv-gYo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tab-W0-9PE"/>
+                <constraint firstItem="Ofx-jv-gYo" firstAttribute="top" secondItem="LvQ-1k-Ark" secondAttribute="bottom" id="bgD-1c-842"/>
+                <constraint firstItem="Ofx-jv-gYo" firstAttribute="top" secondItem="ftY-lU-2f3" secondAttribute="bottom" id="c61-uo-ndv"/>
+                <constraint firstAttribute="trailing" secondItem="ftY-lU-2f3" secondAttribute="trailing" id="oLL-OB-FTx"/>
+                <constraint firstAttribute="bottom" secondItem="Ofx-jv-gYo" secondAttribute="bottom" id="qvP-Ao-9GJ"/>
+                <constraint firstItem="LvQ-1k-Ark" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wWw-nZ-jvl"/>
+                <constraint firstItem="LvQ-1k-Ark" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zt9-be-YBN"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-170.40000000000001" y="200.14992503748127"/>
+        </view>
+    </objects>
+</document>

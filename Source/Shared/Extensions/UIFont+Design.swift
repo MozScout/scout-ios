@@ -43,6 +43,10 @@ extension UIFont {
         case ultralightItalic = "UltralightItalic"
     }
 
+    class func openSans(ofSize size: CGFloat) -> UIFont {
+        return makeFont(name: "OpenSans", ofSize: size)
+    }
+
     class func sfProText(_ style: SfProTextStyle, ofSize size: CGFloat) -> UIFont {
         return makeFont(name: "SFProText-\(style.rawValue)", ofSize: size)
     }
