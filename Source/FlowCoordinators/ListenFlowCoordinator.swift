@@ -17,12 +17,10 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
     private lazy var navigationController: UINavigationController = {
         let navigation = UINavigationController()
         navigation.setNavigationBarHidden(true, animated: false)
-//
-//        let navigationBarController = createController()
-//
-//        navigation.setViewControllers([navigationBarController], animated: false)
 
-        navigation.setViewControllers([createScene()], animated: false)
+        let navigationBarController = createController()
+
+        navigation.setViewControllers([navigationBarController], animated: false)
 
         return navigation
     }()
@@ -55,7 +53,7 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
         loadingOverlayViewController.stopLoading()
     }
 
-    private func createScene() -> UIViewController {
+    private func createScene() -> Listen.ViewControllerImp {
         let output = Listen.Output.init(
             onShowLoading: { [weak self] in
                 self?.showLoading()
@@ -66,6 +64,13 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
         )
 
         return assembly.assemblyListen(output: output)
+    }
+
+    private func createController() -> UIViewController {
+        let navigationBarController = NavigationBarContainerController()
+        _ = navigationBarController.view
+        navigationBarController.setContent(createScene())
+        return navigationBarController
     }
 }
 

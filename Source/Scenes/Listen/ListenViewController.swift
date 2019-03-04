@@ -35,18 +35,16 @@ class ListenViewControllerImp: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
-    // FIXME: - temp ----------------------------------------
-    @IBOutlet weak var editButton: UIButton!
-    @IBAction func button(_ sender: Any) {
-        sendDidChangeEditingRequest()
-    }
-    // ------------------------------------------------------
-    
     // MARK: Private Properties
 
     private let output: Output
     private var interactorDispatcher: InteractorDispatcher!
     private var itemsViewModels = [ListenTableViewCell.ViewModel]()
+    private let editButton = UIButton(type: .custom)
+
+    // MARK: Public Properties
+
+    var onScrollViewDidScroll: OnScrollViewDidScroll?
 
     // MARK: Initializing
 
@@ -71,8 +69,24 @@ class ListenViewControllerImp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationBar()
         setupTableView()
+        setupUi()
         sendViewDidLoadRequest()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let insets = UIEdgeInsets(
+            top: topOverlayHeight(view: tableView),
+            left: tableView.contentInset.left,
+            bottom: bottomOverlayHeight(view: tableView),
+            right: tableView.contentInset.right
+        )
+
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
     }
 
     // MARK: - Private methods
@@ -94,13 +108,28 @@ class ListenViewControllerImp: UIViewController {
 
 private extension Listen.ViewControllerImp {
 
+    func setupUi() {
+        editButton.titleLabel?.font = UIFont.openSans(ofSize: 14)
+        editButton.setTitleColor(UIColor.fxScienceBlue, for: .normal)
+        editButton.addTarget(self, action: #selector(changeEditMode), for: .touchUpInside)
+    }
+
+    func setupNavigationBar() {
+        navigationBarContainer?.hidesNavigationBarOnScroll = true
+        let navigationBar = DefaultNavigationBar.loadFromNib()
+        navigationBar.setRightItem(editButton)
+        navigationBarContainer?.setNavigationBarContent(navigationBar)
+    }
+
     func setupTableView() {
+        tableView.contentInsetAdjustmentBehavior = .never
         tableView.register(ListenTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(sendDidRefreshItemsRequest), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
     }
 
     func sendViewDidLoadRequest() {
@@ -145,6 +174,16 @@ private extension Listen.ViewControllerImp {
         }
 
         tableView.refreshControl?.endRefreshing()
+    }
+
+    @objc func changeEditMode() {
+        if !tableView.isEditing {
+            tableView.endEditing(true)
+        }
+
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        navigationBarContainer?.hidesNavigationBarOnScroll = !tableView.isEditing
+        sendDidChangeEditingRequest()
     }
 }
 
@@ -224,4 +263,12 @@ extension Listen.ViewControllerImp: UITableViewDelegate {
 
         return UISwipeActionsConfiguration(actions: [action])
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        onScrollViewDidScroll?(scrollView)
+    }
 }
+
+// MARK: - NavigationBarContainerContent
+
+extension Listen.ViewControllerImp: NavigationBarContainerContent { }
