@@ -41,4 +41,8 @@ class AppAssembly {
     func assemblyTabBarFlowCoordinatorAssembly() -> TabBarFlowCoordinator.Assembly {
         return TabBarFlowCoordinator.Assembly(appAssembly: self)
     }
+
+    func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {
+        return ListenFlowCoordinator.Assembly(appAssembly: self)
+    }
 }

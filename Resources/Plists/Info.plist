@@ -77,6 +77,18 @@
 		<string>SF-Pro-Display-Ultralight.otf</string>
 		<string>SF-Pro-Display-UltralightItalic.otf</string>
 		<string>OpenSans-Regular.ttf</string>
+		<string>SF-Compact-Text-Bold.otf</string>
+		<string>SF-Compact-Text-BoldItalic.otf</string>
+		<string>SF-Compact-Text-Heavy.otf</string>
+		<string>SF-Compact-Text-HeavyItalic.otf</string>
+		<string>SF-Compact-Text-Light.otf</string>
+		<string>SF-Compact-Text-LightItalic.otf</string>
+		<string>SF-Compact-Text-Medium.otf</string>
+		<string>SF-Compact-Text-MediumItalic.otf</string>
+		<string>SF-Compact-Text-Regular.otf</string>
+		<string>SF-Compact-Text-RegularItalic.otf</string>
+		<string>SF-Compact-Text-Semibold.otf</string>
+		<string>SF-Compact-Text-SemiboldItalic.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

@@ -102,8 +102,28 @@
 		66254351219B576300379011 /* jarvis.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 66254350219B576300379011 /* jarvis.umdl */; };
 		66254353219B57CE00379011 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 66254352219B57CE00379011 /* common.res */; };
 		6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651984421B17400007CB029 /* SwipeableTabViewController.swift */; };
+		773D173222254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */; };
+		773D173422254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */; };
+		773D173722254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172B22254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf */; };
+		773D173822254A92003CAEE2 /* SF-Compact-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172C22254A92003CAEE2 /* SF-Compact-Text-Light.otf */; };
+		773D173922254A92003CAEE2 /* SF-Compact-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172D22254A92003CAEE2 /* SF-Compact-Text-Regular.otf */; };
+		773D173A22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172E22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf */; };
+		773D173C22254A92003CAEE2 /* SF-Compact-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */; };
+		773D173D22254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */; };
 		773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */; };
 		776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309CD2223E86300D69BA7 /* UIView+Fade.swift */; };
+		776309D62224394700D69BA7 /* ListenAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D02224394700D69BA7 /* ListenAssembler.swift */; };
+		776309D92224394700D69BA7 /* ListenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D32224394700D69BA7 /* ListenViewController.swift */; };
+		776309DA2224394700D69BA7 /* ListenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D42224394700D69BA7 /* ListenInteractor.swift */; };
+		776309E32224418700D69BA7 /* ListenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776309E22224418700D69BA7 /* ListenTableViewCell.xib */; };
+		776B180622297BFF00B422DC /* ListenFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776B180522297BFF00B422DC /* ListenFlowCoordinator.swift */; };
+		776B180822297C1A00B422DC /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776B180722297C1A00B422DC /* UITableView+Register.swift */; };
+		776B180922297D2000B422DC /* ListenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D22224394700D69BA7 /* ListenModels.swift */; };
+		776B180A22297D2500B422DC /* ListenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D12224394700D69BA7 /* ListenPresenter.swift */; };
+		776B180B22297D2E00B422DC /* ListenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D52224394700D69BA7 /* ListenOutput.swift */; };
+		776B180C22297D3200B422DC /* ListenViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776309DC22243F6500D69BA7 /* ListenViewControllerImp.xib */; };
+		776B180D22297D3700B422DC /* ListenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309E02224417000D69BA7 /* ListenTableViewCell.swift */; };
+		776B180E22297D3E00B422DC /* ListenItemsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776B17FA22292BE600B422DC /* ListenItemsWorker.swift */; };
 		77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */; };
 		77E1E051221D5496006B1084 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */; };
 		77E1E052221D5496006B1084 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E046221D5495006B1084 /* SF-Pro-Text-Medium.otf */; };
@@ -317,8 +337,34 @@
 		66254352219B57CE00379011 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		6651984421B17400007CB029 /* SwipeableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabViewController.swift; sourceTree = "<group>"; };
 		68B2C43C400B5A659D25EA02 /* Pods_Scout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		773D172722254A92003CAEE2 /* SF-Compact-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		773D172922254A92003CAEE2 /* SF-Compact-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Bold.otf"; sourceTree = "<group>"; };
+		773D172A22254A92003CAEE2 /* SF-Compact-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		773D172B22254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		773D172C22254A92003CAEE2 /* SF-Compact-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Light.otf"; sourceTree = "<group>"; };
+		773D172D22254A92003CAEE2 /* SF-Compact-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Regular.otf"; sourceTree = "<group>"; };
+		773D172E22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Semibold.otf"; sourceTree = "<group>"; };
+		773D172F22254A92003CAEE2 /* SF-Compact-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Medium.otf"; sourceTree = "<group>"; };
+		773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Heavy.otf"; sourceTree = "<group>"; };
+		773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-MediumItalic.otf"; sourceTree = "<group>"; };
 		773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTopicsFetcher.swift; sourceTree = "<group>"; };
+		774D54E222268B18009ADABF /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		776309CD2223E86300D69BA7 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
+		776309D02224394700D69BA7 /* ListenAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenAssembler.swift; sourceTree = "<group>"; };
+		776309D12224394700D69BA7 /* ListenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenPresenter.swift; sourceTree = "<group>"; };
+		776309D22224394700D69BA7 /* ListenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenModels.swift; sourceTree = "<group>"; };
+		776309D32224394700D69BA7 /* ListenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenViewController.swift; sourceTree = "<group>"; };
+		776309D42224394700D69BA7 /* ListenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenInteractor.swift; sourceTree = "<group>"; };
+		776309D52224394700D69BA7 /* ListenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenOutput.swift; sourceTree = "<group>"; };
+		776309DC22243F6500D69BA7 /* ListenViewControllerImp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenViewControllerImp.xib; sourceTree = "<group>"; };
+		776309E02224417000D69BA7 /* ListenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenTableViewCell.swift; sourceTree = "<group>"; };
+		776309E22224418700D69BA7 /* ListenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenTableViewCell.xib; sourceTree = "<group>"; };
+		776B17FA22292BE600B422DC /* ListenItemsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenItemsWorker.swift; sourceTree = "<group>"; };
+		776B17FD222948D800B422DC /* ListenFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenFlowCoordinator.swift; sourceTree = "<group>"; };
+		776B180522297BFF00B422DC /* ListenFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenFlowCoordinator.swift; sourceTree = "<group>"; };
+		776B180722297C1A00B422DC /* UITableView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
 		77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		77E1E046221D5495006B1084 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
@@ -482,6 +528,7 @@
 		2803B347221B05D100A9B250 /* FlowCoordinators */ = {
 			isa = PBXGroup;
 			children = (
+				776B180522297BFF00B422DC /* ListenFlowCoordinator.swift */,
 				28FDFB74221C285500C869E1 /* AppCoordinator.swift */,
 				28FDFB78221C2A2C00C869E1 /* BaseFlowCoordinator.swift */,
 				28FDFB76221C2A0D00C869E1 /* FlowCoordinator.swift */,
@@ -515,6 +562,7 @@
 		280FEEB3221B05EA00223CB9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				776B180722297C1A00B422DC /* UITableView+Register.swift */,
 				77F1D231221C622100E640C3 /* UIColor */,
 				28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */,
 				77F1D207221C47D300E640C3 /* String+QueueLabel.swift */,
@@ -1000,6 +1048,25 @@
 			path = SwipeableTabViewController;
 			sourceTree = "<group>";
 		};
+		773D172522254A58003CAEE2 /* SFCompactText */ = {
+			isa = PBXGroup;
+			children = (
+				773D172922254A92003CAEE2 /* SF-Compact-Text-Bold.otf */,
+				773D172B22254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf */,
+				773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */,
+				773D172722254A92003CAEE2 /* SF-Compact-Text-HeavyItalic.otf */,
+				773D172C22254A92003CAEE2 /* SF-Compact-Text-Light.otf */,
+				773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */,
+				773D172F22254A92003CAEE2 /* SF-Compact-Text-Medium.otf */,
+				773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */,
+				773D172D22254A92003CAEE2 /* SF-Compact-Text-Regular.otf */,
+				773D172A22254A92003CAEE2 /* SF-Compact-Text-RegularItalic.otf */,
+				773D172E22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf */,
+				773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */,
+			);
+			path = SFCompactText;
+			sourceTree = "<group>";
+		};
 		773D173E222582D2003CAEE2 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1007,6 +1074,56 @@
 				773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		776309CF2224389E00D69BA7 /* Listen */ = {
+			isa = PBXGroup;
+			children = (
+				776309D02224394700D69BA7 /* ListenAssembler.swift */,
+				776309D12224394700D69BA7 /* ListenPresenter.swift */,
+				776309D22224394700D69BA7 /* ListenModels.swift */,
+				776309D32224394700D69BA7 /* ListenViewController.swift */,
+				776309D42224394700D69BA7 /* ListenInteractor.swift */,
+				776309D52224394700D69BA7 /* ListenOutput.swift */,
+				776309DC22243F6500D69BA7 /* ListenViewControllerImp.xib */,
+				776309DE2224413500D69BA7 /* Views */,
+				776B17F922292BAE00B422DC /* Workers */,
+			);
+			path = Listen;
+			sourceTree = "<group>";
+		};
+		776309DE2224413500D69BA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				776309DF2224414A00D69BA7 /* ListenCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		776309DF2224414A00D69BA7 /* ListenCell */ = {
+			isa = PBXGroup;
+			children = (
+				776309E02224417000D69BA7 /* ListenTableViewCell.swift */,
+				776309E22224418700D69BA7 /* ListenTableViewCell.xib */,
+			);
+			path = ListenCell;
+			sourceTree = "<group>";
+		};
+		776B17F922292BAE00B422DC /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				776B17FA22292BE600B422DC /* ListenItemsWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		776B180022297A4900B422DC /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				776B17FD222948D800B422DC /* ListenFlowCoordinator.swift */,
+				774D54E222268B18009ADABF /* UITableView+Register.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		77E1E043221D5406006B1084 /* SfProText */ = {
@@ -1084,6 +1201,7 @@
 		77F1D21B221C492600E640C3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				776309CF2224389E00D69BA7 /* Listen */,
 				77F1D21C221C493700E640C3 /* Onboarding */,
 				28CFCA4B222D6D7300D1E477 /* Subscriptions */,
 			);
@@ -1198,6 +1316,7 @@
 			isa = PBXGroup;
 			children = (
 				28CFCA31222930ED00D1E477 /* OpenSans */,
+				773D172522254A58003CAEE2 /* SFCompactText */,
 				77E1E05E221D7E14006B1084 /* SFProDisplay */,
 				77E1E043221D5406006B1084 /* SfProText */,
 			);
@@ -1403,6 +1522,9 @@
 				F482CD282080D225007D0C14 /* Products */,
 				C12A1785D5392A7CBD7BC993 /* Pods */,
 				CB7EFAB84D8FB19607FC04A4 /* Frameworks */,
+				CD9158217DD3454E7A83BCF1 /* Pods */,
+				3D93A65149EFF87EF72B97AC /* Frameworks */,
+				776B180022297A4900B422DC /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1696,16 +1818,19 @@
 				281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */,
 				8637E7F1215CFC71008563E9 /* Podcasts.storyboard in Resources */,
 				93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */,
+				773D173A22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf in Resources */,
 				93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */,
 				77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
 				77E1E078221D7E4C006B1084 /* SF-Pro-Display-Semibold.otf in Resources */,
+				776B180C22297D3200B422DC /* ListenViewControllerImp.xib in Resources */,
 				77E1E056221D5496006B1084 /* SF-Pro-Text-Light.otf in Resources */,
 				66254353219B57CE00379011 /* common.res in Resources */,
 				93A718CA2164BC7C00BC77D9 /* AboutCell.xib in Resources */,
 				77E1E073221D7E4C006B1084 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */,
 				77E1E07C221D7E4C006B1084 /* SF-Pro-Display-Light.otf in Resources */,
+				773D173822254A92003CAEE2 /* SF-Compact-Text-Light.otf in Resources */,
 				77E1E076221D7E4C006B1084 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				28CFCA302228520300D1E477 /* DefaultNavigationBar.xib in Resources */,
 				77E1E08C221D97B8006B1084 /* OnboardingCollectionViewCell.xib in Resources */,
@@ -1718,10 +1843,12 @@
 				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
 				6625434F219B575300379011 /* dong.wav in Resources */,
 				77E1E07D221D7E4C006B1084 /* SF-Pro-Display-Heavy.otf in Resources */,
+				773D173C22254A92003CAEE2 /* SF-Compact-Text-Heavy.otf in Resources */,
 				77E1E057221D5496006B1084 /* SF-Pro-Text-Heavy.otf in Resources */,
 				93A718C92164BC7C00BC77D9 /* HeaderView.xib in Resources */,
 				28CFCA5F222D84C100D1E477 /* SubscriptionsViewControllerImp.xib in Resources */,
 				28CFCA252226EF2200D1E477 /* NavigationBarContainerView.xib in Resources */,
+				773D173922254A92003CAEE2 /* SF-Compact-Text-Regular.otf in Resources */,
 				77E1E055221D5496006B1084 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				77E1E054221D5496006B1084 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				93A3114020B13FDA0049DB67 /* VoiceInput.storyboard in Resources */,
@@ -1729,11 +1856,16 @@
 				93A718B82164BAD400BC77D9 /* ServerData.json in Resources */,
 				77E1E07A221D7E4C006B1084 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				28CFCA3C2229325C00D1E477 /* OpenSans-Regular.ttf in Resources */,
+				773D173722254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf in Resources */,
+				773D173222254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf in Resources */,
 				77E1E081221D7E4C006B1084 /* SF-Pro-Display-Bold.otf in Resources */,
+				773D173D22254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf in Resources */,
+				776309E32224418700D69BA7 /* ListenTableViewCell.xib in Resources */,
 				77E1E05A221D5496006B1084 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				93C55D61216CB08C0023C8AD /* AddPodcasts.storyboard in Resources */,
 				77E1E05B221D5496006B1084 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				93A718AF2164B63100BC77D9 /* PodcastDetails.storyboard in Resources */,
+				773D173422254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf in Resources */,
 				9333B81D20AC6D070055C5B1 /* MyListTableViewCell.xib in Resources */,
 				28CFCA3F22293A3800D1E477 /* SearchNavigationBar.xib in Resources */,
 			);
@@ -1817,13 +1949,17 @@
 				9333B81820AC2D940055C5B1 /* LoginViewController.swift in Sources */,
 				F4A23BB420810D5E006EC9E3 /* ApplicationAssembly.swift in Sources */,
 				8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */,
+				776B180622297BFF00B422DC /* ListenFlowCoordinator.swift in Sources */,
 				F4A23BB82081120D006EC9E3 /* ApplicationRouter.swift in Sources */,
 				5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */,
 				77F1D228221C496800E640C3 /* OnboardingOutput.swift in Sources */,
+				776309DA2224394700D69BA7 /* ListenInteractor.swift in Sources */,
 				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
 				28FEBD0A221DBC2800DAD907 /* OnboardingFlowCoordinator.swift in Sources */,
+				776B180E22297D3E00B422DC /* ListenItemsWorker.swift in Sources */,
 				9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */,
 				77E1E08A221D979F006B1084 /* OnboardingCollectionViewCell.swift in Sources */,
+				776309D92224394700D69BA7 /* ListenViewController.swift in Sources */,
 				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
 				280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
@@ -1846,6 +1982,7 @@
 				280FEEC8221B12C300223CB9 /* ApiClient.swift in Sources */,
 				77F1D208221C47D300E640C3 /* String+QueueLabel.swift in Sources */,
 				776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */,
+				776B180922297D2000B422DC /* ListenModels.swift in Sources */,
 				2805F8FA2223EA9A006BA14F /* UIViewController+Extensions.swift in Sources */,
 				93C55D67216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift in Sources */,
 				93FB827520B54B1B00A39A5C /* PlayerAssemblyProtocol.swift in Sources */,
@@ -1872,6 +2009,8 @@
 				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
 				28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
+				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
+				776309D62224394700D69BA7 /* ListenAssembler.swift in Sources */,
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
 				2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */,
 				77F1D225221C496800E640C3 /* OnboardingModels.swift in Sources */,
@@ -1879,10 +2018,12 @@
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
 				28CFCA2D222851EE00D1E477 /* DefaultNavigationBar.swift in Sources */,
 				77F1D227221C496800E640C3 /* OnboardingInteractor.swift in Sources */,
+				776B180D22297D3700B422DC /* ListenTableViewCell.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
 				93A718C82164BC7C00BC77D9 /* AboutCell.swift in Sources */,
 				93A3113C20B13F370049DB67 /* VoiceInputRoutingProtocol.swift in Sources */,
 				2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */,
+				776B180A22297D2500B422DC /* ListenPresenter.swift in Sources */,
 				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
 				28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */,
 				280FEED3221B14FD00223CB9 /* Topic.swift in Sources */,
@@ -1897,6 +2038,7 @@
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
 				93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */,
 				5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */,
+				776B180B22297D2E00B422DC /* ListenOutput.swift in Sources */,
 				28FEBD06221DB91C00DAD907 /* AppAssembly.swift in Sources */,
 				9362FCAF20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift in Sources */,
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
@@ -1945,6 +2087,7 @@
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				77F1D233221C723D00E640C3 /* UIColor+Hex.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,
+				776B180822297C1A00B422DC /* UITableView+Register.swift in Sources */,
 				28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */,
 				2801F99C2225AE6E00283F1B /* RegisterPostModel.swift in Sources */,
 				2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */,

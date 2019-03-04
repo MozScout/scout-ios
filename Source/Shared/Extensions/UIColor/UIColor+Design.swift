@@ -46,4 +46,12 @@ extension UIColor {
     class var fxManatee: UIColor {
         return UIColor(rgb: 0x8E8E93)
     }
+    
+    class var fxAzureRadiance: UIColor {
+        return UIColor(rgb: 0x0090ED)
+    }
+
+    class var fxTorchRed: UIColor {
+        return UIColor(rgb: 0xFF0039)
+    }
 }

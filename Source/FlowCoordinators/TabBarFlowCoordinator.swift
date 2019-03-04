@@ -49,6 +49,19 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         return flowCoordinator
     }()
 
+    private lazy var listenFlow: ListenFlowCoordinator = {
+        let assembly = self.assembly.assemblyListenFlowCoordinatorAssembly()
+
+        let flowCoordinator = ListenFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .listen, animated: animated)
+        })
+
+        return flowCoordinator
+    }()
+
     init(
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly
@@ -69,7 +82,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             title: "Listen",
             icon: #imageLiteral(resourceName: "Headphones"),
             onSelect: { [weak self] in
-                self?.showListenScreen()
+                self?.showListenFlow(animated: true)
         })
 
         let subscriptionsItem = TabBarContainerController.Item(
@@ -98,7 +111,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             return item
         }
         tabBarController.setItems(items, selectedIndex: index)
-        showListenScreen()
+        showListenFlow(animated: true)
     }
 
     private func showMyNotesFlow(animated: Bool) {
@@ -106,7 +119,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         currentFlowCoordinator = myNotesFlow
     }
 
-    private func showListenScreen() { }
+    private func showListenFlow(animated: Bool) {
+        listenFlow.showContent(animated: animated)
+        currentFlowCoordinator = listenFlow
+    }
 
     private func showSubscriptionsFlow(animated: Bool) {
         subscriptionsFlow.showContent(animated: animated)
@@ -148,6 +164,10 @@ extension TabBarFlowCoordinator {
 
         public func assemblySubscriptionsFlowCoordinatorAssembly() -> SubscriptionsFlowCoordinator.Assembly {
             return SubscriptionsFlowCoordinator.Assembly()
+        }
+
+        func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {
+            return ListenFlowCoordinator.Assembly(appAssembly: appAssembly)
         }
     }
 }
