@@ -8,7 +8,11 @@ import Foundation
 
 class AppAssembly {
 
-    private let url: URL
+    // MARK: - Private properties -
+
+    private lazy var url: URL = {
+        return AppConfiguration().network.baseURL
+    }()
 
     private lazy var reachabilityService: ReachabilityService = {
         return ReachabilityService()
@@ -18,21 +22,53 @@ class AppAssembly {
         return ApiClient(reachabilityService: reachabilityService)
     }()
 
+    private lazy var accessTokenManager: AccessTokenManager = {
+        return AccessTokenManager(keychainManager: keychainManager)
+    }()
+
+    private var accessTokenProvider: RequestAuthorizationTokenProvider {
+        return accessTokenManager
+    }
+
+    private lazy var keychainManager: KeychainManager = {
+        return KeychainManager()
+    }()
+
+    private lazy var userDataManager: UserDataManager = {
+        return UserDataManager(keychainManager: keychainManager)
+    }()
+
+    private var userDataProvider: UserDataProvider {
+        return userDataManager
+    }
+
     private lazy var api: Api = {
         return Api(
             url: url,
-            apiClient: apiClient
+            apiClient: apiClient,
+            accessTokenProvider: accessTokenProvider
         )
     }()
 
-    init(with url: URL) {
-
-        self.url = url
-    }
+    // MARK: - Dependencies Assemblies -
 
     func assemblyApi() -> Api {
         return api
     }
+
+    func assemblyAccessTokenManager() -> AccessTokenManager {
+        return accessTokenManager
+    }
+
+    func assemblyAccessTokenProvider() -> RequestAuthorizationTokenProvider {
+        return accessTokenProvider
+    }
+
+    func assemblyUserDataManager() -> UserDataManager {
+        return userDataManager
+    }
+
+    // MARK: - Flow Coordinators Assemblies -
 
     func assemblyOnboardingFlowCoordinatorAssembly() -> OnboardingFlowCoordinator.Assembly {
         return OnboardingFlowCoordinator.Assembly(appAssembly: self)
@@ -40,5 +76,18 @@ class AppAssembly {
 
     func assemblyTabBarFlowCoordinatorAssembly() -> TabBarFlowCoordinator.Assembly {
         return TabBarFlowCoordinator.Assembly(appAssembly: self)
+    }
+
+    func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {
+        return ListenFlowCoordinator.Assembly(appAssembly: self)
+    }
+
+    // MARK: - Assemblies -
+
+    func assemblyAppCoordinatorStartInstructor() -> AppCoordinator.LaunchInstructor {
+        return AppCoordinator.LaunchInstructor(
+            userDataProvider: userDataProvider,
+            authTokenProvider: accessTokenProvider
+        )
     }
 }

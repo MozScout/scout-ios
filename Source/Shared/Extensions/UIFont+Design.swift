@@ -47,12 +47,31 @@ extension UIFont {
         return makeFont(name: "OpenSans", ofSize: size)
     }
 
+    enum SfCompactTextStyle: String {
+        case bold = "Bold"
+        case boldItalic = "BoldItalic"
+        case heavy = "Heavy"
+        case heavyItalic = "HeavyItalic"
+        case light = "Light"
+        case lightItalic = "LightItalic"
+        case medium = "Medium"
+        case mediumItalic = "MediumItalic"
+        case regular = "Regular"
+        case regularItalic = "RegularItalic"
+        case semibold = "Semibold"
+        case semiboldItalic = "SemiboldItalic"
+    }
+
     class func sfProText(_ style: SfProTextStyle, ofSize size: CGFloat) -> UIFont {
         return makeFont(name: "SFProText-\(style.rawValue)", ofSize: size)
     }
 
     class func sfProDisplay(_ style: SfProDisplayStyle, ofSize size: CGFloat) -> UIFont {
         return makeFont(name: "SFProDisplay-\(style.rawValue)", ofSize: size)
+    }
+
+    class func sfCompactText(_ style: SfCompactTextStyle, ofSize size: CGFloat) -> UIFont {
+        return makeFont(name: "SFCompactText-\(style.rawValue)", ofSize: size)
     }
 
     private class func makeFont(name: String, ofSize size: CGFloat) -> UIFont {

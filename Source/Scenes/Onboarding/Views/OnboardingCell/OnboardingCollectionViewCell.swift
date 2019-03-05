@@ -22,7 +22,6 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         func isContentEqual(to source: OnboardingCollectionViewCell.ViewModel) -> Bool {
             return title == source.title && imageUrl == source.imageUrl && isSelected == source.isSelected
         }
-
     }
 
     // MARK: Outlets
@@ -34,9 +33,9 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
 
     // MARK: Private Properties
 
-    private var maskLayer = CAShapeLayer()
-    private var borderLayer = CAGradientLayer()
-    private var borderMaskLayer = CAShapeLayer()
+    private let maskLayer = CAShapeLayer()
+    private let borderLayer = CAGradientLayer()
+    private let borderMaskLayer = CAShapeLayer()
 
     override func awakeFromNib() {
         super.awakeFromNib()

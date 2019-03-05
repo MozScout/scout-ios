@@ -1,13 +1,11 @@
 import Foundation
 
-extension Onboarding {
+extension Listen {
 
     // MARK: - Declaration
+    
     struct Output {
 
-        typealias OnDidRegister = () -> Void
-
-        let onDidRegister: OnDidRegister
         let onShowLoading: () -> Void
         let onHideLoading: () -> Void
     }

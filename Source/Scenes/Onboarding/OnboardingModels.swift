@@ -101,10 +101,7 @@ extension Onboarding.Event {
 
         typealias Response = ViewModel
         
-        struct ViewModel {
-            let userId: String
-            let token: String
-        }
+        struct ViewModel { }
     }
 
     enum RegistrationProcessDidStart {

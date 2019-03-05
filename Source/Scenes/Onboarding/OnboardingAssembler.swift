@@ -44,7 +44,11 @@ extension Onboarding.AssemblerImp: Onboarding.Assembler {
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
         let topicsFetcher = TopicsFetcherImp(topicsApi: appAssembly.assemblyApi().topicsApi)
-        let registerWorker = RegisterWorkerImp(registerApi: appAssembly.assemblyApi().registerApi)
+        let registerWorker = RegisterWorkerImp(
+            registerApi: appAssembly.assemblyApi().registerApi,
+            accessTokenManager: appAssembly.assemblyAccessTokenManager(),
+            userDataManager: appAssembly.assemblyUserDataManager()
+        )
         let interactor = InteractorImp(
             presenter: presenter,
             topicsFetcher: topicsFetcher,

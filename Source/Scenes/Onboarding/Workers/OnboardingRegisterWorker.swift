@@ -6,13 +6,8 @@
 
 import Foundation
 
-struct OnboardingRegisterWorkerRegisterResponse {
-    let userId: String
-    let token: String
-}
-
 enum OnboardingRegisterWorkerRegisterResult {
-    case success(response: OnboardingRegisterWorkerRegisterResponse)
+    case success
     case failure
 }
 
@@ -33,9 +28,18 @@ extension Onboarding {
     class RegisterWorkerImp {
 
         let registerApi: RegisterApi
+        let accessTokenManager: AccessTokenManager
+        let userDataManager: UserDataManager
 
-        init(registerApi: RegisterApi) {
+        init(
+            registerApi: RegisterApi,
+            accessTokenManager: AccessTokenManager,
+            userDataManager: UserDataManager
+            ) {
+
             self.registerApi = registerApi
+            self.accessTokenManager = accessTokenManager
+            self.userDataManager = userDataManager
         }
     }
 }
@@ -48,15 +52,13 @@ extension Onboarding.RegisterWorkerImp: Onboarding.RegisterWorker {
         ) {
 
         let postModel = RegisterPostModel(topics: topics)
-        registerApi.register(with: postModel) { (result) in
+        registerApi.register(with: postModel) { [weak self] (result) in
             switch result {
 
             case .success(let response):
-                let response = OnboardingRegisterWorkerRegisterResponse(
-                    userId: response.userId,
-                    token: response.token
-                )
-                completion(.success(response: response))
+                self?.accessTokenManager.setBearerToken(response.token)
+                self?.userDataManager.userId = response.userId
+                completion(.success)
             case .failure:
                 completion(.failure)
             }

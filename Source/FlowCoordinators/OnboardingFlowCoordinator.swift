@@ -30,7 +30,7 @@ class OnboardingFlowCoordinator: BaseFlowCoordinator {
 
     func run() {
         let output = Onboarding.Output(
-            onDidRegister: { [weak self] (userId, token) in
+            onDidRegister: { [weak self] in
                 self?.onSignedUp()
             },
             onShowLoading: { [weak self] in

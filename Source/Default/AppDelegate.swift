@@ -15,12 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let window = UIWindow(frame: UIScreen.main.bounds)
 
     override init() {
-        let configuration = AppConfiguration()
-        
-        appCoordinator = AppCoordinator(
-            url: configuration.network.baseURL,
-            rootNavigation: rootNavigation
-        )
+        appCoordinator = AppCoordinator(rootNavigation: rootNavigation)
 
 //        // Set up audio session here, since it's used by both the player and the speech service.
 //        let audioSession = AVAudioSession.sharedInstance()
