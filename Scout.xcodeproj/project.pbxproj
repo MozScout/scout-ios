@@ -69,6 +69,13 @@
 		28CFCA78222EBAC500D1E477 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA77222EBAC500D1E477 /* UserDataManager.swift */; };
 		28CFCA7A222EBBA900D1E477 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA79222EBBA900D1E477 /* KeychainManager.swift */; };
 		28CFCA7C222EC0E300D1E477 /* AccessTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA7B222EC0E300D1E477 /* AccessTokenManager.swift */; };
+		28CFCA84222EE46600D1E477 /* PlayerAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA7E222EE46600D1E477 /* PlayerAssembler.swift */; };
+		28CFCA85222EE46600D1E477 /* PlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA7F222EE46600D1E477 /* PlayerPresenter.swift */; };
+		28CFCA86222EE46600D1E477 /* PlayerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA80222EE46600D1E477 /* PlayerModels.swift */; };
+		28CFCA87222EE46600D1E477 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA81222EE46600D1E477 /* PlayerViewController.swift */; };
+		28CFCA88222EE46600D1E477 /* PlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA82222EE46600D1E477 /* PlayerInteractor.swift */; };
+		28CFCA89222EE46700D1E477 /* PlayerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA83222EE46600D1E477 /* PlayerOutput.swift */; };
+		28CFCA8B222EE5FB00D1E477 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA8A222EE5FB00D1E477 /* PlayerViewController.xib */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -233,7 +240,7 @@
 		93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C55D66216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib */; };
 		93FB827420B54B1B00A39A5C /* PlayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827220B54B1B00A39A5C /* PlayerAssembly.swift */; };
 		93FB827520B54B1B00A39A5C /* PlayerAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827320B54B1B00A39A5C /* PlayerAssemblyProtocol.swift */; };
-		93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827620B54BA100A39A5C /* PlayerViewController.swift */; };
+		93FB827720B54BA100A39A5C /* OldPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827620B54BA100A39A5C /* OldPlayerViewController.swift */; };
 		93FB827920B54BB100A39A5C /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FB827820B54BB100A39A5C /* Player.storyboard */; };
 		93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827A20B54BDF00A39A5C /* PlayerRoutingProtocol.swift */; };
 		93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */; };
@@ -325,6 +332,13 @@
 		28CFCA77222EBAC500D1E477 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		28CFCA79222EBBA900D1E477 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		28CFCA7B222EC0E300D1E477 /* AccessTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenManager.swift; sourceTree = "<group>"; };
+		28CFCA7E222EE46600D1E477 /* PlayerAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAssembler.swift; sourceTree = "<group>"; };
+		28CFCA7F222EE46600D1E477 /* PlayerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPresenter.swift; sourceTree = "<group>"; };
+		28CFCA80222EE46600D1E477 /* PlayerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModels.swift; sourceTree = "<group>"; };
+		28CFCA81222EE46600D1E477 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		28CFCA82222EE46600D1E477 /* PlayerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInteractor.swift; sourceTree = "<group>"; };
+		28CFCA83222EE46600D1E477 /* PlayerOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerOutput.swift; sourceTree = "<group>"; };
+		28CFCA8A222EE5FB00D1E477 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -500,7 +514,7 @@
 		93C55D66216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPodcastsCollectionViewCell.xib; sourceTree = "<group>"; };
 		93FB827220B54B1B00A39A5C /* PlayerAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssembly.swift; sourceTree = "<group>"; };
 		93FB827320B54B1B00A39A5C /* PlayerAssemblyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAssemblyProtocol.swift; sourceTree = "<group>"; };
-		93FB827620B54BA100A39A5C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		93FB827620B54BA100A39A5C /* OldPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPlayerViewController.swift; sourceTree = "<group>"; };
 		93FB827820B54BB100A39A5C /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		93FB827A20B54BDF00A39A5C /* PlayerRoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRoutingProtocol.swift; sourceTree = "<group>"; };
 		93FB827B20B54BDF00A39A5C /* PlayerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRouter.swift; sourceTree = "<group>"; };
@@ -832,6 +846,20 @@
 				28CFCA68222DB10C00D1E477 /* RequestAuthorizationTokenProvider.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		28CFCA7D222EE45600D1E477 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA7E222EE46600D1E477 /* PlayerAssembler.swift */,
+				28CFCA82222EE46600D1E477 /* PlayerInteractor.swift */,
+				28CFCA80222EE46600D1E477 /* PlayerModels.swift */,
+				28CFCA83222EE46600D1E477 /* PlayerOutput.swift */,
+				28CFCA7F222EE46600D1E477 /* PlayerPresenter.swift */,
+				28CFCA81222EE46600D1E477 /* PlayerViewController.swift */,
+				28CFCA8A222EE5FB00D1E477 /* PlayerViewController.xib */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 		28FDFB6F221BF29A00C869E1 /* Services */ = {
@@ -1354,6 +1382,7 @@
 				776309CF2224389E00D69BA7 /* Listen */,
 				77C51E6D222DA4A7008E4B0C /* AddSubscription */,
 				77F1D21C221C493700E640C3 /* Onboarding */,
+				28CFCA7D222EE45600D1E477 /* Player */,
 				28CFCA4B222D6D7300D1E477 /* Subscriptions */,
 			);
 			path = Scenes;
@@ -1596,7 +1625,7 @@
 		93FB827120B54AA000A39A5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				93FB827620B54BA100A39A5C /* PlayerViewController.swift */,
+				93FB827620B54BA100A39A5C /* OldPlayerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1968,6 +1997,7 @@
 				93C55D68216CB2360023C8AD /* AddPodcastsCollectionViewCell.xib in Resources */,
 				773D173A22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf in Resources */,
 				93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */,
+				28CFCA8B222EE5FB00D1E477 /* PlayerViewController.xib in Resources */,
 				77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				77C51E7B222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib in Resources */,
 				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
@@ -2106,12 +2136,14 @@
 				77F1D228221C496800E640C3 /* OnboardingOutput.swift in Sources */,
 				776309DA2224394700D69BA7 /* ListenInteractor.swift in Sources */,
 				5637D2B820A3257800112F1F /* HelpRoutingProtocol.swift in Sources */,
+				28CFCA86222EE46600D1E477 /* PlayerModels.swift in Sources */,
 				28FEBD0A221DBC2800DAD907 /* OnboardingFlowCoordinator.swift in Sources */,
 				776B180E22297D3E00B422DC /* ListenItemsWorker.swift in Sources */,
 				9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */,
 				28CFCA67222D96CA00D1E477 /* ListenListItem.swift in Sources */,
 				776309D92224394700D69BA7 /* ListenViewController.swift in Sources */,
 				77E1E08A221D979F006B1084 /* RoundTopicCell.swift in Sources */,
+				28CFCA85222EE46600D1E477 /* PlayerPresenter.swift in Sources */,
 				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
 				280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
@@ -2133,15 +2165,18 @@
 				F47B7CF12084D7DC0055585C /* ScoutHTTPClient.swift in Sources */,
 				F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */,
 				280FEEC8221B12C300223CB9 /* ApiClient.swift in Sources */,
+				28CFCA89222EE46700D1E477 /* PlayerOutput.swift in Sources */,
 				77F1D208221C47D300E640C3 /* String+QueueLabel.swift in Sources */,
 				776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */,
 				776B180922297D2000B422DC /* ListenModels.swift in Sources */,
 				2805F8FA2223EA9A006BA14F /* UIViewController+Extensions.swift in Sources */,
 				93C55D67216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift in Sources */,
 				93FB827520B54B1B00A39A5C /* PlayerAssemblyProtocol.swift in Sources */,
+				28CFCA84222EE46600D1E477 /* PlayerAssembler.swift in Sources */,
 				F47B7CFB2084F6700055585C /* KeychainService.swift in Sources */,
 				77F1D20D221C48A500E640C3 /* Dispatcher.swift in Sources */,
 				5637D28E20A2FD2D00112F1F /* Design.swift in Sources */,
+				28CFCA88222EE46600D1E477 /* PlayerInteractor.swift in Sources */,
 				8637E7EF215CFBF9008563E9 /* PodcastsViewController.swift in Sources */,
 				93C55D63216CB0A10023C8AD /* AddPodcastsViewController.swift in Sources */,
 				5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */,
@@ -2251,7 +2286,7 @@
 				28FDFB79221C2A2C00C869E1 /* BaseFlowCoordinator.swift in Sources */,
 				773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */,
 				28CFCA6D222E8E1200D1E477 /* DeleteListenListItemResponse.swift in Sources */,
-				93FB827720B54BA100A39A5C /* PlayerViewController.swift in Sources */,
+				93FB827720B54BA100A39A5C /* OldPlayerViewController.swift in Sources */,
 				2805F8FC2223FE90006BA14F /* TabBarFlowCoordinator.swift in Sources */,
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				77F1D233221C723D00E640C3 /* UIColor+Hex.swift in Sources */,
@@ -2262,6 +2297,7 @@
 				28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */,
 				2801F99C2225AE6E00283F1B /* RegisterPostModel.swift in Sources */,
 				778DB073222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift in Sources */,
+				28CFCA87222EE46600D1E477 /* PlayerViewController.swift in Sources */,
 				2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */,
 				8637E7FD215D1982008563E9 /* PodcastsCollectionViewCell.swift in Sources */,
 				28CFCA7A222EBBA900D1E477 /* KeychainManager.swift in Sources */,

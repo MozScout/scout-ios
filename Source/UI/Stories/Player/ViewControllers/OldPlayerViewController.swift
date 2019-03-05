@@ -13,7 +13,7 @@ protocol PlayerViewControllerDelegate: class {
     func backButtonTapped()
 }
 
-class PlayerViewController: UIViewController {
+class OldPlayerViewController: UIViewController {
     weak var backButtonDelegate: PlayerViewControllerDelegate?
     var scoutClient: ScoutHTTPClient!
     var model: ScoutArticle!
