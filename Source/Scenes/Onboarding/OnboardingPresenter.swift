@@ -43,13 +43,13 @@ extension Onboarding.PresenterImp {
         topics: [Topic],
         subtopics: [(topicId: String, subtopics: [Topic])],
         selectedTopicsIds: [String]
-        ) -> [OnboardingCollectionViewCell.ViewModel] {
+        ) -> [RoundTopicCell.ViewModel] {
 
-        var topicsViewModels = [OnboardingCollectionViewCell.ViewModel]()
+        var topicsViewModels = [RoundTopicCell.ViewModel]()
 
         for topic in topics {
             topicsViewModels.append(
-                OnboardingCollectionViewCell.ViewModel(
+                RoundTopicCell.ViewModel(
                     topicId: topic.id,
                     title: topic.name,
                     imageUrl: URL(string: topic.imageUrl),
@@ -60,7 +60,7 @@ extension Onboarding.PresenterImp {
             if let (_, subtopics) = subtopics.first(where: { $0.topicId == topic.id }) {
                 for subtopic in subtopics {
                     topicsViewModels.append(
-                        OnboardingCollectionViewCell.ViewModel(
+                        RoundTopicCell.ViewModel(
                             topicId: subtopic.id,
                             title: subtopic.name,
                             imageUrl: URL(string: subtopic.imageUrl),

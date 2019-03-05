@@ -56,7 +56,7 @@ extension Onboarding.Event {
         }
 
         struct ViewModel {
-            let topics: [OnboardingCollectionViewCell.ViewModel]
+            let topics: [RoundTopicCell.ViewModel]
         }
     }
 
@@ -69,7 +69,7 @@ extension Onboarding.Event {
         }
 
         struct ViewModel {
-            let topics: [OnboardingCollectionViewCell.ViewModel]
+            let topics: [RoundTopicCell.ViewModel]
         }
     }
     
@@ -87,7 +87,7 @@ extension Onboarding.Event {
         }
 
         struct ViewModel {
-            let topics: [OnboardingCollectionViewCell.ViewModel]
+            let topics: [RoundTopicCell.ViewModel]
             let isStartEnabled: Bool
         }
     }

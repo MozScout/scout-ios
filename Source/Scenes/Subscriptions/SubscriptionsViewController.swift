@@ -100,7 +100,9 @@ class SubscriptionsViewControllerImp: UIViewController {
         }
     }
 
-    @objc private func addButtonAction() { }
+    @objc private func addButtonAction() {
+        output.onAddAction()
+    }
 
     private func setupNavigationBar() {
         navigationBarContainer?.setNavigationBarContent(navigationBar)

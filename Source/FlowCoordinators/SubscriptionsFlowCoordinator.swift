@@ -47,7 +47,11 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
     }
 
     private func createSubscriptionsScene() -> UIViewController {
-        let output = Subscriptions.Output()
+        let output = Subscriptions.Output(
+            onAddAction: { [weak self] in
+                self?.runAddSubscriptionScene()
+            }
+        )
         let subscriptions = assembly.assemblySubscriptions(output: output)
 
         return createNavigationBarContainer(with: subscriptions)
@@ -64,6 +68,17 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
 
         return navigationBarController
     }
+
+    private func runAddSubscriptionScene() {
+        let output = AddSubscription.Output(onCancelAction: { [weak self] in
+            self?.navigationController.popViewController(animated: true)
+        })
+        let scene = assembly.assemblyAddSubscription(output: output)
+
+        let navigationBarController = createNavigationBarContainer(with: scene)
+
+        navigationController.pushViewController(navigationBarController, animated: true)
+    }
 }
 
 extension SubscriptionsFlowCoordinator {
@@ -72,6 +87,11 @@ extension SubscriptionsFlowCoordinator {
 
         func assemblySubscriptions(output: Subscriptions.Output) -> Subscriptions.ViewControllerImp {
             let assembler = Subscriptions.AssemblerImp()
+            return assembler.assembly(with: output)
+        }
+
+        func assemblyAddSubscription(output: AddSubscription.Output) -> AddSubscription.ViewControllerImp {
+            let assembler = AddSubscription.AssemblerImp()
             return assembler.assembly(with: output)
         }
     }

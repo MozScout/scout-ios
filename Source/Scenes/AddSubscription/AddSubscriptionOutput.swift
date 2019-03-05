@@ -1,11 +1,11 @@
 import Foundation
 
-extension Subscriptions {
+extension AddSubscription {
 
     // MARK: - Declaration
     
     struct Output {
 
-        let onAddAction: () -> Void
+        let onCancelAction: () -> Void
     }
 }
