@@ -23,11 +23,17 @@ extension Listen {
         // MARK: - Private properties
 
         private let presenterDispatcher: PresenterDispatcher<Type>
+        private let durationFormatter: DurationFormatter
 
         // MARK: -
 
-        init(presenterDispatcher: PresenterDispatcher<Type>) {
+        init(
+            presenterDispatcher: PresenterDispatcher<Type>,
+            durationFormatter: DurationFormatter
+            ) {
+
             self.presenterDispatcher = presenterDispatcher
+            self.durationFormatter = durationFormatter
         }
 
         // MARK: - Private methods
@@ -61,32 +67,49 @@ extension Listen.PresenterImp: Listen.Presenter {
     }
 
     func presentItemsDidUpdate(response: Event.ItemsDidUpdate.Response) {
+        let itemsViewModels = response.items.map { (item) in
+            return item.cellViewModel(with: durationFormatter)
+        }
         displayAsync { (viewController) in
-            let itemsViewModels = response.items.map {
-                ListenTableViewCell.ViewModel.init(
-                    itemId: $0.itemId,
-                    imageUrl: URL(string: $0.imageUrl),
-                    iconUrl: URL(string: $0.iconUrl),
-                    publisher: $0.publisher,
-                    title: $0.title,
-                    duration: $0.duration,
-                    summary: $0.summary,
-                    episode: $0.episode
-                )
-            }
-
             viewController.displayItemsDidUpdate(viewModel: Event.ItemsDidUpdate.ViewModel(items: itemsViewModels))
         }
     }
 
     func presentDidChangeEditing(response: Event.DidChangeEditing.Response) {
+        let viewModel = Event.DidChangeEditing.ViewModel(
+            isEditing: response.isEditing,
+            editingButtonTitle: response.isEditing ? "Cancel" : "Edit"
+        )
         displayAsync { (viewController) in
-            viewController.displayDidChangeEditing(
-                viewModel: Event.DidChangeEditing.ViewModel(
-                    isEditing: response.isEditing,
-                    editingButtonTitle: response.isEditing ? "Cancel" : "Edit"
-                )
-            )
+            viewController.displayDidChangeEditing(viewModel: viewModel)
         }
+    }
+}
+
+private extension Listen.Model.Item {
+
+    func cellViewModel(
+        with durationFormatter: Listen.DurationFormatter
+        ) -> ListenTableViewCell.ViewModel {
+
+        let summary: String? = {
+            switch type {
+            case .article:
+                return "Summary"
+            case .episode:
+                return nil
+            }
+        }()
+
+        return ListenTableViewCell.ViewModel(
+            itemId: itemId,
+            imageUrl: URL(string: imageUrl),
+            iconUrl: URL(string: iconUrl),
+            publisher: publisher,
+            title: title,
+            duration: durationFormatter.format(duration: duration),
+            summary: summary,
+            episode: nil
+        )
     }
 }

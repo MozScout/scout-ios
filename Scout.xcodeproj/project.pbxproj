@@ -63,6 +63,12 @@
 		28CFCA6B222E8D5A00D1E477 /* DeleteListenListItemPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA6A222E8D5A00D1E477 /* DeleteListenListItemPostModel.swift */; };
 		28CFCA6D222E8E1200D1E477 /* DeleteListenListItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA6C222E8E1200D1E477 /* DeleteListenListItemResponse.swift */; };
 		28CFCA70222E8E4700D1E477 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA6F222E8E4700D1E477 /* MessageResponse.swift */; };
+		28CFCA72222E96CA00D1E477 /* ListenItemsWorkerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA71222E96CA00D1E477 /* ListenItemsWorkerImp.swift */; };
+		28CFCA74222E9A0000D1E477 /* ListenDurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA73222E9A0000D1E477 /* ListenDurationFormatter.swift */; };
+		28CFCA76222E9A2900D1E477 /* ListenDurationFormatterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA75222E9A2900D1E477 /* ListenDurationFormatterImp.swift */; };
+		28CFCA78222EBAC500D1E477 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA77222EBAC500D1E477 /* UserDataManager.swift */; };
+		28CFCA7A222EBBA900D1E477 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA79222EBBA900D1E477 /* KeychainManager.swift */; };
+		28CFCA7C222EC0E300D1E477 /* AccessTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA7B222EC0E300D1E477 /* AccessTokenManager.swift */; };
 		28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */; };
 		28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */; };
 		28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */; };
@@ -300,6 +306,12 @@
 		28CFCA6A222E8D5A00D1E477 /* DeleteListenListItemPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteListenListItemPostModel.swift; sourceTree = "<group>"; };
 		28CFCA6C222E8E1200D1E477 /* DeleteListenListItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteListenListItemResponse.swift; sourceTree = "<group>"; };
 		28CFCA6F222E8E4700D1E477 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
+		28CFCA71222E96CA00D1E477 /* ListenItemsWorkerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenItemsWorkerImp.swift; sourceTree = "<group>"; };
+		28CFCA73222E9A0000D1E477 /* ListenDurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenDurationFormatter.swift; sourceTree = "<group>"; };
+		28CFCA75222E9A2900D1E477 /* ListenDurationFormatterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenDurationFormatterImp.swift; sourceTree = "<group>"; };
+		28CFCA77222EBAC500D1E477 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		28CFCA79222EBBA900D1E477 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		28CFCA7B222EC0E300D1E477 /* AccessTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenManager.swift; sourceTree = "<group>"; };
 		28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		28FDFB72221BF2CC00C869E1 /* DebugOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOutput.swift; sourceTree = "<group>"; };
@@ -799,7 +811,10 @@
 		28FDFB6F221BF29A00C869E1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				28CFCA7B222EC0E300D1E477 /* AccessTokenManager.swift */,
+				28CFCA79222EBBA900D1E477 /* KeychainManager.swift */,
 				28FDFB70221BF2A600C869E1 /* ReachabilityService.swift */,
+				28CFCA77222EBAC500D1E477 /* UserDataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1125,11 +1140,11 @@
 			isa = PBXGroup;
 			children = (
 				776309D02224394700D69BA7 /* ListenAssembler.swift */,
-				776309D12224394700D69BA7 /* ListenPresenter.swift */,
-				776309D22224394700D69BA7 /* ListenModels.swift */,
-				776309D32224394700D69BA7 /* ListenViewController.swift */,
 				776309D42224394700D69BA7 /* ListenInteractor.swift */,
+				776309D22224394700D69BA7 /* ListenModels.swift */,
 				776309D52224394700D69BA7 /* ListenOutput.swift */,
+				776309D12224394700D69BA7 /* ListenPresenter.swift */,
+				776309D32224394700D69BA7 /* ListenViewController.swift */,
 				776309DC22243F6500D69BA7 /* ListenViewControllerImp.xib */,
 				776309DE2224413500D69BA7 /* Views */,
 				776B17F922292BAE00B422DC /* Workers */,
@@ -1157,7 +1172,10 @@
 		776B17F922292BAE00B422DC /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				28CFCA73222E9A0000D1E477 /* ListenDurationFormatter.swift */,
+				28CFCA75222E9A2900D1E477 /* ListenDurationFormatterImp.swift */,
 				776B17FA22292BE600B422DC /* ListenItemsWorker.swift */,
+				28CFCA71222E96CA00D1E477 /* ListenItemsWorkerImp.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -2055,6 +2073,7 @@
 				93A3113E20B13F7C0049DB67 /* VoiceInputRouter.swift in Sources */,
 				93A3113820B13EA70049DB67 /* VoiceInputAssemblyProtocol.swift in Sources */,
 				28CFCA272226EF2200D1E477 /* NavigationBarContainerController.swift in Sources */,
+				28CFCA72222E96CA00D1E477 /* ListenItemsWorkerImp.swift in Sources */,
 				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
 				28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
@@ -2087,6 +2106,8 @@
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
 				93FB827D20B54BDF00A39A5C /* PlayerRouter.swift in Sources */,
 				5637D2C720A343AE00112F1F /* SettingsViewController.swift in Sources */,
+				28CFCA7C222EC0E300D1E477 /* AccessTokenManager.swift in Sources */,
+				28CFCA76222E9A2900D1E477 /* ListenDurationFormatterImp.swift in Sources */,
 				776B180B22297D2E00B422DC /* ListenOutput.swift in Sources */,
 				28FEBD06221DB91C00DAD907 /* AppAssembly.swift in Sources */,
 				9362FCAF20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift in Sources */,
@@ -2095,6 +2116,7 @@
 				5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */,
 				281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */,
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
+				28CFCA78222EBAC500D1E477 /* UserDataManager.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
 				28CFCA4122293A3E00D1E477 /* SearchNavigationBar.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
@@ -2140,10 +2162,12 @@
 				28CFCA70222E8E4700D1E477 /* MessageResponse.swift in Sources */,
 				F4511799208899AD00A159B5 /* SpeechService.swift in Sources */,
 				776B180822297C1A00B422DC /* UITableView+Register.swift in Sources */,
+				28CFCA74222E9A0000D1E477 /* ListenDurationFormatter.swift in Sources */,
 				28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */,
 				2801F99C2225AE6E00283F1B /* RegisterPostModel.swift in Sources */,
 				2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */,
 				8637E7FD215D1982008563E9 /* PodcastsCollectionViewCell.swift in Sources */,
+				28CFCA7A222EBBA900D1E477 /* KeychainManager.swift in Sources */,
 				F4A23BBA20811280006EC9E3 /* ApplicationRouterProtocol.swift in Sources */,
 				8637E7F9215D037D008563E9 /* PodcastsAssemblyProtocol.swift in Sources */,
 				280FEED1221B14FD00223CB9 /* TopicsApi.swift in Sources */,

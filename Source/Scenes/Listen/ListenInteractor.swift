@@ -79,8 +79,9 @@ extension Listen.InteractorImp: Listen.Interactor {
     }
 
     func onDidRemoveItem(request: Event.DidRemoveItem.Request) {
-        sceneModel.items.removeAll { request.itemId == $0.itemId }
-        itemsFetcher.removeItem(with: request.itemId) { (result) in
+        guard let index = sceneModel.items.firstIndex(where: { request.itemId == $0.itemId }) else { return }
+        let item = sceneModel.items.remove(at: index)
+        itemsFetcher.removeItem(with: item.itemId, itemType: item.type) { (result) in
             // FIXME: - Handle result
         }
 

@@ -223,7 +223,7 @@ extension Onboarding.ViewControllerImp: Onboarding.ViewController {
     }
 
     func displayDidRegisterUser(viewModel: Event.DidRegisterUser.ViewModel) {
-        output.onDidRegister(viewModel.userId, viewModel.token)
+        output.onDidRegister()
     }
 
     func displayRegistrationProcessDidStart(viewModel: Event.RegistrationProcessDidStart.ViewModel) {

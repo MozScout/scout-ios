@@ -6,6 +6,8 @@ enum Listen {
 
     // MARK: - Typealiases
 
+    typealias Identifier = String
+
     typealias InteractorDispatcher = Dispatcher<Interactor>
     typealias PresenterDispatcher<Type: ViewController> = Dispatcher<Weak<Type>>
     typealias ViewController = ListenViewController
@@ -22,20 +24,28 @@ enum Listen {
 extension Listen.Model {
 
     struct Item {
-        let itemId: String
+
+        let itemId: Listen.Identifier
         let imageUrl: String
         let iconUrl: String
         let publisher: String
         let title: String
-        let duration: String
-        let summary: String?
-        let episode: String?
+        let duration: Int64
+        let type: ItemType
     }
 
     struct SceneModel {
 
         var items: [Item]
         var isEditing: Bool
+    }
+}
+
+extension Listen.Model.Item {
+    enum ItemType {
+
+        case article(url: String)
+        case episode(url: String)
     }
 }
 

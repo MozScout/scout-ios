@@ -57,10 +57,10 @@ class ListenTableViewCell: UITableViewCell {
     }
 
     func configure(_ state: ViewModel) {
-        topicImageView.kf.setImage(with: state.imageUrl)
+        topicImageView.kf.setImage(with: state.imageUrl, placeholder: #imageLiteral(resourceName: "Placeholder"))
         topicImageView.kf.indicatorType = .activity
 
-        iconImageView.kf.setImage(with: state.iconUrl)
+        iconImageView.kf.setImage(with: state.iconUrl, placeholder: #imageLiteral(resourceName: "Placeholder"))
 
         publisherLabel.text = state.publisher
         titleLabel.text = state.title

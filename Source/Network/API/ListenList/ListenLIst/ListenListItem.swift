@@ -13,7 +13,7 @@ struct ListenListItem: Decodable {
     let imageUrl: String
     let url: String
     let type: ItemType
-    let logo: String
+    let logoUrl: String
     let duration: Int64
     let publisher: String
 
@@ -48,7 +48,7 @@ struct ListenListItem: Decodable {
             self.type = .episode(url: url)
         }
 
-        logo = try container.decode(String.self, forKey: .logo)
+        logoUrl = try container.decode(String.self, forKey: .logo)
         duration = try container.decode(Int64.self, forKey: .duration)
         publisher = try container.decode(String.self, forKey: .publisher)
     }

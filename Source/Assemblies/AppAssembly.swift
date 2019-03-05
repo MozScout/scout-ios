@@ -8,6 +8,8 @@ import Foundation
 
 class AppAssembly {
 
+    // MARK: - Private properties -
+
     private lazy var url: URL = {
         return AppConfiguration().network.baseURL
     }()
@@ -21,11 +23,23 @@ class AppAssembly {
     }()
 
     private lazy var accessTokenManager: AccessTokenManager = {
-        return AccessTokenManager()
+        return AccessTokenManager(keychainManager: keychainManager)
     }()
 
     private var accessTokenProvider: RequestAuthorizationTokenProvider {
         return accessTokenManager
+    }
+
+    private lazy var keychainManager: KeychainManager = {
+        return KeychainManager()
+    }()
+
+    private lazy var userDataManager: UserDataManager = {
+        return UserDataManager(keychainManager: keychainManager)
+    }()
+
+    private var userDataProvider: UserDataProvider {
+        return userDataManager
     }
 
     private lazy var api: Api = {
@@ -35,6 +49,8 @@ class AppAssembly {
             accessTokenProvider: accessTokenProvider
         )
     }()
+
+    // MARK: - Dependencies Assemblies -
 
     func assemblyApi() -> Api {
         return api
@@ -48,6 +64,12 @@ class AppAssembly {
         return accessTokenProvider
     }
 
+    func assemblyUserDataManager() -> UserDataManager {
+        return userDataManager
+    }
+
+    // MARK: - Flow Coordinators Assemblies -
+
     func assemblyOnboardingFlowCoordinatorAssembly() -> OnboardingFlowCoordinator.Assembly {
         return OnboardingFlowCoordinator.Assembly(appAssembly: self)
     }
@@ -58,5 +80,14 @@ class AppAssembly {
 
     func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {
         return ListenFlowCoordinator.Assembly(appAssembly: self)
+    }
+
+    // MARK: - Assemblies -
+
+    func assemblyAppCoordinatorStartInstructor() -> AppCoordinator.LaunchInstructor {
+        return AppCoordinator.LaunchInstructor(
+            userDataProvider: userDataProvider,
+            authTokenProvider: accessTokenProvider
+        )
     }
 }

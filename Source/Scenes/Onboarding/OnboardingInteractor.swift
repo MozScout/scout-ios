@@ -121,11 +121,8 @@ private extension Onboarding.InteractorImp {
 
             switch result {
 
-            case .success(let response):
-                let response = Event.DidRegisterUser.Response(
-                    userId: response.userId,
-                    token: response.token
-                )
+            case .success:
+                let response = Event.DidRegisterUser.Response()
                 self?.presenter.presentDidRegisterUser(response: response)
 
             case .failure:
