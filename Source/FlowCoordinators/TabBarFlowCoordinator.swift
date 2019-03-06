@@ -62,6 +62,21 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         return flowCoordinator
     }()
 
+    private lazy var playerFlow: PlayerFlowCoordinator = {
+        let assemby = self.assembly.assemblyPlayerFlowCoordinatorAssembly()
+
+        let flowCoordinator = PlayerFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assemby,
+            show: { [weak self] (controller, animated) in
+                controller.modalPresentationStyle = .overCurrentContext
+                controller.modalTransitionStyle = .coverVertical
+                self?.tabBarController.present(controller, animated: animated, completion: nil)
+        })
+
+        return flowCoordinator
+    }()
+
     init(
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly
@@ -73,21 +88,21 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
         let myNotesItem = TabBarContainerController.Item(
             title: "My Notes",
-            icon: #imageLiteral(resourceName: "Notes"),
+            icon: UIImage.fxNotesTabIcon,
             onSelect: { [weak self] in
                 self?.showMyNotesFlow(animated: true)
         })
 
         let listenItem = TabBarContainerController.Item(
             title: "Listen",
-            icon: #imageLiteral(resourceName: "Headphones"),
+            icon: UIImage.fxListenTabIcon,
             onSelect: { [weak self] in
                 self?.showListenFlow(animated: true)
         })
 
         let subscriptionsItem = TabBarContainerController.Item(
             title: "Subscriptions",
-            icon: #imageLiteral(resourceName: "Podcasts"),
+            icon: UIImage.fxSubscriptionsTabIcon,
             onSelect: { [weak self] in
                 self?.showSubscriptionsFlow(animated: true)
         })
@@ -112,6 +127,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         }
         tabBarController.setItems(items, selectedIndex: index)
         showListenFlow(animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.showPlayer(animated: true)
+        }
     }
 
     private func showMyNotesFlow(animated: Bool) {
@@ -127,6 +146,11 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
     private func showSubscriptionsFlow(animated: Bool) {
         subscriptionsFlow.showContent(animated: animated)
         currentFlowCoordinator = subscriptionsFlow
+    }
+
+    private func showPlayer(animated: Bool) {
+        playerFlow.showContent(animated: animated)
+        currentFlowCoordinator = playerFlow
     }
 
     private func showContent(
@@ -168,6 +192,10 @@ extension TabBarFlowCoordinator {
 
         func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {
             return ListenFlowCoordinator.Assembly(appAssembly: appAssembly)
+        }
+
+        func assemblyPlayerFlowCoordinatorAssembly() -> PlayerFlowCoordinator.Assembly {
+            return PlayerFlowCoordinator.Assembly(appAssembly: appAssembly)
         }
     }
 }

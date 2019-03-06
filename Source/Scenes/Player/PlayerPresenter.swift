@@ -1,11 +1,11 @@
-import Foundation
+import UIKit
 
 // MARK: - Protocol
 
 protocol PlayerPresenter {
-    typealias Event = Player.Event
 
-    func presentViewDidLoad(response: Event.ViewDidLoad.Response)
+    func presentPlayerStateDidUpdate(response: Player.Event.PlayerStateDidUpdate.Response)
+    func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response)
 }
 
 extension Player {
@@ -52,10 +52,28 @@ extension Player {
 
 extension Player.PresenterImp: Player.Presenter {
 
-    func presentViewDidLoad(response: Event.ViewDidLoad.Response) {
-        let viewModel = Event.ViewDidLoad.ViewModel()
-        self.displayAsync { (viewController) in
-            viewController.displayViewDidLoad(viewModel: viewModel)
+    func presentPlayerStateDidUpdate(response: Player.Event.PlayerStateDidUpdate.Response) {
+        let icon: UIImage = {
+            switch response.state {
+            case .playing:
+                return UIImage.fxPlay
+            case .paused:
+                return UIImage.fxPause
+            }
+        }()
+        let viewModel = Player.Event.PlayerStateDidUpdate.ViewModel(playButtonIcon: icon)
+        displayAsync { (viewController) in
+            viewController.displayPlayerStateDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response) {
+        let viewModel = Player.Event.PlayerItemDidUpdate.ViewModel(
+            imageUrl: response.imageUrl,
+            title: response.title
+        )
+        displayAsync { (viewController) in
+            viewController.displayPlauerItemDidUpdate(viewModel: viewModel)
         }
     }
 }

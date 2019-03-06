@@ -22,6 +22,15 @@ extension Player {
         typealias PresenterImp = Player.PresenterImp
         typealias PresenterDispatcher = Player.PresenterDispatcher
         typealias ViewControllerImp = Player.ViewControllerImp
+
+        private let appAssembly: AppAssembly
+
+        init(
+            appAssembly: AppAssembly
+            ) {
+
+            self.appAssembly = appAssembly
+        }
     }
 }
 
@@ -33,7 +42,14 @@ extension Player.AssemblerImp: Player.Assembler {
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
-        let interactor = InteractorImp(presenter: presenter)
+
+        let playerWorker = Player.PlayerWorkerImp(
+            playerService: appAssembly.assemblyPlayerService()
+        )
+        let interactor = InteractorImp(
+            presenter: presenter,
+            playerWorker: playerWorker
+        )
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(
                 label: "\(NSStringFromClass(InteractorDispatcher.self))\(Interactor.self)".queueLabel,

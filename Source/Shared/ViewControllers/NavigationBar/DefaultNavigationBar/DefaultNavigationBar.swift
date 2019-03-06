@@ -53,7 +53,7 @@ class DefaultNavigationBar: UIView {
 
     private func setupLogoImageView() {
         logoImageView.contentMode = .scaleAspectFit
-        logoImageView.image = #imageLiteral(resourceName: "player_image")
+        logoImageView.image = UIImage.fxLogo
     }
 
     private func setupFirstLeftItemContainer() {
@@ -119,19 +119,19 @@ class DefaultNavigationBar: UIView {
 private extension UIButton {
     class var settingsButton: UIButton {
         let settingsButton = UIButton.navigationBarButton
-        settingsButton.setImage(#imageLiteral(resourceName: "Settings"), for: .normal)
+        settingsButton.setImage(UIImage.fxSettingsNavigationBarIcon, for: .normal)
         return settingsButton
     }
 
     class var handsFreeButton: UIButton {
         let handsFreeButton = UIButton.navigationBarButton
-        handsFreeButton.setImage(#imageLiteral(resourceName: "Hands Free"), for: .normal)
+        handsFreeButton.setImage(UIImage.fxHandsFreeNavigationBarIcon, for: .normal)
         return handsFreeButton
     }
 
     class var searchButton: UIButton {
         let searchButton = UIButton.navigationBarButton
-        searchButton.setImage(#imageLiteral(resourceName: "Search"), for: .normal)
+        searchButton.setImage(UIImage.fxSearchNavigationBarIcon, for: .normal)
         return searchButton
     }
 

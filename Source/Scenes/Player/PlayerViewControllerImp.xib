@@ -21,35 +21,41 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="676"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-wy-n4l">
-                    <rect key="frame" x="155.5" y="475" width="64" height="64"/>
+                    <rect key="frame" x="155.5" y="484" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="FKS-G0-vn5"/>
                         <constraint firstAttribute="width" constant="64" id="pJP-Qp-jtb"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="playButtonAction:" destination="-1" eventType="touchUpInside" id="ixy-Fs-K1F"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QQ-2N-jwr">
-                    <rect key="frame" x="62" y="475" width="64" height="64"/>
+                    <rect key="frame" x="62" y="484" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="MCS-0q-cRA"/>
                         <constraint firstAttribute="height" constant="64" id="zOU-Fb-Y73"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="leftButtonAction:" destination="-1" eventType="touchUpInside" id="bmx-Nf-E5z"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHy-ZE-XUe">
-                    <rect key="frame" x="249.5" y="475" width="64" height="64"/>
+                    <rect key="frame" x="249.5" y="484" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="cwc-P4-GZR"/>
                         <constraint firstAttribute="height" constant="64" id="toe-UR-Bsu"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="rightButtonAction:" destination="-1" eventType="touchUpInside" id="oxx-Q1-2hl"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Ve-Yi-qGq">
-                    <rect key="frame" x="64" y="68" width="247" height="247"/>
+                    <rect key="frame" x="62.5" y="73.5" width="250" height="250.5"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="7Ve-Yi-qGq" secondAttribute="height" id="hUV-x3-RGA"/>
                     </constraints>
@@ -69,7 +75,11 @@
                 <constraint firstItem="PHy-ZE-XUe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lfn-wy-n4l" secondAttribute="trailing" constant="16" id="cp0-BG-RC2"/>
                 <constraint firstItem="PHy-ZE-XUe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="3:2" priority="750" id="qQw-DS-i7X"/>
             </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="53.600000000000001" y="44.07796101949026"/>
         </view>
     </objects>
 </document>

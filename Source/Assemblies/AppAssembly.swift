@@ -42,6 +42,10 @@ class AppAssembly {
         return userDataManager
     }
 
+    private lazy var playerService: PlayerService = {
+        return PlayerService()
+    }()
+
     private lazy var api: Api = {
         return Api(
             url: url,
@@ -66,6 +70,10 @@ class AppAssembly {
 
     func assemblyUserDataManager() -> UserDataManager {
         return userDataManager
+    }
+
+    func assemblyPlayerService() -> PlayerService {
+        return playerService
     }
 
     // MARK: - Flow Coordinators Assemblies -

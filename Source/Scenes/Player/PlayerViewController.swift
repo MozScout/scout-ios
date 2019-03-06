@@ -3,9 +3,9 @@ import UIKit
 // MARK: - Protocol
 
 protocol PlayerViewController: class {
-    typealias Event = Player.Event
 
-    func displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel)
+    func displayPlayerStateDidUpdate(viewModel: Player.Event.PlayerStateDidUpdate.ViewModel)
+    func displayPlauerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel)
 }
 
 extension Player {
@@ -56,13 +56,56 @@ class PlayerViewControllerImp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //            let request = Event.ViewDidLoad.Request()
-        //            sendAsync { (interactor) in
-        //                interactor.onViewDidLoad(request: request)
-        //            }
+        setupView()
+        setupPlayButton()
+        setupLeftButton()
+        setupRightButton()
+
+        let request = Event.ViewDidLoadSync.Request()
+        sendSync { (interactor) in
+            interactor.onViewDidLoadSync(request: request)
+        }
+    }
+
+    // MARK: -
+
+    @IBAction func playButtonAction(_ sender: Any) {
+        sendAsync { (interactor) in
+            let request = Event.DidTapPlayButton.Request()
+            interactor.onDidTapPlayButton(request: request)
+        }
+    }
+
+    @IBAction func leftButtonAction(_ sender: Any) {
+    }
+
+    @IBAction func rightButtonAction(_ sender: Any) {
     }
 
     // MARK: - Private methods
+
+    private func setupView() {
+        view.backgroundColor = UIColor.white
+    }
+
+    private func setupIconView() {
+        iconView.layer.cornerRadius = 6
+        iconView.layer.masksToBounds = true
+    }
+
+    private func setupPlayButton() {
+        playButton.tintColor = UIColor.fxBlack
+    }
+
+    private func setupLeftButton() {
+        leftButton.setImage(UIImage.fxJumpBack, for: .normal)
+        leftButton.tintColor = UIColor.fxBlack
+    }
+
+    private func setupRightButton() {
+        rightButton.setImage(UIImage.fxJumpForward, for: .normal)
+        rightButton.tintColor = UIColor.fxBlack
+    }
 
     private func sendSync<Result>(_ block: (Interactor) -> Result) -> Result {
         return self.interactorDispatcher.sync { (interactor) in
@@ -79,7 +122,12 @@ class PlayerViewControllerImp: UIViewController {
 
 extension Player.ViewControllerImp: Player.ViewController {
 
-    func displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel) {
+    func displayPlayerStateDidUpdate(viewModel: Player.Event.PlayerStateDidUpdate.ViewModel) {
+        playButton.setImage(viewModel.playButtonIcon, for: .normal)
+    }
+
+    func displayPlauerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel) {
+        iconView.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage.fxPlaceholder)
         
     }
 }

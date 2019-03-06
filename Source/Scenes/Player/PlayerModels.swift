@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 // MARK: - Namespace
 
@@ -28,10 +28,39 @@ extension Player.Model {
 extension Player.Event {
     typealias Model = Player.Model
     
-    enum ViewDidLoad {
+    enum ViewDidLoadSync {
         struct Request {}
         struct Response {}
         struct ViewModel {}
+    }
+
+    enum DidTapPlayButton {
+
+        struct Request { }
+    }
+
+    enum PlayerItemDidUpdate {
+
+        struct Response {
+            let imageUrl: URL
+            let title: String
+        }
+
+        struct ViewModel {
+            let imageUrl: URL
+            let title: String
+        }
+    }
+
+    enum PlayerStateDidUpdate {
+
+        struct Response {
+            let state: Model.SceneModel.PlayerState
+        }
+
+        struct ViewModel {
+            let playButtonIcon: UIImage
+        }
     }
 }
 
