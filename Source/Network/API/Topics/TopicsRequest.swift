@@ -10,6 +10,7 @@ import Moya
 enum TopicsRequest {
     case topicList
     case subtopicList(SubtopicListRequestParameters)
+    case subscribedTopicsList
 }
 
 struct TopicsTarget: TargetType {
@@ -22,6 +23,7 @@ struct TopicsTarget: TargetType {
 
         case .topicList: return "topicList/"
         case .subtopicList: return "subTopicList/"
+        case .subscribedTopicsList: return "topics/"
         }
     }
 
@@ -29,7 +31,8 @@ struct TopicsTarget: TargetType {
         switch request {
 
         case .topicList,
-             .subtopicList:
+             .subtopicList,
+             .subscribedTopicsList:
             return .get
         }
     }
@@ -46,6 +49,9 @@ struct TopicsTarget: TargetType {
 
         case .subtopicList(let parameters):
             return urlEncodedRequestParameters(with: parameters)
+
+        case .subscribedTopicsList:
+            return .requestPlain
         }
     }
 

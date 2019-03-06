@@ -163,7 +163,7 @@ extension TabBarFlowCoordinator {
         }
 
         public func assemblySubscriptionsFlowCoordinatorAssembly() -> SubscriptionsFlowCoordinator.Assembly {
-            return SubscriptionsFlowCoordinator.Assembly()
+            return SubscriptionsFlowCoordinator.Assembly(appAssembly: appAssembly)
         }
 
         func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {

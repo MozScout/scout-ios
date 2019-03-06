@@ -19,13 +19,17 @@ extension AddSubscription {
         typealias Event = AddSubscription.Event
 
         // MARK: - Private properties
-        
+
+        private var sceneModel: Model.SceneModel
         private let presenter: Presenter
+        private let topicsWorker: AddSubscriptionTopicsWorker
 
         // MARK: -
         
-        init(presenter: Presenter) {
+        init(presenter: Presenter, topicsWorker: AddSubscriptionTopicsWorker) {
             self.presenter = presenter
+            self.topicsWorker = topicsWorker
+            sceneModel = Model.SceneModel(items: [])
         }
     }
 }
@@ -37,5 +41,16 @@ extension AddSubscription.InteractorImp: AddSubscription.Interactor {
     func onViewDidLoad(request: Event.ViewDidLoad.Request) {
         let response = Event.ViewDidLoad.Response()
         self.presenter.presentViewDidLoad(response: response)
+
+        topicsWorker.fetchTopics { [weak self] (result) in
+            switch result {
+            case .success(let response):
+                self?.sceneModel.items = response
+                self?.presenter.presentTopicsDidUpdate(response: Event.TopicsDidUpdate.Response(items: response))
+            case .failure:
+                // FIXME - Handle error
+                break
+            }
+        }
     }
 }

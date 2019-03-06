@@ -43,6 +43,7 @@ class AddSubscriptionViewControllerImp: UIViewController {
     private let output: Output
     private var interactorDispatcher: InteractorDispatcher!
 
+    private let sectionHeaderHeight: CGFloat = 50
     private let itemPerLine = 3
     private let spaceBetweenIntems: CGFloat = 10
     private let lineSpacing: CGFloat = 10
@@ -238,7 +239,7 @@ extension  AddSubscription.ViewControllerImp: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 50)
+        return CGSize(width: collectionView.bounds.width, height: sectionHeaderHeight)
     }
 }
 

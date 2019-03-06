@@ -85,13 +85,19 @@ extension SubscriptionsFlowCoordinator {
 
     class Assembly {
 
+        let appAssembly: AppAssembly
+
+        init(appAssembly: AppAssembly) {
+            self.appAssembly = appAssembly
+        }
+
         func assemblySubscriptions(output: Subscriptions.Output) -> Subscriptions.ViewControllerImp {
             let assembler = Subscriptions.AssemblerImp()
             return assembler.assembly(with: output)
         }
 
         func assemblyAddSubscription(output: AddSubscription.Output) -> AddSubscription.ViewControllerImp {
-            let assembler = AddSubscription.AssemblerImp()
+            let assembler = AddSubscription.AssemblerImp(appAssembly: appAssembly)
             return assembler.assembly(with: output)
         }
     }
