@@ -128,9 +128,9 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         tabBarController.setItems(items, selectedIndex: index)
         showListenFlow(animated: true)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.showPlayer(animated: true)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+//            self?.showPlayer(animated: true)
+//        }
     }
 
     private func showMyNotesFlow(animated: Bool) {

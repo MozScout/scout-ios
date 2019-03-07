@@ -11,7 +11,7 @@ struct ListenListItem: Decodable {
     let id: String
     let title: String
     let imageUrl: String
-    let url: String
+    let url: URL
     let type: ItemType
     let logoUrl: String?
     let duration: Int64
@@ -35,7 +35,7 @@ struct ListenListItem: Decodable {
         id = try container.decode(String.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
         imageUrl = try container.decode(String.self, forKey: .imageUrl)
-        url = try container.decode(String.self, forKey: .url)
+        url = try container.decode(URL.self, forKey: .url)
 
         let type = try container.decode(PrivateType.self, forKey: .type)
 

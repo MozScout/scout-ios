@@ -46,6 +46,14 @@ class AppAssembly {
         return PlayerService()
     }()
 
+    private lazy var playerManager: PlayerManager = {
+        return PlayerManager(playerService: playerService, generalApi: api.generalApi)
+    }()
+
+    private lazy var listenListRepo: ListenListRepo = {
+        return ListenListRepo(listenListApi: api.listenListApi)
+    }()
+
     private lazy var api: Api = {
         return Api(
             url: url,
@@ -74,6 +82,14 @@ class AppAssembly {
 
     func assemblyPlayerService() -> PlayerService {
         return playerService
+    }
+
+    func assemblyPlayerManager() -> PlayerManager {
+        return playerManager
+    }
+
+    func assemblyListenListRepo() -> ListenListRepo {
+        return listenListRepo
     }
 
     // MARK: - Flow Coordinators Assemblies -

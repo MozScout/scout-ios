@@ -47,19 +47,8 @@ extension Listen {
 
 private extension Listen.InteractorImp {
 
-    func fetchItems(completion: (() -> Void)? = nil) {
-        itemsFetcher.fetchItems { [weak self] (result) in
-            switch result {
-            case .success(let items):
-                self?.sceneModel.items = items
-                self?.updateItems()
-            case .failure:
-                // FIXME: - Handle error
-                break
-            }
-
-            completion?()
-        }
+    func fetchItems() {
+        itemsFetcher.fetchItems()
     }
 
     func updateItems() {
@@ -74,9 +63,7 @@ extension Listen.InteractorImp: Listen.Interactor {
     func onViewDidLoad(request: Event.ViewDidLoad.Request) {
         presenter.presentViewDidLoad(response: Event.ViewDidLoad.Response())
         presenter.presentDidStartFetching(response: Event.DidStartFetching.Response())
-        fetchItems { [weak self] in
-            self?.presenter.presentDidEndFetching(response: Event.DidEndFetching.Response())
-        }
+        fetchItems()
     }
 
     func onDidSelectItem(request: Event.DidSelectItem.Request) {
@@ -86,9 +73,7 @@ extension Listen.InteractorImp: Listen.Interactor {
     func onDidRemoveItem(request: Event.DidRemoveItem.Request) {
         guard let index = sceneModel.items.firstIndex(where: { request.itemId == $0.itemId }) else { return }
         let item = sceneModel.items.remove(at: index)
-        itemsFetcher.removeItem(with: item.itemId, itemType: item.type) { (result) in
-            // FIXME: - Handle result
-        }
+        itemsFetcher.removeItem(with: item.itemId)
 
         updateItems()
     }

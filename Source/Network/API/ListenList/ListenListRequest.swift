@@ -58,8 +58,8 @@ struct ListenListTarget: TargetType {
                 return ["Authorization": "Bearer \(token)"]
             } else {
                 print(.error(error: "No authorization token"))
+                return nil
             }
         }
-        return nil
     }
 }

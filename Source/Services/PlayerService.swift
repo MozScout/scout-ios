@@ -21,10 +21,18 @@ class PlayerService: NSObject {
         return player?.currentTime ?? 0
     }
 
+    public var isPlaying: Bool {
+        return player?.isPlaying ?? false
+    }
+
     // MARK: - Public methods
 
-    func setAudio(from url: URL) {
-        player = createAudioPlayer(with: url)
+    func setAudio(from url: URL?) {
+        if let url = url {
+            player = createAudioPlayer(with: url)
+        } else {
+            player = nil
+        }
     }
 
     func play() {

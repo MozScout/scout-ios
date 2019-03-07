@@ -39,6 +39,12 @@ extension Listen.Model {
         var items: [Item]
         var isEditing: Bool
     }
+
+    enum LoadingStatus {
+
+        case loading
+        case idle
+    }
 }
 
 extension Listen.Model.Item {

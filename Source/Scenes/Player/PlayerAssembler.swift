@@ -43,9 +43,7 @@ extension Player.AssemblerImp: Player.Assembler {
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
 
-        let playerWorker = Player.PlayerWorkerImp(
-            playerService: appAssembly.assemblyPlayerService()
-        )
+        let playerWorker = Player.PlayerWorkerImp()
         let interactor = InteractorImp(
             presenter: presenter,
             playerWorker: playerWorker
