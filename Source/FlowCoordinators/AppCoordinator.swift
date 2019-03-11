@@ -22,12 +22,18 @@ class AppCoordinator {
     // MARK: - Init
 
     init(rootNavigation: RootNavigationViewController) {
-
         self.appAssembly = AppAssembly()
         self.rootNavigation = rootNavigation
         
         rootNavigation.onRootWillAppear = { [weak self] in
             self?.startFlow()
+        }
+
+        if UserDefaults.standard.value(forKey: "first_launch") == nil {
+            appAssembly.assemblyUserDataManager().userId = nil
+            appAssembly.assemblyAccessTokenManager().setBearerToken(nil)
+
+            UserDefaults.standard.setValue(1, forKey: "first_launch")
         }
     }
 
