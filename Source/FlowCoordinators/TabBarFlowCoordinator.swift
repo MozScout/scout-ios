@@ -23,59 +23,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
     private let startTab: Tab = .listen
 
-    private lazy var myNotesFlow: MyNotesFlowCoordinator = {
-        let assembly = self.assembly.assemblyMyNotesFlowCoordinatorAssembly()
-
-        let flowCoordinator = MyNotesFlowCoordinator(
-            rootNavigation: rootNavigation,
-            assembly: assembly,
-            show: { [weak self] (controller, animated) in
-                self?.showContent(controller, for: .myNotes, animated: animated)
-        })
-
-        return flowCoordinator
-    }()
-
-    private lazy var subscriptionsFlow: SubscriptionsFlowCoordinator = {
-        let assembly = self.assembly.assemblySubscriptionsFlowCoordinatorAssembly()
-
-        let flowCoordinator = SubscriptionsFlowCoordinator(
-            rootNavigation: rootNavigation,
-            assembly: assembly,
-            show: { [weak self] (controller, animated) in
-                self?.showContent(controller, for: .subscriptions, animated: animated)
-        })
-
-        return flowCoordinator
-    }()
-
-    private lazy var listenFlow: ListenFlowCoordinator = {
-        let assembly = self.assembly.assemblyListenFlowCoordinatorAssembly()
-
-        let flowCoordinator = ListenFlowCoordinator(
-            rootNavigation: rootNavigation,
-            assembly: assembly,
-            show: { [weak self] (controller, animated) in
-                self?.showContent(controller, for: .listen, animated: animated)
-        })
-
-        return flowCoordinator
-    }()
-
-    private lazy var playerFlow: PlayerFlowCoordinator = {
-        let assemby = self.assembly.assemblyPlayerFlowCoordinatorAssembly()
-
-        let flowCoordinator = PlayerFlowCoordinator(
-            rootNavigation: rootNavigation,
-            assembly: assemby,
-            show: { [weak self] (controller, animated) in
-                controller.modalPresentationStyle = .overCurrentContext
-                controller.modalTransitionStyle = .coverVertical
-                self?.tabBarController.present(controller, animated: animated, completion: nil)
-        })
-
-        return flowCoordinator
-    }()
+    private lazy var myNotesFlow: MyNotesFlowCoordinator = createMyNotesFlow()
+    private lazy var subscriptionsFlow: SubscriptionsFlowCoordinator = createSubscriptionsFlow()
+    private lazy var listenFlow: ListenFlowCoordinator = createListenFlow()
+    private lazy var playerFlow: PlayerFlowCoordinator = createPlayerFlow()
 
     init(
         rootNavigation: RootNavigationProtocol,
@@ -127,10 +78,6 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         }
         tabBarController.setItems(items, selectedIndex: index)
         showListenFlow(animated: true)
-
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-//            self?.showPlayer(animated: true)
-//        }
     }
 
     private func showMyNotesFlow(animated: Bool) {
@@ -168,6 +115,66 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
     private func getIndex(for tab: Tab) -> Int {
         return items.firstIndex { $0.tab == tab } ?? 0
+    }
+
+    // MARK: - Lazy loadings
+
+    private func createMyNotesFlow() -> MyNotesFlowCoordinator {
+        let assembly = self.assembly.assemblyMyNotesFlowCoordinatorAssembly()
+
+        let flowCoordinator = MyNotesFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .myNotes, animated: animated)
+        })
+
+        return flowCoordinator
+    }
+
+    private func createSubscriptionsFlow() -> SubscriptionsFlowCoordinator {
+        let assembly = self.assembly.assemblySubscriptionsFlowCoordinatorAssembly()
+
+        let flowCoordinator = SubscriptionsFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .subscriptions, animated: animated)
+        })
+
+        return flowCoordinator
+    }
+
+    private func createListenFlow() -> ListenFlowCoordinator {
+        let assembly = self.assembly.assemblyListenFlowCoordinatorAssembly()
+
+        let flowCoordinator = ListenFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .listen, animated: animated)
+            },
+            onShowPlayer: { [weak self] in
+                self?.showPlayer(animated: true)
+        })
+
+        return flowCoordinator
+    }
+
+    private func createPlayerFlow() -> PlayerFlowCoordinator {
+        let assemby = self.assembly.assemblyPlayerFlowCoordinatorAssembly()
+
+        let flowCoordinator = PlayerFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assemby,
+            show: { [weak self] (controller, animated) in
+                controller.modalPresentationStyle = .overCurrentContext
+                controller.modalTransitionStyle = .coverVertical
+                self?.tabBarController.present(controller, animated: animated, completion: nil)
+            }
+        )
+
+        return flowCoordinator
     }
 }
 

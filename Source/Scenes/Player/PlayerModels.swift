@@ -27,11 +27,13 @@ extension Player.Model {
 
 extension Player.Event {
     typealias Model = Player.Model
+
+    enum ViewDidLoad {
+        struct Request { }
+    }
     
     enum ViewDidLoadSync {
         struct Request {}
-        struct Response {}
-        struct ViewModel {}
     }
 
     enum DidTapPlayButton {

@@ -24,17 +24,6 @@ class AppCoordinator {
     init(rootNavigation: RootNavigationViewController) {
         self.appAssembly = AppAssembly()
         self.rootNavigation = rootNavigation
-
-        let postModel = ArticlePostModel(url: "https://motherboard.vice.com/en_us/article/gyakgw/the-prototype-dev-fused-iphones-that-hackers-use-to-research-apple-zero-days")
-        appAssembly.assemblyApi().generalApi.article(for: postModel) { [weak self] (result) in
-            switch result {
-            case .success(let response):
-                self?.appAssembly.assemblyPlayerManager().playAudio(from: response.audioUrl)
-
-            case .failure:
-                break
-            }
-        }
         
         rootNavigation.onRootWillAppear = { [weak self] in
             self?.startFlow()

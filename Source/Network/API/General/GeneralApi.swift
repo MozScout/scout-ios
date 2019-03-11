@@ -14,7 +14,7 @@ class GeneralApi: BaseApi {
 
     enum LoadAudioResult {
         case success
-        case failure
+        case failure(Error)
     }
 
     @discardableResult
@@ -37,8 +37,8 @@ class GeneralApi: BaseApi {
             callbackQueue: nil,
             success: {
                 completion(.success)
-        }) { (_) in
-            completion(.failure)
+        }) { (error) in
+            completion(.failure(error))
         }
     }
 
@@ -84,7 +84,7 @@ class GeneralApi: BaseApi {
 
     enum GenericArticleResult {
         case success(ArticleResponse)
-        case failure
+        case failure(Error)
     }
 
     private func genericArticle<Target: TargetType>(
@@ -99,8 +99,8 @@ class GeneralApi: BaseApi {
             success: { (response) in
                 completion(.success(response))
         },
-            error: { (_) in
-                completion(.failure)
+            error: { (error) in
+                completion(.failure(error))
         })
     }
 }

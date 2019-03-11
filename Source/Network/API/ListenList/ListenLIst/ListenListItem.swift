@@ -10,10 +10,10 @@ struct ListenListItem: Decodable {
 
     let id: String
     let title: String
-    let imageUrl: String
+    let imageUrl: URL
     let url: URL
     let type: ItemType
-    let logoUrl: String?
+    let logoUrl: URL?
     let duration: Int64
     let publisher: String?
 
@@ -34,21 +34,21 @@ struct ListenListItem: Decodable {
 
         id = try container.decode(String.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
-        imageUrl = try container.decode(String.self, forKey: .imageUrl)
+        imageUrl = try container.decode(URL.self, forKey: .imageUrl)
         url = try container.decode(URL.self, forKey: .url)
 
         let type = try container.decode(PrivateType.self, forKey: .type)
 
         switch type {
         case .article:
-            let url = try container.decode(String.self, forKey: .url)
+            let url = try container.decode(URL.self, forKey: .url)
             self.type = .article(url: url)
         case .episode:
-            let url = try container.decode(String.self, forKey: .audioUrl)
+            let url = try container.decode(URL.self, forKey: .audioUrl)
             self.type = .episode(url: url)
         }
 
-        logoUrl = try container.decodeIfPresent(String.self, forKey: .logo)
+        logoUrl = try container.decodeIfPresent(URL.self, forKey: .logo)
         duration = try container.decode(Int64.self, forKey: .duration)
         publisher = try container.decodeIfPresent(String.self, forKey: .publisher)
     }
@@ -57,8 +57,8 @@ struct ListenListItem: Decodable {
 extension ListenListItem {
 
     enum ItemType {
-        case article(url: String)
-        case episode(url: String)
+        case article(url: URL)
+        case episode(url: URL)
     }
 }
 

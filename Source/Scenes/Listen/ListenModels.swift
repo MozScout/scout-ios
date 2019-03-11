@@ -26,8 +26,8 @@ extension Listen.Model {
     struct Item {
 
         let itemId: Listen.Identifier
-        let imageUrl: String
-        let iconUrl: String?
+        let imageUrl: URL
+        let iconUrl: URL?
         let publisher: String?
         let title: String
         let duration: Int64
@@ -50,8 +50,8 @@ extension Listen.Model {
 extension Listen.Model.Item {
     enum ItemType {
 
-        case article(url: String)
-        case episode(url: String)
+        case article
+        case episode
     }
 }
 

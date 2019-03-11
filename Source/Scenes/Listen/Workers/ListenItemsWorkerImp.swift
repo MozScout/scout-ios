@@ -11,17 +11,16 @@ extension Listen {
 
     class ItemsWorkerImp {
 
-//        let listenListApi: ListenListApi
-
-//        init(listenApi: ListenListApi) {
-//            self.listenListApi = listenApi
-//        }
-
         private let listenListRepo: ListenListRepo
+        private let playerItemsProvider: PlayerItemsProviderFacade
 
-        init(listenListRepo: ListenListRepo) {
+        init(
+            listenListRepo: ListenListRepo,
+            playerItemsProvider: PlayerItemsProviderFacade
+            ) {
 
             self.listenListRepo = listenListRepo
+            self.playerItemsProvider = playerItemsProvider
         }
 
         private func map(items: [ListenListItem]) -> [Listen.Model.Item] {
@@ -62,53 +61,23 @@ extension Listen.ItemsWorkerImp: Listen.ItemsWorker {
         })
     }
 
-//    func removeItem(
-//        with itemId: Listen.Identifier,
-//        itemType: Listen.Model.Item.ItemType,
-//        completion: @escaping (Listen.ItemsWorkerRemoveItemResult) -> Void
-//        ) {
-//
-//        let postModel = DeleteListenListItemPostModel(
-//            id: itemId,
-//            type: itemType.type
-//        )
-//        listenListApi.deleteListenListItem(with: postModel) { (result) in
-//            switch result {
-//            case .success:
-//                completion(.success)
-//            case .failure:
-//                completion(.failure)
-//            }
-//        }
-//    }
-//
-//    func fetchItems(completion: @escaping (Listen.ItemsWorkerFetchItemsResult) -> Void) {
-//        listenListApi.requestListenList { (result) in
-//            switch result {
-//            case .success(let items):
-//                let items = items.map { $0.item }
-//                completion(.success(items))
-//            case .failure:
-//                completion(.failure)
-//            }
-//        }
-//    }
+    func setItemToPlayer(_ itemId: Listen.Identifier) {
+        let listenLisetProvider = ListenListPlayerItemsProvider(
+            listenListRepo: listenListRepo,
+            selectedItemId: nil
+        )
+        playerItemsProvider.setSelectedItem(
+            identifier: itemId,
+            in: listenLisetProvider
+        )
+    }
 }
-
-//private extension Listen.Model.Item.ItemType {
-//    var type: DeleteListenListItemPostModel.ItemType {
-//        switch self {
-//        case .article: return .article
-//        case .episode: return .episode
-//        }
-//    }
-//}
 
 private extension ListenListItem.ItemType {
     var type: Listen.Model.Item.ItemType {
         switch self {
-        case .article(let url): return .article(url: url)
-        case .episode(let url): return .episode(url: url)
+        case .article: return .article
+        case .episode: return .episode
         }
     }
 }

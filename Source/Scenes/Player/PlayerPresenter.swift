@@ -56,9 +56,9 @@ extension Player.PresenterImp: Player.Presenter {
         let icon: UIImage = {
             switch response.state {
             case .playing:
-                return UIImage.fxPlay
-            case .paused:
                 return UIImage.fxPause
+            case .paused:
+                return UIImage.fxPlay
             }
         }()
         let viewModel = Player.Event.PlayerStateDidUpdate.ViewModel(playButtonIcon: icon)

@@ -1,9 +1,11 @@
 import Foundation
+import RxSwift
 
 // MARK: - Protocol
 
 protocol PlayerInteractor: class {
     func onViewDidLoadSync(request: Player.Event.ViewDidLoadSync.Request)
+    func onViewDidLoad(request: Player.Event.ViewDidLoad.Request)
     func onDidTapPlayButton(request: Player.Event.DidTapPlayButton.Request)
 }
 
@@ -20,7 +22,10 @@ extension Player {
         // MARK: - Private properties
         
         private let presenter: Presenter
-        private let playerWorker: PlayerWorker
+        private let playerManager: PlayerCoordinator
+        private let playerItemsProvider: PlayerItemsProvider
+
+        private let disposeBag: DisposeBag = DisposeBag()
 
         private var sceneModel: Model.SceneModel
 
@@ -28,29 +33,71 @@ extension Player {
         
         init(
             presenter: Presenter,
-            playerWorker: PlayerWorker
+            playerManager: PlayerCoordinator,
+            playerItemsProvider: PlayerItemsProvider
             ) {
 
             self.presenter = presenter
-            self.playerWorker = playerWorker
+            self.playerManager = playerManager
+            self.playerItemsProvider = playerItemsProvider
 
             sceneModel = Model.SceneModel(
                 playerState: .paused
             )
         }
 
-        private func playerStateDidUpdate() {
+        private func loadAudio() {
+            guard
+                let identifier = playerItemsProvider.selectedItemId,
+                let item = playerItemsProvider.items.first(where: { $0.id == identifier })
+                else {
+                    return
+            }
+
+            switch item.type {
+
+            case .article(let url):
+                playerManager.playArticle(from: url)
+
+            case .episode(let url):
+                playerManager.playAudio(from: url)
+            }
+        }
+
+        private func playIfNeeded() {
             switch sceneModel.playerState {
 
             case .paused:
-                playerWorker.pause()
+                playerManager.pause()
 
             case .playing:
-                playerWorker.play()
+                playerManager.play()
             }
+        }
+
+        private func sendPlayerStateDidUpdate() {
 
             let response = Event.PlayerStateDidUpdate.Response(state: sceneModel.playerState)
             presenter.presentPlayerStateDidUpdate(response: response)
+        }
+
+        private func observePlayerState() {
+            playerManager
+                .observePlayerState()
+                .subscribe(onNext: { [weak self] (state) in
+
+                    switch state {
+
+                    case .paused:
+                        self?.sceneModel.playerState = .paused
+
+                    case .playing:
+                        self?.sceneModel.playerState = .playing
+                    }
+
+                    self?.sendPlayerStateDidUpdate()
+                })
+                .disposed(by: disposeBag)
         }
     }
 }
@@ -60,7 +107,12 @@ extension Player {
 extension Player.InteractorImp: Player.Interactor {
 
     func onViewDidLoadSync(request: Player.Event.ViewDidLoadSync.Request) {
-        playerStateDidUpdate()
+        playIfNeeded()
+        observePlayerState()
+    }
+
+    func onViewDidLoad(request: Player.Event.ViewDidLoad.Request) {
+        loadAudio()
     }
 
     func onDidTapPlayButton(request: Player.Event.DidTapPlayButton.Request) {
@@ -71,6 +123,6 @@ extension Player.InteractorImp: Player.Interactor {
             sceneModel.playerState = .paused
         }
 
-        playerStateDidUpdate()
+        playIfNeeded()
     }
 }

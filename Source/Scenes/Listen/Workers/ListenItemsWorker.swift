@@ -18,25 +18,10 @@ protocol ListenItemsWorker {
     func observeItems() -> Observable<[Listen.Model.Item]>
     func observeLoadingStatus() -> Observable<Listen.Model.LoadingStatus>
 
-//    func fetchItems(completion: @escaping (Listen.ItemsWorkerFetchItemsResult) -> Void)
-//    func removeItem(
-//        with itemId: Listen.Identifier,
-//        itemType: Listen.Model.Item.ItemType,
-//        completion:  @escaping (Listen.ItemsWorkerRemoveItemResult) -> Void
-//    )
+    func setItemToPlayer(_ itemId: Listen.Identifier)
 }
 
 extension Listen {
 
     typealias ItemsWorker = ListenItemsWorker
-
-//    enum ItemsWorkerFetchItemsResult {
-//        case success([Model.Item])
-//        case failure
-//    }
-//
-//    enum ItemsWorkerRemoveItemResult {
-//        case success
-//        case failure
-//    }
 }

@@ -61,9 +61,14 @@ class PlayerViewControllerImp: UIViewController {
         setupLeftButton()
         setupRightButton()
 
-        let request = Event.ViewDidLoadSync.Request()
+        let syncRequest = Event.ViewDidLoadSync.Request()
         sendSync { (interactor) in
-            interactor.onViewDidLoadSync(request: request)
+            interactor.onViewDidLoadSync(request: syncRequest)
+        }
+
+        let request = Event.ViewDidLoad.Request()
+        sendAsync { (interactor) in
+            interactor.onViewDidLoad(request: request)
         }
     }
 

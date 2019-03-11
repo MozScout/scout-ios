@@ -31,7 +31,11 @@ extension Listen {
 
         // MARK: -
         
-        init(presenter: Presenter, itemsFetcher: ItemsWorker) {
+        init(
+            presenter: Presenter,
+            itemsFetcher: ItemsWorker
+            ) {
+
             self.presenter = presenter
             self.itemsFetcher  = itemsFetcher
 
@@ -67,19 +71,15 @@ extension Listen.InteractorImp: Listen.Interactor {
     }
 
     func onDidSelectItem(request: Event.DidSelectItem.Request) {
-
+        itemsFetcher.setItemToPlayer(request.itemId)
     }
 
     func onDidRemoveItem(request: Event.DidRemoveItem.Request) {
-        guard let index = sceneModel.items.firstIndex(where: { request.itemId == $0.itemId }) else { return }
-        let item = sceneModel.items.remove(at: index)
-        itemsFetcher.removeItem(with: item.itemId)
-
-        updateItems()
+        itemsFetcher.removeItem(with: request.itemId)
     }
 
     func onDidPressSummary(request: Event.DidPressSummary.Request) {
-
+        itemsFetcher.setItemToPlayer(request.itemId)
     }
 
     func onDidChangeEditing(request: Event.DidChangeEditing.Request) {

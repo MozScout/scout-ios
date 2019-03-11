@@ -8,5 +8,5 @@ import Foundation
 
 struct ArticlePostModel: Encodable {
 
-    let url: String
+    let url: URL
 }

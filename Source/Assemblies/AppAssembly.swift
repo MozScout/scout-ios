@@ -14,6 +14,10 @@ class AppAssembly {
         return AppConfiguration().network.baseURL
     }()
 
+    private lazy var fileManager: FileManager = {
+        return FileManager.default
+    }()
+
     private lazy var reachabilityService: ReachabilityService = {
         return ReachabilityService()
     }()
@@ -46,12 +50,27 @@ class AppAssembly {
         return PlayerService()
     }()
 
-    private lazy var playerManager: PlayerManager = {
-        return PlayerManager(playerService: playerService, generalApi: api.generalApi)
+    private lazy var playerAudioLoader: PlayerAudioLoader = {
+        return PlayerAudioLoader(generalApi: api.generalApi, fileManager: fileManager)
+    }()
+
+    private lazy var playerCoordinator: PlayerCoordinator = {
+        return PlayerCoordinator(
+            playerService: playerService,
+            playerAudioLoader: playerAudioLoader
+        )
     }()
 
     private lazy var listenListRepo: ListenListRepo = {
         return ListenListRepo(listenListApi: api.listenListApi)
+    }()
+
+    private lazy var playerItemsProviderFacade: PlayerItemsProviderFacade = {
+        return PlayerItemsProviderFacade()
+    }()
+
+    private lazy var playerItemsProvider: PlayerItemsProvider = {
+        return playerItemsProviderFacade
     }()
 
     private lazy var api: Api = {
@@ -84,12 +103,20 @@ class AppAssembly {
         return playerService
     }
 
-    func assemblyPlayerManager() -> PlayerManager {
-        return playerManager
+    func assemblyPlayerCoordinator() -> PlayerCoordinator {
+        return playerCoordinator
     }
 
     func assemblyListenListRepo() -> ListenListRepo {
         return listenListRepo
+    }
+
+    func assemblyPlayerItemsProvider() -> PlayerItemsProvider {
+        return playerItemsProvider
+    }
+
+    func assemblyPlayerItemsProviderFacade() -> PlayerItemsProviderFacade {
+        return playerItemsProviderFacade
     }
 
     // MARK: - Flow Coordinators Assemblies -

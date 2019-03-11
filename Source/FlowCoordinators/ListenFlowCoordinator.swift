@@ -12,6 +12,7 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
 
     private let assembly: Assembly
     private let show: ShowClosure
+    private let onShowPlayer: () -> Void
 
     private lazy var navigationController: UINavigationController = {
         let navigation = UINavigationController()
@@ -27,11 +28,13 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
     init(
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly,
-        show: @escaping ShowClosure
+        show: @escaping ShowClosure,
+        onShowPlayer: @escaping () -> Void
         ) {
 
         self.assembly = assembly
         self.show = show
+        self.onShowPlayer = onShowPlayer
 
         super.init(rootNavigation: rootNavigation)
     }
@@ -41,7 +44,10 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
     }
 
     private func createScene() -> Listen.ViewControllerImp {
-        let output = Listen.Output.init()
+        let output = Listen.Output(
+            onShowPlayer: { [weak self] in
+                self?.onShowPlayer()
+        })
 
         return assembly.assemblyListen(output: output)
     }

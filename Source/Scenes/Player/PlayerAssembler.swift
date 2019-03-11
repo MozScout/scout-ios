@@ -39,14 +39,16 @@ extension Player {
 extension Player.AssemblerImp: Player.Assembler {
 
     func assembly(with output: Output) -> ViewControllerImp {
+
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
 
-        let playerWorker = Player.PlayerWorkerImp()
+        let itemsProvider = appAssembly.assemblyPlayerItemsProvider()
         let interactor = InteractorImp(
             presenter: presenter,
-            playerWorker: playerWorker
+            playerManager: appAssembly.assemblyPlayerCoordinator(),
+            playerItemsProvider: itemsProvider
         )
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(

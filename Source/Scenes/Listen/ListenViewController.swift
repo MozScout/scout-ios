@@ -234,6 +234,7 @@ extension Listen.ViewControllerImp: UITableViewDataSource {
             }
 
             strongSelf.sendDidPressSummaryRequest(with: strongSelf.itemsViewModels[indexPath.row].itemId)
+            self?.output.onShowPlayer()
         }
 
         return cell
@@ -250,6 +251,7 @@ extension Listen.ViewControllerImp: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sendDidSelectItemRequest(with: itemsViewModels[indexPath.row].itemId)
+        output.onShowPlayer()
     }
 
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

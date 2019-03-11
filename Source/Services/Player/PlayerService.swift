@@ -25,6 +25,10 @@ class PlayerService: NSObject {
         return player?.isPlaying ?? false
     }
 
+    public var url: URL? {
+        return player?.url
+    }
+
     // MARK: - Public methods
 
     func setAudio(from url: URL?) {
