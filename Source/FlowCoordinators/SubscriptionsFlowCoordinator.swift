@@ -54,7 +54,10 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
         )
         let subscriptions = assembly.assemblySubscriptions(output: output)
 
-        return createNavigationBarContainer(with: subscriptions)
+        let navigationBarController = createNavigationBarContainer(with: subscriptions)
+        navigationBarController.definesPresentationContext = true
+
+        return navigationBarController
     }
 
     private func createNavigationBarContainer(
@@ -71,13 +74,14 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
 
     private func runAddSubscriptionScene() {
         let output = AddSubscription.Output(onCancelAction: { [weak self] in
-            self?.navigationController.popViewController(animated: true)
+            self?.navigationController.topViewController?.dismiss(animated: true, completion: nil)
         })
         let scene = assembly.assemblyAddSubscription(output: output)
 
         let navigationBarController = createNavigationBarContainer(with: scene)
+        navigationBarController.modalPresentationStyle = .overCurrentContext
 
-        navigationController.pushViewController(navigationBarController, animated: true)
+        navigationController.topViewController?.present(navigationBarController, animated: true, completion: nil)
     }
 }
 

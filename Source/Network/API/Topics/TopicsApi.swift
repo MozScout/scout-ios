@@ -22,7 +22,8 @@ class TopicsApi: BaseApi {
 
         let target = TopicsTarget(
             baseURL: baseUrl,
-            request: .topicList
+            request: .topicList,
+            tokenProvider: accessTokenProvider
         )
 
         return apiClient.requestObject(
@@ -51,7 +52,8 @@ class TopicsApi: BaseApi {
 
         let target = TopicsTarget(
             baseURL: baseUrl,
-            request: .subtopicList(requestParameters)
+            request: .subtopicList(requestParameters),
+            tokenProvider: accessTokenProvider
         )
 
         return apiClient.requestObject(
@@ -79,7 +81,8 @@ class TopicsApi: BaseApi {
 
         let target = TopicsTarget(
             baseURL: baseUrl,
-            request: .subscribedTopicsList
+            request: .subscribedTopicsList,
+            tokenProvider: accessTokenProvider
         )
 
         return apiClient.requestObject(

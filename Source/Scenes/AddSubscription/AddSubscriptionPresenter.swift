@@ -7,6 +7,8 @@ protocol AddSubscriptionPresenter {
 
     func presentViewDidLoad(response: Event.ViewDidLoad.Response)
     func presentTopicsDidUpdate(response: Event.TopicsDidUpdate.Response)
+    func presentDidStartFetching(response: Event.DidStartFetching.Response)
+    func presentDidEndFetching(response: Event.DidEndFetching.Response)
 }
 
 extension AddSubscription {
@@ -94,6 +96,18 @@ extension AddSubscription.PresenterImp: AddSubscription.Presenter {
         let viewModel = Event.TopicsDidUpdate.ViewModel(items: response.items.map( { sectionViewModelFromSection($0) } ))
         self.displayAsync { (viewController) in
             viewController.displayTopicsDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentDidStartFetching(response: Event.DidStartFetching.Response) {
+        displayAsync { (viewController) in
+            viewController.displayDidStartFetching(viewModel: Event.DidStartFetching.ViewModel())
+        }
+    }
+
+    func presentDidEndFetching(response: Event.DidEndFetching.Response) {
+        displayAsync { (viewController) in
+            viewController.displayDidEndFetching(viewModel: Event.DidEndFetching.ViewModel())
         }
     }
 }

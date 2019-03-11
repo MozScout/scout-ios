@@ -8,7 +8,7 @@ import UIKit
 
 class CategorySectionHeaderView: UICollectionReusableView {
 
-    struct ViewModel {
+    struct ViewModel: Equatable {
         let title: String
     }
 

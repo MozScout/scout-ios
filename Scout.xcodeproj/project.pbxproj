@@ -115,6 +115,9 @@
 		66254351219B576300379011 /* jarvis.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 66254350219B576300379011 /* jarvis.umdl */; };
 		66254353219B57CE00379011 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 66254352219B57CE00379011 /* common.res */; };
 		6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651984421B17400007CB029 /* SwipeableTabViewController.swift */; };
+		7737FA2A222E89FA00D36DD9 /* CategorySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */; };
+		7737FA2C222E8A0A00D36DD9 /* CategorySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */; };
+		7737FA2F222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */; };
 		773D173222254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */; };
 		773D173422254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */; };
 		773D173722254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172B22254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf */; };
@@ -124,6 +127,8 @@
 		773D173C22254A92003CAEE2 /* SF-Compact-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */; };
 		773D173D22254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */; };
 		773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */; };
+		774437FD2231140400218939 /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774437FC2231140400218939 /* KeyboardController.swift */; };
+		77443800223159A400218939 /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774437FF223159A400218939 /* UIViewController+Loading.swift */; };
 		776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309CD2223E86300D69BA7 /* UIView+Fade.swift */; };
 		776309D62224394700D69BA7 /* ListenAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D02224394700D69BA7 /* ListenAssembler.swift */; };
 		776309D92224394700D69BA7 /* ListenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D32224394700D69BA7 /* ListenViewController.swift */; };
@@ -137,11 +142,6 @@
 		776B180C22297D3200B422DC /* ListenViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776309DC22243F6500D69BA7 /* ListenViewControllerImp.xib */; };
 		776B180D22297D3700B422DC /* ListenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309E02224417000D69BA7 /* ListenTableViewCell.swift */; };
 		776B180E22297D3E00B422DC /* ListenItemsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776B17FA22292BE600B422DC /* ListenItemsWorker.swift */; };
-		7737FA2A222E89FA00D36DD9 /* CategorySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */; };
-		7737FA2C222E8A0A00D36DD9 /* CategorySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */; };
-		7737FA2F222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */; };
-		773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */; };
-		776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309CD2223E86300D69BA7 /* UIView+Fade.swift */; };
 		778DB073222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DB072222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift */; };
 		77C51E74222DA56A008E4B0C /* AddSubscriptionAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E6E222DA56A008E4B0C /* AddSubscriptionAssembler.swift */; };
 		77C51E75222DA56A008E4B0C /* AddSubscriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E6F222DA56A008E4B0C /* AddSubscriptionPresenter.swift */; };
@@ -376,6 +376,9 @@
 		66254352219B57CE00379011 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		6651984421B17400007CB029 /* SwipeableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabViewController.swift; sourceTree = "<group>"; };
 		68B2C43C400B5A659D25EA02 /* Pods_Scout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySectionHeaderView.swift; sourceTree = "<group>"; };
+		7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorySectionHeaderView.xib; sourceTree = "<group>"; };
+		7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionTopicsWorker.swift; sourceTree = "<group>"; };
 		773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		773D172722254A92003CAEE2 /* SF-Compact-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
 		773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-LightItalic.otf"; sourceTree = "<group>"; };
@@ -388,10 +391,9 @@
 		773D172F22254A92003CAEE2 /* SF-Compact-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Medium.otf"; sourceTree = "<group>"; };
 		773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Heavy.otf"; sourceTree = "<group>"; };
 		773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-MediumItalic.otf"; sourceTree = "<group>"; };
-		7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySectionHeaderView.swift; sourceTree = "<group>"; };
-		7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorySectionHeaderView.xib; sourceTree = "<group>"; };
-		7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionTopicsWorker.swift; sourceTree = "<group>"; };
 		773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTopicsFetcher.swift; sourceTree = "<group>"; };
+		774437FC2231140400218939 /* KeyboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
+		774437FF223159A400218939 /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		774D54E222268B18009ADABF /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		776309CD2223E86300D69BA7 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
 		776309D02224394700D69BA7 /* ListenAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenAssembler.swift; sourceTree = "<group>"; };
@@ -614,15 +616,14 @@
 			isa = PBXGroup;
 			children = (
 				776B180722297C1A00B422DC /* UITableView+Register.swift */,
-				77F1D231221C622100E640C3 /* UIColor */,
 				28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */,
 				77F1D207221C47D300E640C3 /* String+QueueLabel.swift */,
 				77E1E05C221D718D006B1084 /* UIFont+Design.swift */,
 				776309CD2223E86300D69BA7 /* UIView+Fade.swift */,
 				28123296221EC298001B99C7 /* TargetType+Extensions.swift */,
 				2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */,
-				2805F8F92223EA9A006BA14F /* UIViewController+Extensions.swift */,
-				2805F8FD222424DE006BA14F /* UIViewController+Nib.swift */,
+				774437FE2231593300218939 /* UIViewController */,
+				77F1D231221C622100E640C3 /* UIColor */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1133,25 +1134,6 @@
 			path = SwipeableTabViewController;
 			sourceTree = "<group>";
 		};
-		773D172522254A58003CAEE2 /* SFCompactText */ = {
-			isa = PBXGroup;
-			children = (
-				773D172922254A92003CAEE2 /* SF-Compact-Text-Bold.otf */,
-				773D172B22254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf */,
-				773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */,
-				773D172722254A92003CAEE2 /* SF-Compact-Text-HeavyItalic.otf */,
-				773D172C22254A92003CAEE2 /* SF-Compact-Text-Light.otf */,
-				773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */,
-				773D172F22254A92003CAEE2 /* SF-Compact-Text-Medium.otf */,
-				773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */,
-				773D172D22254A92003CAEE2 /* SF-Compact-Text-Regular.otf */,
-				773D172A22254A92003CAEE2 /* SF-Compact-Text-RegularItalic.otf */,
-				773D172E22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf */,
-				773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */,
-			);
-			path = SFCompactText;
-			sourceTree = "<group>";
-		};
 		7737FA27222E89BE00D36DD9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1177,6 +1159,25 @@
 			path = Workers;
 			sourceTree = "<group>";
 		};
+		773D172522254A58003CAEE2 /* SFCompactText */ = {
+			isa = PBXGroup;
+			children = (
+				773D172922254A92003CAEE2 /* SF-Compact-Text-Bold.otf */,
+				773D172B22254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf */,
+				773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */,
+				773D172722254A92003CAEE2 /* SF-Compact-Text-HeavyItalic.otf */,
+				773D172C22254A92003CAEE2 /* SF-Compact-Text-Light.otf */,
+				773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */,
+				773D172F22254A92003CAEE2 /* SF-Compact-Text-Medium.otf */,
+				773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */,
+				773D172D22254A92003CAEE2 /* SF-Compact-Text-Regular.otf */,
+				773D172A22254A92003CAEE2 /* SF-Compact-Text-RegularItalic.otf */,
+				773D172E22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf */,
+				773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */,
+			);
+			path = SFCompactText;
+			sourceTree = "<group>";
+		};
 		773D173E222582D2003CAEE2 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1184,6 +1185,16 @@
 				773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		774437FE2231593300218939 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2805F8F92223EA9A006BA14F /* UIViewController+Extensions.swift */,
+				2805F8FD222424DE006BA14F /* UIViewController+Nib.swift */,
+				774437FF223159A400218939 /* UIViewController+Loading.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		776309CF2224389E00D69BA7 /* Listen */ = {
@@ -1208,6 +1219,35 @@
 				776309DF2224414A00D69BA7 /* ListenCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		776309DF2224414A00D69BA7 /* ListenCell */ = {
+			isa = PBXGroup;
+			children = (
+				776309E02224417000D69BA7 /* ListenTableViewCell.swift */,
+				776309E22224418700D69BA7 /* ListenTableViewCell.xib */,
+			);
+			path = ListenCell;
+			sourceTree = "<group>";
+		};
+		776B17F922292BAE00B422DC /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				28CFCA73222E9A0000D1E477 /* ListenDurationFormatter.swift */,
+				28CFCA75222E9A2900D1E477 /* ListenDurationFormatterImp.swift */,
+				776B17FA22292BE600B422DC /* ListenItemsWorker.swift */,
+				28CFCA71222E96CA00D1E477 /* ListenItemsWorkerImp.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		776B180022297A4900B422DC /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				776B17FD222948D800B422DC /* ListenFlowCoordinator.swift */,
+				774D54E222268B18009ADABF /* UITableView+Register.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		778DB071222FC08400EAD93A /* TopicsWorker */ = {
@@ -1241,35 +1281,6 @@
 				77C51E7D222DAC99008E4B0C /* RoundTopicCell */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		776309DF2224414A00D69BA7 /* ListenCell */ = {
-			isa = PBXGroup;
-			children = (
-				776309E02224417000D69BA7 /* ListenTableViewCell.swift */,
-				776309E22224418700D69BA7 /* ListenTableViewCell.xib */,
-			);
-			path = ListenCell;
-			sourceTree = "<group>";
-		};
-		776B17F922292BAE00B422DC /* Workers */ = {
-			isa = PBXGroup;
-			children = (
-				28CFCA73222E9A0000D1E477 /* ListenDurationFormatter.swift */,
-				28CFCA75222E9A2900D1E477 /* ListenDurationFormatterImp.swift */,
-				776B17FA22292BE600B422DC /* ListenItemsWorker.swift */,
-				28CFCA71222E96CA00D1E477 /* ListenItemsWorkerImp.swift */,
-			);
-			path = Workers;
-			sourceTree = "<group>";
-		};
-		776B180022297A4900B422DC /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				776B17FD222948D800B422DC /* ListenFlowCoordinator.swift */,
-				774D54E222268B18009ADABF /* UITableView+Register.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		77C51E7D222DAC99008E4B0C /* RoundTopicCell */ = {
@@ -1332,6 +1343,7 @@
 				77F1D20A221C485E00E640C3 /* Weak.swift */,
 				77F1D20C221C48A500E640C3 /* Dispatcher.swift */,
 				77E1E085221D9281006B1084 /* GradientView.swift */,
+				774437FC2231140400218939 /* KeyboardController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1660,8 +1672,6 @@
 				F482CD282080D225007D0C14 /* Products */,
 				C12A1785D5392A7CBD7BC993 /* Pods */,
 				CB7EFAB84D8FB19607FC04A4 /* Frameworks */,
-				CD9158217DD3454E7A83BCF1 /* Pods */,
-				3D93A65149EFF87EF72B97AC /* Frameworks */,
 				776B180022297A4900B422DC /* Recovered References */,
 			);
 			sourceTree = "<group>";
@@ -2091,6 +2101,7 @@
 				8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */,
 				776B180622297BFF00B422DC /* ListenFlowCoordinator.swift in Sources */,
 				F4A23BB82081120D006EC9E3 /* ApplicationRouter.swift in Sources */,
+				774437FD2231140400218939 /* KeyboardController.swift in Sources */,
 				5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */,
 				77F1D228221C496800E640C3 /* OnboardingOutput.swift in Sources */,
 				776309DA2224394700D69BA7 /* ListenInteractor.swift in Sources */,
@@ -2156,7 +2167,6 @@
 				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
 				28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
-				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				776309D62224394700D69BA7 /* ListenAssembler.swift in Sources */,
 				7737FA2A222E89FA00D36DD9 /* CategorySectionHeaderView.swift in Sources */,
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
@@ -2228,6 +2238,7 @@
 				5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */,
 				2801F9A12225B82D00283F1B /* LoadingOverlayViewController.swift in Sources */,
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
+				77443800223159A400218939 /* UIViewController+Loading.swift in Sources */,
 				8637E7F5215CFDED008563E9 /* PodcastsRoutingProtocol.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
 				2812329B221EFE5E001B99C7 /* TabBarContainerController.swift in Sources */,

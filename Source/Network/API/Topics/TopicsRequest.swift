@@ -17,6 +17,7 @@ struct TopicsTarget: TargetType {
     
     let baseURL: URL
     let request: TopicsRequest
+    let tokenProvider: RequestAuthorizationTokenProvider
 
     var path: String {
         switch request {
@@ -56,6 +57,17 @@ struct TopicsTarget: TargetType {
     }
 
     var headers: [String: String]? {
-        return nil
+        switch request {
+        case .subscribedTopicsList:
+            if let token = tokenProvider.bearerToken {
+                return ["Authorization": "Bearer \(token)"]
+            } else {
+                print(.error(error: "No authorization token"))
+                return nil
+            }
+        case .topicList,
+             .subtopicList:
+            return nil
+        }
     }
 }

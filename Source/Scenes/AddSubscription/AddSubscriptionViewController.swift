@@ -1,4 +1,5 @@
 import UIKit
+import DifferenceKit
 
 // MARK: - Protocol
 
@@ -7,6 +8,8 @@ protocol AddSubscriptionViewController: class {
 
     func displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel)
     func displayTopicsDidUpdate(viewModel: Event.TopicsDidUpdate.ViewModel)
+    func displayDidStartFetching(viewModel: Event.DidStartFetching.ViewModel)
+    func displayDidEndFetching(viewModel: Event.DidEndFetching.ViewModel)
 }
 
 extension AddSubscription {
@@ -89,22 +92,16 @@ class AddSubscriptionViewControllerImp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        sendViewDidLoadRequest()
         setupNavigationBar()
         setupCollectionView()
+        setupKeyboardController()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        let insets = UIEdgeInsets(
-            top: topOverlayHeight(view: collectionView),
-            left: collectionView.contentInset.left,
-            bottom: bottomOverlayHeight(view: collectionView),
-            right: collectionView.contentInset.right
-        )
-
-        collectionView.contentInset = insets
-        collectionView.scrollIndicatorInsets = insets
+        setCollectionViewInsets(with: KeyboardController.shared.attributes)
     }
 
     // MARK: - Private methods
@@ -126,6 +123,18 @@ class AddSubscriptionViewControllerImp: UIViewController {
 
 private extension AddSubscription.ViewControllerImp {
 
+    func setupKeyboardController() {
+        let keyboardObserver = KeyboardObserver(self) { [weak self] (attributes) in
+            self?.setCollectionViewInsets(with: attributes)
+        }
+
+        KeyboardController.shared.add(observer: keyboardObserver)
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(gesture)
+    }
+
     func setupNavigationBar() {
         let navigationBar = SearchNavigationBar.loadFromNib()
         navigationBar.onClose = { [weak self] in
@@ -138,6 +147,8 @@ private extension AddSubscription.ViewControllerImp {
         collectionView.dataSource = self
         collectionView.delegate = self
 
+        collectionView.keyboardDismissMode = .onDrag
+
         let bundle = Bundle(for: RoundTopicCell.self)
         let cellIdentifier = String(describing: RoundTopicCell.self)
         let cellNib = UINib(nibName: cellIdentifier, bundle: bundle)
@@ -146,6 +157,46 @@ private extension AddSubscription.ViewControllerImp {
         let headerIdentifier = String(describing: CategorySectionHeaderView.self)
         let headerNib = UINib(nibName: headerIdentifier, bundle: bundle)
         collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+    }
+
+    func sendViewDidLoadRequest() {
+        interactorDispatcher.async { (interactor) in
+            interactor.onViewDidLoad(request: Event.ViewDidLoad.Request())
+        }
+    }
+
+    func setCollectionViewInsets(with attributes: KeyboardAttributes?) {
+        let insets = UIEdgeInsets(
+            top: topOverlayHeight(view: collectionView),
+            left: collectionView.contentInset.left,
+            bottom: max(bottomOverlayHeight(view: collectionView), attributes?.heightInContainerView(view, view: collectionView) ?? 0),
+            right: collectionView.contentInset.right
+        )
+
+        let bottomDifference = insets.bottom - collectionView.contentInset.bottom
+
+        collectionView.contentInset = insets
+        collectionView.scrollIndicatorInsets = insets
+
+        if let attributes = attributes {
+            if attributes.showingIn(view: view) {
+                let newContentOffset = CGPoint(x: collectionView.contentOffset.x, y: collectionView.contentOffset.y + bottomDifference)
+
+                UIView.animate(withKeyboardAttributes: attributes, animations: {
+                    self.collectionView.contentOffset = newContentOffset
+                })
+            }
+        }
+    }
+
+    func reloadCollectionView(with sections: [Model.SectionViewModel]) {
+        sectionsViewModels = sections
+
+        collectionView.reloadData()
+    }
+
+    @objc func hideKeyboard() {
+        navigationBarContainer?.view.endEditing(true)
     }
 }
 
@@ -156,8 +207,15 @@ extension AddSubscription.ViewControllerImp: AddSubscription.ViewController {
     }
 
     func displayTopicsDidUpdate(viewModel: Event.TopicsDidUpdate.ViewModel) {
-            sectionsViewModels = viewModel.items
-            collectionView.reloadData()
+            reloadCollectionView(with: viewModel.items)
+    }
+
+    func displayDidStartFetching(viewModel: Event.DidStartFetching.ViewModel) {
+        view.showLoading()
+    }
+
+    func displayDidEndFetching(viewModel: Event.DidEndFetching.ViewModel) {
+        view.hideLoading()
     }
 }
 

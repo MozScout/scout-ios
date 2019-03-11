@@ -9,6 +9,8 @@ protocol ListenViewController: class {
     func displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel)
     func displayItemsDidUpdate(viewModel: Event.ItemsDidUpdate.ViewModel)
     func displayDidChangeEditing(viewModel: Event.DidChangeEditing.ViewModel)
+    func displayDidStartFetching(viewModel: Event.DidStartFetching.ViewModel)
+    func displayDidEndFetching(viewModel: Event.DidEndFetching.ViewModel)
 }
 
 // MARK: - Declaration
@@ -202,6 +204,14 @@ extension Listen.ViewControllerImp: Listen.ViewController {
     func displayDidChangeEditing(viewModel: Event.DidChangeEditing.ViewModel) {
         editButton.setTitle(viewModel.editingButtonTitle, for: .normal)
         tableView.setEditing(viewModel.isEditing, animated: true)
+    }
+
+    func displayDidStartFetching(viewModel: Event.DidStartFetching.ViewModel) {
+        view.showLoading()
+    }
+
+    func displayDidEndFetching(viewModel: Event.DidEndFetching.ViewModel) {
+        view.hideLoading()
     }
 }
 

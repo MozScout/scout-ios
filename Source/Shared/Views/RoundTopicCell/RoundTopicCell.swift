@@ -9,7 +9,7 @@ import DifferenceKit
 
 class RoundTopicCell: UICollectionViewCell {
 
-    struct ViewModel: Differentiable {
+    struct ViewModel: Differentiable, Equatable {
         let topicId: String
         let title: String
         let imageUrl: URL?
@@ -20,7 +20,7 @@ class RoundTopicCell: UICollectionViewCell {
         }
 
         func isContentEqual(to source: RoundTopicCell.ViewModel) -> Bool {
-            return title == source.title && imageUrl == source.imageUrl && isSelected == source.isSelected
+            return self == source
         }
     }
 

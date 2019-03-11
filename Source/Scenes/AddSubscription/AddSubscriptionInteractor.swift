@@ -40,7 +40,8 @@ extension AddSubscription.InteractorImp: AddSubscription.Interactor {
 
     func onViewDidLoad(request: Event.ViewDidLoad.Request) {
         let response = Event.ViewDidLoad.Response()
-        self.presenter.presentViewDidLoad(response: response)
+        presenter.presentViewDidLoad(response: response)
+        presenter.presentDidStartFetching(response: Event.DidStartFetching.Response())
 
         topicsWorker.fetchTopics { [weak self] (result) in
             switch result {
@@ -51,6 +52,8 @@ extension AddSubscription.InteractorImp: AddSubscription.Interactor {
                 // FIXME - Handle error
                 break
             }
+
+            self?.presenter.presentDidEndFetching(response: Event.DidEndFetching.Response())
         }
     }
 }

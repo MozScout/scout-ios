@@ -27,8 +27,8 @@ extension Listen.Model {
 
         let itemId: Listen.Identifier
         let imageUrl: String
-        let iconUrl: String
-        let publisher: String
+        let iconUrl: String?
+        let publisher: String?
         let title: String
         let duration: Int64
         let type: ItemType
@@ -127,10 +127,15 @@ extension Listen.Event {
         struct Request {}
     }
 
-//    enum <#Event#> {
-//
-//        struct Request {}
-//        struct Response {}
-//        struct ViewModel {}
-//    }
+    enum DidStartFetching {
+
+        struct Response {}
+        struct ViewModel {}
+    }
+
+    enum DidEndFetching {
+
+        struct Response {}
+        struct ViewModel {}
+    }
 }

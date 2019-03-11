@@ -1,4 +1,5 @@
 import Foundation
+import DifferenceKit
 
 // MARK: - Namespace
 
@@ -24,8 +25,8 @@ extension AddSubscription.Model {
         var items: [Section]
     }
 
-    struct SectionViewModel {
-
+    struct SectionViewModel: Equatable {
+        
         let sectionHeader: CategorySectionHeaderView.ViewModel
         let topics: [RoundTopicCell.ViewModel]
     }
@@ -72,5 +73,17 @@ extension AddSubscription.Event {
 
             var items: [Model.SectionViewModel]
         }
+    }
+
+    enum DidStartFetching {
+
+        struct Response {}
+        struct ViewModel {}
+    }
+
+    enum DidEndFetching {
+
+        struct Response {}
+        struct ViewModel {}
     }
 }

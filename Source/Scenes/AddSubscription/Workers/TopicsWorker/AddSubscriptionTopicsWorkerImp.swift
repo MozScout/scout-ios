@@ -63,10 +63,25 @@ extension AddSubscriptionTopicsWorkerImp: AddSubscriptionTopicsWorker {
         dispatchGroup.notify(queue: queue) { [weak self] in
             guard let strongSelf = self else { return }
 
-            guard let subscribedTopics = subscribedTopics, let topicsList = topicsList else {
+            guard var subscribedTopics = subscribedTopics, var topicsList = topicsList else {
                 completion(.failure)
                 return
             }
+
+            topicsList.removeAll(where: { (topic) -> Bool in
+                return subscribedTopics.contains(where: { (subscribedTopic) -> Bool in
+                    return subscribedTopic.id == topic.id
+                })
+            })
+
+            subscribedTopics.insert(
+                Topic(
+                    id: "top_100_podcasts",
+                    name: "Top 100 Podcasts",
+                    imageUrl: ""
+                ),
+                at: 0
+            )
 
             let response = [
                 AddSubscription.Model.Section(category: .like, topics: subscribedTopics.map { strongSelf.addSubscriptionTopicFromTopic($0) }),
