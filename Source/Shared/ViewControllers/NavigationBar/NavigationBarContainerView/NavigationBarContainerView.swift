@@ -14,15 +14,29 @@ class NavigationBarContainerView: UIView {
     @IBOutlet private weak var gradientSeparator: GradientView!
     @IBOutlet private weak var gradientSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var contentContainerView: UIView!
+    @IBOutlet private weak var contentContainerViewBottomConstraint: NSLayoutConstraint!
 
     private var currentContent: UIView?
 
-    private let gradientSeparatorHeight: CGFloat = 3
+    public let gradientSeparatorHeight: CGFloat = 3
+    public let contentHeight: CGFloat = 44
 
     // MARK: - Public properties
 
     public var collapsedHeight: CGFloat {
-        return gradientSeparatorHeight
+        return gradientSeparatorHeight + safeAreaInsets.top
+    }
+
+    public var expandedHeight: CGFloat {
+        return collapsedHeight + contentHeight
+    }
+
+    public var currentHeight: CGFloat {
+        return collapsedHeight + currentConstant
+    }
+
+    public var currentConstant: CGFloat {
+        return contentContainerViewBottomConstraint.constant
     }
 
     // MARK: - Initializers
@@ -56,6 +70,13 @@ class NavigationBarContainerView: UIView {
             make.edges.equalToSuperview()
         }
         currentContent = content
+    }
+
+    public func set(_ constant: CGFloat) {
+        let percent = constant / (expandedHeight - collapsedHeight)
+        contentContainerView.alpha = percent
+
+        contentContainerViewBottomConstraint.constant = constant
     }
 
     // MARK: - Private methods

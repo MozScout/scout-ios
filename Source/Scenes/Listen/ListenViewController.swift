@@ -78,15 +78,17 @@ class ListenViewControllerImp: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        let insets = UIEdgeInsets(
-            top: topOverlayHeight(view: tableView),
-            left: tableView.contentInset.left,
-            bottom: bottomOverlayHeight(view: tableView),
-            right: tableView.contentInset.right
-        )
+        DispatchQueue.main.async {
+            let insets = UIEdgeInsets(
+                top: self.topOverlayHeight(view: self.tableView),
+                left: self.tableView.contentInset.left,
+                bottom: self.bottomOverlayHeight(view: self.tableView),
+                right: self.tableView.contentInset.right
+            )
 
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
+            self.tableView.contentInset = insets
+            self.tableView.scrollIndicatorInsets = insets
+        }
     }
 
     // MARK: - Private methods

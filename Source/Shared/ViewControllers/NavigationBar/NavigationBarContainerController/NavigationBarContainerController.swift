@@ -44,8 +44,8 @@ class NavigationBarContainerController: UIViewController {
 
     func navigationBarIntersectionRectIn(view: UIView) -> CGRect {
         var bounds = navigationBarContainerView.bounds
-        bounds.origin.x += navigationBarContainerView.transform.tx
-        bounds.origin.y += navigationBarContainerView.transform.ty
+        let difference = navigationBarContainerView.expandedHeight - navigationBarContainerView.currentHeight
+        bounds.size.height += difference
         let converted = view.convert(bounds, from: navigationBarContainerView)
         let intersection = view.bounds.intersection(converted)
         return intersection.isNull ? CGRect.zero : intersection
@@ -86,7 +86,7 @@ class NavigationBarContainerController: UIViewController {
     }
 
     private func updateHeaderLayout() {
-        let currentConstant: CGFloat = navigationBarContainerView.transform.ty
+        let currentConstant: CGFloat = navigationBarContainerView.currentConstant
 
         let newConstant: CGFloat = {
             if hidesNavigationBarOnScroll {
@@ -102,20 +102,20 @@ class NavigationBarContainerController: UIViewController {
                 }
 
                 let offsetDifference = previousContentOffset - contentOffset
-                let constraintMinimum: CGFloat = 0
-                let constraintMaximum: CGFloat = navigationBarContainerView.collapsedHeight - navigationBarContainerView.frame.height
+                let constraintMinimum: CGFloat = navigationBarContainerView.contentHeight
+                let constraintMaximum: CGFloat = 0
 
                 var newConstant: CGFloat = currentConstant + offsetDifference
                 newConstant = max(newConstant, constraintMaximum)
                 newConstant = min(newConstant, constraintMinimum)
                 return newConstant
             } else {
-                return 0
+                return navigationBarContainerView.contentHeight
             }
         }()
 
         guard newConstant != currentConstant else { return }
-        navigationBarContainerView.transform = CGAffineTransform(translationX: 0, y: newConstant)
+        navigationBarContainerView.set(newConstant)
     }
 }
 

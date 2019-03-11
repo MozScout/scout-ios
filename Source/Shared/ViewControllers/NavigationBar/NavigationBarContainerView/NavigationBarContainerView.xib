@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationBarContainerView" customModule="Scout" customModuleProvider="target">
             <connections>
                 <outlet property="contentContainerView" destination="LvQ-1k-Ark" id="SPm-0o-PhL"/>
+                <outlet property="contentContainerViewBottomConstraint" destination="zt9-be-YBN" id="lqY-Kj-cDg"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="nyx-pO-yw4"/>
                 <outlet property="gradientSeparator" destination="Ofx-jv-gYo" id="gUt-N7-TCY"/>
                 <outlet property="gradientSeparatorHeightConstraint" destination="511-4a-rvX" id="WwK-Sn-Q6R"/>
@@ -58,7 +59,7 @@
                 <constraint firstAttribute="trailing" secondItem="ftY-lU-2f3" secondAttribute="trailing" id="oLL-OB-FTx"/>
                 <constraint firstAttribute="bottom" secondItem="Ofx-jv-gYo" secondAttribute="bottom" id="qvP-Ao-9GJ"/>
                 <constraint firstItem="LvQ-1k-Ark" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wWw-nZ-jvl"/>
-                <constraint firstItem="LvQ-1k-Ark" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zt9-be-YBN"/>
+                <constraint firstItem="LvQ-1k-Ark" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="top" constant="44" id="zt9-be-YBN"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
