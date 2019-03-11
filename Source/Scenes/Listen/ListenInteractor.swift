@@ -47,7 +47,7 @@ extension Listen {
 
 private extension Listen.InteractorImp {
 
-    func fetchItems() {
+    func fetchItems(completion: (() -> Void)? = nil) {
         itemsFetcher.fetchItems { [weak self] (result) in
             switch result {
             case .success(let items):
@@ -55,8 +55,10 @@ private extension Listen.InteractorImp {
                 self?.updateItems()
             case .failure:
                 // FIXME: - Handle error
-                return
+                break
             }
+
+            completion?()
         }
     }
 
@@ -71,7 +73,10 @@ extension Listen.InteractorImp: Listen.Interactor {
 
     func onViewDidLoad(request: Event.ViewDidLoad.Request) {
         presenter.presentViewDidLoad(response: Event.ViewDidLoad.Response())
-        fetchItems()
+        presenter.presentDidStartFetching(response: Event.DidStartFetching.Response())
+        fetchItems { [weak self] in
+            self?.presenter.presentDidEndFetching(response: Event.DidEndFetching.Response())
+        }
     }
 
     func onDidSelectItem(request: Event.DidSelectItem.Request) {

@@ -1,5 +1,5 @@
 //
-//  OnboardingCollectionViewCell.swift
+//  RoundTopicCell.swift
 //  Scout
 //
 //
@@ -7,9 +7,9 @@
 import UIKit
 import DifferenceKit
 
-class OnboardingCollectionViewCell: UICollectionViewCell {
+class RoundTopicCell: UICollectionViewCell {
 
-    struct ViewModel: Differentiable {
+    struct ViewModel: Differentiable, Equatable {
         let topicId: String
         let title: String
         let imageUrl: URL?
@@ -19,8 +19,8 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
             return topicId
         }
 
-        func isContentEqual(to source: OnboardingCollectionViewCell.ViewModel) -> Bool {
-            return title == source.title && imageUrl == source.imageUrl && isSelected == source.isSelected
+        func isContentEqual(to source: RoundTopicCell.ViewModel) -> Bool {
+            return self == source
         }
     }
 
@@ -67,7 +67,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - Private
-private extension OnboardingCollectionViewCell {
+private extension RoundTopicCell {
 
     var circlePath: CGPath? {
         let arcCenter = maskLayer.position

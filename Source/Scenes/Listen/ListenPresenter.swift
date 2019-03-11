@@ -8,6 +8,8 @@ protocol ListenPresenter {
     func presentViewDidLoad(response: Event.ViewDidLoad.Response)
     func presentItemsDidUpdate(response: Event.ItemsDidUpdate.Response)
     func presentDidChangeEditing(response: Event.DidChangeEditing.Response)
+    func presentDidStartFetching(response: Event.DidStartFetching.Response)
+    func presentDidEndFetching(response: Event.DidEndFetching.Response)
 }
 
 extension Listen {
@@ -84,6 +86,18 @@ extension Listen.PresenterImp: Listen.Presenter {
             viewController.displayDidChangeEditing(viewModel: viewModel)
         }
     }
+
+    func presentDidStartFetching(response: Event.DidStartFetching.Response) {
+        displayAsync { (viewController) in
+            viewController.displayDidStartFetching(viewModel: Event.DidStartFetching.ViewModel())
+        }
+    }
+
+    func presentDidEndFetching(response: Event.DidEndFetching.Response) {
+        displayAsync { (viewController) in
+            viewController.displayDidEndFetching(viewModel: Event.DidEndFetching.ViewModel())
+        }
+    }
 }
 
 private extension Listen.Model.Item {
@@ -104,7 +118,7 @@ private extension Listen.Model.Item {
         return ListenTableViewCell.ViewModel(
             itemId: itemId,
             imageUrl: URL(string: imageUrl),
-            iconUrl: URL(string: iconUrl),
+            iconUrl: iconUrl != nil ? URL(string: iconUrl!) : nil,
             publisher: publisher,
             title: title,
             duration: durationFormatter.format(duration: duration),

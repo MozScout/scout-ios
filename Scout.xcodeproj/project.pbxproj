@@ -115,6 +115,9 @@
 		66254351219B576300379011 /* jarvis.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 66254350219B576300379011 /* jarvis.umdl */; };
 		66254353219B57CE00379011 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 66254352219B57CE00379011 /* common.res */; };
 		6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651984421B17400007CB029 /* SwipeableTabViewController.swift */; };
+		7737FA2A222E89FA00D36DD9 /* CategorySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */; };
+		7737FA2C222E8A0A00D36DD9 /* CategorySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */; };
+		7737FA2F222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */; };
 		773D173222254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */; };
 		773D173422254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */; };
 		773D173722254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172B22254A92003CAEE2 /* SF-Compact-Text-BoldItalic.otf */; };
@@ -124,6 +127,8 @@
 		773D173C22254A92003CAEE2 /* SF-Compact-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */; };
 		773D173D22254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */; };
 		773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */; };
+		774437FD2231140400218939 /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774437FC2231140400218939 /* KeyboardController.swift */; };
+		77443800223159A400218939 /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774437FF223159A400218939 /* UIViewController+Loading.swift */; };
 		776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309CD2223E86300D69BA7 /* UIView+Fade.swift */; };
 		776309D62224394700D69BA7 /* ListenAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D02224394700D69BA7 /* ListenAssembler.swift */; };
 		776309D92224394700D69BA7 /* ListenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309D32224394700D69BA7 /* ListenViewController.swift */; };
@@ -137,6 +142,14 @@
 		776B180C22297D3200B422DC /* ListenViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 776309DC22243F6500D69BA7 /* ListenViewControllerImp.xib */; };
 		776B180D22297D3700B422DC /* ListenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309E02224417000D69BA7 /* ListenTableViewCell.swift */; };
 		776B180E22297D3E00B422DC /* ListenItemsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776B17FA22292BE600B422DC /* ListenItemsWorker.swift */; };
+		778DB073222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DB072222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift */; };
+		77C51E74222DA56A008E4B0C /* AddSubscriptionAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E6E222DA56A008E4B0C /* AddSubscriptionAssembler.swift */; };
+		77C51E75222DA56A008E4B0C /* AddSubscriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E6F222DA56A008E4B0C /* AddSubscriptionPresenter.swift */; };
+		77C51E76222DA56A008E4B0C /* AddSubscriptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E70222DA56A008E4B0C /* AddSubscriptionModels.swift */; };
+		77C51E77222DA56A008E4B0C /* AddSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E71222DA56A008E4B0C /* AddSubscriptionViewController.swift */; };
+		77C51E78222DA56A008E4B0C /* AddSubscriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E72222DA56A008E4B0C /* AddSubscriptionInteractor.swift */; };
+		77C51E79222DA56A008E4B0C /* AddSubscriptionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E73222DA56A008E4B0C /* AddSubscriptionOutput.swift */; };
+		77C51E7B222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77C51E7A222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib */; };
 		77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */; };
 		77E1E051221D5496006B1084 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */; };
 		77E1E052221D5496006B1084 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E046221D5495006B1084 /* SF-Pro-Text-Medium.otf */; };
@@ -169,8 +182,8 @@
 		77E1E081221D7E4C006B1084 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E06F221D7E4C006B1084 /* SF-Pro-Display-Bold.otf */; };
 		77E1E082221D7E4C006B1084 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E070221D7E4C006B1084 /* SF-Pro-Display-Medium.otf */; };
 		77E1E086221D9281006B1084 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1E085221D9281006B1084 /* GradientView.swift */; };
-		77E1E08A221D979F006B1084 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1E089221D979F006B1084 /* OnboardingCollectionViewCell.swift */; };
-		77E1E08C221D97B8006B1084 /* OnboardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E08B221D97B8006B1084 /* OnboardingCollectionViewCell.xib */; };
+		77E1E08A221D979F006B1084 /* RoundTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1E089221D979F006B1084 /* RoundTopicCell.swift */; };
+		77E1E08C221D97B8006B1084 /* RoundTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E08B221D97B8006B1084 /* RoundTopicCell.xib */; };
 		77F1D208221C47D300E640C3 /* String+QueueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1D207221C47D300E640C3 /* String+QueueLabel.swift */; };
 		77F1D20B221C485E00E640C3 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1D20A221C485E00E640C3 /* Weak.swift */; };
 		77F1D20D221C48A500E640C3 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1D20C221C48A500E640C3 /* Dispatcher.swift */; };
@@ -363,6 +376,9 @@
 		66254352219B57CE00379011 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
 		6651984421B17400007CB029 /* SwipeableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabViewController.swift; sourceTree = "<group>"; };
 		68B2C43C400B5A659D25EA02 /* Pods_Scout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySectionHeaderView.swift; sourceTree = "<group>"; };
+		7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorySectionHeaderView.xib; sourceTree = "<group>"; };
+		7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionTopicsWorker.swift; sourceTree = "<group>"; };
 		773D172622254A92003CAEE2 /* SF-Compact-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		773D172722254A92003CAEE2 /* SF-Compact-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
 		773D172822254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-LightItalic.otf"; sourceTree = "<group>"; };
@@ -376,6 +392,8 @@
 		773D173022254A92003CAEE2 /* SF-Compact-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Heavy.otf"; sourceTree = "<group>"; };
 		773D173122254A92003CAEE2 /* SF-Compact-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-MediumItalic.otf"; sourceTree = "<group>"; };
 		773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTopicsFetcher.swift; sourceTree = "<group>"; };
+		774437FC2231140400218939 /* KeyboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
+		774437FF223159A400218939 /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		774D54E222268B18009ADABF /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		776309CD2223E86300D69BA7 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
 		776309D02224394700D69BA7 /* ListenAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenAssembler.swift; sourceTree = "<group>"; };
@@ -391,6 +409,14 @@
 		776B17FD222948D800B422DC /* ListenFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenFlowCoordinator.swift; sourceTree = "<group>"; };
 		776B180522297BFF00B422DC /* ListenFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenFlowCoordinator.swift; sourceTree = "<group>"; };
 		776B180722297C1A00B422DC /* UITableView+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
+		778DB072222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionTopicsWorkerImp.swift; sourceTree = "<group>"; };
+		77C51E6E222DA56A008E4B0C /* AddSubscriptionAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionAssembler.swift; sourceTree = "<group>"; };
+		77C51E6F222DA56A008E4B0C /* AddSubscriptionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionPresenter.swift; sourceTree = "<group>"; };
+		77C51E70222DA56A008E4B0C /* AddSubscriptionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionModels.swift; sourceTree = "<group>"; };
+		77C51E71222DA56A008E4B0C /* AddSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionViewController.swift; sourceTree = "<group>"; };
+		77C51E72222DA56A008E4B0C /* AddSubscriptionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionInteractor.swift; sourceTree = "<group>"; };
+		77C51E73222DA56A008E4B0C /* AddSubscriptionOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionOutput.swift; sourceTree = "<group>"; };
+		77C51E7A222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubscriptionViewControllerImp.xib; sourceTree = "<group>"; };
 		77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
 		77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		77E1E046221D5495006B1084 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
@@ -423,8 +449,8 @@
 		77E1E06F221D7E4C006B1084 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		77E1E070221D7E4C006B1084 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		77E1E085221D9281006B1084 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		77E1E089221D979F006B1084 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
-		77E1E08B221D97B8006B1084 /* OnboardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCollectionViewCell.xib; sourceTree = "<group>"; };
+		77E1E089221D979F006B1084 /* RoundTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTopicCell.swift; sourceTree = "<group>"; };
+		77E1E08B221D97B8006B1084 /* RoundTopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoundTopicCell.xib; sourceTree = "<group>"; };
 		77F1D207221C47D300E640C3 /* String+QueueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+QueueLabel.swift"; sourceTree = "<group>"; };
 		77F1D20A221C485E00E640C3 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		77F1D20C221C48A500E640C3 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
@@ -569,6 +595,7 @@
 		2803B348221B05D800A9B250 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				77C51E7C222DAC90008E4B0C /* Views */,
 				77F1D209221C47FC00E640C3 /* Utilities */,
 				280FEEB3221B05EA00223CB9 /* Extensions */,
 				28FDFB7A221C3AE900C869E1 /* ViewControllers */,
@@ -589,15 +616,14 @@
 			isa = PBXGroup;
 			children = (
 				776B180722297C1A00B422DC /* UITableView+Register.swift */,
-				77F1D231221C622100E640C3 /* UIColor */,
 				28FDFB6D221BF26300C869E1 /* Codable+Extensions.swift */,
 				77F1D207221C47D300E640C3 /* String+QueueLabel.swift */,
 				77E1E05C221D718D006B1084 /* UIFont+Design.swift */,
 				776309CD2223E86300D69BA7 /* UIView+Fade.swift */,
 				28123296221EC298001B99C7 /* TargetType+Extensions.swift */,
 				2801C72C221FF1B400E6C1F9 /* UIStackView+Extensions.swift */,
-				2805F8F92223EA9A006BA14F /* UIViewController+Extensions.swift */,
-				2805F8FD222424DE006BA14F /* UIViewController+Nib.swift */,
+				774437FE2231593300218939 /* UIViewController */,
+				77F1D231221C622100E640C3 /* UIColor */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1108,6 +1134,31 @@
 			path = SwipeableTabViewController;
 			sourceTree = "<group>";
 		};
+		7737FA27222E89BE00D36DD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7737FA28222E89C500D36DD9 /* CategorySectionHeaderView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7737FA28222E89C500D36DD9 /* CategorySectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */,
+				7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */,
+			);
+			path = CategorySectionHeaderView;
+			sourceTree = "<group>";
+		};
+		7737FA2D222ED5D100D36DD9 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				778DB071222FC08400EAD93A /* TopicsWorker */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
 		773D172522254A58003CAEE2 /* SFCompactText */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,6 +1185,16 @@
 				773D173F22258345003CAEE2 /* OnboardingTopicsFetcher.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		774437FE2231593300218939 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2805F8F92223EA9A006BA14F /* UIViewController+Extensions.swift */,
+				2805F8FD222424DE006BA14F /* UIViewController+Nib.swift */,
+				774437FF223159A400218939 /* UIViewController+Loading.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		776309CF2224389E00D69BA7 /* Listen */ = {
@@ -1189,6 +1250,48 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		778DB071222FC08400EAD93A /* TopicsWorker */ = {
+			isa = PBXGroup;
+			children = (
+				7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */,
+				778DB072222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift */,
+			);
+			path = TopicsWorker;
+			sourceTree = "<group>";
+		};
+		77C51E6D222DA4A7008E4B0C /* AddSubscription */ = {
+			isa = PBXGroup;
+			children = (
+				7737FA2D222ED5D100D36DD9 /* Workers */,
+				7737FA27222E89BE00D36DD9 /* Views */,
+				77C51E6E222DA56A008E4B0C /* AddSubscriptionAssembler.swift */,
+				77C51E6F222DA56A008E4B0C /* AddSubscriptionPresenter.swift */,
+				77C51E70222DA56A008E4B0C /* AddSubscriptionModels.swift */,
+				77C51E71222DA56A008E4B0C /* AddSubscriptionViewController.swift */,
+				77C51E72222DA56A008E4B0C /* AddSubscriptionInteractor.swift */,
+				77C51E73222DA56A008E4B0C /* AddSubscriptionOutput.swift */,
+				77C51E7A222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib */,
+			);
+			path = AddSubscription;
+			sourceTree = "<group>";
+		};
+		77C51E7C222DAC90008E4B0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				77C51E7D222DAC99008E4B0C /* RoundTopicCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		77C51E7D222DAC99008E4B0C /* RoundTopicCell */ = {
+			isa = PBXGroup;
+			children = (
+				77E1E089221D979F006B1084 /* RoundTopicCell.swift */,
+				77E1E08B221D97B8006B1084 /* RoundTopicCell.xib */,
+			);
+			path = RoundTopicCell;
+			sourceTree = "<group>";
+		};
 		77E1E043221D5406006B1084 /* SfProText */ = {
 			isa = PBXGroup;
 			children = (
@@ -1233,23 +1336,6 @@
 			path = SFProDisplay;
 			sourceTree = "<group>";
 		};
-		77E1E087221D973F006B1084 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				77E1E088221D974B006B1084 /* OnboardingCell */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		77E1E088221D974B006B1084 /* OnboardingCell */ = {
-			isa = PBXGroup;
-			children = (
-				77E1E089221D979F006B1084 /* OnboardingCollectionViewCell.swift */,
-				77E1E08B221D97B8006B1084 /* OnboardingCollectionViewCell.xib */,
-			);
-			path = OnboardingCell;
-			sourceTree = "<group>";
-		};
 		77F1D209221C47FC00E640C3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1257,6 +1343,7 @@
 				77F1D20A221C485E00E640C3 /* Weak.swift */,
 				77F1D20C221C48A500E640C3 /* Dispatcher.swift */,
 				77E1E085221D9281006B1084 /* GradientView.swift */,
+				774437FC2231140400218939 /* KeyboardController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1265,6 +1352,7 @@
 			isa = PBXGroup;
 			children = (
 				776309CF2224389E00D69BA7 /* Listen */,
+				77C51E6D222DA4A7008E4B0C /* AddSubscription */,
 				77F1D21C221C493700E640C3 /* Onboarding */,
 				28CFCA4B222D6D7300D1E477 /* Subscriptions */,
 			);
@@ -1281,7 +1369,6 @@
 				77F1D21E221C496800E640C3 /* OnboardingPresenter.swift */,
 				77F1D220221C496800E640C3 /* OnboardingViewController.swift */,
 				77F1D229221C4E9E00E640C3 /* OnboardingViewControllerImp.xib */,
-				77E1E087221D973F006B1084 /* Views */,
 				773D173E222582D2003CAEE2 /* Workers */,
 			);
 			path = Onboarding;
@@ -1585,8 +1672,6 @@
 				F482CD282080D225007D0C14 /* Products */,
 				C12A1785D5392A7CBD7BC993 /* Pods */,
 				CB7EFAB84D8FB19607FC04A4 /* Frameworks */,
-				CD9158217DD3454E7A83BCF1 /* Pods */,
-				3D93A65149EFF87EF72B97AC /* Frameworks */,
 				776B180022297A4900B422DC /* Recovered References */,
 			);
 			sourceTree = "<group>";
@@ -1884,6 +1969,7 @@
 				773D173A22254A92003CAEE2 /* SF-Compact-Text-Semibold.otf in Resources */,
 				93782C7C20C7EE5400CE56A4 /* Images.xcassets in Resources */,
 				77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
+				77C51E7B222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib in Resources */,
 				5637D2B420A3257800112F1F /* Settings.storyboard in Resources */,
 				77E1E078221D7E4C006B1084 /* SF-Pro-Display-Semibold.otf in Resources */,
 				776B180C22297D3200B422DC /* ListenViewControllerImp.xib in Resources */,
@@ -1896,7 +1982,7 @@
 				773D173822254A92003CAEE2 /* SF-Compact-Text-Light.otf in Resources */,
 				77E1E076221D7E4C006B1084 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				28CFCA302228520300D1E477 /* DefaultNavigationBar.xib in Resources */,
-				77E1E08C221D97B8006B1084 /* OnboardingCollectionViewCell.xib in Resources */,
+				77E1E08C221D97B8006B1084 /* RoundTopicCell.xib in Resources */,
 				77E1E053221D5496006B1084 /* SF-Pro-Text-Bold.otf in Resources */,
 				77E1E059221D5496006B1084 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				77E1E072221D7E4C006B1084 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
@@ -1931,6 +2017,7 @@
 				773D173422254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf in Resources */,
 				9333B81D20AC6D070055C5B1 /* MyListTableViewCell.xib in Resources */,
 				28CFCA3F22293A3800D1E477 /* SearchNavigationBar.xib in Resources */,
+				7737FA2C222E8A0A00D36DD9 /* CategorySectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2014,6 +2101,7 @@
 				8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */,
 				776B180622297BFF00B422DC /* ListenFlowCoordinator.swift in Sources */,
 				F4A23BB82081120D006EC9E3 /* ApplicationRouter.swift in Sources */,
+				774437FD2231140400218939 /* KeyboardController.swift in Sources */,
 				5637D2BA20A3257800112F1F /* MyListAssembly.swift in Sources */,
 				77F1D228221C496800E640C3 /* OnboardingOutput.swift in Sources */,
 				776309DA2224394700D69BA7 /* ListenInteractor.swift in Sources */,
@@ -2022,8 +2110,8 @@
 				776B180E22297D3E00B422DC /* ListenItemsWorker.swift in Sources */,
 				9362FCB020B8104A0004930C /* ScoutHTTPClient+ScoutPlayer.swift in Sources */,
 				28CFCA67222D96CA00D1E477 /* ListenListItem.swift in Sources */,
-				77E1E08A221D979F006B1084 /* OnboardingCollectionViewCell.swift in Sources */,
 				776309D92224394700D69BA7 /* ListenViewController.swift in Sources */,
+				77E1E08A221D979F006B1084 /* RoundTopicCell.swift in Sources */,
 				5637D2B320A3257800112F1F /* SettingsRoutingProtocol.swift in Sources */,
 				280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
@@ -2059,11 +2147,13 @@
 				5637D2B220A3257800112F1F /* SettingsRouter.swift in Sources */,
 				5622AB4820A6D4D70074A4BC /* AuthHTTPClientProtocol.swift in Sources */,
 				28CFCA69222DB10C00D1E477 /* RequestAuthorizationTokenProvider.swift in Sources */,
+				77C51E79222DA56A008E4B0C /* AddSubscriptionOutput.swift in Sources */,
 				66254343219B54D000379011 /* SnowboyWrapper.mm in Sources */,
 				28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */,
 				9333B81C20AC6D070055C5B1 /* MyListTableViewCell.swift in Sources */,
 				28FDFB73221BF2CC00C869E1 /* DebugOutput.swift in Sources */,
 				28FDFB75221C285500C869E1 /* AppCoordinator.swift in Sources */,
+				77C51E78222DA56A008E4B0C /* AddSubscriptionInteractor.swift in Sources */,
 				280FEEC9221B12C300223CB9 /* NetworkAdapter.swift in Sources */,
 				F47B7CF42084E57F0055585C /* Utils.swift in Sources */,
 				77F1D226221C496800E640C3 /* OnboardingViewController.swift in Sources */,
@@ -2077,12 +2167,13 @@
 				6651984521B17400007CB029 /* SwipeableTabViewController.swift in Sources */,
 				28FDFB7C221C455100C869E1 /* RootNavigationViewController.swift in Sources */,
 				F482CD6A2080E006007D0C14 /* AppConfigurationBridge.m in Sources */,
-				F4A23BBE20811379006EC9E3 /* MainUIRouter.swift in Sources */,
 				776309D62224394700D69BA7 /* ListenAssembler.swift in Sources */,
+				7737FA2A222E89FA00D36DD9 /* CategorySectionHeaderView.swift in Sources */,
 				93A718B42164B8D400BC77D9 /* PodcastDetailsViewModel.swift in Sources */,
 				2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */,
 				77F1D225221C496800E640C3 /* OnboardingModels.swift in Sources */,
 				2812329E221EFE70001B99C7 /* TabBarView.swift in Sources */,
+				77C51E75222DA56A008E4B0C /* AddSubscriptionPresenter.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
 				28CFCA2D222851EE00D1E477 /* DefaultNavigationBar.swift in Sources */,
 				77F1D227221C496800E640C3 /* OnboardingInteractor.swift in Sources */,
@@ -2093,7 +2184,9 @@
 				2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */,
 				776B180A22297D2500B422DC /* ListenPresenter.swift in Sources */,
 				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
+				77C51E74222DA56A008E4B0C /* AddSubscriptionAssembler.swift in Sources */,
 				28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */,
+				77C51E76222DA56A008E4B0C /* AddSubscriptionModels.swift in Sources */,
 				280FEED3221B14FD00223CB9 /* Topic.swift in Sources */,
 				280FEEC7221B12C300223CB9 /* ApiClientReachabilityServiceProtocol.swift in Sources */,
 				28CFCA57222D704800D1E477 /* SubscriptionsOutput.swift in Sources */,
@@ -2122,6 +2215,8 @@
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
 				28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */,
 				28CFCA48222D575400D1E477 /* MyNotesFlowCoordinator.swift in Sources */,
+				7737FA2F222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift in Sources */,
+				77C51E77222DA56A008E4B0C /* AddSubscriptionViewController.swift in Sources */,
 				28CFCA5D222D755B00D1E477 /* SubscriptionsEmptyView.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,
 				28CFCA52222D704800D1E477 /* SubscriptionsAssembler.swift in Sources */,
@@ -2143,6 +2238,7 @@
 				5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */,
 				2801F9A12225B82D00283F1B /* LoadingOverlayViewController.swift in Sources */,
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
+				77443800223159A400218939 /* UIViewController+Loading.swift in Sources */,
 				8637E7F5215CFDED008563E9 /* PodcastsRoutingProtocol.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
 				2812329B221EFE5E001B99C7 /* TabBarContainerController.swift in Sources */,
@@ -2165,6 +2261,7 @@
 				28CFCA74222E9A0000D1E477 /* ListenDurationFormatter.swift in Sources */,
 				28FDFB77221C2A0D00C869E1 /* FlowCoordinator.swift in Sources */,
 				2801F99C2225AE6E00283F1B /* RegisterPostModel.swift in Sources */,
+				778DB073222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift in Sources */,
 				2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */,
 				8637E7FD215D1982008563E9 /* PodcastsCollectionViewCell.swift in Sources */,
 				28CFCA7A222EBBA900D1E477 /* KeychainManager.swift in Sources */,

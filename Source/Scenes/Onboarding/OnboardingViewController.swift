@@ -68,7 +68,7 @@ class OnboardingViewControllerImp: UIViewController {
         return UIEdgeInsets(top: 80, left: 10, bottom: 80, right: 10)
     }
 
-    private var topicsViewModels = [OnboardingCollectionViewCell.ViewModel]()
+    private var topicsViewModels = [RoundTopicCell.ViewModel]()
 
     //MARK: Initializing
 
@@ -154,8 +154,8 @@ private extension Onboarding.ViewControllerImp {
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        let bundle = Bundle(for: OnboardingCollectionViewCell.self)
-        let identifier = String(describing: OnboardingCollectionViewCell.self)
+        let bundle = Bundle(for: RoundTopicCell.self)
+        let identifier = String(describing: RoundTopicCell.self)
         let nib = UINib(nibName: identifier, bundle: bundle)
         collectionView.register(nib, forCellWithReuseIdentifier: identifier)
     }
@@ -182,7 +182,7 @@ private extension Onboarding.ViewControllerImp {
         }
     }
 
-    func reloadCollectionView(with topics: [OnboardingCollectionViewCell.ViewModel]) {
+    func reloadCollectionView(with topics: [RoundTopicCell.ViewModel]) {
         collectionView.reload(using: StagedChangeset(source: topicsViewModels, target: topics)) {
             self.topicsViewModels = $0
         }
@@ -248,8 +248,8 @@ extension  Onboarding.ViewControllerImp: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: OnboardingCollectionViewCell.self), for: indexPath
-            ) as? OnboardingCollectionViewCell else {
+            withReuseIdentifier: String(describing: RoundTopicCell.self), for: indexPath
+            ) as? RoundTopicCell else {
 
                 fatalError("Failed cell dequeuing")
         }

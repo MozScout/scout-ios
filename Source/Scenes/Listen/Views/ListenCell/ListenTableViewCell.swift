@@ -9,12 +9,12 @@ import DifferenceKit
 
 class ListenTableViewCell: UITableViewCell {
 
-    struct ViewModel: Differentiable {
+    struct ViewModel: Differentiable, Equatable {
 
         let itemId: String
         let imageUrl: URL?
         let iconUrl: URL?
-        let publisher: String
+        let publisher: String?
         let title: String
         let duration: String
         let summary: String?
@@ -23,16 +23,6 @@ class ListenTableViewCell: UITableViewCell {
 
         var differenceIdentifier: String {
             return itemId
-        }
-
-        func isContentEqual(to source: ListenTableViewCell.ViewModel) -> Bool {
-            return imageUrl == source.imageUrl &&
-                iconUrl == source.iconUrl &&
-                publisher == source.publisher &&
-                title == source.title &&
-                duration == source.duration &&
-                summary == source.summary &&
-                episode == source.episode
         }
     }
 
@@ -60,9 +50,16 @@ class ListenTableViewCell: UITableViewCell {
         topicImageView.kf.setImage(with: state.imageUrl, placeholder: #imageLiteral(resourceName: "Placeholder"))
         topicImageView.kf.indicatorType = .activity
 
-        iconImageView.kf.setImage(with: state.iconUrl, placeholder: #imageLiteral(resourceName: "Placeholder"))
 
-        publisherLabel.text = state.publisher
+        if let publisher = state.publisher {
+            publisherLabel.isHidden = false
+            iconImageView.isHidden = false
+            publisherLabel.text = publisher
+            iconImageView.kf.setImage(with: state.iconUrl, placeholder:  #imageLiteral(resourceName: "Placeholder"))
+        } else {
+            publisherLabel.isHidden = true
+            iconImageView.isHidden = true
+        }
         titleLabel.text = state.title
         timeLabel.text = state.duration
 

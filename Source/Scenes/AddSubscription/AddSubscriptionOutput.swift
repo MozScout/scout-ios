@@ -1,9 +1,11 @@
 import Foundation
 
-extension Listen {
+extension AddSubscription {
 
     // MARK: - Declaration
     
     struct Output {
+
+        let onCancelAction: () -> Void
     }
 }
