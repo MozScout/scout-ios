@@ -101,7 +101,9 @@ class AddSubscriptionViewControllerImp: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        setCollectionViewInsets(with: KeyboardController.shared.attributes)
+        DispatchQueue.main.async {
+            self.setCollectionViewInsets(with: KeyboardController.shared.attributes)
+        }
     }
 
     // MARK: - Private methods
@@ -148,6 +150,7 @@ private extension AddSubscription.ViewControllerImp {
         collectionView.delegate = self
 
         collectionView.keyboardDismissMode = .onDrag
+        collectionView.contentInsetAdjustmentBehavior = .never
 
         let bundle = Bundle(for: RoundTopicCell.self)
         let cellIdentifier = String(describing: RoundTopicCell.self)
@@ -230,7 +233,11 @@ extension  AddSubscription.ViewControllerImp: UICollectionViewDataSource {
         return sectionsViewModels[section].topics.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+        ) -> UICollectionViewCell {
+
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: RoundTopicCell.self), for: indexPath
             ) as? RoundTopicCell else {
@@ -242,9 +249,12 @@ extension  AddSubscription.ViewControllerImp: UICollectionViewDataSource {
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+        ) -> UICollectionReusableView {
+
         guard kind == UICollectionView.elementKindSectionHeader else {
             assertionFailure("Unknown kind of view")
             return UICollectionReusableView()
@@ -294,9 +304,12 @@ extension  AddSubscription.ViewControllerImp: UICollectionViewDelegateFlowLayout
         return lineSpacing
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+        ) -> CGSize {
+
         return CGSize(width: collectionView.bounds.width, height: sectionHeaderHeight)
     }
 }

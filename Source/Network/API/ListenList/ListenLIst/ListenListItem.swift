@@ -48,9 +48,9 @@ struct ListenListItem: Decodable {
             self.type = .episode(url: url)
         }
 
-        logoUrl = try? container.decode(String.self, forKey: .logo)
+        logoUrl = try container.decodeIfPresent(String.self, forKey: .logo)
         duration = try container.decode(Int64.self, forKey: .duration)
-        publisher = try? container.decode(String.self, forKey: .publisher)
+        publisher = try container.decodeIfPresent(String.self, forKey: .publisher)
     }
 }
 
