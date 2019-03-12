@@ -27,4 +27,7 @@ protocol PlayerItemsProvider {
     var selectedItemId: PlayerItemIdentifier? { get }
 
     func selectItem(with id: PlayerItemIdentifier?)
+    func item(for id: PlayerItemIdentifier) -> PlayerItem?
+
+    func observeSelectedItemIdentifier() -> Observable<PlayerItemIdentifier?>
 }

@@ -69,31 +69,12 @@ class PlayerCoordinator {
         playerStateBehaviorRelay.accept(.paused)
     }
 
-    public func playSummary(from url: URL) {
+    public func playAudio(from url: URL?) {
 
         setAudio(from: nil)
-        loadingStateBehaviorRelay.accept(.loading)
 
-        playerAudioLoader.loadSummary(for: url) { [weak self] (result) in
-            self?.loadAudioCompletion(result)
-            self?.loadingStateBehaviorRelay.accept(.idle)
-        }
-    }
+        guard let url = url else { return }
 
-    public func playArticle(from url: URL) {
-
-        setAudio(from: nil)
-        loadingStateBehaviorRelay.accept(.loading)
-
-        playerAudioLoader.loadArticle(for: url) { [weak self] (result) in
-            self?.loadAudioCompletion(result)
-            self?.loadingStateBehaviorRelay.accept(.idle)
-        }
-    }
-
-    public func playAudio(from url: URL) {
-
-        setAudio(from: nil)
         loadingStateBehaviorRelay.accept(.loading)
 
         playerAudioLoader.loadAudio(from: url) { [weak self] (result) in
@@ -116,9 +97,7 @@ class PlayerCoordinator {
         }
     }
 
-    private func setAudio(
-        from url: URL?
-        ) {
+    private func setAudio(from url: URL?) {
 
         playerService.setAudio(from: url)
     }

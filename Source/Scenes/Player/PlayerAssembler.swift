@@ -44,11 +44,15 @@ extension Player.AssemblerImp: Player.Assembler {
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
 
-        let itemsProvider = appAssembly.assemblyPlayerItemsProvider()
+        let itemProvider = Player.ItemProviderImp(
+            itemsProvider: appAssembly.assemblyPlayerItemsProvider(),
+            audioLoader: appAssembly.assemblyPlayerAudioLoader()
+        )
+
         let interactor = InteractorImp(
             presenter: presenter,
             playerManager: appAssembly.assemblyPlayerCoordinator(),
-            playerItemsProvider: itemsProvider
+            itemProvider: itemProvider
         )
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(

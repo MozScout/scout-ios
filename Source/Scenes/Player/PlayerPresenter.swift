@@ -6,6 +6,7 @@ protocol PlayerPresenter {
 
     func presentPlayerStateDidUpdate(response: Player.Event.PlayerStateDidUpdate.Response)
     func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response)
+    func presentCloseSync(response: Player.Event.CloseSync.Response)
 }
 
 extension Player {
@@ -74,6 +75,13 @@ extension Player.PresenterImp: Player.Presenter {
         )
         displayAsync { (viewController) in
             viewController.displayPlauerItemDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentCloseSync(response: Player.Event.CloseSync.Response) {
+        let viewModel = Player.Event.CloseSync.ViewModel()
+        displayAsync { (viewController) in
+            viewController.displayCloseSync(viewModel: viewModel)
         }
     }
 }

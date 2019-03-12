@@ -13,8 +13,6 @@ class PlayerAudioLoader {
     private let generalApi: GeneralApi
     private let fileManager: FileManager
 
-    private var currentCancellable: CancellableToken?
-
     // MARK: -
 
     init(
@@ -28,79 +26,74 @@ class PlayerAudioLoader {
 
     // MARK: - Public methods
 
-    enum LoadAudioResult {
-        case success(URL)
+    enum LoadArticleResult {
+        case success(response: ArticleResponse)
         case failure
     }
 
     func loadSummary(
         for url: URL,
-        completion: @escaping (LoadAudioResult) -> Void
-        ) {
+        completion: @escaping (LoadArticleResult) -> Void
+        ) -> CancellableToken {
 
         let postModel = ArticlePostModel(url: url)
-        currentCancellable?.cancel()
-
-        currentCancellable = generalApi.summary(for: postModel) { [weak self] (result) in
-            switch result {
-
-            case .success(let response):
-                self?.loadAudio(
-                    from: response.audioUrl,
-                    completion: completion
-                )
-
-            case .failure(let error):
-                print(.error(error: error.localizedDescription))
-            }
+        return generalApi.summary(for: postModel) { [weak self] (result) in
+            self?.loadArticleCompletion(result: result, completion: completion)
         }
     }
 
     func loadArticle(
         for url: URL,
-        completion: @escaping (LoadAudioResult) -> Void
-        ) {
+        completion: @escaping (LoadArticleResult) -> Void
+        ) -> CancellableToken {
 
         let postModel = ArticlePostModel(url: url)
-        currentCancellable?.cancel()
-
-        currentCancellable = generalApi.article(for: postModel) { [weak self] (result) in
-            switch result {
-
-            case .success(let response):
-                self?.loadAudio(
-                    from: response.audioUrl,
-                    completion: completion
-                )
-
-            case .failure(let error):
-                print(.error(error: error.localizedDescription))
-            }
+        return generalApi.article(for: postModel) { [weak self] (result) in
+            self?.loadArticleCompletion(result: result, completion: completion)
         }
+    }
+
+    private func loadArticleCompletion(
+        result: GeneralApi.GenericArticleResult,
+        completion: @escaping (LoadArticleResult) -> Void
+        ) {
+
+        switch result {
+
+        case .success(let response):
+            completion(.success(response: response))
+
+        case .failure(let error):
+            print(.error(error: error.localizedDescription))
+            completion(.failure)
+        }
+    }
+
+    enum LoadAudioResult {
+        case success(localUrl: URL)
+        case failure
     }
 
     func loadAudio(
         from url: URL,
         completion: @escaping (LoadAudioResult) -> Void
-        ) {
-
-        currentCancellable?.cancel()
+        ) -> CancellableToken {
 
         let localUrl = self.localUrl(from: url)
 
         guard !audioExists(at: localUrl) else {
-            completion(.success(localUrl))
-            return
+            completion(.success(localUrl: localUrl))
+            return EmptyCancellableToken()
         }
 
-        currentCancellable = generalApi.loadAudio(
+        return generalApi.loadAudio(
             from: url,
             to: localUrl,
             completion: { (result) in
                 switch result {
                     
                 case .success:
-                    completion(.success(localUrl))
+                    completion(.success(localUrl: localUrl))
                     
                 case .failure(let error):
                     print(.error(error: error.localizedDescription))

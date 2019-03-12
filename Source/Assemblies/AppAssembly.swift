@@ -115,6 +115,10 @@ class AppAssembly {
         return playerItemsProvider
     }
 
+    func assemblyPlayerAudioLoader() -> PlayerAudioLoader {
+        return playerAudioLoader
+    }
+
     func assemblyPlayerItemsProviderFacade() -> PlayerItemsProviderFacade {
         return playerItemsProviderFacade
     }

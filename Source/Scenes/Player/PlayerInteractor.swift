@@ -7,6 +7,8 @@ protocol PlayerInteractor: class {
     func onViewDidLoadSync(request: Player.Event.ViewDidLoadSync.Request)
     func onViewDidLoad(request: Player.Event.ViewDidLoad.Request)
     func onDidTapPlayButton(request: Player.Event.DidTapPlayButton.Request)
+    func onCloseSync(request: Player.Event.CloseSync.Request)
+    func onViewWillAppear(request: Player.Event.ViewWillAppear.Request)
 }
 
 extension Player {
@@ -23,7 +25,7 @@ extension Player {
         
         private let presenter: Presenter
         private let playerManager: PlayerCoordinator
-        private let playerItemsProvider: PlayerItemsProvider
+        private let itemProvider: ItemProvider
 
         private let disposeBag: DisposeBag = DisposeBag()
 
@@ -34,34 +36,25 @@ extension Player {
         init(
             presenter: Presenter,
             playerManager: PlayerCoordinator,
-            playerItemsProvider: PlayerItemsProvider
+            itemProvider: ItemProvider
             ) {
 
             self.presenter = presenter
             self.playerManager = playerManager
-            self.playerItemsProvider = playerItemsProvider
+            self.itemProvider = itemProvider
 
             sceneModel = Model.SceneModel(
                 playerState: .paused
             )
         }
 
-        private func loadAudio() {
-            guard
-                let identifier = playerItemsProvider.selectedItemId,
-                let item = playerItemsProvider.items.first(where: { $0.id == identifier })
-                else {
-                    return
-            }
-
-            switch item.type {
-
-            case .article(let url):
-                playerManager.playArticle(from: url)
-
-            case .episode(let url):
-                playerManager.playAudio(from: url)
-            }
+        private func observeItem() {
+            itemProvider
+                .observeItem()
+                .subscribe(onNext: { [weak self] (item) in
+                    self?.playerManager.playAudio(from: item?.audioUrl)
+                })
+                .disposed(by: disposeBag)
         }
 
         private func playIfNeeded() {
@@ -112,7 +105,7 @@ extension Player.InteractorImp: Player.Interactor {
     }
 
     func onViewDidLoad(request: Player.Event.ViewDidLoad.Request) {
-        loadAudio()
+        observeItem()
     }
 
     func onDidTapPlayButton(request: Player.Event.DidTapPlayButton.Request) {
@@ -123,6 +116,18 @@ extension Player.InteractorImp: Player.Interactor {
             sceneModel.playerState = .paused
         }
 
+        playIfNeeded()
+    }
+
+    func onCloseSync(request: Player.Event.CloseSync.Request) {
+        playerManager.playAudio(from: nil)
+
+        let response = Player.Event.CloseSync.Response()
+        presenter.presentCloseSync(response: response)
+    }
+
+    func onViewWillAppear(request: Player.Event.ViewWillAppear.Request) {
+        sceneModel.playerState = .playing
         playIfNeeded()
     }
 }

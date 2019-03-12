@@ -21,6 +21,9 @@ extension UIImage {
     class var fxJumpForward: UIImage { return image() }
     class var fxJumpBack: UIImage { return image() }
 
+    class var fxClose: UIImage { return image() }
+    class var fxHide: UIImage { return image() }
+
     class var fxHandsFreeNavigationBarIcon: UIImage { return image() }
     class var fxSearchNavigationBarIcon: UIImage { return image() }
     class var fxSettingsNavigationBarIcon: UIImage { return image() }

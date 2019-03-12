@@ -171,8 +171,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
                 controller.modalPresentationStyle = .overCurrentContext
                 controller.modalTransitionStyle = .coverVertical
                 self?.tabBarController.present(controller, animated: animated, completion: nil)
-            }
-        )
+            },
+            hide: { (controller, animated) in
+                controller.dismiss(animated: animated, completion: nil)
+        })
 
         return flowCoordinator
     }

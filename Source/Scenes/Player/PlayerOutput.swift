@@ -6,6 +6,6 @@ extension Player {
     
     struct Output {
 
-//        let onBackAction: () -> Void
+        let onClose: () -> Void
     }
 }

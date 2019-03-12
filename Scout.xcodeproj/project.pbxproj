@@ -48,6 +48,9 @@
 		2870514C2236A2C800F69425 /* PlayerItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870514B2236A2C800F69425 /* PlayerItemsProvider.swift */; };
 		2870514E2236A32500F69425 /* ListenListPlayerItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870514D2236A32500F69425 /* ListenListPlayerItemsProvider.swift */; };
 		287051502236A4C200F69425 /* PlayerItemsProviderFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870514F2236A4C200F69425 /* PlayerItemsProviderFacade.swift */; };
+		2896E5802237CE58008AA1FB /* PartScreenContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E57F2237CE58008AA1FB /* PartScreenContainerViewController.swift */; };
+		2896E5822237FBEA008AA1FB /* PlayerItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */; };
+		2896E5842237FC3D008AA1FB /* PlayerItemProviderImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */; };
 		28CFCA252226EF2200D1E477 /* NavigationBarContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA202226EF2200D1E477 /* NavigationBarContainerView.xib */; };
 		28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */; };
 		28CFCA272226EF2200D1E477 /* NavigationBarContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */; };
@@ -325,6 +328,9 @@
 		2870514B2236A2C800F69425 /* PlayerItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemsProvider.swift; sourceTree = "<group>"; };
 		2870514D2236A32500F69425 /* ListenListPlayerItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenListPlayerItemsProvider.swift; sourceTree = "<group>"; };
 		2870514F2236A4C200F69425 /* PlayerItemsProviderFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemsProviderFacade.swift; sourceTree = "<group>"; };
+		2896E57F2237CE58008AA1FB /* PartScreenContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartScreenContainerViewController.swift; sourceTree = "<group>"; };
+		2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemProvider.swift; sourceTree = "<group>"; };
+		2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemProviderImp.swift; sourceTree = "<group>"; };
 		28CFCA202226EF2200D1E477 /* NavigationBarContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarContainerView.xib; sourceTree = "<group>"; };
 		28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerView.swift; sourceTree = "<group>"; };
 		28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerController.swift; sourceTree = "<group>"; };
@@ -761,6 +767,8 @@
 		2870512E2230160D00F69425 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */,
+				2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -963,6 +971,7 @@
 			isa = PBXGroup;
 			children = (
 				2801F9A02225B82D00283F1B /* LoadingOverlayViewController.swift */,
+				2896E57F2237CE58008AA1FB /* PartScreenContainerViewController.swift */,
 				28FDFB7B221C455100C869E1 /* RootNavigationViewController.swift */,
 				28CFCA1E2226EF2200D1E477 /* NavigationBar */,
 				2812329C221EFE61001B99C7 /* TabBar */,
@@ -2263,6 +2272,7 @@
 				F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */,
 				280FEEC8221B12C300223CB9 /* ApiClient.swift in Sources */,
 				2870513E2231742C00F69425 /* ArticlePostModel.swift in Sources */,
+				2896E5802237CE58008AA1FB /* PartScreenContainerViewController.swift in Sources */,
 				28CFCA89222EE46700D1E477 /* PlayerOutput.swift in Sources */,
 				287051502236A4C200F69425 /* PlayerItemsProviderFacade.swift in Sources */,
 				77F1D208221C47D300E640C3 /* String+QueueLabel.swift in Sources */,
@@ -2314,6 +2324,7 @@
 				28CFCA2D222851EE00D1E477 /* DefaultNavigationBar.swift in Sources */,
 				77F1D227221C496800E640C3 /* OnboardingInteractor.swift in Sources */,
 				776B180D22297D3700B422DC /* ListenTableViewCell.swift in Sources */,
+				2896E5842237FC3D008AA1FB /* PlayerItemProviderImp.swift in Sources */,
 				F482CD632080DBBA007D0C14 /* HTTPClientError.swift in Sources */,
 				93A718C82164BC7C00BC77D9 /* AboutCell.swift in Sources */,
 				93A3113C20B13F370049DB67 /* VoiceInputRoutingProtocol.swift in Sources */,
@@ -2349,6 +2360,7 @@
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				28CFCA78222EBAC500D1E477 /* UserDataManager.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
+				2896E5822237FBEA008AA1FB /* PlayerItemProvider.swift in Sources */,
 				28CFCA4122293A3E00D1E477 /* SearchNavigationBar.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
 				28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */,

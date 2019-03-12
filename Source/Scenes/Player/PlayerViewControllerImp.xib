@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewControllerImp" customModule="Scout" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="FjL-Qk-Y2S" id="azr-b7-WgF"/>
                 <outlet property="iconView" destination="7Ve-Yi-qGq" id="Onq-PM-z44"/>
                 <outlet property="leftButton" destination="1QQ-2N-jwr" id="lmw-E5-5RK"/>
                 <outlet property="playButton" destination="lfn-wy-n4l" id="rh1-aA-CBA"/>
@@ -30,6 +31,7 @@
                         <constraint firstAttribute="height" constant="64" id="FKS-G0-vn5"/>
                         <constraint firstAttribute="width" constant="64" id="pJP-Qp-jtb"/>
                     </constraints>
+                    <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
                     <connections>
                         <action selector="playButtonAction:" destination="-1" eventType="touchUpInside" id="ixy-Fs-K1F"/>
                     </connections>
@@ -40,6 +42,7 @@
                         <constraint firstAttribute="width" constant="64" id="MCS-0q-cRA"/>
                         <constraint firstAttribute="height" constant="64" id="zOU-Fb-Y73"/>
                     </constraints>
+                    <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <connections>
                         <action selector="leftButtonAction:" destination="-1" eventType="touchUpInside" id="bmx-Nf-E5z"/>
                     </connections>
@@ -50,6 +53,7 @@
                         <constraint firstAttribute="width" constant="64" id="cwc-P4-GZR"/>
                         <constraint firstAttribute="height" constant="64" id="toe-UR-Bsu"/>
                     </constraints>
+                    <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <connections>
                         <action selector="rightButtonAction:" destination="-1" eventType="touchUpInside" id="oxx-Q1-2hl"/>
                     </connections>
@@ -60,6 +64,17 @@
                         <constraint firstAttribute="width" secondItem="7Ve-Yi-qGq" secondAttribute="height" id="hUV-x3-RGA"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjL-Qk-Y2S">
+                    <rect key="frame" x="333" y="2" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Jsg-0x-SaS"/>
+                        <constraint firstAttribute="width" constant="40" id="gNS-jo-Ppd"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                    <connections>
+                        <action selector="closeButtonAction:" destination="-1" eventType="touchUpInside" id="IYJ-di-zb2"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -72,7 +87,9 @@
                 <constraint firstItem="lfn-wy-n4l" firstAttribute="top" secondItem="7Ve-Yi-qGq" secondAttribute="bottom" constant="160" id="QSW-o9-ve0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lfn-wy-n4l" secondAttribute="bottom" constant="128" id="WSX-cG-cfA"/>
                 <constraint firstItem="lfn-wy-n4l" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XPu-CR-NPK"/>
+                <constraint firstItem="FjL-Qk-Y2S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="ZWn-Ve-oFs"/>
                 <constraint firstItem="PHy-ZE-XUe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lfn-wy-n4l" secondAttribute="trailing" constant="16" id="cp0-BG-RC2"/>
+                <constraint firstAttribute="trailing" secondItem="FjL-Qk-Y2S" secondAttribute="trailing" constant="2" id="kQ1-iN-12C"/>
                 <constraint firstItem="PHy-ZE-XUe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="3:2" priority="750" id="qQw-DS-i7X"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

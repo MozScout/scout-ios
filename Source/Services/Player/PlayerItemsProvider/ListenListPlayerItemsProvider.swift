@@ -5,11 +5,14 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class ListenListPlayerItemsProvider {
 
     public let items: [PlayerItem]
-    private(set) var selectedItemId: PlayerItemIdentifier?
+
+    private let selectedItemIdBehaviorRelay: BehaviorRelay<PlayerItemIdentifier?>
 
     init(
         listenListRepo: ListenListRepo,
@@ -17,14 +20,26 @@ class ListenListPlayerItemsProvider {
         ) {
 
         items = listenListRepo.listenListItems.map { $0.playerItem }
-        self.selectedItemId = selectedItemId
+        selectedItemIdBehaviorRelay = BehaviorRelay(value: selectedItemId)
     }
 }
 
 extension ListenListPlayerItemsProvider: PlayerItemsProvider {
 
+    var selectedItemId: PlayerItemIdentifier? {
+        return selectedItemIdBehaviorRelay.value
+    }
+
+    func item(for id: PlayerItemIdentifier) -> PlayerItem? {
+        return items.first { $0.id == selectedItemId }
+    }
+
     func selectItem(with id: PlayerItemIdentifier?) {
-        selectedItemId = id
+        selectedItemIdBehaviorRelay.accept(id)
+    }
+
+    func observeSelectedItemIdentifier() -> Observable<PlayerItemIdentifier?> {
+        return selectedItemIdBehaviorRelay.asObservable()
     }
 }
 

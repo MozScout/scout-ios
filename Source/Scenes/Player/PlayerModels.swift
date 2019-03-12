@@ -21,6 +21,17 @@ extension Player.Model {
     struct SceneModel {
         var playerState: PlayerState
     }
+
+    struct Item {
+        let title: String
+        let author: String
+        let lengthMinutes: Int64
+        let audioUrl: URL
+        let imageUrl: URL
+        let publisher: String
+        let excerpt: String
+        let iconUrl: URL
+    }
 }
 
 // MARK: - Events
@@ -33,12 +44,23 @@ extension Player.Event {
     }
     
     enum ViewDidLoadSync {
-        struct Request {}
+        struct Request { }
+    }
+
+    enum ViewWillAppear {
+        struct Request { }
     }
 
     enum DidTapPlayButton {
 
         struct Request { }
+    }
+
+    enum CloseSync {
+
+        struct Request { }
+        struct Response { }
+        struct ViewModel { }
     }
 
     enum PlayerItemDidUpdate {
