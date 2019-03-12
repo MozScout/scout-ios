@@ -1,4 +1,5 @@
 import Foundation
+import RxSwift
 
 // MARK: - Protocol
 
@@ -29,6 +30,8 @@ extension Listen {
         private let itemsFetcher: ItemsWorker
         private var sceneModel: Model.SceneModel
 
+        private let disposeBag: DisposeBag = DisposeBag()
+
         // MARK: -
         
         init(
@@ -43,6 +46,35 @@ extension Listen {
                 items: [],
                 isEditing: false
             )
+
+            observeItems()
+        }
+
+        private func observeItems() {
+            itemsFetcher
+                .observeItems()
+                .subscribe(onNext: { [weak self] (items) in
+                    self?.sceneModel.items = items
+                    self?.updateItems()
+                })
+                .disposed(by: disposeBag)
+
+            itemsFetcher
+                .observeLoadingStatus()
+                .subscribe(onNext: { [weak self] (status) in
+                    switch status {
+
+                    case .idle:
+                        let response = Listen.Event.DidEndFetching.Response()
+                        self?.presenter.presentDidEndFetching(response: response)
+
+                    case .loading:
+                        let response = Listen.Event.DidStartFetching.Response()
+                        self?.presenter.presentDidStartFetching(response: response)
+                        
+                    }
+                })
+                .disposed(by: disposeBag)
         }
     }
 }
@@ -66,7 +98,6 @@ extension Listen.InteractorImp: Listen.Interactor {
 
     func onViewDidLoad(request: Event.ViewDidLoad.Request) {
         presenter.presentViewDidLoad(response: Event.ViewDidLoad.Response())
-        presenter.presentDidStartFetching(response: Event.DidStartFetching.Response())
         fetchItems()
     }
 

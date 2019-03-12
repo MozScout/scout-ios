@@ -63,6 +63,7 @@ class ListenListRepo {
 
     public func reloadListenList() {
 
+        loadingStatusBehaviorRelay.accept(.loading)
         listenListApi.requestListenList { [weak self] (result) in
             switch result {
 
@@ -72,6 +73,8 @@ class ListenListRepo {
             case .failure:
                 break
             }
+
+            self?.loadingStatusBehaviorRelay.accept(.idle)
         }
     }
 
