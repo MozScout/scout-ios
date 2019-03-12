@@ -121,15 +121,7 @@ class NavigationBarContainerController: UIViewController {
 
 extension UIViewController {
     var navigationBarContainer: NavigationBarContainerController? {
-        var currentParent: UIViewController? = self.parent
-        while currentParent != nil {
-            if let navigationBarContainer = currentParent as? NavigationBarContainerController {
-                return navigationBarContainer
-            }
-
-            currentParent = currentParent?.parent
-        }
-        return nil
+        return findParentOrPresenting()
     }
 
     func navigationBarRectIn(view: UIView) -> CGRect {

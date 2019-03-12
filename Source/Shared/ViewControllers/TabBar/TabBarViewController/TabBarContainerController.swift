@@ -233,15 +233,7 @@ extension TabBarContainerController: RootContentProtocol {
 
 extension UIViewController {
     private var tabBarContainer: TabBarContainerController? {
-        var currentParent: UIViewController? = self.parent
-        while currentParent != nil {
-            if let tabBarContainer = currentParent as? TabBarContainerController {
-                return tabBarContainer
-            }
-
-            currentParent = currentParent?.parent
-        }
-        return nil
+        return findParentOrPresenting()
     }
 
     func tabBarRectIn(view: UIView) -> CGRect {

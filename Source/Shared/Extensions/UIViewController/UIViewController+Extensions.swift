@@ -7,6 +7,9 @@
 import UIKit
 
 extension UIViewController {
+
+    // MARK: - Child view controllers -
+
     func addChildViewController(_ childController: UIViewController, to containerView: UIView) {
         addChild(childController)
         containerView.addSubview(childController.view)
@@ -19,5 +22,19 @@ extension UIViewController {
         childController.willMove(toParent: nil)
         childController.view.removeFromSuperview()
         childController.removeFromParent()
+    }
+
+    // MARK: - Traverse -
+
+    func findParentOrPresenting<Controller: UIViewController>() -> Controller? {
+        var current: UIViewController? = self
+        while let parent = current?.parent ?? current?.presentingViewController {
+            if let controller = parent as? Controller {
+                return controller
+            }
+
+            current = parent
+        }
+        return nil
     }
 }
