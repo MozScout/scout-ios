@@ -5,5 +5,6 @@
 //
 
 SCOUT_NETWORK_URL = https:/\/\api.fxlisten.com/
+PRODUCT_BUNDLE_IDENTIFIER = com.exalt.speechapi
 
 #include "Generator.xcconfig"
