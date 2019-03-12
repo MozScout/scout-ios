@@ -14,6 +14,10 @@ class AppAssembly {
         return AppConfiguration().network.baseURL
     }()
 
+    private lazy var fileManager: FileManager = {
+        return FileManager.default
+    }()
+
     private lazy var reachabilityService: ReachabilityService = {
         return ReachabilityService()
     }()
@@ -42,6 +46,33 @@ class AppAssembly {
         return userDataManager
     }
 
+    private lazy var playerService: PlayerService = {
+        return PlayerService()
+    }()
+
+    private lazy var playerAudioLoader: PlayerAudioLoader = {
+        return PlayerAudioLoader(generalApi: api.generalApi, fileManager: fileManager)
+    }()
+
+    private lazy var playerCoordinator: PlayerCoordinator = {
+        return PlayerCoordinator(
+            playerService: playerService,
+            playerAudioLoader: playerAudioLoader
+        )
+    }()
+
+    private lazy var listenListRepo: ListenListRepo = {
+        return ListenListRepo(listenListApi: api.listenListApi)
+    }()
+
+    private lazy var playerItemsProviderFacade: PlayerItemsProviderFacade = {
+        return PlayerItemsProviderFacade()
+    }()
+
+    private lazy var playerItemsProvider: PlayerItemsProvider = {
+        return playerItemsProviderFacade
+    }()
+
     private lazy var api: Api = {
         return Api(
             url: url,
@@ -66,6 +97,30 @@ class AppAssembly {
 
     func assemblyUserDataManager() -> UserDataManager {
         return userDataManager
+    }
+
+    func assemblyPlayerService() -> PlayerService {
+        return playerService
+    }
+
+    func assemblyPlayerCoordinator() -> PlayerCoordinator {
+        return playerCoordinator
+    }
+
+    func assemblyListenListRepo() -> ListenListRepo {
+        return listenListRepo
+    }
+
+    func assemblyPlayerItemsProvider() -> PlayerItemsProvider {
+        return playerItemsProvider
+    }
+
+    func assemblyPlayerAudioLoader() -> PlayerAudioLoader {
+        return playerAudioLoader
+    }
+
+    func assemblyPlayerItemsProviderFacade() -> PlayerItemsProviderFacade {
+        return playerItemsProviderFacade
     }
 
     // MARK: - Flow Coordinators Assemblies -

@@ -117,8 +117,8 @@ private extension Listen.Model.Item {
 
         return ListenTableViewCell.ViewModel(
             itemId: itemId,
-            imageUrl: URL(string: imageUrl),
-            iconUrl: iconUrl != nil ? URL(string: iconUrl!) : nil,
+            imageUrl: imageUrl,
+            iconUrl: iconUrl,
             publisher: publisher,
             title: title,
             duration: durationFormatter.format(duration: duration),

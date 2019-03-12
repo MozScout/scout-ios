@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol PlayerAssemblyProtocol {
-    func assemblyPlayerViewController() -> PlayerViewController
+    func assemblyPlayerViewController() -> OldPlayerViewController
 }

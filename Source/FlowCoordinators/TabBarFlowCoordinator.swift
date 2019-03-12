@@ -23,44 +23,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
     private let startTab: Tab = .listen
 
-    private lazy var myNotesFlow: MyNotesFlowCoordinator = {
-        let assembly = self.assembly.assemblyMyNotesFlowCoordinatorAssembly()
-
-        let flowCoordinator = MyNotesFlowCoordinator(
-            rootNavigation: rootNavigation,
-            assembly: assembly,
-            show: { [weak self] (controller, animated) in
-                self?.showContent(controller, for: .myNotes, animated: animated)
-        })
-
-        return flowCoordinator
-    }()
-
-    private lazy var subscriptionsFlow: SubscriptionsFlowCoordinator = {
-        let assembly = self.assembly.assemblySubscriptionsFlowCoordinatorAssembly()
-
-        let flowCoordinator = SubscriptionsFlowCoordinator(
-            rootNavigation: rootNavigation,
-            assembly: assembly,
-            show: { [weak self] (controller, animated) in
-                self?.showContent(controller, for: .subscriptions, animated: animated)
-        })
-
-        return flowCoordinator
-    }()
-
-    private lazy var listenFlow: ListenFlowCoordinator = {
-        let assembly = self.assembly.assemblyListenFlowCoordinatorAssembly()
-
-        let flowCoordinator = ListenFlowCoordinator(
-            rootNavigation: rootNavigation,
-            assembly: assembly,
-            show: { [weak self] (controller, animated) in
-                self?.showContent(controller, for: .listen, animated: animated)
-        })
-
-        return flowCoordinator
-    }()
+    private lazy var myNotesFlow: MyNotesFlowCoordinator = createMyNotesFlow()
+    private lazy var subscriptionsFlow: SubscriptionsFlowCoordinator = createSubscriptionsFlow()
+    private lazy var listenFlow: ListenFlowCoordinator = createListenFlow()
+    private lazy var playerFlow: PlayerFlowCoordinator = createPlayerFlow()
 
     init(
         rootNavigation: RootNavigationProtocol,
@@ -73,21 +39,21 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
         let myNotesItem = TabBarContainerController.Item(
             title: "My Notes",
-            icon: #imageLiteral(resourceName: "Notes"),
+            icon: UIImage.fxNotesTabIcon,
             onSelect: { [weak self] in
                 self?.showMyNotesFlow(animated: true)
         })
 
         let listenItem = TabBarContainerController.Item(
             title: "Listen",
-            icon: #imageLiteral(resourceName: "Headphones"),
+            icon: UIImage.fxListenTabIcon,
             onSelect: { [weak self] in
                 self?.showListenFlow(animated: true)
         })
 
         let subscriptionsItem = TabBarContainerController.Item(
             title: "Subscriptions",
-            icon: #imageLiteral(resourceName: "Podcasts"),
+            icon: UIImage.fxSubscriptionsTabIcon,
             onSelect: { [weak self] in
                 self?.showSubscriptionsFlow(animated: true)
         })
@@ -129,6 +95,11 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         currentFlowCoordinator = subscriptionsFlow
     }
 
+    private func showPlayer(animated: Bool) {
+        playerFlow.showContent(animated: animated)
+        currentFlowCoordinator = playerFlow
+    }
+
     private func showContent(
         _ content: UIViewController,
         for targetTab: Tab,
@@ -144,6 +115,68 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
 
     private func getIndex(for tab: Tab) -> Int {
         return items.firstIndex { $0.tab == tab } ?? 0
+    }
+
+    // MARK: - Lazy loadings
+
+    private func createMyNotesFlow() -> MyNotesFlowCoordinator {
+        let assembly = self.assembly.assemblyMyNotesFlowCoordinatorAssembly()
+
+        let flowCoordinator = MyNotesFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .myNotes, animated: animated)
+        })
+
+        return flowCoordinator
+    }
+
+    private func createSubscriptionsFlow() -> SubscriptionsFlowCoordinator {
+        let assembly = self.assembly.assemblySubscriptionsFlowCoordinatorAssembly()
+
+        let flowCoordinator = SubscriptionsFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .subscriptions, animated: animated)
+        })
+
+        return flowCoordinator
+    }
+
+    private func createListenFlow() -> ListenFlowCoordinator {
+        let assembly = self.assembly.assemblyListenFlowCoordinatorAssembly()
+
+        let flowCoordinator = ListenFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .listen, animated: animated)
+            },
+            onShowPlayer: { [weak self] in
+                self?.showPlayer(animated: true)
+        })
+
+        return flowCoordinator
+    }
+
+    private func createPlayerFlow() -> PlayerFlowCoordinator {
+        let assemby = self.assembly.assemblyPlayerFlowCoordinatorAssembly()
+
+        let flowCoordinator = PlayerFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assemby,
+            show: { [weak self] (controller, animated) in
+                controller.modalPresentationStyle = .overCurrentContext
+                controller.modalTransitionStyle = .coverVertical
+                self?.tabBarController.present(controller, animated: animated, completion: nil)
+            },
+            hide: { (controller, animated) in
+                controller.dismiss(animated: animated, completion: nil)
+        })
+
+        return flowCoordinator
     }
 }
 
@@ -168,6 +201,10 @@ extension TabBarFlowCoordinator {
 
         func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {
             return ListenFlowCoordinator.Assembly(appAssembly: appAssembly)
+        }
+
+        func assemblyPlayerFlowCoordinatorAssembly() -> PlayerFlowCoordinator.Assembly {
+            return PlayerFlowCoordinator.Assembly(appAssembly: appAssembly)
         }
     }
 }

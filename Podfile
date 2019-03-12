@@ -19,4 +19,7 @@ target 'Scout' do
   pod 'ReachabilitySwift', '4.3.0'
   pod 'SnapKit', '4.2.0'
 
+  pod 'RxSwift', '4.4.0'
+  pod 'RxCocoa', '4.4.0'
+
 end

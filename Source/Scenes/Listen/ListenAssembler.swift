@@ -40,7 +40,10 @@ extension Listen.AssemblerImp: Listen.Assembler {
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher, durationFormatter: Listen.DurationFormatterImp())
-        let itemsFetcher = Listen.ItemsWorkerImp(listenApi: appAssembly.assemblyApi().listenListApi)
+        let itemsFetcher = Listen.ItemsWorkerImp(
+            listenListRepo: appAssembly.assemblyListenListRepo(),
+            playerItemsProvider: appAssembly.assemblyPlayerItemsProviderFacade()
+        )
         let interactor = InteractorImp(presenter: presenter, itemsFetcher: itemsFetcher)
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(

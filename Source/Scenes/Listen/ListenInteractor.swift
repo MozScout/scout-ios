@@ -1,4 +1,5 @@
 import Foundation
+import RxSwift
 
 // MARK: - Protocol
 
@@ -29,9 +30,15 @@ extension Listen {
         private let itemsFetcher: ItemsWorker
         private var sceneModel: Model.SceneModel
 
+        private let disposeBag: DisposeBag = DisposeBag()
+
         // MARK: -
         
-        init(presenter: Presenter, itemsFetcher: ItemsWorker) {
+        init(
+            presenter: Presenter,
+            itemsFetcher: ItemsWorker
+            ) {
+
             self.presenter = presenter
             self.itemsFetcher  = itemsFetcher
 
@@ -39,6 +46,35 @@ extension Listen {
                 items: [],
                 isEditing: false
             )
+
+            observeItems()
+        }
+
+        private func observeItems() {
+            itemsFetcher
+                .observeItems()
+                .subscribe(onNext: { [weak self] (items) in
+                    self?.sceneModel.items = items
+                    self?.updateItems()
+                })
+                .disposed(by: disposeBag)
+
+            itemsFetcher
+                .observeLoadingStatus()
+                .subscribe(onNext: { [weak self] (status) in
+                    switch status {
+
+                    case .idle:
+                        let response = Listen.Event.DidEndFetching.Response()
+                        self?.presenter.presentDidEndFetching(response: response)
+
+                    case .loading:
+                        let response = Listen.Event.DidStartFetching.Response()
+                        self?.presenter.presentDidStartFetching(response: response)
+                        
+                    }
+                })
+                .disposed(by: disposeBag)
         }
     }
 }
@@ -47,19 +83,8 @@ extension Listen {
 
 private extension Listen.InteractorImp {
 
-    func fetchItems(completion: (() -> Void)? = nil) {
-        itemsFetcher.fetchItems { [weak self] (result) in
-            switch result {
-            case .success(let items):
-                self?.sceneModel.items = items
-                self?.updateItems()
-            case .failure:
-                // FIXME: - Handle error
-                break
-            }
-
-            completion?()
-        }
+    func fetchItems() {
+        itemsFetcher.fetchItems()
     }
 
     func updateItems() {
@@ -73,28 +98,19 @@ extension Listen.InteractorImp: Listen.Interactor {
 
     func onViewDidLoad(request: Event.ViewDidLoad.Request) {
         presenter.presentViewDidLoad(response: Event.ViewDidLoad.Response())
-        presenter.presentDidStartFetching(response: Event.DidStartFetching.Response())
-        fetchItems { [weak self] in
-            self?.presenter.presentDidEndFetching(response: Event.DidEndFetching.Response())
-        }
+        fetchItems()
     }
 
     func onDidSelectItem(request: Event.DidSelectItem.Request) {
-
+        itemsFetcher.setItemToPlayer(request.itemId)
     }
 
     func onDidRemoveItem(request: Event.DidRemoveItem.Request) {
-        guard let index = sceneModel.items.firstIndex(where: { request.itemId == $0.itemId }) else { return }
-        let item = sceneModel.items.remove(at: index)
-        itemsFetcher.removeItem(with: item.itemId, itemType: item.type) { (result) in
-            // FIXME: - Handle result
-        }
-
-        updateItems()
+        itemsFetcher.removeItem(with: request.itemId)
     }
 
     func onDidPressSummary(request: Event.DidPressSummary.Request) {
-
+        itemsFetcher.setItemToPlayer(request.itemId)
     }
 
     func onDidChangeEditing(request: Event.DidChangeEditing.Request) {

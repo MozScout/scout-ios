@@ -51,7 +51,7 @@ class RoundTopicCell: UICollectionViewCell {
 
     func configure(_ state: ViewModel) {
         titleLabel.text = state.title
-        imageView.kf.setImage(with: state.imageUrl, placeholder: #imageLiteral(resourceName: "Placeholder"))
+        imageView.kf.setImage(with: state.imageUrl, placeholder: UIImage.fxPlaceholder)
         imageView.kf.indicatorType = .activity
 
         if state.isSelected {

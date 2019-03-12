@@ -47,9 +47,8 @@ class ListenTableViewCell: UITableViewCell {
     }
 
     func configure(_ state: ViewModel) {
-        topicImageView.kf.setImage(with: state.imageUrl, placeholder: #imageLiteral(resourceName: "Placeholder"))
+        topicImageView.kf.setImage(with: state.imageUrl, placeholder: UIImage.fxPlaceholder)
         topicImageView.kf.indicatorType = .activity
-
 
         if let publisher = state.publisher {
             publisherLabel.isHidden = false

@@ -26,6 +26,10 @@ class Api {
         return createListenListApi()
     }()
 
+    private(set) lazy var generalApi: GeneralApi = {
+        return createGeneralApi()
+    }()
+
     init(
         url: URL,
         apiClient: ApiClient,
@@ -53,5 +57,9 @@ class Api {
 
     private func createListenListApi() -> ListenListApi {
         return ListenListApi(stack: baseApiStack)
+    }
+
+    private func createGeneralApi() -> GeneralApi {
+        return GeneralApi(stack: baseApiStack)
     }
 }

@@ -12,7 +12,7 @@ class PlayerRouter {
     var onBackButtonTap: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PlayerAssemblyProtocol
-    var playerVC: PlayerViewController?
+    var playerVC: OldPlayerViewController?
     var playerOpen: Bool
 
     required init(with assembly: PlayerAssemblyProtocol) {
