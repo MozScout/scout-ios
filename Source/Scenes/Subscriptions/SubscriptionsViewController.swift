@@ -107,6 +107,9 @@ class SubscriptionsViewControllerImp: UIViewController {
     private func setupNavigationBar() {
         navigationBarContainer?.setNavigationBarContent(navigationBar)
         navigationBar.setRightItem(addButton)
+        navigationBar.onHandsFreeTap = { [weak self] in
+            self?.output.onHandsFree()
+        }
         addButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
     }
 

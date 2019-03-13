@@ -63,7 +63,8 @@ class RecognitionViewControllerImp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        setupUi()
+        sendViewDidLoadRequest()
     }
 
     // MARK: - Private methods

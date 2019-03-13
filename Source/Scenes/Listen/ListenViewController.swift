@@ -122,6 +122,9 @@ private extension Listen.ViewControllerImp {
         navigationBarContainer?.hidesNavigationBarOnScroll = true
         let navigationBar = DefaultNavigationBar.loadFromNib()
         navigationBar.setRightItem(editButton)
+        navigationBar.onHandsFreeTap = { [weak self] in
+            self?.output.onHandsFree()
+        }
         navigationBarContainer?.setNavigationBarContent(navigationBar)
     }
 

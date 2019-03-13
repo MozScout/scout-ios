@@ -13,6 +13,7 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
     private let assembly: Assembly
     private let show: ShowClosure
     private let onShowPlayer: () -> Void
+    private let onHandsFree: () -> Void
 
     private lazy var navigationController: UINavigationController = {
         let navigation = UINavigationController()
@@ -29,12 +30,14 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly,
         show: @escaping ShowClosure,
-        onShowPlayer: @escaping () -> Void
+        onShowPlayer: @escaping () -> Void,
+        onHandsFree: @escaping () -> Void
         ) {
 
         self.assembly = assembly
         self.show = show
         self.onShowPlayer = onShowPlayer
+        self.onHandsFree = onHandsFree
 
         super.init(rootNavigation: rootNavigation)
     }
@@ -47,7 +50,10 @@ class ListenFlowCoordinator: BaseFlowCoordinator {
         let output = Listen.Output(
             onShowPlayer: { [weak self] in
                 self?.onShowPlayer()
-        })
+            }, onHandsFree: { [weak self] in
+                self?.onHandsFree()
+            }
+        )
 
         return assembly.assemblyListen(output: output)
     }

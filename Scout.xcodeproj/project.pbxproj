@@ -168,6 +168,7 @@
 		773049EF223945BE0029930E /* RecognitionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773049E9223945BE0029930E /* RecognitionInteractor.swift */; };
 		773049F0223945BE0029930E /* RecognitionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773049EA223945BE0029930E /* RecognitionOutput.swift */; };
 		773049F2223945E00029930E /* RecognitionViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773049F1223945E00029930E /* RecognitionViewControllerImp.xib */; };
+		773049F622396CD20029930E /* HandsFreeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773049F522396CD20029930E /* HandsFreeFlowCoordinator.swift */; };
 		7737FA2A222E89FA00D36DD9 /* CategorySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */; };
 		7737FA2C222E8A0A00D36DD9 /* CategorySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */; };
 		7737FA2F222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */; };
@@ -477,6 +478,7 @@
 		773049E9223945BE0029930E /* RecognitionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionInteractor.swift; sourceTree = "<group>"; };
 		773049EA223945BE0029930E /* RecognitionOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionOutput.swift; sourceTree = "<group>"; };
 		773049F1223945E00029930E /* RecognitionViewControllerImp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecognitionViewControllerImp.xib; sourceTree = "<group>"; };
+		773049F522396CD20029930E /* HandsFreeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeFlowCoordinator.swift; sourceTree = "<group>"; };
 		7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySectionHeaderView.swift; sourceTree = "<group>"; };
 		7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorySectionHeaderView.xib; sourceTree = "<group>"; };
 		7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionTopicsWorker.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				28CFCA8C222FD43F00D1E477 /* PlayerFlowCoordinator.swift */,
 				28CFCA49222D6B5C00D1E477 /* SubscriptionsFlowCoordinator.swift */,
 				2805F8FB2223FE90006BA14F /* TabBarFlowCoordinator.swift */,
+				773049F522396CD20029930E /* HandsFreeFlowCoordinator.swift */,
 			);
 			path = FlowCoordinators;
 			sourceTree = "<group>";
@@ -2543,6 +2546,7 @@
 				287F9FFC223FB280001CDDF1 /* PlayerDateFormatterImp.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,
 				28CFCA52222D704800D1E477 /* SubscriptionsAssembler.swift in Sources */,
+				773049F622396CD20029930E /* HandsFreeFlowCoordinator.swift in Sources */,
 				28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */,
 				5637D2C120A3410100112F1F /* MyListViewController.swift in Sources */,
 				28CFCA62222D952200D1E477 /* ListenListApi.swift in Sources */,
