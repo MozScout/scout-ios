@@ -2,40 +2,38 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol HandsFreeModeViewController: class {
-
-    typealias Event = HandsFreeMode.Event
+protocol RecognitionViewController: class {
+    typealias Event = Recognition.Event
 
     func displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel)
-    func displayModeDidSwitched(viewModel: Event.ModeDidSwitched.ViewModel)
 }
 
 // MARK: - Declaration
 
-class HandsFreeModeViewControllerImp: UIViewController {
+class RecognitionViewControllerImp: UIViewController {
 
     // MARK: Typealiases
 
-    typealias Interactor = HandsFreeMode.Interactor
-    typealias InteractorImp = HandsFreeMode.InteractorImp
-    typealias InteractorDispatcher = HandsFreeMode.InteractorDispatcher
-    typealias Presenter = HandsFreeMode.Presenter
-    typealias PresenterImp = HandsFreeMode.PresenterImp
-    typealias PresenterDispatcher = HandsFreeMode.PresenterDispatcher
-    typealias ViewController = HandsFreeMode.ViewController
-    typealias ViewControllerImp = HandsFreeMode.ViewControllerImp
-    typealias Output = HandsFreeMode.Output
-    typealias Assembler = HandsFreeMode.Assembler
-    typealias AssemplerImp = HandsFreeMode.AssemblerImp
-    typealias Model = HandsFreeMode.Model
-    typealias Event = HandsFreeMode.Event
+    typealias Interactor = Recognition.Interactor
+    typealias InteractorImp = Recognition.InteractorImp
+    typealias InteractorDispatcher = Recognition.InteractorDispatcher
+    typealias Presenter = Recognition.Presenter
+    typealias PresenterImp = Recognition.PresenterImp
+    typealias PresenterDispatcher = Recognition.PresenterDispatcher
+    typealias ViewController = Recognition.ViewController
+    typealias ViewControllerImp = Recognition.ViewControllerImp
+    typealias Output = Recognition.Output
+    typealias Assembler = Recognition.Assembler
+    typealias AssemplerImp = Recognition.AssemblerImp
+    typealias Model = Recognition.Model
+    typealias Event = Recognition.Event
 
     // MARK: Outlets
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var cancelButton: UIButton!
-    @IBOutlet private weak var handsFreeSwitch: UISwitch!
-    @IBOutlet private weak var switchTitleLabel: UILabel!
+    @IBOutlet private weak var recognitionTextLabel: UILabel!
+    @IBOutlet private weak var statusLabel: UILabel!
 
     // MARK: Private Properties
 
@@ -65,8 +63,7 @@ class HandsFreeModeViewControllerImp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUi()
-        sendViewDidLoadRequest()
+        
     }
 
     // MARK: - Private methods
@@ -88,15 +85,11 @@ class HandsFreeModeViewControllerImp: UIViewController {
     @IBAction func cancelAction(_ sender: Any) {
         output.onCancelAction()
     }
-
-    @IBAction func switchAction(_ sender: Any) {
-        sendModeDidSwitchedRequest()
-    }
 }
 
 // MARK: - Private
 
-private extension HandsFreeMode.ViewControllerImp {
+private extension Recognition.ViewControllerImp {
     func setupUi() {
 
     }
@@ -107,26 +100,13 @@ private extension HandsFreeMode.ViewControllerImp {
             interactor.onViewDidLoad(request: request)
         }
     }
-
-    func sendModeDidSwitchedRequest() {
-        let request = Event.ModeDidSwitched.Request()
-        sendAsync { (interactor) in
-            interactor.onModeDidSwitched(request: request)
-        }
-    }
 }
 
 // MARK: - ViewController
 
-extension HandsFreeMode.ViewControllerImp: HandsFreeMode.ViewController {
+extension Recognition.ViewControllerImp: Recognition.ViewController {
 
     func displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel) {
         titleLabel.text = viewModel.title
-        switchTitleLabel.text = viewModel.switchTitle
-        handsFreeSwitch.isOn = viewModel.isHandsFreeModeEnabled
-    }
-
-    func displayModeDidSwitched(viewModel: Event.ModeDidSwitched.ViewModel) {
-        handsFreeSwitch.isOn = viewModel.isHandsFreeModeEnabled
     }
 }
