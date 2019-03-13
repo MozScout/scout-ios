@@ -29,7 +29,7 @@ class PlayerViewControllerImp: UIViewController {
     private let output: Output
     private var interactorDispatcher: InteractorDispatcher!
 
-    @IBOutlet private weak var iconView: UIImageView!
+    @IBOutlet private weak var carouselView: CarouselView!
     @IBOutlet private weak var playButton: UIButton!
     @IBOutlet private weak var leftButton: UIButton!
     @IBOutlet private weak var rightButton: UIButton!
@@ -59,6 +59,7 @@ class PlayerViewControllerImp: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        setupIconView()
         setupPlayButton()
         setupLeftButton()
         setupRightButton()
@@ -114,8 +115,15 @@ class PlayerViewControllerImp: UIViewController {
     }
 
     private func setupIconView() {
-        iconView.layer.cornerRadius = 6
-        iconView.layer.masksToBounds = true
+        let items: [CarouselView.Item] = [
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!)
+        ]
+        carouselView.setItems(items)
     }
 
     private func setupPlayButton() {
@@ -163,8 +171,7 @@ extension Player.ViewControllerImp: Player.ViewController {
     }
 
     func displayPlauerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel) {
-        iconView.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage.fxPlaceholder)
-        
+//        iconView.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage.fxPlaceholder)
     }
 
     func displayCloseSync(viewModel: Player.Event.CloseSync.ViewModel) {

@@ -49,6 +49,9 @@
 		2896E58F22381E8C008AA1FB /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E58D22381E8C008AA1FB /* UIViewController+Extensions.swift */; };
 		2896E59022381FC8008AA1FB /* ListenListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA66222D96CA00D1E477 /* ListenListItem.swift */; };
 		2896E59122381FDB008AA1FB /* RoundTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1E089221D979F006B1084 /* RoundTopicCell.swift */; };
+		2896E59522390940008AA1FB /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E59422390940008AA1FB /* CarouselView.swift */; };
+		2896E59B22392117008AA1FB /* CarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E59A22392117008AA1FB /* CarouselViewCell.swift */; };
+		2896E59E223931B6008AA1FB /* CellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E59D223931B6008AA1FB /* CellViewModelProtocol.swift */; };
 		28CFCA252226EF2200D1E477 /* NavigationBarContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFCA202226EF2200D1E477 /* NavigationBarContainerView.xib */; };
 		28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */; };
 		28CFCA272226EF2200D1E477 /* NavigationBarContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */; };
@@ -326,6 +329,9 @@
 		2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemProviderImp.swift; sourceTree = "<group>"; };
 		2896E58C22381E8C008AA1FB /* UIViewController+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nib.swift"; sourceTree = "<group>"; };
 		2896E58D22381E8C008AA1FB /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		2896E59422390940008AA1FB /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		2896E59A22392117008AA1FB /* CarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewCell.swift; sourceTree = "<group>"; };
+		2896E59D223931B6008AA1FB /* CellViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModelProtocol.swift; sourceTree = "<group>"; };
 		28CFCA202226EF2200D1E477 /* NavigationBarContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarContainerView.xib; sourceTree = "<group>"; };
 		28CFCA212226EF2200D1E477 /* NavigationBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerView.swift; sourceTree = "<group>"; };
 		28CFCA232226EF2200D1E477 /* NavigationBarContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerController.swift; sourceTree = "<group>"; };
@@ -644,10 +650,11 @@
 		2803B348221B05D800A9B250 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				77C51E7C222DAC90008E4B0C /* Views */,
-				77F1D209221C47FC00E640C3 /* Utilities */,
 				280FEEB3221B05EA00223CB9 /* Extensions */,
+				2896E59C223931AC008AA1FB /* Protocols */,
+				77F1D209221C47FC00E640C3 /* Utilities */,
 				28FDFB7A221C3AE900C869E1 /* ViewControllers */,
+				77C51E7C222DAC90008E4B0C /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -809,6 +816,31 @@
 			path = PlayerItemsProvider;
 			sourceTree = "<group>";
 		};
+		2896E59222390926008AA1FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2896E59322390933008AA1FB /* CarouselView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2896E59322390933008AA1FB /* CarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				2896E59422390940008AA1FB /* CarouselView.swift */,
+				2896E59A22392117008AA1FB /* CarouselViewCell.swift */,
+			);
+			path = CarouselView;
+			sourceTree = "<group>";
+		};
+		2896E59C223931AC008AA1FB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2896E59D223931B6008AA1FB /* CellViewModelProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		28CFCA1E2226EF2200D1E477 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -945,6 +977,7 @@
 				28CFCA7F222EE46600D1E477 /* PlayerPresenter.swift */,
 				28CFCA81222EE46600D1E477 /* PlayerViewController.swift */,
 				28CFCA8A222EE5FB00D1E477 /* PlayerViewControllerImp.xib */,
+				2896E59222390926008AA1FB /* Views */,
 				2870512E2230160D00F69425 /* Workers */,
 			);
 			path = Player;
@@ -2248,6 +2281,7 @@
 				280FEED2221B14FD00223CB9 /* TopicsRequest.swift in Sources */,
 				F482CD652080DBE5007D0C14 /* HTTPClientProtocol.swift in Sources */,
 				5622AB3F20A6CE230074A4BC /* AuthAssemblyProtocol.swift in Sources */,
+				2896E59B22392117008AA1FB /* CarouselViewCell.swift in Sources */,
 				5637D2CA20A34A4B00112F1F /* GradientButton.swift in Sources */,
 				28CFCA8D222FD43F00D1E477 /* PlayerFlowCoordinator.swift in Sources */,
 				280FEEC3221B12C300223CB9 /* Api.swift in Sources */,
@@ -2313,6 +2347,7 @@
 				2801F99B2225AE6E00283F1B /* RegisterResponse.swift in Sources */,
 				77F1D225221C496800E640C3 /* OnboardingModels.swift in Sources */,
 				28CFCA94222FFF6300D1E477 /* PlayerService.swift in Sources */,
+				2896E59E223931B6008AA1FB /* CellViewModelProtocol.swift in Sources */,
 				2812329E221EFE70001B99C7 /* TabBarView.swift in Sources */,
 				77C51E75222DA56A008E4B0C /* AddSubscriptionPresenter.swift in Sources */,
 				F47B7CE82084B48B0055585C /* NetworkRequestBuilderProtocol.swift in Sources */,
@@ -2334,6 +2369,7 @@
 				28CFCA57222D704800D1E477 /* SubscriptionsOutput.swift in Sources */,
 				5622AB3E20A6CE230074A4BC /* AuthAssembly.swift in Sources */,
 				77F1D223221C496800E640C3 /* OnboardingAssembler.swift in Sources */,
+				2896E59522390940008AA1FB /* CarouselView.swift in Sources */,
 				77E1E086221D9281006B1084 /* GradientView.swift in Sources */,
 				93A718CC2164BC7C00BC77D9 /* HeaderView.swift in Sources */,
 				5622AB4120A6CE230074A4BC /* AuthRoutingProtocol.swift in Sources */,
