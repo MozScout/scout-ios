@@ -196,6 +196,13 @@
 		77C51E78222DA56A008E4B0C /* AddSubscriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E72222DA56A008E4B0C /* AddSubscriptionInteractor.swift */; };
 		77C51E79222DA56A008E4B0C /* AddSubscriptionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C51E73222DA56A008E4B0C /* AddSubscriptionOutput.swift */; };
 		77C51E7B222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77C51E7A222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib */; };
+		77C59A852237FCD6005A6AF3 /* HandsFreeModeAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C59A7F2237FCD6005A6AF3 /* HandsFreeModeAssembler.swift */; };
+		77C59A862237FCD6005A6AF3 /* HandsFreeModePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C59A802237FCD6005A6AF3 /* HandsFreeModePresenter.swift */; };
+		77C59A872237FCD6005A6AF3 /* HandsFreeModeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C59A812237FCD6005A6AF3 /* HandsFreeModeModels.swift */; };
+		77C59A882237FCD6005A6AF3 /* HandsFreeModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C59A822237FCD6005A6AF3 /* HandsFreeModeViewController.swift */; };
+		77C59A892237FCD6005A6AF3 /* HandsFreeModeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C59A832237FCD6005A6AF3 /* HandsFreeModeInteractor.swift */; };
+		77C59A8A2237FCD6005A6AF3 /* HandsFreeModeOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C59A842237FCD6005A6AF3 /* HandsFreeModeOutput.swift */; };
+		77C59A8C2237FD05005A6AF3 /* HandsFreeModeViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77C59A8B2237FD05005A6AF3 /* HandsFreeModeViewControllerImp.xib */; };
 		77E1E050221D5496006B1084 /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */; };
 		77E1E051221D5496006B1084 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */; };
 		77E1E052221D5496006B1084 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E1E046221D5495006B1084 /* SF-Pro-Text-Medium.otf */; };
@@ -497,6 +504,13 @@
 		77C51E72222DA56A008E4B0C /* AddSubscriptionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionInteractor.swift; sourceTree = "<group>"; };
 		77C51E73222DA56A008E4B0C /* AddSubscriptionOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionOutput.swift; sourceTree = "<group>"; };
 		77C51E7A222DA69F008E4B0C /* AddSubscriptionViewControllerImp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubscriptionViewControllerImp.xib; sourceTree = "<group>"; };
+		77C59A7F2237FCD6005A6AF3 /* HandsFreeModeAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeModeAssembler.swift; sourceTree = "<group>"; };
+		77C59A802237FCD6005A6AF3 /* HandsFreeModePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeModePresenter.swift; sourceTree = "<group>"; };
+		77C59A812237FCD6005A6AF3 /* HandsFreeModeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeModeModels.swift; sourceTree = "<group>"; };
+		77C59A822237FCD6005A6AF3 /* HandsFreeModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeModeViewController.swift; sourceTree = "<group>"; };
+		77C59A832237FCD6005A6AF3 /* HandsFreeModeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeModeInteractor.swift; sourceTree = "<group>"; };
+		77C59A842237FCD6005A6AF3 /* HandsFreeModeOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeModeOutput.swift; sourceTree = "<group>"; };
+		77C59A8B2237FD05005A6AF3 /* HandsFreeModeViewControllerImp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HandsFreeModeViewControllerImp.xib; sourceTree = "<group>"; };
 		77E1E044221D5495006B1084 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
 		77E1E045221D5495006B1084 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		77E1E046221D5495006B1084 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
@@ -1503,6 +1517,27 @@
 			path = RoundTopicCell;
 			sourceTree = "<group>";
 		};
+		77C59A7D2237F59F005A6AF3 /* HandsFreeMode */ = {
+			isa = PBXGroup;
+			children = (
+				77C59A7F2237FCD6005A6AF3 /* HandsFreeModeAssembler.swift */,
+				77C59A832237FCD6005A6AF3 /* HandsFreeModeInteractor.swift */,
+				77C59A812237FCD6005A6AF3 /* HandsFreeModeModels.swift */,
+				77C59A842237FCD6005A6AF3 /* HandsFreeModeOutput.swift */,
+				77C59A802237FCD6005A6AF3 /* HandsFreeModePresenter.swift */,
+				77C59A822237FCD6005A6AF3 /* HandsFreeModeViewController.swift */,
+				77C59A8B2237FD05005A6AF3 /* HandsFreeModeViewControllerImp.xib */,
+			);
+			path = HandsFreeMode;
+			sourceTree = "<group>";
+		};
+		77C59A7E2237FBB3005A6AF3 /* Recognition */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Recognition;
+			sourceTree = "<group>";
+		};
 		77E1E043221D5406006B1084 /* SfProText */ = {
 			isa = PBXGroup;
 			children = (
@@ -1562,10 +1597,12 @@
 		77F1D21B221C492600E640C3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				776309CF2224389E00D69BA7 /* Listen */,
 				77C51E6D222DA4A7008E4B0C /* AddSubscription */,
+				77C59A7D2237F59F005A6AF3 /* HandsFreeMode */,
+				776309CF2224389E00D69BA7 /* Listen */,
 				77F1D21C221C493700E640C3 /* Onboarding */,
 				28CFCA7D222EE45600D1E477 /* Player */,
+				77C59A7E2237FBB3005A6AF3 /* Recognition */,
 				28CFCA4B222D6D7300D1E477 /* Subscriptions */,
 			);
 			path = Scenes;
@@ -2231,6 +2268,7 @@
 				77E1E05B221D5496006B1084 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				93A718AF2164B63100BC77D9 /* PodcastDetails.storyboard in Resources */,
 				773D173422254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf in Resources */,
+				77C59A8C2237FD05005A6AF3 /* HandsFreeModeViewControllerImp.xib in Resources */,
 				9333B81D20AC6D070055C5B1 /* MyListTableViewCell.xib in Resources */,
 				28CFCA3F22293A3800D1E477 /* SearchNavigationBar.xib in Resources */,
 				287F9FFF223FD156001CDDF1 /* SF-Compact-Text-Medium.otf in Resources */,
@@ -2354,6 +2392,7 @@
 				5637D2B720A3257800112F1F /* HelpRouter.swift in Sources */,
 				28CFCA56222D704800D1E477 /* SubscriptionsInteractor.swift in Sources */,
 				28CFCA4A222D6B5D00D1E477 /* SubscriptionsFlowCoordinator.swift in Sources */,
+				77C59A852237FCD6005A6AF3 /* HandsFreeModeAssembler.swift in Sources */,
 				5637D2BD20A3257800112F1F /* MyListRoutingProtocol.swift in Sources */,
 				28CFCA6B222E8D5A00D1E477 /* DeleteListenListItemPostModel.swift in Sources */,
 				93A3113A20B13EE40049DB67 /* VoiceInputAssembly.swift in Sources */,
@@ -2375,6 +2414,7 @@
 				77F1D208221C47D300E640C3 /* String+QueueLabel.swift in Sources */,
 				776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */,
 				28FC41252242402500D70BD7 /* PlayerLocalCache.swift in Sources */,
+				77C59A872237FCD6005A6AF3 /* HandsFreeModeModels.swift in Sources */,
 				776B180922297D2000B422DC /* ListenModels.swift in Sources */,
 				93C55D67216CB2360023C8AD /* AddPodcastsCollectionViewCell.swift in Sources */,
 				287051492236794300F69425 /* AudioLoader.swift in Sources */,
@@ -2392,6 +2432,7 @@
 				28CFCA69222DB10C00D1E477 /* RequestAuthorizationTokenProvider.swift in Sources */,
 				77C51E79222DA56A008E4B0C /* AddSubscriptionOutput.swift in Sources */,
 				66254343219B54D000379011 /* SnowboyWrapper.mm in Sources */,
+				77C59A892237FCD6005A6AF3 /* HandsFreeModeInteractor.swift in Sources */,
 				28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */,
 				9333B81C20AC6D070055C5B1 /* MyListTableViewCell.swift in Sources */,
 				28CFCA91222FE92C00D1E477 /* String+Extensions.swift in Sources */,
@@ -2442,6 +2483,7 @@
 				2896E59522390940008AA1FB /* CarouselView.swift in Sources */,
 				77E1E086221D9281006B1084 /* GradientView.swift in Sources */,
 				93A718CC2164BC7C00BC77D9 /* HeaderView.swift in Sources */,
+				77C59A862237FCD6005A6AF3 /* HandsFreeModePresenter.swift in Sources */,
 				5622AB4120A6CE230074A4BC /* AuthRoutingProtocol.swift in Sources */,
 				28CFCA55222D704800D1E477 /* SubscriptionsViewController.swift in Sources */,
 				5637D2B520A3257800112F1F /* HelpAssembly.swift in Sources */,
@@ -2461,9 +2503,11 @@
 				28587D5C22401868005CA06A /* PlayerSwitcherButton.swift in Sources */,
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				28CFCA78222EBAC500D1E477 /* UserDataManager.swift in Sources */,
+				77C59A882237FCD6005A6AF3 /* HandsFreeModeViewController.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
 				2896E5822237FBEA008AA1FB /* PlayerItemProvider.swift in Sources */,
 				28CFCA4122293A3E00D1E477 /* SearchNavigationBar.swift in Sources */,
+				77C59A8A2237FCD6005A6AF3 /* HandsFreeModeOutput.swift in Sources */,
 				5622AB4620A6D4AD0074A4BC /* ScoutHTTPClient+Auth.swift in Sources */,
 				28CFCA262226EF2200D1E477 /* NavigationBarContainerView.swift in Sources */,
 				28CFCA48222D575400D1E477 /* MyNotesFlowCoordinator.swift in Sources */,
