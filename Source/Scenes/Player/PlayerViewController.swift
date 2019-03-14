@@ -121,6 +121,18 @@ class PlayerViewControllerImp: UIViewController {
             CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
             CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
             CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!),
+            CarouselView.Item(imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
             CarouselView.Item(imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!)
         ]
         carouselView.setItems(items)
