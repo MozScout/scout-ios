@@ -281,6 +281,15 @@ extension Listen.ViewControllerImp: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         onScrollViewDidScroll?(scrollView)
     }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let action = UITableViewRowAction(style: .destructive, title: "Remove") { (_, indexPath) in
+            self.sendDidRemoveItemRequest(with: self.itemsViewModels[indexPath.row].itemId)
+        }
+        action.backgroundColor  = UIColor.fxTorchRed
+        
+        return [action]
+    }
 }
 
 // MARK: - NavigationBarContainerContent
