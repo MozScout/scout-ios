@@ -9,6 +9,8 @@ protocol PlayerInteractor: class {
     func onDidTapPlayButton(request: Player.Event.DidTapPlayButton.Request)
     func onCloseSync(request: Player.Event.CloseSync.Request)
     func onViewWillAppear(request: Player.Event.ViewWillAppear.Request)
+    func onDidSelectItem(request: Player.Event.DidSelectItem.Request)
+    func onDidScrollItemsList(request: Player.Event.DidScrollItemsList.Request)
 }
 
 extension Player {
@@ -44,7 +46,8 @@ extension Player {
             self.itemProvider = itemProvider
 
             sceneModel = Model.SceneModel(
-                playerState: .paused
+                playerState: .paused,
+                items: []
             )
         }
 
@@ -74,6 +77,12 @@ extension Player {
             presenter.presentPlayerStateDidUpdate(response: response)
         }
 
+        private func sendItemsDidUpdate() {
+
+            let response = Event.PlayerItemsDidUpdate.Response(items: sceneModel.items)
+            presenter.presentItemsDidUpdate(response: response)
+        }
+
         private func observePlayerState() {
             playerManager
                 .observePlayerState()
@@ -92,6 +101,22 @@ extension Player {
                 })
                 .disposed(by: disposeBag)
         }
+
+        private func observeItems() {
+
+            sceneModel.items = [
+                Model.ItemModel(
+                    imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!,
+                    identifier: ""
+                ),
+                Model.ItemModel(
+                    imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!,
+                    identifier: ""
+                )
+            ]
+
+            sendItemsDidUpdate()
+        }
     }
 }
 
@@ -102,6 +127,7 @@ extension Player.InteractorImp: Player.Interactor {
     func onViewDidLoadSync(request: Player.Event.ViewDidLoadSync.Request) {
         playIfNeeded()
         observePlayerState()
+        observeItems()
     }
 
     func onViewDidLoad(request: Player.Event.ViewDidLoad.Request) {
@@ -129,5 +155,20 @@ extension Player.InteractorImp: Player.Interactor {
     func onViewWillAppear(request: Player.Event.ViewWillAppear.Request) {
         sceneModel.playerState = .playing
         playIfNeeded()
+    }
+
+    func onDidSelectItem(request: Player.Event.DidSelectItem.Request) {
+        if sceneModel.playerState != .paused {
+            sceneModel.playerState = .paused
+            playIfNeeded()
+        }
+        // TODO: - Select, load and play another item
+    }
+
+    func onDidScrollItemsList(request: Player.Event.DidScrollItemsList.Request) {
+        if sceneModel.playerState != .paused {
+            sceneModel.playerState = .paused
+            playIfNeeded()
+        }
     }
 }

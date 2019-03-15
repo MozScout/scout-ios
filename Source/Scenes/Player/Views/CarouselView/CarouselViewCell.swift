@@ -10,6 +10,7 @@ enum CarouselViewCell {
     struct ViewModel: CellViewModel {
 
         let imageUrl: URL
+        let id: CarouselView.Item.Identifier
 
         func setup(cell: CarouselViewCell.View) {
             cell.imageUrl = imageUrl

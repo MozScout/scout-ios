@@ -6,20 +6,29 @@
 
 import UIKit
 
-class CarouselView: UIView {
+// MARK: - CarouselView.Item -
 
+extension CarouselView {
     struct Item {
+        typealias Identifier = Player.Identifier
+
         let imageUrl: URL
+        let id: Identifier
     }
+}
+
+// MARK: - CarouselView -
+
+class CarouselView: UIView {
 
     // MARK: - Private properties
 
     private var cellLargeSize: CGFloat {
-        return cellRegularSize + 30
+        return bounds.height
     }
 
     private var cellRegularSize: CGFloat {
-        return bounds.height - 30
+        return cellLargeSize - 30
     }
 
     private let interitemSpacing: CGFloat = 11
@@ -37,6 +46,9 @@ class CarouselView: UIView {
     private var items: [CarouselViewCell.ViewModel] = []
 
     // MARK: - Public properties
+
+    public var scrollViewDidScroll: (() -> Void)?
+    public var didSelectItem: ((_ with: Item.Identifier) -> Void)?
 
     // MARK: -
 
@@ -69,13 +81,21 @@ class CarouselView: UIView {
 
     // MARK: - Public methods
 
-    public func setItems(_ items: [Item]) {
+    public func setItems(
+        _ items: [Item],
+        selectedIndexPath indexPath: IndexPath?
+        ) {
+
         self.items = items.map({ (item) -> CarouselViewCell.ViewModel in
-            return CarouselViewCell.ViewModel(imageUrl: item.imageUrl)
+            return CarouselViewCell.ViewModel.init(imageUrl: item.imageUrl, id: item.id)
         })
 
         collectionView.reloadData()
         collectionViewLayout.invalidateLayout()
+
+        if let indexPath = indexPath {
+            scrollToItem(at: indexPath, animated: false)
+        }
     }
 
     // MARK: - Private methods
@@ -129,9 +149,9 @@ class CarouselView: UIView {
         let visibleCells = collectionView.visibleCells
 
         let viewConvertTo: UIView = self
-        let viewCenter = viewConvertTo.center
+        let viewConvertToBounds = viewConvertTo.bounds
         let distanceToCenterFrom: (CGRect) -> CGFloat = { (rect) in
-            return abs(viewCenter.x - rect.midX)
+            return abs(viewConvertToBounds.midX - rect.midX)
         }
 
         let visibleCellsFrames = visibleCells.map { (cell) -> CGRect in
@@ -141,16 +161,13 @@ class CarouselView: UIView {
         var centerMostIndexPath: IndexPath?
         var centerMostFrame: CGRect?
         for (cell, cellFrame) in zip(visibleCells, visibleCellsFrames)  {
-            guard let frame = centerMostFrame else {
-                centerMostIndexPath = collectionView.indexPath(for: cell)
-                centerMostFrame = cellFrame
+            if let frame = centerMostFrame,
+                distanceToCenterFrom(frame) < distanceToCenterFrom(cellFrame) {
                 continue
             }
 
-            if distanceToCenterFrom(frame) > distanceToCenterFrom(cellFrame) {
-                centerMostIndexPath = collectionView.indexPath(for: cell)
-                centerMostFrame = cellFrame
-            }
+            centerMostIndexPath = collectionView.indexPath(for: cell)
+            centerMostFrame = cellFrame
         }
 
         return centerMostIndexPath
@@ -165,6 +182,10 @@ class CarouselView: UIView {
 
 extension CarouselView {
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewDidScroll?()
+    }
+
     func scrollViewDidEndDragging(
         _ scrollView: UIScrollView,
         willDecelerate decelerate: Bool
@@ -172,7 +193,6 @@ extension CarouselView {
 
         guard !decelerate else { return }
         guard let indexPath = centerMostItemIndexPath() else { return }
-
         scrollToItem(at: indexPath, animated: true)
     }
 
@@ -181,7 +201,6 @@ extension CarouselView {
         ) {
 
         guard let indexPath = centerMostItemIndexPath() else { return }
-
         scrollToItem(at: indexPath, animated: true)
     }
 }
@@ -196,6 +215,7 @@ extension CarouselView: UICollectionViewDelegate {
         ) {
 
         scrollToItem(at: indexPath, animated: true)
+        didSelectItem?(item(for: indexPath).id)
     }
 }
 
@@ -226,6 +246,8 @@ extension CarouselView: UICollectionViewDataSource {
     }
 }
 
+// MARK: - CarouselLayout.DataSource
+
 extension CarouselView: CarouselLayout.DataSource {
 
     func numberOfItems(in collectionView: UICollectionView) -> Int {
@@ -233,11 +255,9 @@ extension CarouselView: CarouselLayout.DataSource {
     }
 }
 
-// MARK: - CarouselLayout
+// MARK: - CarouselLayout -
 
 private class CarouselLayout: UICollectionViewLayout {
-
-    typealias DataSource = CarouselLayoutDataSource
 
     // MARK: - Private properties
 
@@ -250,6 +270,7 @@ private class CarouselLayout: UICollectionViewLayout {
     private var layoutAttributesCache: [IndexPath: UICollectionViewLayoutAttributes] = [:]
 
     private var contentSize: CGSize = .zero
+    private var currentNumberOfItems: Int = -1
 
     // MARK: -
 
@@ -275,14 +296,43 @@ private class CarouselLayout: UICollectionViewLayout {
     override func prepare() {
         super.prepare()
 
+        recalculateContentSizeIfNeeded()
+        recacheLayoutAttributesForItemsIfNeeded()
+
         guard let collectionView = collectionView else { return }
+        currentNumberOfItems = dataSource.numberOfItems(in: collectionView)
+    }
+
+    private func recalculateContentSizeIfNeeded() {
+        guard let collectionView = collectionView else { return }
+        guard currentNumberOfItems != dataSource.numberOfItems(in: collectionView) else { return }
 
         contentSize = calculateContentSize(
             for: dataSource.numberOfItems(in: collectionView),
             withInteritemInset: interitemInset,
-            focusedItemSize: focusedItemSize,
-            standardItemSize: standardItemSize
+            focusedItemSize: CGSize(width: focusedItemSize, height: focusedItemSize),
+            standardItemSize: CGSize(width: standardItemSize, height: standardItemSize)
         )
+    }
+
+    private func recacheLayoutAttributesForItemsIfNeeded() {
+        guard let collectionView = collectionView else { return }
+        guard currentNumberOfItems != dataSource.numberOfItems(in: collectionView) else { return }
+
+        layoutAttributesCache = [:]
+        initiallyCacheLayoutAttributesForItems()
+    }
+
+    private func initiallyCacheLayoutAttributesForItems() {
+        guard let collectionView = collectionView else { return }
+
+        let visibleIndexPaths = (0..<dataSource.numberOfItems(in: collectionView)).map { (number) -> IndexPath in
+            return IndexPath(item: number, section: 0)
+        }
+
+        for indexPath in visibleIndexPaths {
+            _ = layoutAttributesForItem(at: indexPath)
+        }
     }
 
     override var collectionViewContentSize: CGSize {
@@ -290,33 +340,13 @@ private class CarouselLayout: UICollectionViewLayout {
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let collectionView = collectionView else { return nil }
-
-        var layoutAttributes: [UICollectionViewLayoutAttributes] = []
-
-        var visibleIndexPaths: [IndexPath] = Array(layoutAttributesCache
+        return Array(layoutAttributesCache
             .filter { (tuple) -> Bool in
                 return rect.intersects(tuple.value.frame)
             }
-            .keys
-            )
-            .sorted { (left, right) -> Bool in
-                return left.item > right.item
-        }
-
-        if visibleIndexPaths.isEmpty {
-            visibleIndexPaths = (0..<dataSource.numberOfItems(in: collectionView)).map { (number) -> IndexPath in
-                return IndexPath(item: number, section: 0)
-            }
-        }
-
-        for indexPath in visibleIndexPaths {
-            if let attributes = layoutAttributesForItem(at: indexPath) {
-                layoutAttributes.append(attributes)
-            }
-        }
-
-        return layoutAttributes
+            .keys)
+            .sorted(by: > )
+            .compactMap { self.layoutAttributesForItem(at: $0) }
     }
 
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -324,32 +354,45 @@ private class CarouselLayout: UICollectionViewLayout {
 
         let collectionViewVisibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+
         let sizeDifference: CGFloat = focusedItemSize - standardItemSize
 
-        let origin: CGPoint
-
-        if let previousIndexPath = self.indexPath(before: indexPath),
-            let previousAttributes = self.layoutAttributesCache[previousIndexPath] {
-
-            origin = CGPoint(x: previousAttributes.frame.maxX + interitemInset, y: sizeDifference / 2)
-
-        } else {
-
-            let itemsBefore = indexPath.item
-            let interitemInsetsBefore = itemsBefore
-
-            let itemsBeforeSize: CGFloat = CGFloat(itemsBefore) * standardItemSize
-            let interitemInsetsBeforeSize: CGFloat = CGFloat(interitemInsetsBefore) * interitemInset
-
-            origin = CGPoint(x: itemsBeforeSize + interitemInsetsBeforeSize, y: sizeDifference / 2)
-        }
-
         let size = CGSize(width: standardItemSize, height: standardItemSize)
+        let originX: CGFloat = {
+            if let previousIndexPath = self.indexPath(before: indexPath),
+                let previousAttributes = layoutAttributesCache[previousIndexPath] {
+
+                return previousAttributes.frame.maxX + interitemInset
+            } else {
+
+                let estimatedItemFrame = estimatedFrameForItem(
+                    at: indexPath,
+                    with: size
+                )
+                return estimatedItemFrame.minX
+            }
+        }()
+        let origin = CGPoint(x: originX,  y: sizeDifference / 2)
         var frame = CGRect(origin: origin, size: size)
 
-        let collectionViewCenter = (focusedItemSize + standardItemSize) / 2
-        let distanceToCenter = abs(collectionViewVisibleRect.midX - frame.midX)
-        let percent = max(collectionViewCenter - distanceToCenter, 0) / collectionViewCenter
+        let focusStartPoint: CGFloat = collectionViewVisibleRect.midX - focusedItemSize / 2 - interitemInset - standardItemSize
+        let focusPoint: CGFloat = collectionViewVisibleRect.midX - focusedItemSize / 2
+        let focusEndPoint: CGFloat = collectionViewVisibleRect.midX + focusedItemSize / 2 + interitemInset
+
+        let distanceToCenter: CGFloat = abs(focusPoint - frame.minX)
+        let centerSize: CGFloat = {
+            if frame.minX > focusEndPoint {
+                return focusEndPoint - focusPoint
+            } else if frame.minX > focusPoint {
+                return focusEndPoint - focusPoint
+            } else if frame.minX > focusStartPoint {
+                return focusPoint - focusStartPoint
+            } else {
+                return focusPoint - focusStartPoint
+            }
+        }()
+
+        let percent = max(centerSize - distanceToCenter, 0) / centerSize
 
         let additionalSize = sizeDifference * percent
         let itemSize = standardItemSize + additionalSize
@@ -371,73 +414,68 @@ private class CarouselLayout: UICollectionViewLayout {
 
     public func offsetToCenterItem(at indexPath: IndexPath) -> CGPoint {
 
-        let itemsNumber = max(indexPath.item, 0)
-
-        // Insets size
-
-        let insetsNumber = max(itemsNumber, 0)
-
-        let insetsSize: CGFloat = CGFloat(insetsNumber) * interitemInset
-
-        // Items size
-
-        let focusedItemsNumber = 0
-        let focusedItemsSize: CGFloat = CGFloat(focusedItemsNumber) * focusedItemSize
-
-        let standardItemsNumber = max(itemsNumber - focusedItemsNumber, 0)
-        let standardItemsSize: CGFloat = CGFloat(standardItemsNumber) * standardItemSize
-
-        let itemsSize: CGFloat = focusedItemsSize + standardItemsSize
-
-        return CGPoint(x: itemsSize + insetsSize, y: 0)
+        let estimatedItemFrame = estimatedFrameForItem(
+            at: indexPath,
+            with: CGSize(width: focusedItemSize, height: focusedItemSize)
+        )
+        return CGPoint(x: estimatedItemFrame.minX, y: 0)
     }
 
     // MARK: - Private methods
 
+    /// Calculates estimated frame for item at indexPath.
+    ///
+    /// - Parameters:
+    ///   - indexPath: indexPath of the item
+    ///   - size: size of the item
+    /// - Returns: estimated frame for item all predecessors of which are standard sized items
+    private func estimatedFrameForItem(
+        at indexPath: IndexPath,
+        with size: CGSize
+        ) -> CGRect {
+
+        let itemsBeforeNumber = indexPath.item
+        let interitemInsetsBeforeNumber = itemsBeforeNumber
+
+        let itemsBeforeSize: CGFloat = CGFloat(itemsBeforeNumber) * standardItemSize
+        let interitemInsetsBeforeSize: CGFloat = CGFloat(interitemInsetsBeforeNumber) * interitemInset
+
+        let origin: CGPoint = CGPoint(
+            x: itemsBeforeSize + interitemInsetsBeforeSize,
+            y: (focusedItemSize - size.height) / 2
+        )
+
+        return CGRect(origin: origin, size: size)
+    }
+
     private func calculateContentSize(
         for numberOfItems: Int,
         withInteritemInset interitemInset: CGFloat,
-        focusedItemSize: CGFloat,
-        standardItemSize: CGFloat
+        focusedItemSize: CGSize,
+        standardItemSize: CGSize
         ) -> CGSize {
 
-        let itemsNumber = max(numberOfItems, 0)
-        let insetsNumber = max(itemsNumber - 1, 0)
+        let indexPath = IndexPath(item: numberOfItems - 1, section: 0)
+        let estimatedFrame = estimatedFrameForItem(at: indexPath, with: focusedItemSize)
 
-        let insetsSize: CGFloat = CGFloat(insetsNumber) * interitemInset
-
-        let focusedItemsNumber = 1
-        let focusedItemsSize: CGFloat = CGFloat(focusedItemsNumber) * focusedItemSize
-
-        let standardItemsNumber = max(itemsNumber - focusedItemsNumber, 0)
-        let standardItemsSize: CGFloat = CGFloat(standardItemsNumber) * standardItemSize
-
-        let itemsSize: CGFloat = focusedItemsSize + standardItemsSize
-
-        return CGSize(width: itemsSize + insetsSize, height: focusedItemSize)
-    }
-
-    private func forEachIndexPath(
-        before indexPath: IndexPath,
-        do block: (IndexPath) -> Void
-        ) {
-
-        for item in 0..<indexPath.item {
-            block(IndexPath(item: item, section: indexPath.section))
-        }
+        return CGSize(width: estimatedFrame.maxX, height: focusedItemSize.height)
     }
 
     private func indexPath(before indexPath: IndexPath) -> IndexPath? {
 
         guard indexPath.item > 0 else { return nil }
-
         return IndexPath(item: indexPath.item - 1, section: indexPath.section)
     }
 }
 
-// MARK: - CarouselLayoutDataSource
+// MARK: - CarouselLayoutDataSource -
 
 private protocol CarouselLayoutDataSource {
 
     func numberOfItems(in collectionView: UICollectionView) -> Int
+}
+
+private extension CarouselLayout {
+
+    typealias DataSource = CarouselLayoutDataSource
 }
