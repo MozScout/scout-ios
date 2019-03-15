@@ -7,6 +7,7 @@ protocol PlayerViewController: class {
     func displayPlayerStateDidUpdate(viewModel: Player.Event.PlayerStateDidUpdate.ViewModel)
     func displayCloseSync(viewModel: Player.Event.CloseSync.ViewModel)
     func displayItemsDidUpdate(viewModel: Player.Event.PlayerItemsDidUpdate.ViewModel)
+    func displayPlayerTrackDidUpdate(viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel)
 }
 
 extension Player {
@@ -34,6 +35,9 @@ class PlayerViewControllerImp: UIViewController {
     @IBOutlet private weak var leftButton: UIButton!
     @IBOutlet private weak var rightButton: UIButton!
     @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var trackSlider: UISlider!
+    @IBOutlet private weak var remainingTimeLabel: UILabel!
+    @IBOutlet private weak var playedTimeLabel: UILabel!
 
     // MARK: Initializing
 
@@ -64,6 +68,9 @@ class PlayerViewControllerImp: UIViewController {
         setupLeftButton()
         setupRightButton()
         setupCloseButton()
+        setupTrackSlider()
+        setupRemainingTimeLabel()
+        setupPlayedTimeLabel()
 
         let syncRequest = Event.ViewDidLoadSync.Request()
         sendSync { (interactor) in
@@ -130,22 +137,33 @@ class PlayerViewControllerImp: UIViewController {
         }
     }
 
+    private func setupPlayedTimeLabel() {
+        setupTrackSliderLabel(playedTimeLabel)
+    }
+
+    private func setupRemainingTimeLabel() {
+        setupTrackSliderLabel(remainingTimeLabel)
+    }
+
+    private func setupTrackSliderLabel(_ label: UILabel) {
+        label.textAlignment = .center
+        label.font = UIFont.sfProText(.bold, ofSize: 9)
+        label.textColor = UIColor.fxBombay
+    }
+
     private func setupPlayButton() {
-        playButton.tintColor = UIColor.fxBlack
-        playButton.contentMode = .scaleAspectFit
+        setupPlayerControlButton(playButton)
     }
 
     private func setupLeftButton() {
         leftButton.setImage(UIImage.fxJumpBack, for: .normal)
-        leftButton.contentMode = .scaleAspectFit
-        leftButton.tintColor = UIColor.fxBlack
+        setupPlayerControlButton(leftButton)
         leftButton.isEnabled = false
     }
 
     private func setupRightButton() {
         rightButton.setImage(UIImage.fxJumpForward, for: .normal)
-        rightButton.contentMode = .scaleAspectFit
-        rightButton.tintColor = UIColor.fxBlack
+        setupPlayerControlButton(rightButton)
         rightButton.isEnabled = false
     }
 
@@ -153,6 +171,19 @@ class PlayerViewControllerImp: UIViewController {
         closeButton.setImage(UIImage.fxClose, for: .normal)
         closeButton.contentMode = .scaleAspectFit
         closeButton.tintColor = UIColor.fxBlack
+    }
+
+    private func setupPlayerControlButton(_ button: UIButton) {
+        button.contentMode = .scaleAspectFit
+        button.tintColor = UIColor.fxBlack
+    }
+
+    private func setupTrackSlider() {
+        trackSlider.minimumTrackTintColor = UIColor.fxDodgerBlue
+        trackSlider.maximumTrackTintColor = UIColor.fxMishka
+        trackSlider.thumbTintColor = UIColor.fxDodgerBlue
+        trackSlider.setThumbImage(UIImage.fxTrackThumb, for: .normal)
+        trackSlider.setThumbImage(UIImage.fxTrackThumb, for: .highlighted)
     }
 
     private func sendSync<Result>(_ block: (Interactor) -> Result) -> Result {
@@ -184,5 +215,12 @@ extension Player.ViewControllerImp: Player.ViewController {
         }
 
         carouselView.setItems(items, selectedIndexPath: viewModel.selectedIndexPath)
+    }
+
+    func displayPlayerTrackDidUpdate(viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel) {
+
+        playedTimeLabel.text = viewModel.played
+        remainingTimeLabel.text = viewModel.remaining
+        trackSlider.setValue(viewModel.value, animated: true)
     }
 }

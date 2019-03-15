@@ -7,6 +7,7 @@ protocol PlayerPresenter {
     func presentPlayerStateDidUpdate(response: Player.Event.PlayerStateDidUpdate.Response)
     func presentCloseSync(response: Player.Event.CloseSync.Response)
     func presentItemsDidUpdate(response: Player.Event.PlayerItemsDidUpdate.Response)
+    func presentPlayerTrackDidUpdate(response: Player.Event.PlayerTrackDidUpdate.Response)
 }
 
 extension Player {
@@ -22,11 +23,17 @@ extension Player {
         // MARK: - Private properties
 
         private let presenterDispatcher: PresenterDispatcher<Type>
+        private let timeFormatter: TimeFormatter
 
         // MARK: -
 
-        init(presenterDispatcher: PresenterDispatcher<Type>) {
+        init(
+            presenterDispatcher: PresenterDispatcher<Type>,
+            timeFormatter: TimeFormatter
+            ) {
+
             self.presenterDispatcher = presenterDispatcher
+            self.timeFormatter = timeFormatter
         }
 
         // MARK: - Private methods
@@ -97,6 +104,29 @@ extension Player.PresenterImp: Player.Presenter {
 
         displayAsync { (viewController) in
             viewController.displayItemsDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentPlayerTrackDidUpdate(response: Player.Event.PlayerTrackDidUpdate.Response) {
+
+        let viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel = {
+            if let track = response.track {
+                return Player.Event.PlayerTrackDidUpdate.ViewModel(
+                    value: Float(track.played),
+                    played: timeFormatter.formatPlayed(track.played),
+                    remaining: timeFormatter.formatRemaining(track.duration - track.played)
+                )
+            } else {
+                return Player.Event.PlayerTrackDidUpdate.ViewModel(
+                    value: 0,
+                    played: timeFormatter.formatPlayed(nil),
+                    remaining: timeFormatter.formatRemaining(nil)
+                )
+            }
+        }()
+
+        displayAsync { (viewController) in
+            viewController.displayPlayerTrackDidUpdate(viewModel: viewModel)
         }
     }
 }

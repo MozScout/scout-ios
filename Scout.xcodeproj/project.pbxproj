@@ -42,6 +42,8 @@
 		2870514C2236A2C800F69425 /* PlayerItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870514B2236A2C800F69425 /* PlayerItemsProvider.swift */; };
 		2870514E2236A32500F69425 /* ListenListPlayerItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870514D2236A32500F69425 /* ListenListPlayerItemsProvider.swift */; };
 		287051502236A4C200F69425 /* PlayerItemsProviderFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870514F2236A4C200F69425 /* PlayerItemsProviderFacade.swift */; };
+		287F9FF2223C121D001CDDF1 /* PlayerTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FF1223C121D001CDDF1 /* PlayerTimeFormatter.swift */; };
+		287F9FF4223C124B001CDDF1 /* PlayerTimeFormatterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FF3223C124A001CDDF1 /* PlayerTimeFormatterImp.swift */; };
 		2896E5802237CE58008AA1FB /* PartScreenContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E57F2237CE58008AA1FB /* PartScreenContainerViewController.swift */; };
 		2896E5822237FBEA008AA1FB /* PlayerItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */; };
 		2896E5842237FC3D008AA1FB /* PlayerItemProviderImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */; };
@@ -324,6 +326,8 @@
 		2870514B2236A2C800F69425 /* PlayerItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemsProvider.swift; sourceTree = "<group>"; };
 		2870514D2236A32500F69425 /* ListenListPlayerItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenListPlayerItemsProvider.swift; sourceTree = "<group>"; };
 		2870514F2236A4C200F69425 /* PlayerItemsProviderFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemsProviderFacade.swift; sourceTree = "<group>"; };
+		287F9FF1223C121D001CDDF1 /* PlayerTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTimeFormatter.swift; sourceTree = "<group>"; };
+		287F9FF3223C124A001CDDF1 /* PlayerTimeFormatterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTimeFormatterImp.swift; sourceTree = "<group>"; };
 		2896E57F2237CE58008AA1FB /* PartScreenContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartScreenContainerViewController.swift; sourceTree = "<group>"; };
 		2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemProvider.swift; sourceTree = "<group>"; };
 		2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemProviderImp.swift; sourceTree = "<group>"; };
@@ -772,6 +776,8 @@
 			children = (
 				2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */,
 				2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */,
+				287F9FF1223C121D001CDDF1 /* PlayerTimeFormatter.swift */,
+				287F9FF3223C124A001CDDF1 /* PlayerTimeFormatterImp.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -2420,12 +2426,14 @@
 				2801F9A12225B82D00283F1B /* LoadingOverlayViewController.swift in Sources */,
 				F482CD5B2080D969007D0C14 /* AppDelegate.swift in Sources */,
 				77443800223159A400218939 /* UIViewController+Loading.swift in Sources */,
+				287F9FF4223C124B001CDDF1 /* PlayerTimeFormatterImp.swift in Sources */,
 				8637E7F5215CFDED008563E9 /* PodcastsRoutingProtocol.swift in Sources */,
 				F47B7CEC2084CBBC0055585C /* NetworkMapper.swift in Sources */,
 				2812329B221EFE5E001B99C7 /* TabBarContainerController.swift in Sources */,
 				2896E58E22381E8C008AA1FB /* UIViewController+Nib.swift in Sources */,
 				F4A23BB2208101AB006EC9E3 /* AppConfiguration.swift in Sources */,
 				2801F99F2225AF1500283F1B /* OnboardingRegisterWorker.swift in Sources */,
+				287F9FF2223C121D001CDDF1 /* PlayerTimeFormatter.swift in Sources */,
 				93FB827C20B54BDF00A39A5C /* PlayerRoutingProtocol.swift in Sources */,
 				77F1D224221C496800E640C3 /* OnboardingPresenter.swift in Sources */,
 				5622AB4020A6CE230074A4BC /* AuthRouter.swift in Sources */,

@@ -39,6 +39,10 @@ extension UIColor {
         return UIColor(rgb: 0xD7D7DB)
     }
 
+    class var fxBombay: UIColor {
+        return UIColor(rgb: 0xB1B1B3)
+    }
+
     class var fxAthensGray: UIColor {
         return UIColor(rgb: 0xF9F9FA)
     }
@@ -53,5 +57,9 @@ extension UIColor {
 
     class var fxTorchRed: UIColor {
         return UIColor(rgb: 0xFF0039)
+    }
+
+    class var fxDodgerBlue: UIColor {
+        return UIColor(rgb: 0x45A1FF)
     }
 }

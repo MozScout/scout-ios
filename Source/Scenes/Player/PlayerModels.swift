@@ -23,6 +23,7 @@ extension Player.Model {
     struct SceneModel {
         var playerState: PlayerState
         var items: [ItemModel]
+        var track: Track?
     }
 
     struct Item {
@@ -44,6 +45,13 @@ extension Player.Model {
     struct ItemViewModel {
         let imageUrl: URL
         let identifier: Player.Identifier
+    }
+}
+
+extension Player.Model.SceneModel {
+    struct Track {
+        let played: Int64
+        let duration: Int64
     }
 }
 
@@ -106,6 +114,19 @@ extension Player.Event {
 
         struct ViewModel {
             let playButtonIcon: UIImage
+        }
+    }
+
+    enum PlayerTrackDidUpdate {
+
+        struct Response {
+            let track: Model.SceneModel.Track?
+        }
+
+        struct ViewModel {
+            let value: Float
+            let played: String
+            let remaining: String
         }
     }
 }

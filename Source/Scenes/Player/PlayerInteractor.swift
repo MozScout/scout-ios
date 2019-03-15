@@ -47,7 +47,8 @@ extension Player {
 
             sceneModel = Model.SceneModel(
                 playerState: .paused,
-                items: []
+                items: [],
+                track: nil
             )
         }
 
@@ -81,6 +82,12 @@ extension Player {
 
             let response = Event.PlayerItemsDidUpdate.Response(items: sceneModel.items)
             presenter.presentItemsDidUpdate(response: response)
+        }
+
+        private func sendPlayerTrackDidUpdate() {
+
+            let response = Event.PlayerTrackDidUpdate.Response(track: sceneModel.track)
+            presenter.presentPlayerTrackDidUpdate(response: response)
         }
 
         private func observePlayerState() {
@@ -128,6 +135,8 @@ extension Player.InteractorImp: Player.Interactor {
         playIfNeeded()
         observePlayerState()
         observeItems()
+        
+        sendPlayerTrackDidUpdate()
     }
 
     func onViewDidLoad(request: Player.Event.ViewDidLoad.Request) {
