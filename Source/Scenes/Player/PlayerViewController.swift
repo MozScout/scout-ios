@@ -5,8 +5,8 @@ import UIKit
 protocol PlayerViewController: class {
 
     func displayPlayerStateDidUpdate(viewModel: Player.Event.PlayerStateDidUpdate.ViewModel)
-    func displayPlauerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel)
     func displayCloseSync(viewModel: Player.Event.CloseSync.ViewModel)
+    func displayItemsDidUpdate(viewModel: Player.Event.PlayerItemsDidUpdate.ViewModel)
 }
 
 extension Player {
@@ -29,7 +29,7 @@ class PlayerViewControllerImp: UIViewController {
     private let output: Output
     private var interactorDispatcher: InteractorDispatcher!
 
-    @IBOutlet private weak var iconView: UIImageView!
+    @IBOutlet private weak var carouselView: CarouselView!
     @IBOutlet private weak var playButton: UIButton!
     @IBOutlet private weak var leftButton: UIButton!
     @IBOutlet private weak var rightButton: UIButton!
@@ -59,6 +59,7 @@ class PlayerViewControllerImp: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        setupCarouselView()
         setupPlayButton()
         setupLeftButton()
         setupRightButton()
@@ -113,9 +114,20 @@ class PlayerViewControllerImp: UIViewController {
         view.backgroundColor = UIColor.white
     }
 
-    private func setupIconView() {
-        iconView.layer.cornerRadius = 6
-        iconView.layer.masksToBounds = true
+    private func setupCarouselView() {
+        carouselView.scrollViewDidScroll = { [weak self] in
+            self?.sendAsync({ (interactor) in
+                let request = Event.DidScrollItemsList.Request()
+                interactor.onDidScrollItemsList(request: request)
+            })
+        }
+
+        carouselView.didSelectItem = { [weak self] (identifier) in
+            self?.sendAsync({ (interactor) in
+                let request = Event.DidSelectItem.Request(id: identifier)
+                interactor.onDidSelectItem(request: request)
+            })
+        }
     }
 
     private func setupPlayButton() {
@@ -162,12 +174,15 @@ extension Player.ViewControllerImp: Player.ViewController {
         playButton.setImage(viewModel.playButtonIcon, for: .normal)
     }
 
-    func displayPlauerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel) {
-        iconView.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage.fxPlaceholder)
-        
-    }
-
     func displayCloseSync(viewModel: Player.Event.CloseSync.ViewModel) {
         output.onClose()
+    }
+
+    func displayItemsDidUpdate(viewModel: Player.Event.PlayerItemsDidUpdate.ViewModel) {
+        let items = viewModel.items.map { (item) -> CarouselView.Item in
+            return CarouselView.Item(imageUrl: item.imageUrl, id: item.identifier)
+        }
+
+        carouselView.setItems(items, selectedIndexPath: viewModel.selectedIndexPath)
     }
 }

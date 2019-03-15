@@ -5,8 +5,8 @@ import UIKit
 protocol PlayerPresenter {
 
     func presentPlayerStateDidUpdate(response: Player.Event.PlayerStateDidUpdate.Response)
-    func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response)
     func presentCloseSync(response: Player.Event.CloseSync.Response)
+    func presentItemsDidUpdate(response: Player.Event.PlayerItemsDidUpdate.Response)
 }
 
 extension Player {
@@ -68,20 +68,35 @@ extension Player.PresenterImp: Player.Presenter {
         }
     }
 
-    func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response) {
-        let viewModel = Player.Event.PlayerItemDidUpdate.ViewModel(
-            imageUrl: response.imageUrl,
-            title: response.title
-        )
-        displayAsync { (viewController) in
-            viewController.displayPlauerItemDidUpdate(viewModel: viewModel)
-        }
-    }
-
     func presentCloseSync(response: Player.Event.CloseSync.Response) {
         let viewModel = Player.Event.CloseSync.ViewModel()
         displayAsync { (viewController) in
             viewController.displayCloseSync(viewModel: viewModel)
+        }
+    }
+
+    func presentItemsDidUpdate(response: Player.Event.PlayerItemsDidUpdate.Response) {
+        let items = response.items.map { (item) -> Player.Model.ItemViewModel in
+            return Player.Model.ItemViewModel(
+                imageUrl: item.imageUrl,
+                identifier: item.identifier
+            )
+        }
+        let indexPath: IndexPath? = {
+            if items.count > 0 {
+                return IndexPath(item: 0, section: 0)
+            } else {
+                return nil
+            }
+        }()
+
+        let viewModel = Player.Event.PlayerItemsDidUpdate.ViewModel(
+            items: items,
+            selectedIndexPath: indexPath
+        )
+
+        displayAsync { (viewController) in
+            viewController.displayItemsDidUpdate(viewModel: viewModel)
         }
     }
 }

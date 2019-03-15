@@ -6,6 +6,8 @@ enum Player {
 
     // MARK: - Typealiases
 
+    typealias Identifier = String
+
     typealias InteractorDispatcher = Dispatcher<Interactor>
     typealias PresenterDispatcher<Type: ViewController> = Dispatcher<Weak<Type>>
 
@@ -20,6 +22,7 @@ enum Player {
 extension Player.Model {
     struct SceneModel {
         var playerState: PlayerState
+        var items: [ItemModel]
     }
 
     struct Item {
@@ -31,6 +34,16 @@ extension Player.Model {
         let publisher: String
         let excerpt: String
         let iconUrl: URL
+    }
+
+    struct ItemModel {
+        let imageUrl: URL
+        let identifier: Player.Identifier
+    }
+
+    struct ItemViewModel {
+        let imageUrl: URL
+        let identifier: Player.Identifier
     }
 }
 
@@ -44,6 +57,16 @@ extension Player.Event {
     }
     
     enum ViewDidLoadSync {
+        struct Request { }
+    }
+
+    enum DidSelectItem {
+        struct Request {
+            let id: Player.Identifier
+        }
+    }
+
+    enum DidScrollItemsList {
         struct Request { }
     }
 
@@ -63,16 +86,15 @@ extension Player.Event {
         struct ViewModel { }
     }
 
-    enum PlayerItemDidUpdate {
+    enum PlayerItemsDidUpdate {
 
         struct Response {
-            let imageUrl: URL
-            let title: String
+            let items: [Model.ItemModel]
         }
 
         struct ViewModel {
-            let imageUrl: URL
-            let title: String
+            let items: [Model.ItemViewModel]
+            let selectedIndexPath: IndexPath?
         }
     }
 

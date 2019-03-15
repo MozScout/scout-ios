@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewControllerImp" customModule="Scout" customModuleProvider="target">
             <connections>
+                <outlet property="carouselView" destination="wDo-m6-q22" id="C2g-zd-fhO"/>
                 <outlet property="closeButton" destination="FjL-Qk-Y2S" id="azr-b7-WgF"/>
-                <outlet property="iconView" destination="7Ve-Yi-qGq" id="Onq-PM-z44"/>
                 <outlet property="leftButton" destination="1QQ-2N-jwr" id="lmw-E5-5RK"/>
                 <outlet property="playButton" destination="lfn-wy-n4l" id="rh1-aA-CBA"/>
                 <outlet property="rightButton" destination="PHy-ZE-XUe" id="pKG-RF-Ohw"/>
@@ -58,12 +58,6 @@
                         <action selector="rightButtonAction:" destination="-1" eventType="touchUpInside" id="oxx-Q1-2hl"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Ve-Yi-qGq">
-                    <rect key="frame" x="62.5" y="73.5" width="250" height="250.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="7Ve-Yi-qGq" secondAttribute="height" id="hUV-x3-RGA"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjL-Qk-Y2S">
                     <rect key="frame" x="333" y="2" width="40" height="40"/>
                     <constraints>
@@ -75,16 +69,23 @@
                         <action selector="closeButtonAction:" destination="-1" eventType="touchUpInside" id="IYJ-di-zb2"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDo-m6-q22" customClass="CarouselView" customModule="Scout" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="184" width="375" height="200"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="iCw-5w-6GJ"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="wDo-m6-q22" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4CH-IU-bmy"/>
                 <constraint firstItem="1QQ-2N-jwr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1:2" priority="750" id="6AK-WD-B59"/>
+                <constraint firstAttribute="trailing" secondItem="wDo-m6-q22" secondAttribute="trailing" id="D9g-HE-zlG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1QQ-2N-jwr" secondAttribute="bottom" constant="128" id="EAB-sl-3Qk"/>
-                <constraint firstItem="7Ve-Yi-qGq" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:2.7" id="K9n-9y-ukQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="PHy-ZE-XUe" secondAttribute="bottom" constant="128" id="Lde-Ka-faB"/>
-                <constraint firstItem="7Ve-Yi-qGq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lhc-Ar-OTc"/>
                 <constraint firstItem="lfn-wy-n4l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1QQ-2N-jwr" secondAttribute="trailing" constant="16" id="Lkc-rs-0lq"/>
-                <constraint firstItem="lfn-wy-n4l" firstAttribute="top" secondItem="7Ve-Yi-qGq" secondAttribute="bottom" constant="160" id="QSW-o9-ve0"/>
+                <constraint firstItem="lfn-wy-n4l" firstAttribute="top" secondItem="wDo-m6-q22" secondAttribute="bottom" constant="100" id="Sl6-e6-brn"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lfn-wy-n4l" secondAttribute="bottom" constant="128" id="WSX-cG-cfA"/>
                 <constraint firstItem="lfn-wy-n4l" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XPu-CR-NPK"/>
                 <constraint firstItem="FjL-Qk-Y2S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="ZWn-Ve-oFs"/>
