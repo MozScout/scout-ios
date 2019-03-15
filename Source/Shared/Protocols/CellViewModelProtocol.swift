@@ -14,9 +14,10 @@ extension CellViewModel {
     static var cellAnyType: UIView.Type { return CellType.self }
     
     func setupAny(cell: UIView) {
-        // swiftlint:disable force_cast
-        self.setup(cell: cell as! CellType)
-        // swiftlint:enable force_cast
+        guard let castedCell = cell as? CellType else {
+            fatalError("Cannot cast cell \(cell) to \(CellType.self)")
+        }
+        self.setup(cell: castedCell)
     }
 }
 
