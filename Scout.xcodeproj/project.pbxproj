@@ -32,6 +32,11 @@
 		281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329F221EFE7F001B99C7 /* TabBarItemView.swift */; };
 		281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A1221F0B07001B99C7 /* TabBarItemView.xib */; };
 		281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A5221F1E85001B99C7 /* TabBarView.xib */; };
+		28587D54223FF141005CA06A /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D53223FF141005CA06A /* PlayerButton.swift */; };
+		28587D56223FF345005CA06A /* PlayerTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D55223FF345005CA06A /* PlayerTextButton.swift */; };
+		28587D58223FF972005CA06A /* PlayerIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D57223FF972005CA06A /* PlayerIconButton.swift */; };
+		28587D5A2240123B005CA06A /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D592240123B005CA06A /* Switcher.swift */; };
+		28587D5C22401868005CA06A /* PlayerSwitcherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D5B22401868005CA06A /* PlayerSwitcherButton.swift */; };
 		28705137223131C900F69425 /* GeneralApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28705136223131C900F69425 /* GeneralApi.swift */; };
 		28705139223131E000F69425 /* GeneralRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28705138223131E000F69425 /* GeneralRequest.swift */; };
 		2870513B223159B100F69425 /* PlayerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870513A223159B100F69425 /* PlayerCoordinator.swift */; };
@@ -44,6 +49,14 @@
 		287051502236A4C200F69425 /* PlayerItemsProviderFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870514F2236A4C200F69425 /* PlayerItemsProviderFacade.swift */; };
 		287F9FF2223C121D001CDDF1 /* PlayerTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FF1223C121D001CDDF1 /* PlayerTimeFormatter.swift */; };
 		287F9FF4223C124B001CDDF1 /* PlayerTimeFormatterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FF3223C124A001CDDF1 /* PlayerTimeFormatterImp.swift */; };
+		287F9FF6223FAF85001CDDF1 /* PlayerTitleFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FF5223FAF85001CDDF1 /* PlayerTitleFormatter.swift */; };
+		287F9FF8223FAFA1001CDDF1 /* PlayerTitleFormatterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FF7223FAFA1001CDDF1 /* PlayerTitleFormatterImp.swift */; };
+		287F9FFA223FB1EC001CDDF1 /* PlayerDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FF9223FB1EC001CDDF1 /* PlayerDateFormatter.swift */; };
+		287F9FFC223FB280001CDDF1 /* PlayerDateFormatterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F9FFB223FB280001CDDF1 /* PlayerDateFormatterImp.swift */; };
+		287F9FFD223FD14C001CDDF1 /* SF-Compact-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172922254A92003CAEE2 /* SF-Compact-Text-Bold.otf */; };
+		287F9FFE223FD152001CDDF1 /* SF-Compact-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172722254A92003CAEE2 /* SF-Compact-Text-HeavyItalic.otf */; };
+		287F9FFF223FD156001CDDF1 /* SF-Compact-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172F22254A92003CAEE2 /* SF-Compact-Text-Medium.otf */; };
+		287FA000223FD15A001CDDF1 /* SF-Compact-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 773D172A22254A92003CAEE2 /* SF-Compact-Text-RegularItalic.otf */; };
 		2896E5802237CE58008AA1FB /* PartScreenContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E57F2237CE58008AA1FB /* PartScreenContainerViewController.swift */; };
 		2896E5822237FBEA008AA1FB /* PlayerItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */; };
 		2896E5842237FC3D008AA1FB /* PlayerItemProviderImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */; };
@@ -316,6 +329,11 @@
 		2812329F221EFE7F001B99C7 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		281232A1221F0B07001B99C7 /* TabBarItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarItemView.xib; sourceTree = "<group>"; };
 		281232A5221F1E85001B99C7 /* TabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
+		28587D53223FF141005CA06A /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
+		28587D55223FF345005CA06A /* PlayerTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTextButton.swift; sourceTree = "<group>"; };
+		28587D57223FF972005CA06A /* PlayerIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIconButton.swift; sourceTree = "<group>"; };
+		28587D592240123B005CA06A /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
+		28587D5B22401868005CA06A /* PlayerSwitcherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSwitcherButton.swift; sourceTree = "<group>"; };
 		28705136223131C900F69425 /* GeneralApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralApi.swift; sourceTree = "<group>"; };
 		28705138223131E000F69425 /* GeneralRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRequest.swift; sourceTree = "<group>"; };
 		2870513A223159B100F69425 /* PlayerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoordinator.swift; sourceTree = "<group>"; };
@@ -328,6 +346,10 @@
 		2870514F2236A4C200F69425 /* PlayerItemsProviderFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemsProviderFacade.swift; sourceTree = "<group>"; };
 		287F9FF1223C121D001CDDF1 /* PlayerTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTimeFormatter.swift; sourceTree = "<group>"; };
 		287F9FF3223C124A001CDDF1 /* PlayerTimeFormatterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTimeFormatterImp.swift; sourceTree = "<group>"; };
+		287F9FF5223FAF85001CDDF1 /* PlayerTitleFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTitleFormatter.swift; sourceTree = "<group>"; };
+		287F9FF7223FAFA1001CDDF1 /* PlayerTitleFormatterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTitleFormatterImp.swift; sourceTree = "<group>"; };
+		287F9FF9223FB1EC001CDDF1 /* PlayerDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDateFormatter.swift; sourceTree = "<group>"; };
+		287F9FFB223FB280001CDDF1 /* PlayerDateFormatterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDateFormatterImp.swift; sourceTree = "<group>"; };
 		2896E57F2237CE58008AA1FB /* PartScreenContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartScreenContainerViewController.swift; sourceTree = "<group>"; };
 		2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemProvider.swift; sourceTree = "<group>"; };
 		2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemProviderImp.swift; sourceTree = "<group>"; };
@@ -771,13 +793,29 @@
 			path = TabBarView;
 			sourceTree = "<group>";
 		};
+		28587D52223FF132005CA06A /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				28587D53223FF141005CA06A /* PlayerButton.swift */,
+				28587D57223FF972005CA06A /* PlayerIconButton.swift */,
+				28587D5B22401868005CA06A /* PlayerSwitcherButton.swift */,
+				28587D55223FF345005CA06A /* PlayerTextButton.swift */,
+				28587D592240123B005CA06A /* Switcher.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		2870512E2230160D00F69425 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				287F9FF9223FB1EC001CDDF1 /* PlayerDateFormatter.swift */,
+				287F9FFB223FB280001CDDF1 /* PlayerDateFormatterImp.swift */,
 				2896E5812237FBEA008AA1FB /* PlayerItemProvider.swift */,
 				2896E5832237FC3D008AA1FB /* PlayerItemProviderImp.swift */,
 				287F9FF1223C121D001CDDF1 /* PlayerTimeFormatter.swift */,
 				287F9FF3223C124A001CDDF1 /* PlayerTimeFormatterImp.swift */,
+				287F9FF5223FAF85001CDDF1 /* PlayerTitleFormatter.swift */,
+				287F9FF7223FAFA1001CDDF1 /* PlayerTitleFormatterImp.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -825,6 +863,7 @@
 		2896E59222390926008AA1FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				28587D52223FF132005CA06A /* Button */,
 				2896E59322390933008AA1FB /* CarouselView */,
 			);
 			path = Views;
@@ -2113,13 +2152,16 @@
 				77E1E07F221D7E4C006B1084 /* SF-Pro-Display-Black.otf in Resources */,
 				28CFCA5B222D755000D1E477 /* SubscriptionsEmptyView.xib in Resources */,
 				5637D2BE20A3257800112F1F /* MyList.storyboard in Resources */,
+				287F9FFE223FD152001CDDF1 /* SF-Compact-Text-HeavyItalic.otf in Resources */,
 				8637E7FE215D1982008563E9 /* PodcastsCollectionViewCell.xib in Resources */,
 				77E1E07B221D7E4C006B1084 /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				77E1E082221D7E4C006B1084 /* SF-Pro-Display-Medium.otf in Resources */,
 				28CFCA282226EF2200D1E477 /* NavigationBarContainerController.xib in Resources */,
 				6625434E219B575300379011 /* ding.wav in Resources */,
 				5637D2B920A3257800112F1F /* Help.storyboard in Resources */,
+				287F9FFD223FD14C001CDDF1 /* SF-Compact-Text-Bold.otf in Resources */,
 				77E1E075221D7E4C006B1084 /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				287FA000223FD15A001CDDF1 /* SF-Compact-Text-RegularItalic.otf in Resources */,
 				77E1E07E221D7E4C006B1084 /* SF-Pro-Display-LightItalic.otf in Resources */,
 				77E1E079221D7E4C006B1084 /* SF-Pro-Display-Thin.otf in Resources */,
 				281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */,
@@ -2177,6 +2219,7 @@
 				773D173422254A92003CAEE2 /* SF-Compact-Text-LightItalic.otf in Resources */,
 				9333B81D20AC6D070055C5B1 /* MyListTableViewCell.xib in Resources */,
 				28CFCA3F22293A3800D1E477 /* SearchNavigationBar.xib in Resources */,
+				287F9FFF223FD156001CDDF1 /* SF-Compact-Text-Medium.otf in Resources */,
 				7737FA2C222E8A0A00D36DD9 /* CategorySectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2263,9 +2306,11 @@
 			files = (
 				2896E59122381FDB008AA1FB /* RoundTopicCell.swift in Sources */,
 				2896E59022381FC8008AA1FB /* ListenListItem.swift in Sources */,
+				287F9FF6223FAF85001CDDF1 /* PlayerTitleFormatter.swift in Sources */,
 				28CFCA442229640200D1E477 /* BackNavigationBar.swift in Sources */,
 				287051422231942700F69425 /* ListenListRepo.swift in Sources */,
 				9333B81820AC2D940055C5B1 /* LoginViewController.swift in Sources */,
+				28587D58223FF972005CA06A /* PlayerIconButton.swift in Sources */,
 				F4A23BB420810D5E006EC9E3 /* ApplicationAssembly.swift in Sources */,
 				8637E7F3215CFCA4008563E9 /* PodcastsRouter.swift in Sources */,
 				2896E58F22381E8C008AA1FB /* UIViewController+Extensions.swift in Sources */,
@@ -2301,12 +2346,14 @@
 				77E1E05D221D718D006B1084 /* UIFont+Design.swift in Sources */,
 				F47B7CEF2084D7970055585C /* BaseHTTPClient.swift in Sources */,
 				28CFCA54222D704800D1E477 /* SubscriptionsModels.swift in Sources */,
+				287F9FF8223FAFA1001CDDF1 /* PlayerTitleFormatterImp.swift in Sources */,
 				28123297221EC298001B99C7 /* TargetType+Extensions.swift in Sources */,
 				280FEEC2221B12C300223CB9 /* BaseApi.swift in Sources */,
 				F47B7CF12084D7DC0055585C /* ScoutHTTPClient.swift in Sources */,
 				F451179B20891AA800A159B5 /* SpeechServiceProtocol.swift in Sources */,
 				280FEEC8221B12C300223CB9 /* ApiClient.swift in Sources */,
 				2870513E2231742C00F69425 /* ArticlePostModel.swift in Sources */,
+				28587D54223FF141005CA06A /* PlayerButton.swift in Sources */,
 				2896E5802237CE58008AA1FB /* PartScreenContainerViewController.swift in Sources */,
 				28CFCA89222EE46700D1E477 /* PlayerOutput.swift in Sources */,
 				287051502236A4C200F69425 /* PlayerItemsProviderFacade.swift in Sources */,
@@ -2366,6 +2413,7 @@
 				93A3113C20B13F370049DB67 /* VoiceInputRoutingProtocol.swift in Sources */,
 				2801F99A2225AE6E00283F1B /* RegisterRequest.swift in Sources */,
 				776B180A22297D2500B422DC /* ListenPresenter.swift in Sources */,
+				28587D56223FF345005CA06A /* PlayerTextButton.swift in Sources */,
 				93A718B12164B66200BC77D9 /* PodcastDetailsViewController.swift in Sources */,
 				77C51E74222DA56A008E4B0C /* AddSubscriptionAssembler.swift in Sources */,
 				28FDFB71221BF2A600C869E1 /* ReachabilityService.swift in Sources */,
@@ -2394,6 +2442,7 @@
 				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,
 				5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */,
 				281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */,
+				28587D5C22401868005CA06A /* PlayerSwitcherButton.swift in Sources */,
 				93A3114520B15FFF0049DB67 /* ScoutVoiceInputHTTPClientProtocol.swift in Sources */,
 				28CFCA78222EBAC500D1E477 /* UserDataManager.swift in Sources */,
 				F47B7CFD2085244D0055585C /* KeychainServiceProtocol.swift in Sources */,
@@ -2405,6 +2454,7 @@
 				7737FA2F222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift in Sources */,
 				77C51E77222DA56A008E4B0C /* AddSubscriptionViewController.swift in Sources */,
 				28CFCA5D222D755B00D1E477 /* SubscriptionsEmptyView.swift in Sources */,
+				287F9FFC223FB280001CDDF1 /* PlayerDateFormatterImp.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,
 				28CFCA52222D704800D1E477 /* SubscriptionsAssembler.swift in Sources */,
 				28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */,
@@ -2420,6 +2470,7 @@
 				5637D2BB20A3257800112F1F /* MyListAssemblyProtocol.swift in Sources */,
 				93A3114220B1400B0049DB67 /* VoiceInputViewController.swift in Sources */,
 				5622AB4B20A6E5750074A4BC /* ScoutHTTPClient+ScoutTitles.swift in Sources */,
+				287F9FFA223FB1EC001CDDF1 /* PlayerDateFormatter.swift in Sources */,
 				F4A23BB62081113E006EC9E3 /* ApplicationAssemblyProtocol.swift in Sources */,
 				28CFCA53222D704800D1E477 /* SubscriptionsPresenter.swift in Sources */,
 				5637D2C420A3426200112F1F /* HelpInformationViewController.swift in Sources */,
@@ -2454,6 +2505,7 @@
 				778DB073222FC1C600EAD93A /* AddSubscriptionTopicsWorkerImp.swift in Sources */,
 				28CFCA87222EE46600D1E477 /* PlayerViewController.swift in Sources */,
 				2801F99D2225AE6E00283F1B /* RegisterApi.swift in Sources */,
+				28587D5A2240123B005CA06A /* Switcher.swift in Sources */,
 				2870514C2236A2C800F69425 /* PlayerItemsProvider.swift in Sources */,
 				8637E7FD215D1982008563E9 /* PodcastsCollectionViewCell.swift in Sources */,
 				28CFCA7A222EBBA900D1E477 /* KeychainManager.swift in Sources */,

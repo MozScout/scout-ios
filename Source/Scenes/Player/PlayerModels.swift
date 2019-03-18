@@ -24,6 +24,10 @@ extension Player.Model {
         var playerState: PlayerState
         var items: [ItemModel]
         var track: Track?
+        var currentSpeed: Decimal
+        let maximumSpeed: Decimal = 2
+        let minimumSpeed: Decimal = 0.5
+        let speedStep: Decimal = 0.5
     }
 
     struct Item {
@@ -50,8 +54,8 @@ extension Player.Model {
 
 extension Player.Model.SceneModel {
     struct Track {
-        let played: Int64
-        let duration: Int64
+        let played: TimeInterval
+        let duration: TimeInterval
     }
 }
 
@@ -106,6 +110,29 @@ extension Player.Event {
         }
     }
 
+    enum PlayerItemDidUpdate {
+
+        struct Response {
+            let titleItem: ViewModel.TitleItem?
+            let publisher: String?
+            let publishingDate: Date?
+            let title: String?
+            let duration: TimeInterval?
+        }
+
+        struct ViewModel {
+            let titleItem: TitleItem?
+            let details: String?
+            let title: NSAttributedString?
+            let sliderMaximumValue: Float
+
+            enum TitleItem {
+                case icon(URL)
+                case title(String)
+            }
+        }
+    }
+
     enum PlayerStateDidUpdate {
 
         struct Response {
@@ -117,6 +144,20 @@ extension Player.Event {
         }
     }
 
+    enum PlayerSliderDidChangeValue {
+
+        struct Request {
+            let value: Float
+        }
+    }
+
+    enum PlayerSliderDidCommitValue {
+
+        struct Request {
+            let value: Float
+        }
+    }
+
     enum PlayerTrackDidUpdate {
 
         struct Response {
@@ -125,8 +166,31 @@ extension Player.Event {
 
         struct ViewModel {
             let value: Float
+        }
+    }
+
+    enum PlayerTimingsDidUpdate {
+
+        struct Response {
+            let track: Model.SceneModel.Track?
+        }
+
+        struct ViewModel {
             let played: String
             let remaining: String
+        }
+    }
+
+    enum DidClickPlayerSpeedButton {
+
+        struct Request { }
+
+        struct Response {
+            let currentSpeed: Decimal
+        }
+
+        struct ViewModel {
+            let speedButtonValue: String
         }
     }
 }

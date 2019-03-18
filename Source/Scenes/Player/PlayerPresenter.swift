@@ -8,6 +8,9 @@ protocol PlayerPresenter {
     func presentCloseSync(response: Player.Event.CloseSync.Response)
     func presentItemsDidUpdate(response: Player.Event.PlayerItemsDidUpdate.Response)
     func presentPlayerTrackDidUpdate(response: Player.Event.PlayerTrackDidUpdate.Response)
+    func presentPlayerTimingsDidUpdate(response: Player.Event.PlayerTimingsDidUpdate.Response)
+    func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response)
+    func presentDidClickPlayerSpeedButton(response: Player.Event.DidClickPlayerSpeedButton.Response)
 }
 
 extension Player {
@@ -24,16 +27,22 @@ extension Player {
 
         private let presenterDispatcher: PresenterDispatcher<Type>
         private let timeFormatter: TimeFormatter
+        private let titleFormatter: TitleFormatter
+        private let dateFormatter: DateFormatter
 
         // MARK: -
 
         init(
             presenterDispatcher: PresenterDispatcher<Type>,
-            timeFormatter: TimeFormatter
+            timeFormatter: TimeFormatter,
+            titleFormatter: TitleFormatter,
+            dateFormatter: DateFormatter
             ) {
 
             self.presenterDispatcher = presenterDispatcher
             self.timeFormatter = timeFormatter
+            self.titleFormatter = titleFormatter
+            self.dateFormatter = dateFormatter
         }
 
         // MARK: - Private methods
@@ -112,13 +121,29 @@ extension Player.PresenterImp: Player.Presenter {
         let viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel = {
             if let track = response.track {
                 return Player.Event.PlayerTrackDidUpdate.ViewModel(
-                    value: Float(track.played),
+                    value: Float(track.played)
+                )
+            } else {
+                return Player.Event.PlayerTrackDidUpdate.ViewModel(
+                    value: 0
+                )
+            }
+        }()
+
+        displayAsync { (viewController) in
+            viewController.displayPlayerTrackDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentPlayerTimingsDidUpdate(response: Player.Event.PlayerTimingsDidUpdate.Response) {
+        let viewModel: Player.Event.PlayerTimingsDidUpdate.ViewModel = {
+            if let track = response.track {
+                return Player.Event.PlayerTimingsDidUpdate.ViewModel(
                     played: timeFormatter.formatPlayed(track.played),
                     remaining: timeFormatter.formatRemaining(track.duration - track.played)
                 )
             } else {
-                return Player.Event.PlayerTrackDidUpdate.ViewModel(
-                    value: 0,
+                return Player.Event.PlayerTimingsDidUpdate.ViewModel(
                     played: timeFormatter.formatPlayed(nil),
                     remaining: timeFormatter.formatRemaining(nil)
                 )
@@ -126,7 +151,48 @@ extension Player.PresenterImp: Player.Presenter {
         }()
 
         displayAsync { (viewController) in
-            viewController.displayPlayerTrackDidUpdate(viewModel: viewModel)
+            viewController.displayPlayerTimingsDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response) {
+
+        let title: NSAttributedString? = {
+            guard let title = response.title else { return nil }
+            return titleFormatter.formatTitle(title)
+        }()
+
+        let details: String? = {
+            if let publisher = response.publisher,
+                let date = response.publishingDate {
+
+                return "\(publisher)\n\(dateFormatter.formatPublishingDate(date))"
+            } else if let publisher = response.publisher {
+                return "\(publisher)"
+            } else if let date = response.publishingDate {
+                return "\(dateFormatter.formatPublishingDate(date))"
+            } else {
+                return nil
+            }
+        }()
+
+        let viewModel = Player.Event.PlayerItemDidUpdate.ViewModel(
+            titleItem: response.titleItem,
+            details: details,
+            title: title,
+            sliderMaximumValue: Float(response.duration ?? 0)
+        )
+
+        displayAsync { (viewController) in
+            viewController.displayPlayerItemDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentDidClickPlayerSpeedButton(response: Player.Event.DidClickPlayerSpeedButton.Response) {
+
+        let viewModel = Player.Event.DidClickPlayerSpeedButton.ViewModel(speedButtonValue: "\(response.currentSpeed)x")
+        displayAsync { (viewController) in
+            viewController.displayDidClickPlayerSpeedButton(viewModel: viewModel)
         }
     }
 }

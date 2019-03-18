@@ -8,8 +8,8 @@ import Foundation
 
 protocol PlayerTimeFormatter {
 
-    func formatPlayed(_ seconds: Int64?) -> String
-    func formatRemaining(_ seconds: Int64?) -> String
+    func formatPlayed(_ seconds: TimeInterval?) -> String
+    func formatRemaining(_ seconds: TimeInterval?) -> String
 }
 
 extension Player {

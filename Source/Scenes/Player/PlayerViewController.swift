@@ -8,6 +8,9 @@ protocol PlayerViewController: class {
     func displayCloseSync(viewModel: Player.Event.CloseSync.ViewModel)
     func displayItemsDidUpdate(viewModel: Player.Event.PlayerItemsDidUpdate.ViewModel)
     func displayPlayerTrackDidUpdate(viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel)
+    func displayPlayerTimingsDidUpdate(viewModel: Player.Event.PlayerTimingsDidUpdate.ViewModel)
+    func displayPlayerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel)
+    func displayDidClickPlayerSpeedButton(viewModel: Player.Event.DidClickPlayerSpeedButton.ViewModel)
 }
 
 extension Player {
@@ -30,7 +33,13 @@ class PlayerViewControllerImp: UIViewController {
     private let output: Output
     private var interactorDispatcher: InteractorDispatcher!
 
+    @IBOutlet private weak var detailsLabel: UILabel!
+    @IBOutlet private weak var titleItemContainer: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var carouselView: CarouselView!
+    @IBOutlet private weak var likeButton: UIButton!
+    @IBOutlet private weak var dislikeButton: UIButton!
+    @IBOutlet private weak var dividerView: UIView!
     @IBOutlet private weak var playButton: UIButton!
     @IBOutlet private weak var leftButton: UIButton!
     @IBOutlet private weak var rightButton: UIButton!
@@ -38,6 +47,14 @@ class PlayerViewControllerImp: UIViewController {
     @IBOutlet private weak var trackSlider: UISlider!
     @IBOutlet private weak var remainingTimeLabel: UILabel!
     @IBOutlet private weak var playedTimeLabel: UILabel!
+    @IBOutlet private weak var playerSpeedButton: PlayerTextButton!
+    @IBOutlet private weak var noteButton: PlayerIconButton!
+    @IBOutlet private weak var summaryButton: PlayerSwitcherButton!
+
+    private lazy var titleItemLabel: UILabel = createTitleItemLabel()
+    private lazy var titleItemImageView: UIImageView = createTitleItemImageView()
+
+    private var currentTitleItem: UIView?
 
     // MARK: Initializing
 
@@ -63,14 +80,23 @@ class PlayerViewControllerImp: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        setupDetailsLabel()
+        setupTitleItemContainer()
+        setupTitleLabel()
         setupCarouselView()
         setupPlayButton()
         setupLeftButton()
         setupRightButton()
         setupCloseButton()
+        setupLikeButton()
+        setupDislikeButton()
+        setupDividerView()
         setupTrackSlider()
         setupRemainingTimeLabel()
         setupPlayedTimeLabel()
+        setupPlayerSpeedButton()
+        setupNoteButton()
+        setupSummaryButton()
 
         let syncRequest = Event.ViewDidLoadSync.Request()
         sendSync { (interactor) in
@@ -121,6 +147,24 @@ class PlayerViewControllerImp: UIViewController {
         view.backgroundColor = UIColor.white
     }
 
+    private func setupDetailsLabel() {
+        detailsLabel.textAlignment = .left
+        detailsLabel.font = UIFont.sfProText(.regular, ofSize: 10)
+        detailsLabel.textColor = UIColor.fxBlack
+        detailsLabel.numberOfLines = 2
+    }
+
+    private func setupTitleItemContainer() {
+        titleItemContainer.backgroundColor = UIColor.clear
+    }
+
+    private func setupTitleLabel() {
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.sfProText(.semibold, ofSize: 14)
+        titleLabel.textColor = UIColor.fxBlack
+        titleLabel.numberOfLines = 0
+    }
+
     private func setupCarouselView() {
         carouselView.scrollViewDidScroll = { [weak self] in
             self?.sendAsync({ (interactor) in
@@ -158,13 +202,23 @@ class PlayerViewControllerImp: UIViewController {
     private func setupLeftButton() {
         leftButton.setImage(UIImage.fxJumpBack, for: .normal)
         setupPlayerControlButton(leftButton)
-        leftButton.isEnabled = false
     }
 
     private func setupRightButton() {
         rightButton.setImage(UIImage.fxJumpForward, for: .normal)
         setupPlayerControlButton(rightButton)
-        rightButton.isEnabled = false
+    }
+
+    private func setupLikeButton() {
+        likeButton.setImage(UIImage.fxLike, for: .normal)
+        setupPlayerControlButton(likeButton)
+        likeButton.isEnabled = false
+    }
+
+    private func setupDislikeButton() {
+        dislikeButton.setImage(UIImage.fxDislike, for: .normal)
+        setupPlayerControlButton(dislikeButton)
+        dislikeButton.isEnabled = false
     }
 
     private func setupCloseButton() {
@@ -178,12 +232,85 @@ class PlayerViewControllerImp: UIViewController {
         button.tintColor = UIColor.fxBlack
     }
 
+    private func setupDividerView() {
+        dividerView.backgroundColor = UIColor.fxMishka
+    }
+
     private func setupTrackSlider() {
+        trackSlider.minimumValue = 0
         trackSlider.minimumTrackTintColor = UIColor.fxDodgerBlue
         trackSlider.maximumTrackTintColor = UIColor.fxMishka
         trackSlider.thumbTintColor = UIColor.fxDodgerBlue
         trackSlider.setThumbImage(UIImage.fxTrackThumb, for: .normal)
         trackSlider.setThumbImage(UIImage.fxTrackThumb, for: .highlighted)
+        trackSlider.addTarget(self, action: #selector(trackSliderValueChanged(_:)), for: .valueChanged)
+        trackSlider.addTarget(self, action: #selector(trackSliderCommitValue(_:)), for: [.touchUpInside, .touchUpOutside])
+    }
+
+    @objc private func trackSliderValueChanged(_ slider: UISlider) {
+        sendAsync { (interactor) in
+            let request = Event.PlayerSliderDidChangeValue.Request(value: slider.value)
+            interactor.onPlayerSliderDidChangeValue(request: request)
+        }
+    }
+
+    @objc private func trackSliderCommitValue(_ slider: UISlider) {
+        sendAsync { (interactor) in
+            let request = Event.PlayerSliderDidCommitValue.Request(value: slider.value)
+            interactor.onPlayerSliderDidCommitValue(request: request)
+        }
+    }
+
+    private func setupPlayerSpeedButton() {
+        playerSpeedButton.title = "Voice Speed"
+        playerSpeedButton.onDidTap = { [weak self] in
+            self?.sendAsync({ (interactor) in
+                let request = Event.DidClickPlayerSpeedButton.Request()
+                interactor.onDidClickPlayerSpeedButton(request: request)
+            })
+        }
+    }
+
+    private func setupNoteButton() {
+        noteButton.title = "Make a Note"
+        noteButton.icon = UIImage.fxNote
+        noteButton.isEnabled = false
+        noteButton.onDidTap = {
+            print(.log(message: "Note button click"))
+        }
+    }
+
+    private func setupSummaryButton() {
+        let switcher: Switcher = Switcher()
+
+        summaryButton.title = "Summarize"
+        summaryButton.setContent(switcher)
+        summaryButton.onDidTap = { [weak self] in
+            switcher.isOn = !switcher.isOn
+            print(.log(message: "Summary button click"))
+        }
+    }
+
+    private func createTitleItemLabel() -> UILabel {
+        let label = UILabel()
+
+        label.font = UIFont.sfCompactText(.bold, ofSize: 12)
+        label.textColor = UIColor.fxBlack
+        label.textAlignment = .center
+        label.numberOfLines = 0
+
+        return label
+    }
+
+    private func createTitleItemImageView() -> UIImageView {
+        let imageView = UIImageView()
+
+        imageView.contentMode = .scaleAspectFill
+        imageView.snp.makeConstraints { (make) in
+            make.height.width.equalTo(24)
+        }
+
+        return imageView
     }
 
     private func sendSync<Result>(_ block: (Interactor) -> Result) -> Result {
@@ -219,8 +346,53 @@ extension Player.ViewControllerImp: Player.ViewController {
 
     func displayPlayerTrackDidUpdate(viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel) {
 
+        trackSlider.setValue(viewModel.value, animated: true)
+    }
+
+    func displayPlayerTimingsDidUpdate(viewModel: Player.Event.PlayerTimingsDidUpdate.ViewModel) {
+
         playedTimeLabel.text = viewModel.played
         remainingTimeLabel.text = viewModel.remaining
-        trackSlider.setValue(viewModel.value, animated: true)
+    }
+
+    func displayPlayerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel) {
+
+        trackSlider.maximumValue = viewModel.sliderMaximumValue
+
+        switch viewModel.titleItem {
+
+        case .none:
+            currentTitleItem = nil
+
+        case .some(let some):
+            switch some {
+
+            case .title(let string):
+                titleItemLabel.text = string
+                currentTitleItem = titleItemLabel
+
+            case .icon(let url):
+                titleItemImageView.kf.setImage(with: url, placeholder: UIImage.fxPlaceholder, options: [.backgroundDecode])
+                currentTitleItem = titleItemImageView
+
+            }
+        }
+
+        if let titleItem = currentTitleItem {
+            titleItemContainer.addSubview(titleItem)
+            titleItem.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+        } else {
+            currentTitleItem?.removeFromSuperview()
+        }
+
+        detailsLabel.text = viewModel.details
+        titleLabel.attributedText = viewModel.title
+    }
+
+    func displayDidClickPlayerSpeedButton(viewModel: Player.Event.DidClickPlayerSpeedButton.ViewModel) {
+
+        playerSpeedButton.value = viewModel.speedButtonValue
     }
 }

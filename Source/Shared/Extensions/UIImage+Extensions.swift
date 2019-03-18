@@ -22,6 +22,11 @@ extension UIImage {
     class var fxJumpBack: UIImage { return image() }
     class var fxTrackThumb: UIImage { return image() }
 
+    class var fxLike: UIImage { return image() }
+    class var fxDislike: UIImage { return image() }
+
+    class var fxNote: UIImage { return image() }
+
     class var fxClose: UIImage { return image() }
     class var fxHide: UIImage { return image() }
 

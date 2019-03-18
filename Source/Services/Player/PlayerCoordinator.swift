@@ -38,6 +38,21 @@ class PlayerCoordinator {
         return playerStateBehaviorRelay.value
     }
 
+    public var onDidFinishPlaying: (() -> Void)? {
+        get { return playerService.onDidFinishPlaying }
+        set { playerService.onDidFinishPlaying = newValue }
+    }
+    public var onPlaying: ((_ currentTime: TimeInterval?, _ duration: TimeInterval?) -> Void)? {
+        get { return playerService.onPlaying }
+        set { playerService.onPlaying = newValue }
+    }
+
+    public var currentTime: TimeInterval? { return playerService.currentTime }
+    public var duration: TimeInterval? { return playerService.duration }
+    public var isPlaying: Bool { return playerService.isPlaying }
+    public var url: URL? { return playerService.url }
+    public var rate: Float? { return playerService.rate }
+
     // MARK: -
 
     init(
@@ -81,6 +96,16 @@ class PlayerCoordinator {
             self?.loadAudioCompletion(result)
             self?.loadingStateBehaviorRelay.accept(.idle)
         }
+    }
+
+    public func setCurrentTime(_ time: TimeInterval) {
+
+        playerService.setCurrentTime(time)
+    }
+
+    public func setRate(_ rate: Float) {
+
+        playerService.setRate(rate)
     }
 
     // MARK: - Private methods

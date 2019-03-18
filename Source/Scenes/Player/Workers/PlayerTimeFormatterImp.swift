@@ -7,23 +7,31 @@
 import Foundation
 
 extension Player {
+    
     class TimeFormatterImp: TimeFormatter {
 
-        func formatPlayed(_ seconds: Int64?) -> String {
+        func formatPlayed(_ seconds: TimeInterval?) -> String {
             return formatSeconds(seconds)
         }
 
-        func formatRemaining(_ seconds: Int64?) -> String {
+        func formatRemaining(_ seconds: TimeInterval?) -> String {
             return [(seconds == nil ? "" : "-"), formatSeconds(seconds)].joined()
         }
 
-        private func formatSeconds(_ seconds: Int64?) -> String {
+        private func formatSeconds(_ seconds: TimeInterval?) -> String {
             guard let seconds = seconds else { return "--:--" }
 
-            let minutes: Int64 = seconds / 60
-            let secondsRemaining: Int64 = seconds % 60
+            let minutes: Int64 = Int64(seconds) / 60
+            let secondsRemaining: Int64 = Int64(seconds) % 60
 
-            return "\(minutes):\(secondsRemaining)"
+            let secondsRemainingString: String
+            if secondsRemaining < 10 {
+                secondsRemainingString = "0\(secondsRemaining)"
+            } else {
+                secondsRemainingString = "\(secondsRemaining)"
+            }
+
+            return "\(minutes):\(secondsRemainingString)"
         }
     }
 }

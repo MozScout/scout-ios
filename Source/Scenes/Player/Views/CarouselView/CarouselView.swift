@@ -36,10 +36,8 @@ class CarouselView: UIView {
     private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var collectionViewLayout: CarouselLayout = {
         return CarouselLayout(
-            standardItemSize: cellRegularSize,
-            focusedItemSize: cellLargeSize,
-            interitemInset: interitemSpacing,
-            dataSource: self
+            dataSource: self,
+            delegate: self
         )
     }()
 
@@ -255,6 +253,20 @@ extension CarouselView: CarouselLayout.DataSource {
     }
 }
 
+extension CarouselView: CarouselLayout.Delegate {
+    var focusedItemSize: CGSize {
+        return CGSize(width: cellLargeSize, height: cellLargeSize)
+    }
+
+    var regularItemSize: CGSize {
+        return CGSize(width: cellRegularSize, height: cellRegularSize)
+    }
+
+    var interitemInset: CGFloat {
+        return interitemSpacing
+    }
+}
+
 // MARK: - CarouselLayout -
 
 private class CarouselLayout: UICollectionViewLayout {
@@ -262,10 +274,7 @@ private class CarouselLayout: UICollectionViewLayout {
     // MARK: - Private properties
 
     private let dataSource: DataSource
-
-    private let standardItemSize: CGFloat
-    private let focusedItemSize: CGFloat
-    private let interitemInset: CGFloat
+    private let delegate: Delegate
 
     private var layoutAttributesCache: [IndexPath: UICollectionViewLayoutAttributes] = [:]
 
@@ -275,16 +284,12 @@ private class CarouselLayout: UICollectionViewLayout {
     // MARK: -
 
     init(
-        standardItemSize: CGFloat,
-        focusedItemSize: CGFloat,
-        interitemInset: CGFloat,
-        dataSource: DataSource
+        dataSource: DataSource,
+        delegate: Delegate
         ) {
 
-        self.standardItemSize = standardItemSize
-        self.focusedItemSize = focusedItemSize
-        self.interitemInset = interitemInset
         self.dataSource = dataSource
+        self.delegate = delegate
 
         super.init()
     }
@@ -309,9 +314,9 @@ private class CarouselLayout: UICollectionViewLayout {
 
         contentSize = calculateContentSize(
             for: dataSource.numberOfItems(in: collectionView),
-            withInteritemInset: interitemInset,
-            focusedItemSize: CGSize(width: focusedItemSize, height: focusedItemSize),
-            standardItemSize: CGSize(width: standardItemSize, height: standardItemSize)
+            withInteritemInset: delegate.interitemInset,
+            focusedItemSize: delegate.focusedItemSize,
+            standardItemSize: delegate.regularItemSize
         )
     }
 
@@ -355,14 +360,14 @@ private class CarouselLayout: UICollectionViewLayout {
         let collectionViewVisibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
 
-        let sizeDifference: CGFloat = focusedItemSize - standardItemSize
+        let sizeDifference: CGFloat = delegate.focusedItemSize.height - delegate.regularItemSize.height
 
-        let size = CGSize(width: standardItemSize, height: standardItemSize)
+        let size = delegate.regularItemSize
         let originX: CGFloat = {
             if let previousIndexPath = self.indexPath(before: indexPath),
                 let previousAttributes = layoutAttributesCache[previousIndexPath] {
 
-                return previousAttributes.frame.maxX + interitemInset
+                return previousAttributes.frame.maxX + delegate.interitemInset
             } else {
 
                 let estimatedItemFrame = estimatedFrameForItem(
@@ -375,9 +380,9 @@ private class CarouselLayout: UICollectionViewLayout {
         let origin = CGPoint(x: originX,  y: sizeDifference / 2)
         var frame = CGRect(origin: origin, size: size)
 
-        let focusStartPoint: CGFloat = collectionViewVisibleRect.midX - focusedItemSize / 2 - interitemInset - standardItemSize
-        let focusPoint: CGFloat = collectionViewVisibleRect.midX - focusedItemSize / 2
-        let focusEndPoint: CGFloat = collectionViewVisibleRect.midX + focusedItemSize / 2 + interitemInset
+        let focusStartPoint: CGFloat = collectionViewVisibleRect.midX - delegate.focusedItemSize.width / 2 - delegate.interitemInset - delegate.regularItemSize.width
+        let focusPoint: CGFloat = collectionViewVisibleRect.midX - delegate.focusedItemSize.width / 2
+        let focusEndPoint: CGFloat = collectionViewVisibleRect.midX + delegate.focusedItemSize.width / 2 + delegate.interitemInset
 
         let distanceToCenter: CGFloat = abs(focusPoint - frame.minX)
         let centerSize: CGFloat = {
@@ -395,7 +400,7 @@ private class CarouselLayout: UICollectionViewLayout {
         let percent = max(centerSize - distanceToCenter, 0) / centerSize
 
         let additionalSize = sizeDifference * percent
-        let itemSize = standardItemSize + additionalSize
+        let itemSize = delegate.regularItemSize.height + additionalSize
 
         frame.size = CGSize(width: itemSize, height: itemSize)
         frame.origin = CGPoint(x: frame.origin.x, y: (sizeDifference - additionalSize) / 2)
@@ -416,7 +421,7 @@ private class CarouselLayout: UICollectionViewLayout {
 
         let estimatedItemFrame = estimatedFrameForItem(
             at: indexPath,
-            with: CGSize(width: focusedItemSize, height: focusedItemSize)
+            with: delegate.focusedItemSize
         )
         return CGPoint(x: estimatedItemFrame.minX, y: 0)
     }
@@ -437,12 +442,12 @@ private class CarouselLayout: UICollectionViewLayout {
         let itemsBeforeNumber = indexPath.item
         let interitemInsetsBeforeNumber = itemsBeforeNumber
 
-        let itemsBeforeSize: CGFloat = CGFloat(itemsBeforeNumber) * standardItemSize
-        let interitemInsetsBeforeSize: CGFloat = CGFloat(interitemInsetsBeforeNumber) * interitemInset
+        let itemsBeforeSize: CGFloat = CGFloat(itemsBeforeNumber) * delegate.regularItemSize.width
+        let interitemInsetsBeforeSize: CGFloat = CGFloat(interitemInsetsBeforeNumber) * delegate.interitemInset
 
         let origin: CGPoint = CGPoint(
             x: itemsBeforeSize + interitemInsetsBeforeSize,
-            y: (focusedItemSize - size.height) / 2
+            y: (delegate.focusedItemSize.height - size.height) / 2
         )
 
         return CGRect(origin: origin, size: size)
@@ -475,7 +480,15 @@ private protocol CarouselLayoutDataSource {
     func numberOfItems(in collectionView: UICollectionView) -> Int
 }
 
+private protocol CarouselLayoutDelegate {
+
+    var focusedItemSize: CGSize { get }
+    var regularItemSize: CGSize { get }
+    var interitemInset: CGFloat { get }
+}
+
 private extension CarouselLayout {
 
     typealias DataSource = CarouselLayoutDataSource
+    typealias Delegate = CarouselLayoutDelegate
 }

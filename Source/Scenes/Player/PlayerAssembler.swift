@@ -43,10 +43,14 @@ extension Player.AssemblerImp: Player.Assembler {
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let timeFormatter = Player.TimeFormatterImp()
+        let titleFormatter = Player.TitleFormatterImp()
+        let dateFormatter = Player.DateFormatterImp()
 
         let presenter = PresenterImp(
             presenterDispatcher: presenterDispatcher,
-            timeFormatter: timeFormatter
+            timeFormatter: timeFormatter,
+            titleFormatter: titleFormatter,
+            dateFormatter: dateFormatter
         )
 
         let itemProvider = Player.ItemProviderImp(
