@@ -128,9 +128,17 @@ class PlayerViewControllerImp: UIViewController {
     }
 
     @IBAction func leftButtonAction(_ sender: Any) {
+        sendAsync { (interactor) in
+            let request = Event.DidTapJumpBackward.Request()
+            interactor.onDidTapJumpBackward(request: request)
+        }
     }
 
     @IBAction func rightButtonAction(_ sender: Any) {
+        sendAsync { (interactor) in
+            let request = Event.DidTapJumpForward.Request()
+            interactor.onDidTapJumpForward(request: request)
+        }
     }
 
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -160,7 +168,7 @@ class PlayerViewControllerImp: UIViewController {
 
     private func setupTitleLabel() {
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.sfProText(.semibold, ofSize: 14)
+        titleLabel.font = UIFont.sfProText(.semibold, ofSize: 18)
         titleLabel.textColor = UIColor.fxBlack
         titleLabel.numberOfLines = 0
     }
@@ -281,12 +289,10 @@ class PlayerViewControllerImp: UIViewController {
     }
 
     private func setupSummaryButton() {
-        let switcher: Switcher = Switcher()
-
         summaryButton.title = "Summarize"
-        summaryButton.setContent(switcher)
-        summaryButton.onDidTap = { [weak self] in
-            switcher.isOn = !switcher.isOn
+        summaryButton.isEnabled = false
+        summaryButton.onDidTap = { [weak summaryButton] in
+            summaryButton?.isOn = !(summaryButton?.isOn ?? false)
             print(.log(message: "Summary button click"))
         }
     }
@@ -306,6 +312,7 @@ class PlayerViewControllerImp: UIViewController {
         let imageView = UIImageView()
 
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.snp.makeConstraints { (make) in
             make.height.width.equalTo(24)
         }

@@ -57,7 +57,9 @@ class PlayerButton: UIView {
         if let content = currentContent {
             contentViewContainer.addSubview(content)
             content.snp.makeConstraints { (make) in
-                make.edges.equalToSuperview()
+                make.left.top.greaterThanOrEqualToSuperview()
+                make.right.bottom.lessThanOrEqualToSuperview()
+                make.center.equalToSuperview()
             }
         }
     }
@@ -120,7 +122,7 @@ class PlayerButton: UIView {
         titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         titleLabel.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.top.equalTo(self.contentViewContainer.snp.bottom).offset(-2)
+            make.top.equalTo(self.contentViewContainer.snp.bottom)
         }
     }
 }

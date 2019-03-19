@@ -16,6 +16,21 @@ class Switcher: UIView {
     private let thumbShadowContainer: UIView = UIView()
     private let thumb: UIView = UIView()
 
+    private let thumbSize: CGFloat = 12
+    private let backgroundOvalSize: CGSize = CGSize(width: 32, height: 6)
+    private let sizeMultiplier: CGFloat = 1
+
+    private var relevantThumbSize: CGFloat {
+        return thumbSize * sizeMultiplier
+    }
+
+    private var relevantBackgroundOvalSize: CGSize {
+        return CGSize(
+            width: backgroundOvalSize.width * sizeMultiplier,
+            height: backgroundOvalSize.height * sizeMultiplier
+        )
+    }
+
     // MARK: - Public properties
 
     public var isOn: Bool = false {
@@ -87,11 +102,12 @@ class Switcher: UIView {
         thumbShadowContainer.layer.shadowColor = UIColor.fxBlack.cgColor
         thumbShadowContainer.layer.shadowRadius = 3.0 / 2.0
         thumbShadowContainer.layer.shadowOpacity = 0.5
+        thumbShadowContainer.layer.shadowOffset = .zero
     }
 
     private func setupThumb() {
         thumb.backgroundColor = UIColor.white
-        thumb.layer.cornerRadius = 7.5
+        thumb.layer.cornerRadius = relevantThumbSize / 2.0
         thumb.layer.masksToBounds = true
     }
 
@@ -103,9 +119,9 @@ class Switcher: UIView {
         thumbShadowContainer.addSubview(thumb)
 
         backgroundOval.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.height.equalTo(7.5)
-            make.width.equalTo(32)
+            make.left.right.equalToSuperview().inset(relevantThumbSize / 4.0)
+            make.height.equalTo(self.relevantBackgroundOvalSize.height)
+            make.width.equalTo(self.relevantBackgroundOvalSize.width)
             make.centerY.equalToSuperview()
         }
 
@@ -138,13 +154,14 @@ class Switcher: UIView {
 
     private func updateIsOn(animated: Bool) {
         UIView.animate(
-            withDuration: animated ? TimeInterval(UINavigationController.hideShowBarDuration) : 0
+            withDuration: animated ? 0.15 : 0
         ) {
 
             self.thumbShadowContainer.snp.remakeConstraints { (make) in
-                make.size.equalTo(15)
+                make.size.equalTo(self.relevantThumbSize)
+                make.top.bottom.equalToSuperview()
                 make.centerY.equalToSuperview()
-                if self.isOn {
+                if self.isOn && self.isEnabled {
                     make.right.equalToSuperview()
                 } else {
                     make.left.equalToSuperview()
@@ -152,6 +169,7 @@ class Switcher: UIView {
             }
 
             self.updateAppearance()
+//            self.thumbShadowContainer.superview?.layoutIfNeeded()
         }
     }
 }

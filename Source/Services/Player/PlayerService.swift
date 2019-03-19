@@ -57,6 +57,7 @@ class PlayerService: NSObject {
         ) {
 
         player?.currentTime = time
+//        updatePlayingProgress()
     }
 
     func play() {
@@ -65,7 +66,14 @@ class PlayerService: NSObject {
     }
 
     func pause() {
+        let currentTime = player?.currentTime ?? 0
         player?.pause()
+        player?.currentTime = currentTime
+        displayLink?.isPaused = true
+    }
+
+    func stop() {
+        player?.stop()
         displayLink?.isPaused = true
     }
 

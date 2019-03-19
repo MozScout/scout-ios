@@ -91,6 +91,16 @@ extension Player.Event {
         struct Request { }
     }
 
+    enum DidTapJumpBackward {
+
+        struct Request { }
+    }
+
+    enum DidTapJumpForward {
+
+        struct Request { }
+    }
+
     enum CloseSync {
 
         struct Request { }

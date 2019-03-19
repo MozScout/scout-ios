@@ -7,6 +7,8 @@ protocol PlayerInteractor: class {
     func onViewDidLoadSync(request: Player.Event.ViewDidLoadSync.Request)
     func onViewDidLoad(request: Player.Event.ViewDidLoad.Request)
     func onDidTapPlayButton(request: Player.Event.DidTapPlayButton.Request)
+    func onDidTapJumpBackward(request: Player.Event.DidTapJumpBackward.Request)
+    func onDidTapJumpForward(request: Player.Event.DidTapJumpForward.Request)
     func onCloseSync(request: Player.Event.CloseSync.Request)
     func onViewWillAppear(request: Player.Event.ViewWillAppear.Request)
     func onDidSelectItem(request: Player.Event.DidSelectItem.Request)
@@ -176,10 +178,24 @@ extension Player {
                 Model.ItemModel(
                     imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!,
                     identifier: ""
+                ),
+                Model.ItemModel(
+                    imageUrl: URL(string: "https://www.kolesa.ru/uploads/2018/03/gaz_21_volga_5.jpg")!,
+                    identifier: ""
+                ),
+                Model.ItemModel(
+                    imageUrl: URL(string: "https://a.d-cd.net/68afees-960.jpg")!,
+                    identifier: ""
                 )
             ]
 
             sendItemsDidUpdate()
+        }
+
+        private func observePlayingFinished() {
+            playerManager.onDidFinishPlaying = { [weak self] in
+                self?.sceneModel.playerState = .paused
+            }
         }
     }
 }
@@ -265,5 +281,35 @@ extension Player.InteractorImp: Player.Interactor {
 
         playerManager.setRate((sceneModel.currentSpeed as NSDecimalNumber).floatValue)
         sendPlayerSpeedDidUpdate()
+    }
+
+    func onDidTapJumpBackward(request: Player.Event.DidTapJumpBackward.Request) {
+        guard let currentTime = playerManager.currentTime else { return }
+
+        let newTime = currentTime - 10
+        if let track = sceneModel.track {
+            sceneModel.track = Model.SceneModel.Track(
+                played: newTime,
+                duration: track.duration
+            )
+            sendPlayerTrackDidUpdate(self.sceneModel.track)
+            sendPlayerTimingsDidUpdate(self.sceneModel.track)
+        }
+        playerManager.setCurrentTime(newTime)
+    }
+
+    func onDidTapJumpForward(request: Player.Event.DidTapJumpForward.Request) {
+        guard let currentTime = playerManager.currentTime else { return }
+
+        let newTime = currentTime + 30
+        if let track = sceneModel.track {
+            sceneModel.track = Model.SceneModel.Track(
+                played: newTime,
+                duration: track.duration
+            )
+            sendPlayerTrackDidUpdate(self.sceneModel.track)
+            sendPlayerTimingsDidUpdate(self.sceneModel.track)
+        }
+        playerManager.setCurrentTime(newTime)
     }
 }
