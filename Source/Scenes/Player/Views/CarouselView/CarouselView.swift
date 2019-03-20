@@ -199,6 +199,11 @@ extension CarouselView {
         ) {
 
         guard let indexPath = centerMostItemIndexPath() else { return }
+        guard !scrollView.isDragging,
+            !scrollView.isTracking
+            else {
+                return
+        }
         scrollToItem(at: indexPath, animated: true)
     }
 }
