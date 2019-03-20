@@ -80,7 +80,7 @@ extension HandsFreeFlowCoordinator {
 
         func assemblyHandsFreeMode(output: HandsFreeMode.Output) -> HandsFreeMode.ViewControllerImp {
             let assembler = HandsFreeMode.AssemblerImp(
-//                appAssembly: appAssembly
+                appAssembly: appAssembly
             )
             return assembler.assembly(with: output)
         }

@@ -20,16 +20,18 @@ extension HandsFreeMode {
         typealias Event = HandsFreeMode.Event
 
         // MARK: - Private properties
-        
+
         private let presenter: Presenter
+        private let handsFreeService: HandsFreeService
         private var sceneModel: Model.SceneModel
 
         // MARK: -
         
-        init(presenter: Presenter) {
+        init(presenter: Presenter, handsFreeService: HandsFreeService) {
             self.presenter = presenter
+            self.handsFreeService = handsFreeService
 
-            sceneModel = Model.SceneModel(isHandsFreeModeEnabled: false)
+            sceneModel = Model.SceneModel(isHandsFreeModeEnabled: handsFreeService.isDetecting)
         }
     }
 }
@@ -45,6 +47,11 @@ extension HandsFreeMode.InteractorImp: HandsFreeMode.Interactor {
 
     func onModeDidSwitched(request: Event.ModeDidSwitched.Request) {
         sceneModel.isHandsFreeModeEnabled = !sceneModel.isHandsFreeModeEnabled
+        if sceneModel.isHandsFreeModeEnabled {
+            handsFreeService.startDetecting()
+        } else {
+            handsFreeService.stopDetecting()
+        }
 
         let response = Event.ModeDidSwitched.Response(isHandsFreeModeEnabled: sceneModel.isHandsFreeModeEnabled)
         self.presenter.presentModeDidSwitched(response: response)

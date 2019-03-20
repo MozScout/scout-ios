@@ -11,17 +11,25 @@ protocol HandsFreeModeAssembler {
 }
 
 extension HandsFreeMode {
+
     typealias Assembler = HandsFreeModeAssembler
 
     // MARK: - Declaration
 
     class AssemblerImp {
+
         typealias Interactor = HandsFreeMode.Interactor
         typealias InteractorImp = HandsFreeMode.InteractorImp
         typealias InteractorDispatcher = HandsFreeMode.InteractorDispatcher
         typealias PresenterImp = HandsFreeMode.PresenterImp
         typealias PresenterDispatcher = HandsFreeMode.PresenterDispatcher
         typealias ViewControllerImp = HandsFreeMode.ViewControllerImp
+
+        private let appAssembly: AppAssembly
+
+        init(appAssembly: AppAssembly) {
+            self.appAssembly = appAssembly
+        }
     }
 }
 
@@ -33,7 +41,8 @@ extension HandsFreeMode.AssemblerImp: HandsFreeMode.Assembler {
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
         let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
-        let interactor = InteractorImp(presenter: presenter)
+        let handsFreeService = appAssembly.assemblyHandsFreeService()
+        let interactor = InteractorImp(presenter: presenter, handsFreeService: handsFreeService)
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(
                 label: "\(NSStringFromClass(InteractorDispatcher.self))\(Interactor.self)".queueLabel,

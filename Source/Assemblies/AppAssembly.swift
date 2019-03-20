@@ -86,6 +86,17 @@ class AppAssembly {
         )
     }()
 
+    private lazy var handsFreeService: HandsFreeService = {
+        let audioSource = SnipsAudioSource()
+        let audioProvider = AudioDataProvider(source: audioSource)
+        let snipsWrapper = SnipsWrapper(audioProvider: audioProvider)
+        return HandsFreeService(detectionTimeout: 30 * 60, hotwordDetector: snipsWrapper, speechRecognizer: snipsWrapper)
+    }()
+
+    private lazy var intentPerformer: IntentPerformer = {
+        return IntentPerformer(handsFreeService: handsFreeService)
+    }()
+
     // MARK: - Dependencies Assemblies -
 
     func assemblyApi() -> Api {
@@ -126,6 +137,14 @@ class AppAssembly {
 
     func assemblyPlayerItemsProviderFacade() -> PlayerItemsProviderFacade {
         return playerItemsProviderFacade
+    }
+
+    func assemblyHandsFreeService() -> HandsFreeService {
+        return handsFreeService
+    }
+
+    func assemblyIntentPerformer() -> IntentPerformer {
+        return intentPerformer
     }
 
     // MARK: - Flow Coordinators Assemblies -
