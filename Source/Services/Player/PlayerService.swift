@@ -6,29 +6,43 @@
 
 import Foundation
 import AVFoundation
+import RxSwift
+import RxCocoa
+import CoreMedia
 
 class PlayerService: NSObject {
 
+    struct Timings {
+        let duration: TimeInterval
+        let currentTime: TimeInterval
+    }
+
     // MARK: - Private properties
 
-    private var player: AVAudioPlayer?
+    private var player: AVAudioPlayer? {
+        didSet {
+            durationDidUpdate()
+            currentTimeDidUpdate()
+        }
+    }
     private var displayLink: CADisplayLink?
+
+    private let timingsBehaviorRelay: BehaviorRelay<Timings?> = BehaviorRelay(value: nil)
 
     // MARK: - Public properties
 
     public var onDidFinishPlaying: (() -> Void)?
-    public var onPlaying: ((_ currentTime: TimeInterval?, _ duration: TimeInterval?) -> Void)?
 
     public var currentTime: TimeInterval? {
-        return player?.currentTime
+        return timingsBehaviorRelay.value?.currentTime
     }
 
     public var duration: TimeInterval? {
-        return player?.duration
+        return timingsBehaviorRelay.value?.duration
     }
 
-    public var isPlaying: Bool {
-        return player?.isPlaying ?? false
+    public var isPlaying: Bool? {
+        return player?.isPlaying
     }
 
     public var url: URL? {
@@ -57,28 +71,26 @@ class PlayerService: NSObject {
         ) {
 
         player?.currentTime = time
-//        updatePlayingProgress()
+        currentTimeDidUpdate()
     }
 
     func play() {
         player?.play()
+        player?.currentTime = player?.currentTime ?? 0
         displayLink?.isPaused = false
     }
 
     func pause() {
-        let currentTime = player?.currentTime ?? 0
         player?.pause()
-        player?.currentTime = currentTime
-        displayLink?.isPaused = true
-    }
-
-    func stop() {
-        player?.stop()
         displayLink?.isPaused = true
     }
 
     func setRate(_ rate: Float) {
         player?.rate = rate
+    }
+
+    func observeTimings() -> Observable<Timings?> {
+        return timingsBehaviorRelay.asObservable()
     }
 
     // MARK: - Private methods
@@ -94,19 +106,42 @@ class PlayerService: NSObject {
 
     private func createCaDisplayLink() -> CADisplayLink {
         let link = CADisplayLink(target: self, selector: #selector(updatePlayingProgress))
-        link.preferredFramesPerSecond = 4
+        link.preferredFramesPerSecond = 6
         link.add(to: RunLoop.main, forMode: .common)
         link.isPaused = true
         return link
     }
 
     @objc private func updatePlayingProgress() {
-        onPlaying?(currentTime, duration)
+        currentTimeDidUpdate()
+    }
+
+    private func currentTimeDidUpdate() {
+        timingsDidUpdate()
+    }
+
+    private func durationDidUpdate() {
+        timingsDidUpdate()
+    }
+
+    private func timingsDidUpdate() {
+        let timings: Timings? = {
+            if let player = player {
+                return Timings(
+                    duration: player.duration.rounded(.up),
+                    currentTime: player.currentTime
+                )
+            } else {
+                return nil
+            }
+        }()
+        timingsBehaviorRelay.accept(timings)
     }
 }
 
 extension PlayerService: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+
         onDidFinishPlaying?()
     }
 }

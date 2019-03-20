@@ -55,7 +55,7 @@ extension Player.AssemblerImp: Player.Assembler {
 
         let itemProvider = Player.ItemProviderImp(
             itemsProvider: appAssembly.assemblyPlayerItemsProvider(),
-            audioLoader: appAssembly.assemblyPlayerAudioLoader()
+            audioLoader: appAssembly.assemblyAudioLoader()
         )
 
         let interactor = InteractorImp(

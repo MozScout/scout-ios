@@ -240,7 +240,10 @@ extension CarouselView: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
         ) -> UICollectionViewCell {
 
-        return collectionView.dequeueReusableCell(with: item(for: indexPath), for: indexPath)
+        return collectionView.dequeueReusableCell(
+            with: item(for: indexPath),
+            for: indexPath
+        )
     }
 }
 
@@ -248,7 +251,10 @@ extension CarouselView: UICollectionViewDataSource {
 
 extension CarouselView: CarouselLayout.DataSource {
 
-    func numberOfItems(in collectionView: UICollectionView) -> Int {
+    func numberOfItems(
+        in collectionView: UICollectionView
+        ) -> Int {
+
         return items.count
     }
 }

@@ -10,7 +10,7 @@ protocol PlayerInteractor: class {
     func onDidTapJumpBackward(request: Player.Event.DidTapJumpBackward.Request)
     func onDidTapJumpForward(request: Player.Event.DidTapJumpForward.Request)
     func onCloseSync(request: Player.Event.CloseSync.Request)
-    func onViewWillAppear(request: Player.Event.ViewWillAppear.Request)
+    func onViewDidAppear(request: Player.Event.ViewDidAppear.Request)
     func onDidSelectItem(request: Player.Event.DidSelectItem.Request)
     func onDidScrollItemsList(request: Player.Event.DidScrollItemsList.Request)
     func onPlayerSliderDidChangeValue(request: Player.Event.PlayerSliderDidChangeValue.Request)
@@ -76,77 +76,24 @@ extension Player {
         }
 
         private func observeTrack() {
-            playerManager.onPlaying = { [weak self] (currentTime, duration) in
-                guard self?.shouldUpdateTimings == true else { return }
+            playerManager
+                .observeTimings()
+                .asObservable()
+                .subscribe(onNext: { [weak self] (timings) in
+                    guard self?.shouldUpdateTimings == true else { return }
 
-                if let time = currentTime,
-                    let duration = duration {
-
-                    let track = Model.SceneModel.Track(
-                        played: time,
-                        duration: duration
-                    )
-                    self?.sceneModel.track = track
-                } else {
-                    self?.sceneModel.track = nil
-                }
-
-                self?.sendPlayerTrackDidUpdate(self?.sceneModel.track)
-                self?.sendPlayerTimingsDidUpdate(self?.sceneModel.track)
-            }
-        }
-
-        private func playIfNeeded() {
-            switch sceneModel.playerState {
-
-            case .paused:
-                playerManager.pause()
-
-            case .playing:
-                playerManager.play()
-            }
-        }
-
-        private func sendPlayerStateDidUpdate() {
-
-            let response = Event.PlayerStateDidUpdate.Response(state: sceneModel.playerState)
-            presenter.presentPlayerStateDidUpdate(response: response)
-        }
-
-        private func sendItemsDidUpdate() {
-
-            let response = Event.PlayerItemsDidUpdate.Response(items: sceneModel.items)
-            presenter.presentItemsDidUpdate(response: response)
-        }
-
-        private func sendPlayerTrackDidUpdate(_ track: Model.SceneModel.Track?) {
-
-            let response = Event.PlayerTrackDidUpdate.Response(track: track)
-            presenter.presentPlayerTrackDidUpdate(response: response)
-        }
-
-        private func sendPlayerTimingsDidUpdate(_ track: Model.SceneModel.Track?) {
-
-            let response = Event.PlayerTimingsDidUpdate.Response(track: track)
-            presenter.presentPlayerTimingsDidUpdate(response: response)
-        }
-
-        private func sendPlayerSpeedDidUpdate() {
-
-            let response = Player.Event.DidClickPlayerSpeedButton.Response(currentSpeed: sceneModel.currentSpeed)
-            presenter.presentDidClickPlayerSpeedButton(response: response)
-        }
-
-        private func sendPlayerItemDidUpdate() {
-
-            let response = Event.PlayerItemDidUpdate.Response(
-                titleItem: Player.Event.PlayerItemDidUpdate.ViewModel.TitleItem.icon(URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
-                publisher: "Some publisher",
-                publishingDate: Date(),
-                title: "Title to test behavior of title label with multiline text of title",
-                duration: sceneModel.track?.duration
-            )
-            presenter.presentPlayerItemDidUpdate(response: response)
+                    if let timings = timings {
+                        let track = Model.SceneModel.Track(
+                            played: timings.currentTime,
+                            duration: timings.duration
+                        )
+                        self?.sceneModel.track = track
+                    } else {
+                        self?.sceneModel.track = nil
+                    }
+                    self?.sendPlayerTimingsDidUpdate(self?.sceneModel.track)
+                })
+                .disposed(by: disposeBag)
         }
 
         private func observePlayerState() {
@@ -192,10 +139,40 @@ extension Player {
             sendItemsDidUpdate()
         }
 
-        private func observePlayingFinished() {
-            playerManager.onDidFinishPlaying = { [weak self] in
-                self?.sceneModel.playerState = .paused
-            }
+        private func sendPlayerStateDidUpdate() {
+
+            let response = Event.PlayerStateDidUpdate.Response(state: sceneModel.playerState)
+            presenter.presentPlayerStateDidUpdate(response: response)
+        }
+
+        private func sendItemsDidUpdate() {
+
+            let response = Event.PlayerItemsDidUpdate.Response(items: sceneModel.items)
+            presenter.presentItemsDidUpdate(response: response)
+        }
+
+        private func sendPlayerTimingsDidUpdate(_ track: Model.SceneModel.Track?) {
+
+            let response = Event.PlayerTimingsDidUpdate.Response(track: track)
+            presenter.presentPlayerTimingsDidUpdate(response: response)
+        }
+
+        private func sendPlayerSpeedDidUpdate() {
+
+            let response = Player.Event.DidClickPlayerSpeedButton.Response(currentSpeed: sceneModel.currentSpeed)
+            presenter.presentDidClickPlayerSpeedButton(response: response)
+        }
+
+        private func sendPlayerItemDidUpdate() {
+
+            let response = Event.PlayerItemDidUpdate.Response(
+                titleItem: Player.Event.PlayerItemDidUpdate.ViewModel.TitleItem.icon(URL(string: "https://a.d-cd.net/68afees-960.jpg")!),
+                publisher: "Some publisher",
+                publishingDate: Date(),
+                title: "Title to test behavior of title label with multiline text of title",
+                duration: sceneModel.track?.duration
+            )
+            presenter.presentPlayerItemDidUpdate(response: response)
         }
     }
 }
@@ -205,12 +182,10 @@ extension Player {
 extension Player.InteractorImp: Player.Interactor {
 
     func onViewDidLoadSync(request: Player.Event.ViewDidLoadSync.Request) {
-        playIfNeeded()
         observePlayerState()
         observeItems()
         observeTrack()
 
-        sendPlayerTrackDidUpdate(self.sceneModel.track)
         sendPlayerTimingsDidUpdate(self.sceneModel.track)
         sendPlayerSpeedDidUpdate()
     }
@@ -222,12 +197,10 @@ extension Player.InteractorImp: Player.Interactor {
     func onDidTapPlayButton(request: Player.Event.DidTapPlayButton.Request) {
         switch sceneModel.playerState {
         case .paused:
-            sceneModel.playerState = .playing
+            playerManager.play()
         case .playing:
-            sceneModel.playerState = .paused
+            playerManager.pause()
         }
-
-        playIfNeeded()
     }
 
     func onCloseSync(request: Player.Event.CloseSync.Request) {
@@ -237,23 +210,20 @@ extension Player.InteractorImp: Player.Interactor {
         presenter.presentCloseSync(response: response)
     }
 
-    func onViewWillAppear(request: Player.Event.ViewWillAppear.Request) {
-        sceneModel.playerState = .playing
-        playIfNeeded()
+    func onViewDidAppear(request: Player.Event.ViewDidAppear.Request) {
+        playerManager.play()
     }
 
     func onDidSelectItem(request: Player.Event.DidSelectItem.Request) {
         if sceneModel.playerState != .paused {
-            sceneModel.playerState = .paused
-            playIfNeeded()
+            playerManager.pause()
         }
         // TODO: - Select, load and play another item
     }
 
     func onDidScrollItemsList(request: Player.Event.DidScrollItemsList.Request) {
         if sceneModel.playerState != .paused {
-            sceneModel.playerState = .paused
-            playIfNeeded()
+            playerManager.pause()
         }
     }
 
@@ -284,32 +254,17 @@ extension Player.InteractorImp: Player.Interactor {
     }
 
     func onDidTapJumpBackward(request: Player.Event.DidTapJumpBackward.Request) {
-        guard let currentTime = playerManager.currentTime else { return }
-
-        let newTime = currentTime - 10
-        if let track = sceneModel.track {
-            sceneModel.track = Model.SceneModel.Track(
-                played: newTime,
-                duration: track.duration
-            )
-            sendPlayerTrackDidUpdate(self.sceneModel.track)
-            sendPlayerTimingsDidUpdate(self.sceneModel.track)
-        }
-        playerManager.setCurrentTime(newTime)
+        updateTime(with: -10)
     }
 
     func onDidTapJumpForward(request: Player.Event.DidTapJumpForward.Request) {
+        updateTime(with: 30)
+    }
+
+    private func updateTime(with constant: TimeInterval) {
         guard let currentTime = playerManager.currentTime else { return }
 
-        let newTime = currentTime + 30
-        if let track = sceneModel.track {
-            sceneModel.track = Model.SceneModel.Track(
-                played: newTime,
-                duration: track.duration
-            )
-            sendPlayerTrackDidUpdate(self.sceneModel.track)
-            sendPlayerTimingsDidUpdate(self.sceneModel.track)
-        }
+        let newTime = currentTime + constant
         playerManager.setCurrentTime(newTime)
     }
 }

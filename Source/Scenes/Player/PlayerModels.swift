@@ -82,7 +82,7 @@ extension Player.Event {
         struct Request { }
     }
 
-    enum ViewWillAppear {
+    enum ViewDidAppear {
         struct Request { }
     }
 
@@ -168,17 +168,6 @@ extension Player.Event {
         }
     }
 
-    enum PlayerTrackDidUpdate {
-
-        struct Response {
-            let track: Model.SceneModel.Track?
-        }
-
-        struct ViewModel {
-            let value: Float
-        }
-    }
-
     enum PlayerTimingsDidUpdate {
 
         struct Response {
@@ -188,6 +177,9 @@ extension Player.Event {
         struct ViewModel {
             let played: String
             let remaining: String
+
+            let value: Float
+            let maximumValue: Float
         }
     }
 

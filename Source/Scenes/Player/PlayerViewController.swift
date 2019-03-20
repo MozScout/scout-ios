@@ -7,7 +7,6 @@ protocol PlayerViewController: class {
     func displayPlayerStateDidUpdate(viewModel: Player.Event.PlayerStateDidUpdate.ViewModel)
     func displayCloseSync(viewModel: Player.Event.CloseSync.ViewModel)
     func displayItemsDidUpdate(viewModel: Player.Event.PlayerItemsDidUpdate.ViewModel)
-    func displayPlayerTrackDidUpdate(viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel)
     func displayPlayerTimingsDidUpdate(viewModel: Player.Event.PlayerTimingsDidUpdate.ViewModel)
     func displayPlayerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel)
     func displayDidClickPlayerSpeedButton(viewModel: Player.Event.DidClickPlayerSpeedButton.ViewModel)
@@ -109,12 +108,12 @@ class PlayerViewControllerImp: UIViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
-        let request = Event.ViewWillAppear.Request()
+        let request = Event.ViewDidAppear.Request()
         sendAsync { (interactor) in
-            interactor.onViewWillAppear(request: request)
+            interactor.onViewDidAppear(request: request)
         }
     }
 
@@ -351,15 +350,13 @@ extension Player.ViewControllerImp: Player.ViewController {
         carouselView.setItems(items, selectedIndexPath: viewModel.selectedIndexPath)
     }
 
-    func displayPlayerTrackDidUpdate(viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel) {
-
-        trackSlider.setValue(viewModel.value, animated: true)
-    }
-
     func displayPlayerTimingsDidUpdate(viewModel: Player.Event.PlayerTimingsDidUpdate.ViewModel) {
 
         playedTimeLabel.text = viewModel.played
         remainingTimeLabel.text = viewModel.remaining
+
+        trackSlider.setValue(viewModel.value, animated: true)
+        trackSlider.maximumValue = viewModel.maximumValue
     }
 
     func displayPlayerItemDidUpdate(viewModel: Player.Event.PlayerItemDidUpdate.ViewModel) {

@@ -7,7 +7,6 @@ protocol PlayerPresenter {
     func presentPlayerStateDidUpdate(response: Player.Event.PlayerStateDidUpdate.Response)
     func presentCloseSync(response: Player.Event.CloseSync.Response)
     func presentItemsDidUpdate(response: Player.Event.PlayerItemsDidUpdate.Response)
-    func presentPlayerTrackDidUpdate(response: Player.Event.PlayerTrackDidUpdate.Response)
     func presentPlayerTimingsDidUpdate(response: Player.Event.PlayerTimingsDidUpdate.Response)
     func presentPlayerItemDidUpdate(response: Player.Event.PlayerItemDidUpdate.Response)
     func presentDidClickPlayerSpeedButton(response: Player.Event.DidClickPlayerSpeedButton.Response)
@@ -116,36 +115,21 @@ extension Player.PresenterImp: Player.Presenter {
         }
     }
 
-    func presentPlayerTrackDidUpdate(response: Player.Event.PlayerTrackDidUpdate.Response) {
-
-        let viewModel: Player.Event.PlayerTrackDidUpdate.ViewModel = {
-            if let track = response.track {
-                return Player.Event.PlayerTrackDidUpdate.ViewModel(
-                    value: Float(track.played)
-                )
-            } else {
-                return Player.Event.PlayerTrackDidUpdate.ViewModel(
-                    value: 0
-                )
-            }
-        }()
-
-        displayAsync { (viewController) in
-            viewController.displayPlayerTrackDidUpdate(viewModel: viewModel)
-        }
-    }
-
     func presentPlayerTimingsDidUpdate(response: Player.Event.PlayerTimingsDidUpdate.Response) {
         let viewModel: Player.Event.PlayerTimingsDidUpdate.ViewModel = {
             if let track = response.track {
                 return Player.Event.PlayerTimingsDidUpdate.ViewModel(
                     played: timeFormatter.formatPlayed(track.played),
-                    remaining: timeFormatter.formatRemaining(track.duration - track.played)
+                    remaining: timeFormatter.formatRemaining(track.duration - track.played),
+                    value: Float(track.played),
+                    maximumValue: Float(track.duration)
                 )
             } else {
                 return Player.Event.PlayerTimingsDidUpdate.ViewModel(
                     played: timeFormatter.formatPlayed(nil),
-                    remaining: timeFormatter.formatRemaining(nil)
+                    remaining: timeFormatter.formatRemaining(nil),
+                    value: 0,
+                    maximumValue: 0
                 )
             }
         }()
