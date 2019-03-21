@@ -76,6 +76,10 @@ class SnipsWrapper {
             try! self?.snips.endSession(sessionId: message.sessionId)
         }
 
+        snips.onIntentNotRecognizedHandler = { [weak self] message in
+            try! self?.snips.endSession(sessionId: message.sessionId)
+        }
+
         try! snips.start()
         try! snips.pause()
 
@@ -113,8 +117,6 @@ extension SnipsWrapper: SpeechRecognizer {
 extension SnipsWrapper: AudioDataProviderObserver {
 
     func appendBuffer(_ buffer: AVAudioPCMBuffer, time: AVAudioTime) {
-        DispatchQueue.main.async {
-            try! self.snips.appendBuffer(buffer)
-        }
+        try! self.snips.appendBuffer(buffer)
     }
 }

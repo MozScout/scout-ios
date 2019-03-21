@@ -12,7 +12,11 @@ class IntentPerformer {
     private var dingSound: AVAudioPlayer!
     private var dongSound: AVAudioPlayer!
 
-    init(handsFreeService: HandsFreeService) {
+    private let playerCoordinator: PlayerCoordinator
+    private var playerPreviosState: PlayerCoordinator.PlayerState = .paused
+
+    init(handsFreeService: HandsFreeService, playerCoordinator: PlayerCoordinator) {
+        self.playerCoordinator = playerCoordinator
 
         do {
             self.dingSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ding",
@@ -29,6 +33,8 @@ class IntentPerformer {
         try! audioSession.setActive(true, options: .notifyOthersOnDeactivation)
 
         handsFreeService.onHotwordDetect = { [weak self] in
+            self?.playerPreviosState = self?.playerCoordinator.playerState ?? .paused
+            self?.playerCoordinator.pause()
             print("___________________________________________________DETECT___________________________________________________")
             self?.dingSound.play()
         }
@@ -36,6 +42,12 @@ class IntentPerformer {
         handsFreeService.onIntentRecognize = { [weak self] intent in
             print("___________________________________________________INTENT___________________________________________________")
             self?.dongSound.play()
+            switch self?.playerPreviosState ?? .paused {
+            case .playing:
+                self?.playerCoordinator.play()
+            case .paused:
+                break
+            }
 
             if let intent = intent {
                 self?.performIntent(intent)
@@ -49,6 +61,19 @@ class IntentPerformer {
             self.dongSound.play()
         }
 
-        print(intent)
+        switch intent {
+        case .volumeUp(let value):
+            DispatchQueue.main.async {
+                self.playerCoordinator.volumeUp(by: value)
+            }
+        case .volumeDown(let value):
+            DispatchQueue.main.async {
+                self.playerCoordinator.volumeDown(by: value)
+            }
+        case .play:
+            playerCoordinator.play()
+        case .pause:
+            playerCoordinator.pause()
+        }
     }
 }

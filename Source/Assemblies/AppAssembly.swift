@@ -94,7 +94,7 @@ class AppAssembly {
     }()
 
     private lazy var intentPerformer: IntentPerformer = {
-        return IntentPerformer(handsFreeService: handsFreeService)
+        return IntentPerformer(handsFreeService: handsFreeService, playerCoordinator: playerCoordinator)
     }()
 
     // MARK: - Dependencies Assemblies -
