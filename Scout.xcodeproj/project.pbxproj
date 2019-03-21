@@ -171,6 +171,7 @@
 		773049F2223945E00029930E /* RecognitionViewControllerImp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773049F1223945E00029930E /* RecognitionViewControllerImp.xib */; };
 		773049F622396CD20029930E /* HandsFreeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773049F522396CD20029930E /* HandsFreeFlowCoordinator.swift */; };
 		7730B903224255920072EF64 /* IntentsPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7730B902224255920072EF64 /* IntentsPerformer.swift */; };
+		7733273922438BC400E4DCE4 /* assistant in Resources */ = {isa = PBXBuildFile; fileRef = 7733273822438BC400E4DCE4 /* assistant */; };
 		7737FA2A222E89FA00D36DD9 /* CategorySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */; };
 		7737FA2C222E8A0A00D36DD9 /* CategorySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */; };
 		7737FA2F222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */; };
@@ -191,7 +192,7 @@
 		775E0A2D223A4D6C00172BE5 /* HotwordDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775E0A2C223A4D6C00172BE5 /* HotwordDetector.swift */; };
 		775E0A2F223A4D9200172BE5 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775E0A2E223A4D9200172BE5 /* SpeechRecognizer.swift */; };
 		775E0A31223A4F2F00172BE5 /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775E0A30223A4F2F00172BE5 /* Intent.swift */; };
-		775E0A35223AB84A00172BE5 /* assistant in Resources */ = {isa = PBXBuildFile; fileRef = 775E0A34223AB84A00172BE5 /* assistant */; };
+		775E0A35223AB84A00172BE5 /* assistantS in Resources */ = {isa = PBXBuildFile; fileRef = 775E0A34223AB84A00172BE5 /* assistantS */; };
 		7760C3462240FEAE00CBE56E /* SnipsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7760C3452240FEAE00CBE56E /* SnipsWrapper.swift */; };
 		7760C34822412C9E00CBE56E /* HandsFreeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7760C34722412C9E00CBE56E /* HandsFreeService.swift */; };
 		776309CE2223E86300D69BA7 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776309CD2223E86300D69BA7 /* UIView+Fade.swift */; };
@@ -492,6 +493,7 @@
 		773049F1223945E00029930E /* RecognitionViewControllerImp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecognitionViewControllerImp.xib; sourceTree = "<group>"; };
 		773049F522396CD20029930E /* HandsFreeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeFlowCoordinator.swift; sourceTree = "<group>"; };
 		7730B902224255920072EF64 /* IntentsPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsPerformer.swift; sourceTree = "<group>"; };
+		7733273822438BC400E4DCE4 /* assistant */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assistant; sourceTree = "<group>"; };
 		7737FA29222E89FA00D36DD9 /* CategorySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySectionHeaderView.swift; sourceTree = "<group>"; };
 		7737FA2B222E8A0A00D36DD9 /* CategorySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorySectionHeaderView.xib; sourceTree = "<group>"; };
 		7737FA2E222ED91A00D36DD9 /* AddSubscriptionTopicsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionTopicsWorker.swift; sourceTree = "<group>"; };
@@ -517,7 +519,7 @@
 		775E0A2C223A4D6C00172BE5 /* HotwordDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotwordDetector.swift; sourceTree = "<group>"; };
 		775E0A2E223A4D9200172BE5 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		775E0A30223A4F2F00172BE5 /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
-		775E0A34223AB84A00172BE5 /* assistant */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assistant; sourceTree = "<group>"; };
+		775E0A34223AB84A00172BE5 /* assistantS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assistantS; sourceTree = "<group>"; };
 		7760C3452240FEAE00CBE56E /* SnipsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnipsWrapper.swift; sourceTree = "<group>"; };
 		7760C34722412C9E00CBE56E /* HandsFreeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsFreeService.swift; sourceTree = "<group>"; };
 		776309CD2223E86300D69BA7 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
@@ -2005,7 +2007,8 @@
 		F482CD3C2080D969007D0C14 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				775E0A34223AB84A00172BE5 /* assistant */,
+				7733273822438BC400E4DCE4 /* assistant */,
+				775E0A34223AB84A00172BE5 /* assistantS */,
 				93A718B72164BAD400BC77D9 /* ServerData.json */,
 				93782C7D20C7EEE800CE56A4 /* LaunchScreen.storyboard */,
 				66254344219B567F00379011 /* Audio */,
@@ -2299,7 +2302,7 @@
 				66254353219B57CE00379011 /* common.res in Resources */,
 				93A718CA2164BC7C00BC77D9 /* AboutCell.xib in Resources */,
 				77E1E073221D7E4C006B1084 /* SF-Pro-Display-ThinItalic.otf in Resources */,
-				775E0A35223AB84A00172BE5 /* assistant in Resources */,
+				775E0A35223AB84A00172BE5 /* assistantS in Resources */,
 				5622AB4220A6CE230074A4BC /* Auth.storyboard in Resources */,
 				77E1E07C221D7E4C006B1084 /* SF-Pro-Display-Light.otf in Resources */,
 				773D173822254A92003CAEE2 /* SF-Compact-Text-Light.otf in Resources */,
@@ -2313,6 +2316,7 @@
 				77E1E051221D5496006B1084 /* SF-Pro-Text-Regular.otf in Resources */,
 				77E1E058221D5496006B1084 /* SF-Pro-Text-Semibold.otf in Resources */,
 				281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */,
+				7733273922438BC400E4DCE4 /* assistant in Resources */,
 				93FB827920B54BB100A39A5C /* Player.storyboard in Resources */,
 				6625434F219B575300379011 /* dong.wav in Resources */,
 				77E1E07D221D7E4C006B1084 /* SF-Pro-Display-Heavy.otf in Resources */,

@@ -1,13 +1,16 @@
 {
     "entityNameToFilename": {
-        "locality": "e_3.snips", 
-        "country": "e_1.snips", 
-        "region": "e_2.snips", 
-        "conditionName": "e_5.snips", 
-        "item": "e_6.snips", 
-        "temperatureName": "e_7.snips", 
-        "geographicalPOI": "e_4.snips", 
-        "snips/datetime": "e_0.snips"
+        "snips/default": "e_4.snips", 
+        "song_name": "e_8.snips", 
+        "snips/default--media": "e_7.snips", 
+        "artist_name": "e_3.snips", 
+        "snips/duration": "e_0.snips", 
+        "music_item": "e_10.snips", 
+        "lecture_mode": "e_2.snips", 
+        "playlist_name": "e_6.snips", 
+        "tvVolumeAbsolute1-100": "e_5.snips", 
+        "album_name": "e_9.snips", 
+        "radio_name": "e_1.snips"
     }, 
     "injectionsEngine": {
         "version": 2
@@ -68,121 +71,163 @@
     "postprocessors": [
         {
             "Regex": {
-                "pattern": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`START (.*?) `ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`END", 
+                "pattern": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`START (.*?) `ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`END", 
                 "flags": "i", 
                 "replacement": "$1"
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`START ", 
+                "pattern": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`START ", 
                 "flags": "i", 
                 "replacement": ""
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`START (.*?) `ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`END", 
+                "pattern": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`START (.*?) `ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`END", 
                 "flags": "i", 
                 "replacement": "$1"
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`START ", 
+                "pattern": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`START ", 
                 "flags": "i", 
                 "replacement": ""
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`START (.*?) `ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`END", 
+                "pattern": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`START (.*?) `ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`END", 
                 "flags": "i", 
                 "replacement": "$1"
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`START ", 
+                "pattern": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`START ", 
                 "flags": "i", 
                 "replacement": ""
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`START (.*?) `ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`END", 
+                "pattern": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`START (.*?) `ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`END", 
                 "flags": "i", 
                 "replacement": "$1"
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`START ", 
+                "pattern": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`START ", 
                 "flags": "i", 
                 "replacement": ""
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`START (.*?) `ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`END", 
+                "pattern": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START (.*?) `ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`END", 
                 "flags": "i", 
                 "replacement": "$1"
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`START ", 
+                "pattern": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START ", 
                 "flags": "i", 
                 "replacement": ""
             }
         }, 
         {
             "Regex": {
-                "pattern": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`START (.*?) `ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`END", 
-                "flags": "i", 
-                "replacement": "$1"
-            }
-        }, 
-        {
-            "Regex": {
-                "pattern": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`START ", 
-                "flags": "i", 
-                "replacement": ""
-            }
-        }, 
-        {
-            "Regex": {
-                "pattern": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`START (.*?) `ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`END", 
-                "flags": "i", 
-                "replacement": "$1"
-            }
-        }, 
-        {
-            "Regex": {
-                "pattern": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`START ", 
-                "flags": "i", 
-                "replacement": ""
-            }
-        }, 
-        {
-            "Regex": {
-                "pattern": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START (.*?) `ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`END", 
-                "flags": "i", 
-                "replacement": "$1"
-            }
-        }, 
-        {
-            "Regex": {
-                "pattern": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START ", 
-                "flags": "i", 
-                "replacement": ""
-            }
-        }, 
-        {
-            "Regex": {
-                "pattern": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START .[^`]*? `ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`BYPASSING `ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`END", 
+                "pattern": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START .[^`]*? `ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`BYPASSING `ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`END", 
                 "flags": "i", 
                 "replacement": "unknownword"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`START (.*?) `ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`START (.*?) `ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`START (.*?) `ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`START (.*?) `ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`START (.*?) `ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`START (.*?) `ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`START ", 
+                "flags": "i", 
+                "replacement": ""
             }
         }
     ], 
@@ -191,102 +236,138 @@
     }, 
     "entitiesFstMap": [
         [
-            1692, 
+            2252, 
             "__root__"
         ], 
         [
-            1700, 
+            2257, 
             "e_0.snips"
         ], 
         [
-            1694, 
+            2263, 
             "e_1.snips"
         ], 
         [
-            1695, 
+            2259, 
             "e_2.snips"
         ], 
         [
-            1693, 
+            2256, 
             "e_3.snips"
         ], 
         [
-            1699, 
+            2253, 
             "e_4.snips"
         ], 
         [
-            1696, 
+            2261, 
             "e_5.snips"
         ], 
         [
-            1697, 
+            2260, 
             "e_6.snips"
         ], 
         [
-            1698, 
+            2255, 
             "e_7.snips"
+        ], 
+        [
+            2254, 
+            "e_8.snips"
+        ], 
+        [
+            2262, 
+            "e_9.snips"
+        ], 
+        [
+            2258, 
+            "e_10.snips"
         ]
     ], 
     "entityNameToDisambigs": {
-        "locality": {
-            "start": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`START", 
-            "end": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`END", 
+        "snips/default": {
+            "start": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`START", 
+            "end": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`END", 
             "empty": [
                 "", 
                 4
             ]
         }, 
-        "country": {
-            "start": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`START", 
-            "end": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`END", 
+        "song_name": {
+            "start": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`START", 
+            "end": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`END", 
             "empty": [
                 "", 
                 4
             ]
         }, 
-        "region": {
-            "start": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`START", 
-            "end": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`END", 
+        "snips/default--media": {
+            "start": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`START", 
+            "end": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`END", 
             "empty": [
                 "", 
                 4
             ]
         }, 
-        "conditionName": {
-            "start": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`START", 
-            "end": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`END", 
+        "artist_name": {
+            "start": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`START", 
+            "end": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`END", 
             "empty": [
                 "", 
                 4
             ]
         }, 
-        "item": {
-            "start": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`START", 
-            "end": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`END", 
+        "snips/duration": {
+            "start": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START", 
+            "end": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`END", 
             "empty": [
                 "", 
                 4
             ]
         }, 
-        "temperatureName": {
-            "start": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`START", 
-            "end": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`END", 
+        "music_item": {
+            "start": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`START", 
+            "end": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`END", 
             "empty": [
                 "", 
                 4
             ]
         }, 
-        "geographicalPOI": {
-            "start": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`START", 
-            "end": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`END", 
+        "lecture_mode": {
+            "start": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`START", 
+            "end": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`END", 
             "empty": [
                 "", 
                 4
             ]
         }, 
-        "snips/datetime": {
-            "start": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START", 
-            "end": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`END", 
+        "playlist_name": {
+            "start": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`START", 
+            "end": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "tvVolumeAbsolute1-100": {
+            "start": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`START", 
+            "end": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "album_name": {
+            "start": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`START", 
+            "end": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "radio_name": {
+            "start": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`START", 
+            "end": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`END", 
             "empty": [
                 "", 
                 4

@@ -1,58 +1,79 @@
 {
-    "locality": {
-        "vanilla": "b9b9f7ea-b711-4635-9a7f-c49abc3130ac.vanilla", 
+    "snips/default": {
+        "vanilla": "d8aa535f-022d-4b93-8b51-4f68572a035d.vanilla", 
         "ngram": true, 
-        "added": "b9b9f7ea-b711-4635-9a7f-c49abc3130ac.added", 
+        "added": "d8aa535f-022d-4b93-8b51-4f68572a035d.added", 
         "pruningThresholds": [], 
         "order": 3
     }, 
-    "country": {
-        "vanilla": "1bebf143-ee68-464c-b5d1-469be4daec9c.vanilla", 
+    "song_name": {
+        "vanilla": "fcd5258e-26af-43d1-94fb-0403bfadcd94.vanilla", 
         "ngram": true, 
-        "added": "1bebf143-ee68-464c-b5d1-469be4daec9c.added", 
+        "added": "fcd5258e-26af-43d1-94fb-0403bfadcd94.added", 
         "pruningThresholds": [], 
         "order": 3
     }, 
-    "region": {
-        "vanilla": "e38d0d9d-267c-4cdd-9f10-076f6e7ea529.vanilla", 
+    "snips/default--media": {
+        "vanilla": "0a713ce7-d50b-4c87-9b94-069127cb99fa.vanilla", 
         "ngram": true, 
-        "added": "e38d0d9d-267c-4cdd-9f10-076f6e7ea529.added", 
+        "added": "0a713ce7-d50b-4c87-9b94-069127cb99fa.added", 
         "pruningThresholds": [], 
         "order": 3
     }, 
-    "conditionName": {
-        "vanilla": "449367e8-c7d7-4a90-851a-8eee12554a7f.vanilla", 
+    "artist_name": {
+        "vanilla": "cbee9c67-6623-4918-a3d3-353c38daf8c8.vanilla", 
         "ngram": true, 
-        "added": "449367e8-c7d7-4a90-851a-8eee12554a7f.added", 
+        "added": "cbee9c67-6623-4918-a3d3-353c38daf8c8.added", 
         "pruningThresholds": [], 
         "order": 3
     }, 
-    "item": {
-        "vanilla": "a15ba8da-fda7-40fb-812a-7f72edd19023.vanilla", 
-        "ngram": true, 
-        "added": "a15ba8da-fda7-40fb-812a-7f72edd19023.added", 
-        "pruningThresholds": [], 
-        "order": 3
-    }, 
-    "temperatureName": {
-        "vanilla": "12cc38d4-3940-4f23-9322-6ecc3cb9793a.vanilla", 
-        "ngram": true, 
-        "added": "12cc38d4-3940-4f23-9322-6ecc3cb9793a.added", 
-        "pruningThresholds": [], 
-        "order": 3
-    }, 
-    "geographicalPOI": {
-        "vanilla": "4039a979-f77d-48c4-863d-141ddbee259c.vanilla", 
-        "ngram": true, 
-        "added": "4039a979-f77d-48c4-863d-141ddbee259c.added", 
-        "pruningThresholds": [], 
-        "order": 3
-    }, 
-    "snips/datetime": {
-        "vanilla": "ca3bdd0f-7753-4f66-a725-95ce4609bf62.vanilla", 
+    "snips/duration": {
+        "vanilla": "ffca9b46-472e-4c1d-b18d-2beaeba3f0a5.vanilla", 
         "ngram": false, 
-        "added": "ca3bdd0f-7753-4f66-a725-95ce4609bf62.added", 
+        "added": "ffca9b46-472e-4c1d-b18d-2beaeba3f0a5.added", 
         "pruningThresholds": [], 
         "order": 0
+    }, 
+    "music_item": {
+        "vanilla": "86c5b2b0-8ccd-4a82-90f7-00bd350593c3.vanilla", 
+        "ngram": true, 
+        "added": "86c5b2b0-8ccd-4a82-90f7-00bd350593c3.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "lecture_mode": {
+        "vanilla": "22bf2c2c-3c5e-4855-8bec-919066af8869.vanilla", 
+        "ngram": true, 
+        "added": "22bf2c2c-3c5e-4855-8bec-919066af8869.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "playlist_name": {
+        "vanilla": "6d137068-6cbc-4fcb-8416-072b2a3e957d.vanilla", 
+        "ngram": true, 
+        "added": "6d137068-6cbc-4fcb-8416-072b2a3e957d.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "tvVolumeAbsolute1-100": {
+        "vanilla": "3ad5bd6c-a581-4f5a-b743-7836089661c2.vanilla", 
+        "ngram": true, 
+        "added": "3ad5bd6c-a581-4f5a-b743-7836089661c2.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "album_name": {
+        "vanilla": "d00ebfb4-7aa9-4e08-932f-40f5430bd06f.vanilla", 
+        "ngram": true, 
+        "added": "d00ebfb4-7aa9-4e08-932f-40f5430bd06f.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "radio_name": {
+        "vanilla": "2a5f9a76-48a2-4101-912d-28d83552d24b.vanilla", 
+        "ngram": true, 
+        "added": "2a5f9a76-48a2-4101-912d-28d83552d24b.added", 
+        "pruningThresholds": [], 
+        "order": 3
     }
 }

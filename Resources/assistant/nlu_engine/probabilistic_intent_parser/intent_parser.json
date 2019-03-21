@@ -3,20 +3,20 @@
     "intent_classifier_config": {
       "data_augmentation_config": {
         "add_builtin_entities_examples": false,
-        "max_unknown_words": null,
+        "max_unknown_words": 5,
         "min_utterances": 20,
         "noise_factor": 5,
-        "unknown_word_prob": 0.0,
-        "unknown_words_replacement_string": null
+        "unknown_word_prob": 0.5,
+        "unknown_words_replacement_string": "unknownword"
       },
       "featurizer_config": {
-        "added_cooccurrence_feature_ratio": 0.0,
+        "added_cooccurrence_feature_ratio": 0,
         "cooccurrence_vectorizer_config": {
           "filter_stop_words": true,
           "keep_order": true,
           "unit_name": "cooccurrence_vectorizer",
-          "unknown_words_replacement_string": null,
-          "window_size": null
+          "unknown_words_replacement_string": "unknownword",
+          "window_size": 5
         },
         "pvalue_threshold": 0.4,
         "tfidf_vectorizer_config": {
@@ -36,8 +36,8 @@
         "c2": 0.1
       },
       "data_augmentation_config": {
-        "add_builtin_entities_examples": true,
-        "capitalization_ratio": 0.2,
+        "add_builtin_entities_examples": false,
+        "capitalization_ratio": 0,
         "min_utterances": 200
       },
       "feature_factory_configs": [
@@ -97,38 +97,10 @@
         },
         {
           "args": {
-            "n": 1
-          },
-          "factory_name": "shape_ngram",
-          "offsets": [
-            0
-          ]
-        },
-        {
-          "args": {
-            "n": 2
-          },
-          "factory_name": "shape_ngram",
-          "offsets": [
-            -1,
-            0
-          ]
-        },
-        {
-          "args": {
-            "n": 3
-          },
-          "factory_name": "shape_ngram",
-          "offsets": [
-            -1
-          ]
-        },
-        {
-          "args": {
             "tagging_scheme_code": 2,
             "use_stemming": true
           },
-          "drop_out": 0.5,
+          "drop_out": 0.1,
           "factory_name": "entity_match",
           "offsets": [
             -2,
@@ -169,20 +141,116 @@
   },
   "slot_fillers": [
     {
-      "intent": "searchWeatherForecast",
+      "intent": "addSong",
       "slot_filler_name": "slot_filler_0"
     },
     {
-      "intent": "searchWeatherForecastCondition",
+      "intent": "getInfos",
       "slot_filler_name": "slot_filler_1"
     },
     {
-      "intent": "searchWeatherForecastItem",
+      "intent": "nextSong",
       "slot_filler_name": "slot_filler_2"
     },
     {
-      "intent": "searchWeatherForecastTemperature",
+      "intent": "playAlbum",
       "slot_filler_name": "slot_filler_3"
+    },
+    {
+      "intent": "playArtist",
+      "slot_filler_name": "slot_filler_4"
+    },
+    {
+      "intent": "playPlaylist",
+      "slot_filler_name": "slot_filler_5"
+    },
+    {
+      "intent": "playSong",
+      "slot_filler_name": "slot_filler_6"
+    },
+    {
+      "intent": "previousSong",
+      "slot_filler_name": "slot_filler_7"
+    },
+    {
+      "intent": "radioOn",
+      "slot_filler_name": "slot_filler_8"
+    },
+    {
+      "intent": "resumeMusic",
+      "slot_filler_name": "slot_filler_9"
+    },
+    {
+      "intent": "speakerInterrupt",
+      "slot_filler_name": "slot_filler_10"
+    },
+    {
+      "intent": "thills:LatestUnplayed",
+      "slot_filler_name": "slot_filler_11"
+    },
+    {
+      "intent": "thills:PlayLatest",
+      "slot_filler_name": "slot_filler_12"
+    },
+    {
+      "intent": "thills:PlayNext",
+      "slot_filler_name": "slot_filler_13"
+    },
+    {
+      "intent": "thills:PlayOldest",
+      "slot_filler_name": "slot_filler_14"
+    },
+    {
+      "intent": "thills:PlayOldestUnplayed",
+      "slot_filler_name": "slot_filler_15"
+    },
+    {
+      "intent": "thills:Resume",
+      "slot_filler_name": "slot_filler_16"
+    },
+    {
+      "intent": "thills:Stop",
+      "slot_filler_name": "slot_filler_17"
+    },
+    {
+      "intent": "thills:VolumeDown",
+      "slot_filler_name": "slot_filler_18"
+    },
+    {
+      "intent": "thills:VolumeUp",
+      "slot_filler_name": "slot_filler_19"
+    },
+    {
+      "intent": "thills:back",
+      "slot_filler_name": "slot_filler_20"
+    },
+    {
+      "intent": "thills:faster",
+      "slot_filler_name": "slot_filler_21"
+    },
+    {
+      "intent": "thills:jump",
+      "slot_filler_name": "slot_filler_22"
+    },
+    {
+      "intent": "thills:play",
+      "slot_filler_name": "slot_filler_23"
+    },
+    {
+      "intent": "thills:playItem",
+      "slot_filler_name": "slot_filler_24"
+    },
+    {
+      "intent": "thills:slower",
+      "slot_filler_name": "slot_filler_25"
+    },
+    {
+      "intent": "volumeDown",
+      "slot_filler_name": "slot_filler_26"
+    },
+    {
+      "intent": "volumeUp",
+      "slot_filler_name": "slot_filler_27"
     }
   ]
 }

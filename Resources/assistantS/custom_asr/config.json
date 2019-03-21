@@ -1,0 +1,299 @@
+{
+    "entityNameToFilename": {
+        "locality": "e_3.snips", 
+        "country": "e_1.snips", 
+        "region": "e_2.snips", 
+        "conditionName": "e_5.snips", 
+        "item": "e_6.snips", 
+        "temperatureName": "e_7.snips", 
+        "geographicalPOI": "e_4.snips", 
+        "snips/datetime": "e_0.snips"
+    }, 
+    "injectionsEngine": {
+        "version": 2
+    }, 
+    "language": "en", 
+    "decoderConfig": {
+        "useFinalProbs": true, 
+        "latticeBeamSize": 4.0, 
+        "mbrConfig": {
+            "confidenceAdditionnalExponent": 1.0, 
+            "unkProba": 0.5, 
+            "unkThreshold": 0.3
+        }, 
+        "maxActive": 2500, 
+        "minActive": 200, 
+        "acousticScale": 0.83, 
+        "beamSize": 12.0
+    }, 
+    "cacheSizeDynamic": 536870912, 
+    "asrModel": {
+        "version": "0.1.0"
+    }, 
+    "asrLmAdaptation": {
+        "version": "0.19.3"
+    }, 
+    "endpointingRules": {
+        "rule3": {
+            "maxRelativeCost": 8.0, 
+            "minTrailingSilence": 1.0, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": true
+        }, 
+        "rule2": {
+            "maxRelativeCost": 5.5, 
+            "minTrailingSilence": 0.7, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": true
+        }, 
+        "rule1": {
+            "maxRelativeCost": 10000000000.0, 
+            "minTrailingSilence": 4.0, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": false
+        }, 
+        "rule5": {
+            "maxRelativeCost": 10000000000.0, 
+            "minTrailingSilence": 0.0, 
+            "minUtteranceLength": 10.0, 
+            "mustContainNonsilence": false
+        }, 
+        "rule4": {
+            "maxRelativeCost": 2.5, 
+            "minTrailingSilence": 0.5, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": true
+        }
+    }, 
+    "postprocessors": [
+        {
+            "Regex": {
+                "pattern": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`START (.*?) `ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`START (.*?) `ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`START (.*?) `ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`START (.*?) `ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`START (.*?) `ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`START (.*?) `ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`START (.*?) `ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START (.*?) `ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START .[^`]*? `ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`BYPASSING `ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`END", 
+                "flags": "i", 
+                "replacement": "unknownword"
+            }
+        }
+    ], 
+    "asrEngine": {
+        "version": "0.1.0"
+    }, 
+    "entitiesFstMap": [
+        [
+            1692, 
+            "__root__"
+        ], 
+        [
+            1700, 
+            "e_0.snips"
+        ], 
+        [
+            1694, 
+            "e_1.snips"
+        ], 
+        [
+            1695, 
+            "e_2.snips"
+        ], 
+        [
+            1693, 
+            "e_3.snips"
+        ], 
+        [
+            1699, 
+            "e_4.snips"
+        ], 
+        [
+            1696, 
+            "e_5.snips"
+        ], 
+        [
+            1697, 
+            "e_6.snips"
+        ], 
+        [
+            1698, 
+            "e_7.snips"
+        ]
+    ], 
+    "entityNameToDisambigs": {
+        "locality": {
+            "start": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`START", 
+            "end": "`ENTITY`b9b9f7ea-b711-4635-9a7f-c49abc3130ac`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "country": {
+            "start": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`START", 
+            "end": "`ENTITY`1bebf143-ee68-464c-b5d1-469be4daec9c`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "region": {
+            "start": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`START", 
+            "end": "`ENTITY`e38d0d9d-267c-4cdd-9f10-076f6e7ea529`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "conditionName": {
+            "start": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`START", 
+            "end": "`ENTITY`449367e8-c7d7-4a90-851a-8eee12554a7f`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "item": {
+            "start": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`START", 
+            "end": "`ENTITY`a15ba8da-fda7-40fb-812a-7f72edd19023`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "temperatureName": {
+            "start": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`START", 
+            "end": "`ENTITY`12cc38d4-3940-4f23-9322-6ecc3cb9793a`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "geographicalPOI": {
+            "start": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`START", 
+            "end": "`ENTITY`4039a979-f77d-48c4-863d-141ddbee259c`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "snips/datetime": {
+            "start": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`START", 
+            "end": "`ENTITY`ca3bdd0f-7753-4f66-a725-95ce4609bf62`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }
+    }, 
+    "inferenceEngine": {
+        "version": 2
+    }
+}

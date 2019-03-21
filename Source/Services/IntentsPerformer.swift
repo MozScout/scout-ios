@@ -48,9 +48,7 @@ class IntentPerformer {
             self.dingSound.play()
             self.dongSound.play()
         }
-        switch intent {
-        case .some:
-            break
-        }
+
+        print(intent)
     }
 }

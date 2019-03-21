@@ -72,7 +72,7 @@ class SnipsWrapper {
         }
 
         snips.onIntentDetected = { [weak self] message in
-            self?.intent = .some
+            self?.intent = Intent(message: message)
             try! self?.snips.endSession(sessionId: message.sessionId)
         }
 

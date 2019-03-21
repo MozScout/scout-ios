@@ -1,32 +1,44 @@
 {
   "parsers_metadata": [
     {
-      "entity_identifier": "conditionName",
+      "entity_identifier": "album_name",
       "entity_parser": "parser_1"
     },
     {
-      "entity_identifier": "country",
+      "entity_identifier": "artist_name",
       "entity_parser": "parser_2"
     },
     {
-      "entity_identifier": "geographicalPOI",
+      "entity_identifier": "lecture_mode",
       "entity_parser": "parser_3"
     },
     {
-      "entity_identifier": "item",
+      "entity_identifier": "music_item",
       "entity_parser": "parser_4"
     },
     {
-      "entity_identifier": "locality",
+      "entity_identifier": "playlist_name",
       "entity_parser": "parser_5"
     },
     {
-      "entity_identifier": "region",
+      "entity_identifier": "radio_name",
       "entity_parser": "parser_6"
     },
     {
-      "entity_identifier": "temperatureName",
+      "entity_identifier": "snips/default",
       "entity_parser": "parser_7"
+    },
+    {
+      "entity_identifier": "snips/default--media",
+      "entity_parser": "parser_8"
+    },
+    {
+      "entity_identifier": "song_name",
+      "entity_parser": "parser_9"
+    },
+    {
+      "entity_identifier": "tvVolumeAbsolute1-100",
+      "entity_parser": "parser_10"
     }
   ]
 }
