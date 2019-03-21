@@ -24,7 +24,7 @@ class CarouselView: UIView {
     // MARK: - Private properties
 
     private var cellLargeSize: CGFloat {
-        return bounds.height
+        return collectionView.bounds.height
     }
 
     private var cellRegularSize: CGFloat {
@@ -110,6 +110,8 @@ class CarouselView: UIView {
     }
 
     private func setupCollectionView() {
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.alwaysBounceVertical = false
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self

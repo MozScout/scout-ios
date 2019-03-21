@@ -117,6 +117,12 @@ class PlayerViewControllerImp: UIViewController {
         }
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        titleLabel.preferredMaxLayoutWidth = view.bounds.width - 24 * 2
+    }
+
     // MARK: -
 
     @IBAction func playButtonAction(_ sender: Any) {
