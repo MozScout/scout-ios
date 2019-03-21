@@ -42,11 +42,20 @@ extension Player.AssemblerImp: Player.Assembler {
 
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
-        let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
+        let timeFormatter = Player.TimeFormatterImp()
+        let titleFormatter = Player.TitleFormatterImp()
+        let dateFormatter = Player.DateFormatterImp()
+
+        let presenter = PresenterImp(
+            presenterDispatcher: presenterDispatcher,
+            timeFormatter: timeFormatter,
+            titleFormatter: titleFormatter,
+            dateFormatter: dateFormatter
+        )
 
         let itemProvider = Player.ItemProviderImp(
             itemsProvider: appAssembly.assemblyPlayerItemsProvider(),
-            audioLoader: appAssembly.assemblyPlayerAudioLoader()
+            audioLoader: appAssembly.assemblyAudioLoader()
         )
 
         let interactor = InteractorImp(

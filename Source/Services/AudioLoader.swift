@@ -1,12 +1,12 @@
 //
-//  PlayerAudioLoader.swift
+//  AudioLoader.swift
 //  Scout
 //
 //
 
 import Foundation
 
-class PlayerAudioLoader {
+class AudioLoader {
 
     // MARK: - Private properties
 

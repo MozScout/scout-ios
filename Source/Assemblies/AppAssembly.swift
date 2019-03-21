@@ -50,14 +50,19 @@ class AppAssembly {
         return PlayerService()
     }()
 
-    private lazy var playerAudioLoader: PlayerAudioLoader = {
-        return PlayerAudioLoader(generalApi: api.generalApi, fileManager: fileManager)
+    private lazy var audioLoader: AudioLoader = {
+        return AudioLoader(generalApi: api.generalApi, fileManager: fileManager)
     }()
+
+    private var playerCoordinatorAudioLoader: PlayerCoordinator.AudioLoader {
+        return audioLoader
+    }
 
     private lazy var playerCoordinator: PlayerCoordinator = {
         return PlayerCoordinator(
             playerService: playerService,
-            playerAudioLoader: playerAudioLoader
+            audioLoader: playerCoordinatorAudioLoader,
+            playerCache: PlayerLocalCache()
         )
     }()
 
@@ -115,8 +120,8 @@ class AppAssembly {
         return playerItemsProvider
     }
 
-    func assemblyPlayerAudioLoader() -> PlayerAudioLoader {
-        return playerAudioLoader
+    func assemblyAudioLoader() -> AudioLoader {
+        return audioLoader
     }
 
     func assemblyPlayerItemsProviderFacade() -> PlayerItemsProviderFacade {

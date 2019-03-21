@@ -13,7 +13,7 @@ extension Player {
     class ItemProviderImp {
 
         private let itemsProvider: PlayerItemsProvider
-        private let audioLoader: PlayerAudioLoader
+        private let audioLoader: AudioLoader
 
         private let itemBehaviorRelay: BehaviorRelay<Player.Model.Item?> = BehaviorRelay(value: nil)
 
@@ -21,7 +21,7 @@ extension Player {
 
         init(
             itemsProvider: PlayerItemsProvider,
-            audioLoader: PlayerAudioLoader
+            audioLoader: AudioLoader
             ) {
 
             self.itemsProvider = itemsProvider
@@ -60,7 +60,7 @@ extension Player {
             }
         }
 
-        private func loadArticleCompletion(_ result: PlayerAudioLoader.LoadArticleResult) {
+        private func loadArticleCompletion(_ result: AudioLoader.LoadArticleResult) {
             switch result {
                 
             case .success(let response):

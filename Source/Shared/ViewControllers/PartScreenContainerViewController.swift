@@ -94,7 +94,7 @@ class PartScreenContainerViewController: UIViewController {
 
         blurBackgroundView.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top).inset(cornerRadius)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top).inset(cornerRadius + 16)
         }
 
         shadowContainerView.snp.makeConstraints { (make) in
