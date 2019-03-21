@@ -42,6 +42,7 @@ class PlayerCoordinator {
     public var duration: TimeInterval? { return playerService.duration }
     public var url: URL? { return playerService.url }
     public var rate: Float? { return playerService.rate }
+    public var volume: Float? { return playerService.volume }
 
     // MARK: -
 
@@ -73,6 +74,10 @@ class PlayerCoordinator {
         playerStateBehaviorRelay.accept(.paused)
         playIfNeeded()
     }
+
+    func setVolume(_ volume: Float) { playerService.setVolume(volume) }
+    func volumeUp(by const: Int = 1) { playerService.volumeUp(by: Float(const) / 16.0) }
+    func volumeDown(by const: Int = 1) { playerService.volumeDown(by: Float(const) / 16.0) }
 
     public func playAudio(from url: URL?) {
 

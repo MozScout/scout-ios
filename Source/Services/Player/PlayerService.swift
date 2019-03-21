@@ -9,6 +9,7 @@ import AVFoundation
 import RxSwift
 import RxCocoa
 import CoreMedia
+import MediaPlayer
 
 class PlayerService: NSObject {
 
@@ -28,29 +29,25 @@ class PlayerService: NSObject {
     private var displayLink: CADisplayLink?
 
     private let timingsBehaviorRelay: BehaviorRelay<Timings?> = BehaviorRelay(value: nil)
+    private let volumeView: MPVolumeView = MPVolumeView()
+
+    private var volumeSlider: UISlider? {
+        return volumeView.subviews.first(where: { (view) -> Bool in
+            return view is UISlider
+        }) as? UISlider
+    }
 
     // MARK: - Public properties
 
     public var onDidFinishPlaying: (() -> Void)?
-
-    public var currentTime: TimeInterval? {
-        return timingsBehaviorRelay.value?.currentTime
-    }
-
-    public var duration: TimeInterval? {
-        return timingsBehaviorRelay.value?.duration
-    }
-
-    public var isPlaying: Bool? {
-        return player?.isPlaying
-    }
-
-    public var url: URL? {
-        return player?.url
-    }
-
-    public var rate: Float? {
-        return player?.rate
+    public var currentTime: TimeInterval? { return timingsBehaviorRelay.value?.currentTime }
+    public var duration: TimeInterval? { return timingsBehaviorRelay.value?.duration }
+    public var isPlaying: Bool? { return player?.isPlaying }
+    public var url: URL? { return player?.url }
+    public var rate: Float? { return player?.rate }
+    public private(set) var volume: Float {
+        get { return volumeSlider?.value ?? 0 }
+        set { volumeSlider?.value = newValue }
     }
 
     // MARK: - Public methods
@@ -74,6 +71,11 @@ class PlayerService: NSObject {
         currentTimeDidUpdate()
     }
 
+    func setRate(_ rate: Float) { player?.rate = rate }
+    func setVolume(_ volume: Float) { self.volume = volume }
+    func volumeUp(by const: Float) { setVolume(volume + const) }
+    func volumeDown(by const: Float) { setVolume(volume - const) }
+
     func play() {
         player?.play()
         player?.currentTime = player?.currentTime ?? 0
@@ -83,10 +85,6 @@ class PlayerService: NSObject {
     func pause() {
         player?.pause()
         displayLink?.isPaused = true
-    }
-
-    func setRate(_ rate: Float) {
-        player?.rate = rate
     }
 
     func observeTimings() -> Observable<Timings?> {
