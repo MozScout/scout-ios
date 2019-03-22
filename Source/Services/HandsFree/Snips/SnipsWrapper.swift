@@ -16,7 +16,7 @@ class SnipsWrapper {
     var isDetecting = false
     var isListening = false
 
-    private let snips: SnipsPlatform
+    private var snips: SnipsPlatform?
     private let audioProvider: AudioDataProvider
     private var listenSession: String?
     private var intent: Intent?
@@ -24,66 +24,97 @@ class SnipsWrapper {
     init(audioProvider: AudioDataProvider) {
         self.audioProvider = audioProvider
 
-        guard let url = Bundle.main.url(forResource: "assistant", withExtension: nil) else {
-            fatalError("Cannot find snips assistant")
-        }
-
-        guard let snips = try? SnipsPlatform(assistantURL: url) else {
-            fatalError("Cannot init snips")
-        }
-
-        self.snips = snips
-
-        snips.onHotwordDetected = { [weak self] in
-            self?.onDetect?()
-        }
-        
-        snips.snipsWatchHandler = { log in
-            print(log)
-        }
-
-        snips.onSessionStartedHandler = { [weak self] message in
-            guard let strongSelf = self else { return }
-
-            guard !strongSelf.isDetecting else {
-                try! strongSelf.snips.endSession(message: EndSessionMessage(sessionId: message.sessionId))
-                return
-            }
-
-            strongSelf.listenSession = message.sessionId
-            strongSelf.intent = nil
-        }
-
-        snips.onSessionEndedHandler = { [weak self] message in
-            guard let strongSelf = self else { return }
-
-            guard strongSelf.listenSession == message.sessionId else { return }
-
-            strongSelf.isListening = false
-            strongSelf.listenSession = nil
-            try! snips.pause()
-            strongSelf.audioProvider.deactivate(strongSelf)
-
-            if let intent = self?.intent {
-                strongSelf.onResult?(.success(intent: intent))
-            } else {
-                strongSelf.onResult?(.failure)
-            }
-        }
-
-        snips.onIntentDetected = { [weak self] message in
-            self?.intent = Intent(message: message)
-            try! self?.snips.endSession(sessionId: message.sessionId)
-        }
-
-        snips.onIntentNotRecognizedHandler = { [weak self] message in
-            try! self?.snips.endSession(sessionId: message.sessionId)
-        }
-
-        try! snips.start()
-        try! snips.pause()
-
         audioProvider.addObserver(self)
+    }
+}
+
+private extension SnipsWrapper {
+    func startSnips() {
+        audioProvider.activate(self)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else { return }
+
+            guard let url = Bundle.main.url(forResource: "assistant", withExtension: nil) else {
+                fatalError("Cannot find snips assistant")
+            }
+
+            guard let snips = try? SnipsPlatform(assistantURL: url) else {
+                fatalError("Cannot init snips")
+            }
+
+
+            snips.onHotwordDetected = {
+                DispatchQueue.main.async {
+                    self?.onDetect?()
+                }
+            }
+
+            snips.snipsWatchHandler = { log in
+                DispatchQueue.main.async {
+                    print(log)
+                }
+            }
+
+            snips.onSessionStartedHandler = { message in
+                guard let strongSelf = self else { return }
+
+                guard !strongSelf.isDetecting else {
+                    try! strongSelf.snips?.endSession(message: EndSessionMessage(sessionId: message.sessionId))
+                    return
+                }
+
+                strongSelf.listenSession = message.sessionId
+                strongSelf.intent = nil
+            }
+
+            snips.onSessionEndedHandler = { message in
+                guard let strongSelf = self else { return }
+
+                guard strongSelf.listenSession == message.sessionId else { return }
+
+                strongSelf.isListening = false
+                strongSelf.listenSession = nil
+                strongSelf.stopSnips()
+
+                DispatchQueue.main.async {
+                    if let intent = strongSelf.intent {
+                        strongSelf.onResult?(.success(intent: intent))
+                    } else {
+                        strongSelf.onResult?(.failure)
+                    }
+                }
+            }
+
+            snips.onIntentDetected = { message in
+                self?.intent = Intent(message: message)
+                try! self?.snips?.endSession(sessionId: message.sessionId)
+            }
+
+            snips.onIntentNotRecognizedHandler = { message in
+                try! self?.snips?.endSession(sessionId: message.sessionId)
+            }
+
+            try! snips.start()
+            if strongSelf.isListening {
+                try! snips.startSession(
+                    message: StartSessionMessage(
+                        initType: SessionInitType.action(
+                            text: nil,
+                            intentFilter: nil,
+                            canBeEnqueued: false,
+                            sendIntentNotRecognized: true
+                        )
+                    )
+                )
+            }
+
+            strongSelf.snips = snips
+        }
+    }
+
+    func stopSnips() {
+        snips = nil
+        audioProvider.deactivate(self)
     }
 }
 
@@ -91,14 +122,12 @@ extension SnipsWrapper: HotwordDetector {
 
     func startDetecting() {
         isDetecting = true
-        audioProvider.activate(self)
-        try! snips.unpause()
+        startSnips()
     }
 
     func stopDetecting() {
         isDetecting = false
-        try! snips.pause()
-        audioProvider.deactivate(self)
+        stopSnips()
     }
 }
 
@@ -108,15 +137,13 @@ extension SnipsWrapper: SpeechRecognizer {
         guard !isDetecting else { return }
 
         isListening = true
-        audioProvider.activate(self)
-        try! snips.unpause()
-        try! snips.startSession(message: StartSessionMessage(initType: SessionInitType.action(text: nil, intentFilter: nil, canBeEnqueued: false, sendIntentNotRecognized: true)))
+        startSnips()
     }
 }
 
 extension SnipsWrapper: AudioDataProviderObserver {
 
     func appendBuffer(_ buffer: AVAudioPCMBuffer, time: AVAudioTime) {
-        try! self.snips.appendBuffer(buffer)
+        try! self.snips?.appendBuffer(buffer)
     }
 }
