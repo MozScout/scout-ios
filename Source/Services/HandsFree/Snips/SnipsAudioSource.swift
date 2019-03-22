@@ -21,13 +21,12 @@ class SnipsAudioSource {
                                          channels: 1,
                                          interleaved: false)!
         let converter = AVAudioConverter(from: sourceFormat, to: targetFormat)
-        let bufferSize = AVAudioFrameCount(sourceFormat.sampleRate)
         audioEngine.inputNode.installTap(
             onBus: 1,
-            bufferSize: bufferSize,
+            bufferSize: 4410,
             format: sourceFormat) { [weak self] (buffer: AVAudioPCMBuffer, time: AVAudioTime) in
                 let target = AVAudioPCMBuffer(pcmFormat: targetFormat,
-                                              frameCapacity: AVAudioFrameCount(targetFormat.sampleRate))!
+                                              frameCapacity: 1600)!
                 var error: NSError?
                 converter?.convert(to: target, error: &error, withInputFrom: { (_, outStatus) -> AVAudioBuffer? in
                     outStatus.pointee = AVAudioConverterInputStatus.haveData
