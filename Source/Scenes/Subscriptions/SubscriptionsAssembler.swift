@@ -32,7 +32,11 @@ extension Subscriptions.AssemblerImp: Subscriptions.Assembler {
     func assembly(with output: Output) -> ViewControllerImp {
         let viewController = ViewControllerImp(output: output)
         let presenterDispatcher = PresenterDispatcher(queue: DispatchQueue.main, recipient: Weak(viewController))
-        let presenter = PresenterImp(presenterDispatcher: presenterDispatcher)
+        let dateFormatter = Subscriptions.DateFormatterImp()
+        let presenter = PresenterImp(
+            presenterDispatcher: presenterDispatcher,
+            dateFormatter: dateFormatter
+        )
         let interactor = InteractorImp(presenter: presenter)
         let interactorDispatcher = InteractorDispatcher(
             queue: DispatchQueue(

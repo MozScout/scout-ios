@@ -122,8 +122,6 @@ class CarouselView: UIView {
         collectionView.collectionViewLayout = collectionViewLayout
 
         collectionView.register(classes: [CarouselViewCell.ViewModel.self])
-
-        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
     }
 
     private func setupLayout() {

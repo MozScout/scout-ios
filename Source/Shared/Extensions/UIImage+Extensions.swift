@@ -30,6 +30,8 @@ extension UIImage {
     class var fxClose: UIImage { return image() }
     class var fxHide: UIImage { return image() }
 
+    class var fxMore: UIImage { return image() }
+
     class var fxHandsFreeNavigationBarIcon: UIImage { return image() }
     class var fxSearchNavigationBarIcon: UIImage { return image() }
     class var fxSettingsNavigationBarIcon: UIImage { return image() }

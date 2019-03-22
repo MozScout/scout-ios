@@ -3,9 +3,10 @@ import Foundation
 // MARK: - Protocol
 
 protocol SubscriptionsPresenter {
-    typealias Event = Subscriptions.Event
 
-    func presentViewDidLoad(response: Event.ViewDidLoad.Response)
+    func presentViewDidLoad(response: Subscriptions.Event.ViewDidLoad.Response)
+    func presentSectionsDidUpdate(response: Subscriptions.Event.SectionsDidUpdate.Response)
+    func presentRefreshDidFinish(response: Subscriptions.Event.RefreshDidFinish.Response)
 }
 
 extension Subscriptions {
@@ -22,10 +23,17 @@ extension Subscriptions {
 
         private let presenterDispatcher: PresenterDispatcher<Type>
 
+        private let dateFormatter: DateFormatter
+
         // MARK: -
 
-        init(presenterDispatcher: PresenterDispatcher<Type>) {
+        init(
+            presenterDispatcher: PresenterDispatcher<Type>,
+            dateFormatter: DateFormatter
+            ) {
+
             self.presenterDispatcher = presenterDispatcher
+            self.dateFormatter = dateFormatter
         }
 
         // MARK: - Private methods
@@ -52,10 +60,49 @@ extension Subscriptions {
 
 extension Subscriptions.PresenterImp: Subscriptions.Presenter {
 
-    func presentViewDidLoad(response: Event.ViewDidLoad.Response) {
+    func presentViewDidLoad(response: Subscriptions.Event.ViewDidLoad.Response) {
         let viewModel = Event.ViewDidLoad.ViewModel()
         self.displayAsync { (viewController) in
             viewController.displayViewDidLoad(viewModel: viewModel)
+        }
+    }
+
+    func presentSectionsDidUpdate(response: Subscriptions.Event.SectionsDidUpdate.Response) {
+
+        let viewModel: Event.SectionsDidUpdate.ViewModel
+
+        if response.sections.isEmpty {
+            viewModel = .empty
+        } else {
+            let sections = response.sections.map { (section) -> Model.SectionViewModel in
+                let titleViewModel = SubscriptionsHeaderSupplementaryView.ViewModel(title: section.title)
+
+                let itemsViewModels = section.items.map { (item) -> SubscriptionsItemCell.ViewModel in
+                    return SubscriptionsItemCell.ViewModel(
+                        iconUrl: item.iconUrl,
+                        date: dateFormatter.formatItemDate(item.date),
+                        title: item.title
+                    )
+                }
+                let groupViewModels = [SubscriptionsGroupCell.ViewModel(items: itemsViewModels)]
+
+                return Model.SectionViewModel(
+                    titleModel: titleViewModel,
+                    viewModels: groupViewModels
+                )
+            }
+            viewModel = .full(sections)
+        }
+
+        self.displayAsync { (viewController) in
+            viewController.displaySectionsDidUpdate(viewModel: viewModel)
+        }
+    }
+
+    func presentRefreshDidFinish(response: Subscriptions.Event.RefreshDidFinish.Response) {
+        let viewModel = Subscriptions.Event.RefreshDidFinish.ViewModel()
+        self.displayAsync { (viewController) in
+            viewController.displayRefreshDidFinish(viewModel: viewModel)
         }
     }
 }

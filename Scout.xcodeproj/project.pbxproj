@@ -32,6 +32,11 @@
 		281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812329F221EFE7F001B99C7 /* TabBarItemView.swift */; };
 		281232A2221F0B07001B99C7 /* TabBarItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A1221F0B07001B99C7 /* TabBarItemView.xib */; };
 		281232A6221F1E85001B99C7 /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281232A5221F1E85001B99C7 /* TabBarView.xib */; };
+		2848A2332243CDFF00AC769B /* SubscriptionsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2848A2322243CDFF00AC769B /* SubscriptionsGroupCell.swift */; };
+		2848A2352243D0B700AC769B /* SubscriptionsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2848A2342243D0B700AC769B /* SubscriptionsItemCell.swift */; };
+		2848A2372244EFEA00AC769B /* SubscriptionsHeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2848A2362244EFEA00AC769B /* SubscriptionsHeaderSupplementaryView.swift */; };
+		2848A23B2244FFBF00AC769B /* SubscriptionsDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2848A23A2244FFBF00AC769B /* SubscriptionsDateFormatter.swift */; };
+		2848A23D2244FFD700AC769B /* SubscriptionsDateFormatterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2848A23C2244FFD700AC769B /* SubscriptionsDateFormatterImp.swift */; };
 		28587D54223FF141005CA06A /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D53223FF141005CA06A /* PlayerButton.swift */; };
 		28587D56223FF345005CA06A /* PlayerTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D55223FF345005CA06A /* PlayerTextButton.swift */; };
 		28587D58223FF972005CA06A /* PlayerIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28587D57223FF972005CA06A /* PlayerIconButton.swift */; };
@@ -331,6 +336,11 @@
 		2812329F221EFE7F001B99C7 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		281232A1221F0B07001B99C7 /* TabBarItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarItemView.xib; sourceTree = "<group>"; };
 		281232A5221F1E85001B99C7 /* TabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
+		2848A2322243CDFF00AC769B /* SubscriptionsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsGroupCell.swift; sourceTree = "<group>"; };
+		2848A2342243D0B700AC769B /* SubscriptionsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsItemCell.swift; sourceTree = "<group>"; };
+		2848A2362244EFEA00AC769B /* SubscriptionsHeaderSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsHeaderSupplementaryView.swift; sourceTree = "<group>"; };
+		2848A23A2244FFBF00AC769B /* SubscriptionsDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsDateFormatter.swift; sourceTree = "<group>"; };
+		2848A23C2244FFD700AC769B /* SubscriptionsDateFormatterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsDateFormatterImp.swift; sourceTree = "<group>"; };
 		28587D53223FF141005CA06A /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		28587D55223FF345005CA06A /* PlayerTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTextButton.swift; sourceTree = "<group>"; };
 		28587D57223FF972005CA06A /* PlayerIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIconButton.swift; sourceTree = "<group>"; };
@@ -797,6 +807,23 @@
 			path = TabBarView;
 			sourceTree = "<group>";
 		};
+		2848A2382244FF9E00AC769B /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				2848A2392244FFAF00AC769B /* DateFormatter */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		2848A2392244FFAF00AC769B /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				2848A23A2244FFBF00AC769B /* SubscriptionsDateFormatter.swift */,
+				2848A23C2244FFD700AC769B /* SubscriptionsDateFormatterImp.swift */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
 		28587D52223FF132005CA06A /* Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,6 +993,7 @@
 				28CFCA4F222D704800D1E477 /* SubscriptionsViewController.swift */,
 				28CFCA5E222D84C100D1E477 /* SubscriptionsViewControllerImp.xib */,
 				28CFCA58222D753900D1E477 /* Views */,
+				2848A2382244FF9E00AC769B /* Workers */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -973,6 +1001,9 @@
 		28CFCA58222D753900D1E477 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2848A2322243CDFF00AC769B /* SubscriptionsGroupCell.swift */,
+				2848A2362244EFEA00AC769B /* SubscriptionsHeaderSupplementaryView.swift */,
+				2848A2342243D0B700AC769B /* SubscriptionsItemCell.swift */,
 				28CFCA59222D754500D1E477 /* EmptyView */,
 			);
 			path = Views;
@@ -2368,6 +2399,7 @@
 				280FEEC8221B12C300223CB9 /* ApiClient.swift in Sources */,
 				2870513E2231742C00F69425 /* ArticlePostModel.swift in Sources */,
 				28FC412322423E7900D70BD7 /* PlayerCache.swift in Sources */,
+				2848A23B2244FFBF00AC769B /* SubscriptionsDateFormatter.swift in Sources */,
 				28587D54223FF141005CA06A /* PlayerButton.swift in Sources */,
 				2896E5802237CE58008AA1FB /* PartScreenContainerViewController.swift in Sources */,
 				28CFCA89222EE46700D1E477 /* PlayerOutput.swift in Sources */,
@@ -2392,6 +2424,7 @@
 				28CFCA69222DB10C00D1E477 /* RequestAuthorizationTokenProvider.swift in Sources */,
 				77C51E79222DA56A008E4B0C /* AddSubscriptionOutput.swift in Sources */,
 				66254343219B54D000379011 /* SnowboyWrapper.mm in Sources */,
+				2848A2372244EFEA00AC769B /* SubscriptionsHeaderSupplementaryView.swift in Sources */,
 				28FDFB6E221BF26300C869E1 /* Codable+Extensions.swift in Sources */,
 				9333B81C20AC6D070055C5B1 /* MyListTableViewCell.swift in Sources */,
 				28CFCA91222FE92C00D1E477 /* String+Extensions.swift in Sources */,
@@ -2456,6 +2489,7 @@
 				9362FCAF20B8104A0004930C /* ScoutPlayerHTTPClientProtocol.swift in Sources */,
 				F47B7CEA2084CBB00055585C /* NetworkMappingProtocol.swift in Sources */,
 				5622AB4D20A6E58C0074A4BC /* ScoutTitlesHTTPClientProtocol.swift in Sources */,
+				2848A2352243D0B700AC769B /* SubscriptionsItemCell.swift in Sources */,
 				5622AB5020A6E68C0074A4BC /* ScoutArticle.swift in Sources */,
 				281232A0221EFE7F001B99C7 /* TabBarItemView.swift in Sources */,
 				28587D5C22401868005CA06A /* PlayerSwitcherButton.swift in Sources */,
@@ -2473,6 +2507,7 @@
 				287F9FFC223FB280001CDDF1 /* PlayerDateFormatterImp.swift in Sources */,
 				77F1D20B221C485E00E640C3 /* Weak.swift in Sources */,
 				28CFCA52222D704800D1E477 /* SubscriptionsAssembler.swift in Sources */,
+				2848A23D2244FFD700AC769B /* SubscriptionsDateFormatterImp.swift in Sources */,
 				28123299221EC40B001B99C7 /* TopicsRequestParameters.swift in Sources */,
 				5637D2C120A3410100112F1F /* MyListViewController.swift in Sources */,
 				28CFCA62222D952200D1E477 /* ListenListApi.swift in Sources */,
@@ -2509,6 +2544,7 @@
 				773D174022258345003CAEE2 /* OnboardingTopicsFetcher.swift in Sources */,
 				28CFCA6D222E8E1200D1E477 /* DeleteListenListItemResponse.swift in Sources */,
 				93FB827720B54BA100A39A5C /* OldPlayerViewController.swift in Sources */,
+				2848A2332243CDFF00AC769B /* SubscriptionsGroupCell.swift in Sources */,
 				2805F8FC2223FE90006BA14F /* TabBarFlowCoordinator.swift in Sources */,
 				5637D2B620A3257800112F1F /* HelpAssemblyProtocol.swift in Sources */,
 				77F1D233221C723D00E640C3 /* UIColor+Hex.swift in Sources */,
