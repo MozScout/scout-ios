@@ -95,10 +95,12 @@ private extension AudioDataProvider {
             return .failure(error: error)
         }
 
+        isRun = true
         return .success(data: ())
     }
 
     func stop() {
+        isRun = false
         source.stop()
     }
 
