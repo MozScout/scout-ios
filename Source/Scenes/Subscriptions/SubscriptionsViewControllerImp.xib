@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubscriptionsViewControllerImp" customModule="Scout" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="mNj-2m-Xlg" id="NbM-Xi-bWA"/>
+                <outlet property="collectionViewLayout" destination="BWa-OS-fqj" id="lmD-4A-h4o"/>
                 <outlet property="emptyView" destination="2aJ-qW-MwD" id="H6R-Fl-NJk"/>
                 <outlet property="emptyViewBottomConstraint" destination="GWy-kH-hNQ" id="NKG-gJ-9jW"/>
                 <outlet property="emptyViewTopConstraint" destination="mbb-Lh-z9a" id="lyI-cL-da5"/>
@@ -27,13 +29,27 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mNj-2m-Xlg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BWa-OS-fqj">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="mNj-2m-Xlg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4lG-15-NN7"/>
                 <constraint firstAttribute="trailing" secondItem="2aJ-qW-MwD" secondAttribute="trailing" id="9Ny-ay-bmo"/>
                 <constraint firstItem="2aJ-qW-MwD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="D2B-XL-YsG"/>
                 <constraint firstAttribute="bottom" secondItem="2aJ-qW-MwD" secondAttribute="bottom" id="GWy-kH-hNQ"/>
+                <constraint firstAttribute="trailing" secondItem="mNj-2m-Xlg" secondAttribute="trailing" id="NWP-JV-JOD"/>
+                <constraint firstItem="mNj-2m-Xlg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XpC-6F-Qoc"/>
                 <constraint firstItem="2aJ-qW-MwD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mbb-Lh-z9a"/>
+                <constraint firstAttribute="bottom" secondItem="mNj-2m-Xlg" secondAttribute="bottom" id="tn7-g7-bWd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
