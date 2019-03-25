@@ -15,6 +15,8 @@ class AppCoordinator {
     private let appAssembly: AppAssembly
     private let rootNavigation: RootNavigationViewController
 
+    private let intentPerformer: IntentPerformer
+
     private lazy var launchInstructor: LaunchInstructor = {
         return appAssembly.assemblyAppCoordinatorStartInstructor()
     }()
@@ -24,6 +26,7 @@ class AppCoordinator {
     init(rootNavigation: RootNavigationViewController) {
         self.appAssembly = AppAssembly()
         self.rootNavigation = rootNavigation
+        self.intentPerformer = appAssembly.assemblyIntentPerformer()
         
         rootNavigation.onRootWillAppear = { [weak self] in
             self?.startFlow()
@@ -35,6 +38,9 @@ class AppCoordinator {
 
             UserDefaults.standard.setValue(1, forKey: "first_launch")
         }
+
+        
+
     }
 
     // MARK: - Private methods

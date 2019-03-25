@@ -7,5 +7,6 @@ extension Listen {
     struct Output {
 
         let onShowPlayer: () -> Void
+        let onHandsFree: () -> Void
     }
 }

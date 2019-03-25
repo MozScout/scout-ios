@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "189E1CC8A940CB17A3D099E44F41293F"
+               BlueprintIdentifier = "66B239826EF1D39D2D6C594AC2DBFF77"
                BuildableName = "Alamofire.framework"
                BlueprintName = "Alamofire"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "269E2058D06DE0C7BC6850C693093039"
+               BlueprintIdentifier = "158C625970C5CA7A63EF21C276667CC7"
                BuildableName = "Async.framework"
                BlueprintName = "AsyncSwift"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB96F62B8BFC8135D5D18AD3081D3557"
+               BlueprintIdentifier = "5E288426CDDFFBC7E61329968E4AE9FA"
                BuildableName = "HexColors.framework"
                BlueprintName = "HexColors"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -56,7 +56,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A8A7FC234B2298121CC9C668D0250991"
+               BlueprintIdentifier = "A22015649D132F14BEF03744E64BA98B"
                BuildableName = "KeychainAccess.framework"
                BlueprintName = "KeychainAccess"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -70,7 +70,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DDB287AFAD8AE36F448C523E396CFAE"
+               BlueprintIdentifier = "121957E9EEBC41B2EA521FAECA9402FF"
                BuildableName = "Kingfisher.framework"
                BlueprintName = "Kingfisher"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -84,7 +84,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "290BFD176DC97B58FC1DC893F1E30B07"
+               BlueprintIdentifier = "E1F678EB23370DA66BAB5CE5556F58AF"
                BuildableName = "Pods_Scout.framework"
                BlueprintName = "Pods-Scout"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -98,7 +98,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EF437FCD6CD2E3BF364318F1172BD9BF"
+               BlueprintIdentifier = "B141A24972F3663FAB536BF0D4EE553B"
                BuildableName = "SwiftyJSON.framework"
                BlueprintName = "SwiftyJSON"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -160,11 +160,6 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction

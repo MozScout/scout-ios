@@ -1,0 +1,380 @@
+{
+    "entityNameToFilename": {
+        "snips/default": "e_4.snips", 
+        "song_name": "e_8.snips", 
+        "snips/default--media": "e_7.snips", 
+        "artist_name": "e_3.snips", 
+        "snips/duration": "e_0.snips", 
+        "music_item": "e_10.snips", 
+        "lecture_mode": "e_2.snips", 
+        "playlist_name": "e_6.snips", 
+        "tvVolumeAbsolute1-100": "e_5.snips", 
+        "album_name": "e_9.snips", 
+        "radio_name": "e_1.snips"
+    }, 
+    "injectionsEngine": {
+        "version": 2
+    }, 
+    "language": "en", 
+    "decoderConfig": {
+        "useFinalProbs": true, 
+        "latticeBeamSize": 4.0, 
+        "mbrConfig": {
+            "confidenceAdditionnalExponent": 1.0, 
+            "unkProba": 0.5, 
+            "unkThreshold": 0.3
+        }, 
+        "maxActive": 2500, 
+        "minActive": 200, 
+        "acousticScale": 0.83, 
+        "beamSize": 12.0
+    }, 
+    "cacheSizeDynamic": 536870912, 
+    "asrModel": {
+        "version": "0.1.0"
+    }, 
+    "asrLmAdaptation": {
+        "version": "0.19.3"
+    }, 
+    "endpointingRules": {
+        "rule3": {
+            "maxRelativeCost": 8.0, 
+            "minTrailingSilence": 1.0, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": true
+        }, 
+        "rule2": {
+            "maxRelativeCost": 5.5, 
+            "minTrailingSilence": 0.7, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": true
+        }, 
+        "rule1": {
+            "maxRelativeCost": 10000000000.0, 
+            "minTrailingSilence": 4.0, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": false
+        }, 
+        "rule5": {
+            "maxRelativeCost": 10000000000.0, 
+            "minTrailingSilence": 0.0, 
+            "minUtteranceLength": 10.0, 
+            "mustContainNonsilence": false
+        }, 
+        "rule4": {
+            "maxRelativeCost": 2.5, 
+            "minTrailingSilence": 0.5, 
+            "minUtteranceLength": 0.0, 
+            "mustContainNonsilence": true
+        }
+    }, 
+    "postprocessors": [
+        {
+            "Regex": {
+                "pattern": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`START (.*?) `ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`START (.*?) `ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`START (.*?) `ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`START (.*?) `ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START (.*?) `ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START .[^`]*? `ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`BYPASSING `ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`END", 
+                "flags": "i", 
+                "replacement": "unknownword"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`START (.*?) `ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`START (.*?) `ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`START (.*?) `ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`START (.*?) `ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`START (.*?) `ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`START (.*?) `ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`END", 
+                "flags": "i", 
+                "replacement": "$1"
+            }
+        }, 
+        {
+            "Regex": {
+                "pattern": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`START ", 
+                "flags": "i", 
+                "replacement": ""
+            }
+        }
+    ], 
+    "asrEngine": {
+        "version": "0.1.0"
+    }, 
+    "entitiesFstMap": [
+        [
+            2252, 
+            "__root__"
+        ], 
+        [
+            2257, 
+            "e_0.snips"
+        ], 
+        [
+            2263, 
+            "e_1.snips"
+        ], 
+        [
+            2259, 
+            "e_2.snips"
+        ], 
+        [
+            2256, 
+            "e_3.snips"
+        ], 
+        [
+            2253, 
+            "e_4.snips"
+        ], 
+        [
+            2261, 
+            "e_5.snips"
+        ], 
+        [
+            2260, 
+            "e_6.snips"
+        ], 
+        [
+            2255, 
+            "e_7.snips"
+        ], 
+        [
+            2254, 
+            "e_8.snips"
+        ], 
+        [
+            2262, 
+            "e_9.snips"
+        ], 
+        [
+            2258, 
+            "e_10.snips"
+        ]
+    ], 
+    "entityNameToDisambigs": {
+        "snips/default": {
+            "start": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`START", 
+            "end": "`ENTITY`d8aa535f-022d-4b93-8b51-4f68572a035d`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "song_name": {
+            "start": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`START", 
+            "end": "`ENTITY`fcd5258e-26af-43d1-94fb-0403bfadcd94`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "snips/default--media": {
+            "start": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`START", 
+            "end": "`ENTITY`0a713ce7-d50b-4c87-9b94-069127cb99fa`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "artist_name": {
+            "start": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`START", 
+            "end": "`ENTITY`cbee9c67-6623-4918-a3d3-353c38daf8c8`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "snips/duration": {
+            "start": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`START", 
+            "end": "`ENTITY`ffca9b46-472e-4c1d-b18d-2beaeba3f0a5`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "music_item": {
+            "start": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`START", 
+            "end": "`ENTITY`86c5b2b0-8ccd-4a82-90f7-00bd350593c3`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "lecture_mode": {
+            "start": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`START", 
+            "end": "`ENTITY`22bf2c2c-3c5e-4855-8bec-919066af8869`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "playlist_name": {
+            "start": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`START", 
+            "end": "`ENTITY`6d137068-6cbc-4fcb-8416-072b2a3e957d`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "tvVolumeAbsolute1-100": {
+            "start": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`START", 
+            "end": "`ENTITY`3ad5bd6c-a581-4f5a-b743-7836089661c2`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "album_name": {
+            "start": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`START", 
+            "end": "`ENTITY`d00ebfb4-7aa9-4e08-932f-40f5430bd06f`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }, 
+        "radio_name": {
+            "start": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`START", 
+            "end": "`ENTITY`2a5f9a76-48a2-4101-912d-28d83552d24b`END", 
+            "empty": [
+                "", 
+                4
+            ]
+        }
+    }, 
+    "inferenceEngine": {
+        "version": 2
+    }
+}

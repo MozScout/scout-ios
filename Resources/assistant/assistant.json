@@ -1,0 +1,385 @@
+{
+  "id" : "proj_xDBEBOyxd2v",
+  "name" : "My Assistant",
+  "intents" : [ {
+    "id" : "thills:play",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "media",
+      "id" : "Vgdb1XW1X",
+      "entityId" : "snips/default",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "play",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:jump",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "TimeJump",
+      "id" : "dOgewD_ZR",
+      "entityId" : "snips/duration",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "jump",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:VolumeUp",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "VolumeUp",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:playItem",
+    "type" : "registry",
+    "version" : "0.3.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "playitem",
+      "id" : "slot_imported_z_sLSSwX9",
+      "entityId" : "entity_qEvpGy315a",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "playItem",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:VolumeDown",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "VolumeDown",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:slower",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "slower",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:LatestUnplayed",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "playitem",
+      "id" : "slot_imported_dJ5F-tC81",
+      "entityId" : "entity_qEvpGy315a",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "LatestUnplayed",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:PlayNext",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "PlayNext",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:PlayOldestUnplayed",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "playitem",
+      "id" : "slot_imported_ataW41eea",
+      "entityId" : "entity_qEvpGy315a",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "PlayOldestUnplayed",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:PlayOldest",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "playitem",
+      "id" : "slot_imported_JjWSfso8o",
+      "entityId" : "entity_qEvpGy315a",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "PlayOldest",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:back",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "TimeJump",
+      "id" : "slot_imported_6SHlPhlso",
+      "entityId" : "entity_qEvpGy315a",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "back",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:faster",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "faster",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:PlayLatest",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "playitem",
+      "id" : "slot_imported_qB8Cf5ATI",
+      "entityId" : "entity_qEvpGy315a",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "PlayLatest",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:Stop",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "Stop",
+    "enabledByDefault" : true
+  }, {
+    "id" : "thills:Resume",
+    "type" : "registry",
+    "version" : "0.1.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "Resume",
+    "enabledByDefault" : true
+  }, {
+    "id" : "playPlaylist",
+    "type" : "registry",
+    "version" : "4.0.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "playlist_name",
+      "id" : "slot_HkUkNyL6Z",
+      "entityId" : "entity_6kW32M9Elxo",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Name of the playlist the user would like to listen to."
+    }, {
+      "name" : "playlist_lecture_mode",
+      "id" : "slot_HyVQVyU6Z",
+      "entityId" : "entity_GAP8VNQorD9",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Lecture mode for the playback."
+    } ],
+    "name" : "playPlaylist",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "playAlbum",
+    "type" : "registry",
+    "version" : "8.0.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "album_name",
+      "id" : "slot_HJYAS1Ia-",
+      "entityId" : "entity_PQPWANn1Z7V",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Name of the album the user would like to listen to."
+    }, {
+      "name" : "album_lecture_mode",
+      "id" : "slot_HkHtIyIaZ",
+      "entityId" : "entity_GAP8VNQorD9",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Lecture mode for the playback."
+    } ],
+    "name" : "playAlbum",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "speakerInterrupt",
+    "type" : "registry",
+    "version" : "6.0.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "speakerInterrupt",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "nextSong",
+    "type" : "registry",
+    "version" : "3.0.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "nextSong",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "volumeDown",
+    "type" : "registry",
+    "version" : "11.0.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "volume_lower",
+      "id" : "slot_H1Bum1UaW",
+      "entityId" : "entity_ZaZ2xw8K4nVn",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Quantity of levels/steps the user would like to decrease the volume by."
+    } ],
+    "name" : "volumeDown",
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "resumeMusic",
+    "type" : "registry",
+    "version" : "2.0.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "resumeMusic",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "previousSong",
+    "type" : "registry",
+    "version" : "3.0.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "previousSong",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "radioOn",
+    "type" : "registry",
+    "version" : "11.0.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "radio_name",
+      "id" : "slot_B1ZfWyUTW",
+      "entityId" : "entity_7zkE5ay7d6z",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Name of the radio station the user would like to listen to."
+    } ],
+    "name" : "radioOn",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "getInfos",
+    "type" : "registry",
+    "version" : "5.1.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "music_item",
+      "id" : "slot_r1GFv1LTb",
+      "entityId" : "entity_qZgDO85vPqe",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Type of music item the user would like to get details about."
+    } ],
+    "name" : "getInfos",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "playArtist",
+    "type" : "registry",
+    "version" : "13.0.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "artist_name",
+      "id" : "slot_ryU35kIT-",
+      "entityId" : "entity_MEPOAO17wmD",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Name of the artist the user would like to listen to."
+    } ],
+    "name" : "playArtist",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "volumeUp",
+    "type" : "registry",
+    "version" : "10.0.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "volume_higher",
+      "id" : "slot_SJo6MJ8pb",
+      "entityId" : "entity_ZaZ2xw8K4nVn",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Quantity of levels/steps the volume should be increased by."
+    } ],
+    "name" : "volumeUp",
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "addSong",
+    "type" : "registry",
+    "version" : "8.0.0",
+    "language" : "en",
+    "slots" : [ ],
+    "name" : "addSong",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  }, {
+    "id" : "playSong",
+    "type" : "registry",
+    "version" : "8.0.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "song_name",
+      "id" : "slot_ryKWDkI6b",
+      "entityId" : "entity_04n7BVwOGB8",
+      "missingQuestion" : "",
+      "required" : false,
+      "description" : "Name of the song the user would like to listen to."
+    } ],
+    "name" : "playSong",
+    "confirmationRequired" : false,
+    "confirmationQuestion" : "",
+    "enabledByDefault" : true
+  } ],
+  "createdAt" : "2017-12-24T19:47:54.226Z",
+  "language" : "en",
+  "version" : {
+    "nluModel" : "0.19.0"
+  },
+  "platform" : {
+    "type" : "raspberrypi"
+  },
+  "asr" : {
+    "type" : "snips"
+  },
+  "analyticsEnabled" : true,
+  "heartbeatEnabled" : true,
+  "hotword" : "jarvis"
+}

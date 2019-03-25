@@ -27,6 +27,7 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
     private lazy var subscriptionsFlow: SubscriptionsFlowCoordinator = createSubscriptionsFlow()
     private lazy var listenFlow: ListenFlowCoordinator = createListenFlow()
     private lazy var playerFlow: PlayerFlowCoordinator = createPlayerFlow()
+    private lazy var handsFreeFlow: HandsFreeFlowCoordinator = createHandsFreeFlow()
 
     init(
         rootNavigation: RootNavigationProtocol,
@@ -100,6 +101,16 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         currentFlowCoordinator = playerFlow
     }
 
+    private func showHandsFreeMode(animated: Bool) {
+        handsFreeFlow.showHandsFreeMode(animated: animated)
+        currentFlowCoordinator = handsFreeFlow
+    }
+
+    private func showRecognition(animated: Bool) {
+        handsFreeFlow.showRecognition(animated: animated)
+        currentFlowCoordinator = handsFreeFlow
+    }
+
     private func showContent(
         _ content: UIViewController,
         for targetTab: Tab,
@@ -140,7 +151,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             assembly: assembly,
             show: { [weak self] (controller, animated) in
                 self?.showContent(controller, for: .subscriptions, animated: animated)
-        })
+            }, onHandsFree: { [weak self] in
+                self?.showHandsFreeMode(animated: true)
+            }
+        )
 
         return flowCoordinator
     }
@@ -156,7 +170,10 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             },
             onShowPlayer: { [weak self] in
                 self?.showPlayer(animated: true)
-        })
+            }, onHandsFree: { [weak self] in
+                self?.showHandsFreeMode(animated: true)
+            }
+        )
 
         return flowCoordinator
     }
@@ -165,6 +182,24 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         let assemby = self.assembly.assemblyPlayerFlowCoordinatorAssembly()
 
         let flowCoordinator = PlayerFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assemby,
+            show: { [weak self] (controller, animated) in
+                controller.modalPresentationStyle = .overCurrentContext
+                controller.modalTransitionStyle = .coverVertical
+                self?.tabBarController.present(controller, animated: animated, completion: nil)
+            },
+            hide: { (controller, animated) in
+                controller.dismiss(animated: animated, completion: nil)
+        })
+
+        return flowCoordinator
+    }
+
+    private func createHandsFreeFlow() -> HandsFreeFlowCoordinator {
+        let assemby = self.assembly.assemblyHandsFreeFlowCoordinatorAssembly()
+
+        let flowCoordinator = HandsFreeFlowCoordinator(
             rootNavigation: rootNavigation,
             assembly: assemby,
             show: { [weak self] (controller, animated) in
@@ -205,6 +240,10 @@ extension TabBarFlowCoordinator {
 
         func assemblyPlayerFlowCoordinatorAssembly() -> PlayerFlowCoordinator.Assembly {
             return PlayerFlowCoordinator.Assembly(appAssembly: appAssembly)
+        }
+
+        func assemblyHandsFreeFlowCoordinatorAssembly() -> HandsFreeFlowCoordinator.Assembly {
+            return HandsFreeFlowCoordinator.Assembly(appAssembly: appAssembly)
         }
     }
 }

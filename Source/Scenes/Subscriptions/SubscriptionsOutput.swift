@@ -7,5 +7,6 @@ extension Subscriptions {
     struct Output {
 
         let onAddAction: () -> Void
+        let onHandsFree: () -> Void
     }
 }

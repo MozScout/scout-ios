@@ -11,19 +11,21 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
     typealias ShowClosure = (_ content: UIViewController, _ animated: Bool) -> Void
 
     private let assembly: Assembly
+    private let show: ShowClosure
+    private let onHandsFree: () -> Void
 
     private lazy var navigationController: UINavigationController = createNavigationController()
-
-    private let show: ShowClosure
 
     init(
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly,
-        show: @escaping ShowClosure
+        show: @escaping ShowClosure,
+        onHandsFree: @escaping () -> Void
         ) {
 
         self.assembly = assembly
         self.show = show
+        self.onHandsFree = onHandsFree
 
         super.init(rootNavigation: rootNavigation)
     }
@@ -50,6 +52,8 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
         let output = Subscriptions.Output(
             onAddAction: { [weak self] in
                 self?.runAddSubscriptionScene()
+            }, onHandsFree: { [weak self] in
+                self?.onHandsFree()
             }
         )
         let subscriptions = assembly.assemblySubscriptions(output: output)
