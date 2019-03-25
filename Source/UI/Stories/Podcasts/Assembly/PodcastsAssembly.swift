@@ -24,7 +24,7 @@ class PodcastsAssembly: PodcastsAssemblyProtocol {
     }
 
     func assemblyPodcastDetailsViewController() -> PodcastDetailsViewController {
-        let podcastsVC = self.podacstDetailsStoryboard.instantiateViewController(
+        let podcastsVC = self.podcastDetailsStoryboard.instantiateViewController(
             // swiftlint:disable:next force_cast
             withIdentifier: "PodcastDetailsViewController") as! PodcastDetailsViewController
         //podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
@@ -33,7 +33,7 @@ class PodcastsAssembly: PodcastsAssemblyProtocol {
     }
 
     func assemblyAddPodcastsViewController() -> AddPodcastsViewController {
-        let addPodcastsVC = self.addPodacstsStoryboard.instantiateViewController(
+        let addPodcastsVC = self.addPodcastsStoryboard.instantiateViewController(
             // swiftlint:disable:next force_cast
             withIdentifier: "AddPodcastsViewController") as! AddPodcastsViewController
         //podcastsVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
@@ -46,6 +46,6 @@ class PodcastsAssembly: PodcastsAssemblyProtocol {
 // MARK: Storyboard
 fileprivate extension PodcastsAssembly {
     var storyboard: UIStoryboard { return UIStoryboard(name: "Podcasts", bundle: nil) }
-    var podacstDetailsStoryboard: UIStoryboard { return UIStoryboard(name: "PodcastDetails", bundle: nil) }
-    var addPodacstsStoryboard: UIStoryboard { return UIStoryboard(name: "AddPodcasts", bundle: nil) }
+    var podcastDetailsStoryboard: UIStoryboard { return UIStoryboard(name: "PodcastDetails", bundle: nil) }
+    var addPodcastsStoryboard: UIStoryboard { return UIStoryboard(name: "AddPodcasts", bundle: nil) }
 }

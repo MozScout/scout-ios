@@ -45,6 +45,25 @@ extension AddPodcastsViewController: UICollectionViewDataSource {
                                                       // swiftlint:disable:next force_cast
                                                       for: indexPath) as! AddPodcastsCollectionViewCell
 
+        switch indexPath.item {
+            case 0:
+                // swiftlint:disable:next line_length
+                cell.configureCell("https://media.npr.org/assets/img/2018/08/06/npr_witw_podcasttile_sq-2fdc0ec2ec9d937e93684318fcc0b90042db2605-s400-c85.jpg")
+            case 1:
+                // swiftlint:disable:next line_length
+                cell.configureCell("https://static01.nyt.com/images/2017/01/29/podcasts/the-daily-album-art/the-daily-album-art-thumbLarge-v4.jpg")
+            case 2:
+                cell.configureCell("https://99percentinvisible.org/app/themes/invisible/dist/images/99pi_logo_text.png")
+            case 3:
+                // swiftlint:disable:next line_length
+                cell.configureCell("https://res-4.cloudinary.com/gimlet-media/image/upload/f_auto,q_auto:best/beqfhc1um2sktkc5pw9k")
+            case 4:
+                // swiftlint:disable:next line_length
+                cell.configureCell("https://media.npr.org/assets/img/2018/08/06/npr_wwdtm_podcasttile_sq-1e9edf5dfb49a3fff3703764e39442173ba8558a-s400-c85.jpg")
+            default:
+                break
+        }
+
         return cell
     }
 }

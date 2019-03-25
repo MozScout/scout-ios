@@ -10,8 +10,7 @@ xcode_destination: platform=iOS Simulator,OS=11.0.1,name=iPhone X
 cache: cocoapods
 
 before_install:
-  - brew update
-  - brew outdated xctool swiftlint
+  - brew upgrade --cleanup
   - pod update
 
 before_script:

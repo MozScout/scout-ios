@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -134,6 +134,7 @@
                         <viewLayoutGuide key="safeArea" id="69x-WW-mCG"/>
                     </view>
                     <connections>
+                        <outlet property="nameLabel" destination="llI-N0-Af1" id="vgs-f9-7HM"/>
                         <outlet property="subscribeButton" destination="MoK-Sk-J5V" id="ZKl-6N-bfq"/>
                         <outlet property="tableView" destination="5Mg-fm-rOV" id="GDF-bh-Zq5"/>
                     </connections>
@@ -144,7 +145,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backButton" width="13" height="21"/>
+        <image name="backButton" width="24" height="24"/>
         <image name="handsFree" width="24" height="24"/>
         <image name="star" width="18" height="18"/>
     </resources>

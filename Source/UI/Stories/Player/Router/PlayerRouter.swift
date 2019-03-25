@@ -10,23 +10,85 @@ import UIKit
 
 class PlayerRouter {
     var onBackButtonTap: (() -> Void)?
-    var onMicrophoneButtonTap: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: PlayerAssemblyProtocol
+    var playerVC: OldPlayerViewController?
+    var playerOpen: Bool
 
     required init(with assembly: PlayerAssemblyProtocol) {
         self.assembly = assembly
+        self.playerOpen = false
     }
 }
 
 extension PlayerRouter: PlayerRoutingProtocol {
     func show(from viewController: UIViewController, animated: Bool, model: ScoutArticle, fullArticle: Bool) {
-        let playerVC = assembly.assemblyPlayerViewController()
-        playerVC.model = model
-        playerVC.isFullArticle = fullArticle
-        playerVC.backButtonDelegate = self
-        playerVC.microphoneButtonDelegate = self
-        self.showViewController(viewController: playerVC, fromViewController: viewController, animated: animated)
+        self.playerOpen = true
+        self.playerVC = assembly.assemblyPlayerViewController()
+        self.playerVC!.model = model
+        self.playerVC!.isFullArticle = fullArticle
+        self.playerVC!.backButtonDelegate = self
+        self.showViewController(viewController: self.playerVC!, fromViewController: viewController, animated: animated)
+    }
+
+    func pause() {
+        if self.playerOpen && self.playerVC!.playing {
+            self.playerVC!.pauseButtonTapped(0)
+        }
+    }
+
+    func stop() {
+        if self.playerOpen {
+            self.backButtonTapped()
+        }
+    }
+
+    func resume() {
+        if self.playerOpen && !self.playerVC!.playing {
+            self.playerVC!.pauseButtonTapped(0)
+        }
+    }
+
+    func playing() -> Bool {
+        return self.playerOpen && self.playerVC!.playing
+    }
+
+    func increaseVolume() {
+        if self.playerVC != nil {
+            self.playerVC!.increaseVolume()
+        }
+    }
+
+    func decreaseVolume() {
+        if self.playerVC != nil {
+            self.playerVC!.decreaseVolume()
+        }
+    }
+
+    func setVolume(_ volume: Float) -> (Float, Float)? {
+        if self.playerVC != nil {
+            return self.playerVC!.setVolume(volume)
+        } else {
+            return nil
+        }
+    }
+
+    func increaseSpeed() {
+        if self.playerOpen {
+            self.playerVC!.increaseSpeed()
+        }
+    }
+
+    func decreaseSpeed() {
+        if self.playerOpen {
+            self.playerVC!.decreaseSpeed()
+        }
+    }
+
+    func skip(_ seconds: Int) {
+        if self.playerOpen {
+            self.playerVC!.skip(seconds)
+        }
     }
 
     // MARK: -
@@ -40,26 +102,22 @@ extension PlayerRouter: PlayerRoutingProtocol {
             } else {
                 navigationVC.pushViewController(viewController, animated: animated)
             }
-        } else {
-            if let navigationVC = fromViewController.navigationController {
-                if navigationVC.viewControllers.count == 0 {
-                    navigationVC.viewControllers = [viewController]
-                } else {
-                    navigationVC.pushViewController(viewController, animated: animated)
-                }
+        } else if let navigationVC = fromViewController.navigationController {
+            if navigationVC.viewControllers.count == 0 {
+                navigationVC.viewControllers = [viewController]
             } else {
-                print("Unsupported navigation")
+                navigationVC.pushViewController(viewController, animated: animated)
             }
+        } else {
+            print("Unsupported navigation")
         }
     }
 }
 
 extension PlayerRouter: PlayerViewControllerDelegate {
     func backButtonTapped() {
+        self.playerOpen = false
+        self.playerVC!.stop()
         self.onBackButtonTap!()
-    }
-
-    func microphoneButtonTapped() {
-        self.onMicrophoneButtonTap!()
     }
 }

@@ -1,0 +1,58 @@
+{
+    "locality": {
+        "vanilla": "b9b9f7ea-b711-4635-9a7f-c49abc3130ac.vanilla", 
+        "ngram": true, 
+        "added": "b9b9f7ea-b711-4635-9a7f-c49abc3130ac.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "country": {
+        "vanilla": "1bebf143-ee68-464c-b5d1-469be4daec9c.vanilla", 
+        "ngram": true, 
+        "added": "1bebf143-ee68-464c-b5d1-469be4daec9c.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "region": {
+        "vanilla": "e38d0d9d-267c-4cdd-9f10-076f6e7ea529.vanilla", 
+        "ngram": true, 
+        "added": "e38d0d9d-267c-4cdd-9f10-076f6e7ea529.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "conditionName": {
+        "vanilla": "449367e8-c7d7-4a90-851a-8eee12554a7f.vanilla", 
+        "ngram": true, 
+        "added": "449367e8-c7d7-4a90-851a-8eee12554a7f.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "item": {
+        "vanilla": "a15ba8da-fda7-40fb-812a-7f72edd19023.vanilla", 
+        "ngram": true, 
+        "added": "a15ba8da-fda7-40fb-812a-7f72edd19023.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "temperatureName": {
+        "vanilla": "12cc38d4-3940-4f23-9322-6ecc3cb9793a.vanilla", 
+        "ngram": true, 
+        "added": "12cc38d4-3940-4f23-9322-6ecc3cb9793a.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "geographicalPOI": {
+        "vanilla": "4039a979-f77d-48c4-863d-141ddbee259c.vanilla", 
+        "ngram": true, 
+        "added": "4039a979-f77d-48c4-863d-141ddbee259c.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "snips/datetime": {
+        "vanilla": "ca3bdd0f-7753-4f66-a725-95ce4609bf62.vanilla", 
+        "ngram": false, 
+        "added": "ca3bdd0f-7753-4f66-a725-95ce4609bf62.added", 
+        "pruningThresholds": [], 
+        "order": 0
+    }
+}

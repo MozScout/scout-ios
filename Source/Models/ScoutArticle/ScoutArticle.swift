@@ -33,6 +33,10 @@ class ScoutArticle: NSObject, NSCoding {
     var url: String
     var publisher: String
     var iconURL: URL?
+    var isPodcast: Bool
+    var excerpt: String
+    var podcastCategory: String
+    var latestEpisode: (String, String)?
 
     init(withArticleID itemID: String,
          title: String,
@@ -43,7 +47,8 @@ class ScoutArticle: NSObject, NSCoding {
          articleImageURL: URL?,
          url: String,
          publisher: String,
-         iconURL: URL?) {
+         iconURL: URL?,
+         excerpt: String) {
         self.itemID = itemID
         self.title = title
         self.author = author
@@ -54,6 +59,40 @@ class ScoutArticle: NSObject, NSCoding {
         self.url = url
         self.publisher = publisher
         self.iconURL = iconURL
+        self.excerpt = excerpt
+        self.isPodcast = false
+        self.podcastCategory = ""
+        self.latestEpisode = nil
+    }
+
+    init(withArticleID itemID: String,
+         title: String,
+         author: String,
+         lengthMinutes: Int,
+         sortID: Int,
+         resolvedURL: URL?,
+         articleImageURL: URL?,
+         url: String,
+         publisher: String,
+         iconURL: URL?,
+         excerpt: String,
+         isPodcast: Bool,
+         category: String,
+         latestEpisode: (String, String)) {
+        self.itemID = itemID
+        self.title = title
+        self.author = author
+        self.lengthMinutes = lengthMinutes
+        self.sortID = sortID
+        self.resolvedURL = resolvedURL
+        self.articleImageURL = articleImageURL
+        self.url = url
+        self.publisher = publisher
+        self.iconURL = iconURL
+        self.excerpt = excerpt
+        self.isPodcast = isPodcast
+        self.podcastCategory = category
+        self.latestEpisode = latestEpisode
     }
 
     // MARK: NSCoding
@@ -66,7 +105,8 @@ class ScoutArticle: NSObject, NSCoding {
               let lengthMinutes = objectDictionary["lengthMinutes"] as? Int,
               let sortID = objectDictionary["sortID"] as? Int,
               let url = objectDictionary["url"] as? String,
-              let publisher = objectDictionary["publisher"] as? String
+              let publisher = objectDictionary["publisher"] as? String,
+              let excerpt = objectDictionary["excerpt"] as? String
             else { return nil }
 
         var articleImageURL: URL?
@@ -93,7 +133,8 @@ class ScoutArticle: NSObject, NSCoding {
                   articleImageURL: articleImageURL,
                   url: url,
                   publisher: publisher,
-                  iconURL: iconURL)
+                  iconURL: iconURL,
+                  excerpt: excerpt)
     }
 
     func encode(with aCoder: NSCoder) {

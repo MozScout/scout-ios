@@ -10,6 +10,16 @@ import UIKit
 
 protocol PlayerRoutingProtocol {
     var onBackButtonTap: (() -> Void)? { get set }
-    var onMicrophoneButtonTap: (() -> Void)? { get set }
+    var playerOpen: Bool { get set }
     func show(from viewController: UIViewController, animated: Bool, model: ScoutArticle, fullArticle: Bool)
+    func pause()
+    func stop()
+    func resume()
+    func playing() -> Bool
+    func increaseVolume()
+    func decreaseVolume()
+    func setVolume(_ volume: Float) -> (Float, Float)?
+    func increaseSpeed()
+    func decreaseSpeed()
+    func skip(_ seconds: Int)
 }

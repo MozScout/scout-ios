@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 class VoiceInputRouter {
-    var linkIsFound: ((ScoutArticle, Bool) -> Void)?
+    var onCloseButtonTap: (() -> Void)?
     fileprivate var parentNavigationController: UINavigationController!
     fileprivate let assembly: VoiceInputAssemblyProtocol
+    var voiceInputVC: VoiceInputViewController?
 
     required init(with assembly: VoiceInputAssemblyProtocol) {
         self.assembly = assembly
@@ -19,11 +20,27 @@ class VoiceInputRouter {
 }
 
 extension VoiceInputRouter: VoiceInputRoutingProtocol {
-    func show(from viewController: UIViewController, animated: Bool, userID: String) {
-        let voiceInputVC = assembly.assemblyVoiceInputViewController()
-        voiceInputVC.playerDelegate = self
-        voiceInputVC.userID = userID
-        self.showViewController(viewController: voiceInputVC, fromViewController: viewController, animated: animated)
+    func show(from viewController: UIViewController, animated: Bool) {
+        self.voiceInputVC = assembly.assemblyVoiceInputViewController()
+        self.showViewController(viewController: self.voiceInputVC!,
+                                fromViewController: viewController,
+                                animated: animated)
+    }
+
+    func addText(_ text: String, fromUser: Bool) {
+        if self.isVisible() {
+            self.voiceInputVC!.addText(text, fromUser: fromUser)
+        }
+    }
+
+    func setImage(_ image: UIImage) {
+        if self.isVisible() {
+            self.voiceInputVC!.setImage(image)
+        }
+    }
+
+    private func isVisible() -> Bool {
+        return self.voiceInputVC != nil && self.voiceInputVC!.viewIfLoaded?.window != nil
     }
 
     // MARK: -
@@ -37,22 +54,14 @@ extension VoiceInputRouter: VoiceInputRoutingProtocol {
             } else {
                 navigationVC.pushViewController(viewController, animated: animated)
             }
-        } else {
-            if let navigationVC = fromViewController.navigationController {
-                if navigationVC.viewControllers.count == 0 {
-                    navigationVC.viewControllers = [viewController]
-                } else {
-                    navigationVC.pushViewController(viewController, animated: animated)
-                }
+        } else if let navigationVC = fromViewController.navigationController {
+            if navigationVC.viewControllers.count == 0 {
+                navigationVC.viewControllers = [viewController]
             } else {
-                print("Unsupported navigation")
+                navigationVC.pushViewController(viewController, animated: animated)
             }
+        } else {
+            print("Unsupported navigation")
         }
-    }
-}
-
-extension VoiceInputRouter: VoiceInputDelegate {
-    func openPlayer(withModel: ScoutArticle, isFullArticle: Bool) {
-        self.linkIsFound!(withModel, isFullArticle)
     }
 }

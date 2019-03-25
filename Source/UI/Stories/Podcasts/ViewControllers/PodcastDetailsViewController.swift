@@ -11,7 +11,10 @@ import UIKit
 class PodcastDetailsViewController: UIViewController {
     @IBOutlet weak var subscribeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
+
     fileprivate let viewModel = PodcastDetailsViewModel()
+    var model: ScoutArticle!
     private let cellRowReuseId = "cellrow"
     override var prefersStatusBarHidden: Bool {
         return true
@@ -24,8 +27,23 @@ class PodcastDetailsViewController: UIViewController {
 
     private func configureUI() {
         subscribeButton.backgroundColor = UIColor(red: 0 / 255, green: 96 / 255, blue: 223 / 255, alpha: 1.0)
-        subscribeButton.layer.cornerRadius = 8.0
+        subscribeButton.layer.cornerRadius = 22.0
         subscribeButton.clipsToBounds = true
+
+        if let item = viewModel.items[0] as? PodcastDetailsViewModelAboutItem {
+            item.about = self.model.excerpt
+            item.category = self.model.podcastCategory
+            item.website = URL.init(string: self.model.url)
+            do {
+                if let image = try UIImage.init(data: Data.init(contentsOf: self.model.articleImageURL!)) {
+                    item.image = image
+                }
+            } catch {
+            }
+        }
+
+        self.nameLabel.text = self.model.title
+
         viewModel.reloadSections = { [weak self] (section: Int) in
             self?.tableView?.beginUpdates()
             self?.tableView?.reloadSections([section], with: .fade)
@@ -39,9 +57,10 @@ class PodcastDetailsViewController: UIViewController {
         tableView?.dataSource = viewModel
         tableView?.delegate = viewModel
         tableView?.register(AboutCell.nib, forCellReuseIdentifier: AboutCell.identifier)
-        tableView.register(UINib(nibName: "PlayMyListTableViewCell", bundle: nil),
+        tableView.register(UINib(nibName: "MyListTableViewCell", bundle: nil),
                            forCellReuseIdentifier: cellRowReuseId)
         tableView?.register(HeaderView.nib, forHeaderFooterViewReuseIdentifier: HeaderView.identifier)
+
     }
     @IBAction func backButtonTapped(_ sender: Any) {
         DispatchQueue.main.async {

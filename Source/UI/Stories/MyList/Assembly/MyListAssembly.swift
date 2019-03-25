@@ -14,14 +14,16 @@ class MyListAssembly: MyListAssemblyProtocol {
         self.applicationAssembly = assembly
     }
 
-    func assemblyPlayMyListViewController() -> PlayMyListViewController {
-        let playMyListVC = self.storyboard.instantiateViewController(
+    func assemblyMyListViewController() -> MyListViewController {
+        let myListVC = self.storyboard.instantiateViewController(
             // swiftlint:disable:next force_cast
-            withIdentifier: "PlayMyListViewController") as! PlayMyListViewController
-        playMyListVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
-        playMyListVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
+            withIdentifier: "MyListViewController") as! MyListViewController
+        myListVC.scoutClient = self.applicationAssembly.assemblyNetworkClient() as? ScoutHTTPClient
+        myListVC.keychainService = self.applicationAssembly.assemblyKeychainService() as? KeychainService
+        myListVC.speechService = self.applicationAssembly.assemblySpeechService() as? SpeechService
+        myListVC.beginWakeWordDetector()
 
-        return playMyListVC
+        return myListVC
     }
 }
 
