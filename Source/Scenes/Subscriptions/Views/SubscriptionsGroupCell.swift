@@ -29,6 +29,7 @@ enum SubscriptionsGroupCell {
 
         public var items: [SubscriptionsItemCell.ViewModel] = [] {
             didSet {
+                collectionView.collectionViewLayout.invalidateLayout()
                 collectionView.reloadData()
             }
         }
@@ -84,7 +85,7 @@ enum SubscriptionsGroupCell {
 
         private func setupCollectionViewLayout() {
             collectionViewLayout.scrollDirection = .horizontal
-            collectionViewLayout.estimatedItemSize = CGSize(width: 150, height: 220)
+            collectionViewLayout.itemSize = CGSize(width: 150, height: 220)
             collectionViewLayout.minimumLineSpacing = 20
             collectionViewLayout.sectionInset = .zero
         }

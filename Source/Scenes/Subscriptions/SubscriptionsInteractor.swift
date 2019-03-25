@@ -73,12 +73,12 @@ extension Subscriptions.InteractorImp: Subscriptions.Interactor {
                 Model.Item(iconUrl: secondUrl, title: "Fourth", date: Date()),
                 Model.Item(iconUrl: firstUrl, title: "Fiveth", date: Date()),
                 Model.Item(iconUrl: secondUrl, title: "Sixth", date: Date()),
-                Model.Item(iconUrl: secondUrl, title: "Seventh\nMultiline\nKext", date: Date())
+                Model.Item(iconUrl: secondUrl, title: "Seventh", date: Date())
                 ]),
             Model.Section(title: "Second title", items: [
                 Model.Item(iconUrl: secondUrl, title: "First", date: Date()),
                 Model.Item(iconUrl: firstUrl, title: "Second", date: Date()),
-                Model.Item(iconUrl: secondUrl, title: "Third\nMultiline", date: Date()),
+                Model.Item(iconUrl: secondUrl, title: "Third", date: Date()),
                 Model.Item(iconUrl: firstUrl, title: "Eleventh", date: Date()),
                 Model.Item(iconUrl: secondUrl, title: "Twelveth", date: Date())
                 ]),
@@ -92,7 +92,7 @@ extension Subscriptions.InteractorImp: Subscriptions.Interactor {
                 ]),
             Model.Section(title: "Fiveth title", items: [
                 Model.Item(iconUrl: firstUrl, title: "Third", date: Date()),
-                Model.Item(iconUrl: secondUrl, title: "Second\nAnother one", date: Date())
+                Model.Item(iconUrl: secondUrl, title: "Second", date: Date())
                 ]),
             Model.Section(title: "Sixth title", items: [
                 Model.Item(iconUrl: firstUrl, title: "Third", date: Date()),

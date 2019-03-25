@@ -278,13 +278,13 @@ extension Subscriptions.ViewControllerImp: Subscriptions.ViewController {
         switch viewModel {
         case .full(let sections):
             self.sections = sections
-            collectionView.reloadData()
             emptyView.isHidden = true
         case .empty:
             self.sections = []
-            collectionView.reloadData()
             emptyView.isHidden = false
         }
+        collectionView.reloadData()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 
     func displayRefreshDidFinish(viewModel: Subscriptions.Event.RefreshDidFinish.ViewModel) {
