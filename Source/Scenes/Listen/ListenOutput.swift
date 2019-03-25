@@ -8,5 +8,7 @@ extension Listen {
 
         let onShowPlayer: () -> Void
         let onHandsFree: () -> Void
+        let onBack: () -> Void
+        let onSearch: () -> Void
     }
 }

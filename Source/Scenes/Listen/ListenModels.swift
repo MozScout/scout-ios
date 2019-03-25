@@ -23,6 +23,11 @@ enum Listen {
 
 extension Listen.Model {
 
+    enum Mode {
+        case list
+        case search
+    }
+
     struct Item {
 
         let itemId: Listen.Identifier
@@ -36,6 +41,7 @@ extension Listen.Model {
 
     struct SceneModel {
 
+        let mode: Mode
         var items: [Item]
         var isEditing: Bool
     }
@@ -63,10 +69,15 @@ extension Listen.Event {
     enum ViewDidLoad {
 
         struct Request {}
-        struct Response {}
+
+        struct Response {
+            
+            let mode: Model.Mode
+        }
 
         struct ViewModel {
 
+            let mode: Model.Mode
             let editingButtonTitle: String
         }
     }

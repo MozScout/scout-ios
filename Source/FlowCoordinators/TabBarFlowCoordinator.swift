@@ -87,10 +87,14 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
     }
 
     private func showListenFlow(animated: Bool) {
-        listenFlow.showContent(animated: animated)
+        listenFlow.showListenScene(
+            show: { [weak self] (controller, animated) in
+                self?.showContent(controller, for: .listen, animated: animated)
+            },
+            animated: animated)
         currentFlowCoordinator = listenFlow
     }
-
+    
     private func showSubscriptionsFlow(animated: Bool) {
         subscriptionsFlow.showContent(animated: animated)
         currentFlowCoordinator = subscriptionsFlow
@@ -151,7 +155,11 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
             assembly: assembly,
             show: { [weak self] (controller, animated) in
                 self?.showContent(controller, for: .subscriptions, animated: animated)
-            }, onHandsFree: { [weak self] in
+            },
+            onShowPlayer: { [weak self] in
+                self?.showPlayer(animated: true)
+            },
+            onHandsFree: { [weak self] in
                 self?.showHandsFreeMode(animated: true)
             }
         )
@@ -165,9 +173,6 @@ class TabBarFlowCoordinator: BaseFlowCoordinator {
         let flowCoordinator = ListenFlowCoordinator(
             rootNavigation: rootNavigation,
             assembly: assembly,
-            show: { [weak self] (controller, animated) in
-                self?.showContent(controller, for: .listen, animated: animated)
-            },
             onShowPlayer: { [weak self] in
                 self?.showPlayer(animated: true)
             }, onHandsFree: { [weak self] in

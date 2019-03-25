@@ -64,7 +64,7 @@ extension Listen.PresenterImp: Listen.Presenter {
 
     func presentViewDidLoad(response: Event.ViewDidLoad.Response) {
         displayAsync { (viewController) in
-            viewController.displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel(editingButtonTitle: "Edit"))
+            viewController.displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel(mode: response.mode, editingButtonTitle: "Edit"))
         }
     }
 

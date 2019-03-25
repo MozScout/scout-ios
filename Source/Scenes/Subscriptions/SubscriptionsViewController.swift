@@ -142,6 +142,11 @@ class SubscriptionsViewControllerImp: UIViewController {
         navigationBar.onHandsFreeTap = { [weak self] in
             self?.output.onHandsFree()
         }
+
+        navigationBar.onSearchTap = { [weak self] in
+            self?.output.onSearch()
+        }
+
         addButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
     }
 

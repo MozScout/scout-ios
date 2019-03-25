@@ -29,7 +29,7 @@ class ListenViewControllerImp: UIViewController {
     typealias ViewControllerImp = Listen.ViewControllerImp
     typealias Output = Listen.Output
     typealias Assembler = Listen.Assembler
-    typealias AssemplerImp = Listen.AssemblerImp
+    typealias AssemplerImp = Listen.ListAssembler
     typealias Model = Listen.Model
     typealias Event = Listen.Event
 
@@ -71,10 +71,9 @@ class ListenViewControllerImp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationBar()
+        sendViewDidLoadRequest()
         setupTableView()
         setupUi()
-        sendViewDidLoadRequest()
     }
 
     override func viewDidLayoutSubviews() {
@@ -125,6 +124,20 @@ private extension Listen.ViewControllerImp {
         navigationBar.onHandsFreeTap = { [weak self] in
             self?.output.onHandsFree()
         }
+
+        navigationBar.onSearchTap = { [weak self] in
+            self?.output.onSearch()
+        }
+
+        navigationBarContainer?.setNavigationBarContent(navigationBar)
+    }
+
+    func setupSearchBar() {
+
+        let navigationBar = SearchNavigationBar.loadFromNib()
+        navigationBar.onClose = { [weak self] in
+            self?.output.onBack()
+        }
         navigationBarContainer?.setNavigationBarContent(navigationBar)
     }
 
@@ -140,7 +153,7 @@ private extension Listen.ViewControllerImp {
     }
 
     func sendViewDidLoadRequest() {
-        interactorDispatcher.async { (interactor) in
+        sendSync { (interactor) in
             interactor.onViewDidLoad(request: Event.ViewDidLoad.Request())
         }
     }
@@ -200,6 +213,12 @@ extension Listen.ViewControllerImp: Listen.ViewController {
 
     func displayViewDidLoad(viewModel: Event.ViewDidLoad.ViewModel) {
         editButton.setTitle(viewModel.editingButtonTitle, for: .normal)
+        switch viewModel.mode {
+        case .list:
+            setupNavigationBar()
+        case .search:
+            setupSearchBar()
+        }
     }
 
     func displayItemsDidUpdate(viewModel: Event.ItemsDidUpdate.ViewModel) {

@@ -12,19 +12,23 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
 
     private let assembly: Assembly
     private let show: ShowClosure
+    private let onShowPlayer: () -> Void
     private let onHandsFree: () -> Void
 
     private lazy var navigationController: UINavigationController = createNavigationController()
+    private lazy var listenFlowCoordinator: ListenFlowCoordinator = createListenFlow()
 
     init(
         rootNavigation: RootNavigationProtocol,
         assembly: Assembly,
         show: @escaping ShowClosure,
+        onShowPlayer: @escaping () -> Void,
         onHandsFree: @escaping () -> Void
         ) {
 
         self.assembly = assembly
         self.show = show
+        self.onShowPlayer = onShowPlayer
         self.onHandsFree = onHandsFree
 
         super.init(rootNavigation: rootNavigation)
@@ -32,6 +36,22 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
 
     func showContent(animated: Bool) {
         show(navigationController, animated)
+    }
+
+    private func createListenFlow() -> ListenFlowCoordinator {
+        let assembly = self.assembly.assemblyListenFlowCoordinatorAssembly()
+
+        let flowCoordinator = ListenFlowCoordinator(
+            rootNavigation: rootNavigation,
+            assembly: assembly,
+            onShowPlayer: { [weak self] in
+                self?.onShowPlayer()
+            }, onHandsFree: { [weak self] in
+                self?.onHandsFree()
+            }
+        )
+
+        return flowCoordinator
     }
 
     private func createNavigationController() -> UINavigationController {
@@ -54,6 +74,10 @@ class SubscriptionsFlowCoordinator: BaseFlowCoordinator {
                 self?.runAddSubscriptionScene()
             }, onHandsFree: { [weak self] in
                 self?.onHandsFree()
+            }, onSearch: {  [weak self] in
+                self?.listenFlowCoordinator.showSearchScene(show: { [weak self] (scene, animated) in
+                    self?.navigationController.topViewController?.present(scene, animated: true, completion: nil)
+                    }, parent: self?.navigationController.topViewController, animated: true)
             }
         )
         let subscriptions = assembly.assemblySubscriptions(output: output)
@@ -107,6 +131,10 @@ extension SubscriptionsFlowCoordinator {
         func assemblyAddSubscription(output: AddSubscription.Output) -> AddSubscription.ViewControllerImp {
             let assembler = AddSubscription.AssemblerImp(appAssembly: appAssembly)
             return assembler.assembly(with: output)
+        }
+
+        func assemblyListenFlowCoordinatorAssembly() -> ListenFlowCoordinator.Assembly {
+            return ListenFlowCoordinator.Assembly(appAssembly: appAssembly)
         }
     }
 }

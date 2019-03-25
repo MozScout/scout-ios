@@ -8,5 +8,6 @@ extension Subscriptions {
 
         let onAddAction: () -> Void
         let onHandsFree: () -> Void
+        let onSearch: () -> Void
     }
 }

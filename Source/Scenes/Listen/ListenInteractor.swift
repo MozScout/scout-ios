@@ -36,16 +36,13 @@ extension Listen {
         
         init(
             presenter: Presenter,
-            itemsFetcher: ItemsWorker
+            itemsFetcher: ItemsWorker,
+            sceneModel: Model.SceneModel
             ) {
 
             self.presenter = presenter
             self.itemsFetcher  = itemsFetcher
-
-            sceneModel = Model.SceneModel(
-                items: [],
-                isEditing: false
-            )
+            self.sceneModel = sceneModel
 
             observeItems()
         }
@@ -97,7 +94,7 @@ private extension Listen.InteractorImp {
 extension Listen.InteractorImp: Listen.Interactor {
 
     func onViewDidLoad(request: Event.ViewDidLoad.Request) {
-        presenter.presentViewDidLoad(response: Event.ViewDidLoad.Response())
+        presenter.presentViewDidLoad(response: Event.ViewDidLoad.Response(mode: sceneModel.mode))
         fetchItems()
     }
 
